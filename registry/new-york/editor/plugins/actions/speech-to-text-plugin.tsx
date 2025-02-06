@@ -54,7 +54,7 @@ export const SUPPORT_SPEECH_RECOGNITION: boolean =
   CAN_USE_DOM &&
   ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)
 
-export function SpeechToTextPlugin() {
+function SpeechToTextPlugin() {
   const [editor] = useLexicalComposerContext()
   const [isEnabled, setIsEnabled] = useState<boolean>(false)
   const [isSpeechToText, setIsSpeechToText] = useState<boolean>(false)
@@ -148,3 +148,7 @@ export function SpeechToTextPlugin() {
     </Tooltip>
   )
 }
+
+export default (SUPPORT_SPEECH_RECOGNITION
+  ? SpeechToTextPlugin
+  : () => null) as () => null;
