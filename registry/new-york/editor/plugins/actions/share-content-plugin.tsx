@@ -7,7 +7,7 @@ import {
 } from '@lexical/file'
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
 import { CLEAR_HISTORY_COMMAND } from 'lexical'
-import { ShareIcon } from 'lucide-react'
+import { SendIcon } from 'lucide-react'
 import { toast } from 'sonner'
 
 import { Button } from '@/registry/new-york/ui/button'
@@ -57,7 +57,7 @@ export function ShareContentPlugin() {
           size={'sm'}
           className="p-2"
         >
-          <ShareIcon className="size-4" />
+          <SendIcon className="size-4" />
         </Button>
       </TooltipTrigger>
       <TooltipContent>Share Content</TooltipContent>
