@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Default",
+  "compilerOptions": {
+    "target": "ES2017",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "isolatedModules": false,
+    "allowImportingTsExtensions": true,
+    "composite": false,
+    "declaration": true,
+    "declarationMap": true,
+    "forceConsistentCasingInFileNames": true,
+    "inlineSources": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "preserveWatchOutput": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"],
+    }
+  },
+  "include": ["scripts/**/*.{ts,mts}"],
+  "exclude": ["node_modules"]
+}
