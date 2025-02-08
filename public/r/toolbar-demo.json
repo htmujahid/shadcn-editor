@@ -4,7 +4,7 @@
   "type": "registry:example",
   "author": "shadcn (https://ui.shadcn.com)",
   "registryDependencies": [
-    "toolbar-plugin",
+    "https://shadcn-editor.vercel.app/r/toolbar-plugin.json",
     "button"
   ],
   "files": [

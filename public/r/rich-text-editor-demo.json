@@ -4,7 +4,7 @@
   "type": "registry:example",
   "author": "shadcn (https://ui.shadcn.com)",
   "registryDependencies": [
-    "rich-text-editor-plugin"
+    "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"
   ],
   "files": [
     {

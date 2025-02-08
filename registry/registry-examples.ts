@@ -4,7 +4,7 @@ export const examples: Registry["items"] = [
   {
     name: "rich-text-editor-demo",
     type: "registry:example",
-    registryDependencies: ["rich-text-editor-plugin"],
+    registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
     files: [
       {
         path: "examples/rich-text-editor-demo.tsx",
@@ -15,7 +15,7 @@ export const examples: Registry["items"] = [
   {
     name: "actions-demo",
     type: "registry:example",
-    registryDependencies: ["actions-plugin", "button"],
+    registryDependencies: ["https://shadcn-editor.vercel.app/r/actions-plugin.json", "button"],
     files: [
       {
         path: "examples/actions-demo.tsx",
@@ -26,7 +26,7 @@ export const examples: Registry["items"] = [
   {
     name: "toolbar-demo",
     type: "registry:example",
-    registryDependencies: ["toolbar-plugin", "button"],
+    registryDependencies: ["https://shadcn-editor.vercel.app/r/toolbar-plugin.json", "button"],
     files: [
       {
         path: "examples/toolbar-demo.tsx",
