@@ -47,6 +47,7 @@ import { HistoryToolbarPlugin } from '@/registry/new-york/editor/plugins/toolbar
 import { LinkToolbarPlugin } from '@/registry/new-york/editor/plugins/toolbar/link-toolbar-plugin'
 import { SubSuperToolbarPlugin } from '@/registry/new-york/editor/plugins/toolbar/subsuper-toolbar-plugin'
 
+import { ActionsPlugin } from '@/registry/new-york/editor/plugins/actions/actions-plugin'
 import { CharacterLimitPlugin } from '@/registry/new-york/editor/plugins/actions/character-limit-plugin'
 import { ClearEditorActionPlugin } from '@/registry/new-york/editor/plugins/actions/clear-editor-plugin'
 import { CounterCharacterPlugin } from '@/registry/new-york/editor/plugins/actions/counter-character-plugin'
@@ -228,27 +229,29 @@ export function Plugins({ }) {
 
         <ListMaxIndentLevelPlugin />
       </div>
-      <div className="clear-both flex items-center justify-between border-t p-1 overflow-auto gap-2">
-        <div className='flex justify-start flex-1'>
-          <MaxLengthPlugin maxLength={maxLength} />
-          <CharacterLimitPlugin maxLength={maxLength} charset="UTF-16" />
+      <ActionsPlugin>
+        <div className="clear-both flex items-center justify-between border-t p-1 overflow-auto gap-2">
+          <div className='flex justify-start flex-1'>
+            <MaxLengthPlugin maxLength={maxLength} />
+            <CharacterLimitPlugin maxLength={maxLength} charset="UTF-16" />
+          </div>
+          <div>
+            <CounterCharacterPlugin charset="UTF-16" />
+          </div>
+          <div className="flex justify-end flex-1">
+            <SpeechToTextPlugin />
+            <ShareContentPlugin />
+            <ImportExportPlugin />
+            <MarkdownTogglePlugin shouldPreserveNewLinesInMarkdown={true} />
+            <EditModeTogglePlugin />
+            <>
+              <ClearEditorActionPlugin />
+              <ClearEditorPlugin />
+            </>
+            <TreeViewPlugin />
+          </div>
         </div>
-        <div>
-          <CounterCharacterPlugin charset="UTF-16" />
-        </div>
-        <div className="flex justify-end flex-1">
-          <SpeechToTextPlugin />
-          <ShareContentPlugin />
-          <ImportExportPlugin />
-          <MarkdownTogglePlugin shouldPreserveNewLinesInMarkdown={true} />
-          <EditModeTogglePlugin />
-          <>
-            <ClearEditorActionPlugin />
-            <ClearEditorPlugin />
-          </>
-          <TreeViewPlugin />
-        </div>
-      </div>
+      </ActionsPlugin>
     </div>
   )
 }
