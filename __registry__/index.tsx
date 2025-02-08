@@ -736,7 +736,7 @@ export const Index: Record<string, any> = {
       name: "rich-text-editor-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+      registryDependencies: ["rich-text-editor-plugin"],
       files: [{
         path: "registry/new-york/examples/rich-text-editor-demo.tsx",
         type: "registry:example",
@@ -751,7 +751,7 @@ export const Index: Record<string, any> = {
       name: "actions-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["https://shadcn-editor.vercel.app/r/actions-plugin.json","button"],
+      registryDependencies: ["actions-plugin","button"],
       files: [{
         path: "registry/new-york/examples/actions-demo.tsx",
         type: "registry:example",
@@ -766,7 +766,7 @@ export const Index: Record<string, any> = {
       name: "toolbar-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["https://shadcn-editor.vercel.app/r/toolbar-plugin.json","button"],
+      registryDependencies: ["toolbar-plugin","button"],
       files: [{
         path: "registry/new-york/examples/toolbar-demo.tsx",
         type: "registry:example",
@@ -1509,7 +1509,7 @@ export const Index: Record<string, any> = {
       name: "rich-text-editor-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+      registryDependencies: ["rich-text-editor-plugin"],
       files: [{
         path: "registry/default/examples/rich-text-editor-demo.tsx",
         type: "registry:example",
@@ -1524,7 +1524,7 @@ export const Index: Record<string, any> = {
       name: "actions-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["https://shadcn-editor.vercel.app/r/actions-plugin.json","button"],
+      registryDependencies: ["actions-plugin","button"],
       files: [{
         path: "registry/default/examples/actions-demo.tsx",
         type: "registry:example",
@@ -1539,7 +1539,7 @@ export const Index: Record<string, any> = {
       name: "toolbar-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["https://shadcn-editor.vercel.app/r/toolbar-plugin.json","button"],
+      registryDependencies: ["toolbar-plugin","button"],
       files: [{
         path: "registry/default/examples/toolbar-demo.tsx",
         type: "registry:example",
