@@ -228,7 +228,7 @@ export function Plugins({ }) {
 
         <ListMaxIndentLevelPlugin />
       </div>
-      <div className="clear-both flex h-10 items-center justify-between border-t p-1">
+      <div className="clear-both flex items-center justify-between border-t p-1 overflow-auto gap-2">
         <div className='flex justify-start flex-1'>
           <MaxLengthPlugin maxLength={maxLength} />
           <CharacterLimitPlugin maxLength={maxLength} charset="UTF-16" />

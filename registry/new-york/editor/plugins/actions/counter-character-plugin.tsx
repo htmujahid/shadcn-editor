@@ -64,7 +64,7 @@ export function CounterCharacterPlugin({ charset = "UTF-16" }: CounterCharacterP
   }, [editor, charset]);
 
   return (
-    <div className="text-xs flex gap-2 text-gray-500">
+    <div className="text-xs flex gap-2 text-gray-500 whitespace-nowrap">
       <p>{stats.characters} characters</p>
       |
       <p>{stats.words} words</p>
