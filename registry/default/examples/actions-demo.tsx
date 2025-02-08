@@ -2,14 +2,19 @@
 
 import { useState } from "react"
 
+import { Trash2Icon } from "lucide-react"
+
 import { InitialConfigType, LexicalComposer } from "@lexical/react/LexicalComposer"
 import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary"
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin"
 
-import { TooltipProvider } from "@/registry/new-york/ui/tooltip"
+import { Button } from "@/registry/default/ui/button"
+import { TooltipProvider } from "@/registry/default/ui/tooltip"
 
-import { editorTheme } from "@/registry/new-york/editor/themes/editor-theme"
-import { ContentEditable } from "@/registry/new-york/editor/editor-ui/content-editable"
+import { editorTheme } from "@/registry/default/editor/themes/editor-theme"
+import { ContentEditable } from "@/registry/default/editor/editor-ui/content-editable"
+
+import { ActionsPlugin } from "@/registry/default/editor/plugins/actions/actions-plugin"
 
 const editorConfig: InitialConfigType = {
   namespace: 'Editor',
@@ -64,6 +69,22 @@ export function Plugins() {
         />
         {/* rest of the plugins */}
       </div>
+      <ActionsPlugin>
+        <div className="clear-both flex items-center justify-between border-t p-1 overflow-auto gap-2">
+          <div className='flex justify-start flex-1'>
+            {/* left side action buttons */}
+          </div>
+          <div>
+            {/* center action buttons */}
+          </div>
+          <div className="flex justify-end flex-1">
+            {/* right side action buttons */}
+            <Button size={'sm'} variant={'ghost'} className="p-2">
+              <Trash2Icon className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+      </ActionsPlugin>
     </div>
   )
 }

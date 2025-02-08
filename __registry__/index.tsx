@@ -5,8 +5,8 @@ import * as React from "react"
 
 export const Index: Record<string, any> = {
   "new-york": {
-    "rich-text-plugin": {
-      name: "rich-text-plugin",
+    "rich-text-editor-plugin": {
+      name: "rich-text-editor-plugin",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -17,6 +17,44 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/new-york/editor/editor-ui/content-editable.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "actions-plugin": {
+      name: "actions-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/actions/actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/actions-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/actions-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "toolbar-plugin": {
+      name: "toolbar-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/toolbar/toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/toolbar-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/context/toolbar-context.tsx",
+        type: "registry:component",
+        target: "components/editor/context/toolbar-context.tsx"
+      },{
+        path: "registry/new-york/editor/editor-hooks/use-modal.tsx",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-modal.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/toolbar-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -698,7 +736,7 @@ export const Index: Record<string, any> = {
       name: "rich-text-editor-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["rich-text-editor"],
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
       files: [{
         path: "registry/new-york/examples/rich-text-editor-demo.tsx",
         type: "registry:example",
@@ -709,9 +747,39 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "actions-demo": {
+      name: "actions-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/actions-plugin.json","button"],
+      files: [{
+        path: "registry/new-york/examples/actions-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/actions-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "toolbar-demo": {
+      name: "toolbar-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/toolbar-plugin.json","button"],
+      files: [{
+        path: "registry/new-york/examples/toolbar-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/toolbar-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
   },  "default": {
-    "rich-text-plugin": {
-      name: "rich-text-plugin",
+    "rich-text-editor-plugin": {
+      name: "rich-text-editor-plugin",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -722,6 +790,44 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/editor/editor-ui/content-editable.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "actions-plugin": {
+      name: "actions-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/actions/actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/actions-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/actions-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "toolbar-plugin": {
+      name: "toolbar-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/toolbar/toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/toolbar-plugin.tsx"
+      },{
+        path: "registry/default/editor/context/toolbar-context.tsx",
+        type: "registry:component",
+        target: "components/editor/context/toolbar-context.tsx"
+      },{
+        path: "registry/default/editor/editor-hooks/use-modal.tsx",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-modal.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/toolbar-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -1403,7 +1509,7 @@ export const Index: Record<string, any> = {
       name: "rich-text-editor-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["rich-text-editor"],
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
       files: [{
         path: "registry/default/examples/rich-text-editor-demo.tsx",
         type: "registry:example",
@@ -1411,6 +1517,36 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/examples/rich-text-editor-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "actions-demo": {
+      name: "actions-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/actions-plugin.json","button"],
+      files: [{
+        path: "registry/default/examples/actions-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/actions-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "toolbar-demo": {
+      name: "toolbar-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/toolbar-plugin.json","button"],
+      files: [{
+        path: "registry/default/examples/toolbar-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/toolbar-demo.tsx")),
       source: "",
       meta: undefined,
     },

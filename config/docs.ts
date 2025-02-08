@@ -49,6 +49,16 @@ export const docsConfig: DocsConfig = {
           href: "/docs/plugins/rich-text-editor",
           items: [],
         },
+        {
+          title: "Actions",
+          href: "/docs/plugins/actions",
+          items: [],
+        },
+        {
+          title: "Toolbar",
+          href: "/docs/plugins/toolbar",
+          items: [],
+        },
       ],
     },
   ],

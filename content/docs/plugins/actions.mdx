@@ -1,16 +1,13 @@
 ---
-title: Rich Text Editor
-description: A rich text editor with shadcn/ui components.
+title: Actions
+description: Actions plugin for the rich text editor.
 component: true
-links:
-  doc: https://lexical.dev/docs/packages/lexical-rich-text
-  api: https://lexical.dev/docs/api/modules/lexical_rich_text
 ---
 
 <ComponentPreview
-  name="rich-text-editor-demo"
+  name="actions-demo"
   className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="An rich text editor with shadcn/ui components"
+  description="Actions plugin for the rich text editor."
 />
 
 ## Installation
@@ -25,7 +22,7 @@ links:
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json
+npx shadcn@latest add https://shadcn-editor.vercel.app/r/actions-plugin.json
 ```
 
 </TabsContent>
@@ -34,15 +31,9 @@ npx shadcn@latest add https://shadcn-editor.vercel.app/r/rich-text-editor-plugin
 
 <Steps>
 
-<Step>Install the following dependencies:</Step>
-
-```bash
-npm install @lexical/rich-text
-```
-
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="rich-text-editor-plugin" />
+<ComponentSource name="actions-plugin" />
 
 <Step>Update the import paths to match your project setup.</Step>
 

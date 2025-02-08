@@ -36,7 +36,7 @@ export default function RichTextEditorDemo() {
   )
 }
 
-const placeholder = 'Press / for commands...'
+const placeholder = 'Start typing...'
 
 export function Plugins() {
   const [floatingAnchorElem, setFloatingAnchorElem] =
