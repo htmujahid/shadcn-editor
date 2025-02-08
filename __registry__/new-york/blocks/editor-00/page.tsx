@@ -1,25 +1,10 @@
-# Shadcn Editor
-
-## Usage
-
-1. Run this command to setup batteries included editor.
-
-```bash
-npx shadcn@latest add https://shadcn-editor.vercel.app/r/editor-x.json
-```
-
-2. Use the `Editor` component in your project.
-
-```tsx
 'use client'
 
-import { useState } from 'react'
+import { useState } from 'react';
+import { SerializedEditorState } from 'lexical';
+import { Editor } from '@/registry/new-york/blocks/editor-00/editor';
 
-import { SerializedEditorState } from 'lexical'
-
-import { Editor } from '@/components/blocks/editor-x/editor'
-
-const initialValue = {
+export const initialValue = {
   root: {
     children: [
       {
@@ -49,10 +34,9 @@ const initialValue = {
   },
 } as unknown as SerializedEditorState
 
-export function EditorDemo() {
+export default function EditorPage() {
   const [editorState, setEditorState] =
     useState<SerializedEditorState>(initialValue)
-
   return (
     <Editor
       editorSerializedState={editorState}
@@ -60,8 +44,3 @@ export function EditorDemo() {
     />
   )
 }
-```
-
-## Start History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=htmujahid/shadcn-editor&type=Date)](https://star-history.com/#bytebase/star-history&Date)
