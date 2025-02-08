@@ -92,6 +92,7 @@ import { ToolbarPlugin } from '@/registry/new-york/editor/plugins/toolbar/toolba
 import { TypingPerfPlugin } from '@/registry/new-york/editor/plugins/typing-pref-plugin'
 import { MARKDOWN_TRANSFORMERS } from '@/registry/new-york/editor/transformers/markdown-transformers'
 import { ContentEditable } from '@/registry/new-york/editor/editor-ui/content-editable'
+import { CounterCharacterPlugin } from '@/registry/default/editor/plugins/actions/counter-character-plugin'
 
 const maxLength = 500
 
@@ -229,6 +230,7 @@ export function Plugins({ }) {
       <div className="clear-both flex h-10 items-center justify-between border-t p-1">
         <MaxLengthPlugin maxLength={maxLength} />
         <CharacterLimitPlugin maxLength={maxLength} charset="UTF-16" />
+        <CounterCharacterPlugin charset="UTF-16" />
         <div className="flex justify-end">
           <SpeechToTextPlugin />
           <ShareContentPlugin />

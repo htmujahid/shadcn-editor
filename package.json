@@ -31,6 +31,7 @@
     "@lexical/rich-text": "^0.18.0",
     "@lexical/selection": "0.18.0",
     "@lexical/table": "^0.18.0",
+    "@lexical/text": "^0.18.0",
     "@lexical/utils": "0.18.0",
     "@radix-ui/react-accessible-icon": "^1.0.3",
     "@radix-ui/react-accordion": "^1.2.2",
