@@ -26,6 +26,10 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["tooltip"],
       files: [{
+        path: "registry/new-york/blocks/editor-00/page.tsx",
+        type: "registry:page",
+        target: "app/editor-00/page.tsx"
+      },{
         path: "registry/new-york/blocks/editor-00/editor.tsx",
         type: "registry:block",
         target: "components/blocks/editor-00/editor.tsx"
@@ -51,8 +55,8 @@ export const Index: Record<string, any> = {
         target: "components/editor/editor-ui/content-editable.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/blocks/editor-00/editor.tsx")),
-      source: "__registry__/new-york/blocks/editor-00/editor.tsx",
+      component: React.lazy(() => import("@/registry/new-york/blocks/editor-00/page.tsx")),
+      source: "__registry__/new-york/blocks/editor-00/page.tsx",
       meta: undefined,
     },
     "editor-x": {
@@ -61,6 +65,10 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["button","checkbox","command","dialog","input","label","popover","scroll-area","select","separator","tabs","textarea","tooltip","toggle","toggle-group"],
       files: [{
+        path: "registry/new-york/blocks/editor-x/page.tsx",
+        type: "registry:page",
+        target: "app/editor-x/page.tsx"
+      },{
         path: "registry/new-york/blocks/editor-x/editor.tsx",
         type: "registry:block",
         target: "components/blocks/editor-x/editor.tsx"
@@ -678,8 +686,8 @@ export const Index: Record<string, any> = {
         target: "components/editor/utils/url.ts"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/blocks/editor-x/editor.tsx")),
-      source: "__registry__/new-york/blocks/editor-x/editor.tsx",
+      component: React.lazy(() => import("@/registry/new-york/blocks/editor-x/page.tsx")),
+      source: "__registry__/new-york/blocks/editor-x/page.tsx",
       meta: undefined,
     },
     "rich-text-editor-demo": {
@@ -719,6 +727,10 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["tooltip"],
       files: [{
+        path: "registry/default/blocks/editor-00/page.tsx",
+        type: "registry:page",
+        target: "app/editor-00/page.tsx"
+      },{
         path: "registry/default/blocks/editor-00/editor.tsx",
         type: "registry:block",
         target: "components/blocks/editor-00/editor.tsx"
@@ -744,8 +756,8 @@ export const Index: Record<string, any> = {
         target: "components/editor/editor-ui/content-editable.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/default/blocks/editor-00/editor.tsx")),
-      source: "__registry__/default/blocks/editor-00/editor.tsx",
+      component: React.lazy(() => import("@/registry/default/blocks/editor-00/page.tsx")),
+      source: "__registry__/default/blocks/editor-00/page.tsx",
       meta: undefined,
     },
     "editor-x": {
@@ -754,6 +766,10 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["button","checkbox","command","dialog","input","label","popover","scroll-area","select","separator","tabs","textarea","tooltip","toggle","toggle-group"],
       files: [{
+        path: "registry/default/blocks/editor-x/page.tsx",
+        type: "registry:page",
+        target: "app/editor-x/page.tsx"
+      },{
         path: "registry/default/blocks/editor-x/editor.tsx",
         type: "registry:block",
         target: "components/blocks/editor-x/editor.tsx"
@@ -1371,8 +1387,8 @@ export const Index: Record<string, any> = {
         target: "components/editor/utils/url.ts"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/default/blocks/editor-x/editor.tsx")),
-      source: "__registry__/default/blocks/editor-x/editor.tsx",
+      component: React.lazy(() => import("@/registry/default/blocks/editor-x/page.tsx")),
+      source: "__registry__/default/blocks/editor-x/page.tsx",
       meta: undefined,
     },
     "rich-text-editor-demo": {

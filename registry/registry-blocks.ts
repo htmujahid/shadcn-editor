@@ -14,6 +14,11 @@ export const blocks: Registry["items"] = [
     ],
     "files": [
       {
+        "path": "blocks/editor-00/page.tsx",
+        "target": "app/editor-00/page.tsx",
+        "type": "registry:page"
+      },
+      {
         "path": "blocks/editor-00/editor.tsx",
         "target": "components/blocks/editor-00/editor.tsx",
         "type": "registry:block"
@@ -89,6 +94,11 @@ export const blocks: Registry["items"] = [
       "toggle-group"
     ],
     "files": [
+      {
+        "path": "blocks/editor-x/page.tsx",
+        "target": "app/editor-x/page.tsx",
+        "type": "registry:page"
+      },
       {
         "path": "blocks/editor-x/editor.tsx",
         "target": "components/blocks/editor-x/editor.tsx",

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { SerializedEditorState } from 'lexical';
-import { Editor } from '@/registry/new-york/blocks/editor-x/editor';
+import { Editor } from '@/registry/new-york/blocks/editor-00/editor';
 
 export const initialValue = {
   root: {
@@ -44,4 +44,3 @@ export default function EditorPage() {
     />
   )
 }
-
