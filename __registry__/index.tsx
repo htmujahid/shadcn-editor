@@ -205,6 +205,10 @@ export const Index: Record<string, any> = {
         type: "registry:component",
         target: "components/editor/plugins/actions/clear-editor-plugin.tsx"
       },{
+        path: "registry/new-york/editor/plugins/actions/counter-character-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/counter-character-plugin.tsx"
+      },{
         path: "registry/new-york/editor/plugins/actions/edit-mode-toggle-plugin.tsx",
         type: "registry:component",
         target: "components/editor/plugins/actions/edit-mode-toggle-plugin.tsx"
@@ -905,6 +909,10 @@ export const Index: Record<string, any> = {
         path: "registry/default/editor/plugins/actions/clear-editor-plugin.tsx",
         type: "registry:component",
         target: "components/editor/plugins/actions/clear-editor-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/actions/counter-character-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/counter-character-plugin.tsx"
       },{
         path: "registry/default/editor/plugins/actions/edit-mode-toggle-plugin.tsx",
         type: "registry:component",

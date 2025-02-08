@@ -49,12 +49,13 @@ import { SubSuperToolbarPlugin } from '@/registry/default/editor/plugins/toolbar
 
 import { CharacterLimitPlugin } from '@/registry/default/editor/plugins/actions/character-limit-plugin'
 import { ClearEditorActionPlugin } from '@/registry/default/editor/plugins/actions/clear-editor-plugin'
+import { CounterCharacterPlugin } from '@/registry/new-york/editor/plugins/actions/counter-character-plugin'
 import { EditModeTogglePlugin } from '@/registry/default/editor/plugins/actions/edit-mode-toggle-plugin'
 import { ImportExportPlugin } from '@/registry/default/editor/plugins/actions/import-export-plugin'
 import { MarkdownTogglePlugin } from '@/registry/default/editor/plugins/actions/markdown-toggle-plugin'
 import { MaxLengthPlugin } from '@/registry/default/editor/plugins/actions/max-length-plugin'
 import { ShareContentPlugin } from '@/registry/default/editor/plugins/actions/share-content-plugin'
-import  SpeechToTextPlugin  from '@/registry/default/editor/plugins/actions/speech-to-text-plugin'
+import { SpeechToTextPlugin } from '@/registry/default/editor/plugins/actions/speech-to-text-plugin'
 import { TreeViewPlugin } from '@/registry/default/editor/plugins/actions/tree-view-plugin'
 import { AutoLinkPlugin } from '@/registry/default/editor/plugins/auto-link-plugin'
 import { AutocompletePlugin } from '@/registry/default/editor/plugins/autocomplete-plugin'
@@ -92,7 +93,6 @@ import { ToolbarPlugin } from '@/registry/default/editor/plugins/toolbar/toolbar
 import { TypingPerfPlugin } from '@/registry/default/editor/plugins/typing-pref-plugin'
 import { MARKDOWN_TRANSFORMERS } from '@/registry/default/editor/transformers/markdown-transformers'
 import { ContentEditable } from '@/registry/default/editor/editor-ui/content-editable'
-import { CounterCharacterPlugin } from '@/registry/new-york/editor/plugins/actions/counter-character-plugin'
 
 export const placeholder = 'Press / for commands...'
 const maxLength = 500
@@ -229,10 +229,14 @@ export function Plugins({ }) {
         <ListMaxIndentLevelPlugin />
       </div>
       <div className="clear-both flex h-10 items-center justify-between border-t p-1">
-        <MaxLengthPlugin maxLength={maxLength} />
-        <CharacterLimitPlugin maxLength={maxLength} charset="UTF-16" />
-        <CounterCharacterPlugin charset="UTF-16" />
-        <div className="flex justify-end">
+        <div className='flex justify-start flex-1'>
+          <MaxLengthPlugin maxLength={maxLength} />
+          <CharacterLimitPlugin maxLength={maxLength} charset="UTF-16" />
+        </div>
+        <div>
+          <CounterCharacterPlugin charset="UTF-16" />
+        </div>
+        <div className="flex justify-end flex-1">
           <SpeechToTextPlugin />
           <ShareContentPlugin />
           <ImportExportPlugin />

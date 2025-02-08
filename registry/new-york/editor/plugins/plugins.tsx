@@ -54,7 +54,7 @@ import { ImportExportPlugin } from '@/registry/new-york/editor/plugins/actions/i
 import { MarkdownTogglePlugin } from '@/registry/new-york/editor/plugins/actions/markdown-toggle-plugin'
 import { MaxLengthPlugin } from '@/registry/new-york/editor/plugins/actions/max-length-plugin'
 import { ShareContentPlugin } from '@/registry/new-york/editor/plugins/actions/share-content-plugin'
-import  SpeechToTextPlugin  from '@/registry/new-york/editor/plugins/actions/speech-to-text-plugin'
+import { SpeechToTextPlugin } from '@/registry/new-york/editor/plugins/actions/speech-to-text-plugin'
 import { TreeViewPlugin } from '@/registry/new-york/editor/plugins/actions/tree-view-plugin'
 import { AutoLinkPlugin } from '@/registry/new-york/editor/plugins/auto-link-plugin'
 import { AutocompletePlugin } from '@/registry/new-york/editor/plugins/autocomplete-plugin'
@@ -228,10 +228,14 @@ export function Plugins({ }) {
         <ListMaxIndentLevelPlugin />
       </div>
       <div className="clear-both flex h-10 items-center justify-between border-t p-1">
-        <MaxLengthPlugin maxLength={maxLength} />
-        <CharacterLimitPlugin maxLength={maxLength} charset="UTF-16" />
-        <CounterCharacterPlugin charset="UTF-16" />
-        <div className="flex justify-end">
+        <div className='flex justify-start flex-1'>
+          <MaxLengthPlugin maxLength={maxLength} />
+          <CharacterLimitPlugin maxLength={maxLength} charset="UTF-16" />
+        </div>
+        <div>
+          <CounterCharacterPlugin charset="UTF-16" />
+        </div>
+        <div className="flex justify-end flex-1">
           <SpeechToTextPlugin />
           <ShareContentPlugin />
           <ImportExportPlugin />

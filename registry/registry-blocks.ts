@@ -66,6 +66,7 @@ export const blocks: Registry["items"] = [
       "@lexical/rich-text",
       "@lexical/selection",
       "@lexical/table",
+      "@lexical/text",
       "@lexical/utils",
       "@radix-ui/react-icons",
       "katex",
@@ -267,6 +268,11 @@ export const blocks: Registry["items"] = [
       {
         "path": "editor/plugins/actions/clear-editor-plugin.tsx",
         "target": "components/editor/plugins/actions/clear-editor-plugin.tsx",
+        "type": "registry:component"
+      },
+      {
+        "path": "editor/plugins/actions/counter-character-plugin.tsx",
+        "target": "components/editor/plugins/actions/counter-character-plugin.tsx",
         "type": "registry:component"
       },
       {

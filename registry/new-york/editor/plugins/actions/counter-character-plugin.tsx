@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {$rootTextContent} from '@lexical/text';
+import { $rootTextContent } from '@lexical/text';
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 
 let textEncoderInstance: null | TextEncoder = null;
@@ -44,7 +44,7 @@ const countWords = (text: string) => {
   return text.split(/\s+/).filter(word => word.length > 0).length;
 }
 
-export function CounterCharacterPlugin({ charset="UTF-16" }: CounterCharacterPluginProps) {
+export function CounterCharacterPlugin({ charset = "UTF-16" }: CounterCharacterPluginProps) {
   const [editor] = useLexicalComposerContext();
   const [stats, setStats] = useState(() => {
     const initialText = editor.getEditorState().read($rootTextContent);
