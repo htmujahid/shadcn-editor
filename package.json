@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev -p 3333",
     "build": "contentlayer2 build && pnpm build:registry && next build",
-    "build:registry": "shadcn build",
+    "build:registry": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts",
     "build:docs": "contentlayer2 build",
     "start": "next start -p 3333",
     "lint": "next lint",
@@ -109,6 +109,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@shikijs/compat": "^1.1.7",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/katex": "0.16.7",
     "@types/lodash": "^4.17.7",
     "@types/lodash-es": "^4.17.12",
@@ -122,6 +123,8 @@
     "eslint-config-next": "15.1.4",
     "mdast-util-toc": "^6.1.1",
     "postcss": "^8.4.24",
+    "prettier": "^3.4.2",
+    "prettier-plugin-tailwindcss": "^0.6.11",
     "rehype": "^12.0.1",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-pretty-code": "^0.6.0",
@@ -132,6 +135,7 @@
     "rimraf": "^4.1.3",
     "shiki": "^1.10.1",
     "tailwindcss": "3.4.6",
+    "tsx": "^4.19.2",
     "typescript": "^5.5.3",
     "unist-builder": "3.0.0",
     "unist-util-visit": "^4.1.2"

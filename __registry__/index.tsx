@@ -5,904 +5,1374 @@ import * as React from "react"
 
 export const Index: Record<string, any> = {
   "new-york": {
-    "rich-text-editor": {
-      name: "rich-text-editor",
+    "rich-text-plugin": {
+      name: "rich-text-plugin",
       description: "",
-      type: "registry:example",
-      files: [
-        {
-          path: "registry/new-york/editor/editor-ui/content-editable.tsx",
-          type: "registry:ui",
-          target: "components/editor/editor-ui/content-editable.tsx",
-        }
-      ],
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/editor-ui/content-editable.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/content-editable.tsx"
+      }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/new-york/editor/editor-ui/content-editable.tsx")),
       source: "",
       meta: undefined,
     },
+    "editor": {
+      name: "editor",
+      description: "",
+      type: "registry:block",
+      registryDependencies: ["tooltip"],
+      files: [{
+        path: "registry/new-york/blocks/editor-00/editor.tsx",
+        type: "registry:block",
+        target: "components/blocks/editor-00/editor.tsx"
+      },{
+        path: "registry/new-york/blocks/editor-00/nodes.ts",
+        type: "registry:block",
+        target: "components/blocks/editor-00/nodes.ts"
+      },{
+        path: "registry/new-york/blocks/editor-00/plugins.tsx",
+        type: "registry:block",
+        target: "components/blocks/editor-00/plugins.tsx"
+      },{
+        path: "registry/new-york/editor/themes/editor-theme.ts",
+        type: "registry:theme",
+        target: "components/editor/themes/editor-theme.ts"
+      },{
+        path: "registry/new-york/editor/themes/editor-theme.css",
+        type: "registry:theme",
+        target: "components/editor/themes/editor-theme.css"
+      },{
+        path: "registry/new-york/editor/editor-ui/content-editable.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/content-editable.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/blocks/editor-00/editor.tsx")),
+      source: "__registry__/new-york/blocks/editor-00/editor.tsx",
+      meta: undefined,
+    },
+    "editor-x": {
+      name: "editor-x",
+      description: "",
+      type: "registry:block",
+      registryDependencies: ["button","checkbox","command","dialog","input","label","popover","scroll-area","select","separator","tabs","textarea","tooltip","toggle","toggle-group"],
+      files: [{
+        path: "registry/new-york/blocks/editor-x/editor.tsx",
+        type: "registry:block",
+        target: "components/blocks/editor-x/editor.tsx"
+      },{
+        path: "registry/new-york/blocks/editor-x/nodes.ts",
+        type: "registry:block",
+        target: "components/blocks/editor-x/nodes.ts"
+      },{
+        path: "registry/new-york/blocks/editor-x/plugins.tsx",
+        type: "registry:block",
+        target: "components/blocks/editor-x/plugins.tsx"
+      },{
+        path: "registry/new-york/editor/themes/editor-theme.ts",
+        type: "registry:theme",
+        target: "components/editor/themes/editor-theme.ts"
+      },{
+        path: "registry/new-york/editor/themes/editor-theme.css",
+        type: "registry:theme",
+        target: "components/editor/themes/editor-theme.css"
+      },{
+        path: "registry/new-york/editor/context/floating-link-context.tsx",
+        type: "registry:component",
+        target: "components/editor/context/floating-link-context.tsx"
+      },{
+        path: "registry/new-york/editor/context/shared-autocomplete-context.tsx",
+        type: "registry:component",
+        target: "components/editor/context/shared-autocomplete-context.tsx"
+      },{
+        path: "registry/new-york/editor/context/toolbar-context.tsx",
+        type: "registry:component",
+        target: "components/editor/context/toolbar-context.tsx"
+      },{
+        path: "registry/new-york/editor/editor-hooks/use-debounce.ts",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-debounce.ts"
+      },{
+        path: "registry/new-york/editor/editor-hooks/use-modal.tsx",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-modal.tsx"
+      },{
+        path: "registry/new-york/editor/editor-hooks/use-report.ts",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-report.ts"
+      },{
+        path: "registry/new-york/editor/editor-hooks/use-update-toolbar.ts",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-update-toolbar.ts"
+      },{
+        path: "registry/new-york/editor/nodes/embeds/figma-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/embeds/figma-node.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/embeds/tweet-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/embeds/tweet-node.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/embeds/youtube-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/embeds/youtube-node.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/autocomplete-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/autocomplete-node.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/collapsible-container-node.ts",
+        type: "registry:file",
+        target: "components/editor/nodes/collapsible-container-node.ts"
+      },{
+        path: "registry/new-york/editor/nodes/collapsible-content-node.ts",
+        type: "registry:file",
+        target: "components/editor/nodes/collapsible-content-node.ts"
+      },{
+        path: "registry/new-york/editor/nodes/collapsible-title-node.ts",
+        type: "registry:file",
+        target: "components/editor/nodes/collapsible-title-node.ts"
+      },{
+        path: "registry/new-york/editor/nodes/emoji-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/emoji-node.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/equation-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/equation-node.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/excalidraw-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/excalidraw-node.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/image-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/image-node.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/inline-image-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/inline-image-node.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/keyword-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/keyword-node.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/layout-container-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/layout-container-node.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/layout-item-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/layout-item-node.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/mention-node.ts",
+        type: "registry:file",
+        target: "components/editor/nodes/mention-node.ts"
+      },{
+        path: "registry/new-york/editor/nodes/page-break-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/page-break-node.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/page-break-node.css",
+        type: "registry:file",
+        target: "components/editor/nodes/page-break-node.css"
+      },{
+        path: "registry/new-york/editor/nodes/poll-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/poll-node.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/actions/actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/actions-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/actions/character-limit-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/character-limit-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/actions/clear-editor-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/clear-editor-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/actions/edit-mode-toggle-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/edit-mode-toggle-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/actions/import-export-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/import-export-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/actions/markdown-toggle-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/markdown-toggle-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/actions/max-length-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/max-length-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/actions/share-content-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/share-content-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/actions/speech-to-text-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/speech-to-text-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/actions/tree-view-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/tree-view-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/default/lexical-context-menu-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/default/lexical-context-menu-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/default/lexical-typeahead-menu-plugin.ts",
+        type: "registry:component",
+        target: "components/editor/plugins/default/lexical-typeahead-menu-plugin.ts"
+      },{
+        path: "registry/new-york/editor/plugins/embeds/auto-embed-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/embeds/auto-embed-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/embeds/figma-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/embeds/figma-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/embeds/twitter-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/embeds/twitter-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/embeds/youtube-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/embeds/youtube-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-format/block-format-data.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/block-format-data.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-format/format-bulleted-list.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-bulleted-list.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-format/format-check-list.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-check-list.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-format/format-code-block.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-code-block.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-format/format-heading.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-heading.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-format/format-numbered-list.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-numbered-list.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-format/format-paragraph.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-paragraph.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-format/format-quote.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-quote.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-insert/insert-collapsible-container.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-collapsible-container.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-insert/insert-columns-layout.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-columns-layout.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-insert/insert-embeds.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-embeds.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-insert/insert-equation.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-equation.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-insert/insert-excalidraw.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-excalidraw.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-insert/insert-image.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-image.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-insert/insert-inline-image.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-inline-image.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-insert/insert-page-break.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-page-break.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-insert/insert-poll.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-poll.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-insert/insert-table.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-table.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-format-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format-toolbar-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-insert-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/clear-formatting-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/clear-formatting-toolbar-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/code-language-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/code-language-toolbar-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/element-format-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/element-format-toolbar-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/font-background-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/font-background-toolbar-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/font-color-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/font-color-toolbar-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/font-family-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/font-family-toolbar-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/font-format-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/font-format-toolbar-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/font-size-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/font-size-toolbar-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/history-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/history-toolbar-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/link-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/link-toolbar-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/subsuper-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/subsuper-toolbar-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/toolbar-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/auto-link-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/auto-link-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/autocomplete-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/autocomplete-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/code-action-menu-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/code-action-menu-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/code-highlight-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/code-highlight-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/collapsible-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/collapsible-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/component-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/component-picker-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/context-menu-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/context-menu-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/drag-drop-paste-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/drag-drop-paste-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/draggable-block-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/draggable-block-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/emoji-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/emoji-picker-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/emojis-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/emojis-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/equations-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/equations-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/excalidraw-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/excalidraw-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/floating-link-editor-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/floating-link-editor-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/floating-text-format-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/floating-text-format-toolbar-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/images-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/images-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/inline-image-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/inline-image-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/keywords-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/keywords-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/layout-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/layout-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/link-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/link-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/list-max-indent-level-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/list-max-indent-level-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/mentions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/mentions-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/page-break-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/page-break-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/poll-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/poll-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/tab-focus-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/tab-focus-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/table-action-menu-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/table-action-menu-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/table-cell-resizer-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/table-cell-resizer-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/table-hover-actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/table-hover-actions-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/table-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/table-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/typing-pref-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/typing-pref-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/shared/can-use-dom.ts",
+        type: "registry:file",
+        target: "components/editor/shared/can-use-dom.ts"
+      },{
+        path: "registry/new-york/editor/shared/caret-from-point.ts",
+        type: "registry:file",
+        target: "components/editor/shared/caret-from-point.ts"
+      },{
+        path: "registry/new-york/editor/shared/environment.ts",
+        type: "registry:file",
+        target: "components/editor/shared/environment.ts"
+      },{
+        path: "registry/new-york/editor/shared/invariant.ts",
+        type: "registry:file",
+        target: "components/editor/shared/invariant.ts"
+      },{
+        path: "registry/new-york/editor/shared/normalize-class-names.ts",
+        type: "registry:file",
+        target: "components/editor/shared/normalize-class-names.ts"
+      },{
+        path: "registry/new-york/editor/shared/react-patches.ts",
+        type: "registry:file",
+        target: "components/editor/shared/react-patches.ts"
+      },{
+        path: "registry/new-york/editor/shared/react-test-utils.ts",
+        type: "registry:file",
+        target: "components/editor/shared/react-test-utils.ts"
+      },{
+        path: "registry/new-york/editor/shared/simple-diff-with-cursor.ts",
+        type: "registry:file",
+        target: "components/editor/shared/simple-diff-with-cursor.ts"
+      },{
+        path: "registry/new-york/editor/shared/use-layout-effect.ts",
+        type: "registry:file",
+        target: "components/editor/shared/use-layout-effect.ts"
+      },{
+        path: "registry/new-york/editor/shared/warn-only-once.ts",
+        type: "registry:file",
+        target: "components/editor/shared/warn-only-once.ts"
+      },{
+        path: "registry/new-york/editor/transformers/markdown-emoji-transformer.ts",
+        type: "registry:file",
+        target: "components/editor/transformers/markdown-emoji-transformer.ts"
+      },{
+        path: "registry/new-york/editor/transformers/markdown-equation-transofrmer.ts",
+        type: "registry:file",
+        target: "components/editor/transformers/markdown-equation-transofrmer.ts"
+      },{
+        path: "registry/new-york/editor/transformers/markdown-hr-transformer.ts",
+        type: "registry:file",
+        target: "components/editor/transformers/markdown-hr-transformer.ts"
+      },{
+        path: "registry/new-york/editor/transformers/markdown-image-transformer.ts",
+        type: "registry:file",
+        target: "components/editor/transformers/markdown-image-transformer.ts"
+      },{
+        path: "registry/new-york/editor/transformers/markdown-table-transformer.ts",
+        type: "registry:file",
+        target: "components/editor/transformers/markdown-table-transformer.ts"
+      },{
+        path: "registry/new-york/editor/transformers/markdown-transformers.ts",
+        type: "registry:file",
+        target: "components/editor/transformers/markdown-transformers.ts"
+      },{
+        path: "registry/new-york/editor/transformers/markdown-tweet-transformer.ts",
+        type: "registry:file",
+        target: "components/editor/transformers/markdown-tweet-transformer.ts"
+      },{
+        path: "registry/new-york/editor/editor-ui/code-button.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/code-button.tsx"
+      },{
+        path: "registry/new-york/editor/editor-ui/colorpicker.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/colorpicker.tsx"
+      },{
+        path: "registry/new-york/editor/editor-ui/content-editable.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/content-editable.tsx"
+      },{
+        path: "registry/new-york/editor/editor-ui/equation-component.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/equation-component.tsx"
+      },{
+        path: "registry/new-york/editor/editor-ui/equation-editor.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/equation-editor.tsx"
+      },{
+        path: "registry/new-york/editor/editor-ui/excalidraw-component.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/excalidraw-component.tsx"
+      },{
+        path: "registry/new-york/editor/editor-ui/excalidraw-image.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/excalidraw-image.tsx"
+      },{
+        path: "registry/new-york/editor/editor-ui/excalidraw-modal.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/excalidraw-modal.tsx"
+      },{
+        path: "registry/new-york/editor/editor-ui/excalidraw.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/excalidraw.tsx"
+      },{
+        path: "registry/new-york/editor/editor-ui/image-component.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/image-component.tsx"
+      },{
+        path: "registry/new-york/editor/editor-ui/image-resizer.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/image-resizer.tsx"
+      },{
+        path: "registry/new-york/editor/editor-ui/inline-image-component.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/inline-image-component.tsx"
+      },{
+        path: "registry/new-york/editor/editor-ui/katex-equation-alterer.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/katex-equation-alterer.tsx"
+      },{
+        path: "registry/new-york/editor/editor-ui/katex-renderer.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/katex-renderer.tsx"
+      },{
+        path: "registry/new-york/editor/editor-ui/poll-component.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/poll-component.tsx"
+      },{
+        path: "registry/new-york/editor/editor-ui/poll.css",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/poll.css"
+      },{
+        path: "registry/new-york/editor/utils/collapsible.ts",
+        type: "registry:file",
+        target: "components/editor/utils/collapsible.ts"
+      },{
+        path: "registry/new-york/editor/utils/doc-serialization.ts",
+        type: "registry:file",
+        target: "components/editor/utils/doc-serialization.ts"
+      },{
+        path: "registry/new-york/editor/utils/emoji-list.ts",
+        type: "registry:file",
+        target: "components/editor/utils/emoji-list.ts"
+      },{
+        path: "registry/new-york/editor/utils/get-dom-range-rect.ts",
+        type: "registry:file",
+        target: "components/editor/utils/get-dom-range-rect.ts"
+      },{
+        path: "registry/new-york/editor/utils/get-selected-node.ts",
+        type: "registry:file",
+        target: "components/editor/utils/get-selected-node.ts"
+      },{
+        path: "registry/new-york/editor/utils/guard.ts",
+        type: "registry:file",
+        target: "components/editor/utils/guard.ts"
+      },{
+        path: "registry/new-york/editor/utils/is-mobile-width.ts",
+        type: "registry:file",
+        target: "components/editor/utils/is-mobile-width.ts"
+      },{
+        path: "registry/new-york/editor/utils/set-floating-elem-position-for-link-editor.ts",
+        type: "registry:file",
+        target: "components/editor/utils/set-floating-elem-position-for-link-editor.ts"
+      },{
+        path: "registry/new-york/editor/utils/set-floating-elem-position.ts",
+        type: "registry:file",
+        target: "components/editor/utils/set-floating-elem-position.ts"
+      },{
+        path: "registry/new-york/editor/utils/swipe.ts",
+        type: "registry:file",
+        target: "components/editor/utils/swipe.ts"
+      },{
+        path: "registry/new-york/editor/utils/url.ts",
+        type: "registry:file",
+        target: "components/editor/utils/url.ts"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/blocks/editor-x/editor.tsx")),
+      source: "__registry__/new-york/blocks/editor-x/editor.tsx",
+      meta: undefined,
+    },
     "rich-text-editor-demo": {
       name: "rich-text-editor-demo",
       description: "",
       type: "registry:example",
       registryDependencies: ["rich-text-editor"],
-      files: [
-        {
-          path: "registry/new-york/examples/rich-text-editor-demo.tsx",
-          type: "registry:example",
-          target: ""
-        }
-      ],
+      files: [{
+        path: "registry/new-york/examples/rich-text-editor-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/new-york/examples/rich-text-editor-demo.tsx")),
       source: "",
       meta: undefined,
     },
+  },  "default": {
+    "rich-text-plugin": {
+      name: "rich-text-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/editor-ui/content-editable.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/content-editable.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/editor-ui/content-editable.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "editor": {
+      name: "editor",
+      description: "",
+      type: "registry:block",
+      registryDependencies: ["tooltip"],
+      files: [{
+        path: "registry/default/blocks/editor-00/editor.tsx",
+        type: "registry:block",
+        target: "components/blocks/editor-00/editor.tsx"
+      },{
+        path: "registry/default/blocks/editor-00/nodes.ts",
+        type: "registry:block",
+        target: "components/blocks/editor-00/nodes.ts"
+      },{
+        path: "registry/default/blocks/editor-00/plugins.tsx",
+        type: "registry:block",
+        target: "components/blocks/editor-00/plugins.tsx"
+      },{
+        path: "registry/default/editor/themes/editor-theme.ts",
+        type: "registry:theme",
+        target: "components/editor/themes/editor-theme.ts"
+      },{
+        path: "registry/default/editor/themes/editor-theme.css",
+        type: "registry:theme",
+        target: "components/editor/themes/editor-theme.css"
+      },{
+        path: "registry/default/editor/editor-ui/content-editable.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/content-editable.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/blocks/editor-00/editor.tsx")),
+      source: "__registry__/default/blocks/editor-00/editor.tsx",
+      meta: undefined,
+    },
     "editor-x": {
       name: "editor-x",
-      description: "Batteries Included Rich Text Editor",
-      type: "registry:block",
-      dependencies: [
-        '@excalidraw/excalidraw',
-        '@lexical/file',
-        '@lexical/react',
-        '@lexical/rich-text',
-        '@radix-ui/react-icons',
-        'katex',
-        'lexical',
-        'lodash-es',
-        'lucide-react',
-        'react-colorful',
-        'sonner'
-      ],
-      registryDependencies: [
-        'button',
-        'checkbox',
-        'command',
-        'dialog',
-        'input',
-        'label',
-        'popover',
-        'scroll-area',
-        'select',
-        'separator',
-        'tabs',
-        'textarea',
-        'tooltip',
-        'toggle',
-        'toggle-group',
-      ],
-      files: [
-        {
-          path: 'registry/new-york/blocks/editor-x/page.tsx',
-          target: 'app/editor/page.tsx',
-          type: 'registry:page',
-        },
-        {
-          path: 'registry/new-york/blocks/editor-x/editor.tsx',
-          target: 'components/blocks/editor-x/editor.tsx',
-          type: 'registry:block',
-        },
-        {
-          path: 'registry/new-york/blocks/editor-x/nodes.ts',
-          target: 'components/blocks/editor-x/nodes.ts',
-          type: 'registry:block',
-        },
-        {
-          path: 'registry/new-york/blocks/editor-x/plugins.tsx',
-          target: 'components/blocks/editor-x/plugins.tsx',
-          type: 'registry:block',
-        },
-        {
-          path: 'registry/new-york/editor/themes/editor-theme.ts',
-          target: 'components/editor/themes/editor-theme.ts',
-          type: 'registry:theme',
-        },
-        {
-          path: 'registry/new-york/editor/themes/editor-theme.css',
-          target: 'components/editor/themes/editor-theme.css',
-          type: 'registry:theme',
-        },
-        {
-          path: 'registry/new-york/editor/context/floating-link-context.tsx',
-          target: 'components/editor/context/floating-link-context.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/context/shared-autocomplete-context.tsx',
-          target: 'components/editor/context/shared-autocomplete-context.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/context/toolbar-context.tsx',
-          target: 'components/editor/context/toolbar-context.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/editor-hooks/use-debounce.ts',
-          target: 'components/editor/editor-hooks/use-debounce.ts',
-          type: 'registry:hook',
-        },
-        {
-          path: 'registry/new-york/editor/editor-hooks/use-modal.tsx',
-          target: 'components/editor/editor-hooks/use-modal.tsx',
-          type: 'registry:hook',
-        },
-        {
-          path: 'registry/new-york/editor/editor-hooks/use-report.ts',
-          target: 'components/editor/editor-hooks/use-report.ts',
-          type: 'registry:hook',
-        },
-        {
-          path: 'registry/new-york/editor/editor-hooks/use-update-toolbar.ts',
-          target: 'components/editor/editor-hooks/use-update-toolbar.ts',
-          type: 'registry:hook',
-        },
-        {
-          path: 'registry/new-york/editor/nodes/embeds/figma-node.tsx',
-          target: 'components/editor/nodes/embeds/figma-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/nodes/embeds/tweet-node.tsx',
-          target: 'components/editor/nodes/embeds/tweet-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/nodes/embeds/youtube-node.tsx',
-          target: 'components/editor/nodes/embeds/youtube-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/nodes/autocomplete-node.tsx',
-          target: 'components/editor/nodes/autocomplete-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/nodes/collapsible-container-node.ts',
-          target: 'components/editor/nodes/collapsible-container-node.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/nodes/collapsible-content-node.ts',
-          target: 'components/editor/nodes/collapsible-content-node.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/nodes/collapsible-title-node.ts',
-          target: 'components/editor/nodes/collapsible-title-node.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/nodes/emoji-node.tsx',
-          target: 'components/editor/nodes/emoji-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/nodes/equation-node.tsx',
-          target: 'components/editor/nodes/equation-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/nodes/excalidraw-node.tsx',
-          target: 'components/editor/nodes/excalidraw-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/nodes/image-node.tsx',
-          target: 'components/editor/nodes/image-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/nodes/inline-image-node.tsx',
-          target: 'components/editor/nodes/inline-image-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/nodes/keyword-node.tsx',
-          target: 'components/editor/nodes/keyword-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/nodes/layout-container-node.tsx',
-          target: 'components/editor/nodes/layout-container-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/nodes/layout-item-node.tsx',
-          target: 'components/editor/nodes/layout-item-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/nodes/mention-node.ts',
-          target: 'components/editor/nodes/mention-node.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/nodes/page-break-node.tsx',
-          target: 'components/editor/nodes/page-break-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/nodes/page-break-node.css',
-          target: 'components/editor/nodes/page-break-node.css',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/nodes/poll-node.tsx',
-          target: 'components/editor/nodes/poll-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/actions/actions-plugin.tsx',
-          target: 'components/editor/plugins/actions/actions-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/actions/character-limit-plugin.tsx',
-          target: 'components/editor/plugins/actions/character-limit-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/actions/clear-editor-plugin.tsx',
-          target: 'components/editor/plugins/actions/clear-editor-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/actions/edit-mode-toggle-plugin.tsx',
-          target: 'components/editor/plugins/actions/edit-mode-toggle-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/actions/import-export-plugin.tsx',
-          target: 'components/editor/plugins/actions/import-export-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/actions/markdown-toggle-plugin.tsx',
-          target: 'components/editor/plugins/actions/markdown-toggle-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/actions/max-length-plugin.tsx',
-          target: 'components/editor/plugins/actions/max-length-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/actions/share-content-plugin.tsx',
-          target: 'components/editor/plugins/actions/share-content-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/actions/speech-to-text-plugin.tsx',
-          target: 'components/editor/plugins/actions/speech-to-text-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/actions/tree-view-plugin.tsx',
-          target: 'components/editor/plugins/actions/tree-view-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/default/lexical-context-menu-plugin.tsx',
-          target:
-            'components/editor/plugins/default/lexical-context-menu-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/default/lexical-typeahead-menu-plugin.ts',
-          target:
-            'components/editor/plugins/default/lexical-typeahead-menu-plugin.ts',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/embeds/auto-embed-plugin.tsx',
-          target: 'components/editor/plugins/embeds/auto-embed-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/embeds/figma-plugin.tsx',
-          target: 'components/editor/plugins/embeds/figma-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/embeds/twitter-plugin.tsx',
-          target: 'components/editor/plugins/embeds/twitter-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/embeds/youtube-plugin.tsx',
-          target: 'components/editor/plugins/embeds/youtube-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/block-format/block-format-data.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-format/block-format-data.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/block-format/format-bulleted-list.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-format/format-bulleted-list.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/block-format/format-check-list.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-format/format-check-list.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/block-format/format-code-block.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-format/format-code-block.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/block-format/format-heading.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-format/format-heading.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/block-format/format-numbered-list.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-format/format-numbered-list.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/block-format/format-paragraph.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-format/format-paragraph.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/block-format/format-quote.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-format/format-quote.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/block-insert/insert-collapsible-container.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-insert/insert-collapsible-container.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/block-insert/insert-columns-layout.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-insert/insert-columns-layout.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/block-insert/insert-embeds.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-insert/insert-embeds.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/block-insert/insert-equation.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-insert/insert-equation.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/block-insert/insert-excalidraw.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-insert/insert-excalidraw.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/block-insert/insert-image.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-insert/insert-image.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/block-insert/insert-inline-image.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-insert/insert-inline-image.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/block-insert/insert-page-break.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-insert/insert-page-break.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/block-insert/insert-poll.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-insert/insert-poll.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/block-insert/insert-table.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-insert/insert-table.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/block-format-toolbar-plugin.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-format-toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/block-insert-plugin.tsx',
-          target: 'components/editor/plugins/toolbar/block-insert-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/clear-formatting-toolbar-plugin.tsx',
-          target:
-            'components/editor/plugins/toolbar/clear-formatting-toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/code-language-toolbar-plugin.tsx',
-          target:
-            'components/editor/plugins/toolbar/code-language-toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/element-format-toolbar-plugin.tsx',
-          target:
-            'components/editor/plugins/toolbar/element-format-toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/font-background-toolbar-plugin.tsx',
-          target:
-            'components/editor/plugins/toolbar/font-background-toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/font-color-toolbar-plugin.tsx',
-          target:
-            'components/editor/plugins/toolbar/font-color-toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/font-family-toolbar-plugin.tsx',
-          target:
-            'components/editor/plugins/toolbar/font-family-toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/font-format-toolbar-plugin.tsx',
-          target:
-            'components/editor/plugins/toolbar/font-format-toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/font-size-toolbar-plugin.tsx',
-          target:
-            'components/editor/plugins/toolbar/font-size-toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/history-toolbar-plugin.tsx',
-          target: 'components/editor/plugins/toolbar/history-toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/link-toolbar-plugin.tsx',
-          target: 'components/editor/plugins/toolbar/link-toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/subsuper-toolbar-plugin.tsx',
-          target: 'components/editor/plugins/toolbar/subsuper-toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/toolbar/toolbar-plugin.tsx',
-          target: 'components/editor/plugins/toolbar/toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/auto-link-plugin.tsx',
-          target: 'components/editor/plugins/auto-link-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/autocomplete-plugin.tsx',
-          target: 'components/editor/plugins/autocomplete-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/code-action-menu-plugin.tsx',
-          target: 'components/editor/plugins/code-action-menu-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/code-highlight-plugin.tsx',
-          target: 'components/editor/plugins/code-highlight-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/collapsible-plugin.tsx',
-          target: 'components/editor/plugins/collapsible-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/component-picker-plugin.tsx',
-          target: 'components/editor/plugins/component-picker-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/context-menu-plugin.tsx',
-          target: 'components/editor/plugins/context-menu-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/drag-drop-paste-plugin.tsx',
-          target: 'components/editor/plugins/drag-drop-paste-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/draggable-block-plugin.tsx',
-          target: 'components/editor/plugins/draggable-block-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/emoji-picker-plugin.tsx',
-          target: 'components/editor/plugins/emoji-picker-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/emojis-plugin.tsx',
-          target: 'components/editor/plugins/emojis-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/equations-plugin.tsx',
-          target: 'components/editor/plugins/equations-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/excalidraw-plugin.tsx',
-          target: 'components/editor/plugins/excalidraw-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/floating-link-editor-plugin.tsx',
-          target: 'components/editor/plugins/floating-link-editor-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/floating-text-format-toolbar-plugin.tsx',
-          target:
-            'components/editor/plugins/floating-text-format-toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/images-plugin.tsx',
-          target: 'components/editor/plugins/images-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/inline-image-plugin.tsx',
-          target: 'components/editor/plugins/inline-image-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/keywords-plugin.tsx',
-          target: 'components/editor/plugins/keywords-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/layout-plugin.tsx',
-          target: 'components/editor/plugins/layout-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/link-plugin.tsx',
-          target: 'components/editor/plugins/link-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/list-max-indent-level-plugin.tsx',
-          target: 'components/editor/plugins/list-max-indent-level-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/mentions-plugin.tsx',
-          target: 'components/editor/plugins/mentions-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/page-break-plugin.tsx',
-          target: 'components/editor/plugins/page-break-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/poll-plugin.tsx',
-          target: 'components/editor/plugins/poll-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/tab-focus-plugin.tsx',
-          target: 'components/editor/plugins/tab-focus-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/table-action-menu-plugin.tsx',
-          target: 'components/editor/plugins/table-action-menu-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/table-cell-resizer-plugin.tsx',
-          target: 'components/editor/plugins/table-cell-resizer-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/table-hover-actions-plugin.tsx',
-          target: 'components/editor/plugins/table-hover-actions-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/table-plugin.tsx',
-          target: 'components/editor/plugins/table-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/plugins/typing-pref-plugin.tsx',
-          target: 'components/editor/plugins/typing-pref-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/new-york/editor/shared/can-use-dom.ts',
-          target: 'components/editor/shared/can-use-dom.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/shared/caret-from-point.ts',
-          target: 'components/editor/shared/caret-from-point.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/shared/environment.ts',
-          target: 'components/editor/shared/environment.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/shared/invariant.ts',
-          target: 'components/editor/shared/invariant.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/shared/normalize-class-names.ts',
-          target: 'components/editor/shared/normalize-class-names.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/shared/react-patches.ts',
-          target: 'components/editor/shared/react-patches.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/shared/react-test-utils.ts',
-          target: 'components/editor/shared/react-test-utils.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/shared/simple-diff-with-cursor.ts',
-          target: 'components/editor/shared/simple-diff-with-cursor.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/shared/use-layout-effect.ts',
-          target: 'components/editor/shared/use-layout-effect.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/shared/warn-only-once.ts',
-          target: 'components/editor/shared/warn-only-once.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/transformers/markdown-emoji-transformer.ts',
-          target: 'components/editor/transformers/markdown-emoji-transformer.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/transformers/markdown-equation-transofrmer.ts',
-          target:
-            'components/editor/transformers/markdown-equation-transofrmer.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/transformers/markdown-hr-transformer.ts',
-          target: 'components/editor/transformers/markdown-hr-transformer.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/transformers/markdown-image-transformer.ts',
-          target: 'components/editor/transformers/markdown-image-transformer.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/transformers/markdown-table-transformer.ts',
-          target: 'components/editor/transformers/markdown-table-transformer.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/transformers/markdown-transformers.ts',
-          target: 'components/editor/transformers/markdown-transformers.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/transformers/markdown-tweet-transformer.ts',
-          target: 'components/editor/transformers/markdown-tweet-transformer.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/editor-ui/code-button.tsx',
-          target: 'components/editor/editor-ui/code-button.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/new-york/editor/editor-ui/colorpicker.tsx',
-          target: 'components/editor/editor-ui/colorpicker.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/new-york/editor/editor-ui/content-editable.tsx',
-          target: 'components/editor/editor-ui/content-editable.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/new-york/editor/editor-ui/equation-component.tsx',
-          target: 'components/editor/editor-ui/equation-component.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/new-york/editor/editor-ui/equation-editor.tsx',
-          target: 'components/editor/editor-ui/equation-editor.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/new-york/editor/editor-ui/excalidraw-component.tsx',
-          target: 'components/editor/editor-ui/excalidraw-component.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/new-york/editor/editor-ui/excalidraw-image.tsx',
-          target: 'components/editor/editor-ui/excalidraw-image.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/new-york/editor/editor-ui/excalidraw-modal.tsx',
-          target: 'components/editor/editor-ui/excalidraw-modal.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/new-york/editor/editor-ui/excalidraw.tsx',
-          target: 'components/editor/editor-ui/excalidraw.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/new-york/editor/editor-ui/image-component.tsx',
-          target: 'components/editor/editor-ui/image-component.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/new-york/editor/editor-ui/image-resizer.tsx',
-          target: 'components/editor/editor-ui/image-resizer.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/new-york/editor/editor-ui/inline-image-component.tsx',
-          target: 'components/editor/editor-ui/inline-image-component.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/new-york/editor/editor-ui/katex-equation-alterer.tsx',
-          target: 'components/editor/editor-ui/katex-equation-alterer.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/new-york/editor/editor-ui/katex-renderer.tsx',
-          target: 'components/editor/editor-ui/katex-renderer.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/new-york/editor/editor-ui/poll-component.tsx',
-          target: 'components/editor/editor-ui/poll-component.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/new-york/editor/editor-ui/poll.css',
-          target: 'components/editor/editor-ui/poll.css',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/new-york/editor/utils/collapsible.ts',
-          target: 'components/editor/utils/collapsible.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/utils/doc-serialization.ts',
-          target: 'components/editor/utils/doc-serialization.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/utils/emoji-list.ts',
-          target: 'components/editor/utils/emoji-list.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/utils/get-dom-range-rect.ts',
-          target: 'components/editor/utils/get-dom-range-rect.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/utils/get-selected-node.ts',
-          target: 'components/editor/utils/get-selected-node.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/utils/guard.ts',
-          target: 'components/editor/utils/guard.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/utils/is-mobile-width.ts',
-          target: 'components/editor/utils/is-mobile-width.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/utils/set-floating-elem-position-for-link-editor.ts',
-          target:
-            'components/editor/utils/set-floating-elem-position-for-link-editor.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/utils/set-floating-elem-position.ts',
-          target: 'components/editor/utils/set-floating-elem-position.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/utils/swipe.ts',
-          target: 'components/editor/utils/swipe.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/new-york/editor/utils/url.ts',
-          target: 'components/editor/utils/url.ts',
-          type: 'registry:file',
-        },
-      ],
-      categories: ["editor"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/editor-x/page.tsx")),
-      source: "__registry__/new-york/blocks/editor-x/page.tsx",
-      meta: undefined,
-    }
-  },  
-  "default": {
-    "rich-text-editor": {
-      name: "rich-text-editor",
       description: "",
-      type: "registry:example",
-      files: [
-        {
-          path: "registry/default/editor/editor-ui/content-editable.tsx",
-          type: "registry:ui",
-          target: "components/editor/editor-ui/content-editable.tsx",
-        }
-      ],
+      type: "registry:block",
+      registryDependencies: ["button","checkbox","command","dialog","input","label","popover","scroll-area","select","separator","tabs","textarea","tooltip","toggle","toggle-group"],
+      files: [{
+        path: "registry/default/blocks/editor-x/editor.tsx",
+        type: "registry:block",
+        target: "components/blocks/editor-x/editor.tsx"
+      },{
+        path: "registry/default/blocks/editor-x/nodes.ts",
+        type: "registry:block",
+        target: "components/blocks/editor-x/nodes.ts"
+      },{
+        path: "registry/default/blocks/editor-x/plugins.tsx",
+        type: "registry:block",
+        target: "components/blocks/editor-x/plugins.tsx"
+      },{
+        path: "registry/default/editor/themes/editor-theme.ts",
+        type: "registry:theme",
+        target: "components/editor/themes/editor-theme.ts"
+      },{
+        path: "registry/default/editor/themes/editor-theme.css",
+        type: "registry:theme",
+        target: "components/editor/themes/editor-theme.css"
+      },{
+        path: "registry/default/editor/context/floating-link-context.tsx",
+        type: "registry:component",
+        target: "components/editor/context/floating-link-context.tsx"
+      },{
+        path: "registry/default/editor/context/shared-autocomplete-context.tsx",
+        type: "registry:component",
+        target: "components/editor/context/shared-autocomplete-context.tsx"
+      },{
+        path: "registry/default/editor/context/toolbar-context.tsx",
+        type: "registry:component",
+        target: "components/editor/context/toolbar-context.tsx"
+      },{
+        path: "registry/default/editor/editor-hooks/use-debounce.ts",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-debounce.ts"
+      },{
+        path: "registry/default/editor/editor-hooks/use-modal.tsx",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-modal.tsx"
+      },{
+        path: "registry/default/editor/editor-hooks/use-report.ts",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-report.ts"
+      },{
+        path: "registry/default/editor/editor-hooks/use-update-toolbar.ts",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-update-toolbar.ts"
+      },{
+        path: "registry/default/editor/nodes/embeds/figma-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/embeds/figma-node.tsx"
+      },{
+        path: "registry/default/editor/nodes/embeds/tweet-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/embeds/tweet-node.tsx"
+      },{
+        path: "registry/default/editor/nodes/embeds/youtube-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/embeds/youtube-node.tsx"
+      },{
+        path: "registry/default/editor/nodes/autocomplete-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/autocomplete-node.tsx"
+      },{
+        path: "registry/default/editor/nodes/collapsible-container-node.ts",
+        type: "registry:file",
+        target: "components/editor/nodes/collapsible-container-node.ts"
+      },{
+        path: "registry/default/editor/nodes/collapsible-content-node.ts",
+        type: "registry:file",
+        target: "components/editor/nodes/collapsible-content-node.ts"
+      },{
+        path: "registry/default/editor/nodes/collapsible-title-node.ts",
+        type: "registry:file",
+        target: "components/editor/nodes/collapsible-title-node.ts"
+      },{
+        path: "registry/default/editor/nodes/emoji-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/emoji-node.tsx"
+      },{
+        path: "registry/default/editor/nodes/equation-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/equation-node.tsx"
+      },{
+        path: "registry/default/editor/nodes/excalidraw-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/excalidraw-node.tsx"
+      },{
+        path: "registry/default/editor/nodes/image-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/image-node.tsx"
+      },{
+        path: "registry/default/editor/nodes/inline-image-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/inline-image-node.tsx"
+      },{
+        path: "registry/default/editor/nodes/keyword-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/keyword-node.tsx"
+      },{
+        path: "registry/default/editor/nodes/layout-container-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/layout-container-node.tsx"
+      },{
+        path: "registry/default/editor/nodes/layout-item-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/layout-item-node.tsx"
+      },{
+        path: "registry/default/editor/nodes/mention-node.ts",
+        type: "registry:file",
+        target: "components/editor/nodes/mention-node.ts"
+      },{
+        path: "registry/default/editor/nodes/page-break-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/page-break-node.tsx"
+      },{
+        path: "registry/default/editor/nodes/page-break-node.css",
+        type: "registry:file",
+        target: "components/editor/nodes/page-break-node.css"
+      },{
+        path: "registry/default/editor/nodes/poll-node.tsx",
+        type: "registry:file",
+        target: "components/editor/nodes/poll-node.tsx"
+      },{
+        path: "registry/default/editor/plugins/actions/actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/actions-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/actions/character-limit-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/character-limit-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/actions/clear-editor-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/clear-editor-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/actions/edit-mode-toggle-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/edit-mode-toggle-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/actions/import-export-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/import-export-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/actions/markdown-toggle-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/markdown-toggle-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/actions/max-length-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/max-length-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/actions/share-content-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/share-content-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/actions/speech-to-text-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/speech-to-text-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/actions/tree-view-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/tree-view-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/default/lexical-context-menu-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/default/lexical-context-menu-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/default/lexical-typeahead-menu-plugin.ts",
+        type: "registry:component",
+        target: "components/editor/plugins/default/lexical-typeahead-menu-plugin.ts"
+      },{
+        path: "registry/default/editor/plugins/embeds/auto-embed-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/embeds/auto-embed-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/embeds/figma-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/embeds/figma-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/embeds/twitter-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/embeds/twitter-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/embeds/youtube-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/embeds/youtube-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-format/block-format-data.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/block-format-data.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-format/format-bulleted-list.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-bulleted-list.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-format/format-check-list.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-check-list.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-format/format-code-block.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-code-block.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-format/format-heading.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-heading.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-format/format-numbered-list.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-numbered-list.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-format/format-paragraph.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-paragraph.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-format/format-quote.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-quote.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-insert/insert-collapsible-container.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-collapsible-container.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-insert/insert-columns-layout.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-columns-layout.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-insert/insert-embeds.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-embeds.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-insert/insert-equation.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-equation.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-insert/insert-excalidraw.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-excalidraw.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-insert/insert-image.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-image.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-insert/insert-inline-image.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-inline-image.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-insert/insert-page-break.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-page-break.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-insert/insert-poll.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-poll.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-insert/insert-table.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-table.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-format-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format-toolbar-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-insert-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/clear-formatting-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/clear-formatting-toolbar-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/code-language-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/code-language-toolbar-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/element-format-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/element-format-toolbar-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/font-background-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/font-background-toolbar-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/font-color-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/font-color-toolbar-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/font-family-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/font-family-toolbar-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/font-format-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/font-format-toolbar-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/font-size-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/font-size-toolbar-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/history-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/history-toolbar-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/link-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/link-toolbar-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/subsuper-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/subsuper-toolbar-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/toolbar-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/auto-link-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/auto-link-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/autocomplete-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/autocomplete-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/code-action-menu-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/code-action-menu-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/code-highlight-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/code-highlight-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/collapsible-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/collapsible-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/component-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/component-picker-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/context-menu-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/context-menu-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/drag-drop-paste-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/drag-drop-paste-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/draggable-block-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/draggable-block-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/emoji-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/emoji-picker-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/emojis-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/emojis-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/equations-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/equations-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/excalidraw-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/excalidraw-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/floating-link-editor-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/floating-link-editor-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/floating-text-format-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/floating-text-format-toolbar-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/images-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/images-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/inline-image-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/inline-image-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/keywords-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/keywords-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/layout-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/layout-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/link-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/link-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/list-max-indent-level-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/list-max-indent-level-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/mentions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/mentions-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/page-break-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/page-break-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/poll-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/poll-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/tab-focus-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/tab-focus-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/table-action-menu-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/table-action-menu-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/table-cell-resizer-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/table-cell-resizer-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/table-hover-actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/table-hover-actions-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/table-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/table-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/typing-pref-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/typing-pref-plugin.tsx"
+      },{
+        path: "registry/default/editor/shared/can-use-dom.ts",
+        type: "registry:file",
+        target: "components/editor/shared/can-use-dom.ts"
+      },{
+        path: "registry/default/editor/shared/caret-from-point.ts",
+        type: "registry:file",
+        target: "components/editor/shared/caret-from-point.ts"
+      },{
+        path: "registry/default/editor/shared/environment.ts",
+        type: "registry:file",
+        target: "components/editor/shared/environment.ts"
+      },{
+        path: "registry/default/editor/shared/invariant.ts",
+        type: "registry:file",
+        target: "components/editor/shared/invariant.ts"
+      },{
+        path: "registry/default/editor/shared/normalize-class-names.ts",
+        type: "registry:file",
+        target: "components/editor/shared/normalize-class-names.ts"
+      },{
+        path: "registry/default/editor/shared/react-patches.ts",
+        type: "registry:file",
+        target: "components/editor/shared/react-patches.ts"
+      },{
+        path: "registry/default/editor/shared/react-test-utils.ts",
+        type: "registry:file",
+        target: "components/editor/shared/react-test-utils.ts"
+      },{
+        path: "registry/default/editor/shared/simple-diff-with-cursor.ts",
+        type: "registry:file",
+        target: "components/editor/shared/simple-diff-with-cursor.ts"
+      },{
+        path: "registry/default/editor/shared/use-layout-effect.ts",
+        type: "registry:file",
+        target: "components/editor/shared/use-layout-effect.ts"
+      },{
+        path: "registry/default/editor/shared/warn-only-once.ts",
+        type: "registry:file",
+        target: "components/editor/shared/warn-only-once.ts"
+      },{
+        path: "registry/default/editor/transformers/markdown-emoji-transformer.ts",
+        type: "registry:file",
+        target: "components/editor/transformers/markdown-emoji-transformer.ts"
+      },{
+        path: "registry/default/editor/transformers/markdown-equation-transofrmer.ts",
+        type: "registry:file",
+        target: "components/editor/transformers/markdown-equation-transofrmer.ts"
+      },{
+        path: "registry/default/editor/transformers/markdown-hr-transformer.ts",
+        type: "registry:file",
+        target: "components/editor/transformers/markdown-hr-transformer.ts"
+      },{
+        path: "registry/default/editor/transformers/markdown-image-transformer.ts",
+        type: "registry:file",
+        target: "components/editor/transformers/markdown-image-transformer.ts"
+      },{
+        path: "registry/default/editor/transformers/markdown-table-transformer.ts",
+        type: "registry:file",
+        target: "components/editor/transformers/markdown-table-transformer.ts"
+      },{
+        path: "registry/default/editor/transformers/markdown-transformers.ts",
+        type: "registry:file",
+        target: "components/editor/transformers/markdown-transformers.ts"
+      },{
+        path: "registry/default/editor/transformers/markdown-tweet-transformer.ts",
+        type: "registry:file",
+        target: "components/editor/transformers/markdown-tweet-transformer.ts"
+      },{
+        path: "registry/default/editor/editor-ui/code-button.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/code-button.tsx"
+      },{
+        path: "registry/default/editor/editor-ui/colorpicker.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/colorpicker.tsx"
+      },{
+        path: "registry/default/editor/editor-ui/content-editable.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/content-editable.tsx"
+      },{
+        path: "registry/default/editor/editor-ui/equation-component.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/equation-component.tsx"
+      },{
+        path: "registry/default/editor/editor-ui/equation-editor.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/equation-editor.tsx"
+      },{
+        path: "registry/default/editor/editor-ui/excalidraw-component.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/excalidraw-component.tsx"
+      },{
+        path: "registry/default/editor/editor-ui/excalidraw-image.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/excalidraw-image.tsx"
+      },{
+        path: "registry/default/editor/editor-ui/excalidraw-modal.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/excalidraw-modal.tsx"
+      },{
+        path: "registry/default/editor/editor-ui/excalidraw.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/excalidraw.tsx"
+      },{
+        path: "registry/default/editor/editor-ui/image-component.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/image-component.tsx"
+      },{
+        path: "registry/default/editor/editor-ui/image-resizer.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/image-resizer.tsx"
+      },{
+        path: "registry/default/editor/editor-ui/inline-image-component.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/inline-image-component.tsx"
+      },{
+        path: "registry/default/editor/editor-ui/katex-equation-alterer.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/katex-equation-alterer.tsx"
+      },{
+        path: "registry/default/editor/editor-ui/katex-renderer.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/katex-renderer.tsx"
+      },{
+        path: "registry/default/editor/editor-ui/poll-component.tsx",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/poll-component.tsx"
+      },{
+        path: "registry/default/editor/editor-ui/poll.css",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/poll.css"
+      },{
+        path: "registry/default/editor/utils/collapsible.ts",
+        type: "registry:file",
+        target: "components/editor/utils/collapsible.ts"
+      },{
+        path: "registry/default/editor/utils/doc-serialization.ts",
+        type: "registry:file",
+        target: "components/editor/utils/doc-serialization.ts"
+      },{
+        path: "registry/default/editor/utils/emoji-list.ts",
+        type: "registry:file",
+        target: "components/editor/utils/emoji-list.ts"
+      },{
+        path: "registry/default/editor/utils/get-dom-range-rect.ts",
+        type: "registry:file",
+        target: "components/editor/utils/get-dom-range-rect.ts"
+      },{
+        path: "registry/default/editor/utils/get-selected-node.ts",
+        type: "registry:file",
+        target: "components/editor/utils/get-selected-node.ts"
+      },{
+        path: "registry/default/editor/utils/guard.ts",
+        type: "registry:file",
+        target: "components/editor/utils/guard.ts"
+      },{
+        path: "registry/default/editor/utils/is-mobile-width.ts",
+        type: "registry:file",
+        target: "components/editor/utils/is-mobile-width.ts"
+      },{
+        path: "registry/default/editor/utils/set-floating-elem-position-for-link-editor.ts",
+        type: "registry:file",
+        target: "components/editor/utils/set-floating-elem-position-for-link-editor.ts"
+      },{
+        path: "registry/default/editor/utils/set-floating-elem-position.ts",
+        type: "registry:file",
+        target: "components/editor/utils/set-floating-elem-position.ts"
+      },{
+        path: "registry/default/editor/utils/swipe.ts",
+        type: "registry:file",
+        target: "components/editor/utils/swipe.ts"
+      },{
+        path: "registry/default/editor/utils/url.ts",
+        type: "registry:file",
+        target: "components/editor/utils/url.ts"
+      }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/editor-ui/content-editable")),
-      source: "",
+      component: React.lazy(() => import("@/registry/default/blocks/editor-x/editor.tsx")),
+      source: "__registry__/default/blocks/editor-x/editor.tsx",
       meta: undefined,
     },
     "rich-text-editor-demo": {
@@ -910,867 +1380,15 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["rich-text-editor"],
-      files: [
-        {
-          path: "registry/default/examples/rich-text-editor-demo.tsx",
-          type: "registry:example",
-          target: ""
-        }
-      ],
+      files: [{
+        path: "registry/default/examples/rich-text-editor-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/examples/rich-text-editor-demo.tsx")),
       source: "",
       meta: undefined,
     },
-    "editor-x": {
-      name: "editor-x",
-      description: "Batteries Included Rich Text Editor",
-      type: "registry:block",
-
-      dependencies: [
-        '@excalidraw/excalidraw',
-        '@lexical/file',
-        '@lexical/react',
-        '@lexical/rich-text',
-        '@radix-ui/react-icons',
-        'katex',
-        'lexical',
-        'lodash-es',
-        'lucide-react',
-        'react-colorful',
-        'sonner'
-      ],
-      registryDependencies: [
-        'button',
-        'checkbox',
-        'command',
-        'dialog',
-        'input',
-        'label',
-        'popover',
-        'scroll-area',
-        'select',
-        'separator',
-        'tabs',
-        'textarea',
-        'tooltip',
-        'toggle',
-        'toggle-group',
-      ],
-      files:  [
-        {
-          path: 'registry/default/blocks/editor-x/page.tsx',
-          target: 'app/editor/page.tsx',
-          type: 'registry:page',
-        },
-        {
-          path: 'registry/default/blocks/editor-x/editor.tsx',
-          target: 'components/blocks/editor-x/editor.tsx',
-          type: 'registry:block',
-        },
-        {
-          path: 'registry/default/blocks/editor-x/nodes.ts',
-          target: 'components/blocks/editor-x/nodes.ts',
-          type: 'registry:block',
-        },
-        {
-          path: 'registry/default/blocks/editor-x/plugins.tsx',
-          target: 'components/blocks/editor-x/plugins.tsx',
-          type: 'registry:block',
-        },
-        {
-          path: 'registry/default/editor/themes/editor-theme.ts',
-          target: 'components/editor/themes/editor-theme.ts',
-          type: 'registry:theme',
-        },
-        {
-          path: 'registry/default/editor/themes/editor-theme.css',
-          target: 'components/editor/themes/editor-theme.css',
-          type: 'registry:theme',
-        },
-        {
-          path: 'registry/default/editor/context/floating-link-context.tsx',
-          target: 'components/editor/context/floating-link-context.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/context/shared-autocomplete-context.tsx',
-          target: 'components/editor/context/shared-autocomplete-context.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/context/toolbar-context.tsx',
-          target: 'components/editor/context/toolbar-context.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/editor-hooks/use-debounce.ts',
-          target: 'components/editor/editor-hooks/use-debounce.ts',
-          type: 'registry:hook',
-        },
-        {
-          path: 'registry/default/editor/editor-hooks/use-modal.tsx',
-          target: 'components/editor/editor-hooks/use-modal.tsx',
-          type: 'registry:hook',
-        },
-        {
-          path: 'registry/default/editor/editor-hooks/use-report.ts',
-          target: 'components/editor/editor-hooks/use-report.ts',
-          type: 'registry:hook',
-        },
-        {
-          path: 'registry/default/editor/editor-hooks/use-update-toolbar.ts',
-          target: 'components/editor/editor-hooks/use-update-toolbar.ts',
-          type: 'registry:hook',
-        },
-        {
-          path: 'registry/default/editor/nodes/embeds/figma-node.tsx',
-          target: 'components/editor/nodes/embeds/figma-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/nodes/embeds/tweet-node.tsx',
-          target: 'components/editor/nodes/embeds/tweet-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/nodes/embeds/youtube-node.tsx',
-          target: 'components/editor/nodes/embeds/youtube-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/nodes/autocomplete-node.tsx',
-          target: 'components/editor/nodes/autocomplete-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/nodes/collapsible-container-node.ts',
-          target: 'components/editor/nodes/collapsible-container-node.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/nodes/collapsible-content-node.ts',
-          target: 'components/editor/nodes/collapsible-content-node.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/nodes/collapsible-title-node.ts',
-          target: 'components/editor/nodes/collapsible-title-node.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/nodes/emoji-node.tsx',
-          target: 'components/editor/nodes/emoji-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/nodes/equation-node.tsx',
-          target: 'components/editor/nodes/equation-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/nodes/excalidraw-node.tsx',
-          target: 'components/editor/nodes/excalidraw-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/nodes/image-node.tsx',
-          target: 'components/editor/nodes/image-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/nodes/inline-image-node.tsx',
-          target: 'components/editor/nodes/inline-image-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/nodes/keyword-node.tsx',
-          target: 'components/editor/nodes/keyword-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/nodes/layout-container-node.tsx',
-          target: 'components/editor/nodes/layout-container-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/nodes/layout-item-node.tsx',
-          target: 'components/editor/nodes/layout-item-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/nodes/mention-node.ts',
-          target: 'components/editor/nodes/mention-node.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/nodes/page-break-node.tsx',
-          target: 'components/editor/nodes/page-break-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/nodes/page-break-node.css',
-          target: 'components/editor/nodes/page-break-node.css',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/nodes/poll-node.tsx',
-          target: 'components/editor/nodes/poll-node.tsx',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/plugins/actions/actions-plugin.tsx',
-          target: 'components/editor/plugins/actions/actions-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/actions/character-limit-plugin.tsx',
-          target: 'components/editor/plugins/actions/character-limit-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/actions/clear-editor-plugin.tsx',
-          target: 'components/editor/plugins/actions/clear-editor-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/actions/edit-mode-toggle-plugin.tsx',
-          target: 'components/editor/plugins/actions/edit-mode-toggle-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/actions/import-export-plugin.tsx',
-          target: 'components/editor/plugins/actions/import-export-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/actions/markdown-toggle-plugin.tsx',
-          target: 'components/editor/plugins/actions/markdown-toggle-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/actions/max-length-plugin.tsx',
-          target: 'components/editor/plugins/actions/max-length-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/actions/share-content-plugin.tsx',
-          target: 'components/editor/plugins/actions/share-content-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/actions/speech-to-text-plugin.tsx',
-          target: 'components/editor/plugins/actions/speech-to-text-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/actions/tree-view-plugin.tsx',
-          target: 'components/editor/plugins/actions/tree-view-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/default/lexical-context-menu-plugin.tsx',
-          target:
-            'components/editor/plugins/default/lexical-context-menu-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/default/lexical-typeahead-menu-plugin.ts',
-          target:
-            'components/editor/plugins/default/lexical-typeahead-menu-plugin.ts',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/embeds/auto-embed-plugin.tsx',
-          target: 'components/editor/plugins/embeds/auto-embed-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/embeds/figma-plugin.tsx',
-          target: 'components/editor/plugins/embeds/figma-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/embeds/twitter-plugin.tsx',
-          target: 'components/editor/plugins/embeds/twitter-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/embeds/youtube-plugin.tsx',
-          target: 'components/editor/plugins/embeds/youtube-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/block-format/block-format-data.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-format/block-format-data.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/block-format/format-bulleted-list.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-format/format-bulleted-list.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/block-format/format-check-list.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-format/format-check-list.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/block-format/format-code-block.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-format/format-code-block.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/block-format/format-heading.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-format/format-heading.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/block-format/format-numbered-list.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-format/format-numbered-list.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/block-format/format-paragraph.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-format/format-paragraph.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/block-format/format-quote.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-format/format-quote.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/block-insert/insert-collapsible-container.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-insert/insert-collapsible-container.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/block-insert/insert-columns-layout.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-insert/insert-columns-layout.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/block-insert/insert-embeds.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-insert/insert-embeds.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/block-insert/insert-equation.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-insert/insert-equation.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/block-insert/insert-excalidraw.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-insert/insert-excalidraw.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/block-insert/insert-image.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-insert/insert-image.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/block-insert/insert-inline-image.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-insert/insert-inline-image.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/block-insert/insert-page-break.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-insert/insert-page-break.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/block-insert/insert-poll.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-insert/insert-poll.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/block-insert/insert-table.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-insert/insert-table.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/block-format-toolbar-plugin.tsx',
-          target:
-            'components/editor/plugins/toolbar/block-format-toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/block-insert-plugin.tsx',
-          target: 'components/editor/plugins/toolbar/block-insert-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/clear-formatting-toolbar-plugin.tsx',
-          target:
-            'components/editor/plugins/toolbar/clear-formatting-toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/code-language-toolbar-plugin.tsx',
-          target:
-            'components/editor/plugins/toolbar/code-language-toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/element-format-toolbar-plugin.tsx',
-          target:
-            'components/editor/plugins/toolbar/element-format-toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/font-background-toolbar-plugin.tsx',
-          target:
-            'components/editor/plugins/toolbar/font-background-toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/font-color-toolbar-plugin.tsx',
-          target:
-            'components/editor/plugins/toolbar/font-color-toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/font-family-toolbar-plugin.tsx',
-          target:
-            'components/editor/plugins/toolbar/font-family-toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/font-format-toolbar-plugin.tsx',
-          target:
-            'components/editor/plugins/toolbar/font-format-toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/font-size-toolbar-plugin.tsx',
-          target:
-            'components/editor/plugins/toolbar/font-size-toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/history-toolbar-plugin.tsx',
-          target: 'components/editor/plugins/toolbar/history-toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/link-toolbar-plugin.tsx',
-          target: 'components/editor/plugins/toolbar/link-toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/subsuper-toolbar-plugin.tsx',
-          target: 'components/editor/plugins/toolbar/subsuper-toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/toolbar/toolbar-plugin.tsx',
-          target: 'components/editor/plugins/toolbar/toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/auto-link-plugin.tsx',
-          target: 'components/editor/plugins/auto-link-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/autocomplete-plugin.tsx',
-          target: 'components/editor/plugins/autocomplete-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/code-action-menu-plugin.tsx',
-          target: 'components/editor/plugins/code-action-menu-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/code-highlight-plugin.tsx',
-          target: 'components/editor/plugins/code-highlight-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/collapsible-plugin.tsx',
-          target: 'components/editor/plugins/collapsible-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/component-picker-plugin.tsx',
-          target: 'components/editor/plugins/component-picker-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/context-menu-plugin.tsx',
-          target: 'components/editor/plugins/context-menu-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/drag-drop-paste-plugin.tsx',
-          target: 'components/editor/plugins/drag-drop-paste-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/draggable-block-plugin.tsx',
-          target: 'components/editor/plugins/draggable-block-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/emoji-picker-plugin.tsx',
-          target: 'components/editor/plugins/emoji-picker-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/emojis-plugin.tsx',
-          target: 'components/editor/plugins/emojis-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/equations-plugin.tsx',
-          target: 'components/editor/plugins/equations-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/excalidraw-plugin.tsx',
-          target: 'components/editor/plugins/excalidraw-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/floating-link-editor-plugin.tsx',
-          target: 'components/editor/plugins/floating-link-editor-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/floating-text-format-toolbar-plugin.tsx',
-          target:
-            'components/editor/plugins/floating-text-format-toolbar-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/images-plugin.tsx',
-          target: 'components/editor/plugins/images-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/inline-image-plugin.tsx',
-          target: 'components/editor/plugins/inline-image-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/keywords-plugin.tsx',
-          target: 'components/editor/plugins/keywords-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/layout-plugin.tsx',
-          target: 'components/editor/plugins/layout-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/link-plugin.tsx',
-          target: 'components/editor/plugins/link-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/list-max-indent-level-plugin.tsx',
-          target: 'components/editor/plugins/list-max-indent-level-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/mentions-plugin.tsx',
-          target: 'components/editor/plugins/mentions-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/page-break-plugin.tsx',
-          target: 'components/editor/plugins/page-break-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/poll-plugin.tsx',
-          target: 'components/editor/plugins/poll-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/tab-focus-plugin.tsx',
-          target: 'components/editor/plugins/tab-focus-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/table-action-menu-plugin.tsx',
-          target: 'components/editor/plugins/table-action-menu-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/table-cell-resizer-plugin.tsx',
-          target: 'components/editor/plugins/table-cell-resizer-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/table-hover-actions-plugin.tsx',
-          target: 'components/editor/plugins/table-hover-actions-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/table-plugin.tsx',
-          target: 'components/editor/plugins/table-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/plugins/typing-pref-plugin.tsx',
-          target: 'components/editor/plugins/typing-pref-plugin.tsx',
-          type: 'registry:component',
-        },
-        {
-          path: 'registry/default/editor/shared/can-use-dom.ts',
-          target: 'components/editor/shared/can-use-dom.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/shared/caret-from-point.ts',
-          target: 'components/editor/shared/caret-from-point.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/shared/environment.ts',
-          target: 'components/editor/shared/environment.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/shared/invariant.ts',
-          target: 'components/editor/shared/invariant.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/shared/normalize-class-names.ts',
-          target: 'components/editor/shared/normalize-class-names.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/shared/react-patches.ts',
-          target: 'components/editor/shared/react-patches.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/shared/react-test-utils.ts',
-          target: 'components/editor/shared/react-test-utils.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/shared/simple-diff-with-cursor.ts',
-          target: 'components/editor/shared/simple-diff-with-cursor.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/shared/use-layout-effect.ts',
-          target: 'components/editor/shared/use-layout-effect.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/shared/warn-only-once.ts',
-          target: 'components/editor/shared/warn-only-once.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/transformers/markdown-emoji-transformer.ts',
-          target: 'components/editor/transformers/markdown-emoji-transformer.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/transformers/markdown-equation-transofrmer.ts',
-          target:
-            'components/editor/transformers/markdown-equation-transofrmer.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/transformers/markdown-hr-transformer.ts',
-          target: 'components/editor/transformers/markdown-hr-transformer.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/transformers/markdown-image-transformer.ts',
-          target: 'components/editor/transformers/markdown-image-transformer.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/transformers/markdown-table-transformer.ts',
-          target: 'components/editor/transformers/markdown-table-transformer.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/transformers/markdown-transformers.ts',
-          target: 'components/editor/transformers/markdown-transformers.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/transformers/markdown-tweet-transformer.ts',
-          target: 'components/editor/transformers/markdown-tweet-transformer.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/editor-ui/code-button.tsx',
-          target: 'components/editor/editor-ui/code-button.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/default/editor/editor-ui/colorpicker.tsx',
-          target: 'components/editor/editor-ui/colorpicker.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/default/editor/editor-ui/content-editable.tsx',
-          target: 'components/editor/editor-ui/content-editable.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/default/editor/editor-ui/equation-component.tsx',
-          target: 'components/editor/editor-ui/equation-component.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/default/editor/editor-ui/equation-editor.tsx',
-          target: 'components/editor/editor-ui/equation-editor.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/default/editor/editor-ui/excalidraw-component.tsx',
-          target: 'components/editor/editor-ui/excalidraw-component.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/default/editor/editor-ui/excalidraw-image.tsx',
-          target: 'components/editor/editor-ui/excalidraw-image.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/default/editor/editor-ui/excalidraw-modal.tsx',
-          target: 'components/editor/editor-ui/excalidraw-modal.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/default/editor/editor-ui/excalidraw.tsx',
-          target: 'components/editor/editor-ui/excalidraw.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/default/editor/editor-ui/image-component.tsx',
-          target: 'components/editor/editor-ui/image-component.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/default/editor/editor-ui/image-resizer.tsx',
-          target: 'components/editor/editor-ui/image-resizer.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/default/editor/editor-ui/inline-image-component.tsx',
-          target: 'components/editor/editor-ui/inline-image-component.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/default/editor/editor-ui/katex-equation-alterer.tsx',
-          target: 'components/editor/editor-ui/katex-equation-alterer.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/default/editor/editor-ui/katex-renderer.tsx',
-          target: 'components/editor/editor-ui/katex-renderer.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/default/editor/editor-ui/poll-component.tsx',
-          target: 'components/editor/editor-ui/poll-component.tsx',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/default/editor/editor-ui/poll.css',
-          target: 'components/editor/editor-ui/poll.css',
-          type: 'registry:ui',
-        },
-        {
-          path: 'registry/default/editor/utils/collapsible.ts',
-          target: 'components/editor/utils/collapsible.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/utils/doc-serialization.ts',
-          target: 'components/editor/utils/doc-serialization.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/utils/emoji-list.ts',
-          target: 'components/editor/utils/emoji-list.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/utils/get-dom-range-rect.ts',
-          target: 'components/editor/utils/get-dom-range-rect.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/utils/get-selected-node.ts',
-          target: 'components/editor/utils/get-selected-node.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/utils/guard.ts',
-          target: 'components/editor/utils/guard.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/utils/is-mobile-width.ts',
-          target: 'components/editor/utils/is-mobile-width.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/utils/set-floating-elem-position-for-link-editor.ts',
-          target:
-            'components/editor/utils/set-floating-elem-position-for-link-editor.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/utils/set-floating-elem-position.ts',
-          target: 'components/editor/utils/set-floating-elem-position.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/utils/swipe.ts',
-          target: 'components/editor/utils/swipe.ts',
-          type: 'registry:file',
-        },
-        {
-          path: 'registry/default/editor/utils/url.ts',
-          target: 'components/editor/utils/url.ts',
-          type: 'registry:file',
-        },
-      ],
-      categories: ["editor"],
-      component: React.lazy(() => import("@/registry/default/blocks/editor-x/page.tsx")),
-      source: "__registry__/default/blocks/editor-x/page.tsx",
-      meta: undefined,
-    }
   },
 }
