@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useImperativeHandle, useState } from 'react'
 
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
