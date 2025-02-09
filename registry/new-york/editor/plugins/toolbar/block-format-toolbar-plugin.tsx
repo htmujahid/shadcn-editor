@@ -1,3 +1,5 @@
+"use client"
+
 import { $isListNode, ListNode } from '@lexical/list'
 import { $isHeadingNode } from '@lexical/rich-text'
 import { $findMatchingParent, $getNearestNodeOfType } from '@lexical/utils'
