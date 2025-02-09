@@ -8,7 +8,6 @@
   ],
   "registryDependencies": [
     "button",
-    "https://shadcn-editor.vercel.app/r/editor.json",
     "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
   ],
   "files": [

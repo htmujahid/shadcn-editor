@@ -62,7 +62,7 @@ export const Index: Record<string, any> = {
       name: "history-toolbar-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button","https://shadcn-editor.vercel.app/r/editor.json","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      registryDependencies: ["button","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
       files: [{
         path: "registry/new-york/editor/plugins/toolbar/history-toolbar-plugin.tsx",
         type: "registry:component",
@@ -70,6 +70,53 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/history-toolbar-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "block-format-toolbar-plugin": {
+      name: "block-format-toolbar-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/editor/plugins/toolbar/block-format-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format-toolbar-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/editor-hooks/use-update-toolbar.ts",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-update-toolbar.ts"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-format/block-format-data.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/block-format-data.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-format/format-bulleted-list.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-bulleted-list.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-format/format-check-list.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-check-list.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-format/format-code-block.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-code-block.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-format/format-numbered-list.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-numbered-list.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-format/format-paragraph.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-paragraph.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-format/format-quote.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-quote.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/block-format-toolbar-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -807,6 +854,21 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "block-format-demo": {
+      name: "block-format-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/block-format-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/block-format-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/block-format-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
   },  "default": {
     "rich-text-editor-plugin": {
       name: "rich-text-editor-plugin",
@@ -865,7 +927,7 @@ export const Index: Record<string, any> = {
       name: "history-toolbar-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button","https://shadcn-editor.vercel.app/r/editor.json","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      registryDependencies: ["button","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
       files: [{
         path: "registry/default/editor/plugins/toolbar/history-toolbar-plugin.tsx",
         type: "registry:component",
@@ -873,6 +935,53 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/history-toolbar-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "block-format-toolbar-plugin": {
+      name: "block-format-toolbar-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/editor/plugins/toolbar/block-format-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format-toolbar-plugin.tsx"
+      },{
+        path: "registry/default/editor/editor-hooks/use-update-toolbar.ts",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-update-toolbar.ts"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-format/block-format-data.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/block-format-data.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-format/format-bulleted-list.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-bulleted-list.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-format/format-check-list.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-check-list.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-format/format-code-block.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-code-block.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-format/format-numbered-list.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-numbered-list.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-format/format-paragraph.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-paragraph.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-format/format-quote.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-quote.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/block-format-toolbar-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -1607,6 +1716,21 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/examples/history-toolbar-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "block-format-demo": {
+      name: "block-format-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/block-format-plugin.json"],
+      files: [{
+        path: "registry/default/examples/block-format-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/block-format-demo.tsx")),
       source: "",
       meta: undefined,
     },

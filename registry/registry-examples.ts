@@ -59,4 +59,17 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "block-format-demo",
+    type: "registry:example",
+    registryDependencies: [
+      "https://shadcn-editor.vercel.app/r/block-format-plugin.json",
+    ],
+    files: [
+      {
+        path: "examples/block-format-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]

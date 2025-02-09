@@ -64,6 +64,11 @@ export const docsConfig: DocsConfig = {
           href: "/docs/plugins/history-toolbar",
           items: [],
         },
+        {
+          title: "Block Format",
+          href: "/docs/plugins/block-format-toolbar",
+          items: [],
+        },
       ],
     },
   ],
