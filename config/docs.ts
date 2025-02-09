@@ -59,6 +59,11 @@ export const docsConfig: DocsConfig = {
           href: "/docs/plugins/toolbar",
           items: [],
         },
+        {
+          title: "History",
+          href: "/docs/plugins/history-toolbar",
+          items: [],
+        },
       ],
     },
   ],

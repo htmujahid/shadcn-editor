@@ -9,7 +9,7 @@ export const Index: Record<string, any> = {
       name: "rich-text-editor-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/editor.json"],
       files: [{
         path: "registry/new-york/editor/editor-ui/content-editable.tsx",
         type: "registry:ui",
@@ -24,7 +24,7 @@ export const Index: Record<string, any> = {
       name: "actions-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/editor.json"],
       files: [{
         path: "registry/new-york/editor/plugins/actions/actions-plugin.tsx",
         type: "registry:component",
@@ -39,7 +39,7 @@ export const Index: Record<string, any> = {
       name: "toolbar-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/editor.json"],
       files: [{
         path: "registry/new-york/editor/plugins/toolbar/toolbar-plugin.tsx",
         type: "registry:component",
@@ -55,6 +55,21 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/toolbar-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "history-toolbar-plugin": {
+      name: "history-toolbar-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","https://shadcn-editor.vercel.app/r/editor.json","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/editor/plugins/toolbar/history-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/history-toolbar-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/history-toolbar-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -777,12 +792,27 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "history-toolbar-demo": {
+      name: "history-toolbar-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/history-toolbar-plugin.json","button"],
+      files: [{
+        path: "registry/new-york/examples/history-toolbar-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/history-toolbar-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
   },  "default": {
     "rich-text-editor-plugin": {
       name: "rich-text-editor-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/editor.json"],
       files: [{
         path: "registry/default/editor/editor-ui/content-editable.tsx",
         type: "registry:ui",
@@ -797,7 +827,7 @@ export const Index: Record<string, any> = {
       name: "actions-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/editor.json"],
       files: [{
         path: "registry/default/editor/plugins/actions/actions-plugin.tsx",
         type: "registry:component",
@@ -812,7 +842,7 @@ export const Index: Record<string, any> = {
       name: "toolbar-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/editor.json"],
       files: [{
         path: "registry/default/editor/plugins/toolbar/toolbar-plugin.tsx",
         type: "registry:component",
@@ -828,6 +858,21 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/toolbar-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "history-toolbar-plugin": {
+      name: "history-toolbar-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","https://shadcn-editor.vercel.app/r/editor.json","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/editor/plugins/toolbar/history-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/history-toolbar-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/history-toolbar-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -1547,6 +1592,21 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/examples/toolbar-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "history-toolbar-demo": {
+      name: "history-toolbar-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/history-toolbar-plugin.json","button"],
+      files: [{
+        path: "registry/default/examples/history-toolbar-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/history-toolbar-demo.tsx")),
       source: "",
       meta: undefined,
     },

@@ -6,6 +6,9 @@
   "dependencies": [
     "@lexical/rich-text"
   ],
+  "registryDependencies": [
+    "https://shadcn-editor.vercel.app/r/editor.json"
+  ],
   "files": [
     {
       "path": "editor/editor-ui/content-editable.tsx",

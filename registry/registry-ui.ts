@@ -5,6 +5,9 @@ export const ui: Registry["items"] = [
     "name": "rich-text-editor-plugin",
     "type": "registry:ui",
     "dependencies": ["@lexical/rich-text"],
+    "registryDependencies": [
+      "https://shadcn-editor.vercel.app/r/editor.json",
+    ],
     "files": [
       {
         "path": "editor/editor-ui/content-editable.tsx",
@@ -16,9 +19,13 @@ export const ui: Registry["items"] = [
   {
     "name": "actions-plugin",
     "type": "registry:ui",
+    "registryDependencies": [
+      "https://shadcn-editor.vercel.app/r/editor.json",
+    ],
     "files": [
       {
         "path": "editor/plugins/actions/actions-plugin.tsx",
+
         "target": "components/editor/plugins/actions/actions-plugin.tsx",
         "type": "registry:component"
       }
@@ -27,8 +34,10 @@ export const ui: Registry["items"] = [
   {
     "name": "toolbar-plugin",
     "type": "registry:ui",
+    "registryDependencies": [
+      "https://shadcn-editor.vercel.app/r/editor.json",
+    ],
     "files": [
-
       {
         "path": "editor/plugins/toolbar/toolbar-plugin.tsx",
         "target": "components/editor/plugins/toolbar/toolbar-plugin.tsx",
@@ -46,6 +55,21 @@ export const ui: Registry["items"] = [
       }
     ]
   },
-
-
+  {
+    "name": "history-toolbar-plugin",
+    "type": "registry:ui",
+    "dependencies": ["@lexical/utils"],
+    "registryDependencies": [
+      "button",
+      "https://shadcn-editor.vercel.app/r/editor.json",
+      "https://shadcn-editor.vercel.app/r/toolbar-plugin.json",
+    ],
+    "files": [
+      {
+        "path": "editor/plugins/toolbar/history-toolbar-plugin.tsx",
+        "target": "components/editor/plugins/toolbar/history-toolbar-plugin.tsx",
+        "type": "registry:component"
+      }
+    ]
+  },
 ]

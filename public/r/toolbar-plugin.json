@@ -3,6 +3,9 @@
   "name": "toolbar-plugin",
   "type": "registry:ui",
   "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "https://shadcn-editor.vercel.app/r/editor.json"
+  ],
   "files": [
     {
       "path": "editor/plugins/toolbar/toolbar-plugin.tsx",
