@@ -4,8 +4,11 @@ import { useState } from "react"
 
 import { Trash2Icon } from "lucide-react"
 
+import { ParagraphNode, TextNode } from "lexical"
+import { HeadingNode, QuoteNode } from "@lexical/rich-text"
+
 import { InitialConfigType, LexicalComposer } from "@lexical/react/LexicalComposer"
-import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary"
+import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary"
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin"
 
 import { Button } from "@/registry/new-york/ui/button"
@@ -19,7 +22,12 @@ import { ActionsPlugin } from "@/registry/new-york/editor/plugins/actions/action
 const editorConfig: InitialConfigType = {
   namespace: 'Editor',
   theme: editorTheme,
-  nodes: [],
+  nodes: [
+    HeadingNode,
+    ParagraphNode,
+    TextNode,
+    QuoteNode,
+  ],
   onError: (error: Error) => {
     console.error(error)
   },

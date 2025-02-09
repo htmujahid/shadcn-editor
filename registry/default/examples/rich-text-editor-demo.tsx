@@ -2,8 +2,11 @@
 
 import { useState } from "react"
 
+import { ParagraphNode, TextNode } from "lexical"
+import { HeadingNode, QuoteNode } from "@lexical/rich-text"
+
 import { InitialConfigType, LexicalComposer } from "@lexical/react/LexicalComposer"
-import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary"
+import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary"
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin"
 
 import { TooltipProvider } from "@/registry/default/ui/tooltip"
@@ -14,7 +17,12 @@ import { ContentEditable } from "@/registry/default/editor/editor-ui/content-edi
 const editorConfig: InitialConfigType = {
   namespace: 'Editor',
   theme: editorTheme,
-  nodes: [],
+  nodes: [
+    HeadingNode,
+    ParagraphNode,
+    TextNode,
+    QuoteNode,
+  ],
   onError: (error: Error) => {
     console.error(error)
   },

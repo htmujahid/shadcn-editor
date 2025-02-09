@@ -26,7 +26,7 @@
     },
     {
       "path": "blocks/editor-00/nodes.ts",
-      "content": "import { Klass, LexicalNode, LexicalNodeReplacement } from 'lexical'\r\n\r\nexport const nodes: ReadonlyArray<Klass<LexicalNode> | LexicalNodeReplacement> =\r\n  []\r\n",
+      "content": "import { Klass, LexicalNode, LexicalNodeReplacement, ParagraphNode, TextNode } from 'lexical'\r\nimport { HeadingNode, QuoteNode } from \"@lexical/rich-text\"\r\n\r\nexport const nodes: ReadonlyArray<Klass<LexicalNode> | LexicalNodeReplacement> =\r\n  [\r\n    HeadingNode,\r\n    ParagraphNode,\r\n    TextNode,\r\n    QuoteNode,\r\n  ]\r\n",
       "type": "registry:block",
       "target": "components/blocks/editor-00/nodes.ts"
     },

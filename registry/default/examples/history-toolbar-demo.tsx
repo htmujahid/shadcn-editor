@@ -6,8 +6,9 @@ import { ParagraphNode, TextNode } from "lexical";
 import { HeadingNode, QuoteNode } from "@lexical/rich-text"
 
 import { InitialConfigType, LexicalComposer } from "@lexical/react/LexicalComposer"
-import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary"
+import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary"
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin"
+import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 
 import { TooltipProvider } from "@/registry/default/ui/tooltip"
 
@@ -81,6 +82,7 @@ export function Plugins() {
           }
           ErrorBoundary={LexicalErrorBoundary}
         />
+        <HistoryPlugin />
         {/* rest of the plugins */}
       </div>
     </div>

@@ -4,8 +4,11 @@ import { useState } from "react"
 
 import { Plus } from "lucide-react"
 
+import { ParagraphNode, TextNode } from "lexical"
+import { HeadingNode, QuoteNode } from "@lexical/rich-text"
+
 import { InitialConfigType, LexicalComposer } from "@lexical/react/LexicalComposer"
-import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary"
+import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary"
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin"
 
 import { Button } from "@/registry/default/ui/button"
@@ -19,7 +22,12 @@ import { ToolbarPlugin } from "@/registry/default/editor/plugins/toolbar/toolbar
 const editorConfig: InitialConfigType = {
   namespace: 'Editor',
   theme: editorTheme,
-  nodes: [],
+  nodes: [
+    HeadingNode,
+    ParagraphNode,
+    TextNode,
+    QuoteNode,
+  ],
   onError: (error: Error) => {
     console.error(error)
   },
