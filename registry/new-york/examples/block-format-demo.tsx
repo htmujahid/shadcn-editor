@@ -5,7 +5,6 @@ import { useState } from "react"
 import { ParagraphNode, TextNode } from "lexical"
 import { HeadingNode, QuoteNode } from "@lexical/rich-text"
 import { ListNode, ListItemNode } from "@lexical/list"
-import { CodeNode } from "@lexical/code"
 
 import { InitialConfigType, LexicalComposer } from "@lexical/react/LexicalComposer"
 import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary"
@@ -26,7 +25,6 @@ import { FormatHeading } from "@/registry/new-york/editor/plugins/toolbar/block-
 import { FormatNumberedList } from "@/registry/new-york/editor/plugins/toolbar/block-format/format-numbered-list"
 import { FormatBulletedList } from "@/registry/new-york/editor/plugins/toolbar/block-format/format-bulleted-list"
 import { FormatCheckList } from "@/registry/new-york/editor/plugins/toolbar/block-format/format-check-list"
-import { FormatCodeBlock } from "@/registry/new-york/editor/plugins/toolbar/block-format/format-code-block"
 import { FormatQuote } from "@/registry/new-york/editor/plugins/toolbar/block-format/format-quote"
 
 const editorConfig: InitialConfigType = {
@@ -39,7 +37,6 @@ const editorConfig: InitialConfigType = {
     QuoteNode,
     ListNode,
     ListItemNode,
-    CodeNode,
   ],
   onError: (error: Error) => {
     console.error(error)
@@ -86,7 +83,6 @@ export function Plugins() {
               <FormatNumberedList />
               <FormatBulletedList />
               <FormatCheckList />
-              <FormatCodeBlock />
               <FormatQuote />
             </BlockFormatDropDown>
           </div>
