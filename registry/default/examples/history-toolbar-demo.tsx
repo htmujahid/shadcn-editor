@@ -8,7 +8,6 @@ import { HeadingNode, QuoteNode } from "@lexical/rich-text"
 import { InitialConfigType, LexicalComposer } from "@lexical/react/LexicalComposer"
 import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary"
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin"
-import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 
 import { TooltipProvider } from "@/registry/default/ui/tooltip"
 
@@ -42,13 +41,6 @@ export default function RichTextEditorDemo() {
       >
         <TooltipProvider>
           <Plugins />
-
-          <OnChangePlugin
-            ignoreSelectionChange={true}
-            onChange={(editorState) => {
-              console.log(editorState)
-            }}
-          />
         </TooltipProvider>
       </LexicalComposer>
     </div>
