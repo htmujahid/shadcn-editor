@@ -6,6 +6,7 @@
  *
  */
 import { useEffect, JSX } from 'react'
+import { createPortal } from 'react-dom'
 
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
 import type { LexicalEditor } from 'lexical'

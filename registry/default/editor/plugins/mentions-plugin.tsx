@@ -5,8 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import { useCallback, useEffect, useMemo, useState, JSX } from 'react'
 import * as React from 'react'
+import { useCallback, useEffect, useMemo, useState, JSX } from 'react'
+import { createPortal } from 'react-dom'
 
 import dynamic from 'next/dynamic'
 
@@ -18,6 +19,9 @@ import {
 } from '@lexical/react/LexicalTypeaheadMenuPlugin'
 import { TextNode } from 'lexical'
 import { CircleUserRoundIcon } from 'lucide-react'
+
+import { Command, CommandList, CommandGroup, CommandItem } from "@/registry/default/ui/command"
+
 import { $createMentionNode } from '@/registry/default/editor/nodes/mention-node'
 
 const LexicalTypeaheadMenuPlugin = dynamic(

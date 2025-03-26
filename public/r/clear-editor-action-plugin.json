@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "clear-editor-action-plugin",
+  "type": "registry:ui",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "files": [
+    {
+      "path": "editor/plugins/actions/actions-plugin.tsx",
+      "content": "export function ActionsPlugin({ children }: { children: React.ReactNode }) {\r\n  return children\r\n}\r\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/actions/actions-plugin.tsx"
+    }
+  ]
+}

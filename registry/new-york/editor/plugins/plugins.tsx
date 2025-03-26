@@ -1,4 +1,11 @@
 import { useState } from 'react'
+import {
+  CHECK_LIST,
+  ELEMENT_TRANSFORMERS,
+  MULTILINE_ELEMENT_TRANSFORMERS,
+  TEXT_FORMAT_TRANSFORMERS,
+  TEXT_MATCH_TRANSFORMERS,
+} from '@lexical/markdown'
 
 import { AutoFocusPlugin } from '@lexical/react/LexicalAutoFocusPlugin'
 import { CheckListPlugin } from '@lexical/react/LexicalCheckListPlugin'
@@ -92,8 +99,33 @@ import { TableCellResizerPlugin } from '@/registry/new-york/editor/plugins/table
 import { TableHoverActionsPlugin } from '@/registry/new-york/editor/plugins/table-hover-actions-plugin'
 import { ToolbarPlugin } from '@/registry/new-york/editor/plugins/toolbar/toolbar-plugin'
 import { TypingPerfPlugin } from '@/registry/new-york/editor/plugins/typing-pref-plugin'
-import { MARKDOWN_TRANSFORMERS } from '@/registry/new-york/editor/transformers/markdown-transformers'
 import { ContentEditable } from '@/registry/new-york/editor/editor-ui/content-editable'
+
+import { AlignmentPickerPlugin } from '@/registry/new-york/editor/plugins/picker/alignment-picker-plugin'
+import { ParagraphPickerPlugin } from '@/registry/new-york/editor/plugins/picker/paragraph-picker-plugin'
+import { HeadingPickerPlugin } from '@/registry/new-york/editor/plugins/picker/heading-picker-plugin'
+import { DynamicTablePickerPlugin, TablePickerPlugin } from '@/registry/new-york/editor/plugins/picker/table-picker-plugin'
+import { EmbedsPickerPlugin } from '@/registry/new-york/editor/plugins/picker/embeds-picker-plugin'
+import { CheckListPickerPlugin } from '@/registry/new-york/editor/plugins/picker/check-list-picker-plugin'
+import { NumberedListPickerPlugin } from '@/registry/new-york/editor/plugins/picker/numbered-list-picker-plugin'
+import { BulletedListPickerPlugin } from '@/registry/new-york/editor/plugins/picker/bulleted-list-picker-plugin'
+import { QuotePickerPlugin } from '@/registry/new-york/editor/plugins/picker/quote-picker-plugin'
+import { CodePickerPlugin } from '@/registry/new-york/editor/plugins/picker/code-picker-plugin'
+import { DividerPickerPlugin } from '@/registry/new-york/editor/plugins/picker/divider-picker-plugin'
+import { PageBreakPickerPlugin } from '@/registry/new-york/editor/plugins/picker/page-break-picker-plugin'
+import { ImagePickerPlugin } from '@/registry/new-york/editor/plugins/picker/image-picker-plugin'
+import { ExcalidrawPickerPlugin } from '@/registry/new-york/editor/plugins/picker/excalidraw-picker-plugin'
+import { PollPickerPlugin } from '@/registry/new-york/editor/plugins/picker/poll-picker-plugin'
+import { EquationPickerPlugin } from '@/registry/new-york/editor/plugins/picker/equation-picker-plugin'
+import { CollapsiblePickerPlugin } from '@/registry/new-york/editor/plugins/picker/collapsible-picker-plugin'
+import { ColumnsLayoutPickerPlugin } from '@/registry/new-york/editor/plugins/picker/columns-layout-picker-plugin'
+
+import { EMOJI } from '@/registry/new-york/editor/transformers/markdown-emoji-transformer'
+import { EQUATION } from '@/registry/new-york/editor/transformers/markdown-equation-transofrmer'
+import { HR } from '@/registry/new-york/editor/transformers/markdown-hr-transformer'
+import { IMAGE } from '@/registry/new-york/editor/transformers/markdown-image-transformer'
+import { TABLE } from '@/registry/new-york/editor/transformers/markdown-table-transformer'
+import { TWEET } from '@/registry/new-york/editor/transformers/markdown-tweet-transformer'
 
 const maxLength = 500
 
@@ -211,14 +243,58 @@ export function Plugins({ }) {
         <CodeHighlightPlugin />
         <CodeActionMenuPlugin anchorElem={floatingAnchorElem} />
 
-        <MarkdownShortcutPlugin transformers={MARKDOWN_TRANSFORMERS} />
+        <MarkdownShortcutPlugin
+          transformers={[
+            TABLE,
+            HR,
+            IMAGE,
+            EMOJI,
+            EQUATION,
+            TWEET,
+            CHECK_LIST,
+            ...ELEMENT_TRANSFORMERS,
+            ...MULTILINE_ELEMENT_TRANSFORMERS,
+            ...TEXT_FORMAT_TRANSFORMERS,
+            ...TEXT_MATCH_TRANSFORMERS,
+          ]}
+        />
         <TypingPerfPlugin />
         <TabFocusPlugin />
         <AutocompletePlugin />
         <AutoLinkPlugin />
         <LinkPlugin />
 
-        <ComponentPickerMenuPlugin />
+        <ComponentPickerMenuPlugin
+          baseOptions={[
+            ParagraphPickerPlugin(),
+            HeadingPickerPlugin({ n: 1 }),
+            HeadingPickerPlugin({ n: 2 }),
+            HeadingPickerPlugin({ n: 3 }),
+            TablePickerPlugin(),
+            CheckListPickerPlugin(),
+            NumberedListPickerPlugin(),
+            BulletedListPickerPlugin(),
+            QuotePickerPlugin(),
+            CodePickerPlugin(),
+            DividerPickerPlugin(),
+            PageBreakPickerPlugin(),
+            ExcalidrawPickerPlugin(),
+            PollPickerPlugin(),
+            EmbedsPickerPlugin({ embed: 'figma' }),
+            EmbedsPickerPlugin({ embed: 'tweet' }),
+            EmbedsPickerPlugin({ embed: 'youtube-video' }),
+            EquationPickerPlugin(),
+            ImagePickerPlugin(),
+            CollapsiblePickerPlugin(),
+            ColumnsLayoutPickerPlugin(),
+            AlignmentPickerPlugin({ alignment: 'left' }),
+            AlignmentPickerPlugin({ alignment: 'center' }),
+            AlignmentPickerPlugin({ alignment: 'right' }),
+            AlignmentPickerPlugin({ alignment: 'justify' }),
+          ]}
+          dynamicOptionsFn={DynamicTablePickerPlugin}
+        />
+
         <ContextMenuPlugin />
         <DragDropPastePlugin />
         <EmojiPickerPlugin />
@@ -241,7 +317,22 @@ export function Plugins({ }) {
             <SpeechToTextPlugin />
             <ShareContentPlugin />
             <ImportExportPlugin />
-            <MarkdownTogglePlugin shouldPreserveNewLinesInMarkdown={true} />
+            <MarkdownTogglePlugin 
+              shouldPreserveNewLinesInMarkdown={true}
+              transformers={[
+                TABLE,
+                HR,
+                IMAGE,
+                EMOJI,
+                EQUATION,
+                TWEET,
+                CHECK_LIST,
+                ...ELEMENT_TRANSFORMERS,
+                ...MULTILINE_ELEMENT_TRANSFORMERS,
+                ...TEXT_FORMAT_TRANSFORMERS,
+                ...TEXT_MATCH_TRANSFORMERS,
+              ]}  
+            />
             <EditModeTogglePlugin />
             <>
               <ClearEditorActionPlugin />

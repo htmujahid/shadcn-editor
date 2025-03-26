@@ -20,21 +20,6 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
-    "actions-plugin": {
-      name: "actions-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: ["https://shadcn-editor.vercel.app/r/editor.json"],
-      files: [{
-        path: "registry/new-york/editor/plugins/actions/actions-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/actions/actions-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/actions-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
     "toolbar-plugin": {
       name: "toolbar-plugin",
       description: "",
@@ -117,6 +102,254 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/block-format-toolbar-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "font-family-toolbar-plugin": {
+      name: "font-family-toolbar-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/editor/plugins/toolbar/font-family-toolbar-plugin",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/font-family-toolbar-plugin"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/font-family-toolbar-plugin")),
+      source: "",
+      meta: undefined,
+    },
+    "font-size-toolbar-plugin": {
+      name: "font-size-toolbar-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/editor/plugins/toolbar/font-size-toolbar-plugin",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/font-size-toolbar-plugin"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/font-size-toolbar-plugin")),
+      source: "",
+      meta: undefined,
+    },
+    "font-format-toolbar-plugin": {
+      name: "font-format-toolbar-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/editor/plugins/toolbar/font-format-toolbar-plugin",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/font-format-toolbar-plugin"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/font-format-toolbar-plugin")),
+      source: "",
+      meta: undefined,
+    },
+    "subsuper-toolbar-plugin": {
+      name: "subsuper-toolbar-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle-group","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/editor/plugins/toolbar/subsuper-toolbar-plugin",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/subsuper-toolbar-plugin"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/subsuper-toolbar-plugin")),
+      source: "",
+      meta: undefined,
+    },
+    "font-color-toolbar-plugin": {
+      name: "font-color-toolbar-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/editor/plugins/toolbar/font-color-toolbar-plugin",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/font-color-toolbar-plugin"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/font-background-toolbar-plugin",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/font-background-toolbar-plugin"
+      },{
+        path: "registry/new-york/editor/editor-ui/colorpicker",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/colorpicker"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/font-color-toolbar-plugin")),
+      source: "",
+      meta: undefined,
+    },
+    "element-format-toolbar-plugin": {
+      name: "element-format-toolbar-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator","toggle-group","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/editor/plugins/toolbar/element-format-toolbar-plugin",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/element-format-toolbar-plugin"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/element-format-toolbar-plugin")),
+      source: "",
+      meta: undefined,
+    },
+    "actions-plugin": {
+      name: "actions-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/editor.json"],
+      files: [{
+        path: "registry/new-york/editor/plugins/actions/actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/actions-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/actions-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "max-length-plugin": {
+      name: "max-length-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/actions/actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/actions-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/actions-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "counter-character-plugin": {
+      name: "counter-character-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/actions/actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/actions-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/actions-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "speech-to-text-plugin": {
+      name: "speech-to-text-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/actions/actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/actions-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/actions-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "share-content-plugin": {
+      name: "share-content-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/actions/actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/actions-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/actions-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "import-export-plugin": {
+      name: "import-export-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/actions/actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/actions-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/actions-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "markdown-toggle-plugin": {
+      name: "markdown-toggle-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/actions/actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/actions-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/actions-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "clear-editor-action-plugin": {
+      name: "clear-editor-action-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/actions/actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/actions-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/actions-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "edit-mode-toggle-plugin": {
+      name: "edit-mode-toggle-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/actions/actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/actions-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/actions-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "tree-view-plugin": {
+      name: "tree-view-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/actions/actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/actions-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/actions-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -360,6 +593,82 @@ export const Index: Record<string, any> = {
         path: "registry/new-york/editor/plugins/embeds/youtube-plugin.tsx",
         type: "registry:component",
         target: "components/editor/plugins/embeds/youtube-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/picker/alignment-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/alignment-picker-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/picker/bulleted-list-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/bulleted-list-picker-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/picker/check-list-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/check-list-picker-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/picker/code-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/code-picker-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/picker/collapsible-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/collapsible-picker-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/picker/columns-layout-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/columns-layout-picker-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/picker/component-picker-option.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/component-picker-option.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/picker/divider-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/divider-picker-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/picker/embeds-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/embeds-picker-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/picker/equation-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/equation-picker-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/picker/excalidraw-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/excalidraw-picker-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/picker/heading-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/heading-picker-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/picker/image-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/image-picker-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/picker/numbered-list-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/numbered-list-picker-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/picker/page-break-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/page-break-picker-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/picker/paragraph-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/paragraph-picker-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/picker/poll-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/poll-picker-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/picker/quote-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/quote-picker-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/picker/table-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/table-picker-plugin.tsx"
       },{
         path: "registry/new-york/editor/plugins/toolbar/block-format/block-format-data.tsx",
         type: "registry:component",
@@ -673,10 +982,6 @@ export const Index: Record<string, any> = {
         type: "registry:file",
         target: "components/editor/transformers/markdown-table-transformer.ts"
       },{
-        path: "registry/new-york/editor/transformers/markdown-transformers.ts",
-        type: "registry:file",
-        target: "components/editor/transformers/markdown-transformers.ts"
-      },{
         path: "registry/new-york/editor/transformers/markdown-tweet-transformer.ts",
         type: "registry:file",
         target: "components/editor/transformers/markdown-tweet-transformer.ts"
@@ -794,78 +1099,753 @@ export const Index: Record<string, any> = {
       source: "__registry__/new-york/blocks/editor-x/page.tsx",
       meta: undefined,
     },
-    "rich-text-editor-demo": {
-      name: "rich-text-editor-demo",
+    "rich-text-editor-plugin-demo": {
+      name: "rich-text-editor-plugin-demo",
       description: "",
       type: "registry:example",
       registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
       files: [{
-        path: "registry/new-york/examples/rich-text-editor-demo.tsx",
+        path: "registry/new-york/examples/rich-text-editor-plugin-demo.tsx",
         type: "registry:example",
         target: ""
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/examples/rich-text-editor-demo.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/examples/rich-text-editor-plugin-demo.tsx")),
       source: "",
       meta: undefined,
     },
-    "actions-demo": {
-      name: "actions-demo",
+    "actions-plugin-demo": {
+      name: "actions-plugin-demo",
       description: "",
       type: "registry:example",
       registryDependencies: ["https://shadcn-editor.vercel.app/r/actions-plugin.json","button"],
       files: [{
-        path: "registry/new-york/examples/actions-demo.tsx",
+        path: "registry/new-york/examples/actions-plugin-demo.tsx",
         type: "registry:example",
         target: ""
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/examples/actions-demo.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/examples/actions-plugin-demo.tsx")),
       source: "",
       meta: undefined,
     },
-    "toolbar-demo": {
-      name: "toolbar-demo",
+    "autocomplete-plugin-demo": {
+      name: "autocomplete-plugin-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["https://shadcn-editor.vercel.app/r/toolbar-plugin.json","button"],
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/autocomplete-plugin.json","button"],
       files: [{
-        path: "registry/new-york/examples/toolbar-demo.tsx",
+        path: "registry/new-york/examples/autocomplete-plugin-demo.tsx",
         type: "registry:example",
         target: ""
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/examples/toolbar-demo.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/examples/autocomplete-plugin-demo.tsx")),
       source: "",
       meta: undefined,
     },
-    "history-toolbar-demo": {
-      name: "history-toolbar-demo",
+    "auto-embed-plugin-demo": {
+      name: "auto-embed-plugin-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["https://shadcn-editor.vercel.app/r/history-toolbar-plugin.json","button"],
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/auto-embed-plugin.json"],
       files: [{
-        path: "registry/new-york/examples/history-toolbar-demo.tsx",
+        path: "registry/new-york/examples/auto-embed-plugin-demo.tsx",
         type: "registry:example",
         target: ""
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/examples/history-toolbar-demo.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/examples/auto-embed-plugin-demo.tsx")),
       source: "",
       meta: undefined,
     },
-    "block-format-demo": {
-      name: "block-format-demo",
+    "auto-focus-plugin-demo": {
+      name: "auto-focus-plugin-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["https://shadcn-editor.vercel.app/r/block-format-plugin.json"],
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/auto-focus-plugin.json"],
       files: [{
-        path: "registry/new-york/examples/block-format-demo.tsx",
+        path: "registry/new-york/examples/auto-focus-plugin-demo.tsx",
         type: "registry:example",
         target: ""
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/examples/block-format-demo.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/examples/auto-focus-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "block-format-toolbar-plugin-demo": {
+      name: "block-format-toolbar-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/block-format-toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/block-format-toolbar-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/block-format-toolbar-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "clear-editor-plugin-demo": {
+      name: "clear-editor-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/clear-editor-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/clear-editor-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/clear-editor-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "clear-formatting-toolbar-plugin-demo": {
+      name: "clear-formatting-toolbar-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/clear-formatting-toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/clear-formatting-toolbar-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/clear-formatting-toolbar-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "code-plugin-demo": {
+      name: "code-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/code-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/code-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/code-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "collapsible-plugin-demo": {
+      name: "collapsible-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/collapsible-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/collapsible-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/collapsible-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "component-picker-menu-plugin-demo": {
+      name: "component-picker-menu-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/component-picker-menu-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/component-picker-menu-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/component-picker-menu-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "context-menu-plugin-demo": {
+      name: "context-menu-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/context-menu-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/context-menu-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/context-menu-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "counter-character-plugin-demo": {
+      name: "counter-character-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/counter-character-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/counter-character-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/counter-character-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "drag-drop-paste-plugin-demo": {
+      name: "drag-drop-paste-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/drag-drop-paste-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/drag-drop-paste-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/drag-drop-paste-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "draggable-block-plugin-demo": {
+      name: "draggable-block-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/draggable-block-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/draggable-block-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/draggable-block-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "edit-mode-toggle-plugin-demo": {
+      name: "edit-mode-toggle-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/edit-mode-toggle-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/edit-mode-toggle-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/edit-mode-toggle-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "element-format-toolbar-plugin-demo": {
+      name: "element-format-toolbar-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/element-format-toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/element-format-toolbar-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/element-format-toolbar-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "embeds-plugin-demo": {
+      name: "embeds-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/embeds-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/embeds-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/embeds-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "emoji-plugin-demo": {
+      name: "emoji-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/emoji-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/emoji-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/emoji-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "equation-plugin-demo": {
+      name: "equation-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/equation-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/equation-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/equation-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "excalidraw-plugin-demo": {
+      name: "excalidraw-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/excalidraw-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/excalidraw-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/excalidraw-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "floating-text-format-plugin-demo": {
+      name: "floating-text-format-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/floating-text-format-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/floating-text-format-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/floating-text-format-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "font-color-toolbar-plugin-demo": {
+      name: "font-color-toolbar-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/font-color-toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/font-color-toolbar-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/font-color-toolbar-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "font-family-toolbar-plugin-demo": {
+      name: "font-family-toolbar-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/font-family-toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/font-family-toolbar-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/font-family-toolbar-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "font-format-toolbar-plugin-demo": {
+      name: "font-format-toolbar-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/font-format-toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/font-format-toolbar-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/font-format-toolbar-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "font-size-toolbar-plugin-demo": {
+      name: "font-size-toolbar-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/font-size-toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/font-size-toolbar-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/font-size-toolbar-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "hashtag-plugin-demo": {
+      name: "hashtag-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/hashtag-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/hashtag-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/hashtag-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "history-toolbar-plugin-demo": {
+      name: "history-toolbar-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/history-toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/history-toolbar-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/history-toolbar-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "horizontal-rule-plugin-demo": {
+      name: "horizontal-rule-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/horizontal-rule-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/horizontal-rule-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/horizontal-rule-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "image-plugin-demo": {
+      name: "image-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/image-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/image-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/image-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "import-export-plugin-demo": {
+      name: "import-export-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/import-export-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/import-export-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/import-export-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "inline-image-plugin-demo": {
+      name: "inline-image-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/inline-image-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/inline-image-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/inline-image-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "keywords-plugin-demo": {
+      name: "keywords-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/keywords-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/keywords-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/keywords-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "layout-plugin-demo": {
+      name: "layout-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/layout-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/layout-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/layout-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "link-plugin-demo": {
+      name: "link-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/link-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/link-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/link-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "link-toolbar-plugin-demo": {
+      name: "link-toolbar-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/link-toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/link-toolbar-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/link-toolbar-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "markdown-plugin-demo": {
+      name: "markdown-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/markdown-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/markdown-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/markdown-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "markdown-toggle-plugin-demo": {
+      name: "markdown-toggle-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/markdown-toggle-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/markdown-toggle-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/markdown-toggle-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "max-length-plugin-demo": {
+      name: "max-length-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/max-length-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/max-length-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/max-length-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "mention-plugin-demo": {
+      name: "mention-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/mention-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/mention-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/mention-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "page-break-plugin-demo": {
+      name: "page-break-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/page-break-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/page-break-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/page-break-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "poll-plugin-demo": {
+      name: "poll-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/poll-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/poll-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/poll-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "share-content-plugin-demo": {
+      name: "share-content-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/share-content-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/share-content-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/share-content-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "speech-to-text-plugin-demo": {
+      name: "speech-to-text-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/speech-to-text-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/speech-to-text-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/speech-to-text-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "subsuper-toolbar-plugin-demo": {
+      name: "subsuper-toolbar-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/subsuper-toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/subsuper-toolbar-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/subsuper-toolbar-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "tab-focus-plugin-demo": {
+      name: "tab-focus-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/tab-focus-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/tab-focus-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/tab-focus-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "table-plugin-demo": {
+      name: "table-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/table-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/table-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/table-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "toolbar-plugin-demo": {
+      name: "toolbar-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/toolbar-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/toolbar-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "tree-view-plugin-demo": {
+      name: "tree-view-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/tree-view-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/tree-view-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/tree-view-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "typing-pref-plugin-demo": {
+      name: "typing-pref-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/typing-pref-plugin.json"],
+      files: [{
+        path: "registry/new-york/examples/typing-pref-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/typing-pref-plugin-demo.tsx")),
       source: "",
       meta: undefined,
     },
@@ -882,21 +1862,6 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/editor/editor-ui/content-editable.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "actions-plugin": {
-      name: "actions-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: ["https://shadcn-editor.vercel.app/r/editor.json"],
-      files: [{
-        path: "registry/default/editor/plugins/actions/actions-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/actions/actions-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/actions-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -982,6 +1947,254 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/block-format-toolbar-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "font-family-toolbar-plugin": {
+      name: "font-family-toolbar-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/editor/plugins/toolbar/font-family-toolbar-plugin",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/font-family-toolbar-plugin"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/font-family-toolbar-plugin")),
+      source: "",
+      meta: undefined,
+    },
+    "font-size-toolbar-plugin": {
+      name: "font-size-toolbar-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/editor/plugins/toolbar/font-size-toolbar-plugin",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/font-size-toolbar-plugin"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/font-size-toolbar-plugin")),
+      source: "",
+      meta: undefined,
+    },
+    "font-format-toolbar-plugin": {
+      name: "font-format-toolbar-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/editor/plugins/toolbar/font-format-toolbar-plugin",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/font-format-toolbar-plugin"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/font-format-toolbar-plugin")),
+      source: "",
+      meta: undefined,
+    },
+    "subsuper-toolbar-plugin": {
+      name: "subsuper-toolbar-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle-group","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/editor/plugins/toolbar/subsuper-toolbar-plugin",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/subsuper-toolbar-plugin"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/subsuper-toolbar-plugin")),
+      source: "",
+      meta: undefined,
+    },
+    "font-color-toolbar-plugin": {
+      name: "font-color-toolbar-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/editor/plugins/toolbar/font-color-toolbar-plugin",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/font-color-toolbar-plugin"
+      },{
+        path: "registry/default/editor/plugins/toolbar/font-background-toolbar-plugin",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/font-background-toolbar-plugin"
+      },{
+        path: "registry/default/editor/editor-ui/colorpicker",
+        type: "registry:ui",
+        target: "components/editor/editor-ui/colorpicker"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/font-color-toolbar-plugin")),
+      source: "",
+      meta: undefined,
+    },
+    "element-format-toolbar-plugin": {
+      name: "element-format-toolbar-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator","toggle-group","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/editor/plugins/toolbar/element-format-toolbar-plugin",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/element-format-toolbar-plugin"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/element-format-toolbar-plugin")),
+      source: "",
+      meta: undefined,
+    },
+    "actions-plugin": {
+      name: "actions-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/editor.json"],
+      files: [{
+        path: "registry/default/editor/plugins/actions/actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/actions-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/actions-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "max-length-plugin": {
+      name: "max-length-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/actions/actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/actions-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/actions-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "counter-character-plugin": {
+      name: "counter-character-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/actions/actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/actions-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/actions-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "speech-to-text-plugin": {
+      name: "speech-to-text-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/actions/actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/actions-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/actions-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "share-content-plugin": {
+      name: "share-content-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/actions/actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/actions-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/actions-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "import-export-plugin": {
+      name: "import-export-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/actions/actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/actions-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/actions-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "markdown-toggle-plugin": {
+      name: "markdown-toggle-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/actions/actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/actions-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/actions-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "clear-editor-action-plugin": {
+      name: "clear-editor-action-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/actions/actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/actions-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/actions-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "edit-mode-toggle-plugin": {
+      name: "edit-mode-toggle-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/actions/actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/actions-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/actions-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "tree-view-plugin": {
+      name: "tree-view-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/actions/actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/actions/actions-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/actions-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -1225,6 +2438,82 @@ export const Index: Record<string, any> = {
         path: "registry/default/editor/plugins/embeds/youtube-plugin.tsx",
         type: "registry:component",
         target: "components/editor/plugins/embeds/youtube-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/picker/alignment-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/alignment-picker-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/picker/bulleted-list-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/bulleted-list-picker-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/picker/check-list-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/check-list-picker-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/picker/code-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/code-picker-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/picker/collapsible-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/collapsible-picker-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/picker/columns-layout-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/columns-layout-picker-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/picker/component-picker-option.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/component-picker-option.tsx"
+      },{
+        path: "registry/default/editor/plugins/picker/divider-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/divider-picker-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/picker/embeds-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/embeds-picker-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/picker/equation-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/equation-picker-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/picker/excalidraw-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/excalidraw-picker-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/picker/heading-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/heading-picker-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/picker/image-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/image-picker-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/picker/numbered-list-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/numbered-list-picker-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/picker/page-break-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/page-break-picker-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/picker/paragraph-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/paragraph-picker-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/picker/poll-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/poll-picker-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/picker/quote-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/quote-picker-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/picker/table-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/table-picker-plugin.tsx"
       },{
         path: "registry/default/editor/plugins/toolbar/block-format/block-format-data.tsx",
         type: "registry:component",
@@ -1538,10 +2827,6 @@ export const Index: Record<string, any> = {
         type: "registry:file",
         target: "components/editor/transformers/markdown-table-transformer.ts"
       },{
-        path: "registry/default/editor/transformers/markdown-transformers.ts",
-        type: "registry:file",
-        target: "components/editor/transformers/markdown-transformers.ts"
-      },{
         path: "registry/default/editor/transformers/markdown-tweet-transformer.ts",
         type: "registry:file",
         target: "components/editor/transformers/markdown-tweet-transformer.ts"
@@ -1659,78 +2944,753 @@ export const Index: Record<string, any> = {
       source: "__registry__/default/blocks/editor-x/page.tsx",
       meta: undefined,
     },
-    "rich-text-editor-demo": {
-      name: "rich-text-editor-demo",
+    "rich-text-editor-plugin-demo": {
+      name: "rich-text-editor-plugin-demo",
       description: "",
       type: "registry:example",
       registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
       files: [{
-        path: "registry/default/examples/rich-text-editor-demo.tsx",
+        path: "registry/default/examples/rich-text-editor-plugin-demo.tsx",
         type: "registry:example",
         target: ""
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/default/examples/rich-text-editor-demo.tsx")),
+      component: React.lazy(() => import("@/registry/default/examples/rich-text-editor-plugin-demo.tsx")),
       source: "",
       meta: undefined,
     },
-    "actions-demo": {
-      name: "actions-demo",
+    "actions-plugin-demo": {
+      name: "actions-plugin-demo",
       description: "",
       type: "registry:example",
       registryDependencies: ["https://shadcn-editor.vercel.app/r/actions-plugin.json","button"],
       files: [{
-        path: "registry/default/examples/actions-demo.tsx",
+        path: "registry/default/examples/actions-plugin-demo.tsx",
         type: "registry:example",
         target: ""
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/default/examples/actions-demo.tsx")),
+      component: React.lazy(() => import("@/registry/default/examples/actions-plugin-demo.tsx")),
       source: "",
       meta: undefined,
     },
-    "toolbar-demo": {
-      name: "toolbar-demo",
+    "autocomplete-plugin-demo": {
+      name: "autocomplete-plugin-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["https://shadcn-editor.vercel.app/r/toolbar-plugin.json","button"],
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/autocomplete-plugin.json","button"],
       files: [{
-        path: "registry/default/examples/toolbar-demo.tsx",
+        path: "registry/default/examples/autocomplete-plugin-demo.tsx",
         type: "registry:example",
         target: ""
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/default/examples/toolbar-demo.tsx")),
+      component: React.lazy(() => import("@/registry/default/examples/autocomplete-plugin-demo.tsx")),
       source: "",
       meta: undefined,
     },
-    "history-toolbar-demo": {
-      name: "history-toolbar-demo",
+    "auto-embed-plugin-demo": {
+      name: "auto-embed-plugin-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["https://shadcn-editor.vercel.app/r/history-toolbar-plugin.json","button"],
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/auto-embed-plugin.json"],
       files: [{
-        path: "registry/default/examples/history-toolbar-demo.tsx",
+        path: "registry/default/examples/auto-embed-plugin-demo.tsx",
         type: "registry:example",
         target: ""
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/default/examples/history-toolbar-demo.tsx")),
+      component: React.lazy(() => import("@/registry/default/examples/auto-embed-plugin-demo.tsx")),
       source: "",
       meta: undefined,
     },
-    "block-format-demo": {
-      name: "block-format-demo",
+    "auto-focus-plugin-demo": {
+      name: "auto-focus-plugin-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["https://shadcn-editor.vercel.app/r/block-format-plugin.json"],
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/auto-focus-plugin.json"],
       files: [{
-        path: "registry/default/examples/block-format-demo.tsx",
+        path: "registry/default/examples/auto-focus-plugin-demo.tsx",
         type: "registry:example",
         target: ""
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/default/examples/block-format-demo.tsx")),
+      component: React.lazy(() => import("@/registry/default/examples/auto-focus-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "block-format-toolbar-plugin-demo": {
+      name: "block-format-toolbar-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/block-format-toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/examples/block-format-toolbar-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/block-format-toolbar-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "clear-editor-plugin-demo": {
+      name: "clear-editor-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/clear-editor-plugin.json"],
+      files: [{
+        path: "registry/default/examples/clear-editor-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/clear-editor-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "clear-formatting-toolbar-plugin-demo": {
+      name: "clear-formatting-toolbar-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/clear-formatting-toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/examples/clear-formatting-toolbar-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/clear-formatting-toolbar-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "code-plugin-demo": {
+      name: "code-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/code-plugin.json"],
+      files: [{
+        path: "registry/default/examples/code-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/code-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "collapsible-plugin-demo": {
+      name: "collapsible-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/collapsible-plugin.json"],
+      files: [{
+        path: "registry/default/examples/collapsible-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/collapsible-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "component-picker-menu-plugin-demo": {
+      name: "component-picker-menu-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/component-picker-menu-plugin.json"],
+      files: [{
+        path: "registry/default/examples/component-picker-menu-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/component-picker-menu-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "context-menu-plugin-demo": {
+      name: "context-menu-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/context-menu-plugin.json"],
+      files: [{
+        path: "registry/default/examples/context-menu-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/context-menu-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "counter-character-plugin-demo": {
+      name: "counter-character-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/counter-character-plugin.json"],
+      files: [{
+        path: "registry/default/examples/counter-character-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/counter-character-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "drag-drop-paste-plugin-demo": {
+      name: "drag-drop-paste-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/drag-drop-paste-plugin.json"],
+      files: [{
+        path: "registry/default/examples/drag-drop-paste-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/drag-drop-paste-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "draggable-block-plugin-demo": {
+      name: "draggable-block-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/draggable-block-plugin.json"],
+      files: [{
+        path: "registry/default/examples/draggable-block-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/draggable-block-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "edit-mode-toggle-plugin-demo": {
+      name: "edit-mode-toggle-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/edit-mode-toggle-plugin.json"],
+      files: [{
+        path: "registry/default/examples/edit-mode-toggle-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/edit-mode-toggle-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "element-format-toolbar-plugin-demo": {
+      name: "element-format-toolbar-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/element-format-toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/examples/element-format-toolbar-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/element-format-toolbar-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "embeds-plugin-demo": {
+      name: "embeds-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/embeds-plugin.json"],
+      files: [{
+        path: "registry/default/examples/embeds-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/embeds-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "emoji-plugin-demo": {
+      name: "emoji-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/emoji-plugin.json"],
+      files: [{
+        path: "registry/default/examples/emoji-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/emoji-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "equation-plugin-demo": {
+      name: "equation-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/equation-plugin.json"],
+      files: [{
+        path: "registry/default/examples/equation-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/equation-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "excalidraw-plugin-demo": {
+      name: "excalidraw-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/excalidraw-plugin.json"],
+      files: [{
+        path: "registry/default/examples/excalidraw-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/excalidraw-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "floating-text-format-plugin-demo": {
+      name: "floating-text-format-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/floating-text-format-plugin.json"],
+      files: [{
+        path: "registry/default/examples/floating-text-format-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/floating-text-format-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "font-color-toolbar-plugin-demo": {
+      name: "font-color-toolbar-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/font-color-toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/examples/font-color-toolbar-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/font-color-toolbar-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "font-family-toolbar-plugin-demo": {
+      name: "font-family-toolbar-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/font-family-toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/examples/font-family-toolbar-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/font-family-toolbar-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "font-format-toolbar-plugin-demo": {
+      name: "font-format-toolbar-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/font-format-toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/examples/font-format-toolbar-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/font-format-toolbar-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "font-size-toolbar-plugin-demo": {
+      name: "font-size-toolbar-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/font-size-toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/examples/font-size-toolbar-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/font-size-toolbar-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "hashtag-plugin-demo": {
+      name: "hashtag-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/hashtag-plugin.json"],
+      files: [{
+        path: "registry/default/examples/hashtag-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/hashtag-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "history-toolbar-plugin-demo": {
+      name: "history-toolbar-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/history-toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/examples/history-toolbar-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/history-toolbar-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "horizontal-rule-plugin-demo": {
+      name: "horizontal-rule-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/horizontal-rule-plugin.json"],
+      files: [{
+        path: "registry/default/examples/horizontal-rule-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/horizontal-rule-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "image-plugin-demo": {
+      name: "image-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/image-plugin.json"],
+      files: [{
+        path: "registry/default/examples/image-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/image-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "import-export-plugin-demo": {
+      name: "import-export-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/import-export-plugin.json"],
+      files: [{
+        path: "registry/default/examples/import-export-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/import-export-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "inline-image-plugin-demo": {
+      name: "inline-image-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/inline-image-plugin.json"],
+      files: [{
+        path: "registry/default/examples/inline-image-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/inline-image-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "keywords-plugin-demo": {
+      name: "keywords-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/keywords-plugin.json"],
+      files: [{
+        path: "registry/default/examples/keywords-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/keywords-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "layout-plugin-demo": {
+      name: "layout-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/layout-plugin.json"],
+      files: [{
+        path: "registry/default/examples/layout-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/layout-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "link-plugin-demo": {
+      name: "link-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/link-plugin.json"],
+      files: [{
+        path: "registry/default/examples/link-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/link-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "link-toolbar-plugin-demo": {
+      name: "link-toolbar-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/link-toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/examples/link-toolbar-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/link-toolbar-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "markdown-plugin-demo": {
+      name: "markdown-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/markdown-plugin.json"],
+      files: [{
+        path: "registry/default/examples/markdown-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/markdown-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "markdown-toggle-plugin-demo": {
+      name: "markdown-toggle-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/markdown-toggle-plugin.json"],
+      files: [{
+        path: "registry/default/examples/markdown-toggle-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/markdown-toggle-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "max-length-plugin-demo": {
+      name: "max-length-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/max-length-plugin.json"],
+      files: [{
+        path: "registry/default/examples/max-length-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/max-length-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "mention-plugin-demo": {
+      name: "mention-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/mention-plugin.json"],
+      files: [{
+        path: "registry/default/examples/mention-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/mention-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "page-break-plugin-demo": {
+      name: "page-break-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/page-break-plugin.json"],
+      files: [{
+        path: "registry/default/examples/page-break-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/page-break-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "poll-plugin-demo": {
+      name: "poll-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/poll-plugin.json"],
+      files: [{
+        path: "registry/default/examples/poll-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/poll-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "share-content-plugin-demo": {
+      name: "share-content-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/share-content-plugin.json"],
+      files: [{
+        path: "registry/default/examples/share-content-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/share-content-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "speech-to-text-plugin-demo": {
+      name: "speech-to-text-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/speech-to-text-plugin.json"],
+      files: [{
+        path: "registry/default/examples/speech-to-text-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/speech-to-text-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "subsuper-toolbar-plugin-demo": {
+      name: "subsuper-toolbar-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/subsuper-toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/examples/subsuper-toolbar-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/subsuper-toolbar-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "tab-focus-plugin-demo": {
+      name: "tab-focus-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/tab-focus-plugin.json"],
+      files: [{
+        path: "registry/default/examples/tab-focus-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/tab-focus-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "table-plugin-demo": {
+      name: "table-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/table-plugin.json"],
+      files: [{
+        path: "registry/default/examples/table-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/table-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "toolbar-plugin-demo": {
+      name: "toolbar-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/examples/toolbar-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/toolbar-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "tree-view-plugin-demo": {
+      name: "tree-view-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/tree-view-plugin.json"],
+      files: [{
+        path: "registry/default/examples/tree-view-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/tree-view-plugin-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "typing-pref-plugin-demo": {
+      name: "typing-pref-plugin-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/typing-pref-plugin.json"],
+      files: [{
+        path: "registry/default/examples/typing-pref-plugin-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/typing-pref-plugin-demo.tsx")),
       source: "",
       meta: undefined,
     },

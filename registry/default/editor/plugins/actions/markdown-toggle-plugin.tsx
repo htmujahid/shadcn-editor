@@ -5,6 +5,7 @@ import { $createCodeNode } from '@lexical/code'
 import {
   $convertFromMarkdownString,
   $convertToMarkdownString,
+  Transformer,
 } from '@lexical/markdown'
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
 import { $createTextNode } from 'lexical'
@@ -13,12 +14,12 @@ import { FileTextIcon } from 'lucide-react'
 
 import { Button } from '@/registry/default/ui/button'
 
-import { MARKDOWN_TRANSFORMERS } from '@/registry/default/editor/transformers/markdown-transformers'
-
 export function MarkdownTogglePlugin({
   shouldPreserveNewLinesInMarkdown,
+  transformers,
 }: {
   shouldPreserveNewLinesInMarkdown: boolean
+  transformers: Array<Transformer>
 }) {
   const [editor] = useLexicalComposerContext()
 
@@ -29,13 +30,13 @@ export function MarkdownTogglePlugin({
       if ($isCodeNode(firstChild) && firstChild.getLanguage() === 'markdown') {
         $convertFromMarkdownString(
           firstChild.getTextContent(),
-          MARKDOWN_TRANSFORMERS,
+          transformers,
           undefined, // node
           shouldPreserveNewLinesInMarkdown
         )
       } else {
         const markdown = $convertToMarkdownString(
-          MARKDOWN_TRANSFORMERS,
+          transformers,
           undefined, //node
           shouldPreserveNewLinesInMarkdown
         )

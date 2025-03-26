@@ -1,0 +1,53 @@
+---
+title: Tab Focus
+description: A tab focus plugin.
+component: true
+links:
+  doc: https://lexical.dev/docs/packages/lexical-rich-text
+  api: https://lexical.dev/docs/api/modules/lexical_rich_text
+---
+
+<ComponentPreview
+  name="tab-focus-plugin-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="A tab focus plugin"
+/>
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://shadcn-editor.vercel.app/r/tab-focus-plugin.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @lexical/rich-text
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="tab-focus-plugin" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>

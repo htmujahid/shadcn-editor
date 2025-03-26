@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "auto-focus-plugin-demo",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "https://shadcn-editor.vercel.app/r/auto-focus-plugin.json"
+  ],
+  "files": [
+    {
+      "path": "examples/auto-focus-plugin-demo.tsx",
+      "content": "'use client'\r\n\r\nimport { useState } from \"react\"\r\n\r\nimport { AutoFocusPlugin } from \"@lexical/react/LexicalAutoFocusPlugin\"\r\nimport { InitialConfigType, LexicalComposer } from \"@lexical/react/LexicalComposer\"\r\nimport { LexicalErrorBoundary } from \"@lexical/react/LexicalErrorBoundary\"\r\nimport { RichTextPlugin } from \"@lexical/react/LexicalRichTextPlugin\"\r\n\r\nimport { TooltipProvider } from \"@/registry/default/ui/tooltip\"\r\n\r\nimport { editorTheme } from \"@/registry/default/editor/themes/editor-theme\"\r\nimport { ContentEditable } from \"@/registry/default/editor/editor-ui/content-editable\"\r\n\r\nconst editorConfig: InitialConfigType = {\r\n  namespace: 'Editor',\r\n  theme: editorTheme,\r\n  nodes: [],\r\n  onError: (error: Error) => {\r\n    console.error(error)\r\n  },\r\n}\r\n\r\nexport default function RichTextEditorDemo() {\r\n  return (\r\n    <div className=\"w-full overflow-hidden rounded-lg border bg-background shadow\">\r\n      <LexicalComposer\r\n        initialConfig={{\r\n          ...editorConfig,\r\n        }}\r\n      >\r\n        <TooltipProvider>\r\n          <Plugins />\r\n        </TooltipProvider>\r\n      </LexicalComposer>\r\n    </div>\r\n  )\r\n}\r\n\r\nconst placeholder = 'Start typing...'\r\n\r\nexport function Plugins() {\r\n  const [floatingAnchorElem, setFloatingAnchorElem] =\r\n    useState<HTMLDivElement | null>(null)\r\n\r\n  const onRef = (_floatingAnchorElem: HTMLDivElement) => {\r\n    if (_floatingAnchorElem !== null) {\r\n      setFloatingAnchorElem(_floatingAnchorElem)\r\n    }\r\n  }\r\n\r\n  return (\r\n    <div className=\"relative\">\r\n      {/* toolbar plugins */}\r\n\r\n      <div className=\"relative\">\r\n        <RichTextPlugin\r\n          contentEditable={\r\n            <div className=\"\">\r\n              <div className=\"\" ref={onRef}>\r\n                <ContentEditable placeholder={placeholder} className=\"ContentEditable__root relative block min-h-72 overflow-auto min-h-full px-8 py-4 focus:outline-none h-72\" />\r\n              </div>\r\n            </div>\r\n          }\r\n          ErrorBoundary={LexicalErrorBoundary}\r\n        />\r\n        <AutoFocusPlugin />\r\n        {/* rest of the plugins */}\r\n      </div>\r\n    </div>\r\n  )\r\n}\r\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

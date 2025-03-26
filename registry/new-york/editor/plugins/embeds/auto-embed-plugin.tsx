@@ -39,7 +39,7 @@ import { INSERT_FIGMA_COMMAND } from '@/registry/new-york/editor/plugins/embeds/
 import { INSERT_TWEET_COMMAND } from '@/registry/new-york/editor/plugins/embeds/twitter-plugin'
 import { INSERT_YOUTUBE_COMMAND } from '@/registry/new-york/editor/plugins/embeds/youtube-plugin'
 
-interface PlaygroundEmbedConfig extends EmbedConfig {
+export interface CustomEmbedConfig extends EmbedConfig {
   // Human readable name of the embeded content e.g. Tweet or Google Map.
   contentName: string
 
@@ -56,7 +56,7 @@ interface PlaygroundEmbedConfig extends EmbedConfig {
   description?: string
 }
 
-export const YoutubeEmbedConfig: PlaygroundEmbedConfig = {
+export const YoutubeEmbedConfig: CustomEmbedConfig = {
   contentName: 'Youtube Video',
 
   exampleUrl: 'https://www.youtube.com/watch?v=jNQXAC9IVRw',
@@ -90,7 +90,7 @@ export const YoutubeEmbedConfig: PlaygroundEmbedConfig = {
   type: 'youtube-video',
 }
 
-export const TwitterEmbedConfig: PlaygroundEmbedConfig = {
+export const TwitterEmbedConfig: CustomEmbedConfig = {
   // e.g. Tweet or Google Map.
   contentName: 'Tweet',
 
@@ -125,7 +125,7 @@ export const TwitterEmbedConfig: PlaygroundEmbedConfig = {
   type: 'tweet',
 }
 
-export const FigmaEmbedConfig: PlaygroundEmbedConfig = {
+export const FigmaEmbedConfig: CustomEmbedConfig = {
   contentName: 'Figma Document',
 
   exampleUrl: 'https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File',
@@ -178,7 +178,7 @@ export function AutoEmbedDialog({
   embedConfig,
   onClose,
 }: {
-  embedConfig: PlaygroundEmbedConfig
+  embedConfig: CustomEmbedConfig
   onClose: () => void
 }): JSX.Element {
   const [text, setText] = useState('')
@@ -240,14 +240,14 @@ export function AutoEmbedDialog({
 export function AutoEmbedPlugin(): JSX.Element {
   const [modal, showModal] = useEditorModal()
 
-  const openEmbedModal = (embedConfig: PlaygroundEmbedConfig) => {
+  const openEmbedModal = (embedConfig: CustomEmbedConfig) => {
     showModal(`Embed ${embedConfig.contentName}`, (onClose) => (
       <AutoEmbedDialog embedConfig={embedConfig} onClose={onClose} />
     ))
   }
 
   const getMenuOptions = (
-    activeEmbedConfig: PlaygroundEmbedConfig,
+    activeEmbedConfig: CustomEmbedConfig,
     embedFn: () => void,
     dismissFn: () => void
   ) => {
@@ -264,7 +264,7 @@ export function AutoEmbedPlugin(): JSX.Element {
   return (
     <>
       {modal}
-      <LexicalAutoEmbedPlugin<PlaygroundEmbedConfig>
+      <LexicalAutoEmbedPlugin<CustomEmbedConfig>
         embedConfigs={EmbedConfigs}
         onOpenEmbedModalForConfig={openEmbedModal}
         getMenuOptions={getMenuOptions}

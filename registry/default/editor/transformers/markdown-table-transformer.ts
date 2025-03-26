@@ -1,7 +1,13 @@
+import { $isParagraphNode, $isTextNode, LexicalNode } from 'lexical'
 import {
   $convertFromMarkdownString,
   $convertToMarkdownString,
   ElementTransformer,
+  CHECK_LIST,
+  ELEMENT_TRANSFORMERS,
+  MULTILINE_ELEMENT_TRANSFORMERS,
+  TEXT_FORMAT_TRANSFORMERS,
+  TEXT_MATCH_TRANSFORMERS,
 } from '@lexical/markdown'
 import {
   $createTableCellNode,
@@ -15,13 +21,29 @@ import {
   TableNode,
   TableRowNode,
 } from '@lexical/table'
-import { $isParagraphNode, $isTextNode, LexicalNode } from 'lexical'
 
-import { MARKDOWN_TRANSFORMERS } from '@/registry/default/editor/transformers/markdown-transformers'
+import { EMOJI } from '@/registry/default/editor/transformers/markdown-emoji-transformer'
+import { EQUATION } from '@/registry/default/editor/transformers/markdown-equation-transofrmer'
+import { HR } from '@/registry/default/editor/transformers/markdown-hr-transformer'
+import { IMAGE } from '@/registry/default/editor/transformers/markdown-image-transformer'
+import { TWEET } from '@/registry/default/editor/transformers/markdown-tweet-transformer'
 
 // Very primitive table setup
 const TABLE_ROW_REG_EXP = /^(?:\|)(.+)(?:\|)\s?$/
 const TABLE_ROW_DIVIDER_REG_EXP = /^(\| ?:?-*:? ?)+\|\s?$/
+
+const OTHER_MARKDOWN_TRANSFORMERS = [
+  HR,
+  IMAGE,
+  EMOJI,
+  EQUATION,
+  TWEET,
+  CHECK_LIST,
+  ...ELEMENT_TRANSFORMERS,
+  ...MULTILINE_ELEMENT_TRANSFORMERS,
+  ...TEXT_FORMAT_TRANSFORMERS,
+  ...TEXT_MATCH_TRANSFORMERS,
+]
 
 export const TABLE: ElementTransformer = {
   dependencies: [TableNode, TableRowNode, TableCellNode],
@@ -43,7 +65,7 @@ export const TABLE: ElementTransformer = {
         // It's TableCellNode so it's just to make flow happy
         if ($isTableCellNode(cell)) {
           rowOutput.push(
-            $convertToMarkdownString(MARKDOWN_TRANSFORMERS, cell).replace(
+            $convertToMarkdownString(OTHER_MARKDOWN_TRANSFORMERS, cell).replace(
               /\n/g,
               '\\n'
             )
@@ -166,7 +188,7 @@ function getTableColumnsSize(table: TableNode) {
 const $createTableCell = (textContent: string): TableCellNode => {
   textContent = textContent.replace(/\\n/g, '\n')
   const cell = $createTableCellNode(TableCellHeaderStates.NO_STATUS)
-  $convertFromMarkdownString(textContent, MARKDOWN_TRANSFORMERS, cell)
+  $convertFromMarkdownString(textContent, OTHER_MARKDOWN_TRANSFORMERS, cell)
   return cell
 }
 
