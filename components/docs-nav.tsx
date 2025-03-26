@@ -86,7 +86,12 @@ function DocsNavItems({
                         <Link
                           key={subindex}
                           href={subitem.href}
-                          className="group flex h-8 w-full items-center rounded-lg px-2 font-normal text-foreground underline-offset-2 hover:bg-accent hover:text-accent-foreground"
+                          className={cn(
+                            "flex justify-between group px-2 w-full h-8 items-center rounded-lg font-normal text-foreground underline-offset-2 hover:bg-accent hover:text-accent-foreground",
+                            item.disabled && "cursor-not-allowed opacity-60",
+                            pathname === subitem.href &&
+                            "bg-accent font-medium text-accent-foreground"
+                          )}
                         >
                           {subitem.title}
                         </Link>
