@@ -11,7 +11,7 @@ import { TooltipProvider } from "@/registry/default/ui/tooltip"
 
 import { editorTheme } from "@/registry/default/editor/themes/editor-theme"
 import { ContentEditable } from "@/registry/default/editor/editor-ui/content-editable"
-import { ComponentPickerMenuPlugin } from "@/registry/default/editor/plugins/component-picker-plugin"
+import { ComponentPickerMenuPlugin } from "@/registry/default/editor/plugins/component-picker-menu-plugin"
 
 import { AlignmentPickerPlugin } from '@/registry/default/editor/plugins/picker/alignment-picker-plugin'
 import { ParagraphPickerPlugin } from '@/registry/default/editor/plugins/picker/paragraph-picker-plugin'

@@ -141,7 +141,7 @@ export const docsConfig: DocsConfig = {
             },
             {
               title: "Clear Editor",
-              href: "/docs/plugins/clear-editor-action",
+              href: "/docs/plugins/clear-editor",
               items: [],
             },
             {

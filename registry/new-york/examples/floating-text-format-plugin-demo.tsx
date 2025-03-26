@@ -11,7 +11,7 @@ import { TooltipProvider } from "@/registry/new-york/ui/tooltip"
 
 import { editorTheme } from "@/registry/new-york/editor/themes/editor-theme"
 import { ContentEditable } from "@/registry/new-york/editor/editor-ui/content-editable"
-import { FloatingTextFormatToolbarPlugin } from "@/registry/new-york/editor/plugins/floating-text-format-toolbar-plugin"
+import { FloatingTextFormatToolbarPlugin } from "@/registry/new-york/editor/plugins/floating-text-format-plugin"
 import { SharedAutocompleteContext } from "@/registry/new-york/editor/context/shared-autocomplete-context"
 
 const editorConfig: InitialConfigType = {

@@ -2,5 +2,13 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "drag-drop-paste-plugin",
   "type": "registry:ui",
-  "author": "shadcn (https://ui.shadcn.com)"
+  "author": "shadcn (https://ui.shadcn.com)",
+  "files": [
+    {
+      "path": "editor/plugins/drag-drop-paste-plugin.tsx",
+      "content": "'use client'\r\n\r\n/**\r\n * Copyright (c) Meta Platforms, Inc. and affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n */\r\nimport { useEffect } from 'react'\r\n\r\nimport { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'\r\nimport { DRAG_DROP_PASTE } from '@lexical/rich-text'\r\nimport { isMimeType, mediaFileReader } from '@lexical/utils'\r\nimport { COMMAND_PRIORITY_LOW } from 'lexical'\r\n\r\nimport { INSERT_IMAGE_COMMAND } from '@/registry/default/editor/plugins/images-plugin'\r\n\r\nconst ACCEPTABLE_IMAGE_TYPES = [\r\n  'image/',\r\n  'image/heic',\r\n  'image/heif',\r\n  'image/gif',\r\n  'image/webp',\r\n]\r\n\r\nexport function DragDropPastePlugin(): null {\r\n  const [editor] = useLexicalComposerContext()\r\n  useEffect(() => {\r\n    return editor.registerCommand(\r\n      DRAG_DROP_PASTE,\r\n      (files) => {\r\n        ;(async () => {\r\n          const filesResult = await mediaFileReader(\r\n            files,\r\n            [ACCEPTABLE_IMAGE_TYPES].flatMap((x) => x)\r\n          )\r\n          for (const { file, result } of filesResult) {\r\n            if (isMimeType(file, ACCEPTABLE_IMAGE_TYPES)) {\r\n              editor.dispatchCommand(INSERT_IMAGE_COMMAND, {\r\n                altText: file.name,\r\n                src: result,\r\n              })\r\n            }\r\n          }\r\n        })()\r\n        return true\r\n      },\r\n      COMMAND_PRIORITY_LOW\r\n    )\r\n  }, [editor])\r\n  return null\r\n}\r\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/drag-drop-paste-plugin.tsx"
+    }
+  ]
 }

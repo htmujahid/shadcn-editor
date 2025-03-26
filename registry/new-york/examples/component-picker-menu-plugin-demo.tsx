@@ -11,7 +11,7 @@ import { TooltipProvider } from "@/registry/new-york/ui/tooltip"
 
 import { editorTheme } from "@/registry/new-york/editor/themes/editor-theme"
 import { ContentEditable } from "@/registry/new-york/editor/editor-ui/content-editable"
-import { ComponentPickerMenuPlugin } from "@/registry/new-york/editor/plugins/component-picker-plugin"
+import { ComponentPickerMenuPlugin } from "@/registry/new-york/editor/plugins/component-picker-menu-plugin"
 
 import { AlignmentPickerPlugin } from '@/registry/new-york/editor/plugins/picker/alignment-picker-plugin'
 import { ParagraphPickerPlugin } from '@/registry/new-york/editor/plugins/picker/paragraph-picker-plugin'

@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'

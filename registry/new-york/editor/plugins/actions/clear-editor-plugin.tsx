@@ -1,3 +1,5 @@
+'use client'
+
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
 import { CLEAR_EDITOR_COMMAND } from 'lexical'
 import { Trash2Icon } from 'lucide-react'

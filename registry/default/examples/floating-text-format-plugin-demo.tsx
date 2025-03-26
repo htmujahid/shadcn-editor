@@ -12,7 +12,7 @@ import { TooltipProvider } from "@/registry/default/ui/tooltip"
 import { editorTheme } from "@/registry/default/editor/themes/editor-theme"
 import { ContentEditable } from "@/registry/default/editor/editor-ui/content-editable"
 import { FloatingLinkContext } from "@/registry/default/editor/context/floating-link-context"
-import { FloatingTextFormatToolbarPlugin } from "@/registry/default/editor/plugins/floating-text-format-toolbar-plugin"
+import { FloatingTextFormatToolbarPlugin } from "@/registry/default/editor/plugins/floating-text-format-plugin"
 
 const editorConfig: InitialConfigType = {
   namespace: 'Editor',

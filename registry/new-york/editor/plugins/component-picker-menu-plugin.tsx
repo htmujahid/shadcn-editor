@@ -1,3 +1,5 @@
+'use client'
+
 /**
  * Copyright (c) Meta Platforms, Inc. and affiliates.
  *
@@ -14,9 +16,9 @@ import { TextNode } from 'lexical'
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
 import { useBasicTypeaheadTriggerMatch } from '@lexical/react/LexicalTypeaheadMenuPlugin'
 
-import { Command, CommandGroup, CommandItem, CommandList } from '@/registry/default/ui/command'
+import { Command, CommandGroup, CommandItem, CommandList } from '@/registry/new-york/ui/command'
 
-import { useEditorModal } from '@/registry/default/editor/editor-hooks/use-modal'
+import { useEditorModal } from '@/registry/new-york/editor/editor-hooks/use-modal'
 import { ComponentPickerOption } from './picker/component-picker-option'
 
 const LexicalTypeaheadMenuPlugin = dynamic(
@@ -118,8 +120,8 @@ export function ComponentPickerMenuPlugin({
                             selectOptionAndCleanUp(option)
                           }}
                           className={`flex items-center gap-2 ${selectedIndex === index
-                              ? 'bg-accent'
-                              : '!bg-transparent'
+                            ? 'bg-accent'
+                            : '!bg-transparent'
                             }`}
                         >
                           {option.icon}

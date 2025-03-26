@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useState } from "react";
 import { $rootTextContent } from '@lexical/text';
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "subsuper-toolbar-plugin",
+  "type": "registry:ui",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "dependencies": [
+    "@lexical/table"
+  ],
+  "registryDependencies": [
+    "toggle-group",
+    "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
+  ],
+  "files": [
+    {
+      "path": "editor/plugins/toolbar/subsuper-toolbar-plugin.tsx",
+      "content": "'use client'\r\n\r\nimport { useState } from 'react'\r\n\r\nimport { $isTableSelection } from '@lexical/table'\r\nimport { $isRangeSelection, BaseSelection, FORMAT_TEXT_COMMAND } from 'lexical'\r\nimport { SubscriptIcon, SuperscriptIcon } from 'lucide-react'\r\n\r\nimport { ToggleGroup, ToggleGroupItem } from '@/registry/default/ui/toggle-group'\r\n\r\nimport { useToolbarContext } from '@/registry/default/editor/context/toolbar-context'\r\nimport { useUpdateToolbarHandler } from '@/registry/default/editor/editor-hooks/use-update-toolbar'\r\n\r\nexport function SubSuperToolbarPlugin() {\r\n  const { activeEditor } = useToolbarContext()\r\n  const [isSubscript, setIsSubscript] = useState(false)\r\n  const [isSuperscript, setIsSuperscript] = useState(false)\r\n\r\n  const $updateToolbar = (selection: BaseSelection) => {\r\n    if ($isRangeSelection(selection) || $isTableSelection(selection)) {\r\n      // @ts-ignore\r\n      setIsSubscript(selection.hasFormat('subscript'))\r\n      // @ts-ignore\r\n      setIsSuperscript(selection.hasFormat('superscript'))\r\n    }\r\n  }\r\n\r\n  useUpdateToolbarHandler($updateToolbar)\r\n\r\n  return (\r\n    <ToggleGroup\r\n      type=\"single\"\r\n      defaultValue={\r\n        isSubscript ? 'subscript' : isSuperscript ? 'superscript' : ''\r\n      }\r\n    >\r\n      <ToggleGroupItem\r\n        value=\"subscript\"\r\n        aria-label=\"Toggle subscript\"\r\n        onClick={() => {\r\n          activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, 'subscript')\r\n        }}\r\n        size=\"sm\"\r\n        variant={'outline'}\r\n      >\r\n        <SubscriptIcon className=\"h-4 w-4\" />\r\n      </ToggleGroupItem>\r\n      <ToggleGroupItem\r\n        value=\"superscript\"\r\n        aria-label=\"Toggle superscript\"\r\n        onClick={() => {\r\n          activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, 'superscript')\r\n        }}\r\n        size=\"sm\"\r\n        variant={'outline'}\r\n      >\r\n        <SuperscriptIcon className=\"h-4 w-4\" />\r\n      </ToggleGroupItem>\r\n    </ToggleGroup>\r\n  )\r\n}\r\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/toolbar/subsuper-toolbar-plugin.tsx"
+    }
+  ]
+}

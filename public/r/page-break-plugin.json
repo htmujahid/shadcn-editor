@@ -2,5 +2,13 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "page-break-plugin",
   "type": "registry:ui",
-  "author": "shadcn (https://ui.shadcn.com)"
+  "author": "shadcn (https://ui.shadcn.com)",
+  "files": [
+    {
+      "path": "editor/plugins/page-break-plugin.tsx",
+      "content": "'use client'\r\n\r\n/**\r\n * Copyright (c) Meta Platforms, Inc. and affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n */\r\nimport { useEffect, JSX } from 'react'\r\n\r\nimport { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'\r\nimport { $insertNodeToNearestRoot, mergeRegister } from '@lexical/utils'\r\nimport {\r\n  $getSelection,\r\n  $isRangeSelection,\r\n  COMMAND_PRIORITY_EDITOR,\r\n  LexicalCommand,\r\n  createCommand,\r\n} from 'lexical'\r\n\r\nimport { $createPageBreakNode, PageBreakNode } from '@/registry/default/editor/nodes/page-break-node'\r\n\r\nexport const INSERT_PAGE_BREAK: LexicalCommand<undefined> = createCommand()\r\n\r\nexport function PageBreakPlugin(): JSX.Element | null {\r\n  const [editor] = useLexicalComposerContext()\r\n\r\n  useEffect(() => {\r\n    if (!editor.hasNodes([PageBreakNode])) {\r\n      throw new Error(\r\n        'PageBreakPlugin: PageBreakNode is not registered on editor'\r\n      )\r\n    }\r\n\r\n    return mergeRegister(\r\n      editor.registerCommand(\r\n        INSERT_PAGE_BREAK,\r\n        () => {\r\n          const selection = $getSelection()\r\n\r\n          if (!$isRangeSelection(selection)) {\r\n            return false\r\n          }\r\n\r\n          const focusNode = selection.focus.getNode()\r\n          if (focusNode !== null) {\r\n            const pgBreak = $createPageBreakNode()\r\n            $insertNodeToNearestRoot(pgBreak)\r\n          }\r\n\r\n          return true\r\n        },\r\n        COMMAND_PRIORITY_EDITOR\r\n      )\r\n    )\r\n  }, [editor])\r\n\r\n  return null\r\n}\r\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/page-break-plugin.tsx"
+    }
+  ]
 }

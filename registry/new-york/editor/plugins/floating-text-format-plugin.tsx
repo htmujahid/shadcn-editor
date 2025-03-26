@@ -1,3 +1,5 @@
+'use client'
+
 /**
  * Copyright (c) Meta Platforms, Inc. and affiliates.
  *
@@ -44,15 +46,15 @@ import {
 } from 'lucide-react'
 import { createPortal } from 'react-dom'
 
-import { Separator } from '@/registry/default/ui/separator'
-import { ToggleGroup, ToggleGroupItem } from '@/registry/default/ui/toggle-group'
+import { Separator } from '@/registry/new-york/ui/separator'
+import { ToggleGroup, ToggleGroupItem } from '@/registry/new-york/ui/toggle-group'
 
-import { useFloatingLinkContext } from '@/registry/default/editor/context/floating-link-context'
-import { getDOMRangeRect } from '@/registry/default/editor/utils/get-dom-range-rect'
-import { getSelectedNode } from '@/registry/default/editor/utils/get-selected-node'
-import { setFloatingElemPosition } from '@/registry/default/editor/utils/set-floating-elem-position'
+import { useFloatingLinkContext } from '@/registry/new-york/editor/context/floating-link-context'
+import { getDOMRangeRect } from '@/registry/new-york/editor/utils/get-dom-range-rect'
+import { getSelectedNode } from '@/registry/new-york/editor/utils/get-selected-node'
+import { setFloatingElemPosition } from '@/registry/new-york/editor/utils/set-floating-elem-position'
 
-function TextFormatFloatingToolbar({
+function FloatingTextFormat({
   editor,
   anchorElem,
   isLink,
@@ -413,7 +415,7 @@ function useFloatingTextFormatToolbar(
   }
 
   return createPortal(
-    <TextFormatFloatingToolbar
+    <FloatingTextFormat
       editor={editor}
       anchorElem={anchorElem}
       isLink={isLink}

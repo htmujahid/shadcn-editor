@@ -1,3 +1,5 @@
+'use client'
+
 import { useRef, JSX } from 'react'
 
 import { DraggableBlockPlugin_EXPERIMENTAL } from '@lexical/react/LexicalDraggableBlockPlugin'

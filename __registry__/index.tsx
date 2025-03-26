@@ -111,12 +111,12 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
       files: [{
-        path: "registry/new-york/editor/plugins/toolbar/font-family-toolbar-plugin",
+        path: "registry/new-york/editor/plugins/toolbar/font-family-toolbar-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/toolbar/font-family-toolbar-plugin"
+        target: "components/editor/plugins/toolbar/font-family-toolbar-plugin.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/font-family-toolbar-plugin")),
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/font-family-toolbar-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -126,12 +126,12 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button","input","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
       files: [{
-        path: "registry/new-york/editor/plugins/toolbar/font-size-toolbar-plugin",
+        path: "registry/new-york/editor/plugins/toolbar/font-size-toolbar-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/toolbar/font-size-toolbar-plugin"
+        target: "components/editor/plugins/toolbar/font-size-toolbar-plugin.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/font-size-toolbar-plugin")),
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/font-size-toolbar-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -141,12 +141,12 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["toggle","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
       files: [{
-        path: "registry/new-york/editor/plugins/toolbar/font-format-toolbar-plugin",
+        path: "registry/new-york/editor/plugins/toolbar/font-format-toolbar-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/toolbar/font-format-toolbar-plugin"
+        target: "components/editor/plugins/toolbar/font-format-toolbar-plugin.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/font-format-toolbar-plugin")),
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/font-format-toolbar-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -156,12 +156,12 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["toggle-group","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
       files: [{
-        path: "registry/new-york/editor/plugins/toolbar/subsuper-toolbar-plugin",
+        path: "registry/new-york/editor/plugins/toolbar/subsuper-toolbar-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/toolbar/subsuper-toolbar-plugin"
+        target: "components/editor/plugins/toolbar/subsuper-toolbar-plugin.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/subsuper-toolbar-plugin")),
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/subsuper-toolbar-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -171,20 +171,20 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
       files: [{
-        path: "registry/new-york/editor/plugins/toolbar/font-color-toolbar-plugin",
+        path: "registry/new-york/editor/plugins/toolbar/font-color-toolbar-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/toolbar/font-color-toolbar-plugin"
+        target: "components/editor/plugins/toolbar/font-color-toolbar-plugin.tsx"
       },{
-        path: "registry/new-york/editor/plugins/toolbar/font-background-toolbar-plugin",
+        path: "registry/new-york/editor/plugins/toolbar/font-background-toolbar-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/toolbar/font-background-toolbar-plugin"
+        target: "components/editor/plugins/toolbar/font-background-toolbar-plugin.tsx"
       },{
-        path: "registry/new-york/editor/editor-ui/colorpicker",
+        path: "registry/new-york/editor/editor-ui/colorpicker.tsx",
         type: "registry:ui",
-        target: "components/editor/editor-ui/colorpicker"
+        target: "components/editor/editor-ui/colorpicker.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/font-color-toolbar-plugin")),
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/font-color-toolbar-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -194,12 +194,27 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["separator","toggle-group","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
       files: [{
-        path: "registry/new-york/editor/plugins/toolbar/element-format-toolbar-plugin",
+        path: "registry/new-york/editor/plugins/toolbar/element-format-toolbar-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/toolbar/element-format-toolbar-plugin"
+        target: "components/editor/plugins/toolbar/element-format-toolbar-plugin.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/element-format-toolbar-plugin")),
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/element-format-toolbar-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "clear-formatting-toolbar-plugin": {
+      name: "clear-formatting-toolbar-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/toolbar/clear-formatting-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/clear-formatting-toolbar-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/clear-formatting-toolbar-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -308,8 +323,8 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
-    "clear-editor-action-plugin": {
-      name: "clear-editor-action-plugin",
+    "clear-editor-plugin": {
+      name: "clear-editor-plugin",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -350,6 +365,367 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/actions-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "link-plugin": {
+      name: "link-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/link-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/link-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/link-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "code-plugin": {
+      name: "code-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/code-action-menu-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/code-action-menu-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/code-highlight-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/code-highlight-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/code-action-menu-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "table-plugin": {
+      name: "table-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/table-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/table-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/table-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "mention-plugin": {
+      name: "mention-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/mentions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/mentions-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/mentions-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "page-break-plugin": {
+      name: "page-break-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/page-break-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/page-break-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/page-break-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "draggable-block-plugin": {
+      name: "draggable-block-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/draggable-block-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/draggable-block-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/draggable-block-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "keywords-plugin": {
+      name: "keywords-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/keywords-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/keywords-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/keywords-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "emoji-plugin": {
+      name: "emoji-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/emojis-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/emojis-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/emojis-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "image-plugin": {
+      name: "image-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/images-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/images-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/images-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "inline-image-plugin": {
+      name: "inline-image-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/inline-image-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/inline-image-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/inline-image-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "excalidraw-plugin": {
+      name: "excalidraw-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/excalidraw-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/excalidraw-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/excalidraw-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "poll-plugin": {
+      name: "poll-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/poll-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/poll-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/poll-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "layout-plugin": {
+      name: "layout-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/layout-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/layout-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/layout-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "equation-plugin": {
+      name: "equation-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/equations-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/equations-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/equations-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "collapsible-plugin": {
+      name: "collapsible-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/collapsible-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/collapsible-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/collapsible-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "auto-embed-plugin": {
+      name: "auto-embed-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/embeds/auto-embed-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/embeds/auto-embed-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/embeds/figma-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/embeds/figma-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/embeds/twitter-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/embeds/twitter-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/embeds/youtube-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/embeds/youtube-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/embeds/auto-embed-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "typing-pref-plugin": {
+      name: "typing-pref-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/typing-pref-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/typing-pref-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/typing-pref-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "tab-focus-plugin": {
+      name: "tab-focus-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/tab-focus-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/tab-focus-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/tab-focus-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "autocomplete-plugin": {
+      name: "autocomplete-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/autocomplete-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/autocomplete-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/autocomplete-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "component-picker-menu-plugin": {
+      name: "component-picker-menu-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/component-picker-menu-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/component-picker-menu-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/component-picker-menu-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "context-menu-plugin": {
+      name: "context-menu-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/context-menu-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/context-menu-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/context-menu-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "drag-drop-paste-plugin": {
+      name: "drag-drop-paste-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/drag-drop-paste-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/drag-drop-paste-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/drag-drop-paste-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "floating-text-format-plugin": {
+      name: "floating-text-format-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/editor/plugins/floating-text-format-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/floating-text-format-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/floating-text-format-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -822,9 +1198,9 @@ export const Index: Record<string, any> = {
         type: "registry:component",
         target: "components/editor/plugins/collapsible-plugin.tsx"
       },{
-        path: "registry/new-york/editor/plugins/component-picker-plugin.tsx",
+        path: "registry/new-york/editor/plugins/component-picker-menu-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/component-picker-plugin.tsx"
+        target: "components/editor/plugins/component-picker-menu-plugin.tsx"
       },{
         path: "registry/new-york/editor/plugins/context-menu-plugin.tsx",
         type: "registry:component",
@@ -858,9 +1234,9 @@ export const Index: Record<string, any> = {
         type: "registry:component",
         target: "components/editor/plugins/floating-link-editor-plugin.tsx"
       },{
-        path: "registry/new-york/editor/plugins/floating-text-format-toolbar-plugin.tsx",
+        path: "registry/new-york/editor/plugins/floating-text-format-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/floating-text-format-toolbar-plugin.tsx"
+        target: "components/editor/plugins/floating-text-format-plugin.tsx"
       },{
         path: "registry/new-york/editor/plugins/images-plugin.tsx",
         type: "registry:component",
@@ -1956,12 +2332,12 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
       files: [{
-        path: "registry/default/editor/plugins/toolbar/font-family-toolbar-plugin",
+        path: "registry/default/editor/plugins/toolbar/font-family-toolbar-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/toolbar/font-family-toolbar-plugin"
+        target: "components/editor/plugins/toolbar/font-family-toolbar-plugin.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/font-family-toolbar-plugin")),
+      component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/font-family-toolbar-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -1971,12 +2347,12 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button","input","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
       files: [{
-        path: "registry/default/editor/plugins/toolbar/font-size-toolbar-plugin",
+        path: "registry/default/editor/plugins/toolbar/font-size-toolbar-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/toolbar/font-size-toolbar-plugin"
+        target: "components/editor/plugins/toolbar/font-size-toolbar-plugin.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/font-size-toolbar-plugin")),
+      component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/font-size-toolbar-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -1986,12 +2362,12 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["toggle","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
       files: [{
-        path: "registry/default/editor/plugins/toolbar/font-format-toolbar-plugin",
+        path: "registry/default/editor/plugins/toolbar/font-format-toolbar-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/toolbar/font-format-toolbar-plugin"
+        target: "components/editor/plugins/toolbar/font-format-toolbar-plugin.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/font-format-toolbar-plugin")),
+      component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/font-format-toolbar-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -2001,12 +2377,12 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["toggle-group","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
       files: [{
-        path: "registry/default/editor/plugins/toolbar/subsuper-toolbar-plugin",
+        path: "registry/default/editor/plugins/toolbar/subsuper-toolbar-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/toolbar/subsuper-toolbar-plugin"
+        target: "components/editor/plugins/toolbar/subsuper-toolbar-plugin.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/subsuper-toolbar-plugin")),
+      component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/subsuper-toolbar-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -2016,20 +2392,20 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
       files: [{
-        path: "registry/default/editor/plugins/toolbar/font-color-toolbar-plugin",
+        path: "registry/default/editor/plugins/toolbar/font-color-toolbar-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/toolbar/font-color-toolbar-plugin"
+        target: "components/editor/plugins/toolbar/font-color-toolbar-plugin.tsx"
       },{
-        path: "registry/default/editor/plugins/toolbar/font-background-toolbar-plugin",
+        path: "registry/default/editor/plugins/toolbar/font-background-toolbar-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/toolbar/font-background-toolbar-plugin"
+        target: "components/editor/plugins/toolbar/font-background-toolbar-plugin.tsx"
       },{
-        path: "registry/default/editor/editor-ui/colorpicker",
+        path: "registry/default/editor/editor-ui/colorpicker.tsx",
         type: "registry:ui",
-        target: "components/editor/editor-ui/colorpicker"
+        target: "components/editor/editor-ui/colorpicker.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/font-color-toolbar-plugin")),
+      component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/font-color-toolbar-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -2039,12 +2415,27 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["separator","toggle-group","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
       files: [{
-        path: "registry/default/editor/plugins/toolbar/element-format-toolbar-plugin",
+        path: "registry/default/editor/plugins/toolbar/element-format-toolbar-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/toolbar/element-format-toolbar-plugin"
+        target: "components/editor/plugins/toolbar/element-format-toolbar-plugin.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/element-format-toolbar-plugin")),
+      component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/element-format-toolbar-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "clear-formatting-toolbar-plugin": {
+      name: "clear-formatting-toolbar-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/toolbar/clear-formatting-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/clear-formatting-toolbar-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/clear-formatting-toolbar-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -2153,8 +2544,8 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
-    "clear-editor-action-plugin": {
-      name: "clear-editor-action-plugin",
+    "clear-editor-plugin": {
+      name: "clear-editor-plugin",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -2195,6 +2586,367 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/editor/plugins/actions/actions-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "link-plugin": {
+      name: "link-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/link-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/link-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/link-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "code-plugin": {
+      name: "code-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/code-action-menu-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/code-action-menu-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/code-highlight-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/code-highlight-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/code-action-menu-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "table-plugin": {
+      name: "table-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/table-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/table-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/table-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "mention-plugin": {
+      name: "mention-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/mentions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/mentions-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/mentions-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "page-break-plugin": {
+      name: "page-break-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/page-break-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/page-break-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/page-break-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "draggable-block-plugin": {
+      name: "draggable-block-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/draggable-block-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/draggable-block-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/draggable-block-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "keywords-plugin": {
+      name: "keywords-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/keywords-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/keywords-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/keywords-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "emoji-plugin": {
+      name: "emoji-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/emojis-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/emojis-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/emojis-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "image-plugin": {
+      name: "image-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/images-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/images-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/images-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "inline-image-plugin": {
+      name: "inline-image-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/inline-image-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/inline-image-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/inline-image-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "excalidraw-plugin": {
+      name: "excalidraw-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/excalidraw-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/excalidraw-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/excalidraw-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "poll-plugin": {
+      name: "poll-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/poll-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/poll-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/poll-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "layout-plugin": {
+      name: "layout-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/layout-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/layout-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/layout-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "equation-plugin": {
+      name: "equation-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/equations-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/equations-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/equations-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "collapsible-plugin": {
+      name: "collapsible-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/collapsible-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/collapsible-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/collapsible-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "auto-embed-plugin": {
+      name: "auto-embed-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/embeds/auto-embed-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/embeds/auto-embed-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/embeds/figma-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/embeds/figma-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/embeds/twitter-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/embeds/twitter-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/embeds/youtube-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/embeds/youtube-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/embeds/auto-embed-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "typing-pref-plugin": {
+      name: "typing-pref-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/typing-pref-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/typing-pref-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/typing-pref-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "tab-focus-plugin": {
+      name: "tab-focus-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/tab-focus-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/tab-focus-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/tab-focus-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "autocomplete-plugin": {
+      name: "autocomplete-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/autocomplete-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/autocomplete-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/autocomplete-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "component-picker-menu-plugin": {
+      name: "component-picker-menu-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/component-picker-menu-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/component-picker-menu-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/component-picker-menu-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "context-menu-plugin": {
+      name: "context-menu-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/context-menu-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/context-menu-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/context-menu-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "drag-drop-paste-plugin": {
+      name: "drag-drop-paste-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/drag-drop-paste-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/drag-drop-paste-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/drag-drop-paste-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "floating-text-format-plugin": {
+      name: "floating-text-format-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/editor/plugins/floating-text-format-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/floating-text-format-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/floating-text-format-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -2667,9 +3419,9 @@ export const Index: Record<string, any> = {
         type: "registry:component",
         target: "components/editor/plugins/collapsible-plugin.tsx"
       },{
-        path: "registry/default/editor/plugins/component-picker-plugin.tsx",
+        path: "registry/default/editor/plugins/component-picker-menu-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/component-picker-plugin.tsx"
+        target: "components/editor/plugins/component-picker-menu-plugin.tsx"
       },{
         path: "registry/default/editor/plugins/context-menu-plugin.tsx",
         type: "registry:component",
@@ -2703,9 +3455,9 @@ export const Index: Record<string, any> = {
         type: "registry:component",
         target: "components/editor/plugins/floating-link-editor-plugin.tsx"
       },{
-        path: "registry/default/editor/plugins/floating-text-format-toolbar-plugin.tsx",
+        path: "registry/default/editor/plugins/floating-text-format-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/floating-text-format-toolbar-plugin.tsx"
+        target: "components/editor/plugins/floating-text-format-plugin.tsx"
       },{
         path: "registry/default/editor/plugins/images-plugin.tsx",
         type: "registry:component",

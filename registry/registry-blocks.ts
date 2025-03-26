@@ -626,8 +626,8 @@ export const blocks: Registry["items"] = [
         "type": "registry:component"
       },
       {
-        "path": "editor/plugins/component-picker-plugin.tsx",
-        "target": "components/editor/plugins/component-picker-plugin.tsx",
+        "path": "editor/plugins/component-picker-menu-plugin.tsx",
+        "target": "components/editor/plugins/component-picker-menu-plugin.tsx",
         "type": "registry:component"
       },
       {
@@ -671,8 +671,8 @@ export const blocks: Registry["items"] = [
         "type": "registry:component"
       },
       {
-        "path": "editor/plugins/floating-text-format-toolbar-plugin.tsx",
-        "target": "components/editor/plugins/floating-text-format-toolbar-plugin.tsx",
+        "path": "editor/plugins/floating-text-format-plugin.tsx",
+        "target": "components/editor/plugins/floating-text-format-plugin.tsx",
         "type": "registry:component"
       },
       {

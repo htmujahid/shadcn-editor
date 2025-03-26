@@ -2,5 +2,13 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "emoji-plugin",
   "type": "registry:ui",
-  "author": "shadcn (https://ui.shadcn.com)"
+  "author": "shadcn (https://ui.shadcn.com)",
+  "files": [
+    {
+      "path": "editor/plugins/emojis-plugin.tsx",
+      "content": "'use client'\r\n\r\n/**\r\n * Copyright (c) Meta Platforms, Inc. and affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n */\r\nimport { useEffect, JSX } from 'react'\r\nimport { createPortal } from 'react-dom'\r\n\r\nimport { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'\r\nimport type { LexicalEditor } from 'lexical'\r\nimport { TextNode } from 'lexical'\r\n\r\nimport { $createEmojiNode, EmojiNode } from '@/registry/default/editor/nodes/emoji-node'\r\n\r\nconst emojis: Map<string, [string, string]> = new Map([\r\n  [':)', ['emoji happysmile', '🙂']],\r\n  [':D', ['emoji veryhappysmile', '😀']],\r\n  [':(', ['emoji unhappysmile', '🙁']],\r\n  ['<3', ['emoji heart', '❤']],\r\n])\r\n\r\nfunction $findAndTransformEmoji(node: TextNode): null | TextNode {\r\n  const text = node.getTextContent()\r\n\r\n  for (let i = 0; i < text.length; i++) {\r\n    const emojiData = emojis.get(text[i]) || emojis.get(text.slice(i, i + 2))\r\n\r\n    if (emojiData !== undefined) {\r\n      const [emojiStyle, emojiText] = emojiData\r\n      let targetNode\r\n\r\n      if (i === 0) {\r\n        ;[targetNode] = node.splitText(i + 2)\r\n      } else {\r\n        ;[, targetNode] = node.splitText(i, i + 2)\r\n      }\r\n\r\n      const emojiNode = $createEmojiNode(emojiStyle, emojiText)\r\n      targetNode.replace(emojiNode)\r\n      return emojiNode\r\n    }\r\n  }\r\n\r\n  return null\r\n}\r\n\r\nfunction $textNodeTransform(node: TextNode): void {\r\n  let targetNode: TextNode | null = node\r\n\r\n  while (targetNode !== null) {\r\n    if (!targetNode.isSimpleText()) {\r\n      return\r\n    }\r\n\r\n    targetNode = $findAndTransformEmoji(targetNode)\r\n  }\r\n}\r\n\r\nfunction useEmojis(editor: LexicalEditor): void {\r\n  useEffect(() => {\r\n    if (!editor.hasNodes([EmojiNode])) {\r\n      throw new Error('EmojisPlugin: EmojiNode not registered on editor')\r\n    }\r\n\r\n    return editor.registerNodeTransform(TextNode, $textNodeTransform)\r\n  }, [editor])\r\n}\r\n\r\nexport function EmojisPlugin(): JSX.Element | null {\r\n  const [editor] = useLexicalComposerContext()\r\n  useEmojis(editor)\r\n  return null\r\n}\r\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/emojis-plugin.tsx"
+    }
+  ]
 }

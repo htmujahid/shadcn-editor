@@ -1,6 +1,8 @@
-import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
-import { CLEAR_EDITOR_COMMAND } from 'lexical'
+'use client'
+
 import { Trash2Icon } from 'lucide-react'
+import { CLEAR_EDITOR_COMMAND } from 'lexical'
+import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
 
 import { Button } from '@/registry/default/ui/button'
 import {

@@ -2,5 +2,13 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "link-plugin",
   "type": "registry:ui",
-  "author": "shadcn (https://ui.shadcn.com)"
+  "author": "shadcn (https://ui.shadcn.com)",
+  "files": [
+    {
+      "path": "editor/plugins/link-plugin.tsx",
+      "content": "'use client'\r\n\r\n/**\r\n * Copyright (c) Meta Platforms, Inc. and affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n */\r\nimport * as React from 'react'\r\nimport { JSX } from 'react'\r\n\r\nimport { LinkPlugin as LexicalLinkPlugin } from '@lexical/react/LexicalLinkPlugin'\r\n\r\nimport { validateUrl } from '@/registry/default/editor/utils/url'\r\n\r\nexport function LinkPlugin(): JSX.Element {\r\n  return <LexicalLinkPlugin validateUrl={validateUrl} />\r\n}\r\n\r\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/link-plugin.tsx"
+    }
+  ]
 }
