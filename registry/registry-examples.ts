@@ -227,19 +227,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "embeds-plugin-demo",
-    type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/embeds-plugin.json",
-    ],
-    files: [
-      {
-        path: "examples/embeds-plugin-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "emoji-plugin-demo",
     type: "registry:example",
     registryDependencies: [

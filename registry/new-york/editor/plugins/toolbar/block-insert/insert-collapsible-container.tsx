@@ -1,3 +1,5 @@
+'use client'
+
 import { ChevronRightIcon } from 'lucide-react'
 
 import { useToolbarContext } from '@/registry/new-york/editor/context/toolbar-context'

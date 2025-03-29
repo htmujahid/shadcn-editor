@@ -157,88 +157,8 @@ export const docsConfig: DocsConfig = {
           ],
         },
         {
-          title: "Link",
-          href: "/docs/plugins/link",
-          items: [],
-        },
-        {
-          title: "Code",
-          href: "/docs/plugins/code",
-          items: [],
-        },
-        {
-          title: "Auto Focus",
-          href: "/docs/plugins/auto-focus",
-          items: [],
-        },
-        {
-          title: "Table",
-          href: "/docs/plugins/table",
-          items: [],
-        },
-        {
-          title: "Hashtag",
-          href: "/docs/plugins/hashtag",
-          items: [],
-        },
-        {
-          title: "Mention",
-          href: "/docs/plugins/mention",
-          items: [],
-        },
-        {
-          title: "Page Break",
-          href: "/docs/plugins/page-break",
-          items: [],
-        },
-        {
-          title: "Draggable Block",
-          href: "/docs/plugins/draggable-block",
-          items: [],
-        },
-        {
-          title: "Keywords",
-          href: "/docs/plugins/keywords",
-          items: [],
-        },
-        {
-          title: "Emoji",
-          href: "/docs/plugins/emoji",
-          items: [],
-        },
-        {
-          title: "Image",
-          href: "/docs/plugins/image",
-          items: [],
-        },
-        {
-          title: "Inline Image",
-          href: "/docs/plugins/inline-image",
-          items: [],
-        },
-        {
-          title: "Excalidraw",
-          href: "/docs/plugins/excalidraw",
-          items: [],
-        },
-        {
-          title: "Poll",
-          href: "/docs/plugins/poll",
-          items: [],
-        },
-        {
-          title: "Layout",
-          href: "/docs/plugins/layout",
-          items: [],
-        },
-        {
-          title: "Equation",
-          href: "/docs/plugins/equation",
-          items: [],
-        },
-        {
-          title: "Collapsible",
-          href: "/docs/plugins/collapsible",
+          title: "Autocomplete",
+          href: "/docs/plugins/autocomplete",
           items: [],
         },
         {
@@ -247,23 +167,18 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Markdown",
-          href: "/docs/plugins/markdown",
+          title: "Auto Focus",
+          href: "/docs/plugins/auto-focus",
           items: [],
         },
         {
-          title: "Typing Pref",
-          href: "/docs/plugins/typing-pref",
+          title: "Code",
+          href: "/docs/plugins/code",
           items: [],
         },
         {
-          title: "Tab Focus",
-          href: "/docs/plugins/tab-focus",
-          items: [],
-        },
-        {
-          title: "Autocomplete",
-          href: "/docs/plugins/autocomplete",
+          title: "Collapsible",
+          href: "/docs/plugins/collapsible",
           items: [],
         },
         {
@@ -277,13 +192,103 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Draggable Block",
+          href: "/docs/plugins/draggable-block",
+          items: [],
+        },
+        {
           title: "Drag Drop Paste",
           href: "/docs/plugins/drag-drop-paste",
           items: [],
         },
         {
+          title: "Emoji",
+          href: "/docs/plugins/emoji",
+          items: [],
+        },
+        {
+          title: "Equation",
+          href: "/docs/plugins/equation",
+          items: [],
+        },
+        {
+          title: "Excalidraw",
+          href: "/docs/plugins/excalidraw",
+          items: [],
+        },
+        {
           title: "Floating Text Format",
           href: "/docs/plugins/floating-text-format",
+          items: [],
+        },
+        {
+          title: "Hashtag",
+          href: "/docs/plugins/hashtag",
+          items: [],
+        },
+        {
+          title: "Horizontal Rule",
+          href: "/docs/plugins/horizontal-rule",
+          items: [],
+        },
+        {
+          title: "Image",
+          href: "/docs/plugins/image",
+          items: [],
+        },
+        {
+          title: "Inline Image",
+          href: "/docs/plugins/inline-image",
+          items: [],
+        },
+        {
+          title: "Keywords",
+          href: "/docs/plugins/keywords",
+          items: [],
+        },
+        {
+          title: "Layout",
+          href: "/docs/plugins/layout",
+          items: [],
+        },
+        {
+          title: "Link",
+          href: "/docs/plugins/link",
+          items: [],
+        },
+        {
+          title: "Markdown",
+          href: "/docs/plugins/markdown",
+          items: [],
+        },
+        {
+          title: "Mention",
+          href: "/docs/plugins/mention",
+          items: [],
+        },
+        {
+          title: "Page Break",
+          href: "/docs/plugins/page-break",
+          items: [],
+        },
+        {
+          title: "Poll",
+          href: "/docs/plugins/poll",
+          items: [],
+        },
+        {
+          title: "Table",
+          href: "/docs/plugins/table",
+          items: [],
+        },
+        {
+          title: "Tab Focus",
+          href: "/docs/plugins/tab-focus",
+          items: [],
+        },
+        {
+          title: "Typing Pref",
+          href: "/docs/plugins/typing-pref",
           items: [],
         },
       ],

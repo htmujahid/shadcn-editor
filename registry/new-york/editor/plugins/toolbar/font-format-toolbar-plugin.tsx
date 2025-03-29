@@ -17,9 +17,10 @@ import {
   UnderlineIcon,
 } from 'lucide-react'
 
+import { Toggle } from '@/registry/new-york/ui/toggle'
+
 import { useToolbarContext } from '@/registry/new-york/editor/context/toolbar-context'
 import { useUpdateToolbarHandler } from '@/registry/new-york/editor/editor-hooks/use-update-toolbar'
-import { Toggle } from '@/registry/new-york/ui/toggle'
 
 const Icons: Partial<Record<TextFormatType, React.ElementType>> = {
   bold: BoldIcon,

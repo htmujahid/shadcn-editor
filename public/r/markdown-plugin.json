@@ -5,5 +5,8 @@
   "author": "shadcn (https://ui.shadcn.com)",
   "dependencies": [
     "@lexical/markdown"
+  ],
+  "registryDependencies": [
+    "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"
   ]
 }

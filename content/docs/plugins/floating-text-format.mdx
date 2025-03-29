@@ -1,16 +1,12 @@
 ---
 title: Floating Text Format
-description: A floating text format plugin.
-component: true
-links:
-  doc: https://lexical.dev/docs/packages/lexical-rich-text
-  api: https://lexical.dev/docs/api/modules/lexical_rich_text
+description: A plugin that provides a floating toolbar for text formatting with code, link, and selection support.
 ---
 
 <ComponentPreview
   name="floating-text-format-plugin-demo"
   className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="A floating text format plugin"
+  description="A plugin that provides a floating toolbar for text formatting with code, link, and selection support."
 />
 
 ## Installation
@@ -37,7 +33,7 @@ npx shadcn@latest add https://shadcn-editor.vercel.app/r/floating-text-format-pl
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install @lexical/rich-text
+npm install @lexical/code @lexical/link @lexical/utils @lexical/selection
 ```
 
 <Step>Copy and paste the following code into your project.</Step>

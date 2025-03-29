@@ -2,5 +2,20 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "horizontal-rule-plugin",
   "type": "registry:ui",
-  "author": "shadcn (https://ui.shadcn.com)"
+  "author": "shadcn (https://ui.shadcn.com)",
+  "dependencies": [
+    "@lexical/utils"
+  ],
+  "registryDependencies": [
+    "select",
+    "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
+  ],
+  "files": [
+    {
+      "path": "editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx",
+      "content": "'use client'\r\n\r\nimport { INSERT_HORIZONTAL_RULE_COMMAND } from '@lexical/react/LexicalHorizontalRuleNode'\r\nimport { ScissorsIcon } from 'lucide-react'\r\n\r\nimport { useToolbarContext } from '@/registry/default/editor/context/toolbar-context'\r\nimport { SelectItem } from '@/registry/default/ui/select'\r\n\r\nexport function InsertHorizontalRule() {\r\n  const { activeEditor } = useToolbarContext()\r\n\r\n  return (\r\n    <SelectItem\r\n      value=\"horizontal-rule\"\r\n      onPointerUp={() =>\r\n        activeEditor.dispatchCommand(INSERT_HORIZONTAL_RULE_COMMAND, undefined)\r\n      }\r\n      className=\"\"\r\n    >\r\n      <div className=\"flex items-center gap-1\">\r\n        <ScissorsIcon className=\"size-4\" />\r\n        <span>Horizontal Rule</span>\r\n      </div>\r\n    </SelectItem>\r\n  )\r\n}\r\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx"
+    }
+  ]
 }

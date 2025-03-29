@@ -1,16 +1,12 @@
 ---
 title: Code
-description: A code plugin.
-component: true
-links:
-  doc: https://lexical.dev/docs/packages/lexical-rich-text
-  api: https://lexical.dev/docs/api/modules/lexical_rich_text
+description: A plugin that provides code block formatting, syntax highlighting, and language selection.
 ---
 
 <ComponentPreview
   name="code-plugin-demo"
   className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="A code block plugin"
+  description="A plugin that provides code block formatting, syntax highlighting, and language selection."
 />
 
 ## Installation
@@ -37,7 +33,7 @@ npx shadcn@latest add https://shadcn-editor.vercel.app/r/code-plugin.json
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install @lexical/rich-text
+npm install lodash-es @lexical/utils @lexical/code @lexical/selection
 ```
 
 <Step>Copy and paste the following code into your project.</Step>

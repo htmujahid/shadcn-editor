@@ -3,12 +3,18 @@
   "name": "clear-editor-plugin",
   "type": "registry:ui",
   "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "button",
+    "dialog",
+    "tooltip",
+    "https://shadcn-editor.vercel.app/r/actions-plugin.json"
+  ],
   "files": [
     {
-      "path": "editor/plugins/actions/actions-plugin.tsx",
-      "content": "export function ActionsPlugin({ children }: { children: React.ReactNode }) {\r\n  return children\r\n}\r\n",
+      "path": "editor/plugins/actions/clear-editor-plugin.tsx",
+      "content": "'use client'\r\n\r\nimport { Trash2Icon } from 'lucide-react'\r\nimport { CLEAR_EDITOR_COMMAND } from 'lexical'\r\nimport { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'\r\n\r\nimport { Button } from '@/registry/default/ui/button'\r\nimport {\r\n  Dialog,\r\n  DialogClose,\r\n  DialogContent,\r\n  DialogDescription,\r\n  DialogFooter,\r\n  DialogHeader,\r\n  DialogTitle,\r\n  DialogTrigger,\r\n} from '@/registry/default/ui/dialog'\r\nimport {\r\n  Tooltip,\r\n  TooltipContent,\r\n  TooltipTrigger,\r\n} from '@/registry/default/ui/tooltip'\r\n\r\n\r\nexport function ClearEditorActionPlugin() {\r\n  const [editor] = useLexicalComposerContext()\r\n\r\n  return (\r\n    <Dialog>\r\n      <Tooltip disableHoverableContent>\r\n        <TooltipTrigger asChild>\r\n          <DialogTrigger asChild>\r\n            <Button size={'sm'} variant={'ghost'} className=\"p-2\">\r\n              <Trash2Icon className=\"h-4 w-4\" />\r\n            </Button>\r\n          </DialogTrigger>\r\n        </TooltipTrigger>\r\n        <TooltipContent>Clear Editor</TooltipContent>\r\n      </Tooltip>\r\n\r\n      <DialogContent>\r\n        <DialogHeader>\r\n          <DialogTitle>Clear Editor</DialogTitle>\r\n          <DialogDescription>\r\n            Are you sure you want to clear the editor?\r\n          </DialogDescription>\r\n        </DialogHeader>\r\n        <DialogFooter>\r\n          <DialogClose asChild>\r\n            <Button variant=\"outline\">Cancel</Button>\r\n          </DialogClose>\r\n\r\n          <DialogClose asChild>\r\n            <Button\r\n              variant=\"destructive\"\r\n              onClick={() => {\r\n                editor.dispatchCommand(CLEAR_EDITOR_COMMAND, undefined)\r\n              }}\r\n            >\r\n              Clear\r\n            </Button>\r\n          </DialogClose>\r\n        </DialogFooter>\r\n      </DialogContent>\r\n    </Dialog>\r\n  )\r\n}\r\n",
       "type": "registry:component",
-      "target": "components/editor/plugins/actions/actions-plugin.tsx"
+      "target": "components/editor/plugins/actions/clear-editor-plugin.tsx"
     }
   ]
 }

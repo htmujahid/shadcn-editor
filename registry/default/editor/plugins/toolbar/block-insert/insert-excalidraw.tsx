@@ -1,3 +1,5 @@
+'use client'
+
 import { FrameIcon } from 'lucide-react'
 
 import { useToolbarContext } from '@/registry/default/editor/context/toolbar-context'

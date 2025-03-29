@@ -3,6 +3,9 @@
   "name": "draggable-block-plugin",
   "type": "registry:ui",
   "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"
+  ],
   "files": [
     {
       "path": "editor/plugins/draggable-block-plugin.tsx",

@@ -8,13 +8,10 @@
 import * as React from 'react'
 import { Suspense, useCallback, useEffect, useRef, useState, JSX } from 'react'
 
-import { HashtagNode } from '@lexical/hashtag'
-import { LinkNode } from '@lexical/link'
 import { AutoFocusPlugin } from '@lexical/react/LexicalAutoFocusPlugin'
 import { useCollaborationContext } from '@lexical/react/LexicalCollaborationContext'
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
 import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary'
-import { HashtagPlugin } from '@lexical/react/LexicalHashtagPlugin'
 import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin'
 import { LexicalNestedComposer } from '@lexical/react/LexicalNestedComposer'
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin'
@@ -40,7 +37,6 @@ import {
   KEY_DELETE_COMMAND,
   KEY_ENTER_COMMAND,
   KEY_ESCAPE_COMMAND,
-  LineBreakNode,
   ParagraphNode,
   RootNode,
   SELECTION_CHANGE_COMMAND,
@@ -48,14 +44,8 @@ import {
   createCommand,
 } from 'lexical'
 
-import { EmojiNode } from '@/registry/new-york/editor/nodes/emoji-node'
 import { $isImageNode } from '@/registry/new-york/editor/nodes/image-node'
-import { KeywordNode } from '@/registry/new-york/editor/nodes/keyword-node'
 // import brokenImage from '@/registry/new-york/editor/images/image-broken.svg';
-import { EmojisPlugin } from '@/registry/new-york/editor/plugins/emojis-plugin'
-import { KeywordsPlugin } from '@/registry/new-york/editor/plugins/keywords-plugin'
-import { LinkPlugin } from '@/registry/new-york/editor/plugins/link-plugin'
-import { MentionsPlugin } from '@/registry/new-york/editor/plugins/mentions-plugin'
 import { ContentEditable } from '@/registry/new-york/editor/editor-ui/content-editable'
 import { ImageResizer } from '@/registry/new-york/editor/editor-ui/image-resizer'
 
@@ -416,20 +406,10 @@ export default function ImageComponent({
               initialNodes={[
                 RootNode,
                 TextNode,
-                LineBreakNode,
                 ParagraphNode,
-                LinkNode,
-                EmojiNode,
-                HashtagNode,
-                KeywordNode,
               ]}
             >
               <AutoFocusPlugin />
-              <MentionsPlugin />
-              <LinkPlugin />
-              <EmojisPlugin />
-              <HashtagPlugin />
-              <KeywordsPlugin />
               <HistoryPlugin />
               <RichTextPlugin
                 contentEditable={

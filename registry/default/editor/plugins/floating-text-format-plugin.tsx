@@ -22,12 +22,6 @@ import { $isLinkNode, TOGGLE_LINK_COMMAND } from '@lexical/link'
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
 import { mergeRegister } from '@lexical/utils'
 import {
-  FontBoldIcon,
-  FontItalicIcon,
-  StrikethroughIcon,
-  UnderlineIcon,
-} from '@radix-ui/react-icons'
-import {
   $getSelection,
   $isParagraphNode,
   $isRangeSelection,
@@ -39,6 +33,9 @@ import {
 } from 'lexical'
 import {
   BoldIcon,
+  ItalicIcon,
+  StrikethroughIcon,
+  UnderlineIcon,
   CodeIcon,
   LinkIcon,
   SubscriptIcon,
@@ -229,7 +226,7 @@ function FloatingTextFormat({
               }}
               size="sm"
             >
-              <FontBoldIcon className="h-4 w-4" />
+              <BoldIcon className="h-4 w-4" />
             </ToggleGroupItem>
             <ToggleGroupItem
               value="italic"
@@ -239,7 +236,7 @@ function FloatingTextFormat({
               }}
               size="sm"
             >
-              <FontItalicIcon className="h-4 w-4" />
+              <ItalicIcon className="h-4 w-4" />
             </ToggleGroupItem>
             <ToggleGroupItem
               value="underline"

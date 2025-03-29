@@ -24,7 +24,7 @@ export const Index: Record<string, any> = {
       name: "toolbar-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["https://shadcn-editor.vercel.app/r/editor.json"],
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
       files: [{
         path: "registry/new-york/editor/plugins/toolbar/toolbar-plugin.tsx",
         type: "registry:component",
@@ -84,10 +84,6 @@ export const Index: Record<string, any> = {
         type: "registry:component",
         target: "components/editor/plugins/toolbar/block-format/format-check-list.tsx"
       },{
-        path: "registry/new-york/editor/plugins/toolbar/block-format/format-code-block.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/toolbar/block-format/format-code-block.tsx"
-      },{
         path: "registry/new-york/editor/plugins/toolbar/block-format/format-numbered-list.tsx",
         type: "registry:component",
         target: "components/editor/plugins/toolbar/block-format/format-numbered-list.tsx"
@@ -114,6 +110,10 @@ export const Index: Record<string, any> = {
         path: "registry/new-york/editor/plugins/toolbar/font-family-toolbar-plugin.tsx",
         type: "registry:component",
         target: "components/editor/plugins/toolbar/font-family-toolbar-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/editor-hooks/use-update-toolbar.ts",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-update-toolbar.ts"
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/font-family-toolbar-plugin.tsx")),
@@ -129,6 +129,10 @@ export const Index: Record<string, any> = {
         path: "registry/new-york/editor/plugins/toolbar/font-size-toolbar-plugin.tsx",
         type: "registry:component",
         target: "components/editor/plugins/toolbar/font-size-toolbar-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/editor-hooks/use-update-toolbar.ts",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-update-toolbar.ts"
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/font-size-toolbar-plugin.tsx")),
@@ -144,6 +148,10 @@ export const Index: Record<string, any> = {
         path: "registry/new-york/editor/plugins/toolbar/font-format-toolbar-plugin.tsx",
         type: "registry:component",
         target: "components/editor/plugins/toolbar/font-format-toolbar-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/editor-hooks/use-update-toolbar.ts",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-update-toolbar.ts"
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/font-format-toolbar-plugin.tsx")),
@@ -159,6 +167,10 @@ export const Index: Record<string, any> = {
         path: "registry/new-york/editor/plugins/toolbar/subsuper-toolbar-plugin.tsx",
         type: "registry:component",
         target: "components/editor/plugins/toolbar/subsuper-toolbar-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/editor-hooks/use-update-toolbar.ts",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-update-toolbar.ts"
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/subsuper-toolbar-plugin.tsx")),
@@ -169,7 +181,7 @@ export const Index: Record<string, any> = {
       name: "font-color-toolbar-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      registryDependencies: ["button","input","popover","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
       files: [{
         path: "registry/new-york/editor/plugins/toolbar/font-color-toolbar-plugin.tsx",
         type: "registry:component",
@@ -182,6 +194,10 @@ export const Index: Record<string, any> = {
         path: "registry/new-york/editor/editor-ui/colorpicker.tsx",
         type: "registry:ui",
         target: "components/editor/editor-ui/colorpicker.tsx"
+      },{
+        path: "registry/new-york/editor/editor-hooks/use-update-toolbar.ts",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-update-toolbar.ts"
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/font-color-toolbar-plugin.tsx")),
@@ -197,6 +213,14 @@ export const Index: Record<string, any> = {
         path: "registry/new-york/editor/plugins/toolbar/element-format-toolbar-plugin.tsx",
         type: "registry:component",
         target: "components/editor/plugins/toolbar/element-format-toolbar-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/utils/get-selected-node.ts",
+        type: "registry:component",
+        target: "components/editor/utils/get-selected-node.ts"
+      },{
+        path: "registry/new-york/editor/editor-hooks/use-update-toolbar.ts",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-update-toolbar.ts"
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/element-format-toolbar-plugin.tsx")),
@@ -207,7 +231,7 @@ export const Index: Record<string, any> = {
       name: "clear-formatting-toolbar-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["button","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
       files: [{
         path: "registry/new-york/editor/plugins/toolbar/clear-formatting-toolbar-plugin.tsx",
         type: "registry:component",
@@ -218,11 +242,42 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "link-toolbar-plugin": {
+      name: "link-toolbar-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle","button","input","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/editor/plugins/toolbar/link-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/link-toolbar-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/editor-hooks/use-update-toolbar.ts",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-update-toolbar.ts"
+      },{
+        path: "registry/new-york/editor/utils/get-selected-node.ts",
+        type: "registry:component",
+        target: "components/editor/utils/get-selected-node.ts"
+      },{
+        path: "registry/new-york/editor/context/floating-link-context.tsx",
+        type: "registry:component",
+        target: "components/editor/context/floating-link-context.tsx"
+      },{
+        path: "registry/new-york/editor/utils/url.ts",
+        type: "registry:component",
+        target: "components/editor/utils/url.ts"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/link-toolbar-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "actions-plugin": {
       name: "actions-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["https://shadcn-editor.vercel.app/r/editor.json"],
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
       files: [{
         path: "registry/new-york/editor/plugins/actions/actions-plugin.tsx",
         type: "registry:component",
@@ -237,14 +292,14 @@ export const Index: Record<string, any> = {
       name: "max-length-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/actions-plugin.json"],
       files: [{
-        path: "registry/new-york/editor/plugins/actions/actions-plugin.tsx",
+        path: "registry/new-york/editor/plugins/actions/max-length-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/actions/actions-plugin.tsx"
+        target: "components/editor/plugins/actions/max-length-plugin.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/actions-plugin.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/max-length-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -252,14 +307,14 @@ export const Index: Record<string, any> = {
       name: "counter-character-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/actions-plugin.json"],
       files: [{
-        path: "registry/new-york/editor/plugins/actions/actions-plugin.tsx",
+        path: "registry/new-york/editor/plugins/actions/counter-character-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/actions/actions-plugin.tsx"
+        target: "components/editor/plugins/actions/counter-character-plugin.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/actions-plugin.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/counter-character-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -267,14 +322,22 @@ export const Index: Record<string, any> = {
       name: "speech-to-text-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["button","tooltip","https://shadcn-editor.vercel.app/r/actions-plugin.json"],
       files: [{
-        path: "registry/new-york/editor/plugins/actions/actions-plugin.tsx",
+        path: "registry/new-york/editor/plugins/actions/speech-to-text-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/actions/actions-plugin.tsx"
+        target: "components/editor/plugins/actions/speech-to-text-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/editor-hooks/use-report.ts",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-report.ts"
+      },{
+        path: "registry/new-york/editor/shared/can-use-dom.ts",
+        type: "registry:component",
+        target: "components/editor/shared/can-use-dom.ts"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/actions-plugin.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/speech-to-text-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -282,14 +345,18 @@ export const Index: Record<string, any> = {
       name: "share-content-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["button","tooltip","sonner","toast","https://shadcn-editor.vercel.app/r/actions-plugin.json"],
       files: [{
-        path: "registry/new-york/editor/plugins/actions/actions-plugin.tsx",
+        path: "registry/new-york/editor/plugins/actions/share-content-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/actions/actions-plugin.tsx"
+        target: "components/editor/plugins/actions/share-content-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/utils/doc-serialization.ts",
+        type: "registry:component",
+        target: "components/editor/utils/doc-serialization.ts"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/actions-plugin.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/share-content-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -297,14 +364,14 @@ export const Index: Record<string, any> = {
       name: "import-export-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["button","tooltip","https://shadcn-editor.vercel.app/r/actions-plugin.json"],
       files: [{
-        path: "registry/new-york/editor/plugins/actions/actions-plugin.tsx",
+        path: "registry/new-york/editor/plugins/actions/import-export-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/actions/actions-plugin.tsx"
+        target: "components/editor/plugins/actions/import-export-plugin.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/actions-plugin.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/import-export-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -312,14 +379,14 @@ export const Index: Record<string, any> = {
       name: "markdown-toggle-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["button","https://shadcn-editor.vercel.app/r/actions-plugin.json"],
       files: [{
-        path: "registry/new-york/editor/plugins/actions/actions-plugin.tsx",
+        path: "registry/new-york/editor/plugins/actions/markdown-toggle-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/actions/actions-plugin.tsx"
+        target: "components/editor/plugins/actions/markdown-toggle-plugin.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/actions-plugin.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/markdown-toggle-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -327,14 +394,14 @@ export const Index: Record<string, any> = {
       name: "clear-editor-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["button","dialog","tooltip","https://shadcn-editor.vercel.app/r/actions-plugin.json"],
       files: [{
-        path: "registry/new-york/editor/plugins/actions/actions-plugin.tsx",
+        path: "registry/new-york/editor/plugins/actions/clear-editor-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/actions/actions-plugin.tsx"
+        target: "components/editor/plugins/actions/clear-editor-plugin.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/actions-plugin.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/clear-editor-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -342,14 +409,14 @@ export const Index: Record<string, any> = {
       name: "edit-mode-toggle-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["button","tooltip","https://shadcn-editor.vercel.app/r/actions-plugin.json"],
       files: [{
-        path: "registry/new-york/editor/plugins/actions/actions-plugin.tsx",
+        path: "registry/new-york/editor/plugins/actions/edit-mode-toggle-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/actions/actions-plugin.tsx"
+        target: "components/editor/plugins/actions/edit-mode-toggle-plugin.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/actions-plugin.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/edit-mode-toggle-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -357,29 +424,119 @@ export const Index: Record<string, any> = {
       name: "tree-view-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["button","dialog","scroll-area","https://shadcn-editor.vercel.app/r/actions-plugin.json"],
       files: [{
-        path: "registry/new-york/editor/plugins/actions/actions-plugin.tsx",
+        path: "registry/new-york/editor/plugins/actions/tree-view-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/actions/actions-plugin.tsx"
+        target: "components/editor/plugins/actions/tree-view-plugin.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/actions-plugin.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/actions/tree-view-plugin.tsx")),
       source: "",
       meta: undefined,
     },
-    "link-plugin": {
-      name: "link-plugin",
+    "autocomplete-plugin": {
+      name: "autocomplete-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
       files: [{
-        path: "registry/new-york/editor/plugins/link-plugin.tsx",
+        path: "registry/new-york/editor/plugins/autocomplete-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/link-plugin.tsx"
+        target: "components/editor/plugins/autocomplete-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/context/shared-autocomplete-context.tsx",
+        type: "registry:component",
+        target: "components/editor/context/shared-autocomplete-context.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/autocomplete-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/autocomplete-node.tsx"
+      },{
+        path: "registry/new-york/editor/utils/swipe.ts",
+        type: "registry:component",
+        target: "components/editor/utils/swipe.ts"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/link-plugin.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/autocomplete-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "auto-embed-plugin": {
+      name: "auto-embed-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","command","dialog","input","popover","select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/editor/plugins/embeds/auto-embed-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/embeds/auto-embed-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/embeds/figma-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/embeds/figma-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/embeds/figma-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/embeds/figma-node.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/embeds/twitter-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/embeds/twitter-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/embeds/tweet-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/embeds/tweet-node.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/embeds/youtube-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/embeds/youtube-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/embeds/youtube-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/embeds/youtube-node.tsx"
+      },{
+        path: "registry/new-york/editor/editor-hooks/use-modal.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-hooks/use-modal.tsx"
+      },{
+        path: "registry/new-york/editor/transformers/markdown-tweet-transformer.ts",
+        type: "registry:component",
+        target: "components/editor/transformers/markdown-tweet-transformer.ts"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-insert/insert-embeds.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-embeds.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/embeds/auto-embed-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "component-picker-menu-plugin": {
+      name: "component-picker-menu-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["command","dialog","https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+      files: [{
+        path: "registry/new-york/editor/plugins/component-picker-menu-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/component-picker-menu-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/editor-hooks/use-modal",
+        type: "registry:component",
+        target: "components/editor/editor-hooks/use-modal"
+      },{
+        path: "registry/new-york/editor/plugins/picker/component-picker-option.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/component-picker-option.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/default/lexical-typeahead-menu-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/default/lexical-typeahead-menu-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/component-picker-menu-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -387,7 +544,7 @@ export const Index: Record<string, any> = {
       name: "code-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
       files: [{
         path: "registry/new-york/editor/plugins/code-action-menu-plugin.tsx",
         type: "registry:component",
@@ -396,54 +553,75 @@ export const Index: Record<string, any> = {
         path: "registry/new-york/editor/plugins/code-highlight-plugin.tsx",
         type: "registry:component",
         target: "components/editor/plugins/code-highlight-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/editor-hooks/use-debounce.ts",
+        type: "registry:component",
+        target: "components/editor/editor-hooks/use-debounce.ts"
+      },{
+        path: "registry/new-york/editor/editor-ui/code-button.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-ui/code-button.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-format/format-code-block.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-code-block.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-format/block-format-data.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/block-format-data.tsx"
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/new-york/editor/plugins/code-action-menu-plugin.tsx")),
       source: "",
       meta: undefined,
     },
-    "table-plugin": {
-      name: "table-plugin",
+    "collapsible-plugin": {
+      name: "collapsible-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
       files: [{
-        path: "registry/new-york/editor/plugins/table-plugin.tsx",
+        path: "registry/new-york/editor/plugins/collapsible-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/table-plugin.tsx"
+        target: "components/editor/plugins/collapsible-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/collapsible-container-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/collapsible-container-node.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/collapsible-content-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/collapsible-content-node.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/collapsible-title-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/collapsible-title-node.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-insert/insert-collapsible-container.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-collapsible-container.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/table-plugin.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/collapsible-plugin.tsx")),
       source: "",
       meta: undefined,
     },
-    "mention-plugin": {
-      name: "mention-plugin",
+    "context-menu-plugin": {
+      name: "context-menu-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["command","popover","https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
       files: [{
-        path: "registry/new-york/editor/plugins/mentions-plugin.tsx",
+        path: "registry/new-york/editor/plugins/context-menu-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/mentions-plugin.tsx"
+        target: "components/editor/plugins/context-menu-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/default/lexical-context-menu-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/default/lexical-context-menu-plugin.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/mentions-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "page-break-plugin": {
-      name: "page-break-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york/editor/plugins/page-break-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/page-break-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/page-break-plugin.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/context-menu-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -451,7 +629,7 @@ export const Index: Record<string, any> = {
       name: "draggable-block-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
       files: [{
         path: "registry/new-york/editor/plugins/draggable-block-plugin.tsx",
         type: "registry:component",
@@ -462,248 +640,11 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
-    "keywords-plugin": {
-      name: "keywords-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york/editor/plugins/keywords-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/keywords-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/keywords-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "emoji-plugin": {
-      name: "emoji-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york/editor/plugins/emojis-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/emojis-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/emojis-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "image-plugin": {
-      name: "image-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york/editor/plugins/images-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/images-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/images-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "inline-image-plugin": {
-      name: "inline-image-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york/editor/plugins/inline-image-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/inline-image-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/inline-image-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "excalidraw-plugin": {
-      name: "excalidraw-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york/editor/plugins/excalidraw-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/excalidraw-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/excalidraw-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "poll-plugin": {
-      name: "poll-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york/editor/plugins/poll-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/poll-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/poll-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "layout-plugin": {
-      name: "layout-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york/editor/plugins/layout-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/layout-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/layout-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "equation-plugin": {
-      name: "equation-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york/editor/plugins/equations-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/equations-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/equations-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "collapsible-plugin": {
-      name: "collapsible-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york/editor/plugins/collapsible-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/collapsible-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/collapsible-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "auto-embed-plugin": {
-      name: "auto-embed-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york/editor/plugins/embeds/auto-embed-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/embeds/auto-embed-plugin.tsx"
-      },{
-        path: "registry/new-york/editor/plugins/embeds/figma-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/embeds/figma-plugin.tsx"
-      },{
-        path: "registry/new-york/editor/plugins/embeds/twitter-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/embeds/twitter-plugin.tsx"
-      },{
-        path: "registry/new-york/editor/plugins/embeds/youtube-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/embeds/youtube-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/embeds/auto-embed-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "typing-pref-plugin": {
-      name: "typing-pref-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york/editor/plugins/typing-pref-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/typing-pref-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/typing-pref-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "tab-focus-plugin": {
-      name: "tab-focus-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york/editor/plugins/tab-focus-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/tab-focus-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/tab-focus-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "autocomplete-plugin": {
-      name: "autocomplete-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york/editor/plugins/autocomplete-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/autocomplete-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/autocomplete-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "component-picker-menu-plugin": {
-      name: "component-picker-menu-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york/editor/plugins/component-picker-menu-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/component-picker-menu-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/component-picker-menu-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "context-menu-plugin": {
-      name: "context-menu-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york/editor/plugins/context-menu-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/context-menu-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/editor/plugins/context-menu-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
     "drag-drop-paste-plugin": {
       name: "drag-drop-paste-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json","https://shadcn-editor.vercel.app/r/image-plugin.json"],
       files: [{
         path: "registry/new-york/editor/plugins/drag-drop-paste-plugin.tsx",
         type: "registry:component",
@@ -714,18 +655,463 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "emoji-plugin": {
+      name: "emoji-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["command","https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+      files: [{
+        path: "registry/new-york/editor/plugins/emojis-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/emojis-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/emoji-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/emoji-node.tsx"
+      },{
+        path: "registry/new-york/editor/editor-ui/emoji-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-ui/emoji-picker-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/utils/emoji-list.ts",
+        type: "registry:component",
+        target: "components/editor/utils/emoji-list.ts"
+      },{
+        path: "registry/new-york/editor/transformers/markdown-emoji-transformer.ts",
+        type: "registry:component",
+        target: "components/editor/transformers/markdown-emoji-transformer.ts"
+      },{
+        path: "registry/new-york/editor/plugins/default/lexical-typeahead-menu-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/default/lexical-typeahead-menu-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/emojis-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "equation-plugin": {
+      name: "equation-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","checkbox","input","label","select","textarea","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/editor/plugins/equations-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/equations-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/equation-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/equation-node.tsx"
+      },{
+        path: "registry/new-york/editor/editor-ui/equation-component.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-ui/equation-component.tsx"
+      },{
+        path: "registry/new-york/editor/editor-ui/equation-editor.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-ui/equation-editor.tsx"
+      },{
+        path: "registry/new-york/editor/editor-ui/katex-equation-alterer.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-ui/katex-equation-alterer.tsx"
+      },{
+        path: "registry/new-york/editor/editor-ui/katex-renderer.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-ui/katex-renderer.tsx"
+      },{
+        path: "registry/new-york/editor/transformers/markdown-equation-transformer.ts",
+        type: "registry:component",
+        target: "components/editor/transformers/markdown-equation-transformer.ts"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-insert/insert-equation.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-equation.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/equations-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "excalidraw-plugin": {
+      name: "excalidraw-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","dialog","select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/editor/plugins/excalidraw-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/excalidraw-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/excalidraw-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/excalidraw-node.tsx"
+      },{
+        path: "registry/new-york/editor/editor-ui/excalidraw-modal.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-ui/excalidraw-modal.tsx"
+      },{
+        path: "registry/new-york/editor/editor-ui/excalidraw-component.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-ui/excalidraw-component.tsx"
+      },{
+        path: "registry/new-york/editor/editor-ui/excalidraw.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-ui/excalidraw.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-insert/insert-excalidraw.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-excalidraw.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/excalidraw-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "floating-text-format-plugin": {
       name: "floating-text-format-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["separator","toggle-group","https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
       files: [{
         path: "registry/new-york/editor/plugins/floating-text-format-plugin.tsx",
         type: "registry:component",
         target: "components/editor/plugins/floating-text-format-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/context/floating-link-context.tsx",
+        type: "registry:component",
+        target: "components/editor/context/floating-link-context.tsx"
+      },{
+        path: "registry/new-york/editor/utils/get-dom-range-rect.ts",
+        type: "registry:component",
+        target: "components/editor/utils/get-dom-range-rect.ts"
+      },{
+        path: "registry/new-york/editor/utils/get-selected-node.ts",
+        type: "registry:component",
+        target: "components/editor/utils/get-selected-node.ts"
+      },{
+        path: "registry/new-york/editor/utils/set-floating-elem-position.ts",
+        type: "registry:component",
+        target: "components/editor/utils/set-floating-elem-position.ts"
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/new-york/editor/plugins/floating-text-format-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "horizontal-rule-plugin": {
+      name: "horizontal-rule-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "image-plugin": {
+      name: "image-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","dialog","input","label","select","tabs","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/editor/plugins/images-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/images-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/image-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/image-node.tsx"
+      },{
+        path: "registry/new-york/editor/editor-ui/image-component.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-ui/image-component.tsx"
+      },{
+        path: "registry/new-york/editor/editor-ui/image-resizer.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-ui/image-resizer.tsx"
+      },{
+        path: "registry/new-york/editor/shared/can-use-dom.ts",
+        type: "registry:component",
+        target: "components/editor/shared/can-use-dom.ts"
+      },{
+        path: "registry/new-york/editor/transformers/markdown-image-transformer.ts",
+        type: "registry:component",
+        target: "components/editor/transformers/markdown-image-transformer.ts"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-insert/insert-image.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-image.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/images-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "inline-image-plugin": {
+      name: "inline-image-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","checkbox","dialog","input","label","select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json","https://shadcn-editor.vercel.app/r/link-plugin.json"],
+      files: [{
+        path: "registry/new-york/editor/plugins/inline-image-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/inline-image-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/inline-image-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/inline-image-node.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/inline-image-component.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/inline-image-component.tsx"
+      },{
+        path: "registry/new-york/editor/editor-hooks/use-modal.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-hooks/use-modal.tsx"
+      },{
+        path: "registry/new-york/editor/editor-ui/content-editable.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-ui/content-editable.tsx"
+      },{
+        path: "registry/new-york/editor/shared/can-use-dom.tsx",
+        type: "registry:component",
+        target: "components/editor/shared/can-use-dom.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-insert/insert-inline-image.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-inline-image.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/inline-image-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "keywords-plugin": {
+      name: "keywords-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+      files: [{
+        path: "registry/new-york/editor/plugins/keywords-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/keywords-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/keyword-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/keyword-node.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/keywords-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "layout-plugin": {
+      name: "layout-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/editor/plugins/layout-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/layout-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/layout-container-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/layout-container-node.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/layout-item-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/layout-item-node.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-insert/insert-columns-layout.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-columns-layout.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/layout-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "link-plugin": {
+      name: "link-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+      files: [{
+        path: "registry/new-york/editor/plugins/link-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/link-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/utils/url.ts",
+        type: "registry:component",
+        target: "components/editor/utils/url.ts"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/link-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "mention-plugin": {
+      name: "mention-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["command","https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+      files: [{
+        path: "registry/new-york/editor/plugins/mentions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/mentions-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/mention-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/mention-node.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/default/lexical-typeahead-menu-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/default/lexical-typeahead-menu-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/mentions-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "page-break-plugin": {
+      name: "page-break-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/editor/plugins/page-break-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/page-break-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/page-break-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/page-break-node.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-insert/insert-page-break.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-page-break.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/page-break-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "poll-plugin": {
+      name: "poll-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","dialog","input","label","select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/editor/plugins/poll-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/poll-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/nodes/poll-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/poll-node.tsx"
+      },{
+        path: "registry/new-york/editor/editor-ui/poll-component.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-ui/poll-component.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/toolbar/block-insert/insert-poll.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-poll.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/poll-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "table-plugin": {
+      name: "table-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","command","dialog","input","label","popover","select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/new-york/editor/plugins/table-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/table-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/table-action-menu-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/table-action-menu-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/table-cell-resizer-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/table-cell-resizer-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/table-hover-actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/table-hover-actions-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/block-insert-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/block-insert-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/plugins/block-insert/insert-table.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/block-insert/insert-table.tsx"
+      },{
+        path: "registry/new-york/editor/editor-hooks/use-modal.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-hooks/use-modal.tsx"
+      },{
+        path: "registry/new-york/editor/editor-hooks/use-debounce.ts",
+        type: "registry:component",
+        target: "components/editor/editor-hooks/use-debounce.ts"
+      },{
+        path: "registry/new-york/editor/shared/invariant.ts",
+        type: "registry:component",
+        target: "components/editor/shared/invariant.ts"
+      },{
+        path: "registry/new-york/editor/transformers/markdown-table-transformer.ts",
+        type: "registry:component",
+        target: "components/editor/transformers/markdown-table-transformer.ts"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/table-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "tab-focus-plugin": {
+      name: "tab-focus-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+      files: [{
+        path: "registry/new-york/editor/plugins/tab-focus-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/tab-focus-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/tab-focus-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "typing-pref-plugin": {
+      name: "typing-pref-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+      files: [{
+        path: "registry/new-york/editor/plugins/typing-pref-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/typing-pref-plugin.tsx"
+      },{
+        path: "registry/new-york/editor/editor-hooks/use-report.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-hooks/use-report.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/editor/plugins/typing-pref-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -1730,21 +2116,6 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
-    "embeds-plugin-demo": {
-      name: "embeds-plugin-demo",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["https://shadcn-editor.vercel.app/r/embeds-plugin.json"],
-      files: [{
-        path: "registry/new-york/examples/embeds-plugin-demo.tsx",
-        type: "registry:example",
-        target: ""
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/new-york/examples/embeds-plugin-demo.tsx")),
-      source: "",
-      meta: undefined,
-    },
     "emoji-plugin-demo": {
       name: "emoji-plugin-demo",
       description: "",
@@ -2245,7 +2616,7 @@ export const Index: Record<string, any> = {
       name: "toolbar-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["https://shadcn-editor.vercel.app/r/editor.json"],
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
       files: [{
         path: "registry/default/editor/plugins/toolbar/toolbar-plugin.tsx",
         type: "registry:component",
@@ -2305,10 +2676,6 @@ export const Index: Record<string, any> = {
         type: "registry:component",
         target: "components/editor/plugins/toolbar/block-format/format-check-list.tsx"
       },{
-        path: "registry/default/editor/plugins/toolbar/block-format/format-code-block.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/toolbar/block-format/format-code-block.tsx"
-      },{
         path: "registry/default/editor/plugins/toolbar/block-format/format-numbered-list.tsx",
         type: "registry:component",
         target: "components/editor/plugins/toolbar/block-format/format-numbered-list.tsx"
@@ -2335,6 +2702,10 @@ export const Index: Record<string, any> = {
         path: "registry/default/editor/plugins/toolbar/font-family-toolbar-plugin.tsx",
         type: "registry:component",
         target: "components/editor/plugins/toolbar/font-family-toolbar-plugin.tsx"
+      },{
+        path: "registry/default/editor/editor-hooks/use-update-toolbar.ts",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-update-toolbar.ts"
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/font-family-toolbar-plugin.tsx")),
@@ -2350,6 +2721,10 @@ export const Index: Record<string, any> = {
         path: "registry/default/editor/plugins/toolbar/font-size-toolbar-plugin.tsx",
         type: "registry:component",
         target: "components/editor/plugins/toolbar/font-size-toolbar-plugin.tsx"
+      },{
+        path: "registry/default/editor/editor-hooks/use-update-toolbar.ts",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-update-toolbar.ts"
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/font-size-toolbar-plugin.tsx")),
@@ -2365,6 +2740,10 @@ export const Index: Record<string, any> = {
         path: "registry/default/editor/plugins/toolbar/font-format-toolbar-plugin.tsx",
         type: "registry:component",
         target: "components/editor/plugins/toolbar/font-format-toolbar-plugin.tsx"
+      },{
+        path: "registry/default/editor/editor-hooks/use-update-toolbar.ts",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-update-toolbar.ts"
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/font-format-toolbar-plugin.tsx")),
@@ -2380,6 +2759,10 @@ export const Index: Record<string, any> = {
         path: "registry/default/editor/plugins/toolbar/subsuper-toolbar-plugin.tsx",
         type: "registry:component",
         target: "components/editor/plugins/toolbar/subsuper-toolbar-plugin.tsx"
+      },{
+        path: "registry/default/editor/editor-hooks/use-update-toolbar.ts",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-update-toolbar.ts"
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/subsuper-toolbar-plugin.tsx")),
@@ -2390,7 +2773,7 @@ export const Index: Record<string, any> = {
       name: "font-color-toolbar-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      registryDependencies: ["button","input","popover","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
       files: [{
         path: "registry/default/editor/plugins/toolbar/font-color-toolbar-plugin.tsx",
         type: "registry:component",
@@ -2403,6 +2786,10 @@ export const Index: Record<string, any> = {
         path: "registry/default/editor/editor-ui/colorpicker.tsx",
         type: "registry:ui",
         target: "components/editor/editor-ui/colorpicker.tsx"
+      },{
+        path: "registry/default/editor/editor-hooks/use-update-toolbar.ts",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-update-toolbar.ts"
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/font-color-toolbar-plugin.tsx")),
@@ -2418,6 +2805,14 @@ export const Index: Record<string, any> = {
         path: "registry/default/editor/plugins/toolbar/element-format-toolbar-plugin.tsx",
         type: "registry:component",
         target: "components/editor/plugins/toolbar/element-format-toolbar-plugin.tsx"
+      },{
+        path: "registry/default/editor/utils/get-selected-node.ts",
+        type: "registry:component",
+        target: "components/editor/utils/get-selected-node.ts"
+      },{
+        path: "registry/default/editor/editor-hooks/use-update-toolbar.ts",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-update-toolbar.ts"
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/element-format-toolbar-plugin.tsx")),
@@ -2428,7 +2823,7 @@ export const Index: Record<string, any> = {
       name: "clear-formatting-toolbar-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["button","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
       files: [{
         path: "registry/default/editor/plugins/toolbar/clear-formatting-toolbar-plugin.tsx",
         type: "registry:component",
@@ -2439,11 +2834,42 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "link-toolbar-plugin": {
+      name: "link-toolbar-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle","button","input","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/editor/plugins/toolbar/link-toolbar-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/link-toolbar-plugin.tsx"
+      },{
+        path: "registry/default/editor/editor-hooks/use-update-toolbar.ts",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-update-toolbar.ts"
+      },{
+        path: "registry/default/editor/utils/get-selected-node.ts",
+        type: "registry:component",
+        target: "components/editor/utils/get-selected-node.ts"
+      },{
+        path: "registry/default/editor/context/floating-link-context.tsx",
+        type: "registry:component",
+        target: "components/editor/context/floating-link-context.tsx"
+      },{
+        path: "registry/default/editor/utils/url.ts",
+        type: "registry:component",
+        target: "components/editor/utils/url.ts"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/link-toolbar-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "actions-plugin": {
       name: "actions-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["https://shadcn-editor.vercel.app/r/editor.json"],
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
       files: [{
         path: "registry/default/editor/plugins/actions/actions-plugin.tsx",
         type: "registry:component",
@@ -2458,14 +2884,14 @@ export const Index: Record<string, any> = {
       name: "max-length-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/actions-plugin.json"],
       files: [{
-        path: "registry/default/editor/plugins/actions/actions-plugin.tsx",
+        path: "registry/default/editor/plugins/actions/max-length-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/actions/actions-plugin.tsx"
+        target: "components/editor/plugins/actions/max-length-plugin.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/actions-plugin.tsx")),
+      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/max-length-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -2473,14 +2899,14 @@ export const Index: Record<string, any> = {
       name: "counter-character-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/actions-plugin.json"],
       files: [{
-        path: "registry/default/editor/plugins/actions/actions-plugin.tsx",
+        path: "registry/default/editor/plugins/actions/counter-character-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/actions/actions-plugin.tsx"
+        target: "components/editor/plugins/actions/counter-character-plugin.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/actions-plugin.tsx")),
+      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/counter-character-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -2488,14 +2914,22 @@ export const Index: Record<string, any> = {
       name: "speech-to-text-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["button","tooltip","https://shadcn-editor.vercel.app/r/actions-plugin.json"],
       files: [{
-        path: "registry/default/editor/plugins/actions/actions-plugin.tsx",
+        path: "registry/default/editor/plugins/actions/speech-to-text-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/actions/actions-plugin.tsx"
+        target: "components/editor/plugins/actions/speech-to-text-plugin.tsx"
+      },{
+        path: "registry/default/editor/editor-hooks/use-report.ts",
+        type: "registry:hook",
+        target: "components/editor/editor-hooks/use-report.ts"
+      },{
+        path: "registry/default/editor/shared/can-use-dom.ts",
+        type: "registry:component",
+        target: "components/editor/shared/can-use-dom.ts"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/actions-plugin.tsx")),
+      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/speech-to-text-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -2503,14 +2937,18 @@ export const Index: Record<string, any> = {
       name: "share-content-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["button","tooltip","sonner","toast","https://shadcn-editor.vercel.app/r/actions-plugin.json"],
       files: [{
-        path: "registry/default/editor/plugins/actions/actions-plugin.tsx",
+        path: "registry/default/editor/plugins/actions/share-content-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/actions/actions-plugin.tsx"
+        target: "components/editor/plugins/actions/share-content-plugin.tsx"
+      },{
+        path: "registry/default/editor/utils/doc-serialization.ts",
+        type: "registry:component",
+        target: "components/editor/utils/doc-serialization.ts"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/actions-plugin.tsx")),
+      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/share-content-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -2518,14 +2956,14 @@ export const Index: Record<string, any> = {
       name: "import-export-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["button","tooltip","https://shadcn-editor.vercel.app/r/actions-plugin.json"],
       files: [{
-        path: "registry/default/editor/plugins/actions/actions-plugin.tsx",
+        path: "registry/default/editor/plugins/actions/import-export-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/actions/actions-plugin.tsx"
+        target: "components/editor/plugins/actions/import-export-plugin.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/actions-plugin.tsx")),
+      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/import-export-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -2533,14 +2971,14 @@ export const Index: Record<string, any> = {
       name: "markdown-toggle-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["button","https://shadcn-editor.vercel.app/r/actions-plugin.json"],
       files: [{
-        path: "registry/default/editor/plugins/actions/actions-plugin.tsx",
+        path: "registry/default/editor/plugins/actions/markdown-toggle-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/actions/actions-plugin.tsx"
+        target: "components/editor/plugins/actions/markdown-toggle-plugin.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/actions-plugin.tsx")),
+      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/markdown-toggle-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -2548,14 +2986,14 @@ export const Index: Record<string, any> = {
       name: "clear-editor-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["button","dialog","tooltip","https://shadcn-editor.vercel.app/r/actions-plugin.json"],
       files: [{
-        path: "registry/default/editor/plugins/actions/actions-plugin.tsx",
+        path: "registry/default/editor/plugins/actions/clear-editor-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/actions/actions-plugin.tsx"
+        target: "components/editor/plugins/actions/clear-editor-plugin.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/actions-plugin.tsx")),
+      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/clear-editor-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -2563,14 +3001,14 @@ export const Index: Record<string, any> = {
       name: "edit-mode-toggle-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["button","tooltip","https://shadcn-editor.vercel.app/r/actions-plugin.json"],
       files: [{
-        path: "registry/default/editor/plugins/actions/actions-plugin.tsx",
+        path: "registry/default/editor/plugins/actions/edit-mode-toggle-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/actions/actions-plugin.tsx"
+        target: "components/editor/plugins/actions/edit-mode-toggle-plugin.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/actions-plugin.tsx")),
+      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/edit-mode-toggle-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -2578,29 +3016,119 @@ export const Index: Record<string, any> = {
       name: "tree-view-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["button","dialog","scroll-area","https://shadcn-editor.vercel.app/r/actions-plugin.json"],
       files: [{
-        path: "registry/default/editor/plugins/actions/actions-plugin.tsx",
+        path: "registry/default/editor/plugins/actions/tree-view-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/actions/actions-plugin.tsx"
+        target: "components/editor/plugins/actions/tree-view-plugin.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/actions-plugin.tsx")),
+      component: React.lazy(() => import("@/registry/default/editor/plugins/actions/tree-view-plugin.tsx")),
       source: "",
       meta: undefined,
     },
-    "link-plugin": {
-      name: "link-plugin",
+    "autocomplete-plugin": {
+      name: "autocomplete-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
       files: [{
-        path: "registry/default/editor/plugins/link-plugin.tsx",
+        path: "registry/default/editor/plugins/autocomplete-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/link-plugin.tsx"
+        target: "components/editor/plugins/autocomplete-plugin.tsx"
+      },{
+        path: "registry/default/editor/context/shared-autocomplete-context.tsx",
+        type: "registry:component",
+        target: "components/editor/context/shared-autocomplete-context.tsx"
+      },{
+        path: "registry/default/editor/nodes/autocomplete-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/autocomplete-node.tsx"
+      },{
+        path: "registry/default/editor/utils/swipe.ts",
+        type: "registry:component",
+        target: "components/editor/utils/swipe.ts"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/link-plugin.tsx")),
+      component: React.lazy(() => import("@/registry/default/editor/plugins/autocomplete-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "auto-embed-plugin": {
+      name: "auto-embed-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","command","dialog","input","popover","select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/editor/plugins/embeds/auto-embed-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/embeds/auto-embed-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/embeds/figma-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/embeds/figma-plugin.tsx"
+      },{
+        path: "registry/default/editor/nodes/embeds/figma-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/embeds/figma-node.tsx"
+      },{
+        path: "registry/default/editor/plugins/embeds/twitter-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/embeds/twitter-plugin.tsx"
+      },{
+        path: "registry/default/editor/nodes/embeds/tweet-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/embeds/tweet-node.tsx"
+      },{
+        path: "registry/default/editor/plugins/embeds/youtube-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/embeds/youtube-plugin.tsx"
+      },{
+        path: "registry/default/editor/nodes/embeds/youtube-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/embeds/youtube-node.tsx"
+      },{
+        path: "registry/default/editor/editor-hooks/use-modal.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-hooks/use-modal.tsx"
+      },{
+        path: "registry/default/editor/transformers/markdown-tweet-transformer.ts",
+        type: "registry:component",
+        target: "components/editor/transformers/markdown-tweet-transformer.ts"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-insert/insert-embeds.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-embeds.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/embeds/auto-embed-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "component-picker-menu-plugin": {
+      name: "component-picker-menu-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["command","dialog","https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+      files: [{
+        path: "registry/default/editor/plugins/component-picker-menu-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/component-picker-menu-plugin.tsx"
+      },{
+        path: "registry/default/editor/editor-hooks/use-modal",
+        type: "registry:component",
+        target: "components/editor/editor-hooks/use-modal"
+      },{
+        path: "registry/default/editor/plugins/picker/component-picker-option.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/picker/component-picker-option.tsx"
+      },{
+        path: "registry/default/editor/plugins/default/lexical-typeahead-menu-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/default/lexical-typeahead-menu-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/component-picker-menu-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -2608,7 +3136,7 @@ export const Index: Record<string, any> = {
       name: "code-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
       files: [{
         path: "registry/default/editor/plugins/code-action-menu-plugin.tsx",
         type: "registry:component",
@@ -2617,54 +3145,75 @@ export const Index: Record<string, any> = {
         path: "registry/default/editor/plugins/code-highlight-plugin.tsx",
         type: "registry:component",
         target: "components/editor/plugins/code-highlight-plugin.tsx"
+      },{
+        path: "registry/default/editor/editor-hooks/use-debounce.ts",
+        type: "registry:component",
+        target: "components/editor/editor-hooks/use-debounce.ts"
+      },{
+        path: "registry/default/editor/editor-ui/code-button.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-ui/code-button.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-format/format-code-block.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-code-block.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-format/block-format-data.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/block-format-data.tsx"
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/editor/plugins/code-action-menu-plugin.tsx")),
       source: "",
       meta: undefined,
     },
-    "table-plugin": {
-      name: "table-plugin",
+    "collapsible-plugin": {
+      name: "collapsible-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
       files: [{
-        path: "registry/default/editor/plugins/table-plugin.tsx",
+        path: "registry/default/editor/plugins/collapsible-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/table-plugin.tsx"
+        target: "components/editor/plugins/collapsible-plugin.tsx"
+      },{
+        path: "registry/default/editor/nodes/collapsible-container-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/collapsible-container-node.tsx"
+      },{
+        path: "registry/default/editor/nodes/collapsible-content-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/collapsible-content-node.tsx"
+      },{
+        path: "registry/default/editor/nodes/collapsible-title-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/collapsible-title-node.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-insert/insert-collapsible-container.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-collapsible-container.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/table-plugin.tsx")),
+      component: React.lazy(() => import("@/registry/default/editor/plugins/collapsible-plugin.tsx")),
       source: "",
       meta: undefined,
     },
-    "mention-plugin": {
-      name: "mention-plugin",
+    "context-menu-plugin": {
+      name: "context-menu-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["command","popover","https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
       files: [{
-        path: "registry/default/editor/plugins/mentions-plugin.tsx",
+        path: "registry/default/editor/plugins/context-menu-plugin.tsx",
         type: "registry:component",
-        target: "components/editor/plugins/mentions-plugin.tsx"
+        target: "components/editor/plugins/context-menu-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/default/lexical-context-menu-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/default/lexical-context-menu-plugin.tsx"
       }],
       categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/mentions-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "page-break-plugin": {
-      name: "page-break-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/default/editor/plugins/page-break-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/page-break-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/page-break-plugin.tsx")),
+      component: React.lazy(() => import("@/registry/default/editor/plugins/context-menu-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -2672,7 +3221,7 @@ export const Index: Record<string, any> = {
       name: "draggable-block-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
       files: [{
         path: "registry/default/editor/plugins/draggable-block-plugin.tsx",
         type: "registry:component",
@@ -2683,248 +3232,11 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
-    "keywords-plugin": {
-      name: "keywords-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/default/editor/plugins/keywords-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/keywords-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/keywords-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "emoji-plugin": {
-      name: "emoji-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/default/editor/plugins/emojis-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/emojis-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/emojis-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "image-plugin": {
-      name: "image-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/default/editor/plugins/images-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/images-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/images-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "inline-image-plugin": {
-      name: "inline-image-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/default/editor/plugins/inline-image-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/inline-image-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/inline-image-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "excalidraw-plugin": {
-      name: "excalidraw-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/default/editor/plugins/excalidraw-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/excalidraw-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/excalidraw-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "poll-plugin": {
-      name: "poll-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/default/editor/plugins/poll-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/poll-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/poll-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "layout-plugin": {
-      name: "layout-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/default/editor/plugins/layout-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/layout-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/layout-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "equation-plugin": {
-      name: "equation-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/default/editor/plugins/equations-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/equations-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/equations-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "collapsible-plugin": {
-      name: "collapsible-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/default/editor/plugins/collapsible-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/collapsible-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/collapsible-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "auto-embed-plugin": {
-      name: "auto-embed-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/default/editor/plugins/embeds/auto-embed-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/embeds/auto-embed-plugin.tsx"
-      },{
-        path: "registry/default/editor/plugins/embeds/figma-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/embeds/figma-plugin.tsx"
-      },{
-        path: "registry/default/editor/plugins/embeds/twitter-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/embeds/twitter-plugin.tsx"
-      },{
-        path: "registry/default/editor/plugins/embeds/youtube-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/embeds/youtube-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/embeds/auto-embed-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "typing-pref-plugin": {
-      name: "typing-pref-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/default/editor/plugins/typing-pref-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/typing-pref-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/typing-pref-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "tab-focus-plugin": {
-      name: "tab-focus-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/default/editor/plugins/tab-focus-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/tab-focus-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/tab-focus-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "autocomplete-plugin": {
-      name: "autocomplete-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/default/editor/plugins/autocomplete-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/autocomplete-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/autocomplete-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "component-picker-menu-plugin": {
-      name: "component-picker-menu-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/default/editor/plugins/component-picker-menu-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/component-picker-menu-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/component-picker-menu-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "context-menu-plugin": {
-      name: "context-menu-plugin",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/default/editor/plugins/context-menu-plugin.tsx",
-        type: "registry:component",
-        target: "components/editor/plugins/context-menu-plugin.tsx"
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/default/editor/plugins/context-menu-plugin.tsx")),
-      source: "",
-      meta: undefined,
-    },
     "drag-drop-paste-plugin": {
       name: "drag-drop-paste-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json","https://shadcn-editor.vercel.app/r/image-plugin.json"],
       files: [{
         path: "registry/default/editor/plugins/drag-drop-paste-plugin.tsx",
         type: "registry:component",
@@ -2935,18 +3247,463 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "emoji-plugin": {
+      name: "emoji-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["command","https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+      files: [{
+        path: "registry/default/editor/plugins/emojis-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/emojis-plugin.tsx"
+      },{
+        path: "registry/default/editor/nodes/emoji-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/emoji-node.tsx"
+      },{
+        path: "registry/default/editor/editor-ui/emoji-picker-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-ui/emoji-picker-plugin.tsx"
+      },{
+        path: "registry/default/editor/utils/emoji-list.ts",
+        type: "registry:component",
+        target: "components/editor/utils/emoji-list.ts"
+      },{
+        path: "registry/default/editor/transformers/markdown-emoji-transformer.ts",
+        type: "registry:component",
+        target: "components/editor/transformers/markdown-emoji-transformer.ts"
+      },{
+        path: "registry/default/editor/plugins/default/lexical-typeahead-menu-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/default/lexical-typeahead-menu-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/emojis-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "equation-plugin": {
+      name: "equation-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","checkbox","input","label","select","textarea","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/editor/plugins/equations-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/equations-plugin.tsx"
+      },{
+        path: "registry/default/editor/nodes/equation-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/equation-node.tsx"
+      },{
+        path: "registry/default/editor/editor-ui/equation-component.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-ui/equation-component.tsx"
+      },{
+        path: "registry/default/editor/editor-ui/equation-editor.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-ui/equation-editor.tsx"
+      },{
+        path: "registry/default/editor/editor-ui/katex-equation-alterer.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-ui/katex-equation-alterer.tsx"
+      },{
+        path: "registry/default/editor/editor-ui/katex-renderer.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-ui/katex-renderer.tsx"
+      },{
+        path: "registry/default/editor/transformers/markdown-equation-transformer.ts",
+        type: "registry:component",
+        target: "components/editor/transformers/markdown-equation-transformer.ts"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-insert/insert-equation.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-equation.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/equations-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "excalidraw-plugin": {
+      name: "excalidraw-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","dialog","select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/editor/plugins/excalidraw-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/excalidraw-plugin.tsx"
+      },{
+        path: "registry/default/editor/nodes/excalidraw-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/excalidraw-node.tsx"
+      },{
+        path: "registry/default/editor/editor-ui/excalidraw-modal.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-ui/excalidraw-modal.tsx"
+      },{
+        path: "registry/default/editor/editor-ui/excalidraw-component.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-ui/excalidraw-component.tsx"
+      },{
+        path: "registry/default/editor/editor-ui/excalidraw.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-ui/excalidraw.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-insert/insert-excalidraw.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-excalidraw.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/excalidraw-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "floating-text-format-plugin": {
       name: "floating-text-format-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["separator","toggle-group","https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
       files: [{
         path: "registry/default/editor/plugins/floating-text-format-plugin.tsx",
         type: "registry:component",
         target: "components/editor/plugins/floating-text-format-plugin.tsx"
+      },{
+        path: "registry/default/editor/context/floating-link-context.tsx",
+        type: "registry:component",
+        target: "components/editor/context/floating-link-context.tsx"
+      },{
+        path: "registry/default/editor/utils/get-dom-range-rect.ts",
+        type: "registry:component",
+        target: "components/editor/utils/get-dom-range-rect.ts"
+      },{
+        path: "registry/default/editor/utils/get-selected-node.ts",
+        type: "registry:component",
+        target: "components/editor/utils/get-selected-node.ts"
+      },{
+        path: "registry/default/editor/utils/set-floating-elem-position.ts",
+        type: "registry:component",
+        target: "components/editor/utils/set-floating-elem-position.ts"
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/editor/plugins/floating-text-format-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "horizontal-rule-plugin": {
+      name: "horizontal-rule-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "image-plugin": {
+      name: "image-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","dialog","input","label","select","tabs","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/editor/plugins/images-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/images-plugin.tsx"
+      },{
+        path: "registry/default/editor/nodes/image-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/image-node.tsx"
+      },{
+        path: "registry/default/editor/editor-ui/image-component.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-ui/image-component.tsx"
+      },{
+        path: "registry/default/editor/editor-ui/image-resizer.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-ui/image-resizer.tsx"
+      },{
+        path: "registry/default/editor/shared/can-use-dom.ts",
+        type: "registry:component",
+        target: "components/editor/shared/can-use-dom.ts"
+      },{
+        path: "registry/default/editor/transformers/markdown-image-transformer.ts",
+        type: "registry:component",
+        target: "components/editor/transformers/markdown-image-transformer.ts"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-insert/insert-image.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-image.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/images-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "inline-image-plugin": {
+      name: "inline-image-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","checkbox","dialog","input","label","select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json","https://shadcn-editor.vercel.app/r/link-plugin.json"],
+      files: [{
+        path: "registry/default/editor/plugins/inline-image-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/inline-image-plugin.tsx"
+      },{
+        path: "registry/default/editor/nodes/inline-image-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/inline-image-node.tsx"
+      },{
+        path: "registry/default/editor/nodes/inline-image-component.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/inline-image-component.tsx"
+      },{
+        path: "registry/default/editor/editor-hooks/use-modal.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-hooks/use-modal.tsx"
+      },{
+        path: "registry/default/editor/editor-ui/content-editable.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-ui/content-editable.tsx"
+      },{
+        path: "registry/default/editor/shared/can-use-dom.tsx",
+        type: "registry:component",
+        target: "components/editor/shared/can-use-dom.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-insert/insert-inline-image.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-inline-image.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/inline-image-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "keywords-plugin": {
+      name: "keywords-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+      files: [{
+        path: "registry/default/editor/plugins/keywords-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/keywords-plugin.tsx"
+      },{
+        path: "registry/default/editor/nodes/keyword-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/keyword-node.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/keywords-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "layout-plugin": {
+      name: "layout-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/editor/plugins/layout-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/layout-plugin.tsx"
+      },{
+        path: "registry/default/editor/nodes/layout-container-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/layout-container-node.tsx"
+      },{
+        path: "registry/default/editor/nodes/layout-item-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/layout-item-node.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-insert/insert-columns-layout.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-columns-layout.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/layout-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "link-plugin": {
+      name: "link-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+      files: [{
+        path: "registry/default/editor/plugins/link-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/link-plugin.tsx"
+      },{
+        path: "registry/default/editor/utils/url.ts",
+        type: "registry:component",
+        target: "components/editor/utils/url.ts"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/link-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "mention-plugin": {
+      name: "mention-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["command","https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+      files: [{
+        path: "registry/default/editor/plugins/mentions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/mentions-plugin.tsx"
+      },{
+        path: "registry/default/editor/nodes/mention-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/mention-node.tsx"
+      },{
+        path: "registry/default/editor/plugins/default/lexical-typeahead-menu-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/default/lexical-typeahead-menu-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/mentions-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "page-break-plugin": {
+      name: "page-break-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/editor/plugins/page-break-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/page-break-plugin.tsx"
+      },{
+        path: "registry/default/editor/nodes/page-break-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/page-break-node.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-insert/insert-page-break.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-page-break.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/page-break-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "poll-plugin": {
+      name: "poll-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","dialog","input","label","select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/editor/plugins/poll-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/poll-plugin.tsx"
+      },{
+        path: "registry/default/editor/nodes/poll-node.tsx",
+        type: "registry:component",
+        target: "components/editor/nodes/poll-node.tsx"
+      },{
+        path: "registry/default/editor/editor-ui/poll-component.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-ui/poll-component.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-insert/insert-poll.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-insert/insert-poll.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/poll-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "table-plugin": {
+      name: "table-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","command","dialog","input","label","popover","select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+      files: [{
+        path: "registry/default/editor/plugins/table-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/table-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/table-action-menu-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/table-action-menu-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/table-cell-resizer-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/table-cell-resizer-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/table-hover-actions-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/table-hover-actions-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/block-insert-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/block-insert-plugin.tsx"
+      },{
+        path: "registry/default/editor/plugins/block-insert/insert-table.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/block-insert/insert-table.tsx"
+      },{
+        path: "registry/default/editor/editor-hooks/use-modal.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-hooks/use-modal.tsx"
+      },{
+        path: "registry/default/editor/editor-hooks/use-debounce.ts",
+        type: "registry:component",
+        target: "components/editor/editor-hooks/use-debounce.ts"
+      },{
+        path: "registry/default/editor/shared/invariant.ts",
+        type: "registry:component",
+        target: "components/editor/shared/invariant.ts"
+      },{
+        path: "registry/default/editor/transformers/markdown-table-transformer.ts",
+        type: "registry:component",
+        target: "components/editor/transformers/markdown-table-transformer.ts"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/table-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "tab-focus-plugin": {
+      name: "tab-focus-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+      files: [{
+        path: "registry/default/editor/plugins/tab-focus-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/tab-focus-plugin.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/tab-focus-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "typing-pref-plugin": {
+      name: "typing-pref-plugin",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+      files: [{
+        path: "registry/default/editor/plugins/typing-pref-plugin.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/typing-pref-plugin.tsx"
+      },{
+        path: "registry/default/editor/editor-hooks/use-report.tsx",
+        type: "registry:component",
+        target: "components/editor/editor-hooks/use-report.tsx"
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/editor/plugins/typing-pref-plugin.tsx")),
       source: "",
       meta: undefined,
     },
@@ -3948,21 +4705,6 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/examples/element-format-toolbar-plugin-demo.tsx")),
-      source: "",
-      meta: undefined,
-    },
-    "embeds-plugin-demo": {
-      name: "embeds-plugin-demo",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["https://shadcn-editor.vercel.app/r/embeds-plugin.json"],
-      files: [{
-        path: "registry/default/examples/embeds-plugin-demo.tsx",
-        type: "registry:example",
-        target: ""
-      }],
-      categories: undefined,
-      component: React.lazy(() => import("@/registry/default/examples/embeds-plugin-demo.tsx")),
       source: "",
       meta: undefined,
     },

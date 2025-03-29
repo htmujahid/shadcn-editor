@@ -1,3 +1,5 @@
+'use client'
+
 import { Columns3Icon } from 'lucide-react'
 
 import { useToolbarContext } from '@/registry/new-york/editor/context/toolbar-context'

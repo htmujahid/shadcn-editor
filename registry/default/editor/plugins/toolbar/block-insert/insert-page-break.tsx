@@ -1,3 +1,5 @@
+'use client'
+
 import { SquareSplitVerticalIcon } from 'lucide-react'
 
 import { useToolbarContext } from '@/registry/default/editor/context/toolbar-context'

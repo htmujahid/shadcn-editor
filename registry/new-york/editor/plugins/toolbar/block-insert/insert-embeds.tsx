@@ -1,3 +1,5 @@
+'use client'
+
 import { INSERT_EMBED_COMMAND } from '@lexical/react/LexicalAutoEmbedPlugin'
 
 import { useToolbarContext } from '@/registry/new-york/editor/context/toolbar-context'

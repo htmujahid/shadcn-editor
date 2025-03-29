@@ -3,12 +3,29 @@
   "name": "share-content-plugin",
   "type": "registry:ui",
   "author": "shadcn (https://ui.shadcn.com)",
+  "dependencies": [
+    "sonner",
+    "@lexical/file"
+  ],
+  "registryDependencies": [
+    "button",
+    "tooltip",
+    "sonner",
+    "toast",
+    "https://shadcn-editor.vercel.app/r/actions-plugin.json"
+  ],
   "files": [
     {
-      "path": "editor/plugins/actions/actions-plugin.tsx",
-      "content": "export function ActionsPlugin({ children }: { children: React.ReactNode }) {\r\n  return children\r\n}\r\n",
+      "path": "editor/plugins/actions/share-content-plugin.tsx",
+      "content": "'use client'\r\n\r\nimport { useEffect } from 'react'\r\n\r\nimport {\r\n  SerializedDocument,\r\n  editorStateFromSerializedDocument,\r\n  serializedDocumentFromEditorState,\r\n} from '@lexical/file'\r\nimport { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'\r\nimport { CLEAR_HISTORY_COMMAND } from 'lexical'\r\nimport { SendIcon } from 'lucide-react'\r\nimport { toast } from 'sonner'\r\n\r\nimport { Button } from '@/registry/default/ui/button'\r\nimport {\r\n  Tooltip,\r\n  TooltipContent,\r\n  TooltipTrigger,\r\n} from '@/registry/default/ui/tooltip'\r\n\r\nimport { docFromHash, docToHash } from '@/registry/default/editor/utils/doc-serialization'\r\n\r\nexport function ShareContentPlugin() {\r\n  const [editor] = useLexicalComposerContext()\r\n  async function shareDoc(doc: SerializedDocument): Promise<void> {\r\n    const url = new URL(window.location.toString())\r\n    url.hash = await docToHash(doc)\r\n    const newUrl = url.toString()\r\n    window.history.replaceState({}, '', newUrl)\r\n    await window.navigator.clipboard.writeText(newUrl)\r\n  }\r\n  useEffect(() => {\r\n    docFromHash(window.location.hash).then((doc) => {\r\n      if (doc && doc.source === 'editor') {\r\n        editor.setEditorState(editorStateFromSerializedDocument(editor, doc))\r\n        editor.dispatchCommand(CLEAR_HISTORY_COMMAND, undefined)\r\n      }\r\n    })\r\n  }, [editor])\r\n\r\n  return (\r\n    <Tooltip>\r\n      <TooltipTrigger asChild>\r\n        <Button\r\n          variant={'ghost'}\r\n          onClick={() =>\r\n            shareDoc(\r\n              serializedDocumentFromEditorState(editor.getEditorState(), {\r\n                source: 'editor',\r\n              })\r\n            ).then(\r\n              () => toast.success('URL copied to clipboard'),\r\n              () => toast.error('URL could not be copied to clipboard')\r\n            )\r\n          }\r\n          title=\"Share\"\r\n          aria-label=\"Share Playground link to current editor state\"\r\n          size={'sm'}\r\n          className=\"p-2\"\r\n        >\r\n          <SendIcon className=\"size-4\" />\r\n        </Button>\r\n      </TooltipTrigger>\r\n      <TooltipContent>Share Content</TooltipContent>\r\n    </Tooltip>\r\n  )\r\n}\r\n",
       "type": "registry:component",
-      "target": "components/editor/plugins/actions/actions-plugin.tsx"
+      "target": "components/editor/plugins/actions/share-content-plugin.tsx"
+    },
+    {
+      "path": "editor/utils/doc-serialization.ts",
+      "content": "import { SerializedDocument } from '@lexical/file'\r\n\r\n// eslint-disable-next-line @typescript-eslint/no-explicit-any\r\nasync function* generateReader<T = any>(\r\n  reader: ReadableStreamDefaultReader<T>\r\n) {\r\n  let done = false\r\n  while (!done) {\r\n    const res = await reader.read()\r\n    const { value } = res\r\n    if (value !== undefined) {\r\n      yield value\r\n    }\r\n    done = res.done\r\n  }\r\n}\r\n\r\nasync function readBytestoString(\r\n  reader: ReadableStreamDefaultReader\r\n): Promise<string> {\r\n  const output = []\r\n  const chunkSize = 0x8000\r\n  for await (const value of generateReader(reader)) {\r\n    for (let i = 0; i < value.length; i += chunkSize) {\r\n      output.push(String.fromCharCode(...value.subarray(i, i + chunkSize)))\r\n    }\r\n  }\r\n  return output.join('')\r\n}\r\n\r\nexport async function docToHash(doc: SerializedDocument): Promise<string> {\r\n  const cs = new CompressionStream('gzip')\r\n  const writer = cs.writable.getWriter()\r\n  const [, output] = await Promise.all([\r\n    writer\r\n      .write(new TextEncoder().encode(JSON.stringify(doc)))\r\n      .then(() => writer.close()),\r\n    readBytestoString(cs.readable.getReader()),\r\n  ])\r\n  return `#doc=${btoa(output)\r\n    .replace(/\\//g, '_')\r\n    .replace(/\\+/g, '-')\r\n    .replace(/=+$/, '')}`\r\n}\r\n\r\nexport async function docFromHash(\r\n  hash: string\r\n): Promise<SerializedDocument | null> {\r\n  const m = /^#doc=(.*)$/.exec(hash)\r\n  if (!m) {\r\n    return null\r\n  }\r\n  const ds = new DecompressionStream('gzip')\r\n  const writer = ds.writable.getWriter()\r\n  const b64 = atob(m[1].replace(/_/g, '/').replace(/-/g, '+'))\r\n  const array = new Uint8Array(b64.length)\r\n  for (let i = 0; i < b64.length; i++) {\r\n    array[i] = b64.charCodeAt(i)\r\n  }\r\n  const closed = writer.write(array).then(() => writer.close())\r\n  const output = []\r\n  for await (const chunk of generateReader(\r\n    ds.readable.pipeThrough(new TextDecoderStream()).getReader()\r\n  )) {\r\n    output.push(chunk)\r\n  }\r\n  await closed\r\n  return JSON.parse(output.join(''))\r\n}\r\n",
+      "type": "registry:component",
+      "target": "components/editor/utils/doc-serialization.ts"
     }
   ]
 }

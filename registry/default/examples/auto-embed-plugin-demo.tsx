@@ -2,7 +2,9 @@
 
 import { useState } from "react"
 
-import { LinkNode, AutoLinkNode } from "@lexical/link"
+import { ParagraphNode, TextNode } from "lexical"
+import { HeadingNode, QuoteNode } from "@lexical/rich-text"
+
 import { InitialConfigType, LexicalComposer } from "@lexical/react/LexicalComposer"
 import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary"
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin"
@@ -11,14 +13,24 @@ import { TooltipProvider } from "@/registry/default/ui/tooltip"
 
 import { editorTheme } from "@/registry/default/editor/themes/editor-theme"
 import { ContentEditable } from "@/registry/default/editor/editor-ui/content-editable"
+
+import { ToolbarPlugin } from "@/registry/default/editor/plugins/toolbar/toolbar-plugin"
+import { BlockInsertPlugin } from "@/registry/default/editor/plugins/toolbar/block-insert-plugin"
+import { InsertEmbeds } from "@/registry/default/editor/plugins/toolbar/block-insert/insert-embeds"
+
 import { AutoEmbedPlugin } from "@/registry/default/editor/plugins/embeds/auto-embed-plugin"
+import { FigmaPlugin } from '@/registry/default/editor/plugins/embeds/figma-plugin'
+import { TwitterPlugin } from '@/registry/default/editor/plugins/embeds/twitter-plugin'
+import { YouTubePlugin } from '@/registry/default/editor/plugins/embeds/youtube-plugin'
 
 const editorConfig: InitialConfigType = {
   namespace: 'Editor',
   theme: editorTheme,
   nodes: [
-    LinkNode,
-    AutoLinkNode
+    HeadingNode,
+    ParagraphNode,
+    TextNode,
+    QuoteNode,
   ],
   onError: (error: Error) => {
     console.error(error)
@@ -56,6 +68,15 @@ export function Plugins() {
   return (
     <div className="relative">
       {/* toolbar plugins */}
+      <ToolbarPlugin>
+        {({ blockType }) => (
+          <div className="vertical-align-middle sticky top-0 z-10 flex gap-2 overflow-auto border-b p-1">
+            <BlockInsertPlugin>
+              <InsertEmbeds />
+            </BlockInsertPlugin>
+          </div>
+        )}
+      </ToolbarPlugin>
 
       <div className="relative">
         <RichTextPlugin
@@ -69,6 +90,9 @@ export function Plugins() {
           ErrorBoundary={LexicalErrorBoundary}
         />
         <AutoEmbedPlugin />
+        <FigmaPlugin />
+        <TwitterPlugin />
+        <YouTubePlugin />
         {/* rest of the plugins */}
       </div>
     </div>

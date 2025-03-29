@@ -19,7 +19,7 @@ import { useBasicTypeaheadTriggerMatch } from '@lexical/react/LexicalTypeaheadMe
 import { Command, CommandGroup, CommandItem, CommandList } from '@/registry/default/ui/command'
 
 import { useEditorModal } from '@/registry/default/editor/editor-hooks/use-modal'
-import { ComponentPickerOption } from './picker/component-picker-option'
+import { ComponentPickerOption } from '@/registry/default/editor/plugins/picker/component-picker-option'
 
 const LexicalTypeaheadMenuPlugin = dynamic(
   () => import('./default/lexical-typeahead-menu-plugin'),
