@@ -84,6 +84,10 @@ export const Index: Record<string, any> = {
         type: "registry:component",
         target: "components/editor/plugins/toolbar/block-format/format-check-list.tsx"
       },{
+        path: "registry/new-york/editor/plugins/toolbar/block-format/format-heading.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-heading.tsx"
+      },{
         path: "registry/new-york/editor/plugins/toolbar/block-format/format-numbered-list.tsx",
         type: "registry:component",
         target: "components/editor/plugins/toolbar/block-format/format-numbered-list.tsx"
@@ -2675,6 +2679,10 @@ export const Index: Record<string, any> = {
         path: "registry/default/editor/plugins/toolbar/block-format/format-check-list.tsx",
         type: "registry:component",
         target: "components/editor/plugins/toolbar/block-format/format-check-list.tsx"
+      },{
+        path: "registry/default/editor/plugins/toolbar/block-format/format-heading.tsx",
+        type: "registry:component",
+        target: "components/editor/plugins/toolbar/block-format/format-heading.tsx"
       },{
         path: "registry/default/editor/plugins/toolbar/block-format/format-numbered-list.tsx",
         type: "registry:component",

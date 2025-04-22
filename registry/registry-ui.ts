@@ -91,6 +91,11 @@ export const ui: Registry["items"] = [
         "type": "registry:component"
       },
       {
+        "path": "editor/plugins/toolbar/block-format/format-heading.tsx",
+        "target": "components/editor/plugins/toolbar/block-format/format-heading.tsx",
+        "type": "registry:component"
+      },
+      {
         "path": "editor/plugins/toolbar/block-format/format-numbered-list.tsx",
         "target": "components/editor/plugins/toolbar/block-format/format-numbered-list.tsx",
         "type": "registry:component"
