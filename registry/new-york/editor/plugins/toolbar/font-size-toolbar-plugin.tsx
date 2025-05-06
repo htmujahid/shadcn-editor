@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useState } from 'react'
+import { useCallback, useState, useRef } from 'react'
 
 import {
   $getSelectionStyleValueForProperty,
@@ -22,6 +22,7 @@ const MAX_FONT_SIZE = 72
 export function FontSizeToolbarPlugin() {
   const style = 'font-size'
   const [fontSize, setFontSize] = useState(DEFAULT_FONT_SIZE)
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const { activeEditor } = useToolbarContext()
 
@@ -67,10 +68,12 @@ export function FontSizeToolbarPlugin() {
           <Minus className="size-3" />
         </Button>
         <Input
+          ref={inputRef}
           value={fontSize}
-          onChange={(e) =>
-            updateFontSize(parseInt(e.target.value) || DEFAULT_FONT_SIZE)
-          }
+          onChange={(e) => {
+            updateFontSize(parseInt(e.target.value) || DEFAULT_FONT_SIZE);
+            setTimeout(() => inputRef.current?.focus(), 0);
+          }}
           className="h-8 w-12 text-center"
           min={MIN_FONT_SIZE}
           max={MAX_FONT_SIZE}
