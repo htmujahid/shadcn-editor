@@ -3,6 +3,7 @@
 import { useState } from "react"
 
 import { ParagraphNode, TextNode } from "lexical"
+import { AutoLinkNode, LinkNode } from "@lexical/link"
 import { HeadingNode, QuoteNode } from "@lexical/rich-text"
 
 import { InitialConfigType, LexicalComposer } from "@lexical/react/LexicalComposer"
@@ -23,6 +24,10 @@ import { FigmaPlugin } from '@/registry/default/editor/plugins/embeds/figma-plug
 import { TwitterPlugin } from '@/registry/default/editor/plugins/embeds/twitter-plugin'
 import { YouTubePlugin } from '@/registry/default/editor/plugins/embeds/youtube-plugin'
 
+import { FigmaNode } from "@/registry/default/editor/nodes/embeds/figma-node"
+import { TweetNode } from "@/registry/default/editor/nodes/embeds/tweet-node"
+import { YouTubeNode } from "@/registry/default/editor/nodes/embeds/youtube-node"
+
 const editorConfig: InitialConfigType = {
   namespace: 'Editor',
   theme: editorTheme,
@@ -31,6 +36,11 @@ const editorConfig: InitialConfigType = {
     ParagraphNode,
     TextNode,
     QuoteNode,
+    LinkNode,
+    AutoLinkNode,
+    FigmaNode,
+    TweetNode,
+    YouTubeNode
   ],
   onError: (error: Error) => {
     console.error(error)
