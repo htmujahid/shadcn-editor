@@ -349,7 +349,7 @@ export const Index: Record<string, any> = {
       name: "share-content-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button","tooltip","sonner","toast","https://shadcn-editor.vercel.app/r/actions-plugin.json"],
+      registryDependencies: ["button","tooltip","sonner","https://shadcn-editor.vercel.app/r/actions-plugin.json"],
       files: [{
         path: "registry/new-york/editor/plugins/actions/share-content-plugin.tsx",
         type: "registry:component",
@@ -2945,7 +2945,7 @@ export const Index: Record<string, any> = {
       name: "share-content-plugin",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button","tooltip","sonner","toast","https://shadcn-editor.vercel.app/r/actions-plugin.json"],
+      registryDependencies: ["button","tooltip","sonner","https://shadcn-editor.vercel.app/r/actions-plugin.json"],
       files: [{
         path: "registry/default/editor/plugins/actions/share-content-plugin.tsx",
         type: "registry:component",
