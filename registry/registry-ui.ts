@@ -393,7 +393,6 @@ export const ui: Registry["items"] = [
       "button",
       "tooltip",
       "sonner",
-      "toast",
       "https://shadcn-editor.vercel.app/r/actions-plugin.json",
     ],
     "files": [
