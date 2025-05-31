@@ -1,4 +1,4 @@
-import { type Registry } from "shadcn/registry"
+import { registryItemSchema, type Registry } from "shadcn/registry"
 import { z } from "zod"
 
 import { blocks } from "@/registry/registry-blocks"
@@ -10,19 +10,39 @@ import { lib } from "@/registry/registry-lib"
 import { themes } from "@/registry/registry-themes"
 import { ui } from "@/registry/registry-ui"
 
+const DEPRECATED_ITEMS = [
+  "toast",
+  "toast-demo",
+  "toast-destructive",
+  "toast-simple",
+  "toast-with-action",
+  "toast-with-title",
+]
+
 export const registry = {
   name: "shadcn/ui",
   homepage: "https://ui.shadcn.com",
-  items: [
-    ...ui,
-    ...blocks,
-    ...charts,
-    ...lib,
-    ...hooks,
-    ...themes,
-
-    // Internal use only.
-    ...internal,
-    ...examples,
-  ],
+  items: z.array(registryItemSchema).parse(
+    [
+      {
+        name: "index",
+        type: "registry:style",
+        dependencies: ["class-variance-authority", "lucide-react"],
+        devDependencies: ["tw-animate-css"],
+        registryDependencies: ["utils"],
+        cssVars: {},
+        files: [],
+      },
+      ...ui,
+      ...blocks,
+      ...charts,
+      ...lib,
+      ...hooks,
+      ...themes,
+      ...examples,
+      ...internal,
+    ].filter((item) => {
+      return !DEPRECATED_ITEMS.includes(item.name)
+    })
+  ),
 } satisfies Registry

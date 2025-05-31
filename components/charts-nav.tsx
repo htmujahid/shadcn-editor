@@ -4,40 +4,36 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import { cn } from "@/lib/utils"
-import { ScrollArea, ScrollBar } from "@/registry/new-york/ui/scroll-area"
+import { ScrollArea, ScrollBar } from "@/registry/new-york-v4/ui/scroll-area"
 
 const links = [
   {
-    name: "All Charts",
-    href: "/charts",
+    name: "Area Charts",
+    href: "/charts/area#charts",
   },
   {
-    name: "Area Chart",
-    href: "/charts#area-chart",
+    name: "Bar Charts",
+    href: "/charts/bar#charts",
   },
   {
-    name: "Bar Chart",
-    href: "/charts#bar-chart",
+    name: "Line Charts",
+    href: "/charts/line#charts",
   },
   {
-    name: "Line Chart",
-    href: "/charts#line-chart",
+    name: "Pie Charts",
+    href: "/charts/pie#charts",
   },
   {
-    name: "Pie Chart",
-    href: "/charts#pie-chart",
+    name: "Radar Charts",
+    href: "/charts/radar#charts",
   },
   {
-    name: "Radar Chart",
-    href: "/charts#radar-chart",
+    name: "Radial Charts",
+    href: "/charts/radial#charts",
   },
   {
-    name: "Radial Chart",
-    href: "/charts#radial-chart",
-  },
-  {
-    name: "Tooltip",
-    href: "/charts#tooltip",
+    name: "Tooltips",
+    href: "/charts/tooltip#charts",
   },
 ]
 
@@ -48,25 +44,24 @@ export function ChartsNav({
   const pathname = usePathname()
 
   return (
-    <ScrollArea className="max-w-[600px] lg:max-w-none">
-      <div className={cn("flex items-center", className)} {...props}>
-        {links.map((example, index) => (
-          <Link
-            href={example.href}
-            key={example.href}
-            className={cn(
-              "flex h-7 shrink-0 items-center justify-center rounded-full px-4 text-center text-sm font-medium transition-colors hover:text-primary",
-              pathname?.startsWith(example.href) ||
-                (index === 0 && pathname === "/charts")
-                ? "bg-muted text-primary"
-                : "text-muted-foreground"
-            )}
-          >
-            {example.name}
-          </Link>
-        ))}
-      </div>
-      <ScrollBar orientation="horizontal" className="invisible" />
-    </ScrollArea>
+    <div className="relative overflow-hidden">
+      <ScrollArea className="max-w-[600px] lg:max-w-none">
+        <div className={cn("flex items-center", className)} {...props}>
+          {links.map((link) => (
+            <Link
+              href={link.href}
+              key={link.href}
+              data-active={pathname === link.href}
+              className={cn(
+                "text-muted-foreground hover:text-primary data-[active=true]:text-primary flex h-7 shrink-0 items-center justify-center px-4 text-center text-base font-medium transition-colors"
+              )}
+            >
+              {link.name}
+            </Link>
+          ))}
+        </div>
+        <ScrollBar orientation="horizontal" className="invisible" />
+      </ScrollArea>
+    </div>
   )
 }

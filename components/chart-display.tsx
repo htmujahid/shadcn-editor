@@ -28,13 +28,13 @@ export async function ChartDisplay({
   return (
     <div
       className={cn(
-        "themes-wrapper group relative flex flex-col overflow-hidden rounded-xl border shadow transition-all duration-200 ease-in-out hover:z-30",
+        "themes-wrapper group relative flex flex-col overflow-hidden rounded-xl border transition-all duration-200 ease-in-out hover:z-30",
         className
       )}
     >
       <ChartToolbar
         chart={{ ...chart, highlightedCode }}
-        className="relative z-20 flex justify-end border-b bg-card px-3 py-2.5 text-card-foreground"
+        className="bg-card text-card-foreground relative z-20 flex justify-end border-b px-3 py-2.5"
       >
         {children}
       </ChartToolbar>

@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/registry/new-york/ui/button"
+import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Card,
   CardContent,
@@ -8,9 +8,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/new-york/ui/card"
-import { Label } from "@/registry/new-york/ui/label"
-import { Switch } from "@/registry/new-york/ui/switch"
+} from "@/registry/new-york-v4/ui/card"
+import { Label } from "@/registry/new-york-v4/ui/label"
+import { Switch } from "@/registry/new-york-v4/ui/switch"
 
 export function CardsCookieSettings() {
   return (
@@ -20,34 +20,25 @@ export function CardsCookieSettings() {
         <CardDescription>Manage your cookie settings here.</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-6">
-        <div className="flex items-center justify-between space-x-4">
-          <Label htmlFor="necessary" className="flex flex-col space-y-1">
+        <div className="flex items-center justify-between gap-4">
+          <Label htmlFor="necessary" className="flex flex-col items-start">
             <span>Strictly Necessary</span>
-            <span className="text-xs font-normal leading-snug text-muted-foreground">
+            <span className="text-muted-foreground leading-snug font-normal">
               These cookies are essential in order to use the website and use
               its features.
             </span>
           </Label>
           <Switch id="necessary" defaultChecked aria-label="Necessary" />
         </div>
-        <div className="flex items-center justify-between space-x-4">
-          <Label htmlFor="functional" className="flex flex-col space-y-1">
+        <div className="flex items-center justify-between gap-4">
+          <Label htmlFor="functional" className="flex flex-col items-start">
             <span>Functional Cookies</span>
-            <span className="text-xs font-normal leading-snug text-muted-foreground">
+            <span className="text-muted-foreground leading-snug font-normal">
               These cookies allow the website to provide personalized
               functionality.
             </span>
           </Label>
           <Switch id="functional" aria-label="Functional" />
-        </div>
-        <div className="flex items-center justify-between space-x-4">
-          <Label htmlFor="performance" className="flex flex-col space-y-1">
-            <span>Performance Cookies</span>
-            <span className="text-xs font-normal leading-snug text-muted-foreground">
-              These cookies help to improve the performance of the website.
-            </span>
-          </Label>
-          <Switch id="performance" aria-label="Performance" />
         </div>
       </CardContent>
       <CardFooter>

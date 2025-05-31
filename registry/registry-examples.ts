@@ -13,7 +13,6 @@ export const examples: Registry["items"] = [
         type: "registry:example",
       },
     ],
-
   },
   {
     name: "actions-plugin-demo",
@@ -28,7 +27,6 @@ export const examples: Registry["items"] = [
         type: "registry:example",
       },
     ],
-
   },
   {
     name: "autocomplete-plugin-demo",

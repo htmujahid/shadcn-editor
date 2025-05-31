@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tree-view-plugin",
+  "type": "registry:ui",
+  "registryDependencies": [
+    "button",
+    "dialog",
+    "scroll-area",
+    "https://shadcn-editor.vercel.app/r/actions-plugin.json"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/editor/plugins/actions/tree-view-plugin.tsx",
+      "content": "'use client'\r\n\r\nimport { JSX } from 'react'\r\nimport { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'\r\nimport { TreeView } from '@lexical/react/LexicalTreeView'\r\nimport { NotebookPenIcon } from 'lucide-react'\r\n\r\nimport { Button } from '@/registry/new-york/ui/button'\r\nimport {\r\n  Dialog,\r\n  DialogContent,\r\n  DialogHeader,\r\n  DialogTitle,\r\n  DialogTrigger,\r\n} from '@/registry/new-york/ui/dialog'\r\nimport { ScrollArea, ScrollBar } from '@/registry/new-york/ui/scroll-area'\r\n\r\nexport function TreeViewPlugin(): JSX.Element {\r\n  const [editor] = useLexicalComposerContext()\r\n  return (\r\n    <Dialog>\r\n      <DialogTrigger asChild>\r\n        <Button size={'sm'} variant={'ghost'} className=\"p-2\">\r\n          <NotebookPenIcon className=\"h-4 w-4\" />\r\n        </Button>\r\n      </DialogTrigger>\r\n      <DialogContent>\r\n        <DialogHeader>\r\n          <DialogTitle>Tree View</DialogTitle>\r\n        </DialogHeader>\r\n        <ScrollArea className=\"h-96 overflow-hidden rounded-lg bg-foreground p-2 text-background\">\r\n          <TreeView\r\n            viewClassName=\"tree-view-output\"\r\n            treeTypeButtonClassName=\"debug-treetype-button\"\r\n            timeTravelPanelClassName=\"debug-timetravel-panel\"\r\n            timeTravelButtonClassName=\"debug-timetravel-button\"\r\n            timeTravelPanelSliderClassName=\"debug-timetravel-panel-slider\"\r\n            timeTravelPanelButtonClassName=\"debug-timetravel-panel-button\"\r\n            editor={editor}\r\n          />\r\n          <ScrollBar orientation=\"vertical\" />\r\n        </ScrollArea>\r\n      </DialogContent>\r\n    </Dialog>\r\n  )\r\n}\r\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/actions/tree-view-plugin.tsx"
+    }
+  ]
+}

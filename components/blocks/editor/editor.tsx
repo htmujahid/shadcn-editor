@@ -1,22 +1,22 @@
-'use client'
+"use client"
 
 import {
   InitialConfigType,
   LexicalComposer,
-} from '@lexical/react/LexicalComposer'
-import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin'
-import { EditorState, SerializedEditorState } from 'lexical'
+} from "@lexical/react/LexicalComposer"
+import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin"
+import { EditorState, SerializedEditorState } from "lexical"
 
-import { FloatingLinkContext } from '@/registry/new-york/editor/context/floating-link-context'
-import { SharedAutocompleteContext } from '@/registry/new-york/editor/context/shared-autocomplete-context'
-import { editorTheme } from '@/registry/new-york/editor/themes/editor-theme'
-import { TooltipProvider } from '@/registry/new-york/ui/tooltip'
+import { FloatingLinkContext } from "@/registry/new-york-v4/editor/context/floating-link-context"
+import { SharedAutocompleteContext } from "@/registry/new-york-v4/editor/context/shared-autocomplete-context"
+import { editorTheme } from "@/registry/new-york-v4/editor/themes/editor-theme"
+import { TooltipProvider } from "@/registry/new-york-v4/ui/tooltip"
 
-import { nodes } from './nodes'
-import { Plugins } from './plugins'
+import { nodes } from "./nodes"
+import { Plugins } from "./plugins"
 
 const editorConfig: InitialConfigType = {
-  namespace: 'Editor',
+  namespace: "Editor",
   theme: editorTheme,
   nodes,
   onError: (error: Error) => {
@@ -36,7 +36,7 @@ export function Editor({
   onSerializedChange?: (editorSerializedState: SerializedEditorState) => void
 }) {
   return (
-    <div className="overflow-hidden rounded-lg border bg-background shadow">
+    <div className="bg-background overflow-hidden rounded-lg border">
       <LexicalComposer
         initialConfig={{
           ...editorConfig,

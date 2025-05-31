@@ -1,5 +1,6 @@
-import { docsConfig } from "@/config/docs"
-import { DocsNav } from "@/components/docs-nav"
+import { docsConfig } from "@/lib/docs"
+import { DocsSidebar } from "@/components/docs-sidebar"
+import { SidebarProvider } from "@/registry/new-york-v4/ui/sidebar"
 
 export default function DocsLayout({
   children,
@@ -7,15 +8,11 @@ export default function DocsLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="container-wrapper">
-      <div className="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10">
-        <aside className="border-grid fixed top-14 z-30 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 border-r md:sticky md:block">
-          <div className="no-scrollbar h-full overflow-auto py-6 pr-4 lg:py-8">
-            <DocsNav config={docsConfig} />
-          </div>
-        </aside>
-        {children}
-      </div>
+    <div className="container-wrapper flex flex-1 flex-col">
+      <SidebarProvider className="min-h-min flex-1 items-start px-0 [--sidebar-width:220px] [--top-spacing:0] lg:grid lg:grid-cols-[var(--sidebar-width)_minmax(0,1fr)] lg:[--sidebar-width:240px] lg:[--top-spacing:calc(var(--spacing)*4)]">
+        <DocsSidebar tree={docsConfig.sidebarNav} />
+        <div className="h-full w-full">{children}</div>
+      </SidebarProvider>
     </div>
   )
 }

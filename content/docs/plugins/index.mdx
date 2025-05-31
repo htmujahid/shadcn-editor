@@ -6,23 +6,23 @@ description: Plugins for shadcn/ui.
 Here are three important files to extend the functionality of shadcn/editor that would be created on initialization of the editor under `/components/blocks/editor-00` directory.
 
 ```tsx showLineNumbers title="editor.tsx"
-'use client'
+"use client"
 
 import {
   InitialConfigType,
   LexicalComposer,
-} from '@lexical/react/LexicalComposer'
-import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin'
-import { EditorState, SerializedEditorState } from 'lexical'
+} from "@lexical/react/LexicalComposer"
+import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin"
+import { EditorState, SerializedEditorState } from "lexical"
 
-import { editorTheme } from '@/registry/default/editor/themes/editor-theme'
-import { TooltipProvider } from '@/registry/default/ui/tooltip'
+import { editorTheme } from "@/registry/default/editor/themes/editor-theme"
+import { TooltipProvider } from "@/registry/default/ui/tooltip"
 
-import { nodes } from './nodes'
-import { Plugins } from './plugins'
+import { nodes } from "./nodes"
+import { Plugins } from "./plugins"
 
 const editorConfig: InitialConfigType = {
-  namespace: 'Editor',
+  namespace: "Editor",
   theme: editorTheme,
   nodes,
   onError: (error: Error) => {
@@ -42,7 +42,7 @@ export function Editor({
   onSerializedChange?: (editorSerializedState: SerializedEditorState) => void
 }) {
   return (
-    <div className="overflow-hidden rounded-lg border bg-background shadow">
+    <div className="bg-background overflow-hidden rounded-lg border shadow">
       <LexicalComposer
         initialConfig={{
           ...editorConfig,
@@ -70,27 +70,28 @@ export function Editor({
 ```
 
 ```tsx showLineNumbers title="nodes.tsx"
-import { Klass, LexicalNode, LexicalNodeReplacement } from 'lexical'
+import { Klass, LexicalNode, LexicalNodeReplacement } from "lexical"
 
 export const nodes: ReadonlyArray<Klass<LexicalNode> | LexicalNodeReplacement> =
   []
 ```
 
 ```tsx showLineNumbers title="plugins.tsx"
-import { useState } from 'react';
-import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary';
-import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
-import { ContentEditable } from '@/registry/default/editor/editor-ui/content-editable';
+import { useState } from "react"
+import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary"
+import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin"
+
+import { ContentEditable } from "@/registry/default/editor/editor-ui/content-editable"
 
 export function Plugins() {
   const [floatingAnchorElem, setFloatingAnchorElem] =
-    useState<HTMLDivElement | null>(null);
+    useState<HTMLDivElement | null>(null)
 
   const onRef = (_floatingAnchorElem: HTMLDivElement) => {
     if (_floatingAnchorElem !== null) {
-      setFloatingAnchorElem(_floatingAnchorElem);
+      setFloatingAnchorElem(_floatingAnchorElem)
     }
-  };
+  }
 
   return (
     <div className="relative">
@@ -100,7 +101,7 @@ export function Plugins() {
           contentEditable={
             <div className="">
               <div className="" ref={onRef}>
-                <ContentEditable placeholder={'Start typing ...'} />
+                <ContentEditable placeholder={"Start typing ..."} />
               </div>
             </div>
           }
@@ -110,7 +111,7 @@ export function Plugins() {
       </div>
       {/* actions plugins */}
     </div>
-  );
+  )
 }
 ```
 

@@ -12,6 +12,7 @@ const colorSchema = z.object({
   hsl: z.string(),
   foreground: z.string(),
   oklch: z.string(),
+  var: z.string(),
 })
 
 const colorPaletteSchema = z.object({
@@ -28,6 +29,7 @@ export function getColorFormat(color: Color) {
     rgb: color.rgb,
     hsl: color.hsl,
     oklch: color.oklch,
+    var: `--color-${color.name}-${color.scale}`,
   }
 }
 
@@ -54,15 +56,16 @@ export function getColors() {
               name,
               id: `${name}-${color.scale}`,
               className: `${name}-${color.scale}`,
+              var: `--color-${name}-${color.scale}`,
               rgb,
               hsl: color.hsl.replace(
                 /^hsl\(([\d.]+),([\d.]+%),([\d.]+%)\)$/,
                 "$1 $2 $3"
               ),
-              oklch: color.oklch.replace(
+              oklch: `oklch(${color.oklch.replace(
                 /^oklch\(([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)\)$/,
                 "$1 $2 $3"
-              ),
+              )})`,
               foreground: getForegroundFromBackground(rgb),
             }
           }),

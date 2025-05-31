@@ -1,17 +1,15 @@
 import { BlockDisplay } from "@/components/block-display"
 
+export const dynamic = "force-static"
+export const revalidate = false
+
 const FEATURED_BLOCKS = ["editor-x"]
 
 export default async function BlocksPage() {
   return (
-    <div>
-      {FEATURED_BLOCKS.map((block) => (
-        <div
-          key={block}
-          className="border-grid container border-b py-8 first:pt-6 last:border-b-0 md:py-12"
-        >
-          <BlockDisplay name={block} />
-        </div>
+    <div className="flex flex-col gap-12 md:gap-24">
+      {FEATURED_BLOCKS.map((name) => (
+        <BlockDisplay name={name} key={name} />
       ))}
     </div>
   )

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "max-length-plugin",
+  "type": "registry:ui",
+  "dependencies": [
+    "@lexical/utils",
+    "@lexical/selection"
+  ],
+  "registryDependencies": [
+    "https://shadcn-editor.vercel.app/r/actions-plugin.json"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/editor/plugins/actions/max-length-plugin.tsx",
+      "content": "'use client'\r\n\r\n/**\r\n * Copyright (c) Meta Platforms, Inc. and affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n */\r\nimport { useEffect } from 'react'\r\n\r\nimport { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'\r\nimport { $trimTextContentFromAnchor } from '@lexical/selection'\r\nimport { $restoreEditorState } from '@lexical/utils'\r\nimport {\r\n  $getSelection,\r\n  $isRangeSelection,\r\n  EditorState,\r\n  RootNode,\r\n} from 'lexical'\r\n\r\nexport function MaxLengthPlugin({ maxLength }: { maxLength: number }): null {\r\n  const [editor] = useLexicalComposerContext()\r\n\r\n  useEffect(() => {\r\n    let lastRestoredEditorState: EditorState | null = null\r\n\r\n    return editor.registerNodeTransform(RootNode, (rootNode: RootNode) => {\r\n      const selection = $getSelection()\r\n      if (!$isRangeSelection(selection) || !selection.isCollapsed()) {\r\n        return\r\n      }\r\n      const prevEditorState = editor.getEditorState()\r\n      const prevTextContentSize = prevEditorState.read(() =>\r\n        rootNode.getTextContentSize()\r\n      )\r\n      const textContentSize = rootNode.getTextContentSize()\r\n      if (prevTextContentSize !== textContentSize) {\r\n        const delCount = textContentSize - maxLength\r\n        const anchor = selection.anchor\r\n\r\n        if (delCount > 0) {\r\n          // Restore the old editor state instead if the last\r\n          // text content was already at the limit.\r\n          if (\r\n            prevTextContentSize === maxLength &&\r\n            lastRestoredEditorState !== prevEditorState\r\n          ) {\r\n            lastRestoredEditorState = prevEditorState\r\n            $restoreEditorState(editor, prevEditorState)\r\n          } else {\r\n            $trimTextContentFromAnchor(editor, anchor, delCount)\r\n          }\r\n        }\r\n      }\r\n    })\r\n  }, [editor, maxLength])\r\n\r\n  return null\r\n}\r\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/actions/max-length-plugin.tsx"
+    }
+  ]
+}

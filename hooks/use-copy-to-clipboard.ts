@@ -25,9 +25,11 @@ export function useCopyToClipboard({
         onCopy()
       }
 
-      setTimeout(() => {
-        setIsCopied(false)
-      }, timeout)
+      if (timeout !== 0) {
+        setTimeout(() => {
+          setIsCopied(false)
+        }, timeout)
+      }
     }, console.error)
   }
 

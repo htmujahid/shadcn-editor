@@ -2,6 +2,8 @@ import { getAllBlockIds } from "@/lib/blocks"
 import { BlockDisplay } from "@/components/block-display"
 import { registryCategories } from "@/registry/registry-categories"
 
+export const revalidate = false
+export const dynamic = "force-static"
 export const dynamicParams = false
 
 export async function generateStaticParams() {
@@ -13,19 +15,16 @@ export async function generateStaticParams() {
 export default async function BlocksPage({
   params,
 }: {
-  params: { categories?: string[] }
+  params: Promise<{ categories?: string[] }>
 }) {
-  const blocks = await getAllBlockIds(
-    ["registry:block"],
-    params.categories ?? []
-  )
+  const { categories = [] } = await params
+  const blocks = await getAllBlockIds(["registry:block"], categories)
 
-  return blocks.map((name) => (
-    <div
-      key={name}
-      className="border-grid container border-b py-8 first:pt-6 last:border-b-0 md:py-12"
-    >
-      <BlockDisplay name={name} />
+  return (
+    <div className="flex flex-col gap-12 md:gap-24">
+      {blocks.map((name) => (
+        <BlockDisplay name={name} key={name} />
+      ))}
     </div>
-  ))
+  )
 }

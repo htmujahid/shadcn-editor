@@ -5,12 +5,12 @@ import { CheckIcon, ClipboardIcon } from "lucide-react"
 
 import { Event, trackEvent } from "@/lib/events"
 import { cn } from "@/lib/utils"
-import { Button, ButtonProps } from "@/registry/new-york/ui/button"
+import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/new-york/ui/tooltip"
+} from "@/registry/new-york-v4/ui/tooltip"
 
 export function ChartCopyButton({
   event,
@@ -22,7 +22,7 @@ export function ChartCopyButton({
   event: Event["name"]
   name: string
   code: string
-} & ButtonProps) {
+} & React.ComponentProps<typeof Button>) {
   const [hasCopied, setHasCopied] = React.useState(false)
 
   React.useEffect(() => {
@@ -36,7 +36,7 @@ export function ChartCopyButton({
       <TooltipTrigger asChild>
         <Button
           size="icon"
-          variant="outline"
+          variant="ghost"
           className={cn(
             "[&_svg]-h-3.5 h-7 w-7 rounded-[6px] [&_svg]:w-3.5",
             className

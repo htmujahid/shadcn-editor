@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-size-toolbar-plugin",
+  "type": "registry:ui",
+  "dependencies": [
+    "@lexical/selection"
+  ],
+  "registryDependencies": [
+    "button",
+    "input",
+    "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/editor/plugins/toolbar/font-size-toolbar-plugin.tsx",
+      "content": "'use client'\r\n\r\nimport { useCallback, useState } from 'react'\r\n\r\nimport {\r\n  $getSelectionStyleValueForProperty,\r\n  $patchStyleText,\r\n} from '@lexical/selection'\r\nimport { $getSelection, $isRangeSelection, BaseSelection } from 'lexical'\r\nimport { Minus, Plus } from 'lucide-react'\r\n\r\nimport { Button } from '@/registry/new-york/ui/button'\r\nimport { Input } from '@/registry/new-york/ui/input'\r\n\r\nimport { useToolbarContext } from '@/registry/new-york/editor/context/toolbar-context'\r\nimport { useUpdateToolbarHandler } from '@/registry/new-york/editor/editor-hooks/use-update-toolbar'\r\n\r\nconst DEFAULT_FONT_SIZE = 16\r\nconst MIN_FONT_SIZE = 1\r\nconst MAX_FONT_SIZE = 72\r\n\r\nexport function FontSizeToolbarPlugin() {\r\n  const style = 'font-size'\r\n  const [fontSize, setFontSize] = useState(DEFAULT_FONT_SIZE)\r\n\r\n  const { activeEditor } = useToolbarContext()\r\n\r\n  const $updateToolbar = (selection: BaseSelection) => {\r\n    if ($isRangeSelection(selection)) {\r\n      const value = $getSelectionStyleValueForProperty(\r\n        selection,\r\n        'font-size',\r\n        `${DEFAULT_FONT_SIZE}px`\r\n      )\r\n      setFontSize(parseInt(value) || DEFAULT_FONT_SIZE)\r\n    }\r\n  }\r\n\r\n  useUpdateToolbarHandler($updateToolbar)\r\n\r\n  const updateFontSize = useCallback(\r\n    (newSize: number) => {\r\n      const size = Math.min(Math.max(newSize, MIN_FONT_SIZE), MAX_FONT_SIZE)\r\n      activeEditor.update(() => {\r\n        const selection = $getSelection()\r\n        if (selection !== null) {\r\n          $patchStyleText(selection, {\r\n            [style]: `${size}px`,\r\n          })\r\n        }\r\n      })\r\n      setFontSize(size)\r\n    },\r\n    [activeEditor, style]\r\n  )\r\n\r\n  return (\r\n    <div className=\"flex items-center gap-1\">\r\n      <div className=\"flex items-center gap-1\">\r\n        <Button\r\n          variant=\"outline\"\r\n          size=\"icon\"\r\n          className=\"h-8 w-8\"\r\n          onClick={() => updateFontSize(fontSize - 1)}\r\n          disabled={fontSize <= MIN_FONT_SIZE}\r\n        >\r\n          <Minus className=\"size-3\" />\r\n        </Button>\r\n        <Input\r\n          value={fontSize}\r\n          onChange={(e) =>\r\n            updateFontSize(parseInt(e.target.value) || DEFAULT_FONT_SIZE)\r\n          }\r\n          className=\"h-8 w-12 text-center\"\r\n          min={MIN_FONT_SIZE}\r\n          max={MAX_FONT_SIZE}\r\n        />\r\n        <Button\r\n          variant=\"outline\"\r\n          size=\"icon\"\r\n          className=\"h-8 w-8\"\r\n          onClick={() => updateFontSize(fontSize + 1)}\r\n          disabled={fontSize >= MAX_FONT_SIZE}\r\n        >\r\n          <Plus className=\"size-3\" />\r\n        </Button>\r\n      </div>\r\n    </div>\r\n  )\r\n}\r\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/toolbar/font-size-toolbar-plugin.tsx"
+    },
+    {
+      "path": "registry/new-york-v4/editor/editor-hooks/use-update-toolbar.ts",
+      "content": "import { useEffect } from 'react'\r\n\r\nimport { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'\r\nimport {\r\n  $getSelection,\r\n  BaseSelection,\r\n  COMMAND_PRIORITY_CRITICAL,\r\n} from 'lexical'\r\nimport { SELECTION_CHANGE_COMMAND } from 'lexical'\r\n\r\nimport { useToolbarContext } from '@/registry/new-york/editor/context/toolbar-context'\r\n\r\nexport function useUpdateToolbarHandler(\r\n  callback: (selection: BaseSelection) => void\r\n) {\r\n  const [editor] = useLexicalComposerContext()\r\n  const { activeEditor } = useToolbarContext()\r\n\r\n  useEffect(() => {\r\n    return activeEditor.registerCommand(\r\n      SELECTION_CHANGE_COMMAND,\r\n      () => {\r\n        const selection = $getSelection()\r\n        if (selection) {\r\n          callback(selection)\r\n        }\r\n        return false\r\n      },\r\n      COMMAND_PRIORITY_CRITICAL\r\n    )\r\n  }, [editor, callback])\r\n\r\n  useEffect(() => {\r\n    activeEditor.getEditorState().read(() => {\r\n      const selection = $getSelection()\r\n      if (selection) {\r\n        callback(selection)\r\n      }\r\n    })\r\n  }, [activeEditor, callback])\r\n}\r\n",
+      "type": "registry:hook",
+      "target": "components/editor/editor-hooks/use-update-toolbar.ts"
+    }
+  ]
+}

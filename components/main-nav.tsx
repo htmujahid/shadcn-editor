@@ -3,54 +3,30 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
-import { Icons } from "@/components/icons"
+import { Button } from "@/registry/new-york-v4/ui/button"
 
-export function MainNav() {
+export function MainNav({
+  items,
+  className,
+  ...props
+}: React.ComponentProps<"nav"> & {
+  items: { href: string; label: string }[]
+}) {
   const pathname = usePathname()
 
   return (
-    <div className="mr-4 hidden md:flex">
-      <Link href="/" className="mr-4 flex items-center gap-2 lg:mr-6">
-        <Icons.logo className="h-6 w-6" />
-        <span className="hidden font-bold lg:inline-block">
-          {siteConfig.name}
-        </span>
-      </Link>
-      <nav className="flex items-center gap-4 text-sm xl:gap-6">
-        <Link
-          href="/docs"
-          className={cn(
-            "transition-colors hover:text-foreground/80",
-            pathname === "/docs" ? "text-foreground" : "text-foreground/80"
-          )}
-        >
-          Docs
-        </Link>
-        <Link
-          href="/docs/plugins"
-          className={cn(
-            "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/docs/plugins")
-              ? "text-foreground"
-              : "text-foreground/80"
-          )}
-        >
-          Plugins
-        </Link>
-        <Link
-          href="/blocks"
-          className={cn(
-            "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/blocks")
-              ? "text-foreground"
-              : "text-foreground/80"
-          )}
-        >
-          Blocks
-        </Link>
-      </nav>
-    </div>
+    <nav className={cn("items-center gap-0.5", className)} {...props}>
+      {items.map((item) => (
+        <Button key={item.href} variant="ghost" asChild size="sm">
+          <Link
+            href={item.href}
+            className={cn(pathname === item.href && "text-primary")}
+          >
+            {item.label}
+          </Link>
+        </Button>
+      ))}
+    </nav>
   )
 }

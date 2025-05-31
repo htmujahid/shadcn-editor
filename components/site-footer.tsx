@@ -1,11 +1,11 @@
-import { siteConfig } from "@/config/site"
+import { siteConfig } from "@/lib/config"
 
 export function SiteFooter() {
   return (
-    <footer className="border-grid border-t py-6 md:px-8 md:py-0">
-      <div className="container-wrapper">
-        <div className="container py-4">
-          <div className="text-balance text-center text-sm leading-loose text-muted-foreground md:text-left">
+    <footer className="group-has-[.section-soft]/body:bg-surface/40 dark:bg-transparent">
+      <div className="container-wrapper px-4 xl:px-6">
+        <div className="flex h-(--footer-height) items-center justify-between">
+          <div className="text-muted-foreground w-full text-center text-xs leading-loose sm:text-sm">
             Built by{" "}
             <a
               href={siteConfig.links.twitter}

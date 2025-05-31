@@ -1,0 +1,49 @@
+---
+title: History Toolbar
+description: A toolbar plugin that provides undo/redo functionality for the rich text editor.
+---
+
+<ComponentPreview
+  name="history-toolbar-plugin-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="A history toolbar plugin for the rich text editor."
+/>
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://shadcn-editor.vercel.app/r/history-toolbar-plugin.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @lexical/utils
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="history-toolbar-plugin" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>

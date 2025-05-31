@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "subsuper-toolbar-plugin",
+  "type": "registry:ui",
+  "dependencies": [
+    "@lexical/table"
+  ],
+  "registryDependencies": [
+    "toggle-group",
+    "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/editor/plugins/toolbar/subsuper-toolbar-plugin.tsx",
+      "content": "'use client'\r\n\r\nimport { useState } from 'react'\r\n\r\nimport { $isTableSelection } from '@lexical/table'\r\nimport { $isRangeSelection, BaseSelection, FORMAT_TEXT_COMMAND } from 'lexical'\r\nimport { SubscriptIcon, SuperscriptIcon } from 'lucide-react'\r\n\r\nimport { ToggleGroup, ToggleGroupItem } from '@/registry/new-york/ui/toggle-group'\r\n\r\nimport { useToolbarContext } from '@/registry/new-york/editor/context/toolbar-context'\r\nimport { useUpdateToolbarHandler } from '@/registry/new-york/editor/editor-hooks/use-update-toolbar'\r\n\r\nexport function SubSuperToolbarPlugin() {\r\n  const { activeEditor } = useToolbarContext()\r\n  const [isSubscript, setIsSubscript] = useState(false)\r\n  const [isSuperscript, setIsSuperscript] = useState(false)\r\n\r\n  const $updateToolbar = (selection: BaseSelection) => {\r\n    if ($isRangeSelection(selection) || $isTableSelection(selection)) {\r\n      // @ts-ignore\r\n      setIsSubscript(selection.hasFormat('subscript'))\r\n      // @ts-ignore\r\n      setIsSuperscript(selection.hasFormat('superscript'))\r\n    }\r\n  }\r\n\r\n  useUpdateToolbarHandler($updateToolbar)\r\n\r\n  return (\r\n    <ToggleGroup\r\n      type=\"single\"\r\n      defaultValue={\r\n        isSubscript ? 'subscript' : isSuperscript ? 'superscript' : ''\r\n      }\r\n    >\r\n      <ToggleGroupItem\r\n        value=\"subscript\"\r\n        aria-label=\"Toggle subscript\"\r\n        onClick={() => {\r\n          activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, 'subscript')\r\n        }}\r\n        size=\"sm\"\r\n        variant={'outline'}\r\n      >\r\n        <SubscriptIcon className=\"h-4 w-4\" />\r\n      </ToggleGroupItem>\r\n      <ToggleGroupItem\r\n        value=\"superscript\"\r\n        aria-label=\"Toggle superscript\"\r\n        onClick={() => {\r\n          activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, 'superscript')\r\n        }}\r\n        size=\"sm\"\r\n        variant={'outline'}\r\n      >\r\n        <SuperscriptIcon className=\"h-4 w-4\" />\r\n      </ToggleGroupItem>\r\n    </ToggleGroup>\r\n  )\r\n}\r\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/toolbar/subsuper-toolbar-plugin.tsx"
+    },
+    {
+      "path": "registry/new-york-v4/editor/editor-hooks/use-update-toolbar.ts",
+      "content": "import { useEffect } from 'react'\r\n\r\nimport { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'\r\nimport {\r\n  $getSelection,\r\n  BaseSelection,\r\n  COMMAND_PRIORITY_CRITICAL,\r\n} from 'lexical'\r\nimport { SELECTION_CHANGE_COMMAND } from 'lexical'\r\n\r\nimport { useToolbarContext } from '@/registry/new-york/editor/context/toolbar-context'\r\n\r\nexport function useUpdateToolbarHandler(\r\n  callback: (selection: BaseSelection) => void\r\n) {\r\n  const [editor] = useLexicalComposerContext()\r\n  const { activeEditor } = useToolbarContext()\r\n\r\n  useEffect(() => {\r\n    return activeEditor.registerCommand(\r\n      SELECTION_CHANGE_COMMAND,\r\n      () => {\r\n        const selection = $getSelection()\r\n        if (selection) {\r\n          callback(selection)\r\n        }\r\n        return false\r\n      },\r\n      COMMAND_PRIORITY_CRITICAL\r\n    )\r\n  }, [editor, callback])\r\n\r\n  useEffect(() => {\r\n    activeEditor.getEditorState().read(() => {\r\n      const selection = $getSelection()\r\n      if (selection) {\r\n        callback(selection)\r\n      }\r\n    })\r\n  }, [activeEditor, callback])\r\n}\r\n",
+      "type": "registry:hook",
+      "target": "components/editor/editor-hooks/use-update-toolbar.ts"
+    }
+  ]
+}

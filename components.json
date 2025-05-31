@@ -4,18 +4,18 @@
   "rsc": true,
   "tsx": true,
   "tailwind": {
-    "config": "tailwind.config.cjs",
-    "css": "styles/globals.css",
-    "baseColor": "zinc",
+    "config": "",
+    "css": "app/globals.css",
+    "baseColor": "neutral",
     "cssVariables": true,
     "prefix": ""
   },
   "aliases": {
-    "components": "@/registry/new-york",
-    "utils": "@/registry/new-york/lib/utils",
-    "ui": "@/registry/new-york/ui",
-    "lib": "@/registry/new-york/lib",
-    "hooks": "@/registry/new-york/hooks"
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/registry/new-york-v4/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
   },
   "iconLibrary": "lucide"
 }

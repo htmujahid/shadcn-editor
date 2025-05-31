@@ -3,9 +3,9 @@ import { CardsCalendar } from "@/components/cards/calendar"
 import { CardsChat } from "@/components/cards/chat"
 import { CardsCookieSettings } from "@/components/cards/cookie-settings"
 import { CardsCreateAccount } from "@/components/cards/create-account"
-import { CardsDataTable } from "@/components/cards/data-table"
-import { CardsMetric } from "@/components/cards/metric"
-import { CardsPaymentMethod } from "@/components/cards/payment-method"
+import { CardsExerciseMinutes } from "@/components/cards/exercise-minutes"
+import { CardsForms } from "@/components/cards/forms"
+import { CardsPayments } from "@/components/cards/payments"
 import { CardsReportIssue } from "@/components/cards/report-issue"
 import { CardsShare } from "@/components/cards/share"
 import { CardsStats } from "@/components/cards/stats"
@@ -13,45 +13,45 @@ import { CardsTeamMembers } from "@/components/cards/team-members"
 
 export function CardsDemo() {
   return (
-    <div className="md:grids-col-2 grid md:gap-4 lg:grid-cols-10 xl:grid-cols-11 xl:gap-4">
-      <div className="space-y-4 lg:col-span-4 xl:col-span-6 xl:space-y-4">
+    <div className="md:grids-col-2 grid **:data-[slot=card]:shadow-none md:gap-4 lg:grid-cols-10 xl:grid-cols-11">
+      <div className="grid gap-4 lg:col-span-4 xl:col-span-6">
         <CardsStats />
-        <div className="grid gap-1 sm:grid-cols-[260px_1fr] md:hidden">
+        <div className="grid gap-1 sm:grid-cols-[auto_1fr] md:hidden">
           <CardsCalendar />
-          <div className="pt-3 sm:pl-2 sm:pt-0 xl:pl-4">
+          <div className="pt-3 sm:pt-0 sm:pl-2 xl:pl-4">
             <CardsActivityGoal />
           </div>
           <div className="pt-3 sm:col-span-2 xl:pt-4">
-            <CardsMetric />
+            <CardsExerciseMinutes />
           </div>
         </div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-          <div className="space-y-4 xl:space-y-4">
+          <div className="flex flex-col gap-4">
+            <CardsForms />
             <CardsTeamMembers />
             <CardsCookieSettings />
-            <CardsPaymentMethod />
           </div>
-          <div className="space-y-4 xl:space-y-4">
-            <CardsChat />
+          <div className="flex flex-col gap-4">
             <CardsCreateAccount />
+            <CardsChat />
             <div className="hidden xl:block">
               <CardsReportIssue />
             </div>
           </div>
         </div>
       </div>
-      <div className="space-y-4 lg:col-span-6 xl:col-span-5 xl:space-y-4">
-        <div className="hidden gap-1 sm:grid-cols-[260px_1fr] md:grid">
+      <div className="flex flex-col gap-4 lg:col-span-6 xl:col-span-5">
+        <div className="hidden gap-1 sm:grid-cols-[auto_1fr] md:grid">
           <CardsCalendar />
-          <div className="pt-3 sm:pl-2 sm:pt-0 xl:pl-3">
+          <div className="pt-3 sm:pt-0 sm:pl-2 xl:pl-3">
             <CardsActivityGoal />
           </div>
           <div className="pt-3 sm:col-span-2 xl:pt-3">
-            <CardsMetric />
+            <CardsExerciseMinutes />
           </div>
         </div>
         <div className="hidden md:block">
-          <CardsDataTable />
+          <CardsPayments />
         </div>
         <CardsShare />
         <div className="xl:hidden">

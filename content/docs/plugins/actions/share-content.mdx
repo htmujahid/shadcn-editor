@@ -1,0 +1,49 @@
+---
+title: Share Content
+description: A plugin that enables content sharing functionality with file export and toast notifications.
+---
+
+<ComponentPreview
+  name="share-content-plugin-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="A plugin that enables content sharing functionality with file export and toast notifications."
+/>
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://shadcn-editor.vercel.app/r/share-content-plugin.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @lexical/file sonner
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="share-content-plugin" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>

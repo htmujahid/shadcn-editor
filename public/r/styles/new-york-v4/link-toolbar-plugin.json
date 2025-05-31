@@ -1,0 +1,48 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "link-toolbar-plugin",
+  "type": "registry:ui",
+  "dependencies": [
+    "@lexical/link",
+    "@lexical/utils",
+    "@lexical/selection"
+  ],
+  "registryDependencies": [
+    "toggle",
+    "button",
+    "input",
+    "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/editor/plugins/toolbar/link-toolbar-plugin.tsx",
+      "content": "'use client'\r\n\r\nimport { useCallback, useEffect, useState } from 'react'\r\n\r\nimport { $isLinkNode, TOGGLE_LINK_COMMAND } from '@lexical/link'\r\nimport {\r\n  $isRangeSelection,\r\n  BaseSelection,\r\n  COMMAND_PRIORITY_NORMAL,\r\n} from 'lexical'\r\nimport { KEY_MODIFIER_COMMAND } from 'lexical'\r\nimport { LinkIcon } from 'lucide-react'\r\n\r\nimport { Toggle } from '@/registry/new-york/ui/toggle'\r\n\r\nimport { useFloatingLinkContext } from '@/registry/new-york/editor/context/floating-link-context'\r\nimport { useToolbarContext } from '@/registry/new-york/editor/context/toolbar-context'\r\nimport { useUpdateToolbarHandler } from '@/registry/new-york/editor/editor-hooks/use-update-toolbar'\r\nimport { getSelectedNode } from '@/registry/new-york/editor/utils/get-selected-node'\r\nimport { sanitizeUrl } from '@/registry/new-york/editor/utils/url'\r\n\r\nexport function LinkToolbarPlugin() {\r\n  const { activeEditor } = useToolbarContext()\r\n  const { setIsLinkEditMode } = useFloatingLinkContext()\r\n  const [isLink, setIsLink] = useState(false)\r\n\r\n  const $updateToolbar = (selection: BaseSelection) => {\r\n    if ($isRangeSelection(selection)) {\r\n      const node = getSelectedNode(selection)\r\n      const parent = node.getParent()\r\n      if ($isLinkNode(parent) || $isLinkNode(node)) {\r\n        setIsLink(true)\r\n      } else {\r\n        setIsLink(false)\r\n      }\r\n    }\r\n  }\r\n\r\n  useUpdateToolbarHandler($updateToolbar)\r\n\r\n  useEffect(() => {\r\n    return activeEditor.registerCommand(\r\n      KEY_MODIFIER_COMMAND,\r\n      (payload) => {\r\n        const event: KeyboardEvent = payload\r\n        const { code, ctrlKey, metaKey } = event\r\n\r\n        if (code === 'KeyK' && (ctrlKey || metaKey)) {\r\n          event.preventDefault()\r\n          let url: string | null\r\n          if (!isLink) {\r\n            setIsLinkEditMode(true)\r\n            url = sanitizeUrl('https://')\r\n          } else {\r\n            setIsLinkEditMode(false)\r\n            url = null\r\n          }\r\n          return activeEditor.dispatchCommand(TOGGLE_LINK_COMMAND, url)\r\n        }\r\n        return false\r\n      },\r\n      COMMAND_PRIORITY_NORMAL\r\n    )\r\n  }, [activeEditor, isLink, setIsLinkEditMode])\r\n\r\n  const insertLink = useCallback(() => {\r\n    if (!isLink) {\r\n      setIsLinkEditMode(true)\r\n      activeEditor.dispatchCommand(TOGGLE_LINK_COMMAND, sanitizeUrl('https://'))\r\n    } else {\r\n      setIsLinkEditMode(false)\r\n      activeEditor.dispatchCommand(TOGGLE_LINK_COMMAND, null)\r\n    }\r\n  }, [activeEditor, isLink, setIsLinkEditMode])\r\n\r\n  return (\r\n    <Toggle\r\n      size={'sm'}\r\n      variant={'outline'}\r\n      aria-label=\"Toggle link\"\r\n      onClick={insertLink}\r\n    >\r\n      <LinkIcon className=\"h-4 w-4\" />\r\n    </Toggle>\r\n  )\r\n}\r\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/toolbar/link-toolbar-plugin.tsx"
+    },
+    {
+      "path": "registry/new-york-v4/editor/editor-hooks/use-update-toolbar.ts",
+      "content": "import { useEffect } from 'react'\r\n\r\nimport { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'\r\nimport {\r\n  $getSelection,\r\n  BaseSelection,\r\n  COMMAND_PRIORITY_CRITICAL,\r\n} from 'lexical'\r\nimport { SELECTION_CHANGE_COMMAND } from 'lexical'\r\n\r\nimport { useToolbarContext } from '@/registry/new-york/editor/context/toolbar-context'\r\n\r\nexport function useUpdateToolbarHandler(\r\n  callback: (selection: BaseSelection) => void\r\n) {\r\n  const [editor] = useLexicalComposerContext()\r\n  const { activeEditor } = useToolbarContext()\r\n\r\n  useEffect(() => {\r\n    return activeEditor.registerCommand(\r\n      SELECTION_CHANGE_COMMAND,\r\n      () => {\r\n        const selection = $getSelection()\r\n        if (selection) {\r\n          callback(selection)\r\n        }\r\n        return false\r\n      },\r\n      COMMAND_PRIORITY_CRITICAL\r\n    )\r\n  }, [editor, callback])\r\n\r\n  useEffect(() => {\r\n    activeEditor.getEditorState().read(() => {\r\n      const selection = $getSelection()\r\n      if (selection) {\r\n        callback(selection)\r\n      }\r\n    })\r\n  }, [activeEditor, callback])\r\n}\r\n",
+      "type": "registry:hook",
+      "target": "components/editor/editor-hooks/use-update-toolbar.ts"
+    },
+    {
+      "path": "registry/new-york-v4/editor/utils/get-selected-node.ts",
+      "content": "/**\r\n * Copyright (c) Meta Platforms, Inc. and affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n */\r\nimport { $isAtNodeEnd } from '@lexical/selection'\r\nimport { ElementNode, RangeSelection, TextNode } from 'lexical'\r\n\r\nexport function getSelectedNode(\r\n  selection: RangeSelection\r\n): TextNode | ElementNode {\r\n  const anchor = selection.anchor\r\n  const focus = selection.focus\r\n  const anchorNode = selection.anchor.getNode()\r\n  const focusNode = selection.focus.getNode()\r\n  if (anchorNode === focusNode) {\r\n    return anchorNode\r\n  }\r\n  const isBackward = selection.isBackward()\r\n  if (isBackward) {\r\n    return $isAtNodeEnd(focus) ? anchorNode : focusNode\r\n  } else {\r\n    return $isAtNodeEnd(anchor) ? anchorNode : focusNode\r\n  }\r\n}\r\n",
+      "type": "registry:component",
+      "target": "components/editor/utils/get-selected-node.ts"
+    },
+    {
+      "path": "registry/new-york-v4/editor/context/floating-link-context.tsx",
+      "content": "import { createContext, useContext, useState } from 'react'\r\n\r\nconst Context = createContext<{\r\n  isLinkEditMode: boolean\r\n  setIsLinkEditMode: (isLinkEditMode: boolean) => void\r\n}>({\r\n  isLinkEditMode: false,\r\n  setIsLinkEditMode: () => {},\r\n})\r\n\r\nexport function FloatingLinkContext({\r\n  children,\r\n}: {\r\n  children: React.ReactNode\r\n}) {\r\n  const [isLinkEditMode, setIsLinkEditMode] = useState<boolean>(false)\r\n\r\n  return (\r\n    <Context.Provider value={{ isLinkEditMode, setIsLinkEditMode }}>\r\n      {children}\r\n    </Context.Provider>\r\n  )\r\n}\r\n\r\nexport function useFloatingLinkContext() {\r\n  if (!Context) {\r\n    throw new Error(\r\n      'useFloatingLinkContext must be used within a FloatingLinkContext'\r\n    )\r\n  }\r\n  return useContext(Context)\r\n}\r\n",
+      "type": "registry:component",
+      "target": "components/editor/context/floating-link-context.tsx"
+    },
+    {
+      "path": "registry/new-york-v4/editor/utils/url.ts",
+      "content": "/**\r\n * Copyright (c) Meta Platforms, Inc. and affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n */\r\n\r\nconst SUPPORTED_URL_PROTOCOLS = new Set([\r\n  'http:',\r\n  'https:',\r\n  'mailto:',\r\n  'sms:',\r\n  'tel:',\r\n])\r\n\r\nexport function sanitizeUrl(url: string): string {\r\n  try {\r\n    const parsedUrl = new URL(url)\r\n    // eslint-disable-next-line no-script-url\r\n    if (!SUPPORTED_URL_PROTOCOLS.has(parsedUrl.protocol)) {\r\n      return 'about:blank'\r\n    }\r\n  } catch {\r\n    return url\r\n  }\r\n  return url\r\n}\r\n\r\n// Source: https://stackoverflow.com/a/8234912/2013580\r\nconst urlRegExp = new RegExp(\r\n  /((([A-Za-z]{3,9}:(?:\\/\\/)?)(?:[-;:&=+$,\\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=+$,\\w]+@)[A-Za-z0-9.-]+)((?:\\/[+~%/.\\w-_]*)?\\??(?:[-+=&;%@.\\w_]*)#?(?:[\\w]*))?)/\r\n)\r\nexport function validateUrl(url: string): boolean {\r\n  // TODO Fix UI for link insertion; it should never default to an invalid URL such as https://.\r\n  // Maybe show a dialog where they user can type the URL before inserting it.\r\n  return url === 'https://' || urlRegExp.test(url)\r\n}\r\n",
+      "type": "registry:component",
+      "target": "components/editor/utils/url.ts"
+    }
+  ]
+}

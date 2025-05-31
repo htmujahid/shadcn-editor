@@ -3,18 +3,15 @@
 import { registryItemSchema } from "shadcn/registry"
 import { z } from "zod"
 
-import { Style } from "@/registry/registry-styles"
-
 export async function getAllBlockIds(
   types: z.infer<typeof registryItemSchema>["type"][] = [
     "registry:block",
     "registry:internal",
   ],
-  categories: string[] = [],
-  style: Style["name"] = "new-york"
+  categories: string[] = []
 ): Promise<string[]> {
-  const { Index } = await import("@/__registry__")
-  const index = z.record(registryItemSchema).parse(Index[style])
+  const { Index } = await import("@/registry/__index__")
+  const index = z.record(registryItemSchema).parse(Index)
 
   return Object.values(index)
     .filter(
