@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "edit-mode-toggle-plugin",
+  "type": "registry:ui",
+  "registryDependencies": [
+    "button",
+    "tooltip",
+    "https://shadcn-editor.vercel.app/r/actions-plugin.json"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/editor/plugins/actions/edit-mode-toggle-plugin.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\nimport { useLexicalComposerContext } from \"@lexical/react/LexicalComposerContext\"\nimport { LockIcon, UnlockIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipTrigger,\n} from \"@/registry/new-york-v4/ui/tooltip\"\n\nexport function EditModeTogglePlugin() {\n  const [editor] = useLexicalComposerContext()\n  const [isEditable, setIsEditable] = useState(() => editor.isEditable())\n\n  return (\n    <Tooltip>\n      <TooltipTrigger asChild>\n        <Button\n          variant={\"ghost\"}\n          onClick={() => {\n            editor.setEditable(!editor.isEditable())\n            setIsEditable(editor.isEditable())\n          }}\n          title=\"Read-Only Mode\"\n          aria-label={`${!isEditable ? \"Unlock\" : \"Lock\"} read-only mode`}\n          size={\"sm\"}\n          className=\"p-2\"\n        >\n          {isEditable ? (\n            <LockIcon className=\"size-4\" />\n          ) : (\n            <UnlockIcon className=\"size-4\" />\n          )}\n        </Button>\n      </TooltipTrigger>\n      <TooltipContent>\n        {isEditable ? \"View Only Mode\" : \"Edit Mode\"}\n      </TooltipContent>\n    </Tooltip>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/actions/edit-mode-toggle-plugin.tsx"
+    }
+  ]
+}

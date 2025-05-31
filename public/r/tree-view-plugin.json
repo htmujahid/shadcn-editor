@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tree-view-plugin",
+  "type": "registry:ui",
+  "registryDependencies": [
+    "button",
+    "dialog",
+    "scroll-area",
+    "https://shadcn-editor.vercel.app/r/actions-plugin.json"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/editor/plugins/actions/tree-view-plugin.tsx",
+      "content": "\"use client\"\n\nimport { JSX } from \"react\"\nimport { useLexicalComposerContext } from \"@lexical/react/LexicalComposerContext\"\nimport { TreeView } from \"@lexical/react/LexicalTreeView\"\nimport { NotebookPenIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  Dialog,\n  DialogContent,\n  DialogHeader,\n  DialogTitle,\n  DialogTrigger,\n} from \"@/registry/new-york-v4/ui/dialog\"\nimport { ScrollArea, ScrollBar } from \"@/registry/new-york-v4/ui/scroll-area\"\n\nexport function TreeViewPlugin(): JSX.Element {\n  const [editor] = useLexicalComposerContext()\n  return (\n    <Dialog>\n      <DialogTrigger asChild>\n        <Button size={\"sm\"} variant={\"ghost\"} className=\"p-2\">\n          <NotebookPenIcon className=\"h-4 w-4\" />\n        </Button>\n      </DialogTrigger>\n      <DialogContent>\n        <DialogHeader>\n          <DialogTitle>Tree View</DialogTitle>\n        </DialogHeader>\n        <ScrollArea className=\"bg-foreground text-background h-96 overflow-hidden rounded-lg p-2\">\n          <TreeView\n            viewClassName=\"tree-view-output\"\n            treeTypeButtonClassName=\"debug-treetype-button\"\n            timeTravelPanelClassName=\"debug-timetravel-panel\"\n            timeTravelButtonClassName=\"debug-timetravel-button\"\n            timeTravelPanelSliderClassName=\"debug-timetravel-panel-slider\"\n            timeTravelPanelButtonClassName=\"debug-timetravel-panel-button\"\n            editor={editor}\n          />\n          <ScrollBar orientation=\"vertical\" />\n        </ScrollArea>\n      </DialogContent>\n    </Dialog>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/actions/tree-view-plugin.tsx"
+    }
+  ]
+}

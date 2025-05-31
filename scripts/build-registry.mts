@@ -150,7 +150,8 @@ try {
   await buildRegistry()
 
   console.log("🔄 Syncing registry...")
-  await syncRegistry()
+  // await syncRegistry()
+  await exec("pnpm dlx shadcn build")
 } catch (error) {
   console.error(error)
   process.exit(1)

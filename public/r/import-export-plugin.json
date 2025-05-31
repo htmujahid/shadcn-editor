@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "import-export-plugin",
+  "type": "registry:ui",
+  "dependencies": [
+    "@lexical/file"
+  ],
+  "registryDependencies": [
+    "button",
+    "tooltip",
+    "https://shadcn-editor.vercel.app/r/actions-plugin.json"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/editor/plugins/actions/import-export-plugin.tsx",
+      "content": "\"use client\"\n\nimport { exportFile, importFile } from \"@lexical/file\"\nimport { useLexicalComposerContext } from \"@lexical/react/LexicalComposerContext\"\nimport { DownloadIcon, UploadIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipTrigger,\n} from \"@/registry/new-york-v4/ui/tooltip\"\n\nexport function ImportExportPlugin() {\n  const [editor] = useLexicalComposerContext()\n  return (\n    <>\n      <Tooltip>\n        <TooltipTrigger asChild>\n          <Button\n            variant={\"ghost\"}\n            onClick={() => importFile(editor)}\n            title=\"Import\"\n            aria-label=\"Import editor state from JSON\"\n            size={\"sm\"}\n            className=\"p-2\"\n          >\n            <UploadIcon className=\"size-4\" />\n          </Button>\n        </TooltipTrigger>\n        <TooltipContent>Import Content</TooltipContent>\n      </Tooltip>\n\n      <Tooltip>\n        <TooltipTrigger asChild>\n          <Button\n            variant={\"ghost\"}\n            onClick={() =>\n              exportFile(editor, {\n                fileName: `Playground ${new Date().toISOString()}`,\n                source: \"Playground\",\n              })\n            }\n            title=\"Export\"\n            aria-label=\"Export editor state to JSON\"\n            size={\"sm\"}\n            className=\"p-2\"\n          >\n            <DownloadIcon className=\"size-4\" />\n          </Button>\n        </TooltipTrigger>\n        <TooltipContent>Export Content</TooltipContent>\n      </Tooltip>\n    </>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/actions/import-export-plugin.tsx"
+    }
+  ]
+}

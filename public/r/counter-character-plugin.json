@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "counter-character-plugin",
+  "type": "registry:ui",
+  "dependencies": [
+    "@lexical/text"
+  ],
+  "registryDependencies": [
+    "https://shadcn-editor.vercel.app/r/actions-plugin.json"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/editor/plugins/actions/counter-character-plugin.tsx",
+      "content": "\"use client\"\n\nimport { useEffect, useState } from \"react\"\nimport { useLexicalComposerContext } from \"@lexical/react/LexicalComposerContext\"\nimport { $rootTextContent } from \"@lexical/text\"\n\nlet textEncoderInstance: null | TextEncoder = null\n\nfunction textEncoder(): null | TextEncoder {\n  if (window.TextEncoder === undefined) {\n    return null\n  }\n\n  if (textEncoderInstance === null) {\n    textEncoderInstance = new window.TextEncoder()\n  }\n\n  return textEncoderInstance\n}\n\nfunction utf8Length(text: string) {\n  const currentTextEncoder = textEncoder()\n\n  if (currentTextEncoder === null) {\n    // http://stackoverflow.com/a/5515960/210370\n    const m = encodeURIComponent(text).match(/%[89ABab]/g)\n    return text.length + (m ? m.length : 0)\n  }\n\n  return currentTextEncoder.encode(text).length\n}\n\ninterface CounterCharacterPluginProps {\n  charset?: \"UTF-8\" | \"UTF-16\"\n}\n\nconst strlen = (text: string, charset: \"UTF-8\" | \"UTF-16\") => {\n  if (charset === \"UTF-8\") {\n    return utf8Length(text)\n  } else if (charset === \"UTF-16\") {\n    return text.length\n  }\n}\n\nconst countWords = (text: string) => {\n  return text.split(/\\s+/).filter((word) => word.length > 0).length\n}\n\nexport function CounterCharacterPlugin({\n  charset = \"UTF-16\",\n}: CounterCharacterPluginProps) {\n  const [editor] = useLexicalComposerContext()\n  const [stats, setStats] = useState(() => {\n    const initialText = editor.getEditorState().read($rootTextContent)\n    return {\n      characters: strlen(initialText, charset),\n      words: countWords(initialText),\n    }\n  })\n\n  useEffect(() => {\n    return editor.registerTextContentListener((currentText: string) => {\n      setStats({\n        characters: strlen(currentText, charset),\n        words: countWords(currentText),\n      })\n    })\n  }, [editor, charset])\n\n  return (\n    <div className=\"flex gap-2 text-xs whitespace-nowrap text-gray-500\">\n      <p>{stats.characters} characters</p>|<p>{stats.words} words</p>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/actions/counter-character-plugin.tsx"
+    }
+  ]
+}
