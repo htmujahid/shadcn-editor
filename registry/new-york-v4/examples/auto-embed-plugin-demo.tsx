@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { AutoLinkNode, LinkNode } from "@lexical/link"
 import {
   InitialConfigType,
   LexicalComposer,
@@ -21,10 +22,24 @@ import { ToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/too
 import { editorTheme } from "@/registry/new-york-v4/editor/themes/editor-theme"
 import { TooltipProvider } from "@/registry/new-york-v4/ui/tooltip"
 
+import { FigmaNode } from "../editor/nodes/embeds/figma-node"
+import { TweetNode } from "../editor/nodes/embeds/tweet-node"
+import { YouTubeNode } from "../editor/nodes/embeds/youtube-node"
+
 const editorConfig: InitialConfigType = {
   namespace: "Editor",
   theme: editorTheme,
-  nodes: [HeadingNode, ParagraphNode, TextNode, QuoteNode],
+  nodes: [
+    HeadingNode,
+    ParagraphNode,
+    TextNode,
+    QuoteNode,
+    LinkNode,
+    AutoLinkNode,
+    FigmaNode,
+    TweetNode,
+    YouTubeNode,
+  ],
   onError: (error: Error) => {
     console.error(error)
   },
