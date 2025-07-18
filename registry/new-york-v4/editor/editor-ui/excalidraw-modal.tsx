@@ -30,7 +30,7 @@ import {
   DialogContent,
   DialogFooter,
 } from "@/registry/new-york-v4/ui/dialog"
-
+import "@excalidraw/excalidraw/index.css";
 const Excalidraw = dynamic(
   () => import("@/registry/new-york-v4/editor/editor-ui/excalidraw"),
   { ssr: false }
