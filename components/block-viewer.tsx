@@ -53,6 +53,8 @@ import {
   ToggleGroupItem,
 } from "@/registry/new-york-v4/ui/toggle-group"
 
+const siteUrl = process.env.NEXT_PUBLIC_APP_URL;
+
 type BlockViewerContext = {
   item: z.infer<typeof registryItemSchema>
   view: "code" | "preview"
@@ -190,11 +192,11 @@ function BlockViewerToolbar() {
           className="hidden w-fit gap-1 px-2 shadow-none md:flex"
           size="sm"
           onClick={() => {
-            copyToClipboard(`npx shadcn@latest add ${item.name}`)
+            copyToClipboard(`npx shadcn@latest add ${siteUrl}/r/${item.name}.json`)
           }}
         >
           {isCopied ? <Check /> : <Terminal />}
-          <span>npx shadcn add {item.name}</span>
+          <span>npx shadcn add {siteUrl}/r/{item.name}.json</span>
         </Button>
         <Separator
           orientation="vertical"
