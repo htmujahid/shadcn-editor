@@ -1182,9 +1182,17 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     dependencies: ["@lexical/markdown"],
     registryDependencies: [
+      "button",
+      "https://shadcn-editor.vercel.app/r/actions-plugin.json",
       "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json",
     ],
-    files: [],
+    files: [
+      {
+        path: "editor/plugins/actions/markdown-toggle-plugin.tsx",
+        target: "components/editor/plugins/actions/markdown-toggle-plugin.tsx",
+        type: "registry:component",
+      },
+    ],
   },
   {
     name: "mention-plugin",
