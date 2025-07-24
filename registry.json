@@ -1043,6 +1043,11 @@
           "path": "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx",
           "type": "registry:component",
           "target": "components/editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx"
+        },
+        {
+          "path": "registry/new-york-v4/editor/transformers/markdown-hr-transformer.ts",
+          "type": "registry:file",
+          "target": "components/editor/transformers/markdown-hr-transformer.ts"
         }
       ]
     },
@@ -1234,7 +1239,8 @@
       ],
       "registryDependencies": [
         "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"
-      ]
+      ],
+      "files": []
     },
     {
       "name": "mention-plugin",

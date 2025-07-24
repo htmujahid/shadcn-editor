@@ -925,6 +925,10 @@ export const Index: Record<string, any> = {
       path: "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx",
       type: "registry:component",
       target: "components/editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx"
+    },{
+      path: "registry/new-york-v4/editor/transformers/markdown-hr-transformer.ts",
+      type: "registry:file",
+      target: "components/editor/transformers/markdown-hr-transformer.ts"
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx")
@@ -1089,6 +1093,16 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "markdown-plugin": {
+    name: "markdown-plugin",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+    files: [],
+    component: null,
     categories: undefined,
     meta: undefined,
   },

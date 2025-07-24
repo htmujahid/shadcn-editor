@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "markdown-plugin",
+  "type": "registry:ui",
+  "dependencies": [
+    "@lexical/markdown"
+  ],
+  "registryDependencies": [
+    "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"
+  ],
+  "files": []
+}

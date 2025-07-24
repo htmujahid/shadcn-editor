@@ -994,6 +994,11 @@ export const ui: Registry["items"] = [
           "components/editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx",
         type: "registry:component",
       },
+      {
+        path: "editor/transformers/markdown-hr-transformer.ts",
+        target: "components/editor/transformers/markdown-hr-transformer.ts",
+        type: "registry:file",
+      },
     ],
   },
   {
@@ -1179,6 +1184,7 @@ export const ui: Registry["items"] = [
     registryDependencies: [
       "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json",
     ],
+    files: [],
   },
   {
     name: "mention-plugin",
