@@ -1100,9 +1100,17 @@ export const Index: Record<string, any> = {
     name: "markdown-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
-    files: [],
-    component: null,
+    registryDependencies: ["button","https://shadcn-editor.vercel.app/r/actions-plugin.json","https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+    files: [{
+      path: "registry/new-york-v4/editor/plugins/actions/markdown-toggle-plugin.tsx",
+      type: "registry:component",
+      target: "components/editor/plugins/actions/markdown-toggle-plugin.tsx"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/editor/plugins/actions/markdown-toggle-plugin.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
     categories: undefined,
     meta: undefined,
   },
