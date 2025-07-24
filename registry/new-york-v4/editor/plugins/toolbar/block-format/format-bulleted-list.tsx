@@ -21,7 +21,7 @@ export function FormatBulletedList() {
   }
 
   const formatBulletedList = () => {
-    if (blockType !== "number") {
+    if (blockType !== "bullet") {
       activeEditor.dispatchCommand(INSERT_UNORDERED_LIST_COMMAND, undefined)
     } else {
       formatParagraph()
