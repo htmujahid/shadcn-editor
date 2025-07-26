@@ -69,11 +69,15 @@ export function FontFamilyToolbarPlugin() {
     >
       <SelectTrigger className="!h-8 w-min gap-1">
         <TypeIcon className="size-4" />
-        <span>{fontFamily}</span>
+        <span style={{ fontFamily }}>{fontFamily}</span>
       </SelectTrigger>
       <SelectContent>
         {FONT_FAMILY_OPTIONS.map((option) => (
-          <SelectItem key={option} value={option}>
+          <SelectItem
+            key={option}
+            value={option}
+            style={{ fontFamily: option }}
+          >
             {option}
           </SelectItem>
         ))}
