@@ -20,7 +20,7 @@ import {
   BinaryFiles,
   ExcalidrawImperativeAPI,
   ExcalidrawInitialDataState,
-} from "@excalidraw/excalidraw/types/types"
+} from "@excalidraw/excalidraw/types"
 import { DialogTrigger } from "@radix-ui/react-dialog"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
