@@ -10,7 +10,7 @@ First you need to initialize your project with [shadcn/ui](https://ui.shadcn.com
 Use the following command to add the editor to your project.
 
 ```bash
-npx shadcn@latest add https://shadcn-editor.vercel.app/r/editor.json
+npx shadcn@latest add https://shadcn-editor.vercel.app/r/editor-x.json
 ```
 
 This will add the core dependencies and the structure for the editor.
@@ -20,12 +20,13 @@ This will add the core dependencies and the structure for the editor.
 Here is how you can use the editor in your project.
 
 ```tsx
-"use client"
+'use client'
 
-import { useState } from "react"
-import { SerializedEditorState } from "lexical"
+import { useState } from 'react'
 
-import { Editor } from "@/components/blocks/editor-00"
+import { SerializedEditorState } from 'lexical'
+
+import { Editor } from '@/components/blocks/editor-x/editor'
 
 const initialValue = {
   root: {
@@ -35,39 +36,37 @@ const initialValue = {
           {
             detail: 0,
             format: 0,
-            mode: "normal",
-            style: "",
-            text: "Hello World 🚀",
-            type: "text",
+            mode: 'normal',
+            style: '',
+            text: 'Hello World 🚀',
+            type: 'text',
             version: 1,
           },
         ],
-        direction: "ltr",
-        format: "",
+        direction: 'ltr',
+        format: '',
         indent: 0,
-        type: "paragraph",
+        type: 'paragraph',
         version: 1,
       },
     ],
-    direction: "ltr",
-    format: "",
+    direction: 'ltr',
+    format: '',
     indent: 0,
-    type: "root",
+    type: 'root',
     version: 1,
   },
 } as unknown as SerializedEditorState
 
-export default function EditorDemo() {
+export function EditorDemo() {
   const [editorState, setEditorState] =
     useState<SerializedEditorState>(initialValue)
 
   return (
-    <div>
-      <Editor
-        editorSerializedState={editorState}
-        onSerializedChange={(value) => setEditorState(value)}
-      />
-    </div>
+    <Editor
+      editorSerializedState={editorState}
+      onSerializedChange={(value) => setEditorState(value)}
+    />
   )
 }
 ```
