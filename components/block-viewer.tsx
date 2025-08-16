@@ -16,7 +16,6 @@ import {
   Terminal,
 } from "lucide-react"
 import { ImperativePanelHandle } from "react-resizable-panels"
-import { registryItemFileSchema, registryItemSchema } from "shadcn/registry"
 import { z } from "zod"
 
 import { trackEvent } from "@/lib/events"
@@ -52,6 +51,7 @@ import {
   ToggleGroup,
   ToggleGroupItem,
 } from "@/registry/new-york-v4/ui/toggle-group"
+import { registryItemFileSchema, registryItemSchema } from "@/registry/schema"
 
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL;
 

@@ -20,7 +20,7 @@ import {
   BinaryFiles,
   ExcalidrawImperativeAPI,
   ExcalidrawInitialDataState,
-} from "@excalidraw/excalidraw/types/types"
+} from "@excalidraw/excalidraw/types"
 import { DialogTrigger } from "@radix-ui/react-dialog"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
@@ -30,7 +30,9 @@ import {
   DialogContent,
   DialogFooter,
 } from "@/registry/new-york-v4/ui/dialog"
-import "@excalidraw/excalidraw/index.css";
+
+import "@excalidraw/excalidraw/index.css"
+
 const Excalidraw = dynamic(
   () => import("@/registry/new-york-v4/editor/editor-ui/excalidraw"),
   { ssr: false }

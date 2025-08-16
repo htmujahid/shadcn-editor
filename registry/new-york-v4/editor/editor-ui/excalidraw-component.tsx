@@ -7,7 +7,7 @@
  */
 import { JSX, useCallback, useEffect, useMemo, useRef, useState } from "react"
 import * as React from "react"
-import { AppState, BinaryFiles } from "@excalidraw/excalidraw/types/types"
+import { AppState, BinaryFiles } from "@excalidraw/excalidraw/types"
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable"
 import { useLexicalNodeSelection } from "@lexical/react/useLexicalNodeSelection"

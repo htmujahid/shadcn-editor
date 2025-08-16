@@ -2,6 +2,13 @@
 
 import { useState } from "react"
 import {
+  CHECK_LIST,
+  ELEMENT_TRANSFORMERS,
+  MULTILINE_ELEMENT_TRANSFORMERS,
+  TEXT_FORMAT_TRANSFORMERS,
+  TEXT_MATCH_TRANSFORMERS,
+} from "@lexical/markdown"
+import {
   InitialConfigType,
   LexicalComposer,
 } from "@lexical/react/LexicalComposer"
@@ -9,6 +16,12 @@ import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary"
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin"
 import { HeadingNode, QuoteNode } from "@lexical/rich-text"
 import { ParagraphNode, TextNode } from "lexical"
+import { EMOJI } from "registry/new-york-v4/editor/transformers/markdown-emoji-transformer"
+import { EQUATION } from "registry/new-york-v4/editor/transformers/markdown-equation-transformer"
+import { HR } from "registry/new-york-v4/editor/transformers/markdown-hr-transformer"
+import { IMAGE } from "registry/new-york-v4/editor/transformers/markdown-image-transformer"
+import { TABLE } from "registry/new-york-v4/editor/transformers/markdown-table-transformer"
+import { TWEET } from "registry/new-york-v4/editor/transformers/markdown-tweet-transformer"
 
 import { ContentEditable } from "@/registry/new-york-v4/editor/editor-ui/content-editable"
 import { ActionsPlugin } from "@/registry/new-york-v4/editor/plugins/actions/actions-plugin"
@@ -80,7 +93,22 @@ export function Plugins() {
           <div>{/* center action buttons */}</div>
           <div className="flex flex-1 justify-end">
             {/* right side action buttons */}
-            <MarkdownTogglePlugin shouldPreserveNewLinesInMarkdown={true} />
+            <MarkdownTogglePlugin
+              transformers={[
+                TABLE,
+                HR,
+                IMAGE,
+                EMOJI,
+                EQUATION,
+                TWEET,
+                CHECK_LIST,
+                ...ELEMENT_TRANSFORMERS,
+                ...MULTILINE_ELEMENT_TRANSFORMERS,
+                ...TEXT_FORMAT_TRANSFORMERS,
+                ...TEXT_MATCH_TRANSFORMERS,
+              ]}
+              shouldPreserveNewLinesInMarkdown={true}
+            />
           </div>
         </div>
       </ActionsPlugin>

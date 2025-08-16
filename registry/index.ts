@@ -1,4 +1,3 @@
-import { registryItemSchema, type Registry } from "shadcn/registry"
 import { z } from "zod"
 
 import { blocks } from "@/registry/registry-blocks"
@@ -10,6 +9,8 @@ import { lib } from "@/registry/registry-lib"
 import { themes } from "@/registry/registry-themes"
 import { ui } from "@/registry/registry-ui"
 
+import { Registry, registryItemSchema } from "./schema"
+
 const DEPRECATED_ITEMS = [
   "toast",
   "toast-demo",
@@ -20,8 +21,8 @@ const DEPRECATED_ITEMS = [
 ]
 
 export const registry = {
-  name: "shadcn/ui",
-  homepage: "https://ui.shadcn.com",
+  name: "shadcn-editor",
+  homepage: "https://shadcn-editor.vercel.app",
   items: z.array(registryItemSchema).parse(
     [
       {

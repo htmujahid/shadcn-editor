@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toolbar-plugin",
+  "type": "registry:ui",
+  "registryDependencies": [
+    "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/editor/plugins/toolbar/toolbar-plugin.tsx",
+      "content": "\"use client\"\n\nimport { useEffect, useState } from \"react\"\nimport { useLexicalComposerContext } from \"@lexical/react/LexicalComposerContext\"\nimport { COMMAND_PRIORITY_CRITICAL, SELECTION_CHANGE_COMMAND } from \"lexical\"\n\nimport { ToolbarContext } from \"@/registry/new-york-v4/editor/context/toolbar-context\"\nimport { useEditorModal } from \"@/registry/new-york-v4/editor/editor-hooks/use-modal\"\n\nexport function ToolbarPlugin({\n  children,\n}: {\n  children: (props: { blockType: string }) => React.ReactNode\n}) {\n  const [editor] = useLexicalComposerContext()\n\n  const [activeEditor, setActiveEditor] = useState(editor)\n  const [blockType, setBlockType] = useState<string>(\"paragraph\")\n\n  const [modal, showModal] = useEditorModal()\n\n  const $updateToolbar = () => {}\n\n  useEffect(() => {\n    return activeEditor.registerCommand(\n      SELECTION_CHANGE_COMMAND,\n      (_payload, newEditor) => {\n        setActiveEditor(newEditor)\n        return false\n      },\n      COMMAND_PRIORITY_CRITICAL\n    )\n  }, [editor])\n\n  return (\n    <ToolbarContext\n      activeEditor={activeEditor}\n      $updateToolbar={$updateToolbar}\n      blockType={blockType}\n      setBlockType={setBlockType}\n      showModal={showModal}\n    >\n      {modal}\n\n      {children({ blockType })}\n    </ToolbarContext>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/toolbar/toolbar-plugin.tsx"
+    },
+    {
+      "path": "registry/new-york-v4/editor/context/toolbar-context.tsx",
+      "content": "\"use client\"\n\nimport { createContext, JSX, useContext } from \"react\"\nimport { LexicalEditor } from \"lexical\"\n\nconst Context = createContext<{\n  activeEditor: LexicalEditor\n  $updateToolbar: () => void\n  blockType: string\n  setBlockType: (blockType: string) => void\n  showModal: (\n    title: string,\n    showModal: (onClose: () => void) => JSX.Element\n  ) => void\n}>({\n  activeEditor: {} as LexicalEditor,\n  $updateToolbar: () => {},\n  blockType: \"paragraph\",\n  setBlockType: () => {},\n  showModal: () => {},\n})\n\nexport function ToolbarContext({\n  activeEditor,\n  $updateToolbar,\n  blockType,\n  setBlockType,\n  showModal,\n  children,\n}: {\n  activeEditor: LexicalEditor\n  $updateToolbar: () => void\n  blockType: string\n  setBlockType: (blockType: string) => void\n  showModal: (\n    title: string,\n    showModal: (onClose: () => void) => JSX.Element\n  ) => void\n  children: React.ReactNode\n}) {\n  return (\n    <Context.Provider\n      value={{\n        activeEditor,\n        $updateToolbar,\n        blockType,\n        setBlockType,\n        showModal,\n      }}\n    >\n      {children}\n    </Context.Provider>\n  )\n}\n\nexport function useToolbarContext() {\n  return useContext(Context)\n}\n",
+      "type": "registry:component",
+      "target": "components/editor/context/toolbar-context.tsx"
+    },
+    {
+      "path": "registry/new-york-v4/editor/editor-hooks/use-modal.tsx",
+      "content": "/**\n * Copyright (c) Meta Platforms, Inc. and affiliates.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE file in the root directory of this source tree.\n *\n */\nimport { JSX, useCallback, useMemo, useState } from \"react\"\nimport * as React from \"react\"\n\nimport {\n  Dialog,\n  DialogContent,\n  DialogHeader,\n  DialogTitle,\n} from \"@/registry/new-york-v4/ui/dialog\"\n\nexport function useEditorModal(): [\n  JSX.Element | null,\n  (title: string, showModal: (onClose: () => void) => JSX.Element) => void,\n] {\n  const [modalContent, setModalContent] = useState<null | {\n    closeOnClickOutside: boolean\n    content: JSX.Element\n    title: string\n  }>(null)\n\n  const onClose = useCallback(() => {\n    setModalContent(null)\n  }, [])\n\n  const modal = useMemo(() => {\n    if (modalContent === null) {\n      return null\n    }\n    const { title, content } = modalContent\n    return (\n      <Dialog open={true} onOpenChange={onClose}>\n        <DialogContent>\n          <DialogHeader>\n            <DialogTitle>{title}</DialogTitle>\n          </DialogHeader>\n          {content}\n        </DialogContent>\n      </Dialog>\n    )\n  }, [modalContent, onClose])\n\n  const showModal = useCallback(\n    (\n      title: string,\n      getContent: (onClose: () => void) => JSX.Element,\n      closeOnClickOutside = false\n    ) => {\n      setModalContent({\n        closeOnClickOutside,\n        content: getContent(onClose),\n        title,\n      })\n    },\n    [onClose]\n  )\n\n  return [modal, showModal]\n}\n",
+      "type": "registry:hook",
+      "target": "components/editor/editor-hooks/use-modal.tsx"
+    }
+  ]
+}

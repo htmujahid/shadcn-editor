@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rich-text-editor-plugin",
+  "type": "registry:ui",
+  "dependencies": [
+    "@lexical/rich-text"
+  ],
+  "registryDependencies": [
+    "https://shadcn-editor.vercel.app/r/editor.json"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/editor/editor-ui/content-editable.tsx",
+      "content": "import { JSX } from \"react\"\nimport { ContentEditable as LexicalContentEditable } from \"@lexical/react/LexicalContentEditable\"\n\ntype Props = {\n  placeholder: string\n  className?: string\n  placeholderClassName?: string\n}\n\nexport function ContentEditable({\n  placeholder,\n  className,\n  placeholderClassName,\n}: Props): JSX.Element {\n  return (\n    <LexicalContentEditable\n      className={\n        className ??\n        `ContentEditable__root relative block min-h-72 min-h-full overflow-auto px-8 py-4 focus:outline-none`\n      }\n      aria-placeholder={placeholder}\n      placeholder={\n        <div\n          className={\n            placeholderClassName ??\n            `text-muted-foreground pointer-events-none absolute top-0 left-0 overflow-hidden px-8 py-[18px] text-ellipsis select-none`\n          }\n        >\n          {placeholder}\n        </div>\n      }\n    />\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "components/editor/editor-ui/content-editable.tsx"
+    }
+  ]
+}

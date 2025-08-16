@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "markdown-toggle-plugin",
+  "type": "registry:ui",
+  "dependencies": [
+    "@lexical/markdown",
+    "@lexical/code"
+  ],
+  "registryDependencies": [
+    "button",
+    "https://shadcn-editor.vercel.app/r/actions-plugin.json"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/editor/plugins/actions/markdown-toggle-plugin.tsx",
+      "content": "\"use client\"\n\nimport { useCallback } from \"react\"\nimport { $createCodeNode, $isCodeNode } from \"@lexical/code\"\nimport {\n  $convertFromMarkdownString,\n  $convertToMarkdownString,\n  Transformer,\n} from \"@lexical/markdown\"\nimport { useLexicalComposerContext } from \"@lexical/react/LexicalComposerContext\"\nimport { $createTextNode, $getRoot } from \"lexical\"\nimport { FileTextIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\n\nexport function MarkdownTogglePlugin({\n  shouldPreserveNewLinesInMarkdown,\n  transformers,\n}: {\n  shouldPreserveNewLinesInMarkdown: boolean\n  transformers: Array<Transformer>\n}) {\n  const [editor] = useLexicalComposerContext()\n\n  const handleMarkdownToggle = useCallback(() => {\n    editor.update(() => {\n      const root = $getRoot()\n      const firstChild = root.getFirstChild()\n      if ($isCodeNode(firstChild) && firstChild.getLanguage() === \"markdown\") {\n        $convertFromMarkdownString(\n          firstChild.getTextContent(),\n          transformers,\n          undefined, // node\n          shouldPreserveNewLinesInMarkdown\n        )\n      } else {\n        const markdown = $convertToMarkdownString(\n          transformers,\n          undefined, //node\n          shouldPreserveNewLinesInMarkdown\n        )\n        const codeNode = $createCodeNode(\"markdown\")\n        codeNode.append($createTextNode(markdown))\n        root.clear().append(codeNode)\n        if (markdown.length === 0) {\n          codeNode.select()\n        }\n      }\n    })\n  }, [editor, shouldPreserveNewLinesInMarkdown])\n\n  return (\n    <Button\n      variant={\"ghost\"}\n      onClick={handleMarkdownToggle}\n      title=\"Convert From Markdown\"\n      aria-label=\"Convert from markdown\"\n      size={\"sm\"}\n      className=\"p-2\"\n    >\n      <FileTextIcon className=\"size-4\" />\n    </Button>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/actions/markdown-toggle-plugin.tsx"
+    }
+  ]
+}
