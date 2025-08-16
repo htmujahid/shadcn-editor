@@ -866,10 +866,6 @@ export const Index: Record<string, any> = {
       type: "registry:component",
       target: "components/editor/editor-ui/excalidraw-component.tsx"
     },{
-      path: "registry/new-york-v4/editor/editor-ui/excalidraw.tsx",
-      type: "registry:component",
-      target: "components/editor/editor-ui/excalidraw.tsx"
-    },{
       path: "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-excalidraw.tsx",
       type: "registry:component",
       target: "components/editor/plugins/toolbar/block-insert/insert-excalidraw.tsx"
@@ -1957,10 +1953,6 @@ export const Index: Record<string, any> = {
       path: "registry/new-york-v4/editor/editor-ui/excalidraw-modal.tsx",
       type: "registry:ui",
       target: "components/editor/editor-ui/excalidraw-modal.tsx"
-    },{
-      path: "registry/new-york-v4/editor/editor-ui/excalidraw.tsx",
-      type: "registry:ui",
-      target: "components/editor/editor-ui/excalidraw.tsx"
     },{
       path: "registry/new-york-v4/editor/editor-ui/image-component.tsx",
       type: "registry:ui",

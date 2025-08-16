@@ -917,11 +917,6 @@ export const ui: Registry["items"] = [
         type: "registry:component",
       },
       {
-        path: "editor/editor-ui/excalidraw.tsx",
-        target: "components/editor/editor-ui/excalidraw.tsx",
-        type: "registry:component",
-      },
-      {
         path: "editor/plugins/toolbar/block-insert/insert-excalidraw.tsx",
         target:
           "components/editor/plugins/toolbar/block-insert/insert-excalidraw.tsx",

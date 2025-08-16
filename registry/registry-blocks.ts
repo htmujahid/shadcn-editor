@@ -901,11 +901,6 @@ export const blocks: Registry["items"] = [
         type: "registry:ui",
       },
       {
-        path: "editor/editor-ui/excalidraw.tsx",
-        target: "components/editor/editor-ui/excalidraw.tsx",
-        type: "registry:ui",
-      },
-      {
         path: "editor/editor-ui/image-component.tsx",
         target: "components/editor/editor-ui/image-component.tsx",
         type: "registry:ui",

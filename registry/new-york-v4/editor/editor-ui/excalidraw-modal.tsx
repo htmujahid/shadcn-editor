@@ -34,7 +34,7 @@ import {
 import "@excalidraw/excalidraw/index.css"
 
 const Excalidraw = dynamic(
-  () => import("@/registry/new-york-v4/editor/editor-ui/excalidraw"),
+  () => import("@excalidraw/excalidraw").then((mod) => mod.Excalidraw),
   { ssr: false }
 )
 
