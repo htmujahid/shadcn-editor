@@ -152,7 +152,7 @@ export function EmojiPickerPlugin() {
       ) => {
         return anchorElementRef.current && options.length
           ? createPortal(
-              <div className="fixed w-[200px] rounded-md shadow-md">
+              <div className="fixed z-10 w-[200px] rounded-md shadow-md">
                 <Command
                   onKeyDown={(e) => {
                     if (e.key === "ArrowUp") {
