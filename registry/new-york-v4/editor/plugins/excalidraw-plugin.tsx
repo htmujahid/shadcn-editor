@@ -83,16 +83,18 @@ export function ExcalidrawPlugin(): JSX.Element | null {
   }
   return (
     <>
-      {isModalOpen && <ExcalidrawModal
-        initialElements={[]}
-        initialAppState={{} as AppState}
-        initialFiles={{}}
-        isShown={isModalOpen}
-        onDelete={onDelete}
-        onClose={onClose}
-        onSave={onSave}
-        closeOnClickOutside={false}
-      />}
+      {isModalOpen && (
+        <ExcalidrawModal
+          initialElements={[]}
+          initialAppState={{} as AppState}
+          initialFiles={{}}
+          isShown={isModalOpen}
+          onDelete={onDelete}
+          onClose={onClose}
+          onSave={onSave}
+          closeOnClickOutside={false}
+        />
+      )}
     </>
   )
 }

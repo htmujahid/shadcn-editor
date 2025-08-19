@@ -11,19 +11,26 @@ import { HeadingNode, QuoteNode } from "@lexical/rich-text"
 import { ParagraphNode, TextNode } from "lexical"
 
 import { ContentEditable } from "@/registry/new-york-v4/editor/editor-ui/content-editable"
+import { LayoutContainerNode } from "@/registry/new-york-v4/editor/nodes/layout-container-node"
+import { LayoutItemNode } from "@/registry/new-york-v4/editor/nodes/layout-item-node"
+import { LayoutPlugin } from "@/registry/new-york-v4/editor/plugins/layout-plugin"
 import { BlockInsertPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/block-insert-plugin"
 import { InsertColumnsLayout } from "@/registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-columns-layout"
-import { LayoutPlugin } from "@/registry/new-york-v4/editor/plugins/layout-plugin"
 import { ToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/toolbar-plugin"
 import { editorTheme } from "@/registry/new-york-v4/editor/themes/editor-theme"
 import { TooltipProvider } from "@/registry/new-york-v4/ui/tooltip"
-import { LayoutContainerNode } from "@/registry/new-york-v4/editor/nodes/layout-container-node"
-import { LayoutItemNode } from "@/registry/new-york-v4/editor/nodes/layout-item-node"
 
 const editorConfig: InitialConfigType = {
   namespace: "Editor",
   theme: editorTheme,
-  nodes: [HeadingNode, ParagraphNode, TextNode, QuoteNode, LayoutContainerNode, LayoutItemNode],
+  nodes: [
+    HeadingNode,
+    ParagraphNode,
+    TextNode,
+    QuoteNode,
+    LayoutContainerNode,
+    LayoutItemNode,
+  ],
   onError: (error: Error) => {
     console.error(error)
   },

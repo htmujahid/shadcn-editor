@@ -37,8 +37,8 @@ const Excalidraw = dynamic(
   async () => (await import("@excalidraw/excalidraw")).Excalidraw,
   {
     ssr: false,
-  },
-);
+  }
+)
 
 export type ExcalidrawInitialElements = ExcalidrawInitialDataState["elements"]
 
@@ -103,7 +103,7 @@ export function ExcalidrawModal({
   onDelete,
   onClose,
 }: Props): ReactElement | null {
-  const theme = useThemePrototype();
+  const theme = useThemePrototype()
   const excaliDrawModelRef = useRef<HTMLDivElement | null>(null)
   const [excalidrawAPI, excalidrawAPIRefCallback] = useCallbackRefState()
   const [discardModalOpen, setDiscardModalOpen] = useState(false)
@@ -232,9 +232,9 @@ export function ExcalidrawModal({
   return (
     <Dialog open={isShown} onOpenChange={(open) => !open && onClose()}>
       <DialogTrigger />
-      <DialogContent 
+      <DialogContent
         showCloseButton={false}
-        className="h-4/6 max-w-4xl overflow-hidden p-0 pb-10" 
+        className="h-4/6 max-w-4xl overflow-hidden p-0 pb-10"
       >
         <div className="relative" role="dialog">
           <div className="h-full w-full" ref={excaliDrawModelRef} tabIndex={-1}>
@@ -268,12 +268,12 @@ export function ExcalidrawModal({
 }
 
 function useThemePrototype() {
-  const [theme, setTheme] = useState<'light' | 'dark'>("light")
+  const [theme, setTheme] = useState<"light" | "dark">("light")
 
   useEffect(() => {
     const root = document.documentElement
     setTheme(root.classList.contains("dark") ? "dark" : "light")
   }, [])
 
-  return theme;
+  return theme
 }
