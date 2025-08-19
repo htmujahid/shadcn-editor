@@ -34,9 +34,11 @@ import {
 import "@excalidraw/excalidraw/index.css"
 
 const Excalidraw = dynamic(
-  () => import("@excalidraw/excalidraw").then((mod) => mod.Excalidraw),
-  { ssr: false }
-)
+  async () => (await import("@excalidraw/excalidraw")).Excalidraw,
+  {
+    ssr: false,
+  },
+);
 
 export type ExcalidrawInitialElements = ExcalidrawInitialDataState["elements"]
 
@@ -101,6 +103,7 @@ export function ExcalidrawModal({
   onDelete,
   onClose,
 }: Props): ReactElement | null {
+  const theme = useThemePrototype();
   const excaliDrawModelRef = useRef<HTMLDivElement | null>(null)
   const [excalidrawAPI, excalidrawAPIRefCallback] = useCallbackRefState()
   const [discardModalOpen, setDiscardModalOpen] = useState(false)
@@ -227,14 +230,18 @@ export function ExcalidrawModal({
   }
 
   return (
-    <Dialog open={isShown}>
+    <Dialog open={isShown} onOpenChange={(open) => !open && onClose()}>
       <DialogTrigger />
-      <DialogContent className="h-4/6 max-w-4xl overflow-hidden p-0">
+      <DialogContent 
+        showCloseButton={false}
+        className="h-4/6 max-w-4xl overflow-hidden p-0 pb-10" 
+      >
         <div className="relative" role="dialog">
           <div className="h-full w-full" ref={excaliDrawModelRef} tabIndex={-1}>
+            {discardModalOpen && <ShowDiscardDialog />}
             <div className="h-full w-full">
-              {discardModalOpen && <ShowDiscardDialog />}
               <Excalidraw
+                theme={theme}
                 onChange={onChange}
                 excalidrawAPI={excalidrawAPIRefCallback}
                 initialData={{
@@ -246,7 +253,7 @@ export function ExcalidrawModal({
               <div className="flex h-full items-center justify-center">
                 Loading...
               </div>
-              <div className="absolute right-1/2 bottom-0 bottom-5 z-10 flex translate-x-1/2 gap-2">
+              <div className="absolute right-1/2 -bottom-8 z-10 flex translate-x-1/2 gap-2">
                 <Button variant="outline" onClick={onClose}>
                   Discard
                 </Button>
@@ -258,4 +265,15 @@ export function ExcalidrawModal({
       </DialogContent>
     </Dialog>
   )
+}
+
+function useThemePrototype() {
+  const [theme, setTheme] = useState<'light' | 'dark'>("light")
+
+  useEffect(() => {
+    const root = document.documentElement
+    setTheme(root.classList.contains("dark") ? "dark" : "light")
+  }, [])
+
+  return theme;
 }
