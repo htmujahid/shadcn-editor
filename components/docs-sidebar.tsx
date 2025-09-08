@@ -47,7 +47,7 @@ export function DocsSidebar({
                         isActive={item.href === pathname}
                         className="data-[active=true]:bg-accent data-[active=true]:border-accent relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md"
                       >
-                        <Link href={item.href ?? ''}>{item.title}</Link>
+                        <Link href={item.href ?? ""}>{item.title}</Link>
                       </SidebarMenuButton>
                       {item.items?.length ? (
                         <SidebarMenuSub>
@@ -58,7 +58,7 @@ export function DocsSidebar({
                                 isActive={item.href === pathname}
                                 className="data-[active=true]:bg-accent data-[active=true]:border-accent relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md"
                               >
-                                <Link href={item.href ?? ''}>{item.title}</Link>
+                                <Link href={item.href ?? ""}>{item.title}</Link>
                               </SidebarMenuSubButton>
                             </SidebarMenuSubItem>
                           ))}
