@@ -10,16 +10,18 @@ import {
 } from "lexical"
 import { LinkIcon } from "lucide-react"
 
-import { useFloatingLinkContext } from "@/registry/new-york-v4/editor/context/floating-link-context"
 import { useToolbarContext } from "@/registry/new-york-v4/editor/context/toolbar-context"
 import { useUpdateToolbarHandler } from "@/registry/new-york-v4/editor/editor-hooks/use-update-toolbar"
 import { getSelectedNode } from "@/registry/new-york-v4/editor/utils/get-selected-node"
 import { sanitizeUrl } from "@/registry/new-york-v4/editor/utils/url"
 import { Toggle } from "@/registry/new-york-v4/ui/toggle"
 
-export function LinkToolbarPlugin() {
+export function LinkToolbarPlugin({
+  setIsLinkEditMode,
+}: {
+  setIsLinkEditMode: (isEditMode: boolean) => void
+}) {
   const { activeEditor } = useToolbarContext()
-  const { setIsLinkEditMode } = useFloatingLinkContext()
   const [isLink, setIsLink] = useState(false)
 
   const $updateToolbar = (selection: BaseSelection) => {

@@ -7,8 +7,6 @@ import {
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin"
 import { EditorState, SerializedEditorState } from "lexical"
 
-import { FloatingLinkContext } from "@/registry/new-york-v4/editor/context/floating-link-context"
-import { SharedAutocompleteContext } from "@/registry/new-york-v4/editor/context/shared-autocomplete-context"
 import { nodes } from "@/registry/new-york-v4/editor/nodes/nodes"
 import { Plugins } from "@/registry/new-york-v4/editor/plugins/plugins"
 import { editorTheme } from "@/registry/new-york-v4/editor/themes/editor-theme"
@@ -46,19 +44,15 @@ export function Editor({
         }}
       >
         <TooltipProvider>
-          <SharedAutocompleteContext>
-            <FloatingLinkContext>
-              <Plugins />
+          <Plugins />
 
-              <OnChangePlugin
-                ignoreSelectionChange={true}
-                onChange={(editorState) => {
-                  onChange?.(editorState)
-                  onSerializedChange?.(editorState.toJSON())
-                }}
-              />
-            </FloatingLinkContext>
-          </SharedAutocompleteContext>
+          <OnChangePlugin
+            ignoreSelectionChange={true}
+            onChange={(editorState) => {
+              onChange?.(editorState)
+              onSerializedChange?.(editorState.toJSON())
+            }}
+          />
         </TooltipProvider>
       </LexicalComposer>
     </div>

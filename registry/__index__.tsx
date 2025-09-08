@@ -318,10 +318,6 @@ export const Index: Record<string, any> = {
       type: "registry:component",
       target: "components/editor/utils/get-selected-node.ts"
     },{
-      path: "registry/new-york-v4/editor/context/floating-link-context.tsx",
-      type: "registry:component",
-      target: "components/editor/context/floating-link-context.tsx"
-    },{
       path: "registry/new-york-v4/editor/utils/url.ts",
       type: "registry:component",
       target: "components/editor/utils/url.ts"
@@ -535,10 +531,6 @@ export const Index: Record<string, any> = {
       path: "registry/new-york-v4/editor/plugins/autocomplete-plugin.tsx",
       type: "registry:component",
       target: "components/editor/plugins/autocomplete-plugin.tsx"
-    },{
-      path: "registry/new-york-v4/editor/context/shared-autocomplete-context.tsx",
-      type: "registry:component",
-      target: "components/editor/context/shared-autocomplete-context.tsx"
     },{
       path: "registry/new-york-v4/editor/nodes/autocomplete-node.tsx",
       type: "registry:component",
@@ -764,10 +756,6 @@ export const Index: Record<string, any> = {
       type: "registry:component",
       target: "components/editor/plugins/floating-text-format-plugin.tsx"
     },{
-      path: "registry/new-york-v4/editor/context/floating-link-context.tsx",
-      type: "registry:component",
-      target: "components/editor/context/floating-link-context.tsx"
-    },{
       path: "registry/new-york-v4/editor/utils/get-dom-range-rect.ts",
       type: "registry:component",
       target: "components/editor/utils/get-dom-range-rect.ts"
@@ -908,7 +896,7 @@ export const Index: Record<string, any> = {
     name: "link-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+    registryDependencies: ["https://shadcn-editor.vercel.app/r/link-toolbar-plugin.json"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/link-plugin.tsx",
       type: "registry:component",
@@ -1119,14 +1107,6 @@ export const Index: Record<string, any> = {
       path: "registry/new-york-v4/editor/themes/editor-theme.css",
       type: "registry:theme",
       target: "components/editor/themes/editor-theme.css"
-    },{
-      path: "registry/new-york-v4/editor/context/floating-link-context.tsx",
-      type: "registry:component",
-      target: "components/editor/context/floating-link-context.tsx"
-    },{
-      path: "registry/new-york-v4/editor/context/shared-autocomplete-context.tsx",
-      type: "registry:component",
-      target: "components/editor/context/shared-autocomplete-context.tsx"
     },{
       path: "registry/new-york-v4/editor/context/toolbar-context.tsx",
       type: "registry:component",

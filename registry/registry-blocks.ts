@@ -119,16 +119,6 @@ export const blocks: Registry["items"] = [
         type: "registry:theme",
       },
       {
-        path: "editor/context/floating-link-context.tsx",
-        target: "components/editor/context/floating-link-context.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/context/shared-autocomplete-context.tsx",
-        target: "components/editor/context/shared-autocomplete-context.tsx",
-        type: "registry:component",
-      },
-      {
         path: "editor/context/toolbar-context.tsx",
         target: "components/editor/context/toolbar-context.tsx",
         type: "registry:component",

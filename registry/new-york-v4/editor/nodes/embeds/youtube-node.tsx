@@ -150,7 +150,9 @@ export class YouTubeNode extends DecoratorBlockNode {
   }
 
   getTextContent(
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     _includeInert?: boolean | undefined,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     _includeDirectionless?: false | undefined
   ): string {
     return `https://www.youtube.com/watch?v=${this.__id}`

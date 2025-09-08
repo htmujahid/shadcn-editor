@@ -7,12 +7,17 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import { JSX, useCallback, useEffect } from "react"
+import type { JSX } from "react"
+import { useCallback, useEffect } from "react"
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
-import { $isAtNodeEnd } from "@lexical/selection"
-import { mergeRegister } from "@lexical/utils"
-import type { BaseSelection, NodeKey } from "lexical"
 import {
+  $getSelectionStyleValueForProperty,
+  $isAtNodeEnd,
+} from "@lexical/selection"
+import { mergeRegister } from "@lexical/utils"
+import type { BaseSelection, NodeKey, TextNode } from "lexical"
+import {
+  $addUpdateTag,
   $createTextNode,
   $getNodeByKey,
   $getSelection,
@@ -20,16 +25,26 @@ import {
   $isTextNode,
   $setSelection,
   COMMAND_PRIORITY_LOW,
+  HISTORY_MERGE_TAG,
   KEY_ARROW_RIGHT_COMMAND,
   KEY_TAB_COMMAND,
 } from "lexical"
 
-import { useSharedAutocompleteContext } from "@/registry/new-york-v4/editor/context/shared-autocomplete-context"
 import {
   $createAutocompleteNode,
   AutocompleteNode,
 } from "@/registry/new-york-v4/editor/nodes/autocomplete-node"
 import { addSwipeRightListener } from "@/registry/new-york-v4/editor/utils/swipe"
+
+const HISTORY_MERGE = { tag: HISTORY_MERGE_TAG }
+
+declare global {
+  interface Navigator {
+    userAgentData?: {
+      mobile: boolean
+    }
+  }
+}
 
 type SearchPromise = {
   dismiss: () => void
@@ -39,7 +54,7 @@ type SearchPromise = {
 export const uuid = Math.random()
   .toString(36)
   .replace(/[^a-z]+/g, "")
-  .substr(0, 5)
+  .substring(0, 5)
 
 // TODO lookup should be custom
 function $search(selection: null | BaseSelection): [boolean, string] {
@@ -76,16 +91,27 @@ function useQuery(): (searchText: string) => SearchPromise {
   }, [])
 }
 
+function formatSuggestionText(suggestion: string): string {
+  const userAgentData = window.navigator.userAgentData
+  const isMobile =
+    userAgentData !== undefined
+      ? userAgentData.mobile
+      : window.innerWidth <= 800 && window.innerHeight <= 600
+
+  return `${suggestion} ${isMobile ? "(SWIPE \u2B95)" : "(TAB)"}`
+}
+
 export function AutocompletePlugin(): JSX.Element | null {
   const [editor] = useLexicalComposerContext()
-  const [, setSuggestion] = useSharedAutocompleteContext()
   const query = useQuery()
+  // const {toolbarState} = useToolbarState();
 
   useEffect(() => {
     let autocompleteNodeKey: null | NodeKey = null
     let lastMatch: null | string = null
     let lastSuggestion: null | string = null
     let searchPromise: null | SearchPromise = null
+    let prevNodeFormat: number = 0
     function $clearSuggestion() {
       const autocompleteNode =
         autocompleteNodeKey !== null ? $getNodeByKey(autocompleteNodeKey) : null
@@ -99,7 +125,7 @@ export function AutocompletePlugin(): JSX.Element | null {
       }
       lastMatch = null
       lastSuggestion = null
-      setSuggestion(null)
+      prevNodeFormat = 0
     }
     function updateAsyncSuggestion(
       refSearchPromise: SearchPromise,
@@ -109,28 +135,33 @@ export function AutocompletePlugin(): JSX.Element | null {
         // Outdated or no suggestion
         return
       }
-      editor.update(
-        () => {
-          const selection = $getSelection()
-          const [hasMatch, match] = $search(selection)
-          if (
-            !hasMatch ||
-            match !== lastMatch ||
-            !$isRangeSelection(selection)
-          ) {
-            // Outdated
-            return
-          }
-          const selectionCopy = selection.clone()
-          const node = $createAutocompleteNode(uuid)
-          autocompleteNodeKey = node.getKey()
-          selection.insertNodes([node])
-          $setSelection(selectionCopy)
-          lastSuggestion = newSuggestion
-          setSuggestion(newSuggestion)
-        },
-        { tag: "history-merge" }
-      )
+      editor.update(() => {
+        const selection = $getSelection()
+        const [hasMatch, match] = $search(selection)
+        if (!hasMatch || match !== lastMatch || !$isRangeSelection(selection)) {
+          // Outdated
+          return
+        }
+        const fontSize = $getSelectionStyleValueForProperty(
+          selection,
+          "font-size",
+          "16px"
+        )
+
+        const selectionCopy = selection.clone()
+        const prevNode = selection.getNodes()[0] as TextNode
+        prevNodeFormat = prevNode.getFormat()
+        const node = $createAutocompleteNode(
+          formatSuggestionText(newSuggestion),
+          uuid
+        )
+          .setFormat(prevNodeFormat)
+          .setStyle(`font-size: ${fontSize}`)
+        autocompleteNodeKey = node.getKey()
+        selection.insertNodes([node])
+        $setSelection(selectionCopy)
+        lastSuggestion = newSuggestion
+      }, HISTORY_MERGE)
     }
 
     function $handleAutocompleteNodeTransform(node: AutocompleteNode) {
@@ -160,10 +191,12 @@ export function AutocompletePlugin(): JSX.Element | null {
             }
           })
           .catch((e) => {
-            // console.error(e)
+            if (e !== "Dismissed") {
+              console.error(e)
+            }
           })
         lastMatch = match
-      })
+      }, HISTORY_MERGE)
     }
     function $handleAutocompleteIntent(): boolean {
       if (lastSuggestion === null || autocompleteNodeKey === null) {
@@ -173,7 +206,21 @@ export function AutocompletePlugin(): JSX.Element | null {
       if (autocompleteNode === null) {
         return false
       }
+
+      const selection = $getSelection()
+      if (!$isRangeSelection(selection)) {
+        // Outdated
+        return false
+      }
+      const fontSize = $getSelectionStyleValueForProperty(
+        selection,
+        "font-size",
+        "16px"
+      )
+
       const textNode = $createTextNode(lastSuggestion)
+        .setFormat(prevNodeFormat)
+        .setStyle(`font-size: ${fontSize}`)
       autocompleteNode.replace(textNode)
       textNode.selectNext()
       $clearSuggestion()
@@ -190,13 +237,15 @@ export function AutocompletePlugin(): JSX.Element | null {
       editor.update(() => {
         if ($handleAutocompleteIntent()) {
           e.preventDefault()
+        } else {
+          $addUpdateTag(HISTORY_MERGE.tag)
         }
       })
     }
     function unmountSuggestion() {
       editor.update(() => {
         $clearSuggestion()
-      })
+      }, HISTORY_MERGE)
     }
 
     const rootElem = editor.getRootElement()
@@ -222,7 +271,7 @@ export function AutocompletePlugin(): JSX.Element | null {
         : []),
       unmountSuggestion
     )
-  }, [editor, query, setSuggestion])
+  }, [editor, query])
 
   return null
 }

@@ -10,7 +10,6 @@ import {
 import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary"
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin"
 
-import { FloatingLinkContext } from "@/registry/new-york-v4/editor/context/floating-link-context"
 import { ContentEditable } from "@/registry/new-york-v4/editor/editor-ui/content-editable"
 import { AutoLinkPlugin } from "@/registry/new-york-v4/editor/plugins/auto-link-plugin"
 import { FloatingLinkEditorPlugin } from "@/registry/new-york-v4/editor/plugins/floating-link-editor-plugin"
@@ -38,9 +37,7 @@ export default function RichTextEditorDemo() {
         }}
       >
         <TooltipProvider>
-          <FloatingLinkContext>
-            <Plugins />
-          </FloatingLinkContext>
+          <Plugins />
         </TooltipProvider>
       </LexicalComposer>
     </div>
@@ -52,6 +49,8 @@ const placeholder = "Start typing..."
 export function Plugins() {
   const [floatingAnchorElem, setFloatingAnchorElem] =
     useState<HTMLDivElement | null>(null)
+
+  const [isLinkEditMode, setIsLinkEditMode] = useState<boolean>(false)
 
   const onRef = (_floatingAnchorElem: HTMLDivElement) => {
     if (_floatingAnchorElem !== null) {
@@ -65,7 +64,7 @@ export function Plugins() {
       <ToolbarPlugin>
         {({ blockType }) => (
           <div className="vertical-align-middle sticky top-0 z-10 flex gap-2 overflow-auto border-b p-1">
-            <LinkToolbarPlugin />
+            <LinkToolbarPlugin setIsLinkEditMode={setIsLinkEditMode} />
           </div>
         )}
       </ToolbarPlugin>
@@ -87,7 +86,11 @@ export function Plugins() {
         <AutoLinkPlugin />
         <LinkPlugin />
 
-        <FloatingLinkEditorPlugin anchorElem={floatingAnchorElem} />
+        <FloatingLinkEditorPlugin
+          anchorElem={floatingAnchorElem}
+          isLinkEditMode={isLinkEditMode}
+          setIsLinkEditMode={setIsLinkEditMode}
+        />
 
         {/* rest of the plugins */}
       </div>

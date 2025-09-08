@@ -8,7 +8,6 @@ import {
 import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary"
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin"
 
-import { SharedAutocompleteContext } from "@/registry/new-york-v4/editor/context/shared-autocomplete-context"
 import { ContentEditable } from "@/registry/new-york-v4/editor/editor-ui/content-editable"
 import { AutocompleteNode } from "@/registry/new-york-v4/editor/nodes/autocomplete-node"
 import { AutocompletePlugin } from "@/registry/new-york-v4/editor/plugins/autocomplete-plugin"
@@ -33,9 +32,7 @@ export default function RichTextEditorDemo() {
         }}
       >
         <TooltipProvider>
-          <SharedAutocompleteContext>
-            <Plugins />
-          </SharedAutocompleteContext>
+          <Plugins />
         </TooltipProvider>
       </LexicalComposer>
     </div>

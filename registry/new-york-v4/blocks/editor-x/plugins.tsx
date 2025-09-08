@@ -110,6 +110,7 @@ const maxLength = 500
 export function Plugins({}) {
   const [floatingAnchorElem, setFloatingAnchorElem] =
     useState<HTMLDivElement | null>(null)
+  const [isLinkEditMode, setIsLinkEditMode] = useState<boolean>(false)
 
   const onRef = (_floatingAnchorElem: HTMLDivElement) => {
     if (_floatingAnchorElem !== null) {
@@ -146,7 +147,7 @@ export function Plugins({}) {
                 <FontFormatToolbarPlugin format="strikethrough" />
                 <Separator orientation="vertical" className="!h-7" />
                 <SubSuperToolbarPlugin />
-                <LinkToolbarPlugin />
+                <LinkToolbarPlugin setIsLinkEditMode={setIsLinkEditMode} />
                 <Separator orientation="vertical" className="!h-7" />
                 <ClearFormattingToolbarPlugin />
                 <Separator orientation="vertical" className="!h-7" />
@@ -256,8 +257,15 @@ export function Plugins({}) {
         <DragDropPastePlugin />
         <EmojiPickerPlugin />
 
-        <FloatingLinkEditorPlugin anchorElem={floatingAnchorElem} />
-        <FloatingTextFormatToolbarPlugin anchorElem={floatingAnchorElem} />
+        <FloatingLinkEditorPlugin
+          anchorElem={floatingAnchorElem}
+          isLinkEditMode={isLinkEditMode}
+          setIsLinkEditMode={setIsLinkEditMode}
+        />
+        <FloatingTextFormatToolbarPlugin
+          anchorElem={floatingAnchorElem}
+          setIsLinkEditMode={setIsLinkEditMode}
+        />
 
         <ListMaxIndentLevelPlugin />
       </div>

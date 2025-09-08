@@ -47,6 +47,7 @@ export function MarkdownTogglePlugin({
         }
       }
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editor, shouldPreserveNewLinesInMarkdown])
 
   return (

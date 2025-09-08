@@ -35,7 +35,6 @@ import {
 } from "lucide-react"
 import { createPortal } from "react-dom"
 
-import { useFloatingLinkContext } from "@/registry/new-york-v4/editor/context/floating-link-context"
 import { getDOMRangeRect } from "@/registry/new-york-v4/editor/utils/get-dom-range-rect"
 import { getSelectedNode } from "@/registry/new-york-v4/editor/utils/get-selected-node"
 import { setFloatingElemPosition } from "@/registry/new-york-v4/editor/utils/set-floating-elem-position"
@@ -425,11 +424,12 @@ function useFloatingTextFormatToolbar(
 
 export function FloatingTextFormatToolbarPlugin({
   anchorElem,
+  setIsLinkEditMode,
 }: {
   anchorElem: HTMLDivElement | null
+  setIsLinkEditMode: Dispatch<boolean>
 }): JSX.Element | null {
   const [editor] = useLexicalComposerContext()
-  const { setIsLinkEditMode } = useFloatingLinkContext()
 
   return useFloatingTextFormatToolbar(editor, anchorElem, setIsLinkEditMode)
 }

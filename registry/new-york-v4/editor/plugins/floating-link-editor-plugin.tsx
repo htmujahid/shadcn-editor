@@ -8,7 +8,6 @@
  *
  */
 import { Dispatch, JSX, useCallback, useEffect, useRef, useState } from "react"
-import * as React from "react"
 import {
   $createLinkNode,
   $isAutoLinkNode,
@@ -20,6 +19,7 @@ import { $findMatchingParent, mergeRegister } from "@lexical/utils"
 import {
   $getSelection,
   $isLineBreakNode,
+  $isNodeSelection,
   $isRangeSelection,
   BaseSelection,
   CLICK_COMMAND,
@@ -33,7 +33,6 @@ import {
 import { Check, Pencil, Trash, X } from "lucide-react"
 import { createPortal } from "react-dom"
 
-import { useFloatingLinkContext } from "@/registry/new-york-v4/editor/context/floating-link-context"
 import { getSelectedNode } from "@/registry/new-york-v4/editor/utils/get-selected-node"
 import { setFloatingElemPositionForLinkEditor } from "@/registry/new-york-v4/editor/utils/set-floating-elem-position-for-link-editor"
 import { sanitizeUrl } from "@/registry/new-york-v4/editor/utils/url"
@@ -324,8 +323,20 @@ function useFloatingLinkEditorToolbar(
                   autoLinkNode.getIsUnlinked()))
             )
           })
-
         if (!badNode) {
+          setIsLink(true)
+        } else {
+          setIsLink(false)
+        }
+      } else if ($isNodeSelection(selection)) {
+        const nodes = selection.getNodes()
+        if (nodes.length === 0) {
+          setIsLink(false)
+          return
+        }
+        const node = nodes[0]
+        const parent = node.getParent()
+        if ($isLinkNode(parent) || $isLinkNode(node)) {
           setIsLink(true)
         } else {
           setIsLink(false)
@@ -385,11 +396,14 @@ function useFloatingLinkEditorToolbar(
 
 export function FloatingLinkEditorPlugin({
   anchorElem,
+  isLinkEditMode,
+  setIsLinkEditMode,
 }: {
   anchorElem: HTMLDivElement | null
+  isLinkEditMode: boolean
+  setIsLinkEditMode: Dispatch<boolean>
 }): JSX.Element | null {
   const [editor] = useLexicalComposerContext()
-  const { isLinkEditMode, setIsLinkEditMode } = useFloatingLinkContext()
 
   return useFloatingLinkEditorToolbar(
     editor,

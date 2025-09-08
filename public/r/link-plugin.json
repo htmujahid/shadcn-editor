@@ -3,7 +3,7 @@
   "name": "link-plugin",
   "type": "registry:ui",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"
+    "https://shadcn-editor.vercel.app/r/link-toolbar-plugin.json"
   ],
   "files": [
     {

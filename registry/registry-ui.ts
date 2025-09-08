@@ -318,11 +318,6 @@ export const ui: Registry["items"] = [
         type: "registry:component",
       },
       {
-        path: "editor/context/floating-link-context.tsx",
-        target: "components/editor/context/floating-link-context.tsx",
-        type: "registry:component",
-      },
-      {
         path: "editor/utils/url.ts",
         target: "components/editor/utils/url.ts",
         type: "registry:component",
@@ -518,11 +513,6 @@ export const ui: Registry["items"] = [
       {
         path: "editor/plugins/autocomplete-plugin.tsx",
         target: "components/editor/plugins/autocomplete-plugin.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/context/shared-autocomplete-context.tsx",
-        target: "components/editor/context/shared-autocomplete-context.tsx",
         type: "registry:component",
       },
       {
@@ -779,11 +769,6 @@ export const ui: Registry["items"] = [
         type: "registry:component",
       },
       {
-        path: "editor/context/floating-link-context.tsx",
-        target: "components/editor/context/floating-link-context.tsx",
-        type: "registry:component",
-      },
-      {
         path: "editor/utils/get-dom-range-rect.ts",
         target: "components/editor/utils/get-dom-range-rect.ts",
         type: "registry:component",
@@ -938,7 +923,7 @@ export const ui: Registry["items"] = [
     name: "link-plugin",
     type: "registry:ui",
     registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json",
+      "https://shadcn-editor.vercel.app/r/link-toolbar-plugin.json",
     ],
     files: [
       {

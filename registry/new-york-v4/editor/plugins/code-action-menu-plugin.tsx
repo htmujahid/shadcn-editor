@@ -7,9 +7,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-// import './index.css';
 import { JSX, useEffect, useRef, useState } from "react"
-import * as React from "react"
 import {
   $isCodeNode,
   CodeNode,
@@ -17,7 +15,7 @@ import {
   normalizeCodeLang,
 } from "@lexical/code"
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
-import { $getNearestNodeFromDOMNode } from "lexical"
+import { $getNearestNodeFromDOMNode, isHTMLElement } from "lexical"
 import { createPortal } from "react-dom"
 
 import { useDebounce } from "@/registry/new-york-v4/editor/editor-hooks/use-debounce"
@@ -113,7 +111,7 @@ function CodeActionMenuContainer({
       CodeNode,
       (mutations) => {
         editor.getEditorState().read(() => {
-          for (const [key, type] of Array.from(mutations)) {
+          for (const [key, type] of mutations) {
             switch (type) {
               case "created":
                 codeSetRef.current.add(key)
@@ -140,11 +138,8 @@ function CodeActionMenuContainer({
   return (
     <>
       {isShown ? (
-        <div
-          className="code-action-menu-container user-select-none text-foreground/50 absolute flex h-9 flex-row items-center space-x-1 text-xs"
-          style={{ ...position }}
-        >
-          <div>{codeFriendlyName}</div>
+        <div className="code-action-menu-container" style={{ ...position }}>
+          <div className="code-highlight-language">{codeFriendlyName}</div>
           <CopyButton editor={editor} getCodeDOMNode={getCodeDOMNode} />
         </div>
       ) : null}
@@ -158,8 +153,10 @@ function getMouseInfo(event: MouseEvent): {
 } {
   const target = event.target
 
-  if (target && target instanceof HTMLElement) {
-    const codeDOMNode = target.closest<HTMLElement>("code.EditorTheme__code")
+  if (isHTMLElement(target)) {
+    const codeDOMNode = target.closest<HTMLElement>(
+      "code.PlaygroundEditorTheme__code"
+    )
     const isOutside = !(
       codeDOMNode ||
       target.closest<HTMLElement>("div.code-action-menu-container")
@@ -172,9 +169,9 @@ function getMouseInfo(event: MouseEvent): {
 }
 
 export function CodeActionMenuPlugin({
-  anchorElem,
+  anchorElem = document.body,
 }: {
-  anchorElem: HTMLDivElement | null
+  anchorElem: HTMLElement | null
 }): React.ReactPortal | null {
   if (!anchorElem) {
     return null
