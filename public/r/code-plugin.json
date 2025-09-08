@@ -3,10 +3,13 @@
   "name": "code-plugin",
   "type": "registry:ui",
   "dependencies": [
-    "lodash-es",
+    "lodash",
     "@lexical/utils",
     "@lexical/code",
     "@lexical/selection"
+  ],
+  "devDependencies": [
+    "@types/lodash"
   ],
   "registryDependencies": [
     "select",
@@ -27,7 +30,7 @@
     },
     {
       "path": "registry/new-york-v4/editor/editor-hooks/use-debounce.ts",
-      "content": "/**\n * Copyright (c) Meta Platforms, Inc. and affiliates.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE file in the root directory of this source tree.\n *\n */\nimport { useMemo, useRef } from \"react\"\nimport { debounce } from \"lodash-es\"\n\nexport function useDebounce<T extends (...args: never[]) => void>(\n  fn: T,\n  ms: number,\n  maxWait?: number\n) {\n  const funcRef = useRef<T | null>(null)\n  funcRef.current = fn\n\n  return useMemo(\n    () =>\n      debounce(\n        (...args: Parameters<T>) => {\n          if (funcRef.current) {\n            funcRef.current(...args)\n          }\n        },\n        ms,\n        { maxWait }\n      ),\n    [ms, maxWait]\n  )\n}\n",
+      "content": "/**\n * Copyright (c) Meta Platforms, Inc. and affiliates.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE file in the root directory of this source tree.\n *\n */\nimport { useMemo, useRef } from \"react\"\nimport { debounce } from \"lodash\"\n\nexport function useDebounce<T extends (...args: never[]) => void>(\n  fn: T,\n  ms: number,\n  maxWait?: number\n) {\n  const funcRef = useRef<T | null>(null)\n  funcRef.current = fn\n\n  return useMemo(\n    () =>\n      debounce(\n        (...args: Parameters<T>) => {\n          if (funcRef.current) {\n            funcRef.current(...args)\n          }\n        },\n        ms,\n        { maxWait }\n      ),\n    [ms, maxWait]\n  )\n}\n",
       "type": "registry:component",
       "target": "components/editor/editor-hooks/use-debounce.ts"
     },

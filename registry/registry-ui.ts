@@ -631,11 +631,12 @@ export const ui: Registry["items"] = [
     name: "code-plugin",
     type: "registry:ui",
     dependencies: [
-      "lodash-es",
+      "lodash",
       "@lexical/utils",
       "@lexical/code",
       "@lexical/selection",
     ],
+    devDependencies: ["@types/lodash"],
     registryDependencies: [
       "select",
       "https://shadcn-editor.vercel.app/r/toolbar-plugin.json",
@@ -993,12 +994,13 @@ export const ui: Registry["items"] = [
     name: "table-plugin",
     type: "registry:ui",
     dependencies: [
-      "lodash-es",
+      "lodash",
       "react-colorful",
       "@lexical/table",
       "@lexical/utils",
       "@lexical/markdown",
     ],
+    devDependencies: ["@types/lodash"],
     registryDependencies: [
       "button",
       "command",
