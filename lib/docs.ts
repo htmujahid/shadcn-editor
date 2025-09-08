@@ -175,11 +175,6 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Collapsible",
-          href: "/docs/plugins/collapsible",
-          items: [],
-        },
-        {
           title: "Component Picker Menu",
           href: "/docs/plugins/component-picker-menu",
           items: [],
@@ -205,16 +200,6 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Equation",
-          href: "/docs/plugins/equation",
-          items: [],
-        },
-        {
-          title: "Excalidraw",
-          href: "/docs/plugins/excalidraw",
-          items: [],
-        },
-        {
           title: "Floating Text Format",
           href: "/docs/plugins/floating-text-format",
           items: [],
@@ -232,11 +217,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Image",
           href: "/docs/plugins/image",
-          items: [],
-        },
-        {
-          title: "Inline Image",
-          href: "/docs/plugins/inline-image",
           items: [],
         },
         {
@@ -262,16 +242,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Mention",
           href: "/docs/plugins/mention",
-          items: [],
-        },
-        {
-          title: "Page Break",
-          href: "/docs/plugins/page-break",
-          items: [],
-        },
-        {
-          title: "Poll",
-          href: "/docs/plugins/poll",
           items: [],
         },
         {
