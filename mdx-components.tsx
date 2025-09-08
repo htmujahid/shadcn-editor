@@ -282,7 +282,7 @@ export const mdxComponents = {
   }: React.ComponentProps<"img">) => (
     <Image
       className={cn("mt-6 rounded-md border", className)}
-      src={src || ""}
+      src={src?.toString() || ""}
       width={Number(width)}
       height={Number(height)}
       alt={alt || ""}
