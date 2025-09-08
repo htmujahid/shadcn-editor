@@ -22,7 +22,7 @@ export function ComponentPreviewTabs({
 
   return (
     <div
-      className={cn("group relative my-4 flex flex-col gap-2", className)}
+      className={cn("group relative mt-4 mb-12 flex flex-col gap-2", className)}
       {...props}
     >
       <Tabs
@@ -51,7 +51,7 @@ export function ComponentPreviewTabs({
       </Tabs>
       <div
         data-tab={tab}
-        className="data-[tab=code]:border-code relative rounded-lg md:-mx-4"
+        className="data-[tab=code]:border-code relative rounded-lg border md:-mx-1"
       >
         <div
           data-slot="preview"
@@ -61,7 +61,7 @@ export function ComponentPreviewTabs({
           <div
             data-align={align}
             className={cn(
-              "preview flex w-full justify-center data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start"
+              "preview flex h-[450px] w-full justify-center p-10 data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start"
             )}
           >
             {component}

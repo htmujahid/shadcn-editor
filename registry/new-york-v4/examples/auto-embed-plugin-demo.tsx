@@ -13,7 +13,6 @@ import { ParagraphNode, TextNode } from "lexical"
 
 import { ContentEditable } from "@/registry/new-york-v4/editor/editor-ui/content-editable"
 import { AutoEmbedPlugin } from "@/registry/new-york-v4/editor/plugins/embeds/auto-embed-plugin"
-import { FigmaPlugin } from "@/registry/new-york-v4/editor/plugins/embeds/figma-plugin"
 import { TwitterPlugin } from "@/registry/new-york-v4/editor/plugins/embeds/twitter-plugin"
 import { YouTubePlugin } from "@/registry/new-york-v4/editor/plugins/embeds/youtube-plugin"
 import { BlockInsertPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/block-insert-plugin"
@@ -22,7 +21,6 @@ import { ToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/too
 import { editorTheme } from "@/registry/new-york-v4/editor/themes/editor-theme"
 import { TooltipProvider } from "@/registry/new-york-v4/ui/tooltip"
 
-import { FigmaNode } from "../editor/nodes/embeds/figma-node"
 import { TweetNode } from "../editor/nodes/embeds/tweet-node"
 import { YouTubeNode } from "../editor/nodes/embeds/youtube-node"
 
@@ -36,7 +34,6 @@ const editorConfig: InitialConfigType = {
     QuoteNode,
     LinkNode,
     AutoLinkNode,
-    FigmaNode,
     TweetNode,
     YouTubeNode,
   ],
@@ -101,7 +98,6 @@ export function Plugins() {
           ErrorBoundary={LexicalErrorBoundary}
         />
         <AutoEmbedPlugin />
-        <FigmaPlugin />
         <TwitterPlugin />
         <YouTubePlugin />
         {/* rest of the plugins */}

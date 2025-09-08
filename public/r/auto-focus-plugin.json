@@ -1,0 +1,8 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "auto-focus-plugin",
+  "type": "registry:ui",
+  "registryDependencies": [
+    "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"
+  ]
+}

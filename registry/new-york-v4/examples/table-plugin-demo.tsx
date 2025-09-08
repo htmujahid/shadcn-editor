@@ -13,9 +13,6 @@ import { TableCellNode, TableNode, TableRowNode } from "@lexical/table"
 import { ParagraphNode, TextNode } from "lexical"
 
 import { ContentEditable } from "@/registry/new-york-v4/editor/editor-ui/content-editable"
-import { TableActionMenuPlugin } from "@/registry/new-york-v4/editor/plugins/table-action-menu-plugin"
-import { TableCellResizerPlugin } from "@/registry/new-york-v4/editor/plugins/table-cell-resizer-plugin"
-import { TableHoverActionsPlugin } from "@/registry/new-york-v4/editor/plugins/table-hover-actions-plugin"
 import { BlockInsertPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/block-insert-plugin"
 import { InsertTable } from "@/registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-table"
 import { ToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/toolbar-plugin"
@@ -95,9 +92,6 @@ export function Plugins() {
           ErrorBoundary={LexicalErrorBoundary}
         />
         <TablePlugin />
-        <TableActionMenuPlugin anchorElem={floatingAnchorElem} />
-        <TableCellResizerPlugin />
-        <TableHoverActionsPlugin anchorElem={floatingAnchorElem} />
         {/* rest of the plugins */}
       </div>
     </div>

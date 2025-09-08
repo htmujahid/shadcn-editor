@@ -99,7 +99,7 @@ async function buildRegistryJsonFile() {
     path.join(process.cwd(), "registry.json"),
     path.join(
       process.cwd(),
-      "../public/r/styles/new-york-v4/registry.json"
+      "../www/public/r/styles/new-york-v4/registry.json"
     ),
     { recursive: true }
   )
@@ -107,9 +107,14 @@ async function buildRegistryJsonFile() {
 
 async function buildRegistry() {
   return new Promise((resolve, reject) => {
+    // Use local shadcn copy.
     const process = exec(
-      `pnpm dlx shadcn build registry.json --output ../public/r/styles/new-york-v4`
+      `pnpm dlx shadcn build registry.json --output ../public/r`
     )
+
+    // exec(
+    //   `pnpm dlx shadcn build registry.json --output ../www/public/r/styles/new-york-v4`
+    // )
 
     process.on("exit", (code) => {
       if (code === 0) {
@@ -139,7 +144,7 @@ async function syncRegistry() {
   // 2. Copy the www/public/r directory to v4/public/r.
   rimraf.sync(path.join(process.cwd(), "public/r"))
   await fs.cp(
-    path.resolve(process.cwd(), "../public/r"),
+    path.resolve(process.cwd(), "../www/public/r"),
     path.resolve(process.cwd(), "public/r"),
     { recursive: true }
   )

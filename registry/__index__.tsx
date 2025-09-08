@@ -16,6 +16,16 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "style": {
+    name: "style",
+    description: "",
+    type: "registry:style",
+    registryDependencies: ["utils"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
   "rich-text-editor-plugin": {
     name: "rich-text-editor-plugin",
     description: "",
@@ -556,14 +566,6 @@ export const Index: Record<string, any> = {
       type: "registry:component",
       target: "components/editor/plugins/embeds/auto-embed-plugin.tsx"
     },{
-      path: "registry/new-york-v4/editor/plugins/embeds/figma-plugin.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/embeds/figma-plugin.tsx"
-    },{
-      path: "registry/new-york-v4/editor/nodes/embeds/figma-node.tsx",
-      type: "registry:component",
-      target: "components/editor/nodes/embeds/figma-node.tsx"
-    },{
       path: "registry/new-york-v4/editor/plugins/embeds/twitter-plugin.tsx",
       type: "registry:component",
       target: "components/editor/plugins/embeds/twitter-plugin.tsx"
@@ -617,10 +619,6 @@ export const Index: Record<string, any> = {
       path: "registry/new-york-v4/editor/plugins/picker/component-picker-option.tsx",
       type: "registry:component",
       target: "components/editor/plugins/picker/component-picker-option.tsx"
-    },{
-      path: "registry/new-york-v4/editor/plugins/default/lexical-typeahead-menu-plugin.ts",
-      type: "registry:component",
-      target: "components/editor/plugins/default/lexical-typeahead-menu-plugin.ts"
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/editor/plugins/component-picker-menu-plugin.tsx")
@@ -668,40 +666,6 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "collapsible-plugin": {
-    name: "collapsible-plugin",
-    description: "",
-    type: "registry:ui",
-    registryDependencies: ["select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
-    files: [{
-      path: "registry/new-york-v4/editor/plugins/collapsible-plugin.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/collapsible-plugin.tsx"
-    },{
-      path: "registry/new-york-v4/editor/nodes/collapsible-container-node.ts",
-      type: "registry:component",
-      target: "components/editor/nodes/collapsible-container-node.ts"
-    },{
-      path: "registry/new-york-v4/editor/nodes/collapsible-content-node.ts",
-      type: "registry:component",
-      target: "components/editor/nodes/collapsible-content-node.ts"
-    },{
-      path: "registry/new-york-v4/editor/nodes/collapsible-title-node.ts",
-      type: "registry:component",
-      target: "components/editor/nodes/collapsible-title-node.ts"
-    },{
-      path: "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-collapsible-container.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/toolbar/block-insert/insert-collapsible-container.tsx"
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/new-york-v4/editor/plugins/collapsible-plugin.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    categories: undefined,
-    meta: undefined,
-  },
   "context-menu-plugin": {
     name: "context-menu-plugin",
     description: "",
@@ -711,10 +675,6 @@ export const Index: Record<string, any> = {
       path: "registry/new-york-v4/editor/plugins/context-menu-plugin.tsx",
       type: "registry:component",
       target: "components/editor/plugins/context-menu-plugin.tsx"
-    },{
-      path: "registry/new-york-v4/editor/plugins/default/lexical-context-menu-plugin.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/default/lexical-context-menu-plugin.tsx"
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/editor/plugins/context-menu-plugin.tsx")
@@ -785,93 +745,9 @@ export const Index: Record<string, any> = {
       path: "registry/new-york-v4/editor/transformers/markdown-emoji-transformer.ts",
       type: "registry:component",
       target: "components/editor/transformers/markdown-emoji-transformer.ts"
-    },{
-      path: "registry/new-york-v4/editor/plugins/default/lexical-typeahead-menu-plugin.ts",
-      type: "registry:component",
-      target: "components/editor/plugins/default/lexical-typeahead-menu-plugin.ts"
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/editor/plugins/emojis-plugin.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    categories: undefined,
-    meta: undefined,
-  },
-  "equation-plugin": {
-    name: "equation-plugin",
-    description: "",
-    type: "registry:ui",
-    registryDependencies: ["button","checkbox","input","label","select","textarea","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
-    files: [{
-      path: "registry/new-york-v4/editor/plugins/equations-plugin.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/equations-plugin.tsx"
-    },{
-      path: "registry/new-york-v4/editor/nodes/equation-node.tsx",
-      type: "registry:component",
-      target: "components/editor/nodes/equation-node.tsx"
-    },{
-      path: "registry/new-york-v4/editor/editor-ui/equation-component.tsx",
-      type: "registry:component",
-      target: "components/editor/editor-ui/equation-component.tsx"
-    },{
-      path: "registry/new-york-v4/editor/editor-ui/equation-editor.tsx",
-      type: "registry:component",
-      target: "components/editor/editor-ui/equation-editor.tsx"
-    },{
-      path: "registry/new-york-v4/editor/editor-ui/katex-equation-alterer.tsx",
-      type: "registry:component",
-      target: "components/editor/editor-ui/katex-equation-alterer.tsx"
-    },{
-      path: "registry/new-york-v4/editor/editor-ui/katex-renderer.tsx",
-      type: "registry:component",
-      target: "components/editor/editor-ui/katex-renderer.tsx"
-    },{
-      path: "registry/new-york-v4/editor/transformers/markdown-equation-transformer.ts",
-      type: "registry:component",
-      target: "components/editor/transformers/markdown-equation-transformer.ts"
-    },{
-      path: "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-equation.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/toolbar/block-insert/insert-equation.tsx"
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/new-york-v4/editor/plugins/equations-plugin.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    categories: undefined,
-    meta: undefined,
-  },
-  "excalidraw-plugin": {
-    name: "excalidraw-plugin",
-    description: "",
-    type: "registry:ui",
-    registryDependencies: ["button","dialog","select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
-    files: [{
-      path: "registry/new-york-v4/editor/plugins/excalidraw-plugin.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/excalidraw-plugin.tsx"
-    },{
-      path: "registry/new-york-v4/editor/nodes/excalidraw-node.tsx",
-      type: "registry:component",
-      target: "components/editor/nodes/excalidraw-node.tsx"
-    },{
-      path: "registry/new-york-v4/editor/editor-ui/excalidraw-modal.tsx",
-      type: "registry:component",
-      target: "components/editor/editor-ui/excalidraw-modal.tsx"
-    },{
-      path: "registry/new-york-v4/editor/editor-ui/excalidraw-component.tsx",
-      type: "registry:component",
-      target: "components/editor/editor-ui/excalidraw-component.tsx"
-    },{
-      path: "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-excalidraw.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/toolbar/block-insert/insert-excalidraw.tsx"
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/new-york-v4/editor/plugins/excalidraw-plugin.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
@@ -970,48 +846,6 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/editor/plugins/images-plugin.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    categories: undefined,
-    meta: undefined,
-  },
-  "inline-image-plugin": {
-    name: "inline-image-plugin",
-    description: "",
-    type: "registry:ui",
-    registryDependencies: ["button","checkbox","dialog","input","label","select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json","https://shadcn-editor.vercel.app/r/link-plugin.json"],
-    files: [{
-      path: "registry/new-york-v4/editor/plugins/inline-image-plugin.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/inline-image-plugin.tsx"
-    },{
-      path: "registry/new-york-v4/editor/nodes/inline-image-node.tsx",
-      type: "registry:component",
-      target: "components/editor/nodes/inline-image-node.tsx"
-    },{
-      path: "registry/new-york-v4/editor/editor-ui/inline-image-component.tsx",
-      type: "registry:component",
-      target: "components/editor/editor-ui/inline-image-component.tsx"
-    },{
-      path: "registry/new-york-v4/editor/editor-hooks/use-modal.tsx",
-      type: "registry:component",
-      target: "components/editor/editor-hooks/use-modal.tsx"
-    },{
-      path: "registry/new-york-v4/editor/editor-ui/content-editable.tsx",
-      type: "registry:component",
-      target: "components/editor/editor-ui/content-editable.tsx"
-    },{
-      path: "registry/new-york-v4/editor/shared/can-use-dom.ts",
-      type: "registry:component",
-      target: "components/editor/shared/can-use-dom.ts"
-    },{
-      path: "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-inline-image.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/toolbar/block-insert/insert-inline-image.tsx"
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/new-york-v4/editor/plugins/inline-image-plugin.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
@@ -1123,69 +957,9 @@ export const Index: Record<string, any> = {
       path: "registry/new-york-v4/editor/nodes/mention-node.ts",
       type: "registry:component",
       target: "components/editor/nodes/mention-node.ts"
-    },{
-      path: "registry/new-york-v4/editor/plugins/default/lexical-typeahead-menu-plugin.ts",
-      type: "registry:component",
-      target: "components/editor/plugins/default/lexical-typeahead-menu-plugin.ts"
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/editor/plugins/mentions-plugin.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    categories: undefined,
-    meta: undefined,
-  },
-  "page-break-plugin": {
-    name: "page-break-plugin",
-    description: "",
-    type: "registry:ui",
-    registryDependencies: ["select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
-    files: [{
-      path: "registry/new-york-v4/editor/plugins/page-break-plugin.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/page-break-plugin.tsx"
-    },{
-      path: "registry/new-york-v4/editor/nodes/page-break-node.tsx",
-      type: "registry:component",
-      target: "components/editor/nodes/page-break-node.tsx"
-    },{
-      path: "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-page-break.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/toolbar/block-insert/insert-page-break.tsx"
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/new-york-v4/editor/plugins/page-break-plugin.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    categories: undefined,
-    meta: undefined,
-  },
-  "poll-plugin": {
-    name: "poll-plugin",
-    description: "",
-    type: "registry:ui",
-    registryDependencies: ["button","dialog","input","label","select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
-    files: [{
-      path: "registry/new-york-v4/editor/plugins/poll-plugin.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/poll-plugin.tsx"
-    },{
-      path: "registry/new-york-v4/editor/nodes/poll-node.tsx",
-      type: "registry:component",
-      target: "components/editor/nodes/poll-node.tsx"
-    },{
-      path: "registry/new-york-v4/editor/editor-ui/poll-component.tsx",
-      type: "registry:component",
-      target: "components/editor/editor-ui/poll-component.tsx"
-    },{
-      path: "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-poll.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/toolbar/block-insert/insert-poll.tsx"
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/new-york-v4/editor/plugins/poll-plugin.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
@@ -1201,18 +975,6 @@ export const Index: Record<string, any> = {
       path: "registry/new-york-v4/editor/plugins/table-plugin.tsx",
       type: "registry:component",
       target: "components/editor/plugins/table-plugin.tsx"
-    },{
-      path: "registry/new-york-v4/editor/plugins/table-action-menu-plugin.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/table-action-menu-plugin.tsx"
-    },{
-      path: "registry/new-york-v4/editor/plugins/table-cell-resizer-plugin.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/table-cell-resizer-plugin.tsx"
-    },{
-      path: "registry/new-york-v4/editor/plugins/table-hover-actions-plugin.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/table-hover-actions-plugin.tsx"
     },{
       path: "registry/new-york-v4/editor/plugins/toolbar/block-insert-plugin.tsx",
       type: "registry:component",
@@ -1386,10 +1148,6 @@ export const Index: Record<string, any> = {
       type: "registry:hook",
       target: "components/editor/editor-hooks/use-update-toolbar.ts"
     },{
-      path: "registry/new-york-v4/editor/nodes/embeds/figma-node.tsx",
-      type: "registry:file",
-      target: "components/editor/nodes/embeds/figma-node.tsx"
-    },{
       path: "registry/new-york-v4/editor/nodes/embeds/tweet-node.tsx",
       type: "registry:file",
       target: "components/editor/nodes/embeds/tweet-node.tsx"
@@ -1402,37 +1160,13 @@ export const Index: Record<string, any> = {
       type: "registry:file",
       target: "components/editor/nodes/autocomplete-node.tsx"
     },{
-      path: "registry/new-york-v4/editor/nodes/collapsible-container-node.ts",
-      type: "registry:file",
-      target: "components/editor/nodes/collapsible-container-node.ts"
-    },{
-      path: "registry/new-york-v4/editor/nodes/collapsible-content-node.ts",
-      type: "registry:file",
-      target: "components/editor/nodes/collapsible-content-node.ts"
-    },{
-      path: "registry/new-york-v4/editor/nodes/collapsible-title-node.ts",
-      type: "registry:file",
-      target: "components/editor/nodes/collapsible-title-node.ts"
-    },{
       path: "registry/new-york-v4/editor/nodes/emoji-node.tsx",
       type: "registry:file",
       target: "components/editor/nodes/emoji-node.tsx"
     },{
-      path: "registry/new-york-v4/editor/nodes/equation-node.tsx",
-      type: "registry:file",
-      target: "components/editor/nodes/equation-node.tsx"
-    },{
-      path: "registry/new-york-v4/editor/nodes/excalidraw-node.tsx",
-      type: "registry:file",
-      target: "components/editor/nodes/excalidraw-node.tsx"
-    },{
       path: "registry/new-york-v4/editor/nodes/image-node.tsx",
       type: "registry:file",
       target: "components/editor/nodes/image-node.tsx"
-    },{
-      path: "registry/new-york-v4/editor/nodes/inline-image-node.tsx",
-      type: "registry:file",
-      target: "components/editor/nodes/inline-image-node.tsx"
     },{
       path: "registry/new-york-v4/editor/nodes/keyword-node.tsx",
       type: "registry:file",
@@ -1449,18 +1183,6 @@ export const Index: Record<string, any> = {
       path: "registry/new-york-v4/editor/nodes/mention-node.ts",
       type: "registry:file",
       target: "components/editor/nodes/mention-node.ts"
-    },{
-      path: "registry/new-york-v4/editor/nodes/page-break-node.tsx",
-      type: "registry:file",
-      target: "components/editor/nodes/page-break-node.tsx"
-    },{
-      path: "registry/new-york-v4/editor/nodes/page-break-node.css",
-      type: "registry:file",
-      target: "components/editor/nodes/page-break-node.css"
-    },{
-      path: "registry/new-york-v4/editor/nodes/poll-node.tsx",
-      type: "registry:file",
-      target: "components/editor/nodes/poll-node.tsx"
     },{
       path: "registry/new-york-v4/editor/plugins/actions/actions-plugin.tsx",
       type: "registry:component",
@@ -1506,21 +1228,9 @@ export const Index: Record<string, any> = {
       type: "registry:component",
       target: "components/editor/plugins/actions/tree-view-plugin.tsx"
     },{
-      path: "registry/new-york-v4/editor/plugins/default/lexical-context-menu-plugin.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/default/lexical-context-menu-plugin.tsx"
-    },{
-      path: "registry/new-york-v4/editor/plugins/default/lexical-typeahead-menu-plugin.ts",
-      type: "registry:component",
-      target: "components/editor/plugins/default/lexical-typeahead-menu-plugin.ts"
-    },{
       path: "registry/new-york-v4/editor/plugins/embeds/auto-embed-plugin.tsx",
       type: "registry:component",
       target: "components/editor/plugins/embeds/auto-embed-plugin.tsx"
-    },{
-      path: "registry/new-york-v4/editor/plugins/embeds/figma-plugin.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/embeds/figma-plugin.tsx"
     },{
       path: "registry/new-york-v4/editor/plugins/embeds/twitter-plugin.tsx",
       type: "registry:component",
@@ -1546,10 +1256,6 @@ export const Index: Record<string, any> = {
       type: "registry:component",
       target: "components/editor/plugins/picker/code-picker-plugin.tsx"
     },{
-      path: "registry/new-york-v4/editor/plugins/picker/collapsible-picker-plugin.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/picker/collapsible-picker-plugin.tsx"
-    },{
       path: "registry/new-york-v4/editor/plugins/picker/columns-layout-picker-plugin.tsx",
       type: "registry:component",
       target: "components/editor/plugins/picker/columns-layout-picker-plugin.tsx"
@@ -1566,14 +1272,6 @@ export const Index: Record<string, any> = {
       type: "registry:component",
       target: "components/editor/plugins/picker/embeds-picker-plugin.tsx"
     },{
-      path: "registry/new-york-v4/editor/plugins/picker/equation-picker-plugin.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/picker/equation-picker-plugin.tsx"
-    },{
-      path: "registry/new-york-v4/editor/plugins/picker/excalidraw-picker-plugin.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/picker/excalidraw-picker-plugin.tsx"
-    },{
       path: "registry/new-york-v4/editor/plugins/picker/heading-picker-plugin.tsx",
       type: "registry:component",
       target: "components/editor/plugins/picker/heading-picker-plugin.tsx"
@@ -1586,17 +1284,9 @@ export const Index: Record<string, any> = {
       type: "registry:component",
       target: "components/editor/plugins/picker/numbered-list-picker-plugin.tsx"
     },{
-      path: "registry/new-york-v4/editor/plugins/picker/page-break-picker-plugin.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/picker/page-break-picker-plugin.tsx"
-    },{
       path: "registry/new-york-v4/editor/plugins/picker/paragraph-picker-plugin.tsx",
       type: "registry:component",
       target: "components/editor/plugins/picker/paragraph-picker-plugin.tsx"
-    },{
-      path: "registry/new-york-v4/editor/plugins/picker/poll-picker-plugin.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/picker/poll-picker-plugin.tsx"
     },{
       path: "registry/new-york-v4/editor/plugins/picker/quote-picker-plugin.tsx",
       type: "registry:component",
@@ -1638,10 +1328,6 @@ export const Index: Record<string, any> = {
       type: "registry:component",
       target: "components/editor/plugins/toolbar/block-format/format-quote.tsx"
     },{
-      path: "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-collapsible-container.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/toolbar/block-insert/insert-collapsible-container.tsx"
-    },{
       path: "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-columns-layout.tsx",
       type: "registry:component",
       target: "components/editor/plugins/toolbar/block-insert/insert-columns-layout.tsx"
@@ -1650,14 +1336,6 @@ export const Index: Record<string, any> = {
       type: "registry:component",
       target: "components/editor/plugins/toolbar/block-insert/insert-embeds.tsx"
     },{
-      path: "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-equation.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/toolbar/block-insert/insert-equation.tsx"
-    },{
-      path: "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-excalidraw.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/toolbar/block-insert/insert-excalidraw.tsx"
-    },{
       path: "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx",
       type: "registry:component",
       target: "components/editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx"
@@ -1665,18 +1343,6 @@ export const Index: Record<string, any> = {
       path: "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-image.tsx",
       type: "registry:component",
       target: "components/editor/plugins/toolbar/block-insert/insert-image.tsx"
-    },{
-      path: "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-inline-image.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/toolbar/block-insert/insert-inline-image.tsx"
-    },{
-      path: "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-page-break.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/toolbar/block-insert/insert-page-break.tsx"
-    },{
-      path: "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-poll.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/toolbar/block-insert/insert-poll.tsx"
     },{
       path: "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-table.tsx",
       type: "registry:component",
@@ -1754,10 +1420,6 @@ export const Index: Record<string, any> = {
       type: "registry:component",
       target: "components/editor/plugins/code-highlight-plugin.tsx"
     },{
-      path: "registry/new-york-v4/editor/plugins/collapsible-plugin.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/collapsible-plugin.tsx"
-    },{
       path: "registry/new-york-v4/editor/plugins/component-picker-menu-plugin.tsx",
       type: "registry:component",
       target: "components/editor/plugins/component-picker-menu-plugin.tsx"
@@ -1782,14 +1444,6 @@ export const Index: Record<string, any> = {
       type: "registry:component",
       target: "components/editor/plugins/emojis-plugin.tsx"
     },{
-      path: "registry/new-york-v4/editor/plugins/equations-plugin.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/equations-plugin.tsx"
-    },{
-      path: "registry/new-york-v4/editor/plugins/excalidraw-plugin.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/excalidraw-plugin.tsx"
-    },{
       path: "registry/new-york-v4/editor/plugins/floating-link-editor-plugin.tsx",
       type: "registry:component",
       target: "components/editor/plugins/floating-link-editor-plugin.tsx"
@@ -1801,10 +1455,6 @@ export const Index: Record<string, any> = {
       path: "registry/new-york-v4/editor/plugins/images-plugin.tsx",
       type: "registry:component",
       target: "components/editor/plugins/images-plugin.tsx"
-    },{
-      path: "registry/new-york-v4/editor/plugins/inline-image-plugin.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/inline-image-plugin.tsx"
     },{
       path: "registry/new-york-v4/editor/plugins/keywords-plugin.tsx",
       type: "registry:component",
@@ -1826,29 +1476,9 @@ export const Index: Record<string, any> = {
       type: "registry:component",
       target: "components/editor/plugins/mentions-plugin.tsx"
     },{
-      path: "registry/new-york-v4/editor/plugins/page-break-plugin.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/page-break-plugin.tsx"
-    },{
-      path: "registry/new-york-v4/editor/plugins/poll-plugin.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/poll-plugin.tsx"
-    },{
       path: "registry/new-york-v4/editor/plugins/tab-focus-plugin.tsx",
       type: "registry:component",
       target: "components/editor/plugins/tab-focus-plugin.tsx"
-    },{
-      path: "registry/new-york-v4/editor/plugins/table-action-menu-plugin.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/table-action-menu-plugin.tsx"
-    },{
-      path: "registry/new-york-v4/editor/plugins/table-cell-resizer-plugin.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/table-cell-resizer-plugin.tsx"
-    },{
-      path: "registry/new-york-v4/editor/plugins/table-hover-actions-plugin.tsx",
-      type: "registry:component",
-      target: "components/editor/plugins/table-hover-actions-plugin.tsx"
     },{
       path: "registry/new-york-v4/editor/plugins/table-plugin.tsx",
       type: "registry:component",
@@ -1902,10 +1532,6 @@ export const Index: Record<string, any> = {
       type: "registry:file",
       target: "components/editor/transformers/markdown-emoji-transformer.ts"
     },{
-      path: "registry/new-york-v4/editor/transformers/markdown-equation-transformer.ts",
-      type: "registry:file",
-      target: "components/editor/transformers/markdown-equation-transformer.ts"
-    },{
       path: "registry/new-york-v4/editor/transformers/markdown-hr-transformer.ts",
       type: "registry:file",
       target: "components/editor/transformers/markdown-hr-transformer.ts"
@@ -1934,26 +1560,6 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       target: "components/editor/editor-ui/content-editable.tsx"
     },{
-      path: "registry/new-york-v4/editor/editor-ui/equation-component.tsx",
-      type: "registry:ui",
-      target: "components/editor/editor-ui/equation-component.tsx"
-    },{
-      path: "registry/new-york-v4/editor/editor-ui/equation-editor.tsx",
-      type: "registry:ui",
-      target: "components/editor/editor-ui/equation-editor.tsx"
-    },{
-      path: "registry/new-york-v4/editor/editor-ui/excalidraw-component.tsx",
-      type: "registry:ui",
-      target: "components/editor/editor-ui/excalidraw-component.tsx"
-    },{
-      path: "registry/new-york-v4/editor/editor-ui/excalidraw-image.tsx",
-      type: "registry:ui",
-      target: "components/editor/editor-ui/excalidraw-image.tsx"
-    },{
-      path: "registry/new-york-v4/editor/editor-ui/excalidraw-modal.tsx",
-      type: "registry:ui",
-      target: "components/editor/editor-ui/excalidraw-modal.tsx"
-    },{
       path: "registry/new-york-v4/editor/editor-ui/image-component.tsx",
       type: "registry:ui",
       target: "components/editor/editor-ui/image-component.tsx"
@@ -1961,30 +1567,6 @@ export const Index: Record<string, any> = {
       path: "registry/new-york-v4/editor/editor-ui/image-resizer.tsx",
       type: "registry:ui",
       target: "components/editor/editor-ui/image-resizer.tsx"
-    },{
-      path: "registry/new-york-v4/editor/editor-ui/inline-image-component.tsx",
-      type: "registry:ui",
-      target: "components/editor/editor-ui/inline-image-component.tsx"
-    },{
-      path: "registry/new-york-v4/editor/editor-ui/katex-equation-alterer.tsx",
-      type: "registry:ui",
-      target: "components/editor/editor-ui/katex-equation-alterer.tsx"
-    },{
-      path: "registry/new-york-v4/editor/editor-ui/katex-renderer.tsx",
-      type: "registry:ui",
-      target: "components/editor/editor-ui/katex-renderer.tsx"
-    },{
-      path: "registry/new-york-v4/editor/editor-ui/poll-component.tsx",
-      type: "registry:ui",
-      target: "components/editor/editor-ui/poll-component.tsx"
-    },{
-      path: "registry/new-york-v4/editor/editor-ui/poll.css",
-      type: "registry:ui",
-      target: "components/editor/editor-ui/poll.css"
-    },{
-      path: "registry/new-york-v4/editor/utils/collapsible.ts",
-      type: "registry:file",
-      target: "components/editor/utils/collapsible.ts"
     },{
       path: "registry/new-york-v4/editor/utils/doc-serialization.ts",
       type: "registry:file",
@@ -2196,24 +1778,6 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "collapsible-plugin-demo": {
-    name: "collapsible-plugin-demo",
-    description: "",
-    type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/collapsible-plugin.json"],
-    files: [{
-      path: "registry/new-york-v4/examples/collapsible-plugin-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/new-york-v4/examples/collapsible-plugin-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    categories: undefined,
-    meta: undefined,
-  },
   "component-picker-menu-plugin-demo": {
     name: "component-picker-menu-plugin-demo",
     description: "",
@@ -2352,42 +1916,6 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/examples/emoji-plugin-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    categories: undefined,
-    meta: undefined,
-  },
-  "equation-plugin-demo": {
-    name: "equation-plugin-demo",
-    description: "",
-    type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/equation-plugin.json"],
-    files: [{
-      path: "registry/new-york-v4/examples/equation-plugin-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/new-york-v4/examples/equation-plugin-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    categories: undefined,
-    meta: undefined,
-  },
-  "excalidraw-plugin-demo": {
-    name: "excalidraw-plugin-demo",
-    description: "",
-    type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/excalidraw-plugin.json"],
-    files: [{
-      path: "registry/new-york-v4/examples/excalidraw-plugin-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/new-york-v4/examples/excalidraw-plugin-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
@@ -2574,24 +2102,6 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "inline-image-plugin-demo": {
-    name: "inline-image-plugin-demo",
-    description: "",
-    type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/inline-image-plugin.json"],
-    files: [{
-      path: "registry/new-york-v4/examples/inline-image-plugin-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/new-york-v4/examples/inline-image-plugin-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    categories: undefined,
-    meta: undefined,
-  },
   "keywords-plugin-demo": {
     name: "keywords-plugin-demo",
     description: "",
@@ -2730,42 +2240,6 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/examples/mention-plugin-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    categories: undefined,
-    meta: undefined,
-  },
-  "page-break-plugin-demo": {
-    name: "page-break-plugin-demo",
-    description: "",
-    type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/page-break-plugin.json"],
-    files: [{
-      path: "registry/new-york-v4/examples/page-break-plugin-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/new-york-v4/examples/page-break-plugin-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    categories: undefined,
-    meta: undefined,
-  },
-  "poll-plugin-demo": {
-    name: "poll-plugin-demo",
-    description: "",
-    type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/poll-plugin.json"],
-    files: [{
-      path: "registry/new-york-v4/examples/poll-plugin-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/new-york-v4/examples/poll-plugin-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

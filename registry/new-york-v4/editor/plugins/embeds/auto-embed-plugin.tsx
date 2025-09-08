@@ -18,10 +18,9 @@ import {
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
 import { PopoverPortal } from "@radix-ui/react-popover"
 import type { LexicalEditor } from "lexical"
-import { FigmaIcon, TwitterIcon, YoutubeIcon } from "lucide-react"
+import { TwitterIcon, YoutubeIcon } from "lucide-react"
 
 import { useEditorModal } from "@/registry/new-york-v4/editor/editor-hooks/use-modal"
-import { INSERT_FIGMA_COMMAND } from "@/registry/new-york-v4/editor/plugins/embeds/figma-plugin"
 import { INSERT_TWEET_COMMAND } from "@/registry/new-york-v4/editor/plugins/embeds/twitter-plugin"
 import { INSERT_YOUTUBE_COMMAND } from "@/registry/new-york-v4/editor/plugins/embeds/youtube-plugin"
 import { Button } from "@/registry/new-york-v4/ui/button"
@@ -52,7 +51,7 @@ export interface CustomEmbedConfig extends EmbedConfig {
   // For extra searching.
   keywords: Array<string>
 
-  // Embed a Figma Project.
+  // Embed a Project.
   description?: string
 }
 
@@ -125,44 +124,7 @@ export const TwitterEmbedConfig: CustomEmbedConfig = {
   type: "tweet",
 }
 
-export const FigmaEmbedConfig: CustomEmbedConfig = {
-  contentName: "Figma Document",
-
-  exampleUrl: "https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File",
-
-  icon: <FigmaIcon className="size-4" />,
-
-  insertNode: (editor: LexicalEditor, result: EmbedMatchResult) => {
-    editor.dispatchCommand(INSERT_FIGMA_COMMAND, result.id)
-  },
-
-  keywords: ["figma", "figma.com", "mock-up"],
-
-  // Determine if a given URL is a match and return url data.
-  parseUrl: (text: string) => {
-    const match =
-      /https:\/\/([\w.-]+\.)?figma.com\/(file|proto)\/([0-9a-zA-Z]{22,128})(?:\/.*)?$/.exec(
-        text
-      )
-
-    if (match != null) {
-      return {
-        id: match[3],
-        url: match[0],
-      }
-    }
-
-    return null
-  },
-
-  type: "figma",
-}
-
-export const EmbedConfigs = [
-  TwitterEmbedConfig,
-  YoutubeEmbedConfig,
-  FigmaEmbedConfig,
-]
+export const EmbedConfigs = [TwitterEmbedConfig, YoutubeEmbedConfig]
 
 const debounce = (callback: (text: string) => void, delay: number) => {
   let timeoutId: number

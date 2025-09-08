@@ -20,12 +20,9 @@ export function GitHubLink() {
 }
 
 export async function StarsCount() {
-  const data = await fetch(
-    "https://api.github.com/repos/htmujahid/shadcn-editor",
-    {
-      next: { revalidate: 86400 }, // Cache for 1 day (86400 seconds)
-    }
-  )
+  const data = await fetch("https://api.github.com/repos/shadcn-ui/ui", {
+    next: { revalidate: 86400 }, // Cache for 1 day (86400 seconds)
+  })
   const json = await data.json()
 
   return (

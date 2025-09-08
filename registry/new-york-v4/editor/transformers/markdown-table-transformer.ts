@@ -23,7 +23,6 @@ import {
 import { $isParagraphNode, $isTextNode, LexicalNode } from "lexical"
 
 import { EMOJI } from "@/registry/new-york-v4/editor/transformers/markdown-emoji-transformer"
-import { EQUATION } from "@/registry/new-york-v4/editor/transformers/markdown-equation-transformer"
 import { HR } from "@/registry/new-york-v4/editor/transformers/markdown-hr-transformer"
 import { IMAGE } from "@/registry/new-york-v4/editor/transformers/markdown-image-transformer"
 import { TWEET } from "@/registry/new-york-v4/editor/transformers/markdown-tweet-transformer"
@@ -36,7 +35,6 @@ const OTHER_MARKDOWN_TRANSFORMERS = [
   HR,
   IMAGE,
   EMOJI,
-  EQUATION,
   TWEET,
   CHECK_LIST,
   ...ELEMENT_TRANSFORMERS,

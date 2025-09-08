@@ -1,9 +1,25 @@
 {
-  "name": "shadcn-editor",
+  "name": "shadcn/editor",
   "homepage": "https://shadcn-editor.vercel.app",
   "items": [
     {
       "name": "index",
+      "type": "registry:style",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "devDependencies": [
+        "tw-animate-css"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [],
+      "cssVars": {}
+    },
+    {
+      "name": "style",
       "type": "registry:style",
       "dependencies": [
         "class-variance-authority",
@@ -605,16 +621,6 @@
           "target": "components/editor/plugins/embeds/auto-embed-plugin.tsx"
         },
         {
-          "path": "registry/new-york-v4/editor/plugins/embeds/figma-plugin.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/embeds/figma-plugin.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/nodes/embeds/figma-node.tsx",
-          "type": "registry:component",
-          "target": "components/editor/nodes/embeds/figma-node.tsx"
-        },
-        {
           "path": "registry/new-york-v4/editor/plugins/embeds/twitter-plugin.tsx",
           "type": "registry:component",
           "target": "components/editor/plugins/embeds/twitter-plugin.tsx"
@@ -681,11 +687,6 @@
           "path": "registry/new-york-v4/editor/plugins/picker/component-picker-option.tsx",
           "type": "registry:component",
           "target": "components/editor/plugins/picker/component-picker-option.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/plugins/default/lexical-typeahead-menu-plugin.ts",
-          "type": "registry:component",
-          "target": "components/editor/plugins/default/lexical-typeahead-menu-plugin.ts"
         }
       ]
     },
@@ -736,44 +737,6 @@
       ]
     },
     {
-      "name": "collapsible-plugin",
-      "type": "registry:ui",
-      "dependencies": [
-        "@lexical/utils"
-      ],
-      "registryDependencies": [
-        "select",
-        "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york-v4/editor/plugins/collapsible-plugin.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/collapsible-plugin.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/nodes/collapsible-container-node.ts",
-          "type": "registry:component",
-          "target": "components/editor/nodes/collapsible-container-node.ts"
-        },
-        {
-          "path": "registry/new-york-v4/editor/nodes/collapsible-content-node.ts",
-          "type": "registry:component",
-          "target": "components/editor/nodes/collapsible-content-node.ts"
-        },
-        {
-          "path": "registry/new-york-v4/editor/nodes/collapsible-title-node.ts",
-          "type": "registry:component",
-          "target": "components/editor/nodes/collapsible-title-node.ts"
-        },
-        {
-          "path": "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-collapsible-container.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/toolbar/block-insert/insert-collapsible-container.tsx"
-        }
-      ]
-    },
-    {
       "name": "context-menu-plugin",
       "type": "registry:ui",
       "dependencies": [
@@ -789,11 +752,6 @@
           "path": "registry/new-york-v4/editor/plugins/context-menu-plugin.tsx",
           "type": "registry:component",
           "target": "components/editor/plugins/context-menu-plugin.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/plugins/default/lexical-context-menu-plugin.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/default/lexical-context-menu-plugin.tsx"
         }
       ]
     },
@@ -861,113 +819,6 @@
           "path": "registry/new-york-v4/editor/transformers/markdown-emoji-transformer.ts",
           "type": "registry:component",
           "target": "components/editor/transformers/markdown-emoji-transformer.ts"
-        },
-        {
-          "path": "registry/new-york-v4/editor/plugins/default/lexical-typeahead-menu-plugin.ts",
-          "type": "registry:component",
-          "target": "components/editor/plugins/default/lexical-typeahead-menu-plugin.ts"
-        }
-      ]
-    },
-    {
-      "name": "equation-plugin",
-      "type": "registry:ui",
-      "dependencies": [
-        "katex",
-        "react-error-boundary",
-        "@lexical/utils",
-        "@lexical/markdown"
-      ],
-      "registryDependencies": [
-        "button",
-        "checkbox",
-        "input",
-        "label",
-        "select",
-        "textarea",
-        "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york-v4/editor/plugins/equations-plugin.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/equations-plugin.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/nodes/equation-node.tsx",
-          "type": "registry:component",
-          "target": "components/editor/nodes/equation-node.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/editor-ui/equation-component.tsx",
-          "type": "registry:component",
-          "target": "components/editor/editor-ui/equation-component.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/editor-ui/equation-editor.tsx",
-          "type": "registry:component",
-          "target": "components/editor/editor-ui/equation-editor.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/editor-ui/katex-equation-alterer.tsx",
-          "type": "registry:component",
-          "target": "components/editor/editor-ui/katex-equation-alterer.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/editor-ui/katex-renderer.tsx",
-          "type": "registry:component",
-          "target": "components/editor/editor-ui/katex-renderer.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/transformers/markdown-equation-transformer.ts",
-          "type": "registry:component",
-          "target": "components/editor/transformers/markdown-equation-transformer.ts"
-        },
-        {
-          "path": "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-equation.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/toolbar/block-insert/insert-equation.tsx"
-        }
-      ]
-    },
-    {
-      "name": "excalidraw-plugin",
-      "type": "registry:ui",
-      "dependencies": [
-        "@excalidraw/excalidraw",
-        "@lexical/utils"
-      ],
-      "registryDependencies": [
-        "button",
-        "dialog",
-        "select",
-        "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york-v4/editor/plugins/excalidraw-plugin.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/excalidraw-plugin.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/nodes/excalidraw-node.tsx",
-          "type": "registry:component",
-          "target": "components/editor/nodes/excalidraw-node.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/editor-ui/excalidraw-modal.tsx",
-          "type": "registry:component",
-          "target": "components/editor/editor-ui/excalidraw-modal.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/editor-ui/excalidraw-component.tsx",
-          "type": "registry:component",
-          "target": "components/editor/editor-ui/excalidraw-component.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-excalidraw.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/toolbar/block-insert/insert-excalidraw.tsx"
         }
       ]
     },
@@ -1101,60 +952,6 @@
       ]
     },
     {
-      "name": "inline-image-plugin",
-      "type": "registry:ui",
-      "dependencies": [
-        "@lexical/utils"
-      ],
-      "registryDependencies": [
-        "button",
-        "checkbox",
-        "dialog",
-        "input",
-        "label",
-        "select",
-        "https://shadcn-editor.vercel.app/r/toolbar-plugin.json",
-        "https://shadcn-editor.vercel.app/r/link-plugin.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york-v4/editor/plugins/inline-image-plugin.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/inline-image-plugin.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/nodes/inline-image-node.tsx",
-          "type": "registry:component",
-          "target": "components/editor/nodes/inline-image-node.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/editor-ui/inline-image-component.tsx",
-          "type": "registry:component",
-          "target": "components/editor/editor-ui/inline-image-component.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/editor-hooks/use-modal.tsx",
-          "type": "registry:component",
-          "target": "components/editor/editor-hooks/use-modal.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/editor-ui/content-editable.tsx",
-          "type": "registry:component",
-          "target": "components/editor/editor-ui/content-editable.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/shared/can-use-dom.ts",
-          "type": "registry:component",
-          "target": "components/editor/shared/can-use-dom.ts"
-        },
-        {
-          "path": "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-inline-image.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/toolbar/block-insert/insert-inline-image.tsx"
-        }
-      ]
-    },
-    {
       "name": "keywords-plugin",
       "type": "registry:ui",
       "registryDependencies": [
@@ -1262,76 +1059,6 @@
           "path": "registry/new-york-v4/editor/nodes/mention-node.ts",
           "type": "registry:component",
           "target": "components/editor/nodes/mention-node.ts"
-        },
-        {
-          "path": "registry/new-york-v4/editor/plugins/default/lexical-typeahead-menu-plugin.ts",
-          "type": "registry:component",
-          "target": "components/editor/plugins/default/lexical-typeahead-menu-plugin.ts"
-        }
-      ]
-    },
-    {
-      "name": "page-break-plugin",
-      "type": "registry:ui",
-      "dependencies": [
-        "@lexical/utils"
-      ],
-      "registryDependencies": [
-        "select",
-        "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york-v4/editor/plugins/page-break-plugin.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/page-break-plugin.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/nodes/page-break-node.tsx",
-          "type": "registry:component",
-          "target": "components/editor/nodes/page-break-node.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-page-break.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/toolbar/block-insert/insert-page-break.tsx"
-        }
-      ]
-    },
-    {
-      "name": "poll-plugin",
-      "type": "registry:ui",
-      "dependencies": [
-        "@lexical/utils"
-      ],
-      "registryDependencies": [
-        "button",
-        "dialog",
-        "input",
-        "label",
-        "select",
-        "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york-v4/editor/plugins/poll-plugin.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/poll-plugin.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/nodes/poll-node.tsx",
-          "type": "registry:component",
-          "target": "components/editor/nodes/poll-node.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/editor-ui/poll-component.tsx",
-          "type": "registry:component",
-          "target": "components/editor/editor-ui/poll-component.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-poll.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/toolbar/block-insert/insert-poll.tsx"
         }
       ]
     },
@@ -1360,21 +1087,6 @@
           "path": "registry/new-york-v4/editor/plugins/table-plugin.tsx",
           "type": "registry:component",
           "target": "components/editor/plugins/table-plugin.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/plugins/table-action-menu-plugin.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/table-action-menu-plugin.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/plugins/table-cell-resizer-plugin.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/table-cell-resizer-plugin.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/plugins/table-hover-actions-plugin.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/table-hover-actions-plugin.tsx"
         },
         {
           "path": "registry/new-york-v4/editor/plugins/toolbar/block-insert-plugin.tsx",
@@ -1494,7 +1206,6 @@
       "name": "editor-x",
       "type": "registry:block",
       "dependencies": [
-        "@excalidraw/excalidraw",
         "@lexical/code",
         "@lexical/file",
         "@lexical/hashtag",
@@ -1509,7 +1220,6 @@
         "@lexical/text",
         "@lexical/utils",
         "@radix-ui/react-icons",
-        "katex",
         "lexical",
         "lodash-es",
         "lucide-react",
@@ -1601,11 +1311,6 @@
           "target": "components/editor/editor-hooks/use-update-toolbar.ts"
         },
         {
-          "path": "registry/new-york-v4/editor/nodes/embeds/figma-node.tsx",
-          "type": "registry:file",
-          "target": "components/editor/nodes/embeds/figma-node.tsx"
-        },
-        {
           "path": "registry/new-york-v4/editor/nodes/embeds/tweet-node.tsx",
           "type": "registry:file",
           "target": "components/editor/nodes/embeds/tweet-node.tsx"
@@ -1621,44 +1326,14 @@
           "target": "components/editor/nodes/autocomplete-node.tsx"
         },
         {
-          "path": "registry/new-york-v4/editor/nodes/collapsible-container-node.ts",
-          "type": "registry:file",
-          "target": "components/editor/nodes/collapsible-container-node.ts"
-        },
-        {
-          "path": "registry/new-york-v4/editor/nodes/collapsible-content-node.ts",
-          "type": "registry:file",
-          "target": "components/editor/nodes/collapsible-content-node.ts"
-        },
-        {
-          "path": "registry/new-york-v4/editor/nodes/collapsible-title-node.ts",
-          "type": "registry:file",
-          "target": "components/editor/nodes/collapsible-title-node.ts"
-        },
-        {
           "path": "registry/new-york-v4/editor/nodes/emoji-node.tsx",
           "type": "registry:file",
           "target": "components/editor/nodes/emoji-node.tsx"
         },
         {
-          "path": "registry/new-york-v4/editor/nodes/equation-node.tsx",
-          "type": "registry:file",
-          "target": "components/editor/nodes/equation-node.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/nodes/excalidraw-node.tsx",
-          "type": "registry:file",
-          "target": "components/editor/nodes/excalidraw-node.tsx"
-        },
-        {
           "path": "registry/new-york-v4/editor/nodes/image-node.tsx",
           "type": "registry:file",
           "target": "components/editor/nodes/image-node.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/nodes/inline-image-node.tsx",
-          "type": "registry:file",
-          "target": "components/editor/nodes/inline-image-node.tsx"
         },
         {
           "path": "registry/new-york-v4/editor/nodes/keyword-node.tsx",
@@ -1679,21 +1354,6 @@
           "path": "registry/new-york-v4/editor/nodes/mention-node.ts",
           "type": "registry:file",
           "target": "components/editor/nodes/mention-node.ts"
-        },
-        {
-          "path": "registry/new-york-v4/editor/nodes/page-break-node.tsx",
-          "type": "registry:file",
-          "target": "components/editor/nodes/page-break-node.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/nodes/page-break-node.css",
-          "type": "registry:file",
-          "target": "components/editor/nodes/page-break-node.css"
-        },
-        {
-          "path": "registry/new-york-v4/editor/nodes/poll-node.tsx",
-          "type": "registry:file",
-          "target": "components/editor/nodes/poll-node.tsx"
         },
         {
           "path": "registry/new-york-v4/editor/plugins/actions/actions-plugin.tsx",
@@ -1751,24 +1411,9 @@
           "target": "components/editor/plugins/actions/tree-view-plugin.tsx"
         },
         {
-          "path": "registry/new-york-v4/editor/plugins/default/lexical-context-menu-plugin.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/default/lexical-context-menu-plugin.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/plugins/default/lexical-typeahead-menu-plugin.ts",
-          "type": "registry:component",
-          "target": "components/editor/plugins/default/lexical-typeahead-menu-plugin.ts"
-        },
-        {
           "path": "registry/new-york-v4/editor/plugins/embeds/auto-embed-plugin.tsx",
           "type": "registry:component",
           "target": "components/editor/plugins/embeds/auto-embed-plugin.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/plugins/embeds/figma-plugin.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/embeds/figma-plugin.tsx"
         },
         {
           "path": "registry/new-york-v4/editor/plugins/embeds/twitter-plugin.tsx",
@@ -1801,11 +1446,6 @@
           "target": "components/editor/plugins/picker/code-picker-plugin.tsx"
         },
         {
-          "path": "registry/new-york-v4/editor/plugins/picker/collapsible-picker-plugin.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/picker/collapsible-picker-plugin.tsx"
-        },
-        {
           "path": "registry/new-york-v4/editor/plugins/picker/columns-layout-picker-plugin.tsx",
           "type": "registry:component",
           "target": "components/editor/plugins/picker/columns-layout-picker-plugin.tsx"
@@ -1826,16 +1466,6 @@
           "target": "components/editor/plugins/picker/embeds-picker-plugin.tsx"
         },
         {
-          "path": "registry/new-york-v4/editor/plugins/picker/equation-picker-plugin.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/picker/equation-picker-plugin.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/plugins/picker/excalidraw-picker-plugin.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/picker/excalidraw-picker-plugin.tsx"
-        },
-        {
           "path": "registry/new-york-v4/editor/plugins/picker/heading-picker-plugin.tsx",
           "type": "registry:component",
           "target": "components/editor/plugins/picker/heading-picker-plugin.tsx"
@@ -1851,19 +1481,9 @@
           "target": "components/editor/plugins/picker/numbered-list-picker-plugin.tsx"
         },
         {
-          "path": "registry/new-york-v4/editor/plugins/picker/page-break-picker-plugin.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/picker/page-break-picker-plugin.tsx"
-        },
-        {
           "path": "registry/new-york-v4/editor/plugins/picker/paragraph-picker-plugin.tsx",
           "type": "registry:component",
           "target": "components/editor/plugins/picker/paragraph-picker-plugin.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/plugins/picker/poll-picker-plugin.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/picker/poll-picker-plugin.tsx"
         },
         {
           "path": "registry/new-york-v4/editor/plugins/picker/quote-picker-plugin.tsx",
@@ -1916,11 +1536,6 @@
           "target": "components/editor/plugins/toolbar/block-format/format-quote.tsx"
         },
         {
-          "path": "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-collapsible-container.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/toolbar/block-insert/insert-collapsible-container.tsx"
-        },
-        {
           "path": "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-columns-layout.tsx",
           "type": "registry:component",
           "target": "components/editor/plugins/toolbar/block-insert/insert-columns-layout.tsx"
@@ -1931,16 +1546,6 @@
           "target": "components/editor/plugins/toolbar/block-insert/insert-embeds.tsx"
         },
         {
-          "path": "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-equation.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/toolbar/block-insert/insert-equation.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-excalidraw.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/toolbar/block-insert/insert-excalidraw.tsx"
-        },
-        {
           "path": "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx",
           "type": "registry:component",
           "target": "components/editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx"
@@ -1949,21 +1554,6 @@
           "path": "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-image.tsx",
           "type": "registry:component",
           "target": "components/editor/plugins/toolbar/block-insert/insert-image.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-inline-image.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/toolbar/block-insert/insert-inline-image.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-page-break.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/toolbar/block-insert/insert-page-break.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-poll.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/toolbar/block-insert/insert-poll.tsx"
         },
         {
           "path": "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-table.tsx",
@@ -2061,11 +1651,6 @@
           "target": "components/editor/plugins/code-highlight-plugin.tsx"
         },
         {
-          "path": "registry/new-york-v4/editor/plugins/collapsible-plugin.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/collapsible-plugin.tsx"
-        },
-        {
           "path": "registry/new-york-v4/editor/plugins/component-picker-menu-plugin.tsx",
           "type": "registry:component",
           "target": "components/editor/plugins/component-picker-menu-plugin.tsx"
@@ -2096,16 +1681,6 @@
           "target": "components/editor/plugins/emojis-plugin.tsx"
         },
         {
-          "path": "registry/new-york-v4/editor/plugins/equations-plugin.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/equations-plugin.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/plugins/excalidraw-plugin.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/excalidraw-plugin.tsx"
-        },
-        {
           "path": "registry/new-york-v4/editor/plugins/floating-link-editor-plugin.tsx",
           "type": "registry:component",
           "target": "components/editor/plugins/floating-link-editor-plugin.tsx"
@@ -2119,11 +1694,6 @@
           "path": "registry/new-york-v4/editor/plugins/images-plugin.tsx",
           "type": "registry:component",
           "target": "components/editor/plugins/images-plugin.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/plugins/inline-image-plugin.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/inline-image-plugin.tsx"
         },
         {
           "path": "registry/new-york-v4/editor/plugins/keywords-plugin.tsx",
@@ -2151,34 +1721,9 @@
           "target": "components/editor/plugins/mentions-plugin.tsx"
         },
         {
-          "path": "registry/new-york-v4/editor/plugins/page-break-plugin.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/page-break-plugin.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/plugins/poll-plugin.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/poll-plugin.tsx"
-        },
-        {
           "path": "registry/new-york-v4/editor/plugins/tab-focus-plugin.tsx",
           "type": "registry:component",
           "target": "components/editor/plugins/tab-focus-plugin.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/plugins/table-action-menu-plugin.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/table-action-menu-plugin.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/plugins/table-cell-resizer-plugin.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/table-cell-resizer-plugin.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/plugins/table-hover-actions-plugin.tsx",
-          "type": "registry:component",
-          "target": "components/editor/plugins/table-hover-actions-plugin.tsx"
         },
         {
           "path": "registry/new-york-v4/editor/plugins/table-plugin.tsx",
@@ -2246,11 +1791,6 @@
           "target": "components/editor/transformers/markdown-emoji-transformer.ts"
         },
         {
-          "path": "registry/new-york-v4/editor/transformers/markdown-equation-transformer.ts",
-          "type": "registry:file",
-          "target": "components/editor/transformers/markdown-equation-transformer.ts"
-        },
-        {
           "path": "registry/new-york-v4/editor/transformers/markdown-hr-transformer.ts",
           "type": "registry:file",
           "target": "components/editor/transformers/markdown-hr-transformer.ts"
@@ -2286,31 +1826,6 @@
           "target": "components/editor/editor-ui/content-editable.tsx"
         },
         {
-          "path": "registry/new-york-v4/editor/editor-ui/equation-component.tsx",
-          "type": "registry:ui",
-          "target": "components/editor/editor-ui/equation-component.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/editor-ui/equation-editor.tsx",
-          "type": "registry:ui",
-          "target": "components/editor/editor-ui/equation-editor.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/editor-ui/excalidraw-component.tsx",
-          "type": "registry:ui",
-          "target": "components/editor/editor-ui/excalidraw-component.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/editor-ui/excalidraw-image.tsx",
-          "type": "registry:ui",
-          "target": "components/editor/editor-ui/excalidraw-image.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/editor-ui/excalidraw-modal.tsx",
-          "type": "registry:ui",
-          "target": "components/editor/editor-ui/excalidraw-modal.tsx"
-        },
-        {
           "path": "registry/new-york-v4/editor/editor-ui/image-component.tsx",
           "type": "registry:ui",
           "target": "components/editor/editor-ui/image-component.tsx"
@@ -2319,36 +1834,6 @@
           "path": "registry/new-york-v4/editor/editor-ui/image-resizer.tsx",
           "type": "registry:ui",
           "target": "components/editor/editor-ui/image-resizer.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/editor-ui/inline-image-component.tsx",
-          "type": "registry:ui",
-          "target": "components/editor/editor-ui/inline-image-component.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/editor-ui/katex-equation-alterer.tsx",
-          "type": "registry:ui",
-          "target": "components/editor/editor-ui/katex-equation-alterer.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/editor-ui/katex-renderer.tsx",
-          "type": "registry:ui",
-          "target": "components/editor/editor-ui/katex-renderer.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/editor-ui/poll-component.tsx",
-          "type": "registry:ui",
-          "target": "components/editor/editor-ui/poll-component.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/editor/editor-ui/poll.css",
-          "type": "registry:ui",
-          "target": "components/editor/editor-ui/poll.css"
-        },
-        {
-          "path": "registry/new-york-v4/editor/utils/collapsible.ts",
-          "type": "registry:file",
-          "target": "components/editor/utils/collapsible.ts"
         },
         {
           "path": "registry/new-york-v4/editor/utils/doc-serialization.ts",
@@ -2401,180 +1886,6 @@
           "target": "components/editor/utils/url.ts"
         }
       ]
-    },
-    {
-      "name": "theme-daylight",
-      "type": "registry:theme",
-      "cssVars": {
-        "light": {
-          "background": "36 39% 88%",
-          "foreground": "36 45% 15%",
-          "primary": "36 45% 70%",
-          "primary-foreground": "36 45% 11%",
-          "secondary": "40 35% 77%",
-          "secondary-foreground": "36 45% 25%",
-          "accent": "36 64% 57%",
-          "accent-foreground": "36 72% 17%",
-          "destructive": "0 84% 37%",
-          "destructive-foreground": "0 0% 98%",
-          "muted": "36 33% 75%",
-          "muted-foreground": "36 45% 25%",
-          "card": "36 46% 82%",
-          "card-foreground": "36 45% 20%",
-          "popover": "0 0% 100%",
-          "popover-foreground": "240 10% 3.9%",
-          "border": "36 45% 60%",
-          "input": "36 45% 60%",
-          "ring": "36 45% 30%",
-          "chart-1": "25 34% 28%",
-          "chart-2": "26 36% 34%",
-          "chart-3": "28 40% 40%",
-          "chart-4": "31 41% 48%",
-          "chart-5": "35 43% 53%"
-        },
-        "dark": {
-          "background": "36 39% 88%",
-          "foreground": "36 45% 15%",
-          "primary": "36 45% 70%",
-          "primary-foreground": "36 45% 11%",
-          "secondary": "40 35% 77%",
-          "secondary-foreground": "36 45% 25%",
-          "accent": "36 64% 57%",
-          "accent-foreground": "36 72% 17%",
-          "destructive": "0 84% 37%",
-          "destructive-foreground": "0 0% 98%",
-          "muted": "36 33% 75%",
-          "muted-foreground": "36 45% 25%",
-          "card": "36 46% 82%",
-          "card-foreground": "36 45% 20%",
-          "popover": "0 0% 100%",
-          "popover-foreground": "240 10% 3.9%",
-          "border": "36 45% 60%",
-          "input": "36 45% 60%",
-          "ring": "36 45% 30%",
-          "chart-1": "25 34% 28%",
-          "chart-2": "26 36% 34%",
-          "chart-3": "28 40% 40%",
-          "chart-4": "31 41% 48%",
-          "chart-5": "35 43% 53%"
-        }
-      }
-    },
-    {
-      "name": "theme-midnight",
-      "type": "registry:theme",
-      "cssVars": {
-        "light": {
-          "background": "240 5% 6%",
-          "foreground": "60 5% 90%",
-          "primary": "240 0% 90%",
-          "primary-foreground": "60 0% 0%",
-          "secondary": "240 4% 15%",
-          "secondary-foreground": "60 5% 85%",
-          "accent": "240 0% 13%",
-          "accent-foreground": "60 0% 100%",
-          "destructive": "0 60% 50%",
-          "destructive-foreground": "0 0% 98%",
-          "muted": "240 5% 25%",
-          "muted-foreground": "60 5% 85%",
-          "card": "240 4% 10%",
-          "card-foreground": "60 5% 90%",
-          "popover": "240 5% 15%",
-          "popover-foreground": "60 5% 85%",
-          "border": "240 6% 20%",
-          "input": "240 6% 20%",
-          "ring": "240 5% 90%",
-          "chart-1": "359 2% 90%",
-          "chart-2": "240 1% 74%",
-          "chart-3": "240 1% 58%",
-          "chart-4": "240 1% 42%",
-          "chart-5": "240 2% 26%"
-        },
-        "dark": {
-          "background": "240 5% 6%",
-          "foreground": "60 5% 90%",
-          "primary": "240 0% 90%",
-          "primary-foreground": "60 0% 0%",
-          "secondary": "240 4% 15%",
-          "secondary-foreground": "60 5% 85%",
-          "accent": "240 0% 13%",
-          "accent-foreground": "60 0% 100%",
-          "destructive": "0 60% 50%",
-          "destructive-foreground": "0 0% 98%",
-          "muted": "240 5% 25%",
-          "muted-foreground": "60 5% 85%",
-          "card": "240 4% 10%",
-          "card-foreground": "60 5% 90%",
-          "popover": "240 5% 15%",
-          "popover-foreground": "60 5% 85%",
-          "border": "240 6% 20%",
-          "input": "240 6% 20%",
-          "ring": "240 5% 90%",
-          "chart-1": "359 2% 90%",
-          "chart-2": "240 1% 74%",
-          "chart-3": "240 1% 58%",
-          "chart-4": "240 1% 42%",
-          "chart-5": "240 2% 26%"
-        }
-      }
-    },
-    {
-      "name": "theme-emerald",
-      "type": "registry:theme",
-      "cssVars": {
-        "light": {
-          "background": "0 0% 100%",
-          "foreground": "240 10% 3.9%",
-          "card": "0 0% 100%",
-          "card-foreground": "240 10% 3.9%",
-          "popover": "0 0% 100%",
-          "popover-foreground": "240 10% 3.9%",
-          "primary": "142 86% 28%",
-          "primary-foreground": "356 29% 98%",
-          "secondary": "240 4.8% 95.9%",
-          "secondary-foreground": "240 5.9% 10%",
-          "muted": "240 4.8% 95.9%",
-          "muted-foreground": "240 3.8% 45%",
-          "accent": "240 4.8% 95.9%",
-          "accent-foreground": "240 5.9% 10%",
-          "destructive": "0 72% 51%",
-          "destructive-foreground": "0 0% 98%",
-          "border": "240 5.9% 90%",
-          "input": "240 5.9% 90%",
-          "ring": "142 86% 28%",
-          "chart-1": "139 65% 20%",
-          "chart-2": "140 74% 44%",
-          "chart-3": "142 88% 28%",
-          "chart-4": "137 55% 15%",
-          "chart-5": "141 40% 9%"
-        },
-        "dark": {
-          "background": "240 10% 3.9%",
-          "foreground": "0 0% 98%",
-          "card": "240 10% 3.9%",
-          "card-foreground": "0 0% 98%",
-          "popover": "240 10% 3.9%",
-          "popover-foreground": "0 0% 98%",
-          "primary": "142 86% 28%",
-          "primary-foreground": "356 29% 98%",
-          "secondary": "240 4.8% 95.9%",
-          "secondary-foreground": "240 5.9% 10%",
-          "muted": "240 3.7% 15.9%",
-          "muted-foreground": "240 5% 64.9%",
-          "accent": "240 3.7% 15.9%",
-          "accent-foreground": "0 0% 98%",
-          "destructive": "0 72% 51%",
-          "destructive-foreground": "0 0% 98%",
-          "border": "240 3.7% 15.9%",
-          "input": "240 3.7% 15.9%",
-          "ring": "142 86% 28%",
-          "chart-1": "142 88% 28%",
-          "chart-2": "139 65% 20%",
-          "chart-3": "140 74% 24%",
-          "chart-4": "137 55% 15%",
-          "chart-5": "141 40% 9%"
-        }
-      }
     },
     {
       "name": "rich-text-editor-plugin-demo",
@@ -2696,19 +2007,6 @@
       ]
     },
     {
-      "name": "collapsible-plugin-demo",
-      "type": "registry:example",
-      "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/collapsible-plugin.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york-v4/examples/collapsible-plugin-demo.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
       "name": "component-picker-menu-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -2808,32 +2106,6 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/emoji-plugin-demo.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
-      "name": "equation-plugin-demo",
-      "type": "registry:example",
-      "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/equation-plugin.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york-v4/examples/equation-plugin-demo.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
-      "name": "excalidraw-plugin-demo",
-      "type": "registry:example",
-      "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/excalidraw-plugin.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york-v4/examples/excalidraw-plugin-demo.tsx",
           "type": "registry:example"
         }
       ]
@@ -2969,19 +2241,6 @@
       ]
     },
     {
-      "name": "inline-image-plugin-demo",
-      "type": "registry:example",
-      "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/inline-image-plugin.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york-v4/examples/inline-image-plugin-demo.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
       "name": "keywords-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -3081,32 +2340,6 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/mention-plugin-demo.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
-      "name": "page-break-plugin-demo",
-      "type": "registry:example",
-      "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/page-break-plugin.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york-v4/examples/page-break-plugin-demo.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
-      "name": "poll-plugin-demo",
-      "type": "registry:example",
-      "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/poll-plugin.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york-v4/examples/poll-plugin-demo.tsx",
           "type": "registry:example"
         }
       ]

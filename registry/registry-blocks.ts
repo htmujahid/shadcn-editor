@@ -1,4 +1,4 @@
-import { Registry } from "./schema"
+import { type Registry } from "shadcn/schema"
 
 export const blocks: Registry["items"] = [
   {
@@ -48,7 +48,6 @@ export const blocks: Registry["items"] = [
     name: "editor-x",
     type: "registry:block",
     dependencies: [
-      "@excalidraw/excalidraw",
       "@lexical/code",
       "@lexical/file",
       "@lexical/hashtag",
@@ -63,7 +62,6 @@ export const blocks: Registry["items"] = [
       "@lexical/text",
       "@lexical/utils",
       "@radix-ui/react-icons",
-      "katex",
       "lexical",
       "lodash-es",
       "lucide-react",
@@ -155,11 +153,6 @@ export const blocks: Registry["items"] = [
         type: "registry:hook",
       },
       {
-        path: "editor/nodes/embeds/figma-node.tsx",
-        target: "components/editor/nodes/embeds/figma-node.tsx",
-        type: "registry:file",
-      },
-      {
         path: "editor/nodes/embeds/tweet-node.tsx",
         target: "components/editor/nodes/embeds/tweet-node.tsx",
         type: "registry:file",
@@ -175,43 +168,13 @@ export const blocks: Registry["items"] = [
         type: "registry:file",
       },
       {
-        path: "editor/nodes/collapsible-container-node.ts",
-        target: "components/editor/nodes/collapsible-container-node.ts",
-        type: "registry:file",
-      },
-      {
-        path: "editor/nodes/collapsible-content-node.ts",
-        target: "components/editor/nodes/collapsible-content-node.ts",
-        type: "registry:file",
-      },
-      {
-        path: "editor/nodes/collapsible-title-node.ts",
-        target: "components/editor/nodes/collapsible-title-node.ts",
-        type: "registry:file",
-      },
-      {
         path: "editor/nodes/emoji-node.tsx",
         target: "components/editor/nodes/emoji-node.tsx",
         type: "registry:file",
       },
       {
-        path: "editor/nodes/equation-node.tsx",
-        target: "components/editor/nodes/equation-node.tsx",
-        type: "registry:file",
-      },
-      {
-        path: "editor/nodes/excalidraw-node.tsx",
-        target: "components/editor/nodes/excalidraw-node.tsx",
-        type: "registry:file",
-      },
-      {
         path: "editor/nodes/image-node.tsx",
         target: "components/editor/nodes/image-node.tsx",
-        type: "registry:file",
-      },
-      {
-        path: "editor/nodes/inline-image-node.tsx",
-        target: "components/editor/nodes/inline-image-node.tsx",
         type: "registry:file",
       },
       {
@@ -232,21 +195,6 @@ export const blocks: Registry["items"] = [
       {
         path: "editor/nodes/mention-node.ts",
         target: "components/editor/nodes/mention-node.ts",
-        type: "registry:file",
-      },
-      {
-        path: "editor/nodes/page-break-node.tsx",
-        target: "components/editor/nodes/page-break-node.tsx",
-        type: "registry:file",
-      },
-      {
-        path: "editor/nodes/page-break-node.css",
-        target: "components/editor/nodes/page-break-node.css",
-        type: "registry:file",
-      },
-      {
-        path: "editor/nodes/poll-node.tsx",
-        target: "components/editor/nodes/poll-node.tsx",
         type: "registry:file",
       },
       {
@@ -306,25 +254,8 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
       {
-        path: "editor/plugins/default/lexical-context-menu-plugin.tsx",
-        target:
-          "components/editor/plugins/default/lexical-context-menu-plugin.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/plugins/default/lexical-typeahead-menu-plugin.ts",
-        target:
-          "components/editor/plugins/default/lexical-typeahead-menu-plugin.ts",
-        type: "registry:component",
-      },
-      {
         path: "editor/plugins/embeds/auto-embed-plugin.tsx",
         target: "components/editor/plugins/embeds/auto-embed-plugin.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/plugins/embeds/figma-plugin.tsx",
-        target: "components/editor/plugins/embeds/figma-plugin.tsx",
         type: "registry:component",
       },
       {
@@ -359,12 +290,6 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
       {
-        path: "editor/plugins/picker/collapsible-picker-plugin.tsx",
-        target:
-          "components/editor/plugins/picker/collapsible-picker-plugin.tsx",
-        type: "registry:component",
-      },
-      {
         path: "editor/plugins/picker/columns-layout-picker-plugin.tsx",
         target:
           "components/editor/plugins/picker/columns-layout-picker-plugin.tsx",
@@ -386,16 +311,6 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
       {
-        path: "editor/plugins/picker/equation-picker-plugin.tsx",
-        target: "components/editor/plugins/picker/equation-picker-plugin.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/plugins/picker/excalidraw-picker-plugin.tsx",
-        target: "components/editor/plugins/picker/excalidraw-picker-plugin.tsx",
-        type: "registry:component",
-      },
-      {
         path: "editor/plugins/picker/heading-picker-plugin.tsx",
         target: "components/editor/plugins/picker/heading-picker-plugin.tsx",
         type: "registry:component",
@@ -412,18 +327,8 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
       {
-        path: "editor/plugins/picker/page-break-picker-plugin.tsx",
-        target: "components/editor/plugins/picker/page-break-picker-plugin.tsx",
-        type: "registry:component",
-      },
-      {
         path: "editor/plugins/picker/paragraph-picker-plugin.tsx",
         target: "components/editor/plugins/picker/paragraph-picker-plugin.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/plugins/picker/poll-picker-plugin.tsx",
-        target: "components/editor/plugins/picker/poll-picker-plugin.tsx",
         type: "registry:component",
       },
       {
@@ -485,12 +390,6 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
       {
-        path: "editor/plugins/toolbar/block-insert/insert-collapsible-container.tsx",
-        target:
-          "components/editor/plugins/toolbar/block-insert/insert-collapsible-container.tsx",
-        type: "registry:component",
-      },
-      {
         path: "editor/plugins/toolbar/block-insert/insert-columns-layout.tsx",
         target:
           "components/editor/plugins/toolbar/block-insert/insert-columns-layout.tsx",
@@ -503,18 +402,6 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
       {
-        path: "editor/plugins/toolbar/block-insert/insert-equation.tsx",
-        target:
-          "components/editor/plugins/toolbar/block-insert/insert-equation.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/plugins/toolbar/block-insert/insert-excalidraw.tsx",
-        target:
-          "components/editor/plugins/toolbar/block-insert/insert-excalidraw.tsx",
-        type: "registry:component",
-      },
-      {
         path: "editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx",
         target:
           "components/editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx",
@@ -524,24 +411,6 @@ export const blocks: Registry["items"] = [
         path: "editor/plugins/toolbar/block-insert/insert-image.tsx",
         target:
           "components/editor/plugins/toolbar/block-insert/insert-image.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/plugins/toolbar/block-insert/insert-inline-image.tsx",
-        target:
-          "components/editor/plugins/toolbar/block-insert/insert-inline-image.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/plugins/toolbar/block-insert/insert-page-break.tsx",
-        target:
-          "components/editor/plugins/toolbar/block-insert/insert-page-break.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/plugins/toolbar/block-insert/insert-poll.tsx",
-        target:
-          "components/editor/plugins/toolbar/block-insert/insert-poll.tsx",
         type: "registry:component",
       },
       {
@@ -650,11 +519,6 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
       {
-        path: "editor/plugins/collapsible-plugin.tsx",
-        target: "components/editor/plugins/collapsible-plugin.tsx",
-        type: "registry:component",
-      },
-      {
         path: "editor/plugins/component-picker-menu-plugin.tsx",
         target: "components/editor/plugins/component-picker-menu-plugin.tsx",
         type: "registry:component",
@@ -685,16 +549,6 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
       {
-        path: "editor/plugins/equations-plugin.tsx",
-        target: "components/editor/plugins/equations-plugin.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/plugins/excalidraw-plugin.tsx",
-        target: "components/editor/plugins/excalidraw-plugin.tsx",
-        type: "registry:component",
-      },
-      {
         path: "editor/plugins/floating-link-editor-plugin.tsx",
         target: "components/editor/plugins/floating-link-editor-plugin.tsx",
         type: "registry:component",
@@ -707,11 +561,6 @@ export const blocks: Registry["items"] = [
       {
         path: "editor/plugins/images-plugin.tsx",
         target: "components/editor/plugins/images-plugin.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/plugins/inline-image-plugin.tsx",
-        target: "components/editor/plugins/inline-image-plugin.tsx",
         type: "registry:component",
       },
       {
@@ -740,33 +589,8 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
       {
-        path: "editor/plugins/page-break-plugin.tsx",
-        target: "components/editor/plugins/page-break-plugin.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/plugins/poll-plugin.tsx",
-        target: "components/editor/plugins/poll-plugin.tsx",
-        type: "registry:component",
-      },
-      {
         path: "editor/plugins/tab-focus-plugin.tsx",
         target: "components/editor/plugins/tab-focus-plugin.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/plugins/table-action-menu-plugin.tsx",
-        target: "components/editor/plugins/table-action-menu-plugin.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/plugins/table-cell-resizer-plugin.tsx",
-        target: "components/editor/plugins/table-cell-resizer-plugin.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/plugins/table-hover-actions-plugin.tsx",
-        target: "components/editor/plugins/table-hover-actions-plugin.tsx",
         type: "registry:component",
       },
       {
@@ -835,12 +659,6 @@ export const blocks: Registry["items"] = [
         type: "registry:file",
       },
       {
-        path: "editor/transformers/markdown-equation-transformer.ts",
-        target:
-          "components/editor/transformers/markdown-equation-transformer.ts",
-        type: "registry:file",
-      },
-      {
         path: "editor/transformers/markdown-hr-transformer.ts",
         target: "components/editor/transformers/markdown-hr-transformer.ts",
         type: "registry:file",
@@ -876,31 +694,6 @@ export const blocks: Registry["items"] = [
         type: "registry:ui",
       },
       {
-        path: "editor/editor-ui/equation-component.tsx",
-        target: "components/editor/editor-ui/equation-component.tsx",
-        type: "registry:ui",
-      },
-      {
-        path: "editor/editor-ui/equation-editor.tsx",
-        target: "components/editor/editor-ui/equation-editor.tsx",
-        type: "registry:ui",
-      },
-      {
-        path: "editor/editor-ui/excalidraw-component.tsx",
-        target: "components/editor/editor-ui/excalidraw-component.tsx",
-        type: "registry:ui",
-      },
-      {
-        path: "editor/editor-ui/excalidraw-image.tsx",
-        target: "components/editor/editor-ui/excalidraw-image.tsx",
-        type: "registry:ui",
-      },
-      {
-        path: "editor/editor-ui/excalidraw-modal.tsx",
-        target: "components/editor/editor-ui/excalidraw-modal.tsx",
-        type: "registry:ui",
-      },
-      {
         path: "editor/editor-ui/image-component.tsx",
         target: "components/editor/editor-ui/image-component.tsx",
         type: "registry:ui",
@@ -909,36 +702,6 @@ export const blocks: Registry["items"] = [
         path: "editor/editor-ui/image-resizer.tsx",
         target: "components/editor/editor-ui/image-resizer.tsx",
         type: "registry:ui",
-      },
-      {
-        path: "editor/editor-ui/inline-image-component.tsx",
-        target: "components/editor/editor-ui/inline-image-component.tsx",
-        type: "registry:ui",
-      },
-      {
-        path: "editor/editor-ui/katex-equation-alterer.tsx",
-        target: "components/editor/editor-ui/katex-equation-alterer.tsx",
-        type: "registry:ui",
-      },
-      {
-        path: "editor/editor-ui/katex-renderer.tsx",
-        target: "components/editor/editor-ui/katex-renderer.tsx",
-        type: "registry:ui",
-      },
-      {
-        path: "editor/editor-ui/poll-component.tsx",
-        target: "components/editor/editor-ui/poll-component.tsx",
-        type: "registry:ui",
-      },
-      {
-        path: "editor/editor-ui/poll.css",
-        target: "components/editor/editor-ui/poll.css",
-        type: "registry:ui",
-      },
-      {
-        path: "editor/utils/collapsible.ts",
-        target: "components/editor/utils/collapsible.ts",
-        type: "registry:file",
       },
       {
         path: "editor/utils/doc-serialization.ts",

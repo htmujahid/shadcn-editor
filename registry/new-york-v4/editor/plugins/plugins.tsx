@@ -36,55 +36,40 @@ import { AutoLinkPlugin } from "@/registry/new-york-v4/editor/plugins/auto-link-
 import { AutocompletePlugin } from "@/registry/new-york-v4/editor/plugins/autocomplete-plugin"
 import { CodeActionMenuPlugin } from "@/registry/new-york-v4/editor/plugins/code-action-menu-plugin"
 import { CodeHighlightPlugin } from "@/registry/new-york-v4/editor/plugins/code-highlight-plugin"
-import { CollapsiblePlugin } from "@/registry/new-york-v4/editor/plugins/collapsible-plugin"
 import { ComponentPickerMenuPlugin } from "@/registry/new-york-v4/editor/plugins/component-picker-menu-plugin"
 import { ContextMenuPlugin } from "@/registry/new-york-v4/editor/plugins/context-menu-plugin"
 import { DragDropPastePlugin } from "@/registry/new-york-v4/editor/plugins/drag-drop-paste-plugin"
 import { DraggableBlockPlugin } from "@/registry/new-york-v4/editor/plugins/draggable-block-plugin"
 import { AutoEmbedPlugin } from "@/registry/new-york-v4/editor/plugins/embeds/auto-embed-plugin"
-import { FigmaPlugin } from "@/registry/new-york-v4/editor/plugins/embeds/figma-plugin"
 import { TwitterPlugin } from "@/registry/new-york-v4/editor/plugins/embeds/twitter-plugin"
 import { YouTubePlugin } from "@/registry/new-york-v4/editor/plugins/embeds/youtube-plugin"
 import { EmojiPickerPlugin } from "@/registry/new-york-v4/editor/plugins/emoji-picker-plugin"
 import { EmojisPlugin } from "@/registry/new-york-v4/editor/plugins/emojis-plugin"
-import { EquationsPlugin } from "@/registry/new-york-v4/editor/plugins/equations-plugin"
-import { ExcalidrawPlugin } from "@/registry/new-york-v4/editor/plugins/excalidraw-plugin"
 import { FloatingLinkEditorPlugin } from "@/registry/new-york-v4/editor/plugins/floating-link-editor-plugin"
 import { FloatingTextFormatToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/floating-text-format-plugin"
 import { ImagesPlugin } from "@/registry/new-york-v4/editor/plugins/images-plugin"
-import { InlineImagePlugin } from "@/registry/new-york-v4/editor/plugins/inline-image-plugin"
 import { KeywordsPlugin } from "@/registry/new-york-v4/editor/plugins/keywords-plugin"
 import { LayoutPlugin } from "@/registry/new-york-v4/editor/plugins/layout-plugin"
 import { LinkPlugin } from "@/registry/new-york-v4/editor/plugins/link-plugin"
 import { ListMaxIndentLevelPlugin } from "@/registry/new-york-v4/editor/plugins/list-max-indent-level-plugin"
 import { MentionsPlugin } from "@/registry/new-york-v4/editor/plugins/mentions-plugin"
-import { PageBreakPlugin } from "@/registry/new-york-v4/editor/plugins/page-break-plugin"
 import { AlignmentPickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/alignment-picker-plugin"
 import { BulletedListPickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/bulleted-list-picker-plugin"
 import { CheckListPickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/check-list-picker-plugin"
 import { CodePickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/code-picker-plugin"
-import { CollapsiblePickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/collapsible-picker-plugin"
 import { ColumnsLayoutPickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/columns-layout-picker-plugin"
 import { DividerPickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/divider-picker-plugin"
 import { EmbedsPickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/embeds-picker-plugin"
-import { EquationPickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/equation-picker-plugin"
-import { ExcalidrawPickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/excalidraw-picker-plugin"
 import { HeadingPickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/heading-picker-plugin"
 import { ImagePickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/image-picker-plugin"
 import { NumberedListPickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/numbered-list-picker-plugin"
-import { PageBreakPickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/page-break-picker-plugin"
 import { ParagraphPickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/paragraph-picker-plugin"
-import { PollPickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/poll-picker-plugin"
 import { QuotePickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/quote-picker-plugin"
 import {
   DynamicTablePickerPlugin,
   TablePickerPlugin,
 } from "@/registry/new-york-v4/editor/plugins/picker/table-picker-plugin"
-import { PollPlugin } from "@/registry/new-york-v4/editor/plugins/poll-plugin"
 import { TabFocusPlugin } from "@/registry/new-york-v4/editor/plugins/tab-focus-plugin"
-import { TableActionMenuPlugin } from "@/registry/new-york-v4/editor/plugins/table-action-menu-plugin"
-import { TableCellResizerPlugin } from "@/registry/new-york-v4/editor/plugins/table-cell-resizer-plugin"
-import { TableHoverActionsPlugin } from "@/registry/new-york-v4/editor/plugins/table-hover-actions-plugin"
 import { BlockFormatDropDown } from "@/registry/new-york-v4/editor/plugins/toolbar/block-format-toolbar-plugin"
 import { FormatBulletedList } from "@/registry/new-york-v4/editor/plugins/toolbar/block-format/format-bulleted-list"
 import { FormatCheckList } from "@/registry/new-york-v4/editor/plugins/toolbar/block-format/format-check-list"
@@ -94,15 +79,10 @@ import { FormatNumberedList } from "@/registry/new-york-v4/editor/plugins/toolba
 import { FormatParagraph } from "@/registry/new-york-v4/editor/plugins/toolbar/block-format/format-paragraph"
 import { FormatQuote } from "@/registry/new-york-v4/editor/plugins/toolbar/block-format/format-quote"
 import { BlockInsertPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/block-insert-plugin"
-import { InsertCollapsibleContainer } from "@/registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-collapsible-container"
 import { InsertColumnsLayout } from "@/registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-columns-layout"
 import { InsertEmbeds } from "@/registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-embeds"
-import { InsertExcalidraw } from "@/registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-excalidraw"
 import { InsertHorizontalRule } from "@/registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-horizontal-rule"
 import { InsertImage } from "@/registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-image"
-import { InsertInlineImage } from "@/registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-inline-image"
-import { InsertPageBreak } from "@/registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-page-break"
-import { InsertPoll } from "@/registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-poll"
 import { InsertTable } from "@/registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-table"
 import { ClearFormattingToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/clear-formatting-toolbar-plugin"
 import { CodeLanguageToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/code-language-toolbar-plugin"
@@ -118,13 +98,13 @@ import { SubSuperToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/too
 import { ToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/toolbar-plugin"
 import { TypingPerfPlugin } from "@/registry/new-york-v4/editor/plugins/typing-pref-plugin"
 import { EMOJI } from "@/registry/new-york-v4/editor/transformers/markdown-emoji-transformer"
-import { EQUATION } from "@/registry/new-york-v4/editor/transformers/markdown-equation-transformer"
 import { HR } from "@/registry/new-york-v4/editor/transformers/markdown-hr-transformer"
 import { IMAGE } from "@/registry/new-york-v4/editor/transformers/markdown-image-transformer"
 import { TABLE } from "@/registry/new-york-v4/editor/transformers/markdown-table-transformer"
 import { TWEET } from "@/registry/new-york-v4/editor/transformers/markdown-tweet-transformer"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
 
+const placeholder = "Press / for commands..."
 const maxLength = 500
 
 export function Plugins({}) {
@@ -141,9 +121,9 @@ export function Plugins({}) {
     <div className="relative">
       <ToolbarPlugin>
         {({ blockType }) => (
-          <div className="vertical-align-middle sticky top-0 z-10 flex gap-2 overflow-auto border-b p-1">
+          <div className="vertical-align-middle sticky top-0 z-10 flex items-center gap-2 overflow-auto border-b p-1">
             <HistoryToolbarPlugin />
-            <Separator orientation="vertical" className="h-8" />
+            <Separator orientation="vertical" className="!h-7" />
             <BlockFormatDropDown>
               <FormatParagraph />
               <FormatHeading levels={["h1", "h2", "h3"]} />
@@ -159,31 +139,26 @@ export function Plugins({}) {
               <>
                 <FontFamilyToolbarPlugin />
                 <FontSizeToolbarPlugin />
-                <Separator orientation="vertical" className="h-8" />
+                <Separator orientation="vertical" className="!h-7" />
                 <FontFormatToolbarPlugin format="bold" />
                 <FontFormatToolbarPlugin format="italic" />
                 <FontFormatToolbarPlugin format="underline" />
                 <FontFormatToolbarPlugin format="strikethrough" />
-                <Separator orientation="vertical" className="h-8" />
+                <Separator orientation="vertical" className="!h-7" />
                 <SubSuperToolbarPlugin />
                 <LinkToolbarPlugin />
-                <Separator orientation="vertical" className="h-8" />
+                <Separator orientation="vertical" className="!h-7" />
                 <ClearFormattingToolbarPlugin />
-                <Separator orientation="vertical" className="h-8" />
+                <Separator orientation="vertical" className="!h-7" />
                 <FontColorToolbarPlugin />
                 <FontBackgroundToolbarPlugin />
-                <Separator orientation="vertical" className="h-8" />
+                <Separator orientation="vertical" className="!h-7" />
                 <ElementFormatToolbarPlugin />
-                <Separator orientation="vertical" className="h-8" />
+                <Separator orientation="vertical" className="!h-7" />
                 <BlockInsertPlugin>
                   <InsertHorizontalRule />
-                  <InsertPageBreak />
                   <InsertImage />
-                  <InsertInlineImage />
-                  <InsertCollapsibleContainer />
-                  <InsertExcalidraw />
                   <InsertTable />
-                  <InsertPoll />
                   <InsertColumnsLayout />
                   <InsertEmbeds />
                 </BlockInsertPlugin>
@@ -198,7 +173,10 @@ export function Plugins({}) {
           contentEditable={
             <div className="">
               <div className="" ref={onRef}>
-                <ContentEditable placeholder={"Start typing ..."} />
+                <ContentEditable
+                  placeholder={placeholder}
+                  className="ContentEditable__root relative block h-[calc(100vh-570px)] min-h-72 min-h-full overflow-auto px-8 py-4 focus:outline-none"
+                />
               </div>
             </div>
           }
@@ -215,26 +193,14 @@ export function Plugins({}) {
         <HistoryPlugin />
 
         <MentionsPlugin />
-        <PageBreakPlugin />
         <DraggableBlockPlugin anchorElem={floatingAnchorElem} />
         <KeywordsPlugin />
         <EmojisPlugin />
         <ImagesPlugin />
-        <InlineImagePlugin />
-        <ExcalidrawPlugin />
-        <TableCellResizerPlugin />
-        <TableHoverActionsPlugin anchorElem={floatingAnchorElem} />
-        <TableActionMenuPlugin
-          anchorElem={floatingAnchorElem}
-          cellMerge={true}
-        />
-        <PollPlugin />
+
         <LayoutPlugin />
-        <EquationsPlugin />
-        <CollapsiblePlugin />
 
         <AutoEmbedPlugin />
-        <FigmaPlugin />
         <TwitterPlugin />
         <YouTubePlugin />
 
@@ -247,7 +213,6 @@ export function Plugins({}) {
             HR,
             IMAGE,
             EMOJI,
-            EQUATION,
             TWEET,
             CHECK_LIST,
             ...ELEMENT_TRANSFORMERS,
@@ -275,15 +240,9 @@ export function Plugins({}) {
             QuotePickerPlugin(),
             CodePickerPlugin(),
             DividerPickerPlugin(),
-            PageBreakPickerPlugin(),
-            ExcalidrawPickerPlugin(),
-            PollPickerPlugin(),
-            EmbedsPickerPlugin({ embed: "figma" }),
             EmbedsPickerPlugin({ embed: "tweet" }),
             EmbedsPickerPlugin({ embed: "youtube-video" }),
-            EquationPickerPlugin(),
             ImagePickerPlugin(),
-            CollapsiblePickerPlugin(),
             ColumnsLayoutPickerPlugin(),
             AlignmentPickerPlugin({ alignment: "left" }),
             AlignmentPickerPlugin({ alignment: "center" }),
@@ -322,7 +281,6 @@ export function Plugins({}) {
                 HR,
                 IMAGE,
                 EMOJI,
-                EQUATION,
                 TWEET,
                 CHECK_LIST,
                 ...ELEMENT_TRANSFORMERS,

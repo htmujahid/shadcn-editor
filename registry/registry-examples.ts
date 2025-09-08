@@ -1,4 +1,4 @@
-import { Registry } from "./schema"
+import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
@@ -121,19 +121,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "collapsible-plugin-demo",
-    type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/collapsible-plugin.json",
-    ],
-    files: [
-      {
-        path: "examples/collapsible-plugin-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "component-picker-menu-plugin-demo",
     type: "registry:example",
     registryDependencies: [
@@ -233,32 +220,6 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/emoji-plugin-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "equation-plugin-demo",
-    type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/equation-plugin.json",
-    ],
-    files: [
-      {
-        path: "examples/equation-plugin-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "excalidraw-plugin-demo",
-    type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/excalidraw-plugin.json",
-    ],
-    files: [
-      {
-        path: "examples/excalidraw-plugin-demo.tsx",
         type: "registry:example",
       },
     ],
@@ -394,19 +355,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "inline-image-plugin-demo",
-    type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/inline-image-plugin.json",
-    ],
-    files: [
-      {
-        path: "examples/inline-image-plugin-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "keywords-plugin-demo",
     type: "registry:example",
     registryDependencies: [
@@ -506,32 +454,6 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/mention-plugin-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "page-break-plugin-demo",
-    type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/page-break-plugin.json",
-    ],
-    files: [
-      {
-        path: "examples/page-break-plugin-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "poll-plugin-demo",
-    type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/poll-plugin.json",
-    ],
-    files: [
-      {
-        path: "examples/poll-plugin-demo.tsx",
         type: "registry:example",
       },
     ],

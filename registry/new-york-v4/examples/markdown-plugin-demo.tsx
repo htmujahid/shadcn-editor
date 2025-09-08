@@ -31,18 +31,12 @@ import { ParagraphNode, TextNode } from "lexical"
 import { ContentEditable } from "@/registry/new-york-v4/editor/editor-ui/content-editable"
 import { TweetNode } from "@/registry/new-york-v4/editor/nodes/embeds/tweet-node"
 import { EmojiNode } from "@/registry/new-york-v4/editor/nodes/emoji-node"
-import { EquationNode } from "@/registry/new-york-v4/editor/nodes/equation-node"
 import { ImageNode } from "@/registry/new-york-v4/editor/nodes/image-node"
 import { TwitterPlugin } from "@/registry/new-york-v4/editor/plugins/embeds/twitter-plugin"
 import { EmojisPlugin } from "@/registry/new-york-v4/editor/plugins/emojis-plugin"
-import { EquationsPlugin } from "@/registry/new-york-v4/editor/plugins/equations-plugin"
 import { ImagesPlugin } from "@/registry/new-york-v4/editor/plugins/images-plugin"
-import { TableActionMenuPlugin } from "@/registry/new-york-v4/editor/plugins/table-action-menu-plugin"
-import { TableCellResizerPlugin } from "@/registry/new-york-v4/editor/plugins/table-cell-resizer-plugin"
-import { TableHoverActionsPlugin } from "@/registry/new-york-v4/editor/plugins/table-hover-actions-plugin"
 import { editorTheme } from "@/registry/new-york-v4/editor/themes/editor-theme"
 import { EMOJI } from "@/registry/new-york-v4/editor/transformers/markdown-emoji-transformer"
-import { EQUATION } from "@/registry/new-york-v4/editor/transformers/markdown-equation-transformer"
 import { HR } from "@/registry/new-york-v4/editor/transformers/markdown-hr-transformer"
 import { IMAGE } from "@/registry/new-york-v4/editor/transformers/markdown-image-transformer"
 import { TABLE } from "@/registry/new-york-v4/editor/transformers/markdown-table-transformer"
@@ -69,7 +63,6 @@ const editorConfig: InitialConfigType = {
     HorizontalRuleNode,
     ImageNode,
     EmojiNode,
-    EquationNode,
     AutoLinkNode,
     TweetNode,
   ],
@@ -125,17 +118,10 @@ export function Plugins() {
           ErrorBoundary={LexicalErrorBoundary}
         />
         <TablePlugin />
-        <TableCellResizerPlugin />
-        <TableHoverActionsPlugin anchorElem={floatingAnchorElem} />
-        <TableActionMenuPlugin
-          anchorElem={floatingAnchorElem}
-          cellMerge={true}
-        />
 
         <HorizontalRulePlugin />
         <ImagesPlugin />
         <EmojisPlugin />
-        <EquationsPlugin />
         <TwitterPlugin />
         <CheckListPlugin />
         <ListPlugin />
@@ -146,7 +132,6 @@ export function Plugins() {
             HR,
             IMAGE,
             EMOJI,
-            EQUATION,
             TWEET,
             CHECK_LIST,
             ...ELEMENT_TRANSFORMERS,

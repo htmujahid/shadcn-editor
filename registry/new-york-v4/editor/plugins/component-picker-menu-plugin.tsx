@@ -25,7 +25,10 @@ import {
 import { ComponentPickerOption } from "./picker/component-picker-option"
 
 const LexicalTypeaheadMenuPlugin = dynamic(
-  () => import("./default/lexical-typeahead-menu-plugin"),
+  () =>
+    import("@lexical/react/LexicalTypeaheadMenuPlugin").then(
+      (mod) => mod.LexicalTypeaheadMenuPlugin
+    ),
   { ssr: false }
 )
 

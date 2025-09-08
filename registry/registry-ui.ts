@@ -1,4 +1,4 @@
-import { Registry } from "./schema"
+import { type Registry } from "shadcn/schema"
 
 export const ui: Registry["items"] = [
   {
@@ -557,16 +557,6 @@ export const ui: Registry["items"] = [
         type: "registry:component",
       },
       {
-        path: "editor/plugins/embeds/figma-plugin.tsx",
-        target: "components/editor/plugins/embeds/figma-plugin.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/nodes/embeds/figma-node.tsx",
-        target: "components/editor/nodes/embeds/figma-node.tsx",
-        type: "registry:component",
-      },
-      {
         path: "editor/plugins/embeds/twitter-plugin.tsx",
         target: "components/editor/plugins/embeds/twitter-plugin.tsx",
         type: "registry:component",
@@ -635,12 +625,6 @@ export const ui: Registry["items"] = [
         target: "components/editor/plugins/picker/component-picker-option.tsx",
         type: "registry:component",
       },
-      {
-        path: "editor/plugins/default/lexical-typeahead-menu-plugin.ts",
-        target:
-          "components/editor/plugins/default/lexical-typeahead-menu-plugin.ts",
-        type: "registry:component",
-      },
     ],
   },
   {
@@ -692,43 +676,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "collapsible-plugin",
-    type: "registry:ui",
-    dependencies: ["@lexical/utils"],
-    registryDependencies: [
-      "select",
-      "https://shadcn-editor.vercel.app/r/toolbar-plugin.json",
-    ],
-    files: [
-      {
-        path: "editor/plugins/collapsible-plugin.tsx",
-        target: "components/editor/plugins/collapsible-plugin.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/nodes/collapsible-container-node.ts",
-        target: "components/editor/nodes/collapsible-container-node.ts",
-        type: "registry:component",
-      },
-      {
-        path: "editor/nodes/collapsible-content-node.ts",
-        target: "components/editor/nodes/collapsible-content-node.ts",
-        type: "registry:component",
-      },
-      {
-        path: "editor/nodes/collapsible-title-node.ts",
-        target: "components/editor/nodes/collapsible-title-node.ts",
-        type: "registry:component",
-      },
-      {
-        path: "editor/plugins/toolbar/block-insert/insert-collapsible-container.tsx",
-        target:
-          "components/editor/plugins/toolbar/block-insert/insert-collapsible-container.tsx",
-        type: "registry:component",
-      },
-    ],
-  },
-  {
     name: "context-menu-plugin",
     type: "registry:ui",
     dependencies: ["@lexical/link"],
@@ -741,12 +688,6 @@ export const ui: Registry["items"] = [
       {
         path: "editor/plugins/context-menu-plugin.tsx",
         target: "components/editor/plugins/context-menu-plugin.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/plugins/default/lexical-context-menu-plugin.tsx",
-        target:
-          "components/editor/plugins/default/lexical-context-menu-plugin.tsx",
         type: "registry:component",
       },
     ],
@@ -812,114 +753,6 @@ export const ui: Registry["items"] = [
       {
         path: "editor/transformers/markdown-emoji-transformer.ts",
         target: "components/editor/transformers/markdown-emoji-transformer.ts",
-        type: "registry:component",
-      },
-      {
-        path: "editor/plugins/default/lexical-typeahead-menu-plugin.ts",
-        target:
-          "components/editor/plugins/default/lexical-typeahead-menu-plugin.ts",
-        type: "registry:component",
-      },
-    ],
-  },
-  {
-    name: "equation-plugin",
-    type: "registry:ui",
-    dependencies: [
-      "katex",
-      "react-error-boundary",
-      "@lexical/utils",
-      "@lexical/markdown",
-    ],
-    registryDependencies: [
-      "button",
-      "checkbox",
-      "input",
-      "label",
-      "select",
-      "textarea",
-      "https://shadcn-editor.vercel.app/r/toolbar-plugin.json",
-    ],
-    files: [
-      {
-        path: "editor/plugins/equations-plugin.tsx",
-        target: "components/editor/plugins/equations-plugin.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/nodes/equation-node.tsx",
-        target: "components/editor/nodes/equation-node.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/editor-ui/equation-component.tsx",
-        target: "components/editor/editor-ui/equation-component.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/editor-ui/equation-editor.tsx",
-        target: "components/editor/editor-ui/equation-editor.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/editor-ui/katex-equation-alterer.tsx",
-        target: "components/editor/editor-ui/katex-equation-alterer.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/editor-ui/katex-renderer.tsx",
-        target: "components/editor/editor-ui/katex-renderer.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/transformers/markdown-equation-transformer.ts",
-        target:
-          "components/editor/transformers/markdown-equation-transformer.ts",
-        type: "registry:component",
-      },
-      {
-        path: "editor/plugins/toolbar/block-insert/insert-equation.tsx",
-        target:
-          "components/editor/plugins/toolbar/block-insert/insert-equation.tsx",
-        type: "registry:component",
-      },
-    ],
-  },
-  {
-    name: "excalidraw-plugin",
-    dependencies: ["@excalidraw/excalidraw", "@lexical/utils"],
-    type: "registry:ui",
-    registryDependencies: [
-      "button",
-      "dialog",
-      "select",
-      "https://shadcn-editor.vercel.app/r/toolbar-plugin.json",
-    ],
-    files: [
-      {
-        path: "editor/plugins/excalidraw-plugin.tsx",
-        target: "components/editor/plugins/excalidraw-plugin.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/nodes/excalidraw-node.tsx",
-        target: "components/editor/nodes/excalidraw-node.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/editor-ui/excalidraw-modal.tsx",
-        target: "components/editor/editor-ui/excalidraw-modal.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/editor-ui/excalidraw-component.tsx",
-        target: "components/editor/editor-ui/excalidraw-component.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/plugins/toolbar/block-insert/insert-excalidraw.tsx",
-        target:
-          "components/editor/plugins/toolbar/block-insert/insert-excalidraw.tsx",
         type: "registry:component",
       },
     ],
@@ -1049,59 +882,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "inline-image-plugin",
-    type: "registry:ui",
-    dependencies: ["@lexical/utils"],
-    registryDependencies: [
-      "button",
-      "checkbox",
-      "dialog",
-      "input",
-      "label",
-      "select",
-      "https://shadcn-editor.vercel.app/r/toolbar-plugin.json",
-      "https://shadcn-editor.vercel.app/r/link-plugin.json",
-    ],
-    files: [
-      {
-        path: "editor/plugins/inline-image-plugin.tsx",
-        target: "components/editor/plugins/inline-image-plugin.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/nodes/inline-image-node.tsx",
-        target: "components/editor/nodes/inline-image-node.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/editor-ui/inline-image-component.tsx",
-        target: "components/editor/editor-ui/inline-image-component.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/editor-hooks/use-modal.tsx",
-        target: "components/editor/editor-hooks/use-modal.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/editor-ui/content-editable.tsx",
-        target: "components/editor/editor-ui/content-editable.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/shared/can-use-dom.ts",
-        target: "components/editor/shared/can-use-dom.ts",
-        type: "registry:component",
-      },
-      {
-        path: "editor/plugins/toolbar/block-insert/insert-inline-image.tsx",
-        target:
-          "components/editor/plugins/toolbar/block-insert/insert-inline-image.tsx",
-        type: "registry:component",
-      },
-    ],
-  },
-  {
     name: "keywords-plugin",
     type: "registry:ui",
     registryDependencies: [
@@ -1207,75 +987,6 @@ export const ui: Registry["items"] = [
         target: "components/editor/nodes/mention-node.ts",
         type: "registry:component",
       },
-      {
-        path: "editor/plugins/default/lexical-typeahead-menu-plugin.ts",
-        target:
-          "components/editor/plugins/default/lexical-typeahead-menu-plugin.ts",
-        type: "registry:component",
-      },
-    ],
-  },
-  {
-    name: "page-break-plugin",
-    type: "registry:ui",
-    dependencies: ["@lexical/utils"],
-    registryDependencies: [
-      "select",
-      "https://shadcn-editor.vercel.app/r/toolbar-plugin.json",
-    ],
-    files: [
-      {
-        path: "editor/plugins/page-break-plugin.tsx",
-        target: "components/editor/plugins/page-break-plugin.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/nodes/page-break-node.tsx",
-        target: "components/editor/nodes/page-break-node.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/plugins/toolbar/block-insert/insert-page-break.tsx",
-        target:
-          "components/editor/plugins/toolbar/block-insert/insert-page-break.tsx",
-        type: "registry:component",
-      },
-    ],
-  },
-  {
-    name: "poll-plugin",
-    type: "registry:ui",
-    dependencies: ["@lexical/utils"],
-    registryDependencies: [
-      "button",
-      "dialog",
-      "input",
-      "label",
-      "select",
-      "https://shadcn-editor.vercel.app/r/toolbar-plugin.json",
-    ],
-    files: [
-      {
-        path: "editor/plugins/poll-plugin.tsx",
-        target: "components/editor/plugins/poll-plugin.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/nodes/poll-node.tsx",
-        target: "components/editor/nodes/poll-node.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/editor-ui/poll-component.tsx",
-        target: "components/editor/editor-ui/poll-component.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/plugins/toolbar/block-insert/insert-poll.tsx",
-        target:
-          "components/editor/plugins/toolbar/block-insert/insert-poll.tsx",
-        type: "registry:component",
-      },
     ],
   },
   {
@@ -1302,21 +1013,6 @@ export const ui: Registry["items"] = [
       {
         path: "editor/plugins/table-plugin.tsx",
         target: "components/editor/plugins/table-plugin.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/plugins/table-action-menu-plugin.tsx",
-        target: "components/editor/plugins/table-action-menu-plugin.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/plugins/table-cell-resizer-plugin.tsx",
-        target: "components/editor/plugins/table-cell-resizer-plugin.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "editor/plugins/table-hover-actions-plugin.tsx",
-        target: "components/editor/plugins/table-hover-actions-plugin.tsx",
         type: "registry:component",
       },
       {

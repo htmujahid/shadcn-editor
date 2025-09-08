@@ -9,7 +9,7 @@ import { ComponentPickerOption } from "@/registry/new-york-v4/editor/plugins/pic
 export function EmbedsPickerPlugin({
   embed,
 }: {
-  embed: "figma" | "tweet" | "youtube-video"
+  embed: "tweet" | "youtube-video"
 }) {
   const embedConfig = EmbedConfigs.find(
     (config) => config.type === embed

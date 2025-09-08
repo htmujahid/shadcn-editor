@@ -1,12 +1,12 @@
 import * as React from "react"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
+import { registryItemSchema } from "shadcn/schema"
 import { z } from "zod"
 
 import { siteConfig } from "@/lib/config"
 import { getRegistryComponent, getRegistryItem } from "@/lib/registry"
 import { absoluteUrl, cn } from "@/lib/utils"
-import { registryItemSchema } from "shadcn/registry"
 
 export const revalidate = false
 export const dynamic = "force-static"
@@ -34,7 +34,7 @@ export async function generateMetadata({
   const description = item.description
 
   return {
-    title: `${item.name}${item.description ? ` - ${item.description}` : ""}`,
+    title: item.description,
     description,
     openGraph: {
       title,
