@@ -3,7 +3,7 @@
   "name": "draggable-block-plugin-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/draggable-block-plugin.json"
+    "@shadcn-editor/draggable-block-plugin"
   ],
   "files": [
     {

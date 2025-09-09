@@ -3,7 +3,7 @@
   "name": "auto-focus-plugin-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/auto-focus-plugin.json"
+    "@shadcn-editor/auto-focus-plugin"
   ],
   "files": [
     {

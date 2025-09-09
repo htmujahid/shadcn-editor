@@ -3,7 +3,7 @@
   "name": "context-menu-plugin-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/context-menu-plugin.json"
+    "@shadcn-editor/context-menu-plugin"
   ],
   "files": [
     {

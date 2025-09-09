@@ -3,7 +3,7 @@
   "name": "floating-text-format-plugin-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/floating-text-format-plugin.json"
+    "@shadcn-editor/floating-text-format-plugin"
   ],
   "files": [
     {

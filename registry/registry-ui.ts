@@ -5,7 +5,7 @@ export const ui: Registry["items"] = [
     name: "rich-text-editor-plugin",
     type: "registry:ui",
     dependencies: ["@lexical/rich-text"],
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/editor.json"],
+    registryDependencies: ["@shadcn-editor/editor"],
     files: [
       {
         path: "editor/editor-ui/content-editable.tsx",
@@ -17,9 +17,7 @@ export const ui: Registry["items"] = [
   {
     name: "toolbar-plugin",
     type: "registry:ui",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [
       {
         path: "editor/plugins/toolbar/toolbar-plugin.tsx",
@@ -42,10 +40,7 @@ export const ui: Registry["items"] = [
     name: "history-toolbar-plugin",
     type: "registry:ui",
     dependencies: ["@lexical/utils"],
-    registryDependencies: [
-      "button",
-      "https://shadcn-editor.vercel.app/r/toolbar-plugin.json",
-    ],
+    registryDependencies: ["button", "@shadcn-editor/toolbar-plugin"],
     files: [
       {
         path: "editor/plugins/toolbar/history-toolbar-plugin.tsx",
@@ -57,10 +52,7 @@ export const ui: Registry["items"] = [
   {
     name: "block-format-toolbar-plugin",
     type: "registry:ui",
-    registryDependencies: [
-      "select",
-      "https://shadcn-editor.vercel.app/r/toolbar-plugin.json",
-    ],
+    registryDependencies: ["select", "@shadcn-editor/toolbar-plugin"],
     dependencies: [
       "@lexical/list",
       "@lexical/utils",
@@ -127,10 +119,7 @@ export const ui: Registry["items"] = [
     name: "font-family-toolbar-plugin",
     type: "registry:ui",
     dependencies: ["@lexical/selection"],
-    registryDependencies: [
-      "select",
-      "https://shadcn-editor.vercel.app/r/toolbar-plugin.json",
-    ],
+    registryDependencies: ["select", "@shadcn-editor/toolbar-plugin"],
     files: [
       {
         path: "editor/plugins/toolbar/font-family-toolbar-plugin.tsx",
@@ -149,11 +138,7 @@ export const ui: Registry["items"] = [
     name: "font-size-toolbar-plugin",
     type: "registry:ui",
     dependencies: ["@lexical/selection"],
-    registryDependencies: [
-      "button",
-      "input",
-      "https://shadcn-editor.vercel.app/r/toolbar-plugin.json",
-    ],
+    registryDependencies: ["button", "input", "@shadcn-editor/toolbar-plugin"],
     files: [
       {
         path: "editor/plugins/toolbar/font-size-toolbar-plugin.tsx",
@@ -172,10 +157,7 @@ export const ui: Registry["items"] = [
     name: "font-format-toolbar-plugin",
     type: "registry:ui",
     dependencies: ["@lexical/table"],
-    registryDependencies: [
-      "toggle",
-      "https://shadcn-editor.vercel.app/r/toolbar-plugin.json",
-    ],
+    registryDependencies: ["toggle", "@shadcn-editor/toolbar-plugin"],
     files: [
       {
         path: "editor/plugins/toolbar/font-format-toolbar-plugin.tsx",
@@ -194,10 +176,7 @@ export const ui: Registry["items"] = [
     name: "subsuper-toolbar-plugin",
     type: "registry:ui",
     dependencies: ["@lexical/table"],
-    registryDependencies: [
-      "toggle-group",
-      "https://shadcn-editor.vercel.app/r/toolbar-plugin.json",
-    ],
+    registryDependencies: ["toggle-group", "@shadcn-editor/toolbar-plugin"],
     files: [
       {
         path: "editor/plugins/toolbar/subsuper-toolbar-plugin.tsx",
@@ -219,7 +198,7 @@ export const ui: Registry["items"] = [
       "button",
       "input",
       "popover",
-      "https://shadcn-editor.vercel.app/r/toolbar-plugin.json",
+      "@shadcn-editor/toolbar-plugin",
     ],
     files: [
       {
@@ -253,7 +232,7 @@ export const ui: Registry["items"] = [
     registryDependencies: [
       "separator",
       "toggle-group",
-      "https://shadcn-editor.vercel.app/r/toolbar-plugin.json",
+      "@shadcn-editor/toolbar-plugin",
     ],
     files: [
       {
@@ -278,10 +257,7 @@ export const ui: Registry["items"] = [
     name: "clear-formatting-toolbar-plugin",
     type: "registry:ui",
     dependencies: ["@lexical/utils", "@lexical/table"],
-    registryDependencies: [
-      "button",
-      "https://shadcn-editor.vercel.app/r/toolbar-plugin.json",
-    ],
+    registryDependencies: ["button", "@shadcn-editor/toolbar-plugin"],
     files: [
       {
         path: "editor/plugins/toolbar/clear-formatting-toolbar-plugin.tsx",
@@ -299,7 +275,7 @@ export const ui: Registry["items"] = [
       "toggle",
       "button",
       "input",
-      "https://shadcn-editor.vercel.app/r/toolbar-plugin.json",
+      "@shadcn-editor/toolbar-plugin",
     ],
     files: [
       {
@@ -327,9 +303,7 @@ export const ui: Registry["items"] = [
   {
     name: "actions-plugin",
     type: "registry:ui",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [
       {
         path: "editor/plugins/actions/actions-plugin.tsx",
@@ -342,9 +316,7 @@ export const ui: Registry["items"] = [
     name: "max-length-plugin",
     type: "registry:ui",
     dependencies: ["@lexical/utils", "@lexical/selection"],
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/actions-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/actions-plugin"],
     files: [
       {
         path: "editor/plugins/actions/max-length-plugin.tsx",
@@ -357,9 +329,7 @@ export const ui: Registry["items"] = [
     name: "counter-character-plugin",
     type: "registry:ui",
     dependencies: ["@lexical/text"],
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/actions-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/actions-plugin"],
     files: [
       {
         path: "editor/plugins/actions/counter-character-plugin.tsx",
@@ -375,7 +345,7 @@ export const ui: Registry["items"] = [
     registryDependencies: [
       "button",
       "tooltip",
-      "https://shadcn-editor.vercel.app/r/actions-plugin.json",
+      "@shadcn-editor/actions-plugin",
     ],
     files: [
       {
@@ -404,7 +374,7 @@ export const ui: Registry["items"] = [
       "tooltip",
       "sonner",
       "toast",
-      "https://shadcn-editor.vercel.app/r/actions-plugin.json",
+      "@shadcn-editor/actions-plugin",
     ],
     files: [
       {
@@ -426,7 +396,7 @@ export const ui: Registry["items"] = [
     registryDependencies: [
       "button",
       "tooltip",
-      "https://shadcn-editor.vercel.app/r/actions-plugin.json",
+      "@shadcn-editor/actions-plugin",
     ],
     files: [
       {
@@ -440,10 +410,7 @@ export const ui: Registry["items"] = [
     name: "markdown-toggle-plugin",
     type: "registry:ui",
     dependencies: ["@lexical/markdown", "@lexical/code"],
-    registryDependencies: [
-      "button",
-      "https://shadcn-editor.vercel.app/r/actions-plugin.json",
-    ],
+    registryDependencies: ["button", "@shadcn-editor/actions-plugin"],
     files: [
       {
         path: "editor/plugins/actions/markdown-toggle-plugin.tsx",
@@ -459,7 +426,7 @@ export const ui: Registry["items"] = [
       "button",
       "dialog",
       "tooltip",
-      "https://shadcn-editor.vercel.app/r/actions-plugin.json",
+      "@shadcn-editor/actions-plugin",
     ],
     files: [
       {
@@ -475,7 +442,7 @@ export const ui: Registry["items"] = [
     registryDependencies: [
       "button",
       "tooltip",
-      "https://shadcn-editor.vercel.app/r/actions-plugin.json",
+      "@shadcn-editor/actions-plugin",
     ],
     files: [
       {
@@ -492,7 +459,7 @@ export const ui: Registry["items"] = [
       "button",
       "dialog",
       "scroll-area",
-      "https://shadcn-editor.vercel.app/r/actions-plugin.json",
+      "@shadcn-editor/actions-plugin",
     ],
     files: [
       {
@@ -506,9 +473,7 @@ export const ui: Registry["items"] = [
     name: "autocomplete-plugin",
     type: "registry:ui",
     dependencies: ["@lexical/utils", "@lexical/selection"],
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [
       {
         path: "editor/plugins/autocomplete-plugin.tsx",
@@ -538,7 +503,7 @@ export const ui: Registry["items"] = [
       "input",
       "popover",
       "select",
-      "https://shadcn-editor.vercel.app/r/toolbar-plugin.json",
+      "@shadcn-editor/toolbar-plugin",
     ],
     files: [
       {
@@ -587,9 +552,7 @@ export const ui: Registry["items"] = [
   {
     name: "auto-focus-plugin",
     type: "registry:ui",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
   },
   {
     name: "component-picker-menu-plugin",
@@ -597,7 +560,7 @@ export const ui: Registry["items"] = [
     registryDependencies: [
       "command",
       "dialog",
-      "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json",
+      "@shadcn-editor/rich-text-editor-plugin",
     ],
     files: [
       {
@@ -627,10 +590,7 @@ export const ui: Registry["items"] = [
       "@lexical/selection",
     ],
     devDependencies: ["@types/lodash"],
-    registryDependencies: [
-      "select",
-      "https://shadcn-editor.vercel.app/r/toolbar-plugin.json",
-    ],
+    registryDependencies: ["select", "@shadcn-editor/toolbar-plugin"],
     files: [
       {
         path: "editor/plugins/code-action-menu-plugin.tsx",
@@ -673,7 +633,7 @@ export const ui: Registry["items"] = [
     registryDependencies: [
       "command",
       "popover",
-      "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json",
+      "@shadcn-editor/rich-text-editor-plugin",
     ],
     files: [
       {
@@ -686,9 +646,7 @@ export const ui: Registry["items"] = [
   {
     name: "draggable-block-plugin",
     type: "registry:ui",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [
       {
         path: "editor/plugins/draggable-block-plugin.tsx",
@@ -702,8 +660,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     dependencies: ["@lexical/utils"],
     registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json",
-      "https://shadcn-editor.vercel.app/r/image-plugin.json",
+      "@shadcn-editor/rich-text-editor-plugin",
+      "@shadcn-editor/image-plugin",
     ],
     files: [
       {
@@ -716,10 +674,7 @@ export const ui: Registry["items"] = [
   {
     name: "emoji-plugin",
     type: "registry:ui",
-    registryDependencies: [
-      "command",
-      "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json",
-    ],
+    registryDependencies: ["command", "@shadcn-editor/rich-text-editor-plugin"],
     files: [
       {
         path: "editor/plugins/emojis-plugin.tsx",
@@ -760,7 +715,7 @@ export const ui: Registry["items"] = [
     registryDependencies: [
       "separator",
       "toggle-group",
-      "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json",
+      "@shadcn-editor/rich-text-editor-plugin",
     ],
     files: [
       {
@@ -789,18 +744,13 @@ export const ui: Registry["items"] = [
     name: "hashtag-plugin",
     type: "registry:ui",
     dependencies: ["@lexical/hashtag"],
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
   },
   {
     name: "horizontal-rule-plugin",
     type: "registry:ui",
     dependencies: ["@lexical/utils"],
-    registryDependencies: [
-      "select",
-      "https://shadcn-editor.vercel.app/r/toolbar-plugin.json",
-    ],
+    registryDependencies: ["select", "@shadcn-editor/toolbar-plugin"],
     files: [
       {
         path: "editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx",
@@ -826,7 +776,7 @@ export const ui: Registry["items"] = [
       "label",
       "select",
       "tabs",
-      "https://shadcn-editor.vercel.app/r/toolbar-plugin.json",
+      "@shadcn-editor/toolbar-plugin",
     ],
     files: [
       {
@@ -870,9 +820,7 @@ export const ui: Registry["items"] = [
   {
     name: "keywords-plugin",
     type: "registry:ui",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [
       {
         path: "editor/plugins/keywords-plugin.tsx",
@@ -890,11 +838,7 @@ export const ui: Registry["items"] = [
     name: "layout-plugin",
     type: "registry:ui",
     dependencies: ["@lexical/utils"],
-    registryDependencies: [
-      "button",
-      "select",
-      "https://shadcn-editor.vercel.app/r/toolbar-plugin.json",
-    ],
+    registryDependencies: ["button", "select", "@shadcn-editor/toolbar-plugin"],
     files: [
       {
         path: "editor/plugins/layout-plugin.tsx",
@@ -922,9 +866,7 @@ export const ui: Registry["items"] = [
   {
     name: "link-plugin",
     type: "registry:ui",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/link-toolbar-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/link-toolbar-plugin"],
     files: [
       {
         path: "editor/plugins/link-plugin.tsx",
@@ -944,8 +886,8 @@ export const ui: Registry["items"] = [
     dependencies: ["@lexical/markdown"],
     registryDependencies: [
       "button",
-      "https://shadcn-editor.vercel.app/r/actions-plugin.json",
-      "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json",
+      "@shadcn-editor/actions-plugin",
+      "@shadcn-editor/rich-text-editor-plugin",
     ],
     files: [
       {
@@ -958,10 +900,7 @@ export const ui: Registry["items"] = [
   {
     name: "mention-plugin",
     type: "registry:ui",
-    registryDependencies: [
-      "command",
-      "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json",
-    ],
+    registryDependencies: ["command", "@shadcn-editor/rich-text-editor-plugin"],
     files: [
       {
         path: "editor/plugins/mentions-plugin.tsx",
@@ -994,7 +933,7 @@ export const ui: Registry["items"] = [
       "label",
       "popover",
       "select",
-      "https://shadcn-editor.vercel.app/r/toolbar-plugin.json",
+      "@shadcn-editor/toolbar-plugin",
     ],
     files: [
       {
@@ -1038,9 +977,7 @@ export const ui: Registry["items"] = [
   {
     name: "tab-focus-plugin",
     type: "registry:ui",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [
       {
         path: "editor/plugins/tab-focus-plugin.tsx",
@@ -1052,9 +989,7 @@ export const ui: Registry["items"] = [
   {
     name: "typing-pref-plugin",
     type: "registry:ui",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [
       {
         path: "editor/plugins/typing-pref-plugin.tsx",

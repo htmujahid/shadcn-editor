@@ -3,7 +3,7 @@
   "name": "element-format-toolbar-plugin-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/element-format-toolbar-plugin.json"
+    "@shadcn-editor/element-format-toolbar-plugin"
   ],
   "files": [
     {

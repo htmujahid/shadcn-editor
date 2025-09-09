@@ -3,7 +3,7 @@
   "name": "share-content-plugin-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/share-content-plugin.json"
+    "@shadcn-editor/share-content-plugin"
   ],
   "files": [
     {

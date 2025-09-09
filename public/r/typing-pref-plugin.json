@@ -3,7 +3,7 @@
   "name": "typing-pref-plugin",
   "type": "registry:ui",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"
+    "@shadcn-editor/rich-text-editor-plugin"
   ],
   "files": [
     {

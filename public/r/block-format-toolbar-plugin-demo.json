@@ -3,7 +3,7 @@
   "name": "block-format-toolbar-plugin-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/block-format-toolbar-plugin.json"
+    "@shadcn-editor/block-format-toolbar-plugin"
   ],
   "files": [
     {

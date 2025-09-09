@@ -3,7 +3,7 @@
   "name": "code-plugin-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/code-plugin.json"
+    "@shadcn-editor/code-plugin"
   ],
   "files": [
     {

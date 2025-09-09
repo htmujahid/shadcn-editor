@@ -3,7 +3,7 @@
   "name": "horizontal-rule-plugin-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/horizontal-rule-plugin.json"
+    "@shadcn-editor/horizontal-rule-plugin"
   ],
   "files": [
     {

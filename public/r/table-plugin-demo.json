@@ -3,7 +3,7 @@
   "name": "table-plugin-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/table-plugin.json"
+    "@shadcn-editor/table-plugin"
   ],
   "files": [
     {

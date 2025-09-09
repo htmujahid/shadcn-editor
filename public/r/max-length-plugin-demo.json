@@ -3,7 +3,7 @@
   "name": "max-length-plugin-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/max-length-plugin.json"
+    "@shadcn-editor/max-length-plugin"
   ],
   "files": [
     {

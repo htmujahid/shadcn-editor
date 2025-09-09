@@ -3,7 +3,7 @@
   "name": "counter-character-plugin-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/counter-character-plugin.json"
+    "@shadcn-editor/counter-character-plugin"
   ],
   "files": [
     {

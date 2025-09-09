@@ -209,11 +209,11 @@ function BlockViewerToolbar() {
           className="w-fit gap-1 px-2 shadow-none"
           size="sm"
           onClick={() => {
-            copyToClipboard(`npx shadcn@latest add ${item.name}`)
+            copyToClipboard(`npx shadcn@latest add @shadcn-editor/${item.name}`)
           }}
         >
           {isCopied ? <Check /> : <Terminal />}
-          <span>npx shadcn add {item.name}</span>
+          <span>npx shadcn add @shadcn-editor/{item.name}</span>
         </Button>
         <Separator orientation="vertical" className="mx-1 !h-4" />
         <OpenInV0Button name={item.name} />

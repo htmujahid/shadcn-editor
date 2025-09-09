@@ -3,7 +3,7 @@
   "name": "history-toolbar-plugin-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/history-toolbar-plugin.json"
+    "@shadcn-editor/history-toolbar-plugin"
   ],
   "files": [
     {

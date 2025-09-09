@@ -41,7 +41,7 @@
         "@lexical/rich-text"
       ],
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/editor.json"
+        "@shadcn-editor/editor"
       ],
       "files": [
         {
@@ -55,7 +55,7 @@
       "name": "toolbar-plugin",
       "type": "registry:ui",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"
+        "@shadcn-editor/rich-text-editor-plugin"
       ],
       "files": [
         {
@@ -83,7 +83,7 @@
       ],
       "registryDependencies": [
         "button",
-        "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
+        "@shadcn-editor/toolbar-plugin"
       ],
       "files": [
         {
@@ -104,7 +104,7 @@
       ],
       "registryDependencies": [
         "select",
-        "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
+        "@shadcn-editor/toolbar-plugin"
       ],
       "files": [
         {
@@ -162,7 +162,7 @@
       ],
       "registryDependencies": [
         "select",
-        "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
+        "@shadcn-editor/toolbar-plugin"
       ],
       "files": [
         {
@@ -186,7 +186,7 @@
       "registryDependencies": [
         "button",
         "input",
-        "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
+        "@shadcn-editor/toolbar-plugin"
       ],
       "files": [
         {
@@ -209,7 +209,7 @@
       ],
       "registryDependencies": [
         "toggle",
-        "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
+        "@shadcn-editor/toolbar-plugin"
       ],
       "files": [
         {
@@ -232,7 +232,7 @@
       ],
       "registryDependencies": [
         "toggle-group",
-        "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
+        "@shadcn-editor/toolbar-plugin"
       ],
       "files": [
         {
@@ -258,7 +258,7 @@
         "button",
         "input",
         "popover",
-        "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
+        "@shadcn-editor/toolbar-plugin"
       ],
       "files": [
         {
@@ -294,7 +294,7 @@
       "registryDependencies": [
         "separator",
         "toggle-group",
-        "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
+        "@shadcn-editor/toolbar-plugin"
       ],
       "files": [
         {
@@ -323,7 +323,7 @@
       ],
       "registryDependencies": [
         "button",
-        "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
+        "@shadcn-editor/toolbar-plugin"
       ],
       "files": [
         {
@@ -345,7 +345,7 @@
         "toggle",
         "button",
         "input",
-        "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
+        "@shadcn-editor/toolbar-plugin"
       ],
       "files": [
         {
@@ -374,7 +374,7 @@
       "name": "actions-plugin",
       "type": "registry:ui",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"
+        "@shadcn-editor/rich-text-editor-plugin"
       ],
       "files": [
         {
@@ -392,7 +392,7 @@
         "@lexical/selection"
       ],
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/actions-plugin.json"
+        "@shadcn-editor/actions-plugin"
       ],
       "files": [
         {
@@ -409,7 +409,7 @@
         "@lexical/text"
       ],
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/actions-plugin.json"
+        "@shadcn-editor/actions-plugin"
       ],
       "files": [
         {
@@ -425,7 +425,7 @@
       "registryDependencies": [
         "button",
         "tooltip",
-        "https://shadcn-editor.vercel.app/r/actions-plugin.json"
+        "@shadcn-editor/actions-plugin"
       ],
       "files": [
         {
@@ -457,7 +457,7 @@
         "tooltip",
         "sonner",
         "toast",
-        "https://shadcn-editor.vercel.app/r/actions-plugin.json"
+        "@shadcn-editor/actions-plugin"
       ],
       "files": [
         {
@@ -481,7 +481,7 @@
       "registryDependencies": [
         "button",
         "tooltip",
-        "https://shadcn-editor.vercel.app/r/actions-plugin.json"
+        "@shadcn-editor/actions-plugin"
       ],
       "files": [
         {
@@ -500,7 +500,7 @@
       ],
       "registryDependencies": [
         "button",
-        "https://shadcn-editor.vercel.app/r/actions-plugin.json"
+        "@shadcn-editor/actions-plugin"
       ],
       "files": [
         {
@@ -517,7 +517,7 @@
         "button",
         "dialog",
         "tooltip",
-        "https://shadcn-editor.vercel.app/r/actions-plugin.json"
+        "@shadcn-editor/actions-plugin"
       ],
       "files": [
         {
@@ -533,7 +533,7 @@
       "registryDependencies": [
         "button",
         "tooltip",
-        "https://shadcn-editor.vercel.app/r/actions-plugin.json"
+        "@shadcn-editor/actions-plugin"
       ],
       "files": [
         {
@@ -550,7 +550,7 @@
         "button",
         "dialog",
         "scroll-area",
-        "https://shadcn-editor.vercel.app/r/actions-plugin.json"
+        "@shadcn-editor/actions-plugin"
       ],
       "files": [
         {
@@ -568,7 +568,7 @@
         "@lexical/selection"
       ],
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"
+        "@shadcn-editor/rich-text-editor-plugin"
       ],
       "files": [
         {
@@ -602,7 +602,7 @@
         "input",
         "popover",
         "select",
-        "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
+        "@shadcn-editor/toolbar-plugin"
       ],
       "files": [
         {
@@ -651,7 +651,7 @@
       "name": "auto-focus-plugin",
       "type": "registry:ui",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"
+        "@shadcn-editor/rich-text-editor-plugin"
       ]
     },
     {
@@ -660,7 +660,7 @@
       "registryDependencies": [
         "command",
         "dialog",
-        "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"
+        "@shadcn-editor/rich-text-editor-plugin"
       ],
       "files": [
         {
@@ -694,7 +694,7 @@
       ],
       "registryDependencies": [
         "select",
-        "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
+        "@shadcn-editor/toolbar-plugin"
       ],
       "files": [
         {
@@ -738,7 +738,7 @@
       "registryDependencies": [
         "command",
         "popover",
-        "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"
+        "@shadcn-editor/rich-text-editor-plugin"
       ],
       "files": [
         {
@@ -752,7 +752,7 @@
       "name": "draggable-block-plugin",
       "type": "registry:ui",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"
+        "@shadcn-editor/rich-text-editor-plugin"
       ],
       "files": [
         {
@@ -769,8 +769,8 @@
         "@lexical/utils"
       ],
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json",
-        "https://shadcn-editor.vercel.app/r/image-plugin.json"
+        "@shadcn-editor/rich-text-editor-plugin",
+        "@shadcn-editor/image-plugin"
       ],
       "files": [
         {
@@ -785,7 +785,7 @@
       "type": "registry:ui",
       "registryDependencies": [
         "command",
-        "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"
+        "@shadcn-editor/rich-text-editor-plugin"
       ],
       "files": [
         {
@@ -827,7 +827,7 @@
       "registryDependencies": [
         "separator",
         "toggle-group",
-        "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"
+        "@shadcn-editor/rich-text-editor-plugin"
       ],
       "files": [
         {
@@ -859,7 +859,7 @@
         "@lexical/hashtag"
       ],
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"
+        "@shadcn-editor/rich-text-editor-plugin"
       ]
     },
     {
@@ -870,7 +870,7 @@
       ],
       "registryDependencies": [
         "select",
-        "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
+        "@shadcn-editor/toolbar-plugin"
       ],
       "files": [
         {
@@ -899,7 +899,7 @@
         "label",
         "select",
         "tabs",
-        "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
+        "@shadcn-editor/toolbar-plugin"
       ],
       "files": [
         {
@@ -943,7 +943,7 @@
       "name": "keywords-plugin",
       "type": "registry:ui",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"
+        "@shadcn-editor/rich-text-editor-plugin"
       ],
       "files": [
         {
@@ -967,7 +967,7 @@
       "registryDependencies": [
         "button",
         "select",
-        "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
+        "@shadcn-editor/toolbar-plugin"
       ],
       "files": [
         {
@@ -996,7 +996,7 @@
       "name": "link-plugin",
       "type": "registry:ui",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/link-toolbar-plugin.json"
+        "@shadcn-editor/link-toolbar-plugin"
       ],
       "files": [
         {
@@ -1019,8 +1019,8 @@
       ],
       "registryDependencies": [
         "button",
-        "https://shadcn-editor.vercel.app/r/actions-plugin.json",
-        "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"
+        "@shadcn-editor/actions-plugin",
+        "@shadcn-editor/rich-text-editor-plugin"
       ],
       "files": [
         {
@@ -1035,7 +1035,7 @@
       "type": "registry:ui",
       "registryDependencies": [
         "command",
-        "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"
+        "@shadcn-editor/rich-text-editor-plugin"
       ],
       "files": [
         {
@@ -1071,7 +1071,7 @@
         "label",
         "popover",
         "select",
-        "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
+        "@shadcn-editor/toolbar-plugin"
       ],
       "files": [
         {
@@ -1115,7 +1115,7 @@
       "name": "tab-focus-plugin",
       "type": "registry:ui",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"
+        "@shadcn-editor/rich-text-editor-plugin"
       ],
       "files": [
         {
@@ -1129,7 +1129,7 @@
       "name": "typing-pref-plugin",
       "type": "registry:ui",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"
+        "@shadcn-editor/rich-text-editor-plugin"
       ],
       "files": [
         {
@@ -1875,7 +1875,7 @@
       "name": "rich-text-editor-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"
+        "@shadcn-editor/rich-text-editor-plugin"
       ],
       "files": [
         {
@@ -1888,7 +1888,7 @@
       "name": "actions-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/actions-plugin.json",
+        "@shadcn-editor/actions-plugin",
         "button"
       ],
       "files": [
@@ -1902,7 +1902,7 @@
       "name": "autocomplete-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/autocomplete-plugin.json",
+        "@shadcn-editor/autocomplete-plugin",
         "button"
       ],
       "files": [
@@ -1916,7 +1916,7 @@
       "name": "auto-embed-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/auto-embed-plugin.json"
+        "@shadcn-editor/auto-embed-plugin"
       ],
       "files": [
         {
@@ -1929,7 +1929,7 @@
       "name": "auto-focus-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/auto-focus-plugin.json"
+        "@shadcn-editor/auto-focus-plugin"
       ],
       "files": [
         {
@@ -1942,7 +1942,7 @@
       "name": "block-format-toolbar-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/block-format-toolbar-plugin.json"
+        "@shadcn-editor/block-format-toolbar-plugin"
       ],
       "files": [
         {
@@ -1955,7 +1955,7 @@
       "name": "clear-editor-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/clear-editor-plugin.json"
+        "@shadcn-editor/clear-editor-plugin"
       ],
       "files": [
         {
@@ -1968,7 +1968,7 @@
       "name": "clear-formatting-toolbar-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/clear-formatting-toolbar-plugin.json"
+        "@shadcn-editor/clear-formatting-toolbar-plugin"
       ],
       "files": [
         {
@@ -1981,7 +1981,7 @@
       "name": "code-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/code-plugin.json"
+        "@shadcn-editor/code-plugin"
       ],
       "files": [
         {
@@ -1994,7 +1994,7 @@
       "name": "component-picker-menu-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/component-picker-menu-plugin.json"
+        "@shadcn-editor/component-picker-menu-plugin"
       ],
       "files": [
         {
@@ -2007,7 +2007,7 @@
       "name": "context-menu-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/context-menu-plugin.json"
+        "@shadcn-editor/context-menu-plugin"
       ],
       "files": [
         {
@@ -2020,7 +2020,7 @@
       "name": "counter-character-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/counter-character-plugin.json"
+        "@shadcn-editor/counter-character-plugin"
       ],
       "files": [
         {
@@ -2033,7 +2033,7 @@
       "name": "drag-drop-paste-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/drag-drop-paste-plugin.json"
+        "@shadcn-editor/drag-drop-paste-plugin"
       ],
       "files": [
         {
@@ -2046,7 +2046,7 @@
       "name": "draggable-block-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/draggable-block-plugin.json"
+        "@shadcn-editor/draggable-block-plugin"
       ],
       "files": [
         {
@@ -2059,7 +2059,7 @@
       "name": "edit-mode-toggle-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/edit-mode-toggle-plugin.json"
+        "@shadcn-editor/edit-mode-toggle-plugin"
       ],
       "files": [
         {
@@ -2072,7 +2072,7 @@
       "name": "element-format-toolbar-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/element-format-toolbar-plugin.json"
+        "@shadcn-editor/element-format-toolbar-plugin"
       ],
       "files": [
         {
@@ -2085,7 +2085,7 @@
       "name": "emoji-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/emoji-plugin.json"
+        "@shadcn-editor/emoji-plugin"
       ],
       "files": [
         {
@@ -2098,7 +2098,7 @@
       "name": "floating-text-format-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/floating-text-format-plugin.json"
+        "@shadcn-editor/floating-text-format-plugin"
       ],
       "files": [
         {
@@ -2111,7 +2111,7 @@
       "name": "font-color-toolbar-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/font-color-toolbar-plugin.json"
+        "@shadcn-editor/font-color-toolbar-plugin"
       ],
       "files": [
         {
@@ -2124,7 +2124,7 @@
       "name": "font-family-toolbar-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/font-family-toolbar-plugin.json"
+        "@shadcn-editor/font-family-toolbar-plugin"
       ],
       "files": [
         {
@@ -2137,7 +2137,7 @@
       "name": "font-format-toolbar-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/font-format-toolbar-plugin.json"
+        "@shadcn-editor/font-format-toolbar-plugin"
       ],
       "files": [
         {
@@ -2150,7 +2150,7 @@
       "name": "font-size-toolbar-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/font-size-toolbar-plugin.json"
+        "@shadcn-editor/font-size-toolbar-plugin"
       ],
       "files": [
         {
@@ -2163,7 +2163,7 @@
       "name": "hashtag-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/hashtag-plugin.json"
+        "@shadcn-editor/hashtag-plugin"
       ],
       "files": [
         {
@@ -2176,7 +2176,7 @@
       "name": "history-toolbar-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/history-toolbar-plugin.json"
+        "@shadcn-editor/history-toolbar-plugin"
       ],
       "files": [
         {
@@ -2189,7 +2189,7 @@
       "name": "horizontal-rule-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/horizontal-rule-plugin.json"
+        "@shadcn-editor/horizontal-rule-plugin"
       ],
       "files": [
         {
@@ -2202,7 +2202,7 @@
       "name": "image-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/image-plugin.json"
+        "@shadcn-editor/image-plugin"
       ],
       "files": [
         {
@@ -2215,7 +2215,7 @@
       "name": "import-export-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/import-export-plugin.json"
+        "@shadcn-editor/import-export-plugin"
       ],
       "files": [
         {
@@ -2228,7 +2228,7 @@
       "name": "keywords-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/keywords-plugin.json"
+        "@shadcn-editor/keywords-plugin"
       ],
       "files": [
         {
@@ -2241,7 +2241,7 @@
       "name": "layout-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/layout-plugin.json"
+        "@shadcn-editor/layout-plugin"
       ],
       "files": [
         {
@@ -2254,7 +2254,7 @@
       "name": "link-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/link-plugin.json"
+        "@shadcn-editor/link-plugin"
       ],
       "files": [
         {
@@ -2267,7 +2267,7 @@
       "name": "link-toolbar-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/link-toolbar-plugin.json"
+        "@shadcn-editor/link-toolbar-plugin"
       ],
       "files": [
         {
@@ -2280,7 +2280,7 @@
       "name": "markdown-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/markdown-plugin.json"
+        "@shadcn-editor/markdown-plugin"
       ],
       "files": [
         {
@@ -2293,7 +2293,7 @@
       "name": "markdown-toggle-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/markdown-toggle-plugin.json"
+        "@shadcn-editor/markdown-toggle-plugin"
       ],
       "files": [
         {
@@ -2306,7 +2306,7 @@
       "name": "max-length-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/max-length-plugin.json"
+        "@shadcn-editor/max-length-plugin"
       ],
       "files": [
         {
@@ -2319,7 +2319,7 @@
       "name": "mention-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/mention-plugin.json"
+        "@shadcn-editor/mention-plugin"
       ],
       "files": [
         {
@@ -2332,7 +2332,7 @@
       "name": "share-content-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/share-content-plugin.json"
+        "@shadcn-editor/share-content-plugin"
       ],
       "files": [
         {
@@ -2345,7 +2345,7 @@
       "name": "speech-to-text-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/speech-to-text-plugin.json"
+        "@shadcn-editor/speech-to-text-plugin"
       ],
       "files": [
         {
@@ -2358,7 +2358,7 @@
       "name": "subsuper-toolbar-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/subsuper-toolbar-plugin.json"
+        "@shadcn-editor/subsuper-toolbar-plugin"
       ],
       "files": [
         {
@@ -2371,7 +2371,7 @@
       "name": "tab-focus-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/tab-focus-plugin.json"
+        "@shadcn-editor/tab-focus-plugin"
       ],
       "files": [
         {
@@ -2384,7 +2384,7 @@
       "name": "table-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/table-plugin.json"
+        "@shadcn-editor/table-plugin"
       ],
       "files": [
         {
@@ -2397,7 +2397,7 @@
       "name": "toolbar-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
+        "@shadcn-editor/toolbar-plugin"
       ],
       "files": [
         {
@@ -2410,7 +2410,7 @@
       "name": "tree-view-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/tree-view-plugin.json"
+        "@shadcn-editor/tree-view-plugin"
       ],
       "files": [
         {
@@ -2423,7 +2423,7 @@
       "name": "typing-pref-plugin-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://shadcn-editor.vercel.app/r/typing-pref-plugin.json"
+        "@shadcn-editor/typing-pref-plugin"
       ],
       "files": [
         {

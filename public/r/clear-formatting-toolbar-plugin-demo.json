@@ -3,7 +3,7 @@
   "name": "clear-formatting-toolbar-plugin-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/clear-formatting-toolbar-plugin.json"
+    "@shadcn-editor/clear-formatting-toolbar-plugin"
   ],
   "files": [
     {

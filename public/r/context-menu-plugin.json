@@ -8,7 +8,7 @@
   "registryDependencies": [
     "command",
     "popover",
-    "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"
+    "@shadcn-editor/rich-text-editor-plugin"
   ],
   "files": [
     {

@@ -4,9 +4,7 @@ export const examples: Registry["items"] = [
   {
     name: "rich-text-editor-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [
       {
         path: "examples/rich-text-editor-plugin-demo.tsx",
@@ -17,10 +15,7 @@ export const examples: Registry["items"] = [
   {
     name: "actions-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/actions-plugin.json",
-      "button",
-    ],
+    registryDependencies: ["@shadcn-editor/actions-plugin", "button"],
     files: [
       {
         path: "examples/actions-plugin-demo.tsx",
@@ -31,10 +26,7 @@ export const examples: Registry["items"] = [
   {
     name: "autocomplete-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/autocomplete-plugin.json",
-      "button",
-    ],
+    registryDependencies: ["@shadcn-editor/autocomplete-plugin", "button"],
     files: [
       {
         path: "examples/autocomplete-plugin-demo.tsx",
@@ -45,9 +37,7 @@ export const examples: Registry["items"] = [
   {
     name: "auto-embed-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/auto-embed-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/auto-embed-plugin"],
     files: [
       {
         path: "examples/auto-embed-plugin-demo.tsx",
@@ -58,9 +48,7 @@ export const examples: Registry["items"] = [
   {
     name: "auto-focus-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/auto-focus-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/auto-focus-plugin"],
     files: [
       {
         path: "examples/auto-focus-plugin-demo.tsx",
@@ -71,9 +59,7 @@ export const examples: Registry["items"] = [
   {
     name: "block-format-toolbar-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/block-format-toolbar-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/block-format-toolbar-plugin"],
     files: [
       {
         path: "examples/block-format-toolbar-plugin-demo.tsx",
@@ -84,9 +70,7 @@ export const examples: Registry["items"] = [
   {
     name: "clear-editor-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/clear-editor-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/clear-editor-plugin"],
     files: [
       {
         path: "examples/clear-editor-plugin-demo.tsx",
@@ -97,9 +81,7 @@ export const examples: Registry["items"] = [
   {
     name: "clear-formatting-toolbar-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/clear-formatting-toolbar-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/clear-formatting-toolbar-plugin"],
     files: [
       {
         path: "examples/clear-formatting-toolbar-plugin-demo.tsx",
@@ -110,9 +92,7 @@ export const examples: Registry["items"] = [
   {
     name: "code-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/code-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/code-plugin"],
     files: [
       {
         path: "examples/code-plugin-demo.tsx",
@@ -123,9 +103,7 @@ export const examples: Registry["items"] = [
   {
     name: "component-picker-menu-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/component-picker-menu-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/component-picker-menu-plugin"],
     files: [
       {
         path: "examples/component-picker-menu-plugin-demo.tsx",
@@ -136,9 +114,7 @@ export const examples: Registry["items"] = [
   {
     name: "context-menu-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/context-menu-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/context-menu-plugin"],
     files: [
       {
         path: "examples/context-menu-plugin-demo.tsx",
@@ -149,9 +125,7 @@ export const examples: Registry["items"] = [
   {
     name: "counter-character-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/counter-character-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/counter-character-plugin"],
     files: [
       {
         path: "examples/counter-character-plugin-demo.tsx",
@@ -162,9 +136,7 @@ export const examples: Registry["items"] = [
   {
     name: "drag-drop-paste-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/drag-drop-paste-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/drag-drop-paste-plugin"],
     files: [
       {
         path: "examples/drag-drop-paste-plugin-demo.tsx",
@@ -175,9 +147,7 @@ export const examples: Registry["items"] = [
   {
     name: "draggable-block-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/draggable-block-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/draggable-block-plugin"],
     files: [
       {
         path: "examples/draggable-block-plugin-demo.tsx",
@@ -188,9 +158,7 @@ export const examples: Registry["items"] = [
   {
     name: "edit-mode-toggle-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/edit-mode-toggle-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/edit-mode-toggle-plugin"],
     files: [
       {
         path: "examples/edit-mode-toggle-plugin-demo.tsx",
@@ -201,9 +169,7 @@ export const examples: Registry["items"] = [
   {
     name: "element-format-toolbar-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/element-format-toolbar-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/element-format-toolbar-plugin"],
     files: [
       {
         path: "examples/element-format-toolbar-plugin-demo.tsx",
@@ -214,9 +180,7 @@ export const examples: Registry["items"] = [
   {
     name: "emoji-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/emoji-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/emoji-plugin"],
     files: [
       {
         path: "examples/emoji-plugin-demo.tsx",
@@ -227,9 +191,7 @@ export const examples: Registry["items"] = [
   {
     name: "floating-text-format-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/floating-text-format-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/floating-text-format-plugin"],
     files: [
       {
         path: "examples/floating-text-format-plugin-demo.tsx",
@@ -240,9 +202,7 @@ export const examples: Registry["items"] = [
   {
     name: "font-color-toolbar-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/font-color-toolbar-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/font-color-toolbar-plugin"],
     files: [
       {
         path: "examples/font-color-toolbar-plugin-demo.tsx",
@@ -253,9 +213,7 @@ export const examples: Registry["items"] = [
   {
     name: "font-family-toolbar-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/font-family-toolbar-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/font-family-toolbar-plugin"],
     files: [
       {
         path: "examples/font-family-toolbar-plugin-demo.tsx",
@@ -266,9 +224,7 @@ export const examples: Registry["items"] = [
   {
     name: "font-format-toolbar-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/font-format-toolbar-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/font-format-toolbar-plugin"],
     files: [
       {
         path: "examples/font-format-toolbar-plugin-demo.tsx",
@@ -279,9 +235,7 @@ export const examples: Registry["items"] = [
   {
     name: "font-size-toolbar-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/font-size-toolbar-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/font-size-toolbar-plugin"],
     files: [
       {
         path: "examples/font-size-toolbar-plugin-demo.tsx",
@@ -292,9 +246,7 @@ export const examples: Registry["items"] = [
   {
     name: "hashtag-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/hashtag-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/hashtag-plugin"],
     files: [
       {
         path: "examples/hashtag-plugin-demo.tsx",
@@ -305,9 +257,7 @@ export const examples: Registry["items"] = [
   {
     name: "history-toolbar-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/history-toolbar-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/history-toolbar-plugin"],
     files: [
       {
         path: "examples/history-toolbar-plugin-demo.tsx",
@@ -318,9 +268,7 @@ export const examples: Registry["items"] = [
   {
     name: "horizontal-rule-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/horizontal-rule-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/horizontal-rule-plugin"],
     files: [
       {
         path: "examples/horizontal-rule-plugin-demo.tsx",
@@ -331,9 +279,7 @@ export const examples: Registry["items"] = [
   {
     name: "image-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/image-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/image-plugin"],
     files: [
       {
         path: "examples/image-plugin-demo.tsx",
@@ -344,9 +290,7 @@ export const examples: Registry["items"] = [
   {
     name: "import-export-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/import-export-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/import-export-plugin"],
     files: [
       {
         path: "examples/import-export-plugin-demo.tsx",
@@ -357,9 +301,7 @@ export const examples: Registry["items"] = [
   {
     name: "keywords-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/keywords-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/keywords-plugin"],
     files: [
       {
         path: "examples/keywords-plugin-demo.tsx",
@@ -370,9 +312,7 @@ export const examples: Registry["items"] = [
   {
     name: "layout-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/layout-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/layout-plugin"],
     files: [
       {
         path: "examples/layout-plugin-demo.tsx",
@@ -383,9 +323,7 @@ export const examples: Registry["items"] = [
   {
     name: "link-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/link-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/link-plugin"],
     files: [
       {
         path: "examples/link-plugin-demo.tsx",
@@ -396,9 +334,7 @@ export const examples: Registry["items"] = [
   {
     name: "link-toolbar-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/link-toolbar-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/link-toolbar-plugin"],
     files: [
       {
         path: "examples/link-toolbar-plugin-demo.tsx",
@@ -409,9 +345,7 @@ export const examples: Registry["items"] = [
   {
     name: "markdown-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/markdown-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/markdown-plugin"],
     files: [
       {
         path: "examples/markdown-plugin-demo.tsx",
@@ -422,9 +356,7 @@ export const examples: Registry["items"] = [
   {
     name: "markdown-toggle-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/markdown-toggle-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/markdown-toggle-plugin"],
     files: [
       {
         path: "examples/markdown-toggle-plugin-demo.tsx",
@@ -435,9 +367,7 @@ export const examples: Registry["items"] = [
   {
     name: "max-length-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/max-length-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/max-length-plugin"],
     files: [
       {
         path: "examples/max-length-plugin-demo.tsx",
@@ -448,9 +378,7 @@ export const examples: Registry["items"] = [
   {
     name: "mention-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/mention-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/mention-plugin"],
     files: [
       {
         path: "examples/mention-plugin-demo.tsx",
@@ -461,9 +389,7 @@ export const examples: Registry["items"] = [
   {
     name: "share-content-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/share-content-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/share-content-plugin"],
     files: [
       {
         path: "examples/share-content-plugin-demo.tsx",
@@ -474,9 +400,7 @@ export const examples: Registry["items"] = [
   {
     name: "speech-to-text-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/speech-to-text-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/speech-to-text-plugin"],
     files: [
       {
         path: "examples/speech-to-text-plugin-demo.tsx",
@@ -487,9 +411,7 @@ export const examples: Registry["items"] = [
   {
     name: "subsuper-toolbar-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/subsuper-toolbar-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/subsuper-toolbar-plugin"],
     files: [
       {
         path: "examples/subsuper-toolbar-plugin-demo.tsx",
@@ -500,9 +422,7 @@ export const examples: Registry["items"] = [
   {
     name: "tab-focus-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/tab-focus-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/tab-focus-plugin"],
     files: [
       {
         path: "examples/tab-focus-plugin-demo.tsx",
@@ -513,9 +433,7 @@ export const examples: Registry["items"] = [
   {
     name: "table-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/table-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/table-plugin"],
     files: [
       {
         path: "examples/table-plugin-demo.tsx",
@@ -526,9 +444,7 @@ export const examples: Registry["items"] = [
   {
     name: "toolbar-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/toolbar-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/toolbar-plugin"],
     files: [
       {
         path: "examples/toolbar-plugin-demo.tsx",
@@ -539,9 +455,7 @@ export const examples: Registry["items"] = [
   {
     name: "tree-view-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/tree-view-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/tree-view-plugin"],
     files: [
       {
         path: "examples/tree-view-plugin-demo.tsx",
@@ -552,9 +466,7 @@ export const examples: Registry["items"] = [
   {
     name: "typing-pref-plugin-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://shadcn-editor.vercel.app/r/typing-pref-plugin.json",
-    ],
+    registryDependencies: ["@shadcn-editor/typing-pref-plugin"],
     files: [
       {
         path: "examples/typing-pref-plugin-demo.tsx",

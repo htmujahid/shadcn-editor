@@ -30,7 +30,7 @@ export const Index: Record<string, any> = {
     name: "rich-text-editor-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/editor.json"],
+    registryDependencies: ["@shadcn-editor/editor"],
     files: [{
       path: "registry/new-york-v4/editor/editor-ui/content-editable.tsx",
       type: "registry:ui",
@@ -48,7 +48,7 @@ export const Index: Record<string, any> = {
     name: "toolbar-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+    registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/toolbar/toolbar-plugin.tsx",
       type: "registry:component",
@@ -74,7 +74,7 @@ export const Index: Record<string, any> = {
     name: "history-toolbar-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["button","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+    registryDependencies: ["button","@shadcn-editor/toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/toolbar/history-toolbar-plugin.tsx",
       type: "registry:component",
@@ -92,7 +92,7 @@ export const Index: Record<string, any> = {
     name: "block-format-toolbar-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+    registryDependencies: ["select","@shadcn-editor/toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/toolbar/block-format-toolbar-plugin.tsx",
       type: "registry:component",
@@ -142,7 +142,7 @@ export const Index: Record<string, any> = {
     name: "font-family-toolbar-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+    registryDependencies: ["select","@shadcn-editor/toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/toolbar/font-family-toolbar-plugin.tsx",
       type: "registry:component",
@@ -164,7 +164,7 @@ export const Index: Record<string, any> = {
     name: "font-size-toolbar-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["button","input","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+    registryDependencies: ["button","input","@shadcn-editor/toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/toolbar/font-size-toolbar-plugin.tsx",
       type: "registry:component",
@@ -186,7 +186,7 @@ export const Index: Record<string, any> = {
     name: "font-format-toolbar-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["toggle","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+    registryDependencies: ["toggle","@shadcn-editor/toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/toolbar/font-format-toolbar-plugin.tsx",
       type: "registry:component",
@@ -208,7 +208,7 @@ export const Index: Record<string, any> = {
     name: "subsuper-toolbar-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["toggle-group","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+    registryDependencies: ["toggle-group","@shadcn-editor/toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/toolbar/subsuper-toolbar-plugin.tsx",
       type: "registry:component",
@@ -230,7 +230,7 @@ export const Index: Record<string, any> = {
     name: "font-color-toolbar-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["button","input","popover","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+    registryDependencies: ["button","input","popover","@shadcn-editor/toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/toolbar/font-color-toolbar-plugin.tsx",
       type: "registry:component",
@@ -260,7 +260,7 @@ export const Index: Record<string, any> = {
     name: "element-format-toolbar-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["separator","toggle-group","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+    registryDependencies: ["separator","toggle-group","@shadcn-editor/toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/toolbar/element-format-toolbar-plugin.tsx",
       type: "registry:component",
@@ -286,7 +286,7 @@ export const Index: Record<string, any> = {
     name: "clear-formatting-toolbar-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["button","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+    registryDependencies: ["button","@shadcn-editor/toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/toolbar/clear-formatting-toolbar-plugin.tsx",
       type: "registry:component",
@@ -304,7 +304,7 @@ export const Index: Record<string, any> = {
     name: "link-toolbar-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["toggle","button","input","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+    registryDependencies: ["toggle","button","input","@shadcn-editor/toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/toolbar/link-toolbar-plugin.tsx",
       type: "registry:component",
@@ -334,7 +334,7 @@ export const Index: Record<string, any> = {
     name: "actions-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+    registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/actions/actions-plugin.tsx",
       type: "registry:component",
@@ -352,7 +352,7 @@ export const Index: Record<string, any> = {
     name: "max-length-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/actions-plugin.json"],
+    registryDependencies: ["@shadcn-editor/actions-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/actions/max-length-plugin.tsx",
       type: "registry:component",
@@ -370,7 +370,7 @@ export const Index: Record<string, any> = {
     name: "counter-character-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/actions-plugin.json"],
+    registryDependencies: ["@shadcn-editor/actions-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/actions/counter-character-plugin.tsx",
       type: "registry:component",
@@ -388,7 +388,7 @@ export const Index: Record<string, any> = {
     name: "speech-to-text-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["button","tooltip","https://shadcn-editor.vercel.app/r/actions-plugin.json"],
+    registryDependencies: ["button","tooltip","@shadcn-editor/actions-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/actions/speech-to-text-plugin.tsx",
       type: "registry:component",
@@ -414,7 +414,7 @@ export const Index: Record<string, any> = {
     name: "share-content-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["button","tooltip","sonner","toast","https://shadcn-editor.vercel.app/r/actions-plugin.json"],
+    registryDependencies: ["button","tooltip","sonner","toast","@shadcn-editor/actions-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/actions/share-content-plugin.tsx",
       type: "registry:component",
@@ -436,7 +436,7 @@ export const Index: Record<string, any> = {
     name: "import-export-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["button","tooltip","https://shadcn-editor.vercel.app/r/actions-plugin.json"],
+    registryDependencies: ["button","tooltip","@shadcn-editor/actions-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/actions/import-export-plugin.tsx",
       type: "registry:component",
@@ -454,7 +454,7 @@ export const Index: Record<string, any> = {
     name: "markdown-toggle-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["button","https://shadcn-editor.vercel.app/r/actions-plugin.json"],
+    registryDependencies: ["button","@shadcn-editor/actions-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/actions/markdown-toggle-plugin.tsx",
       type: "registry:component",
@@ -472,7 +472,7 @@ export const Index: Record<string, any> = {
     name: "clear-editor-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["button","dialog","tooltip","https://shadcn-editor.vercel.app/r/actions-plugin.json"],
+    registryDependencies: ["button","dialog","tooltip","@shadcn-editor/actions-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/actions/clear-editor-plugin.tsx",
       type: "registry:component",
@@ -490,7 +490,7 @@ export const Index: Record<string, any> = {
     name: "edit-mode-toggle-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["button","tooltip","https://shadcn-editor.vercel.app/r/actions-plugin.json"],
+    registryDependencies: ["button","tooltip","@shadcn-editor/actions-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/actions/edit-mode-toggle-plugin.tsx",
       type: "registry:component",
@@ -508,7 +508,7 @@ export const Index: Record<string, any> = {
     name: "tree-view-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["button","dialog","scroll-area","https://shadcn-editor.vercel.app/r/actions-plugin.json"],
+    registryDependencies: ["button","dialog","scroll-area","@shadcn-editor/actions-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/actions/tree-view-plugin.tsx",
       type: "registry:component",
@@ -526,7 +526,7 @@ export const Index: Record<string, any> = {
     name: "autocomplete-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+    registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/autocomplete-plugin.tsx",
       type: "registry:component",
@@ -552,7 +552,7 @@ export const Index: Record<string, any> = {
     name: "auto-embed-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["button","command","dialog","input","popover","select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+    registryDependencies: ["button","command","dialog","input","popover","select","@shadcn-editor/toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/embeds/auto-embed-plugin.tsx",
       type: "registry:component",
@@ -598,7 +598,7 @@ export const Index: Record<string, any> = {
     name: "component-picker-menu-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["command","dialog","https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+    registryDependencies: ["command","dialog","@shadcn-editor/rich-text-editor-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/component-picker-menu-plugin.tsx",
       type: "registry:component",
@@ -624,7 +624,7 @@ export const Index: Record<string, any> = {
     name: "code-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+    registryDependencies: ["select","@shadcn-editor/toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/code-action-menu-plugin.tsx",
       type: "registry:component",
@@ -662,7 +662,7 @@ export const Index: Record<string, any> = {
     name: "context-menu-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["command","popover","https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+    registryDependencies: ["command","popover","@shadcn-editor/rich-text-editor-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/context-menu-plugin.tsx",
       type: "registry:component",
@@ -680,7 +680,7 @@ export const Index: Record<string, any> = {
     name: "draggable-block-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+    registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/draggable-block-plugin.tsx",
       type: "registry:component",
@@ -698,7 +698,7 @@ export const Index: Record<string, any> = {
     name: "drag-drop-paste-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json","https://shadcn-editor.vercel.app/r/image-plugin.json"],
+    registryDependencies: ["@shadcn-editor/rich-text-editor-plugin","@shadcn-editor/image-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/drag-drop-paste-plugin.tsx",
       type: "registry:component",
@@ -716,7 +716,7 @@ export const Index: Record<string, any> = {
     name: "emoji-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["command","https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+    registryDependencies: ["command","@shadcn-editor/rich-text-editor-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/emojis-plugin.tsx",
       type: "registry:component",
@@ -750,7 +750,7 @@ export const Index: Record<string, any> = {
     name: "floating-text-format-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["separator","toggle-group","https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+    registryDependencies: ["separator","toggle-group","@shadcn-editor/rich-text-editor-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/floating-text-format-plugin.tsx",
       type: "registry:component",
@@ -780,7 +780,7 @@ export const Index: Record<string, any> = {
     name: "horizontal-rule-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+    registryDependencies: ["select","@shadcn-editor/toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-horizontal-rule.tsx",
       type: "registry:component",
@@ -802,7 +802,7 @@ export const Index: Record<string, any> = {
     name: "image-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["button","dialog","input","label","select","tabs","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+    registryDependencies: ["button","dialog","input","label","select","tabs","@shadcn-editor/toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/images-plugin.tsx",
       type: "registry:component",
@@ -844,7 +844,7 @@ export const Index: Record<string, any> = {
     name: "keywords-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+    registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/keywords-plugin.tsx",
       type: "registry:component",
@@ -866,7 +866,7 @@ export const Index: Record<string, any> = {
     name: "layout-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["button","select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+    registryDependencies: ["button","select","@shadcn-editor/toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/layout-plugin.tsx",
       type: "registry:component",
@@ -896,7 +896,7 @@ export const Index: Record<string, any> = {
     name: "link-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/link-toolbar-plugin.json"],
+    registryDependencies: ["@shadcn-editor/link-toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/link-plugin.tsx",
       type: "registry:component",
@@ -918,7 +918,7 @@ export const Index: Record<string, any> = {
     name: "markdown-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["button","https://shadcn-editor.vercel.app/r/actions-plugin.json","https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+    registryDependencies: ["button","@shadcn-editor/actions-plugin","@shadcn-editor/rich-text-editor-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/actions/markdown-toggle-plugin.tsx",
       type: "registry:component",
@@ -936,7 +936,7 @@ export const Index: Record<string, any> = {
     name: "mention-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["command","https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+    registryDependencies: ["command","@shadcn-editor/rich-text-editor-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/mentions-plugin.tsx",
       type: "registry:component",
@@ -958,7 +958,7 @@ export const Index: Record<string, any> = {
     name: "table-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["button","command","dialog","input","label","popover","select","https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+    registryDependencies: ["button","command","dialog","input","label","popover","select","@shadcn-editor/toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/table-plugin.tsx",
       type: "registry:component",
@@ -1000,7 +1000,7 @@ export const Index: Record<string, any> = {
     name: "tab-focus-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+    registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/tab-focus-plugin.tsx",
       type: "registry:component",
@@ -1018,7 +1018,7 @@ export const Index: Record<string, any> = {
     name: "typing-pref-plugin",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+    registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [{
       path: "registry/new-york-v4/editor/plugins/typing-pref-plugin.tsx",
       type: "registry:component",
@@ -1600,7 +1600,7 @@ export const Index: Record<string, any> = {
     name: "rich-text-editor-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"],
+    registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/rich-text-editor-plugin-demo.tsx",
       type: "registry:example",
@@ -1618,7 +1618,7 @@ export const Index: Record<string, any> = {
     name: "actions-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/actions-plugin.json","button"],
+    registryDependencies: ["@shadcn-editor/actions-plugin","button"],
     files: [{
       path: "registry/new-york-v4/examples/actions-plugin-demo.tsx",
       type: "registry:example",
@@ -1636,7 +1636,7 @@ export const Index: Record<string, any> = {
     name: "autocomplete-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/autocomplete-plugin.json","button"],
+    registryDependencies: ["@shadcn-editor/autocomplete-plugin","button"],
     files: [{
       path: "registry/new-york-v4/examples/autocomplete-plugin-demo.tsx",
       type: "registry:example",
@@ -1654,7 +1654,7 @@ export const Index: Record<string, any> = {
     name: "auto-embed-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/auto-embed-plugin.json"],
+    registryDependencies: ["@shadcn-editor/auto-embed-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/auto-embed-plugin-demo.tsx",
       type: "registry:example",
@@ -1672,7 +1672,7 @@ export const Index: Record<string, any> = {
     name: "auto-focus-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/auto-focus-plugin.json"],
+    registryDependencies: ["@shadcn-editor/auto-focus-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/auto-focus-plugin-demo.tsx",
       type: "registry:example",
@@ -1690,7 +1690,7 @@ export const Index: Record<string, any> = {
     name: "block-format-toolbar-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/block-format-toolbar-plugin.json"],
+    registryDependencies: ["@shadcn-editor/block-format-toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/block-format-toolbar-plugin-demo.tsx",
       type: "registry:example",
@@ -1708,7 +1708,7 @@ export const Index: Record<string, any> = {
     name: "clear-editor-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/clear-editor-plugin.json"],
+    registryDependencies: ["@shadcn-editor/clear-editor-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/clear-editor-plugin-demo.tsx",
       type: "registry:example",
@@ -1726,7 +1726,7 @@ export const Index: Record<string, any> = {
     name: "clear-formatting-toolbar-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/clear-formatting-toolbar-plugin.json"],
+    registryDependencies: ["@shadcn-editor/clear-formatting-toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/clear-formatting-toolbar-plugin-demo.tsx",
       type: "registry:example",
@@ -1744,7 +1744,7 @@ export const Index: Record<string, any> = {
     name: "code-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/code-plugin.json"],
+    registryDependencies: ["@shadcn-editor/code-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/code-plugin-demo.tsx",
       type: "registry:example",
@@ -1762,7 +1762,7 @@ export const Index: Record<string, any> = {
     name: "component-picker-menu-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/component-picker-menu-plugin.json"],
+    registryDependencies: ["@shadcn-editor/component-picker-menu-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/component-picker-menu-plugin-demo.tsx",
       type: "registry:example",
@@ -1780,7 +1780,7 @@ export const Index: Record<string, any> = {
     name: "context-menu-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/context-menu-plugin.json"],
+    registryDependencies: ["@shadcn-editor/context-menu-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/context-menu-plugin-demo.tsx",
       type: "registry:example",
@@ -1798,7 +1798,7 @@ export const Index: Record<string, any> = {
     name: "counter-character-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/counter-character-plugin.json"],
+    registryDependencies: ["@shadcn-editor/counter-character-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/counter-character-plugin-demo.tsx",
       type: "registry:example",
@@ -1816,7 +1816,7 @@ export const Index: Record<string, any> = {
     name: "drag-drop-paste-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/drag-drop-paste-plugin.json"],
+    registryDependencies: ["@shadcn-editor/drag-drop-paste-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/drag-drop-paste-plugin-demo.tsx",
       type: "registry:example",
@@ -1834,7 +1834,7 @@ export const Index: Record<string, any> = {
     name: "draggable-block-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/draggable-block-plugin.json"],
+    registryDependencies: ["@shadcn-editor/draggable-block-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/draggable-block-plugin-demo.tsx",
       type: "registry:example",
@@ -1852,7 +1852,7 @@ export const Index: Record<string, any> = {
     name: "edit-mode-toggle-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/edit-mode-toggle-plugin.json"],
+    registryDependencies: ["@shadcn-editor/edit-mode-toggle-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/edit-mode-toggle-plugin-demo.tsx",
       type: "registry:example",
@@ -1870,7 +1870,7 @@ export const Index: Record<string, any> = {
     name: "element-format-toolbar-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/element-format-toolbar-plugin.json"],
+    registryDependencies: ["@shadcn-editor/element-format-toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/element-format-toolbar-plugin-demo.tsx",
       type: "registry:example",
@@ -1888,7 +1888,7 @@ export const Index: Record<string, any> = {
     name: "emoji-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/emoji-plugin.json"],
+    registryDependencies: ["@shadcn-editor/emoji-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/emoji-plugin-demo.tsx",
       type: "registry:example",
@@ -1906,7 +1906,7 @@ export const Index: Record<string, any> = {
     name: "floating-text-format-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/floating-text-format-plugin.json"],
+    registryDependencies: ["@shadcn-editor/floating-text-format-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/floating-text-format-plugin-demo.tsx",
       type: "registry:example",
@@ -1924,7 +1924,7 @@ export const Index: Record<string, any> = {
     name: "font-color-toolbar-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/font-color-toolbar-plugin.json"],
+    registryDependencies: ["@shadcn-editor/font-color-toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/font-color-toolbar-plugin-demo.tsx",
       type: "registry:example",
@@ -1942,7 +1942,7 @@ export const Index: Record<string, any> = {
     name: "font-family-toolbar-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/font-family-toolbar-plugin.json"],
+    registryDependencies: ["@shadcn-editor/font-family-toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/font-family-toolbar-plugin-demo.tsx",
       type: "registry:example",
@@ -1960,7 +1960,7 @@ export const Index: Record<string, any> = {
     name: "font-format-toolbar-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/font-format-toolbar-plugin.json"],
+    registryDependencies: ["@shadcn-editor/font-format-toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/font-format-toolbar-plugin-demo.tsx",
       type: "registry:example",
@@ -1978,7 +1978,7 @@ export const Index: Record<string, any> = {
     name: "font-size-toolbar-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/font-size-toolbar-plugin.json"],
+    registryDependencies: ["@shadcn-editor/font-size-toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/font-size-toolbar-plugin-demo.tsx",
       type: "registry:example",
@@ -1996,7 +1996,7 @@ export const Index: Record<string, any> = {
     name: "hashtag-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/hashtag-plugin.json"],
+    registryDependencies: ["@shadcn-editor/hashtag-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/hashtag-plugin-demo.tsx",
       type: "registry:example",
@@ -2014,7 +2014,7 @@ export const Index: Record<string, any> = {
     name: "history-toolbar-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/history-toolbar-plugin.json"],
+    registryDependencies: ["@shadcn-editor/history-toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/history-toolbar-plugin-demo.tsx",
       type: "registry:example",
@@ -2032,7 +2032,7 @@ export const Index: Record<string, any> = {
     name: "horizontal-rule-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/horizontal-rule-plugin.json"],
+    registryDependencies: ["@shadcn-editor/horizontal-rule-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/horizontal-rule-plugin-demo.tsx",
       type: "registry:example",
@@ -2050,7 +2050,7 @@ export const Index: Record<string, any> = {
     name: "image-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/image-plugin.json"],
+    registryDependencies: ["@shadcn-editor/image-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/image-plugin-demo.tsx",
       type: "registry:example",
@@ -2068,7 +2068,7 @@ export const Index: Record<string, any> = {
     name: "import-export-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/import-export-plugin.json"],
+    registryDependencies: ["@shadcn-editor/import-export-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/import-export-plugin-demo.tsx",
       type: "registry:example",
@@ -2086,7 +2086,7 @@ export const Index: Record<string, any> = {
     name: "keywords-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/keywords-plugin.json"],
+    registryDependencies: ["@shadcn-editor/keywords-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/keywords-plugin-demo.tsx",
       type: "registry:example",
@@ -2104,7 +2104,7 @@ export const Index: Record<string, any> = {
     name: "layout-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/layout-plugin.json"],
+    registryDependencies: ["@shadcn-editor/layout-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/layout-plugin-demo.tsx",
       type: "registry:example",
@@ -2122,7 +2122,7 @@ export const Index: Record<string, any> = {
     name: "link-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/link-plugin.json"],
+    registryDependencies: ["@shadcn-editor/link-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/link-plugin-demo.tsx",
       type: "registry:example",
@@ -2140,7 +2140,7 @@ export const Index: Record<string, any> = {
     name: "link-toolbar-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/link-toolbar-plugin.json"],
+    registryDependencies: ["@shadcn-editor/link-toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/link-toolbar-plugin-demo.tsx",
       type: "registry:example",
@@ -2158,7 +2158,7 @@ export const Index: Record<string, any> = {
     name: "markdown-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/markdown-plugin.json"],
+    registryDependencies: ["@shadcn-editor/markdown-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/markdown-plugin-demo.tsx",
       type: "registry:example",
@@ -2176,7 +2176,7 @@ export const Index: Record<string, any> = {
     name: "markdown-toggle-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/markdown-toggle-plugin.json"],
+    registryDependencies: ["@shadcn-editor/markdown-toggle-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/markdown-toggle-plugin-demo.tsx",
       type: "registry:example",
@@ -2194,7 +2194,7 @@ export const Index: Record<string, any> = {
     name: "max-length-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/max-length-plugin.json"],
+    registryDependencies: ["@shadcn-editor/max-length-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/max-length-plugin-demo.tsx",
       type: "registry:example",
@@ -2212,7 +2212,7 @@ export const Index: Record<string, any> = {
     name: "mention-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/mention-plugin.json"],
+    registryDependencies: ["@shadcn-editor/mention-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/mention-plugin-demo.tsx",
       type: "registry:example",
@@ -2230,7 +2230,7 @@ export const Index: Record<string, any> = {
     name: "share-content-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/share-content-plugin.json"],
+    registryDependencies: ["@shadcn-editor/share-content-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/share-content-plugin-demo.tsx",
       type: "registry:example",
@@ -2248,7 +2248,7 @@ export const Index: Record<string, any> = {
     name: "speech-to-text-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/speech-to-text-plugin.json"],
+    registryDependencies: ["@shadcn-editor/speech-to-text-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/speech-to-text-plugin-demo.tsx",
       type: "registry:example",
@@ -2266,7 +2266,7 @@ export const Index: Record<string, any> = {
     name: "subsuper-toolbar-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/subsuper-toolbar-plugin.json"],
+    registryDependencies: ["@shadcn-editor/subsuper-toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/subsuper-toolbar-plugin-demo.tsx",
       type: "registry:example",
@@ -2284,7 +2284,7 @@ export const Index: Record<string, any> = {
     name: "tab-focus-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/tab-focus-plugin.json"],
+    registryDependencies: ["@shadcn-editor/tab-focus-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/tab-focus-plugin-demo.tsx",
       type: "registry:example",
@@ -2302,7 +2302,7 @@ export const Index: Record<string, any> = {
     name: "table-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/table-plugin.json"],
+    registryDependencies: ["@shadcn-editor/table-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/table-plugin-demo.tsx",
       type: "registry:example",
@@ -2320,7 +2320,7 @@ export const Index: Record<string, any> = {
     name: "toolbar-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/toolbar-plugin.json"],
+    registryDependencies: ["@shadcn-editor/toolbar-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/toolbar-plugin-demo.tsx",
       type: "registry:example",
@@ -2338,7 +2338,7 @@ export const Index: Record<string, any> = {
     name: "tree-view-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/tree-view-plugin.json"],
+    registryDependencies: ["@shadcn-editor/tree-view-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/tree-view-plugin-demo.tsx",
       type: "registry:example",
@@ -2356,7 +2356,7 @@ export const Index: Record<string, any> = {
     name: "typing-pref-plugin-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://shadcn-editor.vercel.app/r/typing-pref-plugin.json"],
+    registryDependencies: ["@shadcn-editor/typing-pref-plugin"],
     files: [{
       path: "registry/new-york-v4/examples/typing-pref-plugin-demo.tsx",
       type: "registry:example",

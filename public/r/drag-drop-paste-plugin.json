@@ -6,8 +6,8 @@
     "@lexical/utils"
   ],
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json",
-    "https://shadcn-editor.vercel.app/r/image-plugin.json"
+    "@shadcn-editor/rich-text-editor-plugin",
+    "@shadcn-editor/image-plugin"
   ],
   "files": [
     {

@@ -3,7 +3,7 @@
   "name": "subsuper-toolbar-plugin-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/subsuper-toolbar-plugin.json"
+    "@shadcn-editor/subsuper-toolbar-plugin"
   ],
   "files": [
     {

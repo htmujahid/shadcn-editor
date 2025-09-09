@@ -3,7 +3,7 @@
   "name": "actions-plugin-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/actions-plugin.json",
+    "@shadcn-editor/actions-plugin",
     "button"
   ],
   "files": [

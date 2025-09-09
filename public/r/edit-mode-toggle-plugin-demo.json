@@ -3,7 +3,7 @@
   "name": "edit-mode-toggle-plugin-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/edit-mode-toggle-plugin.json"
+    "@shadcn-editor/edit-mode-toggle-plugin"
   ],
   "files": [
     {

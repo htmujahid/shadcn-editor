@@ -3,7 +3,7 @@
   "name": "auto-embed-plugin-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/auto-embed-plugin.json"
+    "@shadcn-editor/auto-embed-plugin"
   ],
   "files": [
     {

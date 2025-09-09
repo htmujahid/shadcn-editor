@@ -5,7 +5,7 @@
 1. Run this command to setup batteries included editor.
 
 ```bash
-npx shadcn@latest add https://shadcn-editor.vercel.app/r/editor-x.json
+npx shadcn@latest add @shadcn-editor/editor-x
 ```
 
 2. Use the `Editor` component in your project.

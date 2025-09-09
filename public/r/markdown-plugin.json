@@ -7,8 +7,8 @@
   ],
   "registryDependencies": [
     "button",
-    "https://shadcn-editor.vercel.app/r/actions-plugin.json",
-    "https://shadcn-editor.vercel.app/r/rich-text-editor-plugin.json"
+    "@shadcn-editor/actions-plugin",
+    "@shadcn-editor/rich-text-editor-plugin"
   ],
   "files": [
     {

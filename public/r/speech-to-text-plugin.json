@@ -5,7 +5,7 @@
   "registryDependencies": [
     "button",
     "tooltip",
-    "https://shadcn-editor.vercel.app/r/actions-plugin.json"
+    "@shadcn-editor/actions-plugin"
   ],
   "files": [
     {

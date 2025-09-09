@@ -7,7 +7,7 @@
   ],
   "registryDependencies": [
     "select",
-    "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
+    "@shadcn-editor/toolbar-plugin"
   ],
   "files": [
     {

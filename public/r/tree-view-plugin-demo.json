@@ -3,7 +3,7 @@
   "name": "tree-view-plugin-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/tree-view-plugin.json"
+    "@shadcn-editor/tree-view-plugin"
   ],
   "files": [
     {

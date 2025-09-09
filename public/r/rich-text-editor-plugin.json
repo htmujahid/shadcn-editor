@@ -6,7 +6,7 @@
     "@lexical/rich-text"
   ],
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/editor.json"
+    "@shadcn-editor/editor"
   ],
   "files": [
     {

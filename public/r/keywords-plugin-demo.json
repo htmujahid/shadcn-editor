@@ -3,7 +3,7 @@
   "name": "keywords-plugin-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/keywords-plugin.json"
+    "@shadcn-editor/keywords-plugin"
   ],
   "files": [
     {

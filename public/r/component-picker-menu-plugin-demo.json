@@ -3,7 +3,7 @@
   "name": "component-picker-menu-plugin-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/component-picker-menu-plugin.json"
+    "@shadcn-editor/component-picker-menu-plugin"
   ],
   "files": [
     {

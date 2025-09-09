@@ -3,7 +3,7 @@
   "name": "layout-plugin-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/layout-plugin.json"
+    "@shadcn-editor/layout-plugin"
   ],
   "files": [
     {

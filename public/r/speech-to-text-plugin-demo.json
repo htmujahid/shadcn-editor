@@ -3,7 +3,7 @@
   "name": "speech-to-text-plugin-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/speech-to-text-plugin.json"
+    "@shadcn-editor/speech-to-text-plugin"
   ],
   "files": [
     {

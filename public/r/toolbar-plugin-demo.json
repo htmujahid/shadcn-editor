@@ -3,7 +3,7 @@
   "name": "toolbar-plugin-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/toolbar-plugin.json"
+    "@shadcn-editor/toolbar-plugin"
   ],
   "files": [
     {

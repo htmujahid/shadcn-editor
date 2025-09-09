@@ -3,7 +3,7 @@
   "name": "emoji-plugin-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/emoji-plugin.json"
+    "@shadcn-editor/emoji-plugin"
   ],
   "files": [
     {

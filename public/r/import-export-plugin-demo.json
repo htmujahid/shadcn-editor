@@ -3,7 +3,7 @@
   "name": "import-export-plugin-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "https://shadcn-editor.vercel.app/r/import-export-plugin.json"
+    "@shadcn-editor/import-export-plugin"
   ],
   "files": [
     {
