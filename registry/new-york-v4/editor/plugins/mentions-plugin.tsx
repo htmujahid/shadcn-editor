@@ -31,7 +31,7 @@ import {
 const LexicalTypeaheadMenuPlugin = dynamic(
   () =>
     import("@lexical/react/LexicalTypeaheadMenuPlugin").then(
-      (mod) => mod.LexicalTypeaheadMenuPlugin
+      (mod) => mod.LexicalTypeaheadMenuPlugin<MentionTypeaheadOption>
     ),
   { ssr: false }
 )
@@ -643,8 +643,7 @@ export function MentionsPlugin(): JSX.Element | null {
   )
 
   return (
-    // @ts-ignore
-    <LexicalTypeaheadMenuPlugin<MentionTypeaheadOption>
+    <LexicalTypeaheadMenuPlugin
       onQueryChange={setQueryString}
       onSelectOption={onSelectOption}
       triggerFn={checkForMentionMatch}

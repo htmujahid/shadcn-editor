@@ -10,7 +10,6 @@ import {
 } from "lexical"
 import {
   BoldIcon,
-  CodeIcon,
   ItalicIcon,
   StrikethroughIcon,
   UnderlineIcon,
@@ -18,51 +17,60 @@ import {
 
 import { useToolbarContext } from "@/registry/new-york-v4/editor/context/toolbar-context"
 import { useUpdateToolbarHandler } from "@/registry/new-york-v4/editor/editor-hooks/use-update-toolbar"
-import { Toggle } from "@/registry/new-york-v4/ui/toggle"
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@/registry/new-york-v4/ui/toggle-group"
 
-const Icons: Partial<Record<TextFormatType, React.ElementType>> = {
-  bold: BoldIcon,
-  italic: ItalicIcon,
-  underline: UnderlineIcon,
-  strikethrough: StrikethroughIcon,
-  code: CodeIcon,
-} as const
+const FORMATS = [
+  { format: "bold", icon: BoldIcon, label: "Bold" },
+  { format: "italic", icon: ItalicIcon, label: "Italic" },
+  { format: "underline", icon: UnderlineIcon, label: "Underline" },
+  { format: "strikethrough", icon: StrikethroughIcon, label: "Strikethrough" },
+] as const
 
-export function FontFormatToolbarPlugin({
-  format,
-}: {
-  format: Omit<TextFormatType, "highlight" | "subscript" | "superscript">
-}) {
+export function FontFormatToolbarPlugin() {
   const { activeEditor } = useToolbarContext()
-  const [isSelected, setIsSelected] = useState<boolean>(false)
+  const [activeFormats, setActiveFormats] = useState<string[]>([])
 
   const $updateToolbar = (selection: BaseSelection) => {
     if ($isRangeSelection(selection) || $isTableSelection(selection)) {
-      // @ts-ignore
-      setIsSelected(selection.hasFormat(format as TextFormatType))
+      const formats: string[] = []
+      FORMATS.forEach(({ format }) => {
+        // @ts-ignore
+        if (selection.hasFormat(format as TextFormatType)) {
+          formats.push(format)
+        }
+      })
+      setActiveFormats(formats)
     }
   }
 
   useUpdateToolbarHandler($updateToolbar)
 
-  const Icon = Icons[format as TextFormatType] as React.ElementType
-
   return (
-    <Toggle
-      aria-label="Toggle bold"
+    <ToggleGroup
+      type="multiple"
+      value={activeFormats}
+      onValueChange={setActiveFormats}
       variant="outline"
       size="sm"
-      defaultPressed={isSelected}
-      pressed={isSelected}
-      onPressedChange={setIsSelected}
-      onClick={() => {
-        activeEditor.dispatchCommand(
-          FORMAT_TEXT_COMMAND,
-          format as TextFormatType
-        )
-      }}
     >
-      <Icon className="h-4 w-4" />
-    </Toggle>
+      {FORMATS.map(({ format, icon: Icon, label }) => (
+        <ToggleGroupItem
+          key={format}
+          value={format}
+          aria-label={label}
+          onClick={() => {
+            activeEditor.dispatchCommand(
+              FORMAT_TEXT_COMMAND,
+              format as TextFormatType
+            )
+          }}
+        >
+          <Icon className="h-4 w-4" />
+        </ToggleGroupItem>
+      ))}
+    </ToggleGroup>
   )
 }

@@ -2,12 +2,11 @@
 
 import { useEffect, useState } from "react"
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
-import { mergeRegister } from "@lexical/utils"
+import { IS_APPLE, mergeRegister } from "@lexical/utils"
 import {
   CAN_REDO_COMMAND,
   CAN_UNDO_COMMAND,
   COMMAND_PRIORITY_CRITICAL,
-  LexicalEditor,
   REDO_COMMAND,
   UNDO_COMMAND,
 } from "lexical"
@@ -15,8 +14,7 @@ import { RedoIcon, UndoIcon } from "lucide-react"
 
 import { useToolbarContext } from "@/registry/new-york-v4/editor/context/toolbar-context"
 import { Button } from "@/registry/new-york-v4/ui/button"
-
-const IS_APPLE = true
+import { ButtonGroup } from "@/registry/new-york-v4/ui/button-group"
 
 export function HistoryToolbarPlugin() {
   const [editor] = useLexicalComposerContext()
@@ -55,7 +53,7 @@ export function HistoryToolbarPlugin() {
   }, [$updateToolbar, activeEditor, editor])
 
   return (
-    <div className="flex items-center gap-1">
+    <ButtonGroup>
       <Button
         disabled={!canUndo || !isEditable}
         onClick={() => {
@@ -84,6 +82,6 @@ export function HistoryToolbarPlugin() {
       >
         <RedoIcon className="size-4" />
       </Button>
-    </div>
+    </ButtonGroup>
   )
 }

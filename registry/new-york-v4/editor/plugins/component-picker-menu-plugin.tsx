@@ -27,7 +27,7 @@ import { ComponentPickerOption } from "./picker/component-picker-option"
 const LexicalTypeaheadMenuPlugin = dynamic(
   () =>
     import("@lexical/react/LexicalTypeaheadMenuPlugin").then(
-      (mod) => mod.LexicalTypeaheadMenuPlugin
+      (mod) => mod.LexicalTypeaheadMenuPlugin<ComponentPickerOption>
     ),
   { ssr: false }
 )
@@ -87,8 +87,7 @@ export function ComponentPickerMenuPlugin({
   return (
     <>
       {modal}
-      {/* @ts-ignore */}
-      <LexicalTypeaheadMenuPlugin<ComponentPickerOption>
+      <LexicalTypeaheadMenuPlugin
         onQueryChange={setQueryString}
         onSelectOption={onSelectOption}
         triggerFn={checkForTriggerMatch}

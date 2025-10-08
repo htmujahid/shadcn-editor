@@ -33,7 +33,7 @@ import {
 const LexicalTypeaheadMenuPlugin = dynamic(
   () =>
     import("@lexical/react/LexicalTypeaheadMenuPlugin").then(
-      (mod) => mod.LexicalTypeaheadMenuPlugin
+      (mod) => mod.LexicalTypeaheadMenuPlugin<EmojiOption>
     ),
   { ssr: false }
 )
@@ -137,8 +137,7 @@ export function EmojiPickerPlugin() {
   )
 
   return (
-    // @ts-ignore
-    <LexicalTypeaheadMenuPlugin<EmojiOption>
+    <LexicalTypeaheadMenuPlugin
       onQueryChange={setQueryString}
       onSelectOption={onSelectOption}
       triggerFn={checkForTriggerMatch}

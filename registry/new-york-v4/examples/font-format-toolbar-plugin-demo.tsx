@@ -59,10 +59,7 @@ export function Plugins() {
       <ToolbarPlugin>
         {({ blockType }) => (
           <div className="vertical-align-middle sticky top-0 z-10 flex gap-2 overflow-auto border-b p-1">
-            <FontFormatToolbarPlugin format="bold" />
-            <FontFormatToolbarPlugin format="italic" />
-            <FontFormatToolbarPlugin format="underline" />
-            <FontFormatToolbarPlugin format="strikethrough" />
+            <FontFormatToolbarPlugin />
           </div>
         )}
       </ToolbarPlugin>

@@ -15,6 +15,7 @@ import { FontBackgroundToolbarPlugin } from "@/registry/new-york-v4/editor/plugi
 import { FontColorToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/font-color-toolbar-plugin"
 import { ToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/toolbar-plugin"
 import { editorTheme } from "@/registry/new-york-v4/editor/themes/editor-theme"
+import { ButtonGroup } from "@/registry/new-york-v4/ui/button-group"
 import { TooltipProvider } from "@/registry/new-york-v4/ui/tooltip"
 
 const editorConfig: InitialConfigType = {
@@ -60,8 +61,10 @@ export function Plugins() {
       <ToolbarPlugin>
         {({ blockType }) => (
           <div className="vertical-align-middle sticky top-0 z-10 flex gap-2 overflow-auto border-b p-1">
-            <FontColorToolbarPlugin />
-            <FontBackgroundToolbarPlugin />
+            <ButtonGroup>
+              <FontColorToolbarPlugin />
+              <FontBackgroundToolbarPlugin />
+            </ButtonGroup>
           </div>
         )}
       </ToolbarPlugin>
