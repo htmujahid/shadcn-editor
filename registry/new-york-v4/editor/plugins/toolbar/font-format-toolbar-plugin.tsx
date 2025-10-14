@@ -35,14 +35,15 @@ export function FontFormatToolbarPlugin() {
 
   const $updateToolbar = (selection: BaseSelection) => {
     if ($isRangeSelection(selection) || $isTableSelection(selection)) {
-      const formats: string[] = []
+      // const formats: string[] = []
       FORMATS.forEach(({ format }) => {
         // @ts-ignore
         if (selection.hasFormat(format as TextFormatType)) {
-          formats.push(format)
+          //   formats.push(format)
+          setActiveFormats([...activeFormats, format])
         }
       })
-      setActiveFormats(formats)
+      // setActiveFormats(formats)
     }
   }
 
