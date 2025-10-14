@@ -1212,7 +1212,7 @@
         "@lexical/utils",
         "@radix-ui/react-icons",
         "lexical",
-        "@types/lodash",
+        "lodash",
         "lucide-react",
         "react-colorful",
         "react-error-boundary",
@@ -1223,6 +1223,7 @@
       ],
       "registryDependencies": [
         "button",
+        "button-group",
         "checkbox",
         "command",
         "dialog",

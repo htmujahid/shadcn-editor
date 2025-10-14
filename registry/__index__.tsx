@@ -1082,7 +1082,7 @@ export const Index: Record<string, any> = {
     name: "editor-x",
     description: "",
     type: "registry:block",
-    registryDependencies: ["button","checkbox","command","dialog","input","label","popover","scroll-area","select","separator","tabs","textarea","tooltip","toggle","toggle-group"],
+    registryDependencies: ["button","button-group","checkbox","command","dialog","input","label","popover","scroll-area","select","separator","tabs","textarea","tooltip","toggle","toggle-group"],
     files: [{
       path: "registry/new-york-v4/blocks/editor-x/page.tsx",
       type: "registry:page",
