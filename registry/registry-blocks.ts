@@ -63,7 +63,7 @@ export const blocks: Registry["items"] = [
       "@lexical/utils",
       "@radix-ui/react-icons",
       "lexical",
-      "@types/lodash",
+      "lodash",
       "lucide-react",
       "react-colorful",
       "react-error-boundary",
@@ -72,6 +72,7 @@ export const blocks: Registry["items"] = [
     devDependencies: ["@types/lodash"],
     registryDependencies: [
       "button",
+      "button-group",
       "checkbox",
       "command",
       "dialog",

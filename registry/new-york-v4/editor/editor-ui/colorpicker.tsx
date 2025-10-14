@@ -37,7 +37,7 @@ export default function ColorPicker({
           {/* <ChevronDownIcon className='size-4'/> */}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0">
+      <PopoverContent className="w-full space-y-2">
         <HexColorPicker
           color={color}
           onChange={(color) => onChange?.(color, false)}
