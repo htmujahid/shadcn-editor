@@ -1672,7 +1672,7 @@ export const Index: Record<string, any> = {
     name: "editor-md",
     description: "",
     type: "registry:block",
-    registryDependencies: ["@shadcn-editor/editor","@shadcn-editor/rich-text","@shadcn-editor/block-format-toolbar-plugin","@shadcn-editor/element-format-toolbar-plugin","@shadcn-editor/font-format-toolbar-plugin","@shadcn-editor/history-toolbar-plugin","@shadcn-editor/link-toolbar-plugin","@shadcn-editor/code-plugin","@shadcn-editor/draggable-block-plugin","@shadcn-editor/floating-text-format-plugin","@shadcn-editor/horizontal-rule-plugin","@shadcn-editor/image-plugin","@shadcn-editor/link-plugin","@shadcn-editor/markdown-plugin","@shadcn-editor/table-plugin"],
+    registryDependencies: ["@shadcn-editor/editor","@shadcn-editor/rich-text-editor-plugin","@shadcn-editor/block-format-toolbar-plugin","@shadcn-editor/element-format-toolbar-plugin","@shadcn-editor/font-format-toolbar-plugin","@shadcn-editor/history-toolbar-plugin","@shadcn-editor/link-toolbar-plugin","@shadcn-editor/code-plugin","@shadcn-editor/draggable-block-plugin","@shadcn-editor/floating-text-format-plugin","@shadcn-editor/horizontal-rule-plugin","@shadcn-editor/image-plugin","@shadcn-editor/link-plugin","@shadcn-editor/markdown-plugin","@shadcn-editor/table-plugin"],
     files: [{
       path: "registry/new-york-v4/blocks/editor-md/page.tsx",
       type: "registry:page",

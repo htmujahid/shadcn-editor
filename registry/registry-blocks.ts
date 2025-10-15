@@ -758,7 +758,7 @@ export const blocks: Registry["items"] = [
     type: "registry:block",
     registryDependencies: [
       "@shadcn-editor/editor",
-      "@shadcn-editor/rich-text",
+      "@shadcn-editor/rich-text-editor-plugin",
       "@shadcn-editor/block-format-toolbar-plugin",
       "@shadcn-editor/element-format-toolbar-plugin",
       "@shadcn-editor/font-format-toolbar-plugin",
