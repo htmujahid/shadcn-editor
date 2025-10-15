@@ -59,7 +59,11 @@ const ELEMENT_FORMAT_OPTIONS: {
   },
 } as const
 
-export function ElementFormatToolbarPlugin() {
+export function ElementFormatToolbarPlugin({
+  separator = true,
+}: {
+  separator?: boolean
+}) {
   const { activeEditor } = useToolbarContext()
   const [elementFormat, setElementFormat] = useState<ElementFormatType>("left")
 
@@ -126,7 +130,7 @@ export function ElementFormatToolbarPlugin() {
           </ToggleGroupItem>
         ))}
       </ToggleGroup>
-      <Separator orientation="vertical" className="!h-7" />
+      {separator && <Separator orientation="vertical" className="!h-7" />}
       {/* Indentation toggles */}
       <ToggleGroup
         type="single"

@@ -17,7 +17,11 @@ export const ui: Registry["items"] = [
   {
     name: "toolbar-plugin",
     type: "registry:ui",
-    registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
+    registryDependencies: [
+      "button-group",
+      "dialog",
+      "@shadcn-editor/rich-text-editor-plugin",
+    ],
     files: [
       {
         path: "editor/plugins/toolbar/toolbar-plugin.tsx",
@@ -111,6 +115,11 @@ export const ui: Registry["items"] = [
         path: "editor/plugins/toolbar/block-format/format-quote.tsx",
         target:
           "components/editor/plugins/toolbar/block-format/format-quote.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "editor/plugins/list-max-indent-level-plugin.tsx",
+        target: "components/editor/plugins/list-max-indent-level-plugin.tsx",
         type: "registry:component",
       },
     ],
@@ -276,6 +285,7 @@ export const ui: Registry["items"] = [
       "button",
       "input",
       "@shadcn-editor/toolbar-plugin",
+      "@shadcn-editor/link-plugin",
     ],
     files: [
       {
@@ -574,8 +584,76 @@ export const ui: Registry["items"] = [
         type: "registry:component",
       },
       {
+        path: "editor/plugins/picker/alignment-picker-plugin.tsx",
+        target: "components/editor/plugins/picker/alignment-picker-plugin.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "editor/plugins/picker/bulleted-list-picker-plugin.tsx",
+        target:
+          "components/editor/plugins/picker/bulleted-list-picker-plugin.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "editor/plugins/picker/check-list-picker-plugin.tsx",
+        target: "components/editor/plugins/picker/check-list-picker-plugin.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "editor/plugins/picker/code-picker-plugin.tsx",
+        target: "components/editor/plugins/picker/code-picker-plugin.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "editor/plugins/picker/columns-layout-picker-plugin.tsx",
+        target:
+          "components/editor/plugins/picker/columns-layout-picker-plugin.tsx",
+        type: "registry:component",
+      },
+      {
         path: "editor/plugins/picker/component-picker-option.tsx",
         target: "components/editor/plugins/picker/component-picker-option.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "editor/plugins/picker/divider-picker-plugin.tsx",
+        target: "components/editor/plugins/picker/divider-picker-plugin.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "editor/plugins/picker/embeds-picker-plugin.tsx",
+        target: "components/editor/plugins/picker/embeds-picker-plugin.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "editor/plugins/picker/heading-picker-plugin.tsx",
+        target: "components/editor/plugins/picker/heading-picker-plugin.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "editor/plugins/picker/image-picker-plugin.tsx",
+        target: "components/editor/plugins/picker/image-picker-plugin.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "editor/plugins/picker/numbered-list-picker-plugin.tsx",
+        target:
+          "components/editor/plugins/picker/numbered-list-picker-plugin.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "editor/plugins/picker/paragraph-picker-plugin.tsx",
+        target: "components/editor/plugins/picker/paragraph-picker-plugin.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "editor/plugins/picker/quote-picker-plugin.tsx",
+        target: "components/editor/plugins/picker/quote-picker-plugin.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "editor/plugins/picker/table-picker-plugin.tsx",
+        target: "components/editor/plugins/picker/table-picker-plugin.tsx",
         type: "registry:component",
       },
     ],
@@ -622,6 +700,12 @@ export const ui: Registry["items"] = [
         path: "editor/plugins/toolbar/block-format/block-format-data.tsx",
         target:
           "components/editor/plugins/toolbar/block-format/block-format-data.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "editor/plugins/toolbar/code-language-toolbar-plugin.tsx",
+        target:
+          "components/editor/plugins/toolbar/code-language-toolbar-plugin.tsx",
         type: "registry:component",
       },
     ],
@@ -866,11 +950,26 @@ export const ui: Registry["items"] = [
   {
     name: "link-plugin",
     type: "registry:ui",
-    registryDependencies: ["@shadcn-editor/link-toolbar-plugin"],
     files: [
+      {
+        path: "editor/plugins/auto-link-plugin.tsx",
+        target: "components/editor/plugins/auto-link-plugin.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "editor/plugins/floating-link-editor-plugin.tsx",
+        target: "components/editor/plugins/floating-link-editor-plugin.tsx",
+        type: "registry:component",
+      },
       {
         path: "editor/plugins/link-plugin.tsx",
         target: "components/editor/plugins/link-plugin.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "editor/utils/set-floating-elem-position-for-link-editor.ts",
+        target:
+          "components/editor/utils/set-floating-elem-position-for-link-editor.ts",
         type: "registry:component",
       },
       {

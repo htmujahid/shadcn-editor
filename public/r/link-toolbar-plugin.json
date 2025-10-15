@@ -11,7 +11,8 @@
     "toggle",
     "button",
     "input",
-    "@shadcn-editor/toolbar-plugin"
+    "@shadcn-editor/toolbar-plugin",
+    "@shadcn-editor/link-plugin"
   ],
   "files": [
     {

@@ -98,7 +98,9 @@ export function CodeLanguageToolbarPlugin() {
   return (
     <Select>
       <SelectTrigger className="!h-8 w-min gap-1">
-        <span>{getLanguageFriendlyName(codeLanguage)}</span>
+        <span>
+          {getLanguageFriendlyName(codeLanguage) || "Select Language"}
+        </span>
       </SelectTrigger>
       <SelectContent>
         {CODE_LANGUAGE_OPTIONS.map(([value, label]) => (

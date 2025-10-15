@@ -4,7 +4,12 @@ export const blocks: Registry["items"] = [
   {
     name: "editor",
     type: "registry:block",
-    dependencies: ["lexical", "@lexical/react", "lucide-react"],
+    dependencies: [
+      "lexical",
+      "@lexical/react",
+      "lucide-react",
+      "@lexical/rich-text",
+    ],
     registryDependencies: ["tooltip"],
     files: [
       {
@@ -745,6 +750,65 @@ export const blocks: Registry["items"] = [
         path: "editor/utils/url.ts",
         target: "components/editor/utils/url.ts",
         type: "registry:file",
+      },
+    ],
+  },
+  {
+    name: "editor-md",
+    type: "registry:block",
+    registryDependencies: [
+      "@shadcn-editor/editor",
+      "@shadcn-editor/rich-text",
+      "@shadcn-editor/block-format-toolbar-plugin",
+      "@shadcn-editor/element-format-toolbar-plugin",
+      "@shadcn-editor/font-format-toolbar-plugin",
+      "@shadcn-editor/history-toolbar-plugin",
+      "@shadcn-editor/link-toolbar-plugin",
+      "@shadcn-editor/code-plugin",
+      "@shadcn-editor/draggable-block-plugin",
+      "@shadcn-editor/floating-text-format-plugin",
+      "@shadcn-editor/horizontal-rule-plugin",
+      "@shadcn-editor/image-plugin",
+      "@shadcn-editor/link-plugin",
+      "@shadcn-editor/markdown-plugin",
+      "@shadcn-editor/table-plugin",
+    ],
+    files: [
+      {
+        path: "blocks/editor-md/page.tsx",
+        target: "app/editor-md/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/editor-md/editor.tsx",
+        target: "components/blocks/editor-md/editor.tsx",
+        type: "registry:block",
+      },
+      {
+        path: "blocks/editor-md/nodes.ts",
+        target: "components/blocks/editor-md/nodes.ts",
+        type: "registry:block",
+      },
+      {
+        path: "blocks/editor-md/plugins.tsx",
+        target: "components/blocks/editor-md/plugins.tsx",
+        type: "registry:block",
+      },
+      {
+        path: "editor/plugins/toolbar/horizontal-rule-toolbar-plugin.tsx",
+        target:
+          "components/editor/plugins/toolbar/horizontal-rule-toolbar-plugin.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "editor/plugins/toolbar/image-toolbar-plugin.tsx",
+        target: "components/editor/plugins/toolbar/image-toolbar-plugin.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "editor/plugins/toolbar/table-toolbar-plugin.tsx",
+        target: "components/editor/plugins/toolbar/table-toolbar-plugin.tsx",
+        type: "registry:component",
       },
     ],
   },

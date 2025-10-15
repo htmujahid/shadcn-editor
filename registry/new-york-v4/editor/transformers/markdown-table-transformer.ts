@@ -22,10 +22,11 @@ import {
 } from "@lexical/table"
 import { $isParagraphNode, $isTextNode, LexicalNode } from "lexical"
 
-import { EMOJI } from "@/registry/new-york-v4/editor/transformers/markdown-emoji-transformer"
+// import { EMOJI } from "@/registry/new-york-v4/editor/transformers/markdown-emoji-transformer"
 import { HR } from "@/registry/new-york-v4/editor/transformers/markdown-hr-transformer"
 import { IMAGE } from "@/registry/new-york-v4/editor/transformers/markdown-image-transformer"
-import { TWEET } from "@/registry/new-york-v4/editor/transformers/markdown-tweet-transformer"
+
+// import { TWEET } from "@/registry/new-york-v4/editor/transformers/markdown-tweet-transformer"
 
 // Very primitive table setup
 const TABLE_ROW_REG_EXP = /^(?:\|)(.+)(?:\|)\s?$/
@@ -34,8 +35,8 @@ const TABLE_ROW_DIVIDER_REG_EXP = /^(\| ?:?-*:? ?)+\|\s?$/
 const OTHER_MARKDOWN_TRANSFORMERS = [
   HR,
   IMAGE,
-  EMOJI,
-  TWEET,
+  // EMOJI,
+  // TWEET,
   CHECK_LIST,
   ...ELEMENT_TRANSFORMERS,
   ...MULTILINE_ELEMENT_TRANSFORMERS,

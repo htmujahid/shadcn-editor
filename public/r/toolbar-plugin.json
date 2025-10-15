@@ -3,6 +3,8 @@
   "name": "toolbar-plugin",
   "type": "registry:ui",
   "registryDependencies": [
+    "button-group",
+    "dialog",
     "@shadcn-editor/rich-text-editor-plugin"
   ],
   "files": [

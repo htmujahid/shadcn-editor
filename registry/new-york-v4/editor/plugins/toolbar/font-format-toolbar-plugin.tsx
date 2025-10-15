@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useCallback, useState } from "react"
 import { $isTableSelection } from "@lexical/table"
 import {
   $isRangeSelection,
@@ -33,19 +33,26 @@ export function FontFormatToolbarPlugin() {
   const { activeEditor } = useToolbarContext()
   const [activeFormats, setActiveFormats] = useState<string[]>([])
 
-  const $updateToolbar = (selection: BaseSelection) => {
+  const $updateToolbar = useCallback((selection: BaseSelection) => {
     if ($isRangeSelection(selection) || $isTableSelection(selection)) {
-      // const formats: string[] = []
+      const formats: string[] = []
       FORMATS.forEach(({ format }) => {
-        // @ts-ignore
         if (selection.hasFormat(format as TextFormatType)) {
-          //   formats.push(format)
-          setActiveFormats([...activeFormats, format])
+          formats.push(format)
         }
       })
-      // setActiveFormats(formats)
+      setActiveFormats((prev) => {
+        // Only update if formats have changed
+        if (
+          prev.length !== formats.length ||
+          !formats.every((f) => prev.includes(f))
+        ) {
+          return formats
+        }
+        return prev
+      })
     }
-  }
+  }, [])
 
   useUpdateToolbarHandler($updateToolbar)
 

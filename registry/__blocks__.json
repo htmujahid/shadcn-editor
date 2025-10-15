@@ -6,5 +6,9 @@
   {
     "name": "editor-x",
     "description": ""
+  },
+  {
+    "name": "editor-md",
+    "description": ""
   }
 ]

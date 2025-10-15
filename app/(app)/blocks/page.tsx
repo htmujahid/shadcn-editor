@@ -3,7 +3,7 @@ import { BlockDisplay } from "@/components/block-display"
 export const dynamic = "force-static"
 export const revalidate = false
 
-const FEATURED_BLOCKS = ["editor-x"]
+const FEATURED_BLOCKS = ["editor-x", "editor-md"]
 
 export default async function BlocksPage() {
   return (

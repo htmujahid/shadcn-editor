@@ -6,9 +6,7 @@ import {
   TEXT_FORMAT_TRANSFORMERS,
   TEXT_MATCH_TRANSFORMERS,
 } from "@lexical/markdown"
-import { AutoFocusPlugin } from "@lexical/react/LexicalAutoFocusPlugin"
 import { CheckListPlugin } from "@lexical/react/LexicalCheckListPlugin"
-import { ClearEditorPlugin } from "@lexical/react/LexicalClearEditorPlugin"
 import { ClickableLinkPlugin } from "@lexical/react/LexicalClickableLinkPlugin"
 import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary"
 import { HashtagPlugin } from "@lexical/react/LexicalHashtagPlugin"
@@ -21,17 +19,6 @@ import { TabIndentationPlugin } from "@lexical/react/LexicalTabIndentationPlugin
 import { TablePlugin } from "@lexical/react/LexicalTablePlugin"
 
 import { ContentEditable } from "@/registry/new-york-v4/editor/editor-ui/content-editable"
-import { ActionsPlugin } from "@/registry/new-york-v4/editor/plugins/actions/actions-plugin"
-import { CharacterLimitPlugin } from "@/registry/new-york-v4/editor/plugins/actions/character-limit-plugin"
-import { ClearEditorActionPlugin } from "@/registry/new-york-v4/editor/plugins/actions/clear-editor-plugin"
-import { CounterCharacterPlugin } from "@/registry/new-york-v4/editor/plugins/actions/counter-character-plugin"
-import { EditModeTogglePlugin } from "@/registry/new-york-v4/editor/plugins/actions/edit-mode-toggle-plugin"
-import { ImportExportPlugin } from "@/registry/new-york-v4/editor/plugins/actions/import-export-plugin"
-import { MarkdownTogglePlugin } from "@/registry/new-york-v4/editor/plugins/actions/markdown-toggle-plugin"
-import { MaxLengthPlugin } from "@/registry/new-york-v4/editor/plugins/actions/max-length-plugin"
-import { ShareContentPlugin } from "@/registry/new-york-v4/editor/plugins/actions/share-content-plugin"
-import { SpeechToTextPlugin } from "@/registry/new-york-v4/editor/plugins/actions/speech-to-text-plugin"
-import { TreeViewPlugin } from "@/registry/new-york-v4/editor/plugins/actions/tree-view-plugin"
 import { AutoLinkPlugin } from "@/registry/new-york-v4/editor/plugins/auto-link-plugin"
 import { AutocompletePlugin } from "@/registry/new-york-v4/editor/plugins/autocomplete-plugin"
 import { CodeActionMenuPlugin } from "@/registry/new-york-v4/editor/plugins/code-action-menu-plugin"
@@ -57,9 +44,7 @@ import { AlignmentPickerPlugin } from "@/registry/new-york-v4/editor/plugins/pic
 import { BulletedListPickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/bulleted-list-picker-plugin"
 import { CheckListPickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/check-list-picker-plugin"
 import { CodePickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/code-picker-plugin"
-import { ColumnsLayoutPickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/columns-layout-picker-plugin"
 import { DividerPickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/divider-picker-plugin"
-import { EmbedsPickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/embeds-picker-plugin"
 import { HeadingPickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/heading-picker-plugin"
 import { ImagePickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/image-picker-plugin"
 import { NumberedListPickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/numbered-list-picker-plugin"
@@ -78,23 +63,14 @@ import { FormatHeading } from "@/registry/new-york-v4/editor/plugins/toolbar/blo
 import { FormatNumberedList } from "@/registry/new-york-v4/editor/plugins/toolbar/block-format/format-numbered-list"
 import { FormatParagraph } from "@/registry/new-york-v4/editor/plugins/toolbar/block-format/format-paragraph"
 import { FormatQuote } from "@/registry/new-york-v4/editor/plugins/toolbar/block-format/format-quote"
-import { BlockInsertPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/block-insert-plugin"
-import { InsertColumnsLayout } from "@/registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-columns-layout"
-import { InsertEmbeds } from "@/registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-embeds"
-import { InsertHorizontalRule } from "@/registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-horizontal-rule"
-import { InsertImage } from "@/registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-image"
-import { InsertTable } from "@/registry/new-york-v4/editor/plugins/toolbar/block-insert/insert-table"
-import { ClearFormattingToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/clear-formatting-toolbar-plugin"
 import { CodeLanguageToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/code-language-toolbar-plugin"
 import { ElementFormatToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/element-format-toolbar-plugin"
-import { FontBackgroundToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/font-background-toolbar-plugin"
-import { FontColorToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/font-color-toolbar-plugin"
-import { FontFamilyToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/font-family-toolbar-plugin"
 import { FontFormatToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/font-format-toolbar-plugin"
-import { FontSizeToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/font-size-toolbar-plugin"
 import { HistoryToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/history-toolbar-plugin"
+import { HorizontalRuleToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/horizontal-rule-toolbar-plugin"
+import { ImageToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/image-toolbar-plugin"
 import { LinkToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/link-toolbar-plugin"
-import { SubSuperToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/subsuper-toolbar-plugin"
+import { TableToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/table-toolbar-plugin"
 import { ToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/toolbar-plugin"
 import { TypingPerfPlugin } from "@/registry/new-york-v4/editor/plugins/typing-pref-plugin"
 import { EMOJI } from "@/registry/new-york-v4/editor/transformers/markdown-emoji-transformer"
@@ -102,11 +78,8 @@ import { HR } from "@/registry/new-york-v4/editor/transformers/markdown-hr-trans
 import { IMAGE } from "@/registry/new-york-v4/editor/transformers/markdown-image-transformer"
 import { TABLE } from "@/registry/new-york-v4/editor/transformers/markdown-table-transformer"
 import { TWEET } from "@/registry/new-york-v4/editor/transformers/markdown-tweet-transformer"
-import { ButtonGroup } from "@/registry/new-york-v4/ui/button-group"
-import { Separator } from "@/registry/new-york-v4/ui/separator"
 
 const placeholder = "Press / for commands..."
-const maxLength = 500
 
 export function Plugins({}) {
   const [floatingAnchorElem, setFloatingAnchorElem] =
@@ -125,7 +98,6 @@ export function Plugins({}) {
         {({ blockType }) => (
           <div className="vertical-align-middle sticky top-0 z-10 flex items-center gap-2 overflow-auto border-b p-1">
             <HistoryToolbarPlugin />
-            <Separator orientation="vertical" className="!h-7" />
             <BlockFormatDropDown>
               <FormatParagraph />
               <FormatHeading levels={["h1", "h2", "h3"]} />
@@ -139,94 +111,52 @@ export function Plugins({}) {
               <CodeLanguageToolbarPlugin />
             ) : (
               <>
-                <FontFamilyToolbarPlugin />
-                <FontSizeToolbarPlugin />
-                <Separator orientation="vertical" className="!h-7" />
+                <ElementFormatToolbarPlugin separator={false} />
                 <FontFormatToolbarPlugin />
-                <Separator orientation="vertical" className="!h-7" />
-                <SubSuperToolbarPlugin />
                 <LinkToolbarPlugin setIsLinkEditMode={setIsLinkEditMode} />
-                <Separator orientation="vertical" className="!h-7" />
-                <ClearFormattingToolbarPlugin />
-                <Separator orientation="vertical" className="!h-7" />
-                <ButtonGroup>
-                  <FontColorToolbarPlugin />
-                  <FontBackgroundToolbarPlugin />
-                </ButtonGroup>
-                <Separator orientation="vertical" className="!h-7" />
-                <ElementFormatToolbarPlugin />
-                <Separator orientation="vertical" className="!h-7" />
-                <BlockInsertPlugin>
-                  <InsertHorizontalRule />
-                  <InsertImage />
-                  <InsertTable />
-                  <InsertColumnsLayout />
-                  <InsertEmbeds />
-                </BlockInsertPlugin>
+
+                <HorizontalRuleToolbarPlugin />
+                <ImageToolbarPlugin />
+                <TableToolbarPlugin />
               </>
             )}
           </div>
         )}
       </ToolbarPlugin>
       <div className="relative">
-        <AutoFocusPlugin />
         <RichTextPlugin
           contentEditable={
             <div className="">
               <div className="" ref={onRef}>
                 <ContentEditable
                   placeholder={placeholder}
-                  className="ContentEditable__root relative block h-[calc(100vh-90px)] min-h-72 overflow-auto px-8 py-4 focus:outline-none"
+                  className="ContentEditable__root relative block h-[calc(100vh-50px)] min-h-72 overflow-auto px-8 py-4 focus:outline-none"
                 />
               </div>
             </div>
           }
           ErrorBoundary={LexicalErrorBoundary}
         />
-
-        <ClickableLinkPlugin />
-        <CheckListPlugin />
-        <HorizontalRulePlugin />
-        <TablePlugin />
-        <ListPlugin />
-        <TabIndentationPlugin />
-        <HashtagPlugin />
         <HistoryPlugin />
 
-        <MentionsPlugin />
-        <DraggableBlockPlugin anchorElem={floatingAnchorElem} />
-        <KeywordsPlugin />
-        <EmojisPlugin />
-        <ImagesPlugin />
+        <ListPlugin />
+        <ListMaxIndentLevelPlugin />
+        <CheckListPlugin />
 
-        <LayoutPlugin />
+        <TabIndentationPlugin />
 
-        <AutoEmbedPlugin />
-        <TwitterPlugin />
-        <YouTubePlugin />
-
-        <CodeHighlightPlugin />
-        <CodeActionMenuPlugin anchorElem={floatingAnchorElem} />
-
-        <MarkdownShortcutPlugin
-          transformers={[
-            TABLE,
-            HR,
-            IMAGE,
-            EMOJI,
-            TWEET,
-            CHECK_LIST,
-            ...ELEMENT_TRANSFORMERS,
-            ...MULTILINE_ELEMENT_TRANSFORMERS,
-            ...TEXT_FORMAT_TRANSFORMERS,
-            ...TEXT_MATCH_TRANSFORMERS,
-          ]}
-        />
-        <TypingPerfPlugin />
-        <TabFocusPlugin />
-        <AutocompletePlugin />
+        <ClickableLinkPlugin />
         <AutoLinkPlugin />
         <LinkPlugin />
+
+        <FloatingLinkEditorPlugin
+          anchorElem={floatingAnchorElem}
+          isLinkEditMode={isLinkEditMode}
+          setIsLinkEditMode={setIsLinkEditMode}
+        />
+
+        <CodeActionMenuPlugin anchorElem={floatingAnchorElem} />
+        <CodeHighlightPlugin />
 
         <ComponentPickerMenuPlugin
           baseOptions={[
@@ -234,78 +164,40 @@ export function Plugins({}) {
             HeadingPickerPlugin({ n: 1 }),
             HeadingPickerPlugin({ n: 2 }),
             HeadingPickerPlugin({ n: 3 }),
-            TablePickerPlugin(),
-            CheckListPickerPlugin(),
-            NumberedListPickerPlugin(),
-            BulletedListPickerPlugin(),
             QuotePickerPlugin(),
-            CodePickerPlugin(),
-            DividerPickerPlugin(),
-            EmbedsPickerPlugin({ embed: "tweet" }),
-            EmbedsPickerPlugin({ embed: "youtube-video" }),
-            ImagePickerPlugin(),
-            ColumnsLayoutPickerPlugin(),
             AlignmentPickerPlugin({ alignment: "left" }),
-            AlignmentPickerPlugin({ alignment: "center" }),
             AlignmentPickerPlugin({ alignment: "right" }),
+            AlignmentPickerPlugin({ alignment: "center" }),
             AlignmentPickerPlugin({ alignment: "justify" }),
           ]}
-          dynamicOptionsFn={DynamicTablePickerPlugin}
         />
 
-        <ContextMenuPlugin />
-        <DragDropPastePlugin />
-        <EmojiPickerPlugin />
-
-        <FloatingLinkEditorPlugin
-          anchorElem={floatingAnchorElem}
-          isLinkEditMode={isLinkEditMode}
-          setIsLinkEditMode={setIsLinkEditMode}
-        />
         <FloatingTextFormatToolbarPlugin
           anchorElem={floatingAnchorElem}
           setIsLinkEditMode={setIsLinkEditMode}
         />
 
-        <ListMaxIndentLevelPlugin />
+        <HorizontalRulePlugin />
+
+        <ImagesPlugin />
+
+        <TablePlugin />
+
+        <DraggableBlockPlugin anchorElem={floatingAnchorElem} />
+
+        <MarkdownShortcutPlugin
+          transformers={[
+            TABLE,
+            HR,
+            IMAGE,
+            CHECK_LIST,
+            ...ELEMENT_TRANSFORMERS,
+            ...MULTILINE_ELEMENT_TRANSFORMERS,
+            ...TEXT_FORMAT_TRANSFORMERS,
+            ...TEXT_MATCH_TRANSFORMERS,
+          ]}
+        />
       </div>
-      <ActionsPlugin>
-        <div className="clear-both flex items-center justify-between gap-2 overflow-auto border-t p-1">
-          <div className="flex flex-1 justify-start">
-            <MaxLengthPlugin maxLength={maxLength} />
-            <CharacterLimitPlugin maxLength={maxLength} charset="UTF-16" />
-          </div>
-          <div>
-            <CounterCharacterPlugin charset="UTF-16" />
-          </div>
-          <div className="flex flex-1 justify-end">
-            <SpeechToTextPlugin />
-            <ShareContentPlugin />
-            <ImportExportPlugin />
-            <MarkdownTogglePlugin
-              shouldPreserveNewLinesInMarkdown={true}
-              transformers={[
-                TABLE,
-                HR,
-                IMAGE,
-                EMOJI,
-                TWEET,
-                CHECK_LIST,
-                ...ELEMENT_TRANSFORMERS,
-                ...MULTILINE_ELEMENT_TRANSFORMERS,
-                ...TEXT_FORMAT_TRANSFORMERS,
-                ...TEXT_MATCH_TRANSFORMERS,
-              ]}
-            />
-            <EditModeTogglePlugin />
-            <>
-              <ClearEditorActionPlugin />
-              <ClearEditorPlugin />
-            </>
-            <TreeViewPlugin />
-          </div>
-        </div>
-      </ActionsPlugin>
     </div>
   )
 }

@@ -21,10 +21,88 @@
       "target": "components/editor/editor-hooks/use-modal.tsx"
     },
     {
+      "path": "registry/new-york-v4/editor/plugins/picker/alignment-picker-plugin.tsx",
+      "content": "import { FORMAT_ELEMENT_COMMAND } from \"lexical\"\nimport {\n  AlignCenterIcon,\n  AlignJustifyIcon,\n  AlignLeftIcon,\n  AlignRightIcon,\n} from \"lucide-react\"\n\nimport { ComponentPickerOption } from \"@/registry/new-york-v4/editor/plugins/picker/component-picker-option\"\n\nexport function AlignmentPickerPlugin({\n  alignment,\n}: {\n  alignment: \"left\" | \"center\" | \"right\" | \"justify\"\n}) {\n  return new ComponentPickerOption(`Align ${alignment}`, {\n    icon: <AlignIcons alignment={alignment} />,\n    keywords: [\"align\", \"justify\", alignment],\n    onSelect: (_, editor) =>\n      editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, alignment),\n  })\n}\n\nfunction AlignIcons({\n  alignment,\n}: {\n  alignment: \"left\" | \"center\" | \"right\" | \"justify\"\n}) {\n  switch (alignment) {\n    case \"left\":\n      return <AlignLeftIcon className=\"size-4\" />\n    case \"center\":\n      return <AlignCenterIcon className=\"size-4\" />\n    case \"right\":\n      return <AlignRightIcon className=\"size-4\" />\n    case \"justify\":\n      return <AlignJustifyIcon className=\"size-4\" />\n  }\n}\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/picker/alignment-picker-plugin.tsx"
+    },
+    {
+      "path": "registry/new-york-v4/editor/plugins/picker/bulleted-list-picker-plugin.tsx",
+      "content": "import { INSERT_UNORDERED_LIST_COMMAND } from \"@lexical/list\"\nimport { ListIcon } from \"lucide-react\"\n\nimport { ComponentPickerOption } from \"@/registry/new-york-v4/editor/plugins/picker/component-picker-option\"\n\nexport function BulletedListPickerPlugin() {\n  return new ComponentPickerOption(\"Bulleted List\", {\n    icon: <ListIcon className=\"size-4\" />,\n    keywords: [\"bulleted list\", \"unordered list\", \"ul\"],\n    onSelect: (_, editor) =>\n      editor.dispatchCommand(INSERT_UNORDERED_LIST_COMMAND, undefined),\n  })\n}\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/picker/bulleted-list-picker-plugin.tsx"
+    },
+    {
+      "path": "registry/new-york-v4/editor/plugins/picker/check-list-picker-plugin.tsx",
+      "content": "import { INSERT_CHECK_LIST_COMMAND } from \"@lexical/list\"\nimport { ListTodoIcon } from \"lucide-react\"\n\nimport { ComponentPickerOption } from \"@/registry/new-york-v4/editor/plugins/picker/component-picker-option\"\n\nexport function CheckListPickerPlugin() {\n  return new ComponentPickerOption(\"Check List\", {\n    icon: <ListTodoIcon className=\"size-4\" />,\n    keywords: [\"check list\", \"todo list\"],\n    onSelect: (_, editor) =>\n      editor.dispatchCommand(INSERT_CHECK_LIST_COMMAND, undefined),\n  })\n}\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/picker/check-list-picker-plugin.tsx"
+    },
+    {
+      "path": "registry/new-york-v4/editor/plugins/picker/code-picker-plugin.tsx",
+      "content": "import { $createCodeNode } from \"@lexical/code\"\nimport { $setBlocksType } from \"@lexical/selection\"\nimport { $getSelection, $isRangeSelection } from \"lexical\"\nimport { CodeIcon } from \"lucide-react\"\n\nimport { ComponentPickerOption } from \"@/registry/new-york-v4/editor/plugins/picker/component-picker-option\"\n\nexport function CodePickerPlugin() {\n  return new ComponentPickerOption(\"Code\", {\n    icon: <CodeIcon className=\"size-4\" />,\n    keywords: [\"javascript\", \"python\", \"js\", \"codeblock\"],\n    onSelect: (_, editor) =>\n      editor.update(() => {\n        const selection = $getSelection()\n\n        if ($isRangeSelection(selection)) {\n          if (selection.isCollapsed()) {\n            $setBlocksType(selection, () => $createCodeNode())\n          } else {\n            // Will this ever happen?\n            const textContent = selection.getTextContent()\n            const codeNode = $createCodeNode()\n            selection.insertNodes([codeNode])\n            selection.insertRawText(textContent)\n          }\n        }\n      }),\n  })\n}\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/picker/code-picker-plugin.tsx"
+    },
+    {
+      "path": "registry/new-york-v4/editor/plugins/picker/columns-layout-picker-plugin.tsx",
+      "content": "import { Columns3Icon } from \"lucide-react\"\n\nimport { InsertLayoutDialog } from \"@/registry/new-york-v4/editor/plugins/layout-plugin\"\nimport { ComponentPickerOption } from \"@/registry/new-york-v4/editor/plugins/picker/component-picker-option\"\n\nexport function ColumnsLayoutPickerPlugin() {\n  return new ComponentPickerOption(\"Columns Layout\", {\n    icon: <Columns3Icon className=\"size-4\" />,\n    keywords: [\"columns\", \"layout\", \"grid\"],\n    onSelect: (_, editor, showModal) =>\n      showModal(\"Insert Columns Layout\", (onClose) => (\n        <InsertLayoutDialog activeEditor={editor} onClose={onClose} />\n      )),\n  })\n}\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/picker/columns-layout-picker-plugin.tsx"
+    },
+    {
       "path": "registry/new-york-v4/editor/plugins/picker/component-picker-option.tsx",
       "content": "import { JSX } from \"react\"\nimport { MenuOption } from \"@lexical/react/LexicalTypeaheadMenuPlugin\"\nimport { LexicalEditor } from \"lexical\"\n\nexport class ComponentPickerOption extends MenuOption {\n  // What shows up in the editor\n  title: string\n  // Icon for display\n  icon?: JSX.Element\n  // For extra searching.\n  keywords: Array<string>\n  // TBD\n  keyboardShortcut?: string\n  // What happens when you select this option?\n  onSelect: (\n    queryString: string,\n    editor: LexicalEditor,\n    showModal: (\n      title: string,\n      showModal: (onClose: () => void) => JSX.Element\n    ) => void\n  ) => void\n\n  constructor(\n    title: string,\n    options: {\n      icon?: JSX.Element\n      keywords?: Array<string>\n      keyboardShortcut?: string\n      onSelect: (\n        queryString: string,\n        editor: LexicalEditor,\n        showModal: (\n          title: string,\n          showModal: (onClose: () => void) => JSX.Element\n        ) => void\n      ) => void\n    }\n  ) {\n    super(title)\n    this.title = title\n    this.keywords = options.keywords || []\n    this.icon = options.icon\n    this.keyboardShortcut = options.keyboardShortcut\n    this.onSelect = options.onSelect.bind(this)\n  }\n}\n",
       "type": "registry:component",
       "target": "components/editor/plugins/picker/component-picker-option.tsx"
+    },
+    {
+      "path": "registry/new-york-v4/editor/plugins/picker/divider-picker-plugin.tsx",
+      "content": "import { INSERT_HORIZONTAL_RULE_COMMAND } from \"@lexical/react/LexicalHorizontalRuleNode\"\nimport { MinusIcon } from \"lucide-react\"\n\nimport { ComponentPickerOption } from \"@/registry/new-york-v4/editor/plugins/picker/component-picker-option\"\n\nexport function DividerPickerPlugin() {\n  return new ComponentPickerOption(\"Divider\", {\n    icon: <MinusIcon className=\"size-4\" />,\n    keywords: [\"horizontal rule\", \"divider\", \"hr\"],\n    onSelect: (_, editor) =>\n      editor.dispatchCommand(INSERT_HORIZONTAL_RULE_COMMAND, undefined),\n  })\n}\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/picker/divider-picker-plugin.tsx"
+    },
+    {
+      "path": "registry/new-york-v4/editor/plugins/picker/embeds-picker-plugin.tsx",
+      "content": "import { INSERT_EMBED_COMMAND } from \"@lexical/react/LexicalAutoEmbedPlugin\"\n\nimport {\n  CustomEmbedConfig,\n  EmbedConfigs,\n} from \"@/registry/new-york-v4/editor/plugins/embeds/auto-embed-plugin\"\nimport { ComponentPickerOption } from \"@/registry/new-york-v4/editor/plugins/picker/component-picker-option\"\n\nexport function EmbedsPickerPlugin({\n  embed,\n}: {\n  embed: \"tweet\" | \"youtube-video\"\n}) {\n  const embedConfig = EmbedConfigs.find(\n    (config) => config.type === embed\n  ) as CustomEmbedConfig\n\n  return new ComponentPickerOption(`Embed ${embedConfig.contentName}`, {\n    icon: embedConfig.icon,\n    keywords: [...embedConfig.keywords, \"embed\"],\n    onSelect: (_, editor) =>\n      editor.dispatchCommand(INSERT_EMBED_COMMAND, embedConfig.type),\n  })\n}\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/picker/embeds-picker-plugin.tsx"
+    },
+    {
+      "path": "registry/new-york-v4/editor/plugins/picker/heading-picker-plugin.tsx",
+      "content": "import { $createHeadingNode } from \"@lexical/rich-text\"\nimport { $setBlocksType } from \"@lexical/selection\"\nimport { $getSelection, $isRangeSelection } from \"lexical\"\nimport { Heading1Icon, Heading2Icon, Heading3Icon } from \"lucide-react\"\n\nimport { ComponentPickerOption } from \"@/registry/new-york-v4/editor/plugins/picker/component-picker-option\"\n\nexport function HeadingPickerPlugin({ n }: { n: 1 | 2 | 3 }) {\n  return new ComponentPickerOption(`Heading ${n}`, {\n    icon: <HeadingIcons n={n} />,\n    keywords: [\"heading\", \"header\", `h${n}`],\n    onSelect: (_, editor) =>\n      editor.update(() => {\n        const selection = $getSelection()\n        if ($isRangeSelection(selection)) {\n          $setBlocksType(selection, () => $createHeadingNode(`h${n}`))\n        }\n      }),\n  })\n}\n\nfunction HeadingIcons({ n }: { n: number }) {\n  switch (n) {\n    case 1:\n      return <Heading1Icon className=\"size-4\" />\n    case 2:\n      return <Heading2Icon className=\"size-4\" />\n    case 3:\n      return <Heading3Icon className=\"size-4\" />\n  }\n}\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/picker/heading-picker-plugin.tsx"
+    },
+    {
+      "path": "registry/new-york-v4/editor/plugins/picker/image-picker-plugin.tsx",
+      "content": "import { ImageIcon } from \"lucide-react\"\n\nimport { InsertImageDialog } from \"@/registry/new-york-v4/editor/plugins/images-plugin\"\nimport { ComponentPickerOption } from \"@/registry/new-york-v4/editor/plugins/picker/component-picker-option\"\n\nexport function ImagePickerPlugin() {\n  return new ComponentPickerOption(\"Image\", {\n    icon: <ImageIcon className=\"size-4\" />,\n    keywords: [\"image\", \"photo\", \"picture\", \"file\"],\n    onSelect: (_, editor, showModal) =>\n      showModal(\"Insert Image\", (onClose) => (\n        <InsertImageDialog activeEditor={editor} onClose={onClose} />\n      )),\n  })\n}\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/picker/image-picker-plugin.tsx"
+    },
+    {
+      "path": "registry/new-york-v4/editor/plugins/picker/numbered-list-picker-plugin.tsx",
+      "content": "import { INSERT_ORDERED_LIST_COMMAND } from \"@lexical/list\"\nimport { ListOrderedIcon } from \"lucide-react\"\n\nimport { ComponentPickerOption } from \"@/registry/new-york-v4/editor/plugins/picker/component-picker-option\"\n\nexport function NumberedListPickerPlugin() {\n  return new ComponentPickerOption(\"Numbered List\", {\n    icon: <ListOrderedIcon className=\"size-4\" />,\n    keywords: [\"numbered list\", \"ordered list\", \"ol\"],\n    onSelect: (_, editor) =>\n      editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND, undefined),\n  })\n}\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/picker/numbered-list-picker-plugin.tsx"
+    },
+    {
+      "path": "registry/new-york-v4/editor/plugins/picker/paragraph-picker-plugin.tsx",
+      "content": "import { $setBlocksType } from \"@lexical/selection\"\nimport { $createParagraphNode, $getSelection, $isRangeSelection } from \"lexical\"\nimport { TextIcon } from \"lucide-react\"\n\nimport { ComponentPickerOption } from \"@/registry/new-york-v4/editor/plugins/picker/component-picker-option\"\n\nexport function ParagraphPickerPlugin() {\n  return new ComponentPickerOption(\"Paragraph\", {\n    icon: <TextIcon className=\"size-4\" />,\n    keywords: [\"normal\", \"paragraph\", \"p\", \"text\"],\n    onSelect: (_, editor) =>\n      editor.update(() => {\n        const selection = $getSelection()\n        if ($isRangeSelection(selection)) {\n          $setBlocksType(selection, () => $createParagraphNode())\n        }\n      }),\n  })\n}\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/picker/paragraph-picker-plugin.tsx"
+    },
+    {
+      "path": "registry/new-york-v4/editor/plugins/picker/quote-picker-plugin.tsx",
+      "content": "import { $createQuoteNode } from \"@lexical/rich-text\"\nimport { $setBlocksType } from \"@lexical/selection\"\nimport { $getSelection, $isRangeSelection } from \"lexical\"\nimport { QuoteIcon } from \"lucide-react\"\n\nimport { ComponentPickerOption } from \"@/registry/new-york-v4/editor/plugins/picker/component-picker-option\"\n\nexport function QuotePickerPlugin() {\n  return new ComponentPickerOption(\"Quote\", {\n    icon: <QuoteIcon className=\"size-4\" />,\n    keywords: [\"block quote\"],\n    onSelect: (_, editor) =>\n      editor.update(() => {\n        const selection = $getSelection()\n        if ($isRangeSelection(selection)) {\n          $setBlocksType(selection, () => $createQuoteNode())\n        }\n      }),\n  })\n}\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/picker/quote-picker-plugin.tsx"
+    },
+    {
+      "path": "registry/new-york-v4/editor/plugins/picker/table-picker-plugin.tsx",
+      "content": "import { INSERT_TABLE_COMMAND } from \"@lexical/table\"\nimport { TableIcon } from \"lucide-react\"\n\nimport { ComponentPickerOption } from \"@/registry/new-york-v4/editor/plugins/picker/component-picker-option\"\nimport { InsertTableDialog } from \"@/registry/new-york-v4/editor/plugins/table-plugin\"\n\nexport function TablePickerPlugin() {\n  return new ComponentPickerOption(\"Table\", {\n    icon: <TableIcon className=\"size-4\" />,\n    keywords: [\"table\", \"grid\", \"spreadsheet\", \"rows\", \"columns\"],\n    onSelect: (_, editor, showModal) =>\n      showModal(\"Insert Table\", (onClose) => (\n        <InsertTableDialog activeEditor={editor} onClose={onClose} />\n      )),\n  })\n}\n\nexport function DynamicTablePickerPlugin({\n  queryString,\n}: {\n  queryString: string\n}) {\n  const options: Array<ComponentPickerOption> = []\n\n  if (queryString == null) {\n    return options\n  }\n\n  const tableMatch = queryString.match(/^([1-9]\\d?)(?:x([1-9]\\d?)?)?$/)\n\n  if (tableMatch !== null) {\n    const rows = tableMatch[1]\n    const colOptions = tableMatch[2]\n      ? [tableMatch[2]]\n      : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(String)\n\n    options.push(\n      ...colOptions.map(\n        (columns) =>\n          new ComponentPickerOption(`${rows}x${columns} Table`, {\n            icon: <i className=\"icon table\" />,\n            keywords: [\"table\"],\n            onSelect: (_, editor) =>\n              editor.dispatchCommand(INSERT_TABLE_COMMAND, { columns, rows }),\n          })\n      )\n    )\n  }\n\n  return options\n}\n",
+      "type": "registry:component",
+      "target": "components/editor/plugins/picker/table-picker-plugin.tsx"
     }
   ]
 }
