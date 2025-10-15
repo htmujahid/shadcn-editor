@@ -9,7 +9,6 @@ import {
 import { CheckListPlugin } from "@lexical/react/LexicalCheckListPlugin"
 import { ClickableLinkPlugin } from "@lexical/react/LexicalClickableLinkPlugin"
 import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary"
-import { HashtagPlugin } from "@lexical/react/LexicalHashtagPlugin"
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin"
 import { HorizontalRulePlugin } from "@lexical/react/LexicalHorizontalRulePlugin"
 import { ListPlugin } from "@lexical/react/LexicalListPlugin"
@@ -20,26 +19,15 @@ import { TablePlugin } from "@lexical/react/LexicalTablePlugin"
 
 import { ContentEditable } from "@/registry/new-york-v4/editor/editor-ui/content-editable"
 import { AutoLinkPlugin } from "@/registry/new-york-v4/editor/plugins/auto-link-plugin"
-import { AutocompletePlugin } from "@/registry/new-york-v4/editor/plugins/autocomplete-plugin"
 import { CodeActionMenuPlugin } from "@/registry/new-york-v4/editor/plugins/code-action-menu-plugin"
 import { CodeHighlightPlugin } from "@/registry/new-york-v4/editor/plugins/code-highlight-plugin"
 import { ComponentPickerMenuPlugin } from "@/registry/new-york-v4/editor/plugins/component-picker-menu-plugin"
-import { ContextMenuPlugin } from "@/registry/new-york-v4/editor/plugins/context-menu-plugin"
-import { DragDropPastePlugin } from "@/registry/new-york-v4/editor/plugins/drag-drop-paste-plugin"
 import { DraggableBlockPlugin } from "@/registry/new-york-v4/editor/plugins/draggable-block-plugin"
-import { AutoEmbedPlugin } from "@/registry/new-york-v4/editor/plugins/embeds/auto-embed-plugin"
-import { TwitterPlugin } from "@/registry/new-york-v4/editor/plugins/embeds/twitter-plugin"
-import { YouTubePlugin } from "@/registry/new-york-v4/editor/plugins/embeds/youtube-plugin"
-import { EmojiPickerPlugin } from "@/registry/new-york-v4/editor/plugins/emoji-picker-plugin"
-import { EmojisPlugin } from "@/registry/new-york-v4/editor/plugins/emojis-plugin"
 import { FloatingLinkEditorPlugin } from "@/registry/new-york-v4/editor/plugins/floating-link-editor-plugin"
 import { FloatingTextFormatToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/floating-text-format-plugin"
 import { ImagesPlugin } from "@/registry/new-york-v4/editor/plugins/images-plugin"
-import { KeywordsPlugin } from "@/registry/new-york-v4/editor/plugins/keywords-plugin"
-import { LayoutPlugin } from "@/registry/new-york-v4/editor/plugins/layout-plugin"
 import { LinkPlugin } from "@/registry/new-york-v4/editor/plugins/link-plugin"
 import { ListMaxIndentLevelPlugin } from "@/registry/new-york-v4/editor/plugins/list-max-indent-level-plugin"
-import { MentionsPlugin } from "@/registry/new-york-v4/editor/plugins/mentions-plugin"
 import { AlignmentPickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/alignment-picker-plugin"
 import { BulletedListPickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/bulleted-list-picker-plugin"
 import { CheckListPickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/check-list-picker-plugin"
@@ -50,11 +38,7 @@ import { ImagePickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/
 import { NumberedListPickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/numbered-list-picker-plugin"
 import { ParagraphPickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/paragraph-picker-plugin"
 import { QuotePickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/quote-picker-plugin"
-import {
-  DynamicTablePickerPlugin,
-  TablePickerPlugin,
-} from "@/registry/new-york-v4/editor/plugins/picker/table-picker-plugin"
-import { TabFocusPlugin } from "@/registry/new-york-v4/editor/plugins/tab-focus-plugin"
+import { TablePickerPlugin } from "@/registry/new-york-v4/editor/plugins/picker/table-picker-plugin"
 import { BlockFormatDropDown } from "@/registry/new-york-v4/editor/plugins/toolbar/block-format-toolbar-plugin"
 import { FormatBulletedList } from "@/registry/new-york-v4/editor/plugins/toolbar/block-format/format-bulleted-list"
 import { FormatCheckList } from "@/registry/new-york-v4/editor/plugins/toolbar/block-format/format-check-list"
@@ -72,12 +56,9 @@ import { ImageToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolba
 import { LinkToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/link-toolbar-plugin"
 import { TableToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/table-toolbar-plugin"
 import { ToolbarPlugin } from "@/registry/new-york-v4/editor/plugins/toolbar/toolbar-plugin"
-import { TypingPerfPlugin } from "@/registry/new-york-v4/editor/plugins/typing-pref-plugin"
-import { EMOJI } from "@/registry/new-york-v4/editor/transformers/markdown-emoji-transformer"
 import { HR } from "@/registry/new-york-v4/editor/transformers/markdown-hr-transformer"
 import { IMAGE } from "@/registry/new-york-v4/editor/transformers/markdown-image-transformer"
 import { TABLE } from "@/registry/new-york-v4/editor/transformers/markdown-table-transformer"
-import { TWEET } from "@/registry/new-york-v4/editor/transformers/markdown-tweet-transformer"
 
 const placeholder = "Press / for commands..."
 
@@ -164,10 +145,17 @@ export function Plugins({}) {
             HeadingPickerPlugin({ n: 1 }),
             HeadingPickerPlugin({ n: 2 }),
             HeadingPickerPlugin({ n: 3 }),
+            TablePickerPlugin(),
+            CheckListPickerPlugin(),
+            NumberedListPickerPlugin(),
+            BulletedListPickerPlugin(),
             QuotePickerPlugin(),
+            CodePickerPlugin(),
+            DividerPickerPlugin(),
+            ImagePickerPlugin(),
             AlignmentPickerPlugin({ alignment: "left" }),
-            AlignmentPickerPlugin({ alignment: "right" }),
             AlignmentPickerPlugin({ alignment: "center" }),
+            AlignmentPickerPlugin({ alignment: "right" }),
             AlignmentPickerPlugin({ alignment: "justify" }),
           ]}
         />

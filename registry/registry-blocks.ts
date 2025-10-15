@@ -765,6 +765,7 @@ export const blocks: Registry["items"] = [
       "@shadcn-editor/history-toolbar-plugin",
       "@shadcn-editor/link-toolbar-plugin",
       "@shadcn-editor/code-plugin",
+      "@shadcn-editor/component-picker-menu-plugin",
       "@shadcn-editor/draggable-block-plugin",
       "@shadcn-editor/floating-text-format-plugin",
       "@shadcn-editor/horizontal-rule-plugin",
