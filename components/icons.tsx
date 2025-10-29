@@ -5,6 +5,7 @@ type IconProps = React.HTMLAttributes<SVGElement>
 export const Icons = {
   logo: (props: IconProps) => (
     <svg 
+      {...props}
       xmlns="http://www.w3.org/2000/svg" 
       width="24" 
       height="24" 
@@ -13,7 +14,7 @@ export const Icons = {
       stroke="currentColor" 
       strokeWidth="2" 
       strokeLinecap="round" 
-      strokeLinejoin="round" 
+      strokeLinejoin="round"
     >
       <path d="M4 20h16"/>
       <path d="m6 16 6-12 6 12"/>
