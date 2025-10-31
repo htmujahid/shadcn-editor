@@ -102,7 +102,6 @@ import { HR } from "@/registry/new-york-v4/editor/transformers/markdown-hr-trans
 import { IMAGE } from "@/registry/new-york-v4/editor/transformers/markdown-image-transformer"
 import { TABLE } from "@/registry/new-york-v4/editor/transformers/markdown-table-transformer"
 import { TWEET } from "@/registry/new-york-v4/editor/transformers/markdown-tweet-transformer"
-import { ButtonGroup } from "@/registry/new-york-v4/ui/button-group"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
 
 const placeholder = "Press / for commands..."
@@ -149,10 +148,8 @@ export function Plugins({}) {
                 <Separator orientation="vertical" className="!h-7" />
                 <ClearFormattingToolbarPlugin />
                 <Separator orientation="vertical" className="!h-7" />
-                <ButtonGroup>
-                  <FontColorToolbarPlugin />
-                  <FontBackgroundToolbarPlugin />
-                </ButtonGroup>
+                <FontColorToolbarPlugin />
+                <FontBackgroundToolbarPlugin />
                 <Separator orientation="vertical" className="!h-7" />
                 <ElementFormatToolbarPlugin />
                 <Separator orientation="vertical" className="!h-7" />

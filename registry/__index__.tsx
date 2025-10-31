@@ -244,9 +244,9 @@ export const Index: Record<string, any> = {
       type: "registry:component",
       target: "components/editor/plugins/toolbar/font-background-toolbar-plugin.tsx"
     },{
-      path: "registry/new-york-v4/editor/editor-ui/colorpicker.tsx",
+      path: "registry/new-york-v4/editor/editor-ui/color-picker.tsx",
       type: "registry:ui",
-      target: "components/editor/editor-ui/colorpicker.tsx"
+      target: "components/editor/editor-ui/color-picker.tsx"
     },{
       path: "registry/new-york-v4/editor/editor-hooks/use-update-toolbar.ts",
       type: "registry:hook",
@@ -1604,9 +1604,9 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       target: "components/editor/editor-ui/code-button.tsx"
     },{
-      path: "registry/new-york-v4/editor/editor-ui/colorpicker.tsx",
+      path: "registry/new-york-v4/editor/editor-ui/color-picker.tsx",
       type: "registry:ui",
-      target: "components/editor/editor-ui/colorpicker.tsx"
+      target: "components/editor/editor-ui/color-picker.tsx"
     },{
       path: "registry/new-york-v4/editor/editor-ui/content-editable.tsx",
       type: "registry:ui",

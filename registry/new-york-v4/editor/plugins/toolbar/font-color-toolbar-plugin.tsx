@@ -10,7 +10,18 @@ import { BaselineIcon } from "lucide-react"
 
 import { useToolbarContext } from "@/registry/new-york-v4/editor/context/toolbar-context"
 import { useUpdateToolbarHandler } from "@/registry/new-york-v4/editor/editor-hooks/use-update-toolbar"
-import ColorPicker from "@/registry/new-york-v4/editor/editor-ui/colorpicker"
+import {
+  ColorPicker,
+  ColorPickerAlphaSlider,
+  ColorPickerArea,
+  ColorPickerContent,
+  ColorPickerEyeDropper,
+  ColorPickerFormatSelect,
+  ColorPickerHueSlider,
+  ColorPickerInput,
+  ColorPickerTrigger,
+} from "@/registry/new-york-v4/editor/editor-ui/color-picker"
+import { Button } from "@/registry/new-york-v4/ui/button"
 
 export function FontColorToolbarPlugin() {
   const { activeEditor } = useToolbarContext()
@@ -28,33 +39,57 @@ export function FontColorToolbarPlugin() {
   useUpdateToolbarHandler($updateToolbar)
 
   const applyStyleText = useCallback(
-    (styles: Record<string, string>, skipHistoryStack?: boolean) => {
-      activeEditor.update(
-        () => {
-          const selection = $getSelection()
-          if (selection !== null) {
-            $patchStyleText(selection, styles)
-          }
-        },
-        skipHistoryStack ? { tag: "historic" } : {}
-      )
+    (styles: Record<string, string>) => {
+      activeEditor.update(() => {
+        const selection = $getSelection()
+        activeEditor.setEditable(false)
+        if (selection !== null) {
+          $patchStyleText(selection, styles)
+        }
+      })
     },
     [activeEditor]
   )
 
   const onFontColorSelect = useCallback(
-    (value: string, skipHistoryStack: boolean) => {
-      applyStyleText({ color: value }, skipHistoryStack)
+    (value: string) => {
+      applyStyleText({ color: value })
     },
     [applyStyleText]
   )
 
   return (
     <ColorPicker
-      icon={<BaselineIcon className="size-4" />}
-      color={fontColor}
-      onChange={onFontColorSelect}
-      title="text color"
-    />
+      modal
+      defaultFormat="hex"
+      defaultValue={fontColor}
+      onValueChange={onFontColorSelect}
+      onOpenChange={(open) => {
+        if (!open) {
+          activeEditor.setEditable(true)
+          activeEditor.focus()
+        }
+      }}
+    >
+      <ColorPickerTrigger asChild>
+        <Button variant="outline" size="icon-sm">
+          <BaselineIcon className="h-4 w-4" />
+        </Button>
+      </ColorPickerTrigger>
+      <ColorPickerContent>
+        <ColorPickerArea />
+        <div className="flex items-center gap-2">
+          <ColorPickerEyeDropper />
+          <div className="flex flex-1 flex-col gap-2">
+            <ColorPickerHueSlider />
+            <ColorPickerAlphaSlider />
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          <ColorPickerFormatSelect />
+          <ColorPickerInput />
+        </div>
+      </ColorPickerContent>
+    </ColorPicker>
   )
 }

@@ -202,7 +202,7 @@ export const ui: Registry["items"] = [
   {
     name: "font-color-toolbar-plugin",
     type: "registry:ui",
-    dependencies: ["react-colorful", "@lexical/selection"],
+    dependencies: ["@lexical/selection"],
     registryDependencies: [
       "button",
       "input",
@@ -223,8 +223,8 @@ export const ui: Registry["items"] = [
         type: "registry:component",
       },
       {
-        path: "editor/editor-ui/colorpicker.tsx",
-        target: "components/editor/editor-ui/colorpicker.tsx",
+        path: "editor/editor-ui/color-picker.tsx",
+        target: "components/editor/editor-ui/color-picker.tsx",
         type: "registry:ui",
       },
       {
@@ -1018,7 +1018,6 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     dependencies: [
       "lodash",
-      "react-colorful",
       "@lexical/table",
       "@lexical/utils",
       "@lexical/markdown",

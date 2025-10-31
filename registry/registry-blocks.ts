@@ -70,7 +70,6 @@ export const blocks: Registry["items"] = [
       "lexical",
       "lodash",
       "lucide-react",
-      "react-colorful",
       "react-error-boundary",
       "sonner",
     ],
@@ -681,8 +680,8 @@ export const blocks: Registry["items"] = [
         type: "registry:ui",
       },
       {
-        path: "editor/editor-ui/colorpicker.tsx",
-        target: "components/editor/editor-ui/colorpicker.tsx",
+        path: "editor/editor-ui/color-picker.tsx",
+        target: "components/editor/editor-ui/color-picker.tsx",
         type: "registry:ui",
       },
       {
