@@ -7,7 +7,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import { JSX, useCallback, useMemo, useState } from "react"
+import { JSX, useCallback, useEffect, useMemo, useRef, useState } from "react"
 import dynamic from "next/dynamic"
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
 import { useBasicTypeaheadTriggerMatch } from "@lexical/react/LexicalTypeaheadMenuPlugin"
@@ -31,6 +31,74 @@ const LexicalTypeaheadMenuPlugin = dynamic(
     ),
   { ssr: false }
 )
+
+function ComponentPickerMenu({
+  options,
+  selectedIndex,
+  selectOptionAndCleanUp,
+  setHighlightedIndex,
+}: {
+  options: Array<ComponentPickerOption>
+  selectedIndex: number | null
+  selectOptionAndCleanUp: (option: ComponentPickerOption) => void
+  setHighlightedIndex: (index: number) => void
+}) {
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([])
+
+  useEffect(() => {
+    if (selectedIndex !== null && itemRefs.current[selectedIndex]) {
+      itemRefs.current[selectedIndex]?.scrollIntoView({
+        block: "nearest",
+        behavior: "auto",
+      })
+    }
+  }, [selectedIndex])
+
+  return (
+    <div className="fixed z-10 w-[250px] h-min rounded-md shadow-md">
+      <Command
+        onKeyDown={(e) => {
+          if (e.key === "ArrowUp") {
+            e.preventDefault()
+            setHighlightedIndex(
+              selectedIndex !== null
+                ? (selectedIndex - 1 + options.length) % options.length
+                : options.length - 1
+            )
+          } else if (e.key === "ArrowDown") {
+            e.preventDefault()
+            setHighlightedIndex(
+              selectedIndex !== null ? (selectedIndex + 1) % options.length : 0
+            )
+          }
+        }}
+      >
+        <CommandList>
+          <CommandGroup>
+            {options.map((option, index) => (
+              <CommandItem
+                key={option.key}
+                ref={(el) => {
+                  itemRefs.current[index] = el
+                }}
+                value={option.title}
+                onSelect={() => {
+                  selectOptionAndCleanUp(option)
+                }}
+                className={`flex items-center gap-2 ${
+                  selectedIndex === index ? "bg-accent" : "!bg-transparent"
+                }`}
+              >
+                {option.icon}
+                {option.title}
+              </CommandItem>
+            ))}
+          </CommandGroup>
+        </CommandList>
+      </Command>
+    </div>
+  )
+}
 
 export function ComponentPickerMenuPlugin({
   baseOptions = [],
@@ -98,50 +166,13 @@ export function ComponentPickerMenuPlugin({
         ) => {
           return anchorElementRef.current && options.length
             ? createPortal(
-                <div className="fixed z-10 w-[250px] rounded-md shadow-md">
-                  <Command
-                    onKeyDown={(e) => {
-                      if (e.key === "ArrowUp") {
-                        e.preventDefault()
-                        setHighlightedIndex(
-                          selectedIndex !== null
-                            ? (selectedIndex - 1 + options.length) %
-                                options.length
-                            : options.length - 1
-                        )
-                      } else if (e.key === "ArrowDown") {
-                        e.preventDefault()
-                        setHighlightedIndex(
-                          selectedIndex !== null
-                            ? (selectedIndex + 1) % options.length
-                            : 0
-                        )
-                      }
-                    }}
-                  >
-                    <CommandList>
-                      <CommandGroup>
-                        {options.map((option, index) => (
-                          <CommandItem
-                            key={option.key}
-                            value={option.title}
-                            onSelect={() => {
-                              selectOptionAndCleanUp(option)
-                            }}
-                            className={`flex items-center gap-2 ${
-                              selectedIndex === index
-                                ? "bg-accent"
-                                : "!bg-transparent"
-                            }`}
-                          >
-                            {option.icon}
-                            {option.title}
-                          </CommandItem>
-                        ))}
-                      </CommandGroup>
-                    </CommandList>
-                  </Command>
-                </div>,
+                <ComponentPickerMenu
+                  options={options}
+                  selectedIndex={selectedIndex}
+                  selectOptionAndCleanUp={selectOptionAndCleanUp}
+                  setHighlightedIndex={setHighlightedIndex}
+                />
+                ,
                 anchorElementRef.current
               )
             : null
