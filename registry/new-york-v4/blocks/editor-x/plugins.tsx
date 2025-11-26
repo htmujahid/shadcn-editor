@@ -127,7 +127,7 @@ export function Plugins({}) {
             <Separator orientation="vertical" className="!h-7" />
             <BlockFormatDropDown>
               <FormatParagraph />
-              <FormatHeading levels={["h1", "h2", "h3"]} />
+              <FormatHeading levels={["h1", "h2", "h3", "h4", "h5", "h6"]} />
               <FormatNumberedList />
               <FormatBulletedList />
               <FormatCheckList />
