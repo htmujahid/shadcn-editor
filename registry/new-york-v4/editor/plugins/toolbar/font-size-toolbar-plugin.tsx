@@ -57,8 +57,8 @@ export function FontSizeToolbarPlugin() {
     <ButtonGroup>
       <Button
         variant="outline"
-        size="icon"
-        className="!h-8 !w-8"
+        size="icon-sm"
+        className="!size-8"
         onClick={() => updateFontSize(fontSize - 1)}
         disabled={fontSize <= MIN_FONT_SIZE}
       >
@@ -75,8 +75,8 @@ export function FontSizeToolbarPlugin() {
       />
       <Button
         variant="outline"
-        size="icon"
-        className="!h-8 !w-8"
+        size="icon-sm"
+        className="!size-8"
         onClick={() => updateFontSize(fontSize + 1)}
         disabled={fontSize >= MAX_FONT_SIZE}
       >

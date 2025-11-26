@@ -76,7 +76,7 @@ export function FontFormatToolbarPlugin() {
             )
           }}
         >
-          <Icon className="h-4 w-4" />
+          <Icon className="size-4" />
         </ToggleGroupItem>
       ))}
     </ToggleGroup>
