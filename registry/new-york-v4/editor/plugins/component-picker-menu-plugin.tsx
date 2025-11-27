@@ -55,7 +55,7 @@ function ComponentPickerMenu({
   }, [selectedIndex])
 
   return (
-    <div className="fixed z-10 w-[250px] h-min rounded-md shadow-md">
+    <div className="absolute z-10 w-[250px] h-min rounded-md shadow-md">
       <Command
         onKeyDown={(e) => {
           if (e.key === "ArrowUp") {
