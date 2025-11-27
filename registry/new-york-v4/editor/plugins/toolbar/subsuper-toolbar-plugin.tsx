@@ -44,7 +44,7 @@ export function SubSuperToolbarPlugin() {
         }}
         variant={"outline"}
       >
-        <SubscriptIcon className="h-4 w-4" />
+        <SubscriptIcon className="size-4" />
       </ToggleGroupItem>
       <ToggleGroupItem
         value="superscript"
@@ -55,7 +55,7 @@ export function SubSuperToolbarPlugin() {
         }}
         variant={"outline"}
       >
-        <SuperscriptIcon className="h-4 w-4" />
+        <SuperscriptIcon className="size-4" />
       </ToggleGroupItem>
     </ToggleGroup>
   )
