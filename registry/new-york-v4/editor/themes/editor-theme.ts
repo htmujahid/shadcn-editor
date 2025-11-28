@@ -52,7 +52,7 @@ export const editorTheme: EditorThemeClasses = {
     subscript: "sub",
     superscript: "sup",
     underline: "underline",
-    underlineStrikethrough: "underline line-through",
+    underlineStrikethrough: "[text-decoration:underline_line-through]",
   },
   image: "relative inline-block user-select-none cursor-default editor-image",
   inlineImage:
