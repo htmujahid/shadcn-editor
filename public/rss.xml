@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shadcn Editor Registry</title>
+    <description>RSS feed for Shadcn Editor UI components and blocks registry</description>
+    <link>https://shadcn-editor.vercel.app</link>
+    <atom:link href="https://shadcn-editor.vercel.app/rss.xml" rel="self" type="application/rss+xml"/>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Dec 2025 10:15:51 GMT</lastBuildDate>
+    <generator>Shadcn Editor RSS Generator</generator>
+    <item>
+      <title>Rich Text Editor Plugin</title>
+      <description>A plugin for the rich text editor.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/rich-text-editor</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/rich-text-editor</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Toolbar Plugin</title>
+      <description>A plugin for the toolbar.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/toolbar</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/toolbar</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>History Toolbar Plugin</title>
+      <description>A plugin for the history toolbar.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/toolbar/history-toolbar</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/toolbar/history-toolbar</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Block Format Toolbar Plugin</title>
+      <description>A plugin for the block format toolbar.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/toolbar/block-format-toolbar</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/toolbar/block-format-toolbar</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Font Family Toolbar Plugin</title>
+      <description>A plugin for the font family toolbar.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/toolbar/font-family-toolbar</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/toolbar/font-family-toolbar</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Font Size Toolbar Plugin</title>
+      <description>A plugin for the font size toolbar.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/toolbar/font-size-toolbar</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/toolbar/font-size-toolbar</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Font Format Toolbar Plugin</title>
+      <description>A plugin for the font format toolbar.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/toolbar/font-format-toolbar</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/toolbar/font-format-toolbar</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Subsuper Toolbar Plugin</title>
+      <description>A plugin for the subsuper toolbar.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/toolbar/subsuper-toolbar</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/toolbar/subsuper-toolbar</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Font Color Toolbar Plugin</title>
+      <description>A plugin for the font color toolbar.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/toolbar/font-color-toolbar</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/toolbar/font-color-toolbar</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Element Format Toolbar Plugin</title>
+      <description>A plugin for the element format toolbar.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/toolbar/element-format-toolbar</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/toolbar/element-format-toolbar</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Clear Formatting Toolbar Plugin</title>
+      <description>A plugin for the clear formatting toolbar.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/toolbar/clear-formatting-toolbar</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/toolbar/clear-formatting-toolbar</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Link Toolbar Plugin</title>
+      <description>A plugin for the link toolbar.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/toolbar/link-toolbar</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/toolbar/link-toolbar</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Actions Plugin</title>
+      <description>A plugin for the actions.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/actions</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/actions</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Max Length Plugin</title>
+      <description>A plugin for the max length.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/actions/max-length</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/actions/max-length</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Counter Character Plugin</title>
+      <description>A plugin for the counter character.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/actions/counter-character</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/actions/counter-character</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Speech to Text Plugin</title>
+      <description>A plugin for the speech to text.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/actions/speech-to-text</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/actions/speech-to-text</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Share Content Plugin</title>
+      <description>A plugin for the share content.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/actions/share-content</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/actions/share-content</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Import Export Plugin</title>
+      <description>A plugin for the import export.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/actions/import-export</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/actions/import-export</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Markdown Toggle Plugin</title>
+      <description>A plugin for the markdown toggle.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/actions/markdown-toggle</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/actions/markdown-toggle</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Clear Editor Plugin</title>
+      <description>A plugin for the clear editor.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/actions/clear-editor</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/actions/clear-editor</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Edit Mode Toggle Plugin</title>
+      <description>A plugin for the edit mode toggle.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/actions/edit-mode-toggle</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/actions/edit-mode-toggle</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Tree View Plugin</title>
+      <description>A plugin for the tree view.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/actions/tree-view</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/actions/tree-view</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Autocomplete Plugin</title>
+      <description>A plugin for the autocomplete.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/autocomplete</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/autocomplete</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Auto Embed Plugin</title>
+      <description>A plugin for the auto embed.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/auto-embed</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/auto-embed</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Auto Focus Plugin</title>
+      <description>A plugin for the auto focus.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/auto-focus</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/auto-focus</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Component Picker Menu Plugin</title>
+      <description>A plugin for the component picker menu.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/component-picker-menu</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/component-picker-menu</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Code Plugin</title>
+      <description>A plugin for the code.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/code</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/code</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Context Menu Plugin</title>
+      <description>A plugin for the context menu.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/context-menu</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/context-menu</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Draggable Block Plugin</title>
+      <description>A plugin for the draggable block.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/draggable-block</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/draggable-block</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Drag Drop Paste Plugin</title>
+      <description>A plugin for the drag drop paste.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/drag-drop-paste</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/drag-drop-paste</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Emoji Plugin</title>
+      <description>A plugin for the emoji.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/emoji</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/emoji</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Floating Text Format Plugin</title>
+      <description>A plugin for the floating text format.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/floating-text-format</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/floating-text-format</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Hashtag Plugin</title>
+      <description>A plugin for the hashtag.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/hashtag</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/hashtag</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Horizontal Rule Plugin</title>
+      <description>A plugin for the horizontal rule.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/horizontal-rule</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/horizontal-rule</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Image Plugin</title>
+      <description>A plugin for the image.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/image</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/image</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Keywords Plugin</title>
+      <description>A plugin for the keywords.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/keywords</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/keywords</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Layout Plugin</title>
+      <description>A plugin for the layout.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/layout</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/layout</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Link Plugin</title>
+      <description>A plugin for the link.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/link</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/link</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Markdown Plugin</title>
+      <description>A plugin for the markdown.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/markdown</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/markdown</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Mention Plugin</title>
+      <description>A plugin for the mention.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/mention</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/mention</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Table Plugin</title>
+      <description>A plugin for the table.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/table</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/table</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Tab Focus Plugin</title>
+      <description>A plugin for the tab focus.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/tab-focus</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/tab-focus</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Typing Pref Plugin</title>
+      <description>A plugin for the typing pref.</description>
+      <link>https://shadcn-editor.vercel.app/docs/plugins/typing-pref</link>
+      <guid>https://shadcn-editor.vercel.app/docs/plugins/typing-pref</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Editor Block</title>
+      <description>A basic editor block.</description>
+      <link>https://shadcn-editor.vercel.app/view/editor</link>
+      <guid>https://shadcn-editor.vercel.app/view/editor</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Editor X Block</title>
+      <description>An advanced editor block with all plugins included.</description>
+      <link>https://shadcn-editor.vercel.app/view/editor-x</link>
+      <guid>https://shadcn-editor.vercel.app/view/editor-x</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+    <item>
+      <title>Editor MD Block</title>
+      <description>A markdown editor block.</description>
+      <link>https://shadcn-editor.vercel.app/view/editor-md</link>
+      <guid>https://shadcn-editor.vercel.app/view/editor-md</guid>
+      <pubDate>Mon, 01 Dec 2025 10:15:51 GMT</pubDate>
+    </item>
+  </channel>
+</rss>
