@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "clear-formatting-toolbar-plugin",
   "type": "registry:ui",
+  "title": "Clear Formatting Toolbar Plugin",
+  "description": "A plugin for the clear formatting toolbar.",
   "dependencies": [
     "@lexical/utils",
     "@lexical/table"

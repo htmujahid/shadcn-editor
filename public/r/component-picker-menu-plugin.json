@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "component-picker-menu-plugin",
   "type": "registry:ui",
+  "title": "Component Picker Menu Plugin",
+  "description": "A plugin for the component picker menu.",
   "registryDependencies": [
     "command",
     "dialog",

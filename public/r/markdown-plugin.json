@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "markdown-plugin",
   "type": "registry:ui",
+  "title": "Markdown Plugin",
+  "description": "A plugin for the markdown.",
   "dependencies": [
     "@lexical/markdown"
   ],

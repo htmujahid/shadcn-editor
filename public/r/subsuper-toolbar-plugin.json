@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "subsuper-toolbar-plugin",
   "type": "registry:ui",
+  "title": "Subsuper Toolbar Plugin",
+  "description": "A plugin for the subsuper toolbar.",
   "dependencies": [
     "@lexical/table"
   ],

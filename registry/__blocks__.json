@@ -1,14 +1,14 @@
 [
   {
     "name": "editor",
-    "description": ""
+    "description": "A basic editor block."
   },
   {
     "name": "editor-x",
-    "description": ""
+    "description": "An advanced editor block with all plugins included."
   },
   {
     "name": "editor-md",
-    "description": ""
+    "description": "A markdown editor block."
   }
 ]

@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "context-menu-plugin",
   "type": "registry:ui",
+  "title": "Context Menu Plugin",
+  "description": "A plugin for the context menu.",
   "dependencies": [
     "@lexical/link"
   ],

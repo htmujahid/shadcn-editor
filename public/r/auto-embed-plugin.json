@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "auto-embed-plugin",
   "type": "registry:ui",
+  "title": "Auto Embed Plugin",
+  "description": "A plugin for the auto embed.",
   "dependencies": [
     "@lexical/utils",
     "@lexical/markdown"

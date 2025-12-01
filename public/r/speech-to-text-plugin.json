@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "speech-to-text-plugin",
   "type": "registry:ui",
+  "title": "Speech to Text Plugin",
+  "description": "A plugin for the speech to text.",
   "registryDependencies": [
     "button",
     "tooltip",

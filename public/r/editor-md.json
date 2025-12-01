@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "editor-md",
   "type": "registry:block",
+  "title": "Editor MD Block",
+  "description": "A markdown editor block.",
   "registryDependencies": [
     "@shadcn-editor/editor",
     "@shadcn-editor/rich-text-editor-plugin",

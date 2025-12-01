@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "mention-plugin",
   "type": "registry:ui",
+  "title": "Mention Plugin",
+  "description": "A plugin for the mention.",
   "registryDependencies": [
     "command",
     "@shadcn-editor/rich-text-editor-plugin"

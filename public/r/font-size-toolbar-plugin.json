@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "font-size-toolbar-plugin",
   "type": "registry:ui",
+  "title": "Font Size Toolbar Plugin",
+  "description": "A plugin for the font size toolbar.",
   "dependencies": [
     "@lexical/selection"
   ],

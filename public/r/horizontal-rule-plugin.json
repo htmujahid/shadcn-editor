@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "horizontal-rule-plugin",
   "type": "registry:ui",
+  "title": "Horizontal Rule Plugin",
+  "description": "A plugin for the horizontal rule.",
   "dependencies": [
     "@lexical/utils"
   ],

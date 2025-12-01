@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "layout-plugin",
   "type": "registry:ui",
+  "title": "Layout Plugin",
+  "description": "A plugin for the layout.",
   "dependencies": [
     "@lexical/utils"
   ],

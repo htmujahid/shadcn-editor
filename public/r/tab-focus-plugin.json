@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "tab-focus-plugin",
   "type": "registry:ui",
+  "title": "Tab Focus Plugin",
+  "description": "A plugin for the tab focus.",
   "registryDependencies": [
     "@shadcn-editor/rich-text-editor-plugin"
   ],

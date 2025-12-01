@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "table-plugin",
   "type": "registry:ui",
+  "title": "Table Plugin",
+  "description": "A plugin for the table.",
   "dependencies": [
     "lodash",
     "@lexical/table",

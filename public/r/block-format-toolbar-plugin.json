@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "block-format-toolbar-plugin",
   "type": "registry:ui",
+  "title": "Block Format Toolbar Plugin",
+  "description": "A plugin for the block format toolbar.",
   "dependencies": [
     "@lexical/list",
     "@lexical/utils",

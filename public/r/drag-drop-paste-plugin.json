@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "drag-drop-paste-plugin",
   "type": "registry:ui",
+  "title": "Drag Drop Paste Plugin",
+  "description": "A plugin for the drag drop paste.",
   "dependencies": [
     "@lexical/utils"
   ],

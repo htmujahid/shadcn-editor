@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "edit-mode-toggle-plugin",
   "type": "registry:ui",
+  "title": "Edit Mode Toggle Plugin",
+  "description": "A plugin for the edit mode toggle.",
   "registryDependencies": [
     "button",
     "tooltip",

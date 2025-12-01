@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "floating-text-format-plugin",
   "type": "registry:ui",
+  "title": "Floating Text Format Plugin",
+  "description": "A plugin for the floating text format.",
   "dependencies": [
     "@lexical/code",
     "@lexical/link",

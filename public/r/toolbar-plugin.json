@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "toolbar-plugin",
   "type": "registry:ui",
+  "title": "Toolbar Plugin",
+  "description": "A plugin for the toolbar.",
   "registryDependencies": [
     "button-group",
     "dialog",

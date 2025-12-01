@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "code-plugin",
   "type": "registry:ui",
+  "title": "Code Plugin",
+  "description": "A plugin for the code.",
   "dependencies": [
     "lodash",
     "@lexical/utils",

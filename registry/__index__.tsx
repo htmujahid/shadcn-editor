@@ -6,29 +6,9 @@
 import * as React from "react"
 
 export const Index: Record<string, any> = {
-  "index": {
-    name: "index",
-    description: "",
-    type: "registry:style",
-    registryDependencies: ["utils"],
-    files: [],
-    component: null,
-    categories: undefined,
-    meta: undefined,
-  },
-  "style": {
-    name: "style",
-    description: "",
-    type: "registry:style",
-    registryDependencies: ["utils"],
-    files: [],
-    component: null,
-    categories: undefined,
-    meta: undefined,
-  },
   "rich-text-editor-plugin": {
     name: "rich-text-editor-plugin",
-    description: "",
+    description: "A plugin for the rich text editor.",
     type: "registry:ui",
     registryDependencies: ["@shadcn-editor/editor"],
     files: [{
@@ -46,7 +26,7 @@ export const Index: Record<string, any> = {
   },
   "toolbar-plugin": {
     name: "toolbar-plugin",
-    description: "",
+    description: "A plugin for the toolbar.",
     type: "registry:ui",
     registryDependencies: ["button-group","dialog","@shadcn-editor/rich-text-editor-plugin"],
     files: [{
@@ -72,7 +52,7 @@ export const Index: Record<string, any> = {
   },
   "history-toolbar-plugin": {
     name: "history-toolbar-plugin",
-    description: "",
+    description: "A plugin for the history toolbar.",
     type: "registry:ui",
     registryDependencies: ["button","@shadcn-editor/toolbar-plugin"],
     files: [{
@@ -90,7 +70,7 @@ export const Index: Record<string, any> = {
   },
   "block-format-toolbar-plugin": {
     name: "block-format-toolbar-plugin",
-    description: "",
+    description: "A plugin for the block format toolbar.",
     type: "registry:ui",
     registryDependencies: ["select","@shadcn-editor/toolbar-plugin"],
     files: [{
@@ -144,7 +124,7 @@ export const Index: Record<string, any> = {
   },
   "font-family-toolbar-plugin": {
     name: "font-family-toolbar-plugin",
-    description: "",
+    description: "A plugin for the font family toolbar.",
     type: "registry:ui",
     registryDependencies: ["select","@shadcn-editor/toolbar-plugin"],
     files: [{
@@ -166,7 +146,7 @@ export const Index: Record<string, any> = {
   },
   "font-size-toolbar-plugin": {
     name: "font-size-toolbar-plugin",
-    description: "",
+    description: "A plugin for the font size toolbar.",
     type: "registry:ui",
     registryDependencies: ["button","input","@shadcn-editor/toolbar-plugin"],
     files: [{
@@ -188,7 +168,7 @@ export const Index: Record<string, any> = {
   },
   "font-format-toolbar-plugin": {
     name: "font-format-toolbar-plugin",
-    description: "",
+    description: "A plugin for the font format toolbar.",
     type: "registry:ui",
     registryDependencies: ["toggle","@shadcn-editor/toolbar-plugin"],
     files: [{
@@ -210,7 +190,7 @@ export const Index: Record<string, any> = {
   },
   "subsuper-toolbar-plugin": {
     name: "subsuper-toolbar-plugin",
-    description: "",
+    description: "A plugin for the subsuper toolbar.",
     type: "registry:ui",
     registryDependencies: ["toggle-group","@shadcn-editor/toolbar-plugin"],
     files: [{
@@ -232,7 +212,7 @@ export const Index: Record<string, any> = {
   },
   "font-color-toolbar-plugin": {
     name: "font-color-toolbar-plugin",
-    description: "",
+    description: "A plugin for the font color toolbar.",
     type: "registry:ui",
     registryDependencies: ["button","input","popover","@shadcn-editor/toolbar-plugin"],
     files: [{
@@ -262,7 +242,7 @@ export const Index: Record<string, any> = {
   },
   "element-format-toolbar-plugin": {
     name: "element-format-toolbar-plugin",
-    description: "",
+    description: "A plugin for the element format toolbar.",
     type: "registry:ui",
     registryDependencies: ["separator","toggle-group","@shadcn-editor/toolbar-plugin"],
     files: [{
@@ -288,7 +268,7 @@ export const Index: Record<string, any> = {
   },
   "clear-formatting-toolbar-plugin": {
     name: "clear-formatting-toolbar-plugin",
-    description: "",
+    description: "A plugin for the clear formatting toolbar.",
     type: "registry:ui",
     registryDependencies: ["button","@shadcn-editor/toolbar-plugin"],
     files: [{
@@ -306,7 +286,7 @@ export const Index: Record<string, any> = {
   },
   "link-toolbar-plugin": {
     name: "link-toolbar-plugin",
-    description: "",
+    description: "A plugin for the link toolbar.",
     type: "registry:ui",
     registryDependencies: ["toggle","button","input","@shadcn-editor/toolbar-plugin","@shadcn-editor/link-plugin"],
     files: [{
@@ -336,7 +316,7 @@ export const Index: Record<string, any> = {
   },
   "actions-plugin": {
     name: "actions-plugin",
-    description: "",
+    description: "A plugin for the actions.",
     type: "registry:ui",
     registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [{
@@ -354,7 +334,7 @@ export const Index: Record<string, any> = {
   },
   "max-length-plugin": {
     name: "max-length-plugin",
-    description: "",
+    description: "A plugin for the max length.",
     type: "registry:ui",
     registryDependencies: ["@shadcn-editor/actions-plugin"],
     files: [{
@@ -372,7 +352,7 @@ export const Index: Record<string, any> = {
   },
   "counter-character-plugin": {
     name: "counter-character-plugin",
-    description: "",
+    description: "A plugin for the counter character.",
     type: "registry:ui",
     registryDependencies: ["@shadcn-editor/actions-plugin"],
     files: [{
@@ -390,7 +370,7 @@ export const Index: Record<string, any> = {
   },
   "speech-to-text-plugin": {
     name: "speech-to-text-plugin",
-    description: "",
+    description: "A plugin for the speech to text.",
     type: "registry:ui",
     registryDependencies: ["button","tooltip","@shadcn-editor/actions-plugin"],
     files: [{
@@ -416,7 +396,7 @@ export const Index: Record<string, any> = {
   },
   "share-content-plugin": {
     name: "share-content-plugin",
-    description: "",
+    description: "A plugin for the share content.",
     type: "registry:ui",
     registryDependencies: ["button","tooltip","sonner","toast","@shadcn-editor/actions-plugin"],
     files: [{
@@ -438,7 +418,7 @@ export const Index: Record<string, any> = {
   },
   "import-export-plugin": {
     name: "import-export-plugin",
-    description: "",
+    description: "A plugin for the import export.",
     type: "registry:ui",
     registryDependencies: ["button","tooltip","@shadcn-editor/actions-plugin"],
     files: [{
@@ -456,7 +436,7 @@ export const Index: Record<string, any> = {
   },
   "markdown-toggle-plugin": {
     name: "markdown-toggle-plugin",
-    description: "",
+    description: "A plugin for the markdown toggle.",
     type: "registry:ui",
     registryDependencies: ["button","@shadcn-editor/actions-plugin"],
     files: [{
@@ -474,7 +454,7 @@ export const Index: Record<string, any> = {
   },
   "clear-editor-plugin": {
     name: "clear-editor-plugin",
-    description: "",
+    description: "A plugin for the clear editor.",
     type: "registry:ui",
     registryDependencies: ["button","dialog","tooltip","@shadcn-editor/actions-plugin"],
     files: [{
@@ -492,7 +472,7 @@ export const Index: Record<string, any> = {
   },
   "edit-mode-toggle-plugin": {
     name: "edit-mode-toggle-plugin",
-    description: "",
+    description: "A plugin for the edit mode toggle.",
     type: "registry:ui",
     registryDependencies: ["button","tooltip","@shadcn-editor/actions-plugin"],
     files: [{
@@ -510,7 +490,7 @@ export const Index: Record<string, any> = {
   },
   "tree-view-plugin": {
     name: "tree-view-plugin",
-    description: "",
+    description: "A plugin for the tree view.",
     type: "registry:ui",
     registryDependencies: ["button","dialog","scroll-area","@shadcn-editor/actions-plugin"],
     files: [{
@@ -528,7 +508,7 @@ export const Index: Record<string, any> = {
   },
   "autocomplete-plugin": {
     name: "autocomplete-plugin",
-    description: "",
+    description: "A plugin for the autocomplete.",
     type: "registry:ui",
     registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [{
@@ -554,7 +534,7 @@ export const Index: Record<string, any> = {
   },
   "auto-embed-plugin": {
     name: "auto-embed-plugin",
-    description: "",
+    description: "A plugin for the auto embed.",
     type: "registry:ui",
     registryDependencies: ["button","command","dialog","input","popover","select","@shadcn-editor/toolbar-plugin"],
     files: [{
@@ -600,7 +580,7 @@ export const Index: Record<string, any> = {
   },
   "component-picker-menu-plugin": {
     name: "component-picker-menu-plugin",
-    description: "",
+    description: "A plugin for the component picker menu.",
     type: "registry:ui",
     registryDependencies: ["command","dialog","@shadcn-editor/rich-text-editor-plugin"],
     files: [{
@@ -678,7 +658,7 @@ export const Index: Record<string, any> = {
   },
   "code-plugin": {
     name: "code-plugin",
-    description: "",
+    description: "A plugin for the code.",
     type: "registry:ui",
     registryDependencies: ["select","@shadcn-editor/toolbar-plugin"],
     files: [{
@@ -720,7 +700,7 @@ export const Index: Record<string, any> = {
   },
   "context-menu-plugin": {
     name: "context-menu-plugin",
-    description: "",
+    description: "A plugin for the context menu.",
     type: "registry:ui",
     registryDependencies: ["command","popover","@shadcn-editor/rich-text-editor-plugin"],
     files: [{
@@ -738,7 +718,7 @@ export const Index: Record<string, any> = {
   },
   "draggable-block-plugin": {
     name: "draggable-block-plugin",
-    description: "",
+    description: "A plugin for the draggable block.",
     type: "registry:ui",
     registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [{
@@ -756,7 +736,7 @@ export const Index: Record<string, any> = {
   },
   "drag-drop-paste-plugin": {
     name: "drag-drop-paste-plugin",
-    description: "",
+    description: "A plugin for the drag drop paste.",
     type: "registry:ui",
     registryDependencies: ["@shadcn-editor/rich-text-editor-plugin","@shadcn-editor/image-plugin"],
     files: [{
@@ -774,7 +754,7 @@ export const Index: Record<string, any> = {
   },
   "emoji-plugin": {
     name: "emoji-plugin",
-    description: "",
+    description: "A plugin for the emoji.",
     type: "registry:ui",
     registryDependencies: ["command","@shadcn-editor/rich-text-editor-plugin"],
     files: [{
@@ -808,7 +788,7 @@ export const Index: Record<string, any> = {
   },
   "floating-text-format-plugin": {
     name: "floating-text-format-plugin",
-    description: "",
+    description: "A plugin for the floating text format.",
     type: "registry:ui",
     registryDependencies: ["separator","toggle-group","@shadcn-editor/rich-text-editor-plugin"],
     files: [{
@@ -838,7 +818,7 @@ export const Index: Record<string, any> = {
   },
   "horizontal-rule-plugin": {
     name: "horizontal-rule-plugin",
-    description: "",
+    description: "A plugin for the horizontal rule.",
     type: "registry:ui",
     registryDependencies: ["select","@shadcn-editor/toolbar-plugin"],
     files: [{
@@ -860,7 +840,7 @@ export const Index: Record<string, any> = {
   },
   "image-plugin": {
     name: "image-plugin",
-    description: "",
+    description: "A plugin for the image.",
     type: "registry:ui",
     registryDependencies: ["button","dialog","input","label","select","tabs","@shadcn-editor/toolbar-plugin"],
     files: [{
@@ -902,7 +882,7 @@ export const Index: Record<string, any> = {
   },
   "keywords-plugin": {
     name: "keywords-plugin",
-    description: "",
+    description: "A plugin for the keywords.",
     type: "registry:ui",
     registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [{
@@ -924,7 +904,7 @@ export const Index: Record<string, any> = {
   },
   "layout-plugin": {
     name: "layout-plugin",
-    description: "",
+    description: "A plugin for the layout.",
     type: "registry:ui",
     registryDependencies: ["button","select","@shadcn-editor/toolbar-plugin"],
     files: [{
@@ -954,7 +934,7 @@ export const Index: Record<string, any> = {
   },
   "link-plugin": {
     name: "link-plugin",
-    description: "",
+    description: "A plugin for the link.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [{
@@ -988,7 +968,7 @@ export const Index: Record<string, any> = {
   },
   "markdown-plugin": {
     name: "markdown-plugin",
-    description: "",
+    description: "A plugin for the markdown.",
     type: "registry:ui",
     registryDependencies: ["button","@shadcn-editor/actions-plugin","@shadcn-editor/rich-text-editor-plugin"],
     files: [{
@@ -1006,7 +986,7 @@ export const Index: Record<string, any> = {
   },
   "mention-plugin": {
     name: "mention-plugin",
-    description: "",
+    description: "A plugin for the mention.",
     type: "registry:ui",
     registryDependencies: ["command","@shadcn-editor/rich-text-editor-plugin"],
     files: [{
@@ -1028,7 +1008,7 @@ export const Index: Record<string, any> = {
   },
   "table-plugin": {
     name: "table-plugin",
-    description: "",
+    description: "A plugin for the table.",
     type: "registry:ui",
     registryDependencies: ["button","command","dialog","input","label","popover","select","@shadcn-editor/toolbar-plugin"],
     files: [{
@@ -1070,7 +1050,7 @@ export const Index: Record<string, any> = {
   },
   "tab-focus-plugin": {
     name: "tab-focus-plugin",
-    description: "",
+    description: "A plugin for the tab focus.",
     type: "registry:ui",
     registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [{
@@ -1088,7 +1068,7 @@ export const Index: Record<string, any> = {
   },
   "typing-pref-plugin": {
     name: "typing-pref-plugin",
-    description: "",
+    description: "A plugin for the typing pref.",
     type: "registry:ui",
     registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [{
@@ -1110,7 +1090,7 @@ export const Index: Record<string, any> = {
   },
   "editor": {
     name: "editor",
-    description: "",
+    description: "A basic editor block.",
     type: "registry:block",
     registryDependencies: ["tooltip"],
     files: [{
@@ -1152,7 +1132,7 @@ export const Index: Record<string, any> = {
   },
   "editor-x": {
     name: "editor-x",
-    description: "",
+    description: "An advanced editor block with all plugins included.",
     type: "registry:block",
     registryDependencies: ["button","button-group","checkbox","command","dialog","input","label","popover","scroll-area","select","separator","tabs","textarea","tooltip","toggle","toggle-group"],
     files: [{
@@ -1670,7 +1650,7 @@ export const Index: Record<string, any> = {
   },
   "editor-md": {
     name: "editor-md",
-    description: "",
+    description: "A markdown editor block.",
     type: "registry:block",
     registryDependencies: ["@shadcn-editor/editor","@shadcn-editor/rich-text-editor-plugin","@shadcn-editor/block-format-toolbar-plugin","@shadcn-editor/element-format-toolbar-plugin","@shadcn-editor/font-format-toolbar-plugin","@shadcn-editor/history-toolbar-plugin","@shadcn-editor/link-toolbar-plugin","@shadcn-editor/code-plugin","@shadcn-editor/component-picker-menu-plugin","@shadcn-editor/draggable-block-plugin","@shadcn-editor/floating-text-format-plugin","@shadcn-editor/horizontal-rule-plugin","@shadcn-editor/image-plugin","@shadcn-editor/link-plugin","@shadcn-editor/markdown-plugin","@shadcn-editor/table-plugin"],
     files: [{

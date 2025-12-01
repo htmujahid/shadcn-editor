@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "counter-character-plugin",
   "type": "registry:ui",
+  "title": "Counter Character Plugin",
+  "description": "A plugin for the counter character.",
   "dependencies": [
     "@lexical/text"
   ],

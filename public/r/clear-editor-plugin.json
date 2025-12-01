@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "clear-editor-plugin",
   "type": "registry:ui",
+  "title": "Clear Editor Plugin",
+  "description": "A plugin for the clear editor.",
   "registryDependencies": [
     "button",
     "dialog",

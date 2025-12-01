@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "hashtag-plugin",
   "type": "registry:ui",
+  "title": "Hashtag Plugin",
+  "description": "A plugin for the hashtag.",
   "dependencies": [
     "@lexical/hashtag"
   ],

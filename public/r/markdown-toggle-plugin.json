@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "markdown-toggle-plugin",
   "type": "registry:ui",
+  "title": "Markdown Toggle Plugin",
+  "description": "A plugin for the markdown toggle.",
   "dependencies": [
     "@lexical/markdown",
     "@lexical/code"

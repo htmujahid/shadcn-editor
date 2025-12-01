@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "import-export-plugin",
   "type": "registry:ui",
+  "title": "Import Export Plugin",
+  "description": "A plugin for the import export.",
   "dependencies": [
     "@lexical/file"
   ],

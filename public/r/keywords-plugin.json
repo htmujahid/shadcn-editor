@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "keywords-plugin",
   "type": "registry:ui",
+  "title": "Keywords Plugin",
+  "description": "A plugin for the keywords.",
   "registryDependencies": [
     "@shadcn-editor/rich-text-editor-plugin"
   ],

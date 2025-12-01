@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "share-content-plugin",
   "type": "registry:ui",
+  "title": "Share Content Plugin",
+  "description": "A plugin for the share content.",
   "dependencies": [
     "sonner",
     "@lexical/file"

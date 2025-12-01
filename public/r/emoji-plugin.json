@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "emoji-plugin",
   "type": "registry:ui",
+  "title": "Emoji Plugin",
+  "description": "A plugin for the emoji.",
   "registryDependencies": [
     "command",
     "@shadcn-editor/rich-text-editor-plugin"

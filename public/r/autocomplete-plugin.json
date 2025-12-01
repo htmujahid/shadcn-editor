@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "autocomplete-plugin",
   "type": "registry:ui",
+  "title": "Autocomplete Plugin",
+  "description": "A plugin for the autocomplete.",
   "dependencies": [
     "@lexical/utils",
     "@lexical/selection"

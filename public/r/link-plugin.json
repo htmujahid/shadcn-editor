@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "link-plugin",
   "type": "registry:ui",
+  "title": "Link Plugin",
+  "description": "A plugin for the link.",
   "files": [
     {
       "path": "registry/new-york-v4/editor/plugins/auto-link-plugin.tsx",

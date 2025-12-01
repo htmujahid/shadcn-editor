@@ -4,6 +4,8 @@ export const ui: Registry["items"] = [
   {
     name: "rich-text-editor-plugin",
     type: "registry:ui",
+    title: "Rich Text Editor Plugin",
+    description: "A plugin for the rich text editor.",
     dependencies: ["@lexical/rich-text"],
     registryDependencies: ["@shadcn-editor/editor"],
     files: [
@@ -17,6 +19,8 @@ export const ui: Registry["items"] = [
   {
     name: "toolbar-plugin",
     type: "registry:ui",
+    title: "Toolbar Plugin",
+    description: "A plugin for the toolbar.",
     registryDependencies: [
       "button-group",
       "dialog",
@@ -43,6 +47,8 @@ export const ui: Registry["items"] = [
   {
     name: "history-toolbar-plugin",
     type: "registry:ui",
+    title: "History Toolbar Plugin",
+    description: "A plugin for the history toolbar.",
     dependencies: ["@lexical/utils"],
     registryDependencies: ["button", "@shadcn-editor/toolbar-plugin"],
     files: [
@@ -56,6 +62,8 @@ export const ui: Registry["items"] = [
   {
     name: "block-format-toolbar-plugin",
     type: "registry:ui",
+    title: "Block Format Toolbar Plugin",
+    description: "A plugin for the block format toolbar.",
     registryDependencies: ["select", "@shadcn-editor/toolbar-plugin"],
     dependencies: [
       "@lexical/list",
@@ -127,6 +135,8 @@ export const ui: Registry["items"] = [
   {
     name: "font-family-toolbar-plugin",
     type: "registry:ui",
+    title: "Font Family Toolbar Plugin",
+    description: "A plugin for the font family toolbar.",
     dependencies: ["@lexical/selection"],
     registryDependencies: ["select", "@shadcn-editor/toolbar-plugin"],
     files: [
@@ -146,6 +156,8 @@ export const ui: Registry["items"] = [
   {
     name: "font-size-toolbar-plugin",
     type: "registry:ui",
+    title: "Font Size Toolbar Plugin",
+    description: "A plugin for the font size toolbar.",
     dependencies: ["@lexical/selection"],
     registryDependencies: ["button", "input", "@shadcn-editor/toolbar-plugin"],
     files: [
@@ -165,6 +177,8 @@ export const ui: Registry["items"] = [
   {
     name: "font-format-toolbar-plugin",
     type: "registry:ui",
+    title: "Font Format Toolbar Plugin",
+    description: "A plugin for the font format toolbar.",
     dependencies: ["@lexical/table"],
     registryDependencies: ["toggle", "@shadcn-editor/toolbar-plugin"],
     files: [
@@ -184,6 +198,8 @@ export const ui: Registry["items"] = [
   {
     name: "subsuper-toolbar-plugin",
     type: "registry:ui",
+    title: "Subsuper Toolbar Plugin",
+    description: "A plugin for the subsuper toolbar.",
     dependencies: ["@lexical/table"],
     registryDependencies: ["toggle-group", "@shadcn-editor/toolbar-plugin"],
     files: [
@@ -202,6 +218,8 @@ export const ui: Registry["items"] = [
   {
     name: "font-color-toolbar-plugin",
     type: "registry:ui",
+    title: "Font Color Toolbar Plugin",
+    description: "A plugin for the font color toolbar.",
     dependencies: ["@lexical/selection"],
     registryDependencies: [
       "button",
@@ -237,6 +255,8 @@ export const ui: Registry["items"] = [
   {
     name: "element-format-toolbar-plugin",
     type: "registry:ui",
+    title: "Element Format Toolbar Plugin",
+    description: "A plugin for the element format toolbar.",
     dependencies: ["@lexical/link", "@lexical/utils", "@lexical/selection"],
     registryDependencies: [
       "separator",
@@ -265,6 +285,8 @@ export const ui: Registry["items"] = [
   {
     name: "clear-formatting-toolbar-plugin",
     type: "registry:ui",
+    title: "Clear Formatting Toolbar Plugin",
+    description: "A plugin for the clear formatting toolbar.",
     dependencies: ["@lexical/utils", "@lexical/table"],
     registryDependencies: ["button", "@shadcn-editor/toolbar-plugin"],
     files: [
@@ -279,6 +301,8 @@ export const ui: Registry["items"] = [
   {
     name: "link-toolbar-plugin",
     type: "registry:ui",
+    title: "Link Toolbar Plugin",
+    description: "A plugin for the link toolbar.",
     dependencies: ["@lexical/link", "@lexical/utils", "@lexical/selection"],
     registryDependencies: [
       "toggle",
@@ -313,6 +337,8 @@ export const ui: Registry["items"] = [
   {
     name: "actions-plugin",
     type: "registry:ui",
+    title: "Actions Plugin",
+    description: "A plugin for the actions.",
     registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [
       {
@@ -325,6 +351,8 @@ export const ui: Registry["items"] = [
   {
     name: "max-length-plugin",
     type: "registry:ui",
+    title: "Max Length Plugin",
+    description: "A plugin for the max length.",
     dependencies: ["@lexical/utils", "@lexical/selection"],
     registryDependencies: ["@shadcn-editor/actions-plugin"],
     files: [
@@ -338,6 +366,8 @@ export const ui: Registry["items"] = [
   {
     name: "counter-character-plugin",
     type: "registry:ui",
+    title: "Counter Character Plugin",
+    description: "A plugin for the counter character.",
     dependencies: ["@lexical/text"],
     registryDependencies: ["@shadcn-editor/actions-plugin"],
     files: [
@@ -352,6 +382,8 @@ export const ui: Registry["items"] = [
   {
     name: "speech-to-text-plugin",
     type: "registry:ui",
+    title: "Speech to Text Plugin",
+    description: "A plugin for the speech to text.",
     registryDependencies: [
       "button",
       "tooltip",
@@ -378,6 +410,8 @@ export const ui: Registry["items"] = [
   {
     name: "share-content-plugin",
     type: "registry:ui",
+    title: "Share Content Plugin",
+    description: "A plugin for the share content.",
     dependencies: ["sonner", "@lexical/file"],
     registryDependencies: [
       "button",
@@ -402,6 +436,8 @@ export const ui: Registry["items"] = [
   {
     name: "import-export-plugin",
     type: "registry:ui",
+    title: "Import Export Plugin",
+    description: "A plugin for the import export.",
     dependencies: ["@lexical/file"],
     registryDependencies: [
       "button",
@@ -419,6 +455,8 @@ export const ui: Registry["items"] = [
   {
     name: "markdown-toggle-plugin",
     type: "registry:ui",
+    title: "Markdown Toggle Plugin",
+    description: "A plugin for the markdown toggle.",
     dependencies: ["@lexical/markdown", "@lexical/code"],
     registryDependencies: ["button", "@shadcn-editor/actions-plugin"],
     files: [
@@ -432,6 +470,8 @@ export const ui: Registry["items"] = [
   {
     name: "clear-editor-plugin",
     type: "registry:ui",
+    title: "Clear Editor Plugin",
+    description: "A plugin for the clear editor.",
     registryDependencies: [
       "button",
       "dialog",
@@ -449,6 +489,8 @@ export const ui: Registry["items"] = [
   {
     name: "edit-mode-toggle-plugin",
     type: "registry:ui",
+    title: "Edit Mode Toggle Plugin",
+    description: "A plugin for the edit mode toggle.",
     registryDependencies: [
       "button",
       "tooltip",
@@ -465,6 +507,8 @@ export const ui: Registry["items"] = [
   {
     name: "tree-view-plugin",
     type: "registry:ui",
+    title: "Tree View Plugin",
+    description: "A plugin for the tree view.",
     registryDependencies: [
       "button",
       "dialog",
@@ -482,6 +526,8 @@ export const ui: Registry["items"] = [
   {
     name: "autocomplete-plugin",
     type: "registry:ui",
+    title: "Autocomplete Plugin",
+    description: "A plugin for the autocomplete.",
     dependencies: ["@lexical/utils", "@lexical/selection"],
     registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [
@@ -505,6 +551,8 @@ export const ui: Registry["items"] = [
   {
     name: "auto-embed-plugin",
     type: "registry:ui",
+    title: "Auto Embed Plugin",
+    description: "A plugin for the auto embed.",
     dependencies: ["@lexical/utils", "@lexical/markdown"],
     registryDependencies: [
       "button",
@@ -562,11 +610,15 @@ export const ui: Registry["items"] = [
   {
     name: "auto-focus-plugin",
     type: "registry:ui",
+    title: "Auto Focus Plugin",
+    description: "A plugin for the auto focus.",
     registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
   },
   {
     name: "component-picker-menu-plugin",
     type: "registry:ui",
+    title: "Component Picker Menu Plugin",
+    description: "A plugin for the component picker menu.",
     registryDependencies: [
       "command",
       "dialog",
@@ -661,6 +713,8 @@ export const ui: Registry["items"] = [
   {
     name: "code-plugin",
     type: "registry:ui",
+    title: "Code Plugin",
+    description: "A plugin for the code.",
     dependencies: [
       "lodash",
       "@lexical/utils",
@@ -713,6 +767,8 @@ export const ui: Registry["items"] = [
   {
     name: "context-menu-plugin",
     type: "registry:ui",
+    title: "Context Menu Plugin",
+    description: "A plugin for the context menu.",
     dependencies: ["@lexical/link"],
     registryDependencies: [
       "command",
@@ -730,6 +786,8 @@ export const ui: Registry["items"] = [
   {
     name: "draggable-block-plugin",
     type: "registry:ui",
+    title: "Draggable Block Plugin",
+    description: "A plugin for the draggable block.",
     registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [
       {
@@ -742,6 +800,8 @@ export const ui: Registry["items"] = [
   {
     name: "drag-drop-paste-plugin",
     type: "registry:ui",
+    title: "Drag Drop Paste Plugin",
+    description: "A plugin for the drag drop paste.",
     dependencies: ["@lexical/utils"],
     registryDependencies: [
       "@shadcn-editor/rich-text-editor-plugin",
@@ -758,6 +818,8 @@ export const ui: Registry["items"] = [
   {
     name: "emoji-plugin",
     type: "registry:ui",
+    title: "Emoji Plugin",
+    description: "A plugin for the emoji.",
     registryDependencies: ["command", "@shadcn-editor/rich-text-editor-plugin"],
     files: [
       {
@@ -790,6 +852,8 @@ export const ui: Registry["items"] = [
   {
     name: "floating-text-format-plugin",
     type: "registry:ui",
+    title: "Floating Text Format Plugin",
+    description: "A plugin for the floating text format.",
     dependencies: [
       "@lexical/code",
       "@lexical/link",
@@ -827,12 +891,16 @@ export const ui: Registry["items"] = [
   {
     name: "hashtag-plugin",
     type: "registry:ui",
+    title: "Hashtag Plugin",
+    description: "A plugin for the hashtag.",
     dependencies: ["@lexical/hashtag"],
     registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
   },
   {
     name: "horizontal-rule-plugin",
     type: "registry:ui",
+    title: "Horizontal Rule Plugin",
+    description: "A plugin for the horizontal rule.",
     dependencies: ["@lexical/utils"],
     registryDependencies: ["select", "@shadcn-editor/toolbar-plugin"],
     files: [
@@ -852,6 +920,8 @@ export const ui: Registry["items"] = [
   {
     name: "image-plugin",
     type: "registry:ui",
+    title: "Image Plugin",
+    description: "A plugin for the image.",
     dependencies: ["@lexical/utils", "@lexical/markdown"],
     registryDependencies: [
       "button",
@@ -904,6 +974,8 @@ export const ui: Registry["items"] = [
   {
     name: "keywords-plugin",
     type: "registry:ui",
+    title: "Keywords Plugin",
+    description: "A plugin for the keywords.",
     registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [
       {
@@ -921,6 +993,8 @@ export const ui: Registry["items"] = [
   {
     name: "layout-plugin",
     type: "registry:ui",
+    title: "Layout Plugin",
+    description: "A plugin for the layout.",
     dependencies: ["@lexical/utils"],
     registryDependencies: ["button", "select", "@shadcn-editor/toolbar-plugin"],
     files: [
@@ -950,6 +1024,8 @@ export const ui: Registry["items"] = [
   {
     name: "link-plugin",
     type: "registry:ui",
+    title: "Link Plugin",
+    description: "A plugin for the link.",
     files: [
       {
         path: "editor/plugins/auto-link-plugin.tsx",
@@ -982,6 +1058,8 @@ export const ui: Registry["items"] = [
   {
     name: "markdown-plugin",
     type: "registry:ui",
+    title: "Markdown Plugin",
+    description: "A plugin for the markdown.",
     dependencies: ["@lexical/markdown"],
     registryDependencies: [
       "button",
@@ -999,6 +1077,8 @@ export const ui: Registry["items"] = [
   {
     name: "mention-plugin",
     type: "registry:ui",
+    title: "Mention Plugin",
+    description: "A plugin for the mention.",
     registryDependencies: ["command", "@shadcn-editor/rich-text-editor-plugin"],
     files: [
       {
@@ -1016,6 +1096,8 @@ export const ui: Registry["items"] = [
   {
     name: "table-plugin",
     type: "registry:ui",
+    title: "Table Plugin",
+    description: "A plugin for the table.",
     dependencies: [
       "lodash",
       "@lexical/table",
@@ -1075,6 +1157,8 @@ export const ui: Registry["items"] = [
   {
     name: "tab-focus-plugin",
     type: "registry:ui",
+    title: "Tab Focus Plugin",
+    description: "A plugin for the tab focus.",
     registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [
       {
@@ -1087,6 +1171,8 @@ export const ui: Registry["items"] = [
   {
     name: "typing-pref-plugin",
     type: "registry:ui",
+    title: "Typing Pref Plugin",
+    description: "A plugin for the typing pref.",
     registryDependencies: ["@shadcn-editor/rich-text-editor-plugin"],
     files: [
       {

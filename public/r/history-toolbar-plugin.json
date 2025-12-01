@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "history-toolbar-plugin",
   "type": "registry:ui",
+  "title": "History Toolbar Plugin",
+  "description": "A plugin for the history toolbar.",
   "dependencies": [
     "@lexical/utils"
   ],

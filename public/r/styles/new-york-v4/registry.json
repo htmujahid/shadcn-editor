@@ -3,40 +3,10 @@
   "homepage": "https://shadcn-editor.vercel.app",
   "items": [
     {
-      "name": "index",
-      "type": "registry:style",
-      "dependencies": [
-        "class-variance-authority",
-        "lucide-react"
-      ],
-      "devDependencies": [
-        "tw-animate-css"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [],
-      "cssVars": {}
-    },
-    {
-      "name": "style",
-      "type": "registry:style",
-      "dependencies": [
-        "class-variance-authority",
-        "lucide-react"
-      ],
-      "devDependencies": [
-        "tw-animate-css"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [],
-      "cssVars": {}
-    },
-    {
       "name": "rich-text-editor-plugin",
       "type": "registry:ui",
+      "title": "Rich Text Editor Plugin",
+      "description": "A plugin for the rich text editor.",
       "dependencies": [
         "@lexical/rich-text"
       ],
@@ -54,6 +24,8 @@
     {
       "name": "toolbar-plugin",
       "type": "registry:ui",
+      "title": "Toolbar Plugin",
+      "description": "A plugin for the toolbar.",
       "registryDependencies": [
         "button-group",
         "dialog",
@@ -80,6 +52,8 @@
     {
       "name": "history-toolbar-plugin",
       "type": "registry:ui",
+      "title": "History Toolbar Plugin",
+      "description": "A plugin for the history toolbar.",
       "dependencies": [
         "@lexical/utils"
       ],
@@ -98,6 +72,8 @@
     {
       "name": "block-format-toolbar-plugin",
       "type": "registry:ui",
+      "title": "Block Format Toolbar Plugin",
+      "description": "A plugin for the block format toolbar.",
       "dependencies": [
         "@lexical/list",
         "@lexical/utils",
@@ -164,6 +140,8 @@
     {
       "name": "font-family-toolbar-plugin",
       "type": "registry:ui",
+      "title": "Font Family Toolbar Plugin",
+      "description": "A plugin for the font family toolbar.",
       "dependencies": [
         "@lexical/selection"
       ],
@@ -187,6 +165,8 @@
     {
       "name": "font-size-toolbar-plugin",
       "type": "registry:ui",
+      "title": "Font Size Toolbar Plugin",
+      "description": "A plugin for the font size toolbar.",
       "dependencies": [
         "@lexical/selection"
       ],
@@ -211,6 +191,8 @@
     {
       "name": "font-format-toolbar-plugin",
       "type": "registry:ui",
+      "title": "Font Format Toolbar Plugin",
+      "description": "A plugin for the font format toolbar.",
       "dependencies": [
         "@lexical/table"
       ],
@@ -234,6 +216,8 @@
     {
       "name": "subsuper-toolbar-plugin",
       "type": "registry:ui",
+      "title": "Subsuper Toolbar Plugin",
+      "description": "A plugin for the subsuper toolbar.",
       "dependencies": [
         "@lexical/table"
       ],
@@ -257,6 +241,8 @@
     {
       "name": "font-color-toolbar-plugin",
       "type": "registry:ui",
+      "title": "Font Color Toolbar Plugin",
+      "description": "A plugin for the font color toolbar.",
       "dependencies": [
         "@lexical/selection"
       ],
@@ -292,6 +278,8 @@
     {
       "name": "element-format-toolbar-plugin",
       "type": "registry:ui",
+      "title": "Element Format Toolbar Plugin",
+      "description": "A plugin for the element format toolbar.",
       "dependencies": [
         "@lexical/link",
         "@lexical/utils",
@@ -323,6 +311,8 @@
     {
       "name": "clear-formatting-toolbar-plugin",
       "type": "registry:ui",
+      "title": "Clear Formatting Toolbar Plugin",
+      "description": "A plugin for the clear formatting toolbar.",
       "dependencies": [
         "@lexical/utils",
         "@lexical/table"
@@ -342,6 +332,8 @@
     {
       "name": "link-toolbar-plugin",
       "type": "registry:ui",
+      "title": "Link Toolbar Plugin",
+      "description": "A plugin for the link toolbar.",
       "dependencies": [
         "@lexical/link",
         "@lexical/utils",
@@ -380,6 +372,8 @@
     {
       "name": "actions-plugin",
       "type": "registry:ui",
+      "title": "Actions Plugin",
+      "description": "A plugin for the actions.",
       "registryDependencies": [
         "@shadcn-editor/rich-text-editor-plugin"
       ],
@@ -394,6 +388,8 @@
     {
       "name": "max-length-plugin",
       "type": "registry:ui",
+      "title": "Max Length Plugin",
+      "description": "A plugin for the max length.",
       "dependencies": [
         "@lexical/utils",
         "@lexical/selection"
@@ -412,6 +408,8 @@
     {
       "name": "counter-character-plugin",
       "type": "registry:ui",
+      "title": "Counter Character Plugin",
+      "description": "A plugin for the counter character.",
       "dependencies": [
         "@lexical/text"
       ],
@@ -429,6 +427,8 @@
     {
       "name": "speech-to-text-plugin",
       "type": "registry:ui",
+      "title": "Speech to Text Plugin",
+      "description": "A plugin for the speech to text.",
       "registryDependencies": [
         "button",
         "tooltip",
@@ -455,6 +455,8 @@
     {
       "name": "share-content-plugin",
       "type": "registry:ui",
+      "title": "Share Content Plugin",
+      "description": "A plugin for the share content.",
       "dependencies": [
         "sonner",
         "@lexical/file"
@@ -482,6 +484,8 @@
     {
       "name": "import-export-plugin",
       "type": "registry:ui",
+      "title": "Import Export Plugin",
+      "description": "A plugin for the import export.",
       "dependencies": [
         "@lexical/file"
       ],
@@ -501,6 +505,8 @@
     {
       "name": "markdown-toggle-plugin",
       "type": "registry:ui",
+      "title": "Markdown Toggle Plugin",
+      "description": "A plugin for the markdown toggle.",
       "dependencies": [
         "@lexical/markdown",
         "@lexical/code"
@@ -520,6 +526,8 @@
     {
       "name": "clear-editor-plugin",
       "type": "registry:ui",
+      "title": "Clear Editor Plugin",
+      "description": "A plugin for the clear editor.",
       "registryDependencies": [
         "button",
         "dialog",
@@ -537,6 +545,8 @@
     {
       "name": "edit-mode-toggle-plugin",
       "type": "registry:ui",
+      "title": "Edit Mode Toggle Plugin",
+      "description": "A plugin for the edit mode toggle.",
       "registryDependencies": [
         "button",
         "tooltip",
@@ -553,6 +563,8 @@
     {
       "name": "tree-view-plugin",
       "type": "registry:ui",
+      "title": "Tree View Plugin",
+      "description": "A plugin for the tree view.",
       "registryDependencies": [
         "button",
         "dialog",
@@ -570,6 +582,8 @@
     {
       "name": "autocomplete-plugin",
       "type": "registry:ui",
+      "title": "Autocomplete Plugin",
+      "description": "A plugin for the autocomplete.",
       "dependencies": [
         "@lexical/utils",
         "@lexical/selection"
@@ -598,6 +612,8 @@
     {
       "name": "auto-embed-plugin",
       "type": "registry:ui",
+      "title": "Auto Embed Plugin",
+      "description": "A plugin for the auto embed.",
       "dependencies": [
         "@lexical/utils",
         "@lexical/markdown"
@@ -657,6 +673,8 @@
     {
       "name": "auto-focus-plugin",
       "type": "registry:ui",
+      "title": "Auto Focus Plugin",
+      "description": "A plugin for the auto focus.",
       "registryDependencies": [
         "@shadcn-editor/rich-text-editor-plugin"
       ]
@@ -664,6 +682,8 @@
     {
       "name": "component-picker-menu-plugin",
       "type": "registry:ui",
+      "title": "Component Picker Menu Plugin",
+      "description": "A plugin for the component picker menu.",
       "registryDependencies": [
         "command",
         "dialog",
@@ -755,6 +775,8 @@
     {
       "name": "code-plugin",
       "type": "registry:ui",
+      "title": "Code Plugin",
+      "description": "A plugin for the code.",
       "dependencies": [
         "lodash",
         "@lexical/utils",
@@ -809,6 +831,8 @@
     {
       "name": "context-menu-plugin",
       "type": "registry:ui",
+      "title": "Context Menu Plugin",
+      "description": "A plugin for the context menu.",
       "dependencies": [
         "@lexical/link"
       ],
@@ -828,6 +852,8 @@
     {
       "name": "draggable-block-plugin",
       "type": "registry:ui",
+      "title": "Draggable Block Plugin",
+      "description": "A plugin for the draggable block.",
       "registryDependencies": [
         "@shadcn-editor/rich-text-editor-plugin"
       ],
@@ -842,6 +868,8 @@
     {
       "name": "drag-drop-paste-plugin",
       "type": "registry:ui",
+      "title": "Drag Drop Paste Plugin",
+      "description": "A plugin for the drag drop paste.",
       "dependencies": [
         "@lexical/utils"
       ],
@@ -860,6 +888,8 @@
     {
       "name": "emoji-plugin",
       "type": "registry:ui",
+      "title": "Emoji Plugin",
+      "description": "A plugin for the emoji.",
       "registryDependencies": [
         "command",
         "@shadcn-editor/rich-text-editor-plugin"
@@ -895,6 +925,8 @@
     {
       "name": "floating-text-format-plugin",
       "type": "registry:ui",
+      "title": "Floating Text Format Plugin",
+      "description": "A plugin for the floating text format.",
       "dependencies": [
         "@lexical/code",
         "@lexical/link",
@@ -932,6 +964,8 @@
     {
       "name": "hashtag-plugin",
       "type": "registry:ui",
+      "title": "Hashtag Plugin",
+      "description": "A plugin for the hashtag.",
       "dependencies": [
         "@lexical/hashtag"
       ],
@@ -942,6 +976,8 @@
     {
       "name": "horizontal-rule-plugin",
       "type": "registry:ui",
+      "title": "Horizontal Rule Plugin",
+      "description": "A plugin for the horizontal rule.",
       "dependencies": [
         "@lexical/utils"
       ],
@@ -965,6 +1001,8 @@
     {
       "name": "image-plugin",
       "type": "registry:ui",
+      "title": "Image Plugin",
+      "description": "A plugin for the image.",
       "dependencies": [
         "@lexical/utils",
         "@lexical/markdown"
@@ -1019,6 +1057,8 @@
     {
       "name": "keywords-plugin",
       "type": "registry:ui",
+      "title": "Keywords Plugin",
+      "description": "A plugin for the keywords.",
       "registryDependencies": [
         "@shadcn-editor/rich-text-editor-plugin"
       ],
@@ -1038,6 +1078,8 @@
     {
       "name": "layout-plugin",
       "type": "registry:ui",
+      "title": "Layout Plugin",
+      "description": "A plugin for the layout.",
       "dependencies": [
         "@lexical/utils"
       ],
@@ -1072,6 +1114,8 @@
     {
       "name": "link-plugin",
       "type": "registry:ui",
+      "title": "Link Plugin",
+      "description": "A plugin for the link.",
       "files": [
         {
           "path": "registry/new-york-v4/editor/plugins/auto-link-plugin.tsx",
@@ -1103,6 +1147,8 @@
     {
       "name": "markdown-plugin",
       "type": "registry:ui",
+      "title": "Markdown Plugin",
+      "description": "A plugin for the markdown.",
       "dependencies": [
         "@lexical/markdown"
       ],
@@ -1122,6 +1168,8 @@
     {
       "name": "mention-plugin",
       "type": "registry:ui",
+      "title": "Mention Plugin",
+      "description": "A plugin for the mention.",
       "registryDependencies": [
         "command",
         "@shadcn-editor/rich-text-editor-plugin"
@@ -1142,6 +1190,8 @@
     {
       "name": "table-plugin",
       "type": "registry:ui",
+      "title": "Table Plugin",
+      "description": "A plugin for the table.",
       "dependencies": [
         "lodash",
         "@lexical/table",
@@ -1202,6 +1252,8 @@
     {
       "name": "tab-focus-plugin",
       "type": "registry:ui",
+      "title": "Tab Focus Plugin",
+      "description": "A plugin for the tab focus.",
       "registryDependencies": [
         "@shadcn-editor/rich-text-editor-plugin"
       ],
@@ -1216,6 +1268,8 @@
     {
       "name": "typing-pref-plugin",
       "type": "registry:ui",
+      "title": "Typing Pref Plugin",
+      "description": "A plugin for the typing pref.",
       "registryDependencies": [
         "@shadcn-editor/rich-text-editor-plugin"
       ],
@@ -1235,6 +1289,8 @@
     {
       "name": "editor",
       "type": "registry:block",
+      "title": "Editor Block",
+      "description": "A basic editor block.",
       "dependencies": [
         "lexical",
         "@lexical/react",
@@ -1285,6 +1341,8 @@
     {
       "name": "editor-x",
       "type": "registry:block",
+      "title": "Editor X Block",
+      "description": "An advanced editor block with all plugins included.",
       "dependencies": [
         "@lexical/code",
         "@lexical/file",
@@ -1963,6 +2021,8 @@
     {
       "name": "editor-md",
       "type": "registry:block",
+      "title": "Editor MD Block",
+      "description": "A markdown editor block.",
       "registryDependencies": [
         "@shadcn-editor/editor",
         "@shadcn-editor/rich-text-editor-plugin",

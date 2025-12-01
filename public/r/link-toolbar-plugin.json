@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "link-toolbar-plugin",
   "type": "registry:ui",
+  "title": "Link Toolbar Plugin",
+  "description": "A plugin for the link toolbar.",
   "dependencies": [
     "@lexical/link",
     "@lexical/utils",

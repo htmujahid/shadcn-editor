@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "rich-text-editor-plugin",
   "type": "registry:ui",
+  "title": "Rich Text Editor Plugin",
+  "description": "A plugin for the rich text editor.",
   "dependencies": [
     "@lexical/rich-text"
   ],

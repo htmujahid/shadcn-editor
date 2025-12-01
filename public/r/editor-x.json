@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "editor-x",
   "type": "registry:block",
+  "title": "Editor X Block",
+  "description": "An advanced editor block with all plugins included.",
   "dependencies": [
     "@lexical/code",
     "@lexical/file",

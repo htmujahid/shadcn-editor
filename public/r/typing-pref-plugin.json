@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "typing-pref-plugin",
   "type": "registry:ui",
+  "title": "Typing Pref Plugin",
+  "description": "A plugin for the typing pref.",
   "registryDependencies": [
     "@shadcn-editor/rich-text-editor-plugin"
   ],

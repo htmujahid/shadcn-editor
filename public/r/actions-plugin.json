@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "actions-plugin",
   "type": "registry:ui",
+  "title": "Actions Plugin",
+  "description": "A plugin for the actions.",
   "registryDependencies": [
     "@shadcn-editor/rich-text-editor-plugin"
   ],

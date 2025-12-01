@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "tree-view-plugin",
   "type": "registry:ui",
+  "title": "Tree View Plugin",
+  "description": "A plugin for the tree view.",
   "registryDependencies": [
     "button",
     "dialog",

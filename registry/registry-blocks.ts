@@ -4,6 +4,8 @@ export const blocks: Registry["items"] = [
   {
     name: "editor",
     type: "registry:block",
+    title: "Editor Block",
+    description: "A basic editor block.",
     dependencies: [
       "lexical",
       "@lexical/react",
@@ -52,6 +54,8 @@ export const blocks: Registry["items"] = [
   {
     name: "editor-x",
     type: "registry:block",
+    title: "Editor X Block",
+    description: "An advanced editor block with all plugins included.",
     dependencies: [
       "@lexical/code",
       "@lexical/file",
@@ -755,6 +759,8 @@ export const blocks: Registry["items"] = [
   {
     name: "editor-md",
     type: "registry:block",
+    title: "Editor MD Block",
+    description: "A markdown editor block.",
     registryDependencies: [
       "@shadcn-editor/editor",
       "@shadcn-editor/rich-text-editor-plugin",

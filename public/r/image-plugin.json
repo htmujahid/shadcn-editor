@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "image-plugin",
   "type": "registry:ui",
+  "title": "Image Plugin",
+  "description": "A plugin for the image.",
   "dependencies": [
     "@lexical/utils",
     "@lexical/markdown"

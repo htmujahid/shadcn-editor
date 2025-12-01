@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "draggable-block-plugin",
   "type": "registry:ui",
+  "title": "Draggable Block Plugin",
+  "description": "A plugin for the draggable block.",
   "registryDependencies": [
     "@shadcn-editor/rich-text-editor-plugin"
   ],

@@ -2,6 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "max-length-plugin",
   "type": "registry:ui",
+  "title": "Max Length Plugin",
+  "description": "A plugin for the max length.",
   "dependencies": [
     "@lexical/utils",
     "@lexical/selection"
