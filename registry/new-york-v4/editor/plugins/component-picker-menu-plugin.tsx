@@ -55,7 +55,7 @@ function ComponentPickerMenu({
   }, [selectedIndex])
 
   return (
-    <div className="absolute z-10 w-[250px] h-min rounded-md shadow-md">
+    <div className="absolute z-10 h-min w-[250px] rounded-md shadow-md">
       <Command
         onKeyDown={(e) => {
           if (e.key === "ArrowUp") {
@@ -171,8 +171,7 @@ export function ComponentPickerMenuPlugin({
                   selectedIndex={selectedIndex}
                   selectOptionAndCleanUp={selectOptionAndCleanUp}
                   setHighlightedIndex={setHighlightedIndex}
-                />
-                ,
+                />,
                 anchorElementRef.current
               )
             : null
