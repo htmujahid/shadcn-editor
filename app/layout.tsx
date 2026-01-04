@@ -81,6 +81,7 @@ export default function RootLayout({
           }}
         />
         <meta name="theme-color" content={META_THEME_COLORS.light} />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3232052439095607" crossorigin="anonymous"></script>
       </head>
       <body
         className={cn(
