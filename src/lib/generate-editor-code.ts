@@ -189,7 +189,7 @@ function renderCode(merged: MergedArtifacts, flags: GeneratorFlags): string {
   // Toolbar slots
   const toolbarStart = renderSlot(merged, "toolbar_start", 18);
   const toolbarFont = renderSlot(merged, "toolbar_font", 20);
-  const toolbarInsert = renderSlot(merged, "toolbar_insert", 20);
+  // const toolbarInsert = renderSlot(merged, "toolbar_insert", 20);
 
   // Toolbar inner: font section + optional block-insert
   const toolbarFontBlock = hasToolbarFontSection
