@@ -98,7 +98,7 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
     plugins: {
       toolbar_start: [
         "<HistoryToolbarPlugin />",
-        `<Separator orientation="vertical" className="!h-7" />`,
+        `<Separator orientation="vertical" className="h-7!" />`,
       ],
     },
   },
@@ -156,7 +156,7 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
     plugins: {
       toolbar_font: [
         "<FontFamilyToolbarPlugin />",
-        `<Separator orientation="vertical" className="!h-7" />`,
+        `<Separator orientation="vertical" className="h-7!" />`,
       ],
     },
   },
@@ -172,7 +172,7 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
     plugins: {
       toolbar_font: [
         "<FontSizeToolbarPlugin />",
-        `<Separator orientation="vertical" className="!h-7" />`,
+        `<Separator orientation="vertical" className="h-7!" />`,
       ],
     },
   },
@@ -188,7 +188,7 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
     plugins: {
       toolbar_font: [
         "<FontFormatToolbarPlugin />",
-        `<Separator orientation="vertical" className="!h-7" />`,
+        `<Separator orientation="vertical" className="h-7!" />`,
       ],
     },
   },
@@ -204,7 +204,7 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
     plugins: {
       toolbar_font: [
         "<SubSuperToolbarPlugin />",
-        `<Separator orientation="vertical" className="!h-7" />`,
+        `<Separator orientation="vertical" className="h-7!" />`,
       ],
     },
   },
@@ -230,7 +230,7 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
     plugins: {
       toolbar_font: [
         "<LinkToolbarPlugin setIsLinkEditMode={setIsLinkEditMode} />",
-        `<Separator orientation="vertical" className="!h-7" />`,
+        `<Separator orientation="vertical" className="h-7!" />`,
       ],
     },
   },
@@ -246,7 +246,7 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
     plugins: {
       toolbar_font: [
         "<ClearFormattingToolbarPlugin />",
-        `<Separator orientation="vertical" className="!h-7" />`,
+        `<Separator orientation="vertical" className="h-7!" />`,
       ],
     },
   },
@@ -274,7 +274,7 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
     plugins: {
       toolbar_font: [
         "<FontBackgroundToolbarPlugin />",
-        `<Separator orientation="vertical" className="!h-7" />`,
+        `<Separator orientation="vertical" className="h-7!" />`,
       ],
     },
   },
@@ -290,7 +290,7 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
     plugins: {
       toolbar_font: [
         "<ElementFormatToolbarPlugin />",
-        `<Separator orientation="vertical" className="!h-7" />`,
+        `<Separator orientation="vertical" className="h-7!" />`,
       ],
     },
   },

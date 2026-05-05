@@ -200,7 +200,7 @@ export function Editor({
               {({ blockType }) => (
                 <div className="vertical-align-middle sticky top-0 z-10 flex items-center gap-2 overflow-auto border-b p-1">
                   <HistoryToolbarPlugin />
-                  <Separator orientation="vertical" className="!h-7" />
+                  <Separator orientation="vertical" className="h-7!" />
                   <BlockFormatDropDown>
                     <FormatParagraph />
                     <FormatHeading levels={["h1", "h2", "h3"]} />
@@ -215,7 +215,7 @@ export function Editor({
                   ) : (
                     <>
                     <FontFamilyToolbarPlugin />
-                    <Separator orientation="vertical" className="!h-7" />
+                    <Separator orientation="vertical" className="h-7!" />
                     <FontSizeToolbarPlugin />
                     <FontFormatToolbarPlugin />
                     <SubSuperToolbarPlugin />
