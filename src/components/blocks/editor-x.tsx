@@ -95,7 +95,7 @@ import {
   DynamicTablePickerPlugin,
   TablePickerPlugin,
 } from "@/components/editor/plugins/picker/table-picker-plugin";
-import SpecialTextPlugin from "@/components/editor/plugins/special-text-plugin";
+import { SpecialTextPlugin } from "@/components/editor/plugins/special-text-plugin";
 import { TabFocusPlugin } from "@/components/editor/plugins/tab-focus-plugin";
 import { BlockFormatDropDown } from "@/components/editor/plugins/toolbar/block-format-toolbar-plugin";
 import { FormatBulletedList } from "@/components/editor/plugins/toolbar/block-format/format-bulleted-list";

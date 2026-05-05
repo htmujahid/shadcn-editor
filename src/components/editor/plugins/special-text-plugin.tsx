@@ -59,7 +59,7 @@ function useTextTransformation(editor: LexicalEditor): void {
   }, [editor]);
 }
 
-export default function SpecialTextPlugin(): JSX.Element | null {
+export function SpecialTextPlugin(): JSX.Element | null {
   const [editor] = useLexicalComposerContext();
   useTextTransformation(editor);
   return null;
