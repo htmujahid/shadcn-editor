@@ -1,6 +1,11 @@
 import { $createHeadingNode, type HeadingTagType } from "@lexical/rich-text";
 import { $setBlocksType } from "@lexical/selection";
-import { $getSelection } from "lexical";
+import {
+  $getRoot,
+  $getSelection,
+  $isElementNode,
+  $isRangeSelection,
+} from "lexical";
 
 import { useToolbarContext } from "@/components/editor/context/toolbar-context";
 import { blockTypeToBlockName } from "@/components/editor/plugins/toolbar/block-format/block-format-data";
@@ -11,8 +16,32 @@ export function FormatHeading({ levels = [] }: { levels: HeadingTagType[] }) {
 
   const formatHeading = (headingSize: HeadingTagType) => {
     if (blockType !== headingSize) {
+      activeEditor.focus();
       activeEditor.update(() => {
         const selection = $getSelection();
+        const root = $getRoot();
+        const anchorKey = $isRangeSelection(selection)
+          ? selection.anchor.key
+          : null;
+        const noUsableSelection =
+          !$isRangeSelection(selection) || anchorKey === root.getKey();
+
+        if (noUsableSelection) {
+          const heading = $createHeadingNode(headingSize);
+          const firstChild = root.getFirstChild();
+          if (
+            firstChild &&
+            $isElementNode(firstChild) &&
+            firstChild.isEmpty()
+          ) {
+            firstChild.replace(heading);
+          } else {
+            root.append(heading);
+          }
+          heading.select();
+          return;
+        }
+
         $setBlocksType(selection, () => $createHeadingNode(headingSize));
       });
     }
