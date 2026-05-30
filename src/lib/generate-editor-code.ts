@@ -1,4 +1,7 @@
-import type { BlockViewerContextType } from "@/components/block-viewer-provider";
+import type {
+  BlockViewerContextType,
+  ComponentPickerItemKey,
+} from "@/components/block-viewer-provider";
 
 import {
   BASE_SPEC,
@@ -376,6 +379,192 @@ function computeFlags(
   };
 }
 
+// ─── Component-picker baseOptions builder ─────────────────────────────────────
+
+type PickerItemSpec = {
+  expr: string;
+  source: string;
+  specifiers: string[];
+};
+
+/** Order matches editor-x.tsx for consistent generated output. */
+const PICKER_KEY_ORDER: ComponentPickerItemKey[] = [
+  "paragraph",
+  "h1", "h2", "h3",
+  "table",
+  "checkList",
+  "numberList",
+  "bulletList",
+  "blockquote",
+  "codeBlock",
+  "divider",
+  "tweetEmbed",
+  "youtubeEmbed",
+  "image",
+  "columnsLayout",
+  "dateTime",
+  "alignLeft", "alignCenter", "alignRight", "alignJustify",
+];
+
+const PICKER_ITEM_MAP: Record<ComponentPickerItemKey, PickerItemSpec> = {
+  paragraph: {
+    expr: "ParagraphPickerPlugin()",
+    source: "@/components/editor/plugins/picker/paragraph-picker-plugin",
+    specifiers: ["ParagraphPickerPlugin"],
+  },
+  h1: {
+    expr: "HeadingPickerPlugin({ n: 1 })",
+    source: "@/components/editor/plugins/picker/heading-picker-plugin",
+    specifiers: ["HeadingPickerPlugin"],
+  },
+  h2: {
+    expr: "HeadingPickerPlugin({ n: 2 })",
+    source: "@/components/editor/plugins/picker/heading-picker-plugin",
+    specifiers: ["HeadingPickerPlugin"],
+  },
+  h3: {
+    expr: "HeadingPickerPlugin({ n: 3 })",
+    source: "@/components/editor/plugins/picker/heading-picker-plugin",
+    specifiers: ["HeadingPickerPlugin"],
+  },
+  table: {
+    expr: "TablePickerPlugin()",
+    source: "@/components/editor/plugins/picker/table-picker-plugin",
+    specifiers: ["TablePickerPlugin", "DynamicTablePickerPlugin"],
+  },
+  checkList: {
+    expr: "CheckListPickerPlugin()",
+    source: "@/components/editor/plugins/picker/check-list-picker-plugin",
+    specifiers: ["CheckListPickerPlugin"],
+  },
+  numberList: {
+    expr: "NumberedListPickerPlugin()",
+    source: "@/components/editor/plugins/picker/numbered-list-picker-plugin",
+    specifiers: ["NumberedListPickerPlugin"],
+  },
+  bulletList: {
+    expr: "BulletedListPickerPlugin()",
+    source: "@/components/editor/plugins/picker/bulleted-list-picker-plugin",
+    specifiers: ["BulletedListPickerPlugin"],
+  },
+  blockquote: {
+    expr: "QuotePickerPlugin()",
+    source: "@/components/editor/plugins/picker/quote-picker-plugin",
+    specifiers: ["QuotePickerPlugin"],
+  },
+  codeBlock: {
+    expr: "CodePickerPlugin()",
+    source: "@/components/editor/plugins/picker/code-picker-plugin",
+    specifiers: ["CodePickerPlugin"],
+  },
+  divider: {
+    expr: "DividerPickerPlugin()",
+    source: "@/components/editor/plugins/picker/divider-picker-plugin",
+    specifiers: ["DividerPickerPlugin"],
+  },
+  tweetEmbed: {
+    expr: 'EmbedsPickerPlugin({ embed: "tweet" })',
+    source: "@/components/editor/plugins/picker/embeds-picker-plugin",
+    specifiers: ["EmbedsPickerPlugin"],
+  },
+  youtubeEmbed: {
+    expr: 'EmbedsPickerPlugin({ embed: "youtube-video" })',
+    source: "@/components/editor/plugins/picker/embeds-picker-plugin",
+    specifiers: ["EmbedsPickerPlugin"],
+  },
+  image: {
+    expr: "ImagePickerPlugin()",
+    source: "@/components/editor/plugins/picker/image-picker-plugin",
+    specifiers: ["ImagePickerPlugin"],
+  },
+  columnsLayout: {
+    expr: "ColumnsLayoutPickerPlugin()",
+    source: "@/components/editor/plugins/picker/columns-layout-picker-plugin",
+    specifiers: ["ColumnsLayoutPickerPlugin"],
+  },
+  dateTime: {
+    expr: "DateTimePickerPlugin()",
+    source: "@/components/editor/plugins/picker/date-time-picker-plugin",
+    specifiers: ["DateTimePickerPlugin"],
+  },
+  alignLeft: {
+    expr: 'AlignmentPickerPlugin({ alignment: "left" })',
+    source: "@/components/editor/plugins/picker/alignment-picker-plugin",
+    specifiers: ["AlignmentPickerPlugin"],
+  },
+  alignCenter: {
+    expr: 'AlignmentPickerPlugin({ alignment: "center" })',
+    source: "@/components/editor/plugins/picker/alignment-picker-plugin",
+    specifiers: ["AlignmentPickerPlugin"],
+  },
+  alignRight: {
+    expr: 'AlignmentPickerPlugin({ alignment: "right" })',
+    source: "@/components/editor/plugins/picker/alignment-picker-plugin",
+    specifiers: ["AlignmentPickerPlugin"],
+  },
+  alignJustify: {
+    expr: 'AlignmentPickerPlugin({ alignment: "justify" })',
+    source: "@/components/editor/plugins/picker/alignment-picker-plugin",
+    specifiers: ["AlignmentPickerPlugin"],
+  },
+};
+
+/**
+ * Replaces `baseOptions={[]}` in ComponentPickerMenuPlugin / DraggableBlockPlugin
+ * with the items that are actually active, and wires up the picker imports.
+ */
+function applyBaseOptions(
+  merged: MergedArtifacts,
+  state: BlockViewerContextType,
+): void {
+  const hasComponentPicker = state.pluginItems.componentPicker;
+  const hasDraggableBlock = state.pluginItems.draggableBlock;
+  if (!hasComponentPicker && !hasDraggableBlock) return;
+
+  const pickerItems = state.componentPickerItems;
+
+  // Active specs in declared order
+  const activeSpecs = PICKER_KEY_ORDER
+    .filter((key) => pickerItems[key])
+    .map((key) => PICKER_ITEM_MAP[key]);
+
+  // Add picker-plugin imports for each active item (Sets dedup automatically)
+  for (const spec of activeSpecs) {
+    if (!merged.imports.has(spec.source)) {
+      merged.imports.set(spec.source, new Set());
+    }
+    for (const s of spec.specifiers) {
+      merged.imports.get(spec.source)!.add(s);
+    }
+  }
+
+  const hasTable = pickerItems.table;
+  const dynamicFnProp = hasTable
+    ? "\n  dynamicOptionsFn={DynamicTablePickerPlugin}"
+    : "";
+
+  const baseOptionsProp =
+    activeSpecs.length === 0
+      ? "baseOptions={[]}"
+      : `baseOptions={[\n${activeSpecs.map((s) => `    ${s.expr},`).join("\n")}\n  ]}`;
+
+  if (hasComponentPicker) {
+    merged.plugins.content = merged.plugins.content.map((line) =>
+      line.includes("ComponentPickerMenuPlugin")
+        ? `<ComponentPickerMenuPlugin\n  ${baseOptionsProp}${dynamicFnProp}\n/>`
+        : line,
+    );
+  }
+
+  if (hasDraggableBlock) {
+    merged.plugins.floating = merged.plugins.floating.map((line) =>
+      line.includes("DraggableBlockPlugin")
+        ? `<DraggableBlockPlugin\n  anchorElem={floatingAnchorElem}\n  ${baseOptionsProp}${dynamicFnProp}\n/>`
+        : line,
+    );
+  }
+}
+
 // ─── Public API ───────────────────────────────────────────────────────────────
 
 export function generateEditorCode(state: BlockViewerContextType): string {
@@ -389,6 +578,9 @@ export function generateEditorCode(state: BlockViewerContextType): string {
     const spec = FEATURE_REGISTRY[key];
     if (spec) mergeSpec(merged, spec);
   }
+
+  // 3. Expand baseOptions in picker plugins from active componentPickerItems
+  applyBaseOptions(merged, state);
 
   const activeKeys = getActiveKeys(state);
   const flags = computeFlags(activeKeys, merged);
