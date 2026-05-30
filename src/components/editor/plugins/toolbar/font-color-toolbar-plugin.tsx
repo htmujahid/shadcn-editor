@@ -80,7 +80,7 @@ export function FontColorToolbarPlugin() {
         <ColorPickerArea />
         <div className="flex items-center gap-2">
           <ColorPickerEyeDropper />
-          <div className="flex flex-1 flex-col gap-2">
+          <div className="flex flex-1 flex-col gap-4">
             <ColorPickerHueSlider />
             <ColorPickerAlphaSlider />
           </div>

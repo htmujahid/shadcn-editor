@@ -2,9 +2,10 @@ import * as React from "react";
 
 import { type VariantProps, cva } from "class-variance-authority";
 import { PipetteIcon } from "lucide-react";
-import { Slider as SliderPrimitive, Slot as SlotPrimitive } from "radix-ui";
+import { Slot as SlotPrimitive } from "radix-ui";
 
 import { Button } from "@/components/ui/button";
+import { Slider } from "@/components/ui/slider";
 import { Input } from "@/components/ui/input";
 import {
   Popover,
@@ -1154,9 +1155,7 @@ function ColorPickerArea(props: ColorPickerAreaProps) {
   );
 }
 
-interface ColorPickerHueSliderProps extends React.ComponentProps<
-  typeof SliderPrimitive.Root
-> {}
+interface ColorPickerHueSliderProps extends React.ComponentProps<typeof Slider> {}
 
 function ColorPickerHueSlider(props: ColorPickerHueSliderProps) {
   const { className, ...sliderProps } = props;
@@ -1180,30 +1179,26 @@ function ColorPickerHueSlider(props: ColorPickerHueSliderProps) {
   );
 
   return (
-    <SliderPrimitive.Root
+    <Slider
       data-slot="color-picker-hue-slider"
       {...sliderProps}
       max={360}
       step={1}
       className={cn(
-        "relative flex w-full touch-none items-center select-none",
+        "[&_[data-slot='slider-track'][data-horizontal]]:h-3",
+        "[&_[data-slot='slider-track']]:bg-[linear-gradient(to_right,#ff0000_0%,#ffff00_16.66%,#00ff00_33.33%,#00ffff_50%,#0000ff_66.66%,#ff00ff_83.33%,#ff0000_100%)]",
+        "[&_[data-slot='slider-range']]:bg-transparent",
+        "[&_[data-slot='slider-thumb']]:border-primary/50 [&_[data-slot='slider-thumb']]:bg-background",
         className,
       )}
       value={[hsv?.h ?? 0]}
       onValueChange={onValueChange}
       disabled={context.disabled}
-    >
-      <SliderPrimitive.Track className="relative h-3 w-full grow overflow-hidden rounded-full bg-[linear-gradient(to_right,#ff0000_0%,#ffff00_16.66%,#00ff00_33.33%,#00ffff_50%,#0000ff_66.66%,#ff00ff_83.33%,#ff0000_100%)]">
-        <SliderPrimitive.Range className="absolute h-full" />
-      </SliderPrimitive.Track>
-      <SliderPrimitive.Thumb className="border-primary/50 bg-background focus-visible:ring-ring block size-4 rounded-full border shadow transition-colors focus-visible:ring-1 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50" />
-    </SliderPrimitive.Root>
+    />
   );
 }
 
-interface ColorPickerAlphaSliderProps extends React.ComponentProps<
-  typeof SliderPrimitive.Root
-> {}
+interface ColorPickerAlphaSliderProps extends React.ComponentProps<typeof Slider> {}
 
 function ColorPickerAlphaSlider(props: ColorPickerAlphaSliderProps) {
   const { className, ...sliderProps } = props;
@@ -1227,38 +1222,27 @@ function ColorPickerAlphaSlider(props: ColorPickerAlphaSliderProps) {
   const gradientColor = `rgb(${color?.r ?? 0}, ${color?.g ?? 0}, ${color?.b ?? 0})`;
 
   return (
-    <SliderPrimitive.Root
+    <Slider
       data-slot="color-picker-alpha-slider"
       {...sliderProps}
       max={100}
       step={1}
       disabled={context.disabled}
+      style={{ "--alpha-color": gradientColor } as React.CSSProperties}
       className={cn(
-        "relative flex w-full touch-none items-center select-none",
+        "[&_[data-slot='slider-track'][data-horizontal]]:h-3",
+        // checkerboard: each layer includes its own position/size to avoid ordering issues
+        "[&_[data-slot='slider-track']]:[background:linear-gradient(45deg,#ccc_25%,transparent_25%)_0_0_/_8px_8px,linear-gradient(-45deg,#ccc_25%,transparent_25%)_0_4px_/_8px_8px,linear-gradient(45deg,transparent_75%,#ccc_75%)_4px_-4px_/_8px_8px,linear-gradient(-45deg,transparent_75%,#ccc_75%)_-4px_0px_/_8px_8px]",
+        // color gradient overlay via ::before on the track
+        "[&_[data-slot='slider-track']]:before:absolute [&_[data-slot='slider-track']]:before:inset-0 [&_[data-slot='slider-track']]:before:rounded-full [&_[data-slot='slider-track']]:before:content-['']",
+        "[&_[data-slot='slider-track']]:before:[background:linear-gradient(to_right,transparent,var(--alpha-color))]",
+        "[&_[data-slot='slider-range']]:bg-transparent",
+        "[&_[data-slot='slider-thumb']]:border-primary/50 [&_[data-slot='slider-thumb']]:bg-background",
         className,
       )}
       value={[Math.round((color?.a ?? 1) * 100)]}
       onValueChange={onValueChange}
-    >
-      <SliderPrimitive.Track
-        className="relative h-3 w-full grow overflow-hidden rounded-full"
-        style={{
-          background:
-            "linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(-45deg, transparent 75%, #ccc 75%)",
-          backgroundSize: "8px 8px",
-          backgroundPosition: "0 0, 0 4px, 4px -4px, -4px 0px",
-        }}
-      >
-        <div
-          className="absolute inset-0 rounded-full"
-          style={{
-            background: `linear-gradient(to right, transparent, ${gradientColor})`,
-          }}
-        />
-        <SliderPrimitive.Range className="absolute h-full" />
-      </SliderPrimitive.Track>
-      <SliderPrimitive.Thumb className="border-primary/50 bg-background focus-visible:ring-ring block size-4 rounded-full border shadow transition-colors focus-visible:ring-1 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50" />
-    </SliderPrimitive.Root>
+    />
   );
 }
 
