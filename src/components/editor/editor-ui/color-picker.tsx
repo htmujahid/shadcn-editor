@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { type VariantProps, cva } from "class-variance-authority";
 import { PipetteIcon } from "lucide-react";
-import { Slot as SlotPrimitive } from "radix-ui";
+import { Slot as SlotPrimitive } from "@radix-ui/react-slot";
 
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
@@ -944,7 +944,7 @@ function ColorPickerRootImpl(props: ColorPickerRootImplProps) {
     [store.setOpen, onOpenChange],
   );
 
-  const RootPrimitive = asChild ? SlotPrimitive.Root : "div";
+  const RootPrimitive = asChild ? SlotPrimitive : "div";
 
   if (inline) {
     return (
@@ -998,7 +998,7 @@ function ColorPickerTrigger(props: ColorPickerTriggerProps) {
   const { asChild, ...triggerProps } = props;
   const context = useColorPickerContext("ColorPickerTrigger");
 
-  const TriggerPrimitive = asChild ? SlotPrimitive.Root : Button;
+  const TriggerPrimitive = asChild ? SlotPrimitive : Button;
 
   return (
     <PopoverTrigger asChild disabled={context.disabled}>
@@ -1016,7 +1016,7 @@ function ColorPickerContent(props: ColorPickerContentProps) {
   const context = useColorPickerContext("ColorPickerContent");
 
   if (context.inline) {
-    const ContentPrimitive = asChild ? SlotPrimitive.Root : "div";
+    const ContentPrimitive = asChild ? SlotPrimitive : "div";
 
     return (
       <ContentPrimitive
@@ -1108,7 +1108,7 @@ function ColorPickerArea(props: ColorPickerAreaProps) {
   const hue = hsv?.h ?? 0;
   const backgroundHue = hsvToRgb({ h: hue, s: 100, v: 100, a: 1 });
 
-  const AreaPrimitive = asChild ? SlotPrimitive.Root : "div";
+  const AreaPrimitive = asChild ? SlotPrimitive : "div";
 
   return (
     <AreaPrimitive
@@ -1282,7 +1282,7 @@ function ColorPickerSwatch(props: ColorPickerSwatchProps) {
     ? "No color selected"
     : `Current color: ${colorToString(color, format)}`;
 
-  const SwatchPrimitive = asChild ? SlotPrimitive.Root : "div";
+  const SwatchPrimitive = asChild ? SlotPrimitive : "div";
 
   return (
     <SwatchPrimitive
