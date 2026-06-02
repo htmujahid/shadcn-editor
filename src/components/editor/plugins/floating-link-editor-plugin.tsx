@@ -221,65 +221,70 @@ function FloatingLinkEditor({
   return (
     <div
       ref={editorRef}
-      className="absolute top-0 left-0 w-full max-w-sm rounded-md opacity-0 shadow-md"
+      className="bg-popover text-popover-foreground absolute top-0 left-0 w-full max-w-sm rounded-md border opacity-0 shadow-md"
     >
       {!isLink ? null : isLinkEditMode ? (
-        <div className="flex items-center space-x-2 rounded-md border p-1 pl-2">
+        <div className="flex items-center gap-2 p-1 pl-2">
           <Input
             ref={inputRef}
             value={editedLinkUrl}
             onChange={(event) => setEditedLinkUrl(event.target.value)}
             onKeyDown={monitorInputInteraction}
-            className="flex-grow"
+            className="h-8 flex-grow"
           />
           <Button
-            size="icon"
+            size="icon-sm"
             variant="ghost"
             onClick={() => {
               setIsLinkEditMode(false);
               setIsLink(false);
             }}
             className="shrink-0"
+            aria-label="Cancel"
           >
-            <X className="h-4 w-4" />
+            <X />
           </Button>
           <Button
-            size="icon"
+            size="icon-sm"
             onClick={handleLinkSubmission}
             className="shrink-0"
+            aria-label="Confirm link"
           >
-            <Check className="h-4 w-4" />
+            <Check />
           </Button>
         </div>
       ) : (
-        <div className="flex items-center justify-between rounded-md border p-1 pl-2">
+        <div className="flex items-center justify-between gap-2 p-1 pl-2">
           <a
             href={sanitizeUrl(linkUrl)}
             target="_blank"
             rel="noopener noreferrer"
-            className="overflow-hidden text-sm text-ellipsis whitespace-nowrap"
+            className="text-primary truncate text-sm underline-offset-4 hover:underline"
           >
             {linkUrl}
           </a>
-          <div className="flex">
+          <div className="flex items-center gap-1">
             <Button
-              size="icon"
+              size="icon-sm"
               variant="ghost"
               onClick={() => {
                 setEditedLinkUrl(linkUrl);
                 setIsLinkEditMode(true);
               }}
+              aria-label="Edit link"
             >
-              <Pencil className="h-4 w-4" />
+              <Pencil />
             </Button>
             <Button
-              size="icon"
-              variant="destructive"
+              size="icon-sm"
+              variant="ghost"
               onClick={() => {
                 editor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
               }}
+              className="text-destructive hover:text-destructive"
+              aria-label="Remove link"
             >
-              <Trash className="h-4 w-4" />
+              <Trash />
             </Button>
           </div>
         </div>

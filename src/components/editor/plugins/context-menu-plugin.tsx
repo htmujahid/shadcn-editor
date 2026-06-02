@@ -39,7 +39,7 @@ export function ContextMenuPlugin(): JSX.Element {
         },
         $showOn: (node: LexicalNode) => $isLinkNode(node.getParent()),
         disabled: false,
-        icon: <Link2Off className="h-4 w-4" />,
+        icon: <Link2Off className="size-4" />,
       }),
       new NodeContextMenuSeparator({
         $showOn: (node: LexicalNode) => $isLinkNode(node.getParent()),
@@ -49,14 +49,14 @@ export function ContextMenuPlugin(): JSX.Element {
           editor.dispatchCommand(CUT_COMMAND, null);
         },
         disabled: false,
-        icon: <Scissors className="h-4 w-4" />,
+        icon: <Scissors className="size-4" />,
       }),
       new NodeContextMenuOption(`Copy`, {
         $onSelect: () => {
           editor.dispatchCommand(COPY_COMMAND, null);
         },
         disabled: false,
-        icon: <Copy className="h-4 w-4" />,
+        icon: <Copy className="size-4" />,
       }),
       new NodeContextMenuOption(`Paste`, {
         $onSelect: () => {
@@ -88,7 +88,7 @@ export function ContextMenuPlugin(): JSX.Element {
           });
         },
         disabled: false,
-        icon: <Clipboard className="h-4 w-4" />,
+        icon: <Clipboard className="size-4" />,
       }),
       new NodeContextMenuOption(`Paste as Plain Text`, {
         $onSelect: () => {
@@ -114,7 +114,7 @@ export function ContextMenuPlugin(): JSX.Element {
           });
         },
         disabled: false,
-        icon: <ClipboardType className="h-4 w-4" />,
+        icon: <ClipboardType className="size-4" />,
       }),
       new NodeContextMenuSeparator(),
       new NodeContextMenuOption(`Delete Node`, {
@@ -137,14 +137,14 @@ export function ContextMenuPlugin(): JSX.Element {
           }
         },
         disabled: false,
-        icon: <Trash2 className="h-4 w-4" />,
+        icon: <Trash2 className="size-4" />,
       }),
     ];
   }, [editor]);
 
   return (
     <NodeContextMenuPlugin
-      className="bg-popover text-popover-foreground !z-50 min-w-36 overflow-hidden rounded-md p-1 shadow-md ring-1 ring-foreground/10 outline-none [&:has(*)]:!z-10"
+      className="bg-popover text-popover-foreground min-w-36 overflow-hidden rounded-md border p-1 shadow-md outline-none"
       itemClassName="relative w-full flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50"
       separatorClassName="bg-border -mx-1 my-1 h-px"
       items={items}

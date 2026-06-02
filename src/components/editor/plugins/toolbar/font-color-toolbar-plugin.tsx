@@ -1,5 +1,12 @@
 import { useCallback, useState } from "react";
 
+const getThemeForegroundColor = () => {
+  if (typeof window === "undefined") return "#000";
+  return (
+    getComputedStyle(document.documentElement).color || "#000"
+  );
+};
+
 import {
   $getSelectionStyleValueForProperty,
   $patchStyleText,
@@ -26,12 +33,16 @@ import { Button } from "@/components/ui/button";
 export function FontColorToolbarPlugin() {
   const { activeEditor } = useToolbarContext();
 
-  const [fontColor, setFontColor] = useState("#000");
+  const [fontColor, setFontColor] = useState(getThemeForegroundColor);
 
   const $updateToolbar = (selection: BaseSelection) => {
     if ($isRangeSelection(selection)) {
       setFontColor(
-        $getSelectionStyleValueForProperty(selection, "color", "#000"),
+        $getSelectionStyleValueForProperty(
+          selection,
+          "color",
+          getThemeForegroundColor(),
+        ),
       );
     }
   };

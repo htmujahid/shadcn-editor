@@ -191,7 +191,7 @@ function TextFormatFloatingToolbar({
   return (
     <div
       ref={popupCharStylesEditorRef}
-      className="bg-background absolute top-0 left-0 flex gap-1 rounded-md border p-1 opacity-0 shadow-md transition-opacity duration-300 will-change-transform"
+      className="bg-popover text-popover-foreground absolute top-0 left-0 flex gap-1 rounded-md border p-1 opacity-0 shadow-md transition-opacity duration-300 will-change-transform"
     >
       {editor.isEditable() && (
         <>
@@ -216,7 +216,7 @@ function TextFormatFloatingToolbar({
               }}
               size="sm"
             >
-              <BoldIcon className="h-4 w-4" />
+              <BoldIcon className="size-4" />
             </ToggleGroupItem>
             <ToggleGroupItem
               value="italic"
@@ -226,7 +226,7 @@ function TextFormatFloatingToolbar({
               }}
               size="sm"
             >
-              <ItalicIcon className="h-4 w-4" />
+              <ItalicIcon className="size-4" />
             </ToggleGroupItem>
             <ToggleGroupItem
               value="underline"
@@ -236,7 +236,7 @@ function TextFormatFloatingToolbar({
               }}
               size="sm"
             >
-              <UnderlineIcon className="h-4 w-4" />
+              <UnderlineIcon className="size-4" />
             </ToggleGroupItem>
             <ToggleGroupItem
               value="strikethrough"
@@ -246,7 +246,7 @@ function TextFormatFloatingToolbar({
               }}
               size="sm"
             >
-              <StrikethroughIcon className="h-4 w-4" />
+              <StrikethroughIcon className="size-4" />
             </ToggleGroupItem>
             <Separator orientation="vertical" />
             <ToggleGroupItem
@@ -257,7 +257,7 @@ function TextFormatFloatingToolbar({
               }}
               size="sm"
             >
-              <CodeIcon className="h-4 w-4" />
+              <CodeIcon className="size-4" />
             </ToggleGroupItem>
             <ToggleGroupItem
               value="link"
@@ -265,7 +265,7 @@ function TextFormatFloatingToolbar({
               onClick={insertLink}
               size="sm"
             >
-              <LinkIcon className="h-4 w-4" />
+              <LinkIcon className="size-4" />
             </ToggleGroupItem>
             <Separator orientation="vertical" />
           </ToggleGroup>
@@ -283,7 +283,7 @@ function TextFormatFloatingToolbar({
               }}
               size="sm"
             >
-              <SubscriptIcon className="h-4 w-4" />
+              <SubscriptIcon className="size-4" />
             </ToggleGroupItem>
             <ToggleGroupItem
               value="superscript"
@@ -293,7 +293,7 @@ function TextFormatFloatingToolbar({
               }}
               size="sm"
             >
-              <SuperscriptIcon className="h-4 w-4" />
+              <SuperscriptIcon className="size-4" />
             </ToggleGroupItem>
           </ToggleGroup>
         </>

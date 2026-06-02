@@ -1232,7 +1232,7 @@ function ColorPickerAlphaSlider(props: ColorPickerAlphaSliderProps) {
       className={cn(
         "[&_[data-slot='slider-track'][data-horizontal]]:h-3",
         // checkerboard: each layer includes its own position/size to avoid ordering issues
-        "[&_[data-slot='slider-track']]:[background:linear-gradient(45deg,#ccc_25%,transparent_25%)_0_0_/_8px_8px,linear-gradient(-45deg,#ccc_25%,transparent_25%)_0_4px_/_8px_8px,linear-gradient(45deg,transparent_75%,#ccc_75%)_4px_-4px_/_8px_8px,linear-gradient(-45deg,transparent_75%,#ccc_75%)_-4px_0px_/_8px_8px]",
+        "[&_[data-slot='slider-track']]:[background:linear-gradient(45deg,var(--border)_25%,transparent_25%)_0_0_/_8px_8px,linear-gradient(-45deg,var(--border)_25%,transparent_25%)_0_4px_/_8px_8px,linear-gradient(45deg,transparent_75%,var(--border)_75%)_4px_-4px_/_8px_8px,linear-gradient(-45deg,transparent_75%,var(--border)_75%)_-4px_0px_/_8px_8px]",
         // color gradient overlay via ::before on the track
         "[&_[data-slot='slider-track']]:before:absolute [&_[data-slot='slider-track']]:before:inset-0 [&_[data-slot='slider-track']]:before:rounded-full [&_[data-slot='slider-track']]:before:content-['']",
         "[&_[data-slot='slider-track']]:before:[background:linear-gradient(to_right,transparent,var(--alpha-color))]",
@@ -1261,7 +1261,7 @@ function ColorPickerSwatch(props: ColorPickerSwatchProps) {
     if (!color) {
       return {
         background:
-          "linear-gradient(to bottom right, transparent calc(50% - 1px), hsl(var(--destructive)) calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px)) no-repeat",
+          "linear-gradient(to bottom right, transparent calc(50% - 1px), var(--destructive) calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px)) no-repeat",
       };
     }
 
@@ -1269,7 +1269,7 @@ function ColorPickerSwatch(props: ColorPickerSwatchProps) {
 
     if (color.a < 1) {
       return {
-        background: `linear-gradient(${colorString}, ${colorString}), repeating-conic-gradient(#ccc 0% 25%, #fff 0% 50%) 0% 50% / 8px 8px`,
+        background: `linear-gradient(${colorString}, ${colorString}), repeating-conic-gradient(var(--border) 0% 25%, var(--background) 0% 50%) 0% 50% / 8px 8px`,
       };
     }
 

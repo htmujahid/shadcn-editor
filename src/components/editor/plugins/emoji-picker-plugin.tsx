@@ -21,6 +21,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
+import { cn } from "@/lib/utils";
 
 // const LexicalTypeaheadMenuPlugin = dynamic(
 //   () =>
@@ -139,7 +140,7 @@ export function EmojiPickerPlugin() {
       ) => {
         return anchorElementRef.current && options.length
           ? createPortal(
-              <div className="absolute z-10 min-w-36 rounded-md shadow-md">
+              <div className="bg-popover text-popover-foreground absolute min-w-36 rounded-md border shadow-md">
                 <Command
                   onKeyDown={(e) => {
                     if (e.key === "ArrowUp") {
@@ -169,11 +170,12 @@ export function EmojiPickerPlugin() {
                           onSelect={() => {
                             selectOptionAndCleanUp(option);
                           }}
-                          className={`flex items-center gap-2 ${
+                          className={cn(
+                            "flex items-center gap-2",
                             selectedIndex === index
-                              ? "bg-accent"
-                              : "!bg-transparent"
-                          }`}
+                              ? "bg-accent text-accent-foreground"
+                              : "!bg-transparent",
+                          )}
                         >
                           {option.emoji} {option.title}
                         </CommandItem>

@@ -137,7 +137,7 @@ export default function DateTimeComponent({
             textFormat & IS_UNDERLINE && "underline",
             textFormat & IS_STRIKETHROUGH && "line-through",
             textFormat & IS_HIGHLIGHT &&
-              "bg-yellow-200 hover:bg-yellow-200/80 dark:bg-yellow-800 dark:hover:bg-yellow-800/80",
+              "bg-accent text-accent-foreground hover:bg-accent/80",
           )}
         >
           <CalendarIcon className="size-3.5" />
@@ -159,7 +159,7 @@ export default function DateTimeComponent({
             <Checkbox
               id={`include-time-${nodeKey}`}
               checked={includeTime}
-              onCheckedChange={(checked) =>
+              onCheckedChange={(checked: boolean | "indeterminate") =>
                 handleCheckedChange(checked === true)
               }
             />

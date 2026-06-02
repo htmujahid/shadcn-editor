@@ -19,7 +19,7 @@ export class KeywordNode extends TextNode {
   createDOM(config: EditorConfig): HTMLElement {
     const dom = super.createDOM(config);
     dom.style.cursor = "default";
-    dom.className = "keyword text-purple-900 font-bold";
+    dom.className = ["keyword", config.theme.keyword].filter(Boolean).join(" ");
     return dom;
   }
 

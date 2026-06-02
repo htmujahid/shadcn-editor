@@ -21,6 +21,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
+import { cn } from "@/lib/utils";
 
 import { ComponentPickerOption } from "./picker/component-picker-option";
 
@@ -54,7 +55,7 @@ function ComponentPickerMenu({
   }, [selectedIndex]);
 
   return (
-    <div className="absolute z-10 h-min min-w-48 rounded-md shadow-md">
+    <div className="bg-popover text-popover-foreground absolute h-min min-w-48 rounded-md border shadow-md">
       <Command
         onKeyDown={(e) => {
           if (e.key === "ArrowUp") {
@@ -84,9 +85,12 @@ function ComponentPickerMenu({
                 onSelect={() => {
                   selectOptionAndCleanUp(option);
                 }}
-                className={`flex items-center gap-2 ${
-                  selectedIndex === index ? "bg-accent" : "!bg-transparent"
-                }`}
+                className={cn(
+                  "flex items-center gap-2",
+                  selectedIndex === index
+                    ? "bg-accent text-accent-foreground"
+                    : "!bg-transparent",
+                )}
               >
                 {option.icon}
                 {option.title}

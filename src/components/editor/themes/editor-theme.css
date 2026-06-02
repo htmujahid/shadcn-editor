@@ -1,6 +1,7 @@
 .EditorTheme__code {
-  background-color: transparent;
-  font-family: Menlo, Consolas, Monaco, monospace;
+  background-color: var(--muted);
+  color: var(--foreground);
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Consolas, Monaco, monospace);
   display: block;
   padding: 8px 8px 8px 52px;
   line-height: 1.53;
@@ -9,20 +10,20 @@
   margin-top: 8px;
   margin-bottom: 8px;
   overflow-x: auto;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border);
   position: relative;
-  border-radius: 8px;
+  border-radius: var(--radius-md, 8px);
   tab-size: 2;
 }
 .EditorTheme__code:before {
   content: attr(data-gutter);
   position: absolute;
   background-color: transparent;
-  border-right: 1px solid #ccc;
+  border-right: 1px solid var(--border);
   left: 0;
   top: 0;
   padding: 8px;
-  color: #777;
+  color: var(--muted-foreground);
   white-space: pre-wrap;
   text-align: right;
   min-width: 25px;
@@ -37,8 +38,10 @@
   width: 100%;
   margin: 0px 0px 30px 0px;
 }
+
+/* Prism-style syntax palette — kept chromatic on purpose. */
 .EditorTheme__tokenComment {
-  color: slategray;
+  color: #6a737d;
 }
 .EditorTheme__tokenPunctuation {
   color: #999;
@@ -62,14 +65,39 @@
   color: #dd4a68;
 }
 
+.dark .EditorTheme__tokenComment {
+  color: #8b949e;
+}
+.dark .EditorTheme__tokenPunctuation {
+  color: #c9d1d9;
+}
+.dark .EditorTheme__tokenProperty {
+  color: #ff7b72;
+}
+.dark .EditorTheme__tokenSelector {
+  color: #a5d6ff;
+}
+.dark .EditorTheme__tokenOperator {
+  color: #ffa657;
+}
+.dark .EditorTheme__tokenAttr {
+  color: #79c0ff;
+}
+.dark .EditorTheme__tokenVariable {
+  color: #ffa657;
+}
+.dark .EditorTheme__tokenFunction {
+  color: #d2a8ff;
+}
+
 .Collapsible__container {
   background-color: var(--background);
-  border: 1px solid #ccc;
-  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 0.5rem);
   margin-bottom: 0.5rem;
 }
 
-.Collapsible__title{
+.Collapsible__title {
   padding: 0.25rem;
   padding-left: 1rem;
   position: relative;
@@ -80,12 +108,12 @@
   list-style-position: inside;
 }
 
-.Collapsible__title p{
+.Collapsible__title p {
   display: inline-flex;
 }
-.Collapsible__title::marker{
-  color: lightgray;
+.Collapsible__title::marker {
+  color: var(--muted-foreground);
 }
-.Collapsible__container[open] >.Collapsible__title {
+.Collapsible__container[open] > .Collapsible__title {
   list-style-type: disclosure-open;
 }

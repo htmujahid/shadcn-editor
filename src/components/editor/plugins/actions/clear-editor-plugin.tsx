@@ -29,7 +29,7 @@ export function ClearEditorActionPlugin() {
         <TooltipTrigger asChild>
           <DialogTrigger asChild>
             <Button size={"sm"} variant={"ghost"} className="p-2">
-              <Trash2Icon className="h-4 w-4" />
+              <Trash2Icon className="size-4" />
             </Button>
           </DialogTrigger>
         </TooltipTrigger>

@@ -39,6 +39,7 @@ import {
 } from "lexical";
 
 import { useBlockViewer } from "@/components/block-viewer-provider";
+import { cn } from "@/lib/utils";
 import { ContentEditable } from "@/components/editor/editor-ui/content-editable";
 import { DateTimeExtension } from "@/components/editor/extensions/date-time-extension";
 import { DragDropPasteExtension } from "@/components/editor/extensions/drag-drop-paste-extension";
@@ -249,7 +250,7 @@ export function Editor({
           <div className="relative">
             <ToolbarPlugin>
               {({ blockType }) => (
-                <div className="vertical-align-middle sticky top-0 z-10 flex items-center gap-2 overflow-auto border-b p-1">
+                <div className="bg-background sticky top-0 z-10 flex items-center gap-2 overflow-auto border-b p-1">
                   {toolbarItems.undoRedo && <HistoryToolbarPlugin />}
                   {toolbarItems.undoRedo && (
                     <Separator orientation="vertical" className="h-7!" />
@@ -335,8 +336,13 @@ export function Editor({
                 <div className="" ref={onRef}>
                   <ContentEditable
                     placeholder={placeholder}
-                    placeholderClassName={`${pluginItems.draggableBlock ? "pl-14" : "pl-4"}`}
-                    className={`h-[calc(100vh-141px)] ${pluginItems.draggableBlock ? "pl-14" : "pl-4"}`}
+                    placeholderClassName={cn(
+                      pluginItems.draggableBlock ? "pl-14" : "pl-4",
+                    )}
+                    className={cn(
+                      "h-[calc(100vh-141px)]",
+                      pluginItems.draggableBlock ? "pl-14" : "pl-4",
+                    )}
                   />
                 </div>
               </div>
