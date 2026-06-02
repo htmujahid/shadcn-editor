@@ -73,7 +73,7 @@ function ComponentPickerMenu({
           }
         }}
       >
-        <CommandList>
+        <CommandList className="w-56">
           <CommandGroup>
             {options.map((option, index) => (
               <CommandItem
@@ -89,7 +89,7 @@ function ComponentPickerMenu({
                   "flex items-center gap-2",
                   selectedIndex === index
                     ? "bg-accent text-accent-foreground"
-                    : "!bg-transparent",
+                    : "bg-transparent!",
                 )}
               >
                 {option.icon}
@@ -137,6 +137,7 @@ export function ComponentPickerMenuPlugin({
           option.keywords.some((keyword) => regex.test(keyword)),
       ),
     ];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editor, queryString, showModal]);
 
   const onSelectOption = useCallback(
@@ -152,6 +153,7 @@ export function ComponentPickerMenuPlugin({
         closeMenu();
       });
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [editor],
   );
 

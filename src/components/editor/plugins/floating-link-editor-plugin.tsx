@@ -221,10 +221,10 @@ function FloatingLinkEditor({
   return (
     <div
       ref={editorRef}
-      className="bg-popover text-popover-foreground absolute top-0 left-0 w-full max-w-sm rounded-md border opacity-0 shadow-md"
+      className="absolute top-0 left-0 w-full max-w-sm opacity-0"
     >
       {!isLink ? null : isLinkEditMode ? (
-        <div className="flex items-center gap-2 p-1 pl-2">
+        <div className="bg-popover text-popover-foreground flex items-center gap-2 rounded-md border p-1 pl-2 shadow-md">
           <Input
             ref={inputRef}
             value={editedLinkUrl}
@@ -254,7 +254,7 @@ function FloatingLinkEditor({
           </Button>
         </div>
       ) : (
-        <div className="flex items-center justify-between gap-2 p-1 pl-2">
+        <div className="bg-popover text-popover-foreground flex items-center justify-between gap-2 rounded-md border p-1 pl-2 shadow-md">
           <a
             href={sanitizeUrl(linkUrl)}
             target="_blank"

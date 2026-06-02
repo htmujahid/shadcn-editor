@@ -21,7 +21,7 @@ export function BlockInsertPlugin({ children }: { children: React.ReactNode }) {
             <span className="text-sm">Insert</span>
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent>{children}</DropdownMenuContent>
+        <DropdownMenuContent className="w-fit">{children}</DropdownMenuContent>
       </DropdownMenu>
     </>
   );
