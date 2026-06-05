@@ -8,8 +8,8 @@
 
 import type { JSX } from "react";
 
-import { $createTableNodeWithDimensions } from "@lexical/table";
-import { $insertNodes, $isTextNode, type LexicalEditor } from "lexical";
+import { INSERT_TABLE_COMMAND } from "@lexical/table";
+import { type LexicalEditor } from "lexical";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -39,18 +39,9 @@ export function InsertTableDialog({
   }, [rows, columns]);
 
   const onClick = () => {
-    activeEditor.update(() => {
-      const tableNode = $createTableNodeWithDimensions(
-        Number(rows),
-        Number(columns),
-      );
-      $insertNodes([tableNode]);
-      if (tableNode.isAttached()) {
-        const firstDescendant = tableNode.getFirstDescendant();
-        if ($isTextNode(firstDescendant)) {
-          firstDescendant.select();
-        }
-      }
+    activeEditor.dispatchCommand(INSERT_TABLE_COMMAND, {
+      columns,
+      rows,
     });
 
     onClose();
