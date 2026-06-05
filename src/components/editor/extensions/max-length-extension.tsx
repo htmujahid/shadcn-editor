@@ -17,7 +17,7 @@ export interface MaxLengthConfig {
 
 export const MaxLengthExtension = defineExtension({
   build: (_, config) => namedSignals(config),
-  config: safeCast<MaxLengthConfig>({ disabled: false, maxLength: 30 }),
+  config: safeCast<MaxLengthConfig>({ disabled: false, maxLength: 3000 }),
   name: "@shadcn-editor/MaxLength",
   register: (editor, _, state) =>
     effect(() => {

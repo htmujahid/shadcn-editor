@@ -136,7 +136,7 @@ import { Separator } from "@/components/ui/separator";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 const placeholder = "Press / for commands...";
-const maxLength = 30;
+const maxLength = 3000;
 
 export function Editor({
   editorState,
