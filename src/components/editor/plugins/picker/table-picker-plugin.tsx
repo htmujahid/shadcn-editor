@@ -1,4 +1,5 @@
-import { INSERT_TABLE_COMMAND } from "@lexical/table";
+import { $createTableNodeWithDimensions } from "@lexical/table";
+import { $insertNodes, $isTextNode } from "lexical";
 
 import { TableIcon } from "lucide-react";
 
@@ -42,7 +43,19 @@ export function DynamicTablePickerPlugin({
             icon: <i className="icon table" />,
             keywords: ["table"],
             onSelect: (_, editor) =>
-              editor.dispatchCommand(INSERT_TABLE_COMMAND, { columns, rows }),
+              editor.update(() => {
+                const tableNode = $createTableNodeWithDimensions(
+                  Number(rows),
+                  Number(columns),
+                );
+                $insertNodes([tableNode]);
+                if (tableNode.isAttached()) {
+                  const firstDescendant = tableNode.getFirstDescendant();
+                  if ($isTextNode(firstDescendant)) {
+                    firstDescendant.select();
+                  }
+                }
+              }),
           }),
       ),
     );
