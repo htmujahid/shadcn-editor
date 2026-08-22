@@ -244,10 +244,10 @@ export function Editor({
   );
 
   return (
-    <div className="bg-background overflow-hidden rounded-lg border shadow w-full">
+    <div className="bg-background flex h-full min-h-0 w-full flex-col overflow-hidden rounded-lg border shadow">
       <LexicalExtensionComposer extension={AppExtension} contentEditable={null}>
         <TooltipProvider>
-          <div className="relative">
+          <div className="relative flex min-h-0 flex-1 flex-col">
             <ToolbarPlugin>
               {({ blockType }) => (
                 <div className="bg-background sticky top-0 z-10 flex items-center gap-2 overflow-auto border-b p-1">
@@ -331,16 +331,16 @@ export function Editor({
                 </div>
               )}
             </ToolbarPlugin>
-            <div className="relative">
-              <div className="">
-                <div className="" ref={onRef}>
+            <div className="relative min-h-0 flex-1">
+              <div className="h-full">
+                <div className="h-full" ref={onRef}>
                   <ContentEditable
                     placeholder={placeholder}
                     placeholderClassName={cn(
                       pluginItems.draggableBlock ? "pl-14" : "pl-4",
                     )}
                     className={cn(
-                      "h-[calc(100vh-141px)]",
+                      "h-full",
                       pluginItems.draggableBlock ? "pl-14" : "pl-4",
                     )}
                   />

@@ -9,9 +9,11 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarHeader,
 } from "@/components/ui/sidebar";
 
+import { GetCodeDialog } from "./get-code-dialog";
 import {
   BLOCK_FORMAT_ITEM_LABELS,
   BLOCK_INSERT_ITEM_LABELS,
@@ -220,6 +222,10 @@ function BlockViewerSidebar() {
           </div>
         </ScrollArea>
       </SidebarContent>
+
+      <SidebarFooter className="border-t border-border px-4 py-3">
+        <GetCodeDialog />
+      </SidebarFooter>
     </Sidebar>
   );
 }
