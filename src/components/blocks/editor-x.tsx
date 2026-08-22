@@ -253,7 +253,7 @@ export function Editor({
                 <div className="bg-background sticky top-0 z-10 flex items-center gap-2 overflow-auto border-b p-1">
                   {toolbarItems.undoRedo && <HistoryToolbarPlugin />}
                   {toolbarItems.undoRedo && (
-                    <Separator orientation="vertical" className="h-7!" />
+                    <Separator orientation="vertical" className="h-6 my-auto" />
                   )}
                   {toolbarItems.blockFormat && (
                     <BlockFormatDropDown>
@@ -280,11 +280,11 @@ export function Editor({
                       {toolbarItems.fontFamily && <FontFamilyToolbarPlugin />}
                       {toolbarItems.fontSize && <FontSizeToolbarPlugin />}
                       {(toolbarItems.fontFamily || toolbarItems.fontSize) && (
-                        <Separator orientation="vertical" className="h-7!" />
+                        <Separator orientation="vertical" className="h-6 my-auto" />
                       )}
                       {toolbarItems.fontFormat && <FontFormatToolbarPlugin />}
                       {toolbarItems.fontFormat && (
-                        <Separator orientation="vertical" className="h-7!" />
+                        <Separator orientation="vertical" className="h-6 my-auto" />
                       )}
                       {toolbarItems.subSuper && <SubSuperToolbarPlugin />}
                       {toolbarItems.link && (
@@ -293,13 +293,13 @@ export function Editor({
                         />
                       )}
                       {(toolbarItems.subSuper || toolbarItems.link) && (
-                        <Separator orientation="vertical" className="h-7!" />
+                        <Separator orientation="vertical" className="h-6 my-auto" />
                       )}
                       {toolbarItems.clearFormatting && (
                         <ClearFormattingToolbarPlugin />
                       )}
                       {toolbarItems.clearFormatting && (
-                        <Separator orientation="vertical" className="h-7!" />
+                        <Separator orientation="vertical" className="h-6 my-auto" />
                       )}
                       {toolbarItems.fontColor && <FontColorToolbarPlugin />}
                       {toolbarItems.fontBackground && (
@@ -307,13 +307,13 @@ export function Editor({
                       )}
                       {(toolbarItems.fontColor ||
                         toolbarItems.fontBackground) && (
-                        <Separator orientation="vertical" className="h-7!" />
+                        <Separator orientation="vertical" className="h-6 my-auto" />
                       )}
                       {toolbarItems.fontAlignment && (
                         <ElementFormatToolbarPlugin />
                       )}
                       {toolbarItems.fontAlignment && (
-                        <Separator orientation="vertical" className="h-7!" />
+                        <Separator orientation="vertical" className="h-6 my-auto" />
                       )}
                       {toolbarItems.blockInsert && (
                         <BlockInsertPlugin>
