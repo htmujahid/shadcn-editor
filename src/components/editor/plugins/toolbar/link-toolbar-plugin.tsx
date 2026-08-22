@@ -78,7 +78,7 @@ export function LinkToolbarPlugin({
 
   return (
     <Toggle
-      variant={"outline"}
+      variant="default"
       size="sm"
       aria-label="Toggle link"
       onClick={insertLink}

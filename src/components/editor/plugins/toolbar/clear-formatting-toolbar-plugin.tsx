@@ -78,8 +78,8 @@ export function ClearFormattingToolbarPlugin() {
   return (
     <Button
       aria-label="Clear formatting"
-      variant={"outline"}
-      size={"icon-sm"}
+      variant="ghost"
+      size="icon-sm"
       onClick={clearFormatting}
     >
       <EraserIcon className="size-4" />

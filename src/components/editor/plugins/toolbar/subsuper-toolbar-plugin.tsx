@@ -43,7 +43,7 @@ export function SubSuperToolbarPlugin() {
         onClick={() => {
           activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, "subscript");
         }}
-        variant={"outline"}
+        variant="default"
       >
         <SubscriptIcon className="size-4" />
       </ToggleGroupItem>
@@ -54,7 +54,7 @@ export function SubSuperToolbarPlugin() {
         onClick={() => {
           activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, "superscript");
         }}
-        variant={"outline"}
+        variant="default"
       >
         <SuperscriptIcon className="size-4" />
       </ToggleGroupItem>

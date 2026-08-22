@@ -119,7 +119,7 @@ export function ElementFormatToolbarPlugin({
           <ToggleGroupItem
             key={value}
             value={value}
-            variant={"outline"}
+            variant="default"
             size="sm"
             aria-label={option.name}
           >
@@ -138,7 +138,7 @@ export function ElementFormatToolbarPlugin({
         <ToggleGroupItem
           value="outdent"
           aria-label="Outdent"
-          variant={"outline"}
+          variant="default"
           size="sm"
         >
           <IndentDecreaseIcon className="size-4" />
@@ -146,7 +146,7 @@ export function ElementFormatToolbarPlugin({
 
         <ToggleGroupItem
           value="indent"
-          variant={"outline"}
+          variant="default"
           aria-label="Indent"
           size="sm"
         >

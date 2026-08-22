@@ -66,7 +66,7 @@ export function FontFamilyToolbarPlugin() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          variant="outline"
+          variant="ghost"
           className="w-min gap-1 px-2"
           size="sm"
           aria-label={buttonAriaLabel}
@@ -76,7 +76,7 @@ export function FontFamilyToolbarPlugin() {
           <ChevronDownIcon className="size-3" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-40" align="start">
+      <DropdownMenuContent className="w-48" align="start">
         {FONT_FAMILY_OPTIONS.map((option) => (
           <DropdownMenuItem
             key={option}

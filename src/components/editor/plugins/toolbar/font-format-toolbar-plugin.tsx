@@ -58,7 +58,7 @@ export function FontFormatToolbarPlugin() {
       type="multiple"
       value={activeFormats}
       onValueChange={setActiveFormats}
-      variant="outline"
+      variant="default"
       size="sm"
     >
       {FORMATS.map(({ format, icon: Icon, label }) => (
