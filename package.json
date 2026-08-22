@@ -9,7 +9,8 @@
     "lint": "eslint . --fix",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "typecheck": "tsc --noEmit",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "registry:build": "shadcn build"
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.2.8",
