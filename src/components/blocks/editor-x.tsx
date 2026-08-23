@@ -280,11 +280,17 @@ export function Editor({
                       {toolbarItems.fontFamily && <FontFamilyToolbarPlugin />}
                       {toolbarItems.fontSize && <FontSizeToolbarPlugin />}
                       {(toolbarItems.fontFamily || toolbarItems.fontSize) && (
-                        <Separator orientation="vertical" className="h-6 my-auto" />
+                        <Separator
+                          orientation="vertical"
+                          className="h-6 my-auto"
+                        />
                       )}
                       {toolbarItems.fontFormat && <FontFormatToolbarPlugin />}
                       {toolbarItems.fontFormat && (
-                        <Separator orientation="vertical" className="h-6 my-auto" />
+                        <Separator
+                          orientation="vertical"
+                          className="h-6 my-auto"
+                        />
                       )}
                       {toolbarItems.subSuper && <SubSuperToolbarPlugin />}
                       {toolbarItems.link && (
@@ -293,13 +299,19 @@ export function Editor({
                         />
                       )}
                       {(toolbarItems.subSuper || toolbarItems.link) && (
-                        <Separator orientation="vertical" className="h-6 my-auto" />
+                        <Separator
+                          orientation="vertical"
+                          className="h-6 my-auto"
+                        />
                       )}
                       {toolbarItems.clearFormatting && (
                         <ClearFormattingToolbarPlugin />
                       )}
                       {toolbarItems.clearFormatting && (
-                        <Separator orientation="vertical" className="h-6 my-auto" />
+                        <Separator
+                          orientation="vertical"
+                          className="h-6 my-auto"
+                        />
                       )}
                       {toolbarItems.fontColor && <FontColorToolbarPlugin />}
                       {toolbarItems.fontBackground && (
@@ -307,13 +319,19 @@ export function Editor({
                       )}
                       {(toolbarItems.fontColor ||
                         toolbarItems.fontBackground) && (
-                        <Separator orientation="vertical" className="h-6 my-auto" />
+                        <Separator
+                          orientation="vertical"
+                          className="h-6 my-auto"
+                        />
                       )}
                       {toolbarItems.fontAlignment && (
                         <ElementFormatToolbarPlugin />
                       )}
                       {toolbarItems.fontAlignment && (
-                        <Separator orientation="vertical" className="h-6 my-auto" />
+                        <Separator
+                          orientation="vertical"
+                          className="h-6 my-auto"
+                        />
                       )}
                       {toolbarItems.blockInsert && (
                         <BlockInsertPlugin>

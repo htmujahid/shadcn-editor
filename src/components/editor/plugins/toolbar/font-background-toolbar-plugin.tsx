@@ -2,9 +2,7 @@ import { useCallback, useState } from "react";
 
 const getThemeBackgroundColor = () => {
   if (typeof window === "undefined") return "#fff";
-  return (
-    getComputedStyle(document.documentElement).backgroundColor || "#fff"
-  );
+  return getComputedStyle(document.documentElement).backgroundColor || "#fff";
 };
 
 import {
@@ -85,11 +83,13 @@ export function FontBackgroundToolbarPlugin() {
         }
       }}
     >
-      <ColorPickerTrigger asChild>
-        <Button variant="ghost" size="icon-sm">
-          <PaintBucketIcon className="size-4" />
-        </Button>
-      </ColorPickerTrigger>
+      <ColorPickerTrigger
+        render={
+          <Button variant="ghost" size="icon-sm">
+            <PaintBucketIcon className="size-4" />
+          </Button>
+        }
+      />
       <ColorPickerContent>
         <ColorPickerArea />
         <div className="flex items-center gap-2">

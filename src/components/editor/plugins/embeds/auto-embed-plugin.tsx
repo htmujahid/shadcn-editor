@@ -10,7 +10,7 @@ import {
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import type { LexicalEditor } from "lexical";
 
-import { Popover as PopoverPrimitive } from "radix-ui";
+import { createPortal } from "react-dom";
 
 // import { TwitterIcon, YoutubeIcon } from "lucide-react"
 
@@ -270,39 +270,40 @@ export function AutoEmbedPlugin(): JSX.Element {
             setHighlightedIndex: _setHighlightedIndex,
           },
         ) => {
-          return anchorElementRef.current ? (
-            <Popover open={true}>
-              <PopoverPrimitive.Portal container={anchorElementRef.current}>
-                <div className="-translate-y-full transform">
-                  <PopoverTrigger />
-                  <PopoverContent
-                    className="min-w-36 p-0"
-                    align="start"
-                    side="right"
-                  >
-                    <Command>
-                      <CommandList>
-                        <CommandGroup>
-                          {options.map((option, _i: number) => (
-                            <CommandItem
-                              key={option.key}
-                              value={option.title}
-                              onSelect={() => {
-                                selectOptionAndCleanUp(option);
-                              }}
-                              className="flex items-center gap-2"
-                            >
-                              {option.title}
-                            </CommandItem>
-                          ))}
-                        </CommandGroup>
-                      </CommandList>
-                    </Command>
-                  </PopoverContent>
-                </div>
-              </PopoverPrimitive.Portal>
-            </Popover>
-          ) : null;
+          return anchorElementRef.current
+            ? createPortal(
+                <Popover open={true}>
+                  <div className="-translate-y-full transform">
+                    <PopoverTrigger />
+                    <PopoverContent
+                      className="min-w-36 p-0"
+                      align="start"
+                      side="right"
+                    >
+                      <Command>
+                        <CommandList>
+                          <CommandGroup>
+                            {options.map((option, _i: number) => (
+                              <CommandItem
+                                key={option.key}
+                                value={option.title}
+                                onSelect={() => {
+                                  selectOptionAndCleanUp(option);
+                                }}
+                                className="flex items-center gap-2"
+                              >
+                                {option.title}
+                              </CommandItem>
+                            ))}
+                          </CommandGroup>
+                        </CommandList>
+                      </Command>
+                    </PopoverContent>
+                  </div>
+                </Popover>,
+                anchorElementRef.current,
+              )
+            : null;
         }}
       />
     </>

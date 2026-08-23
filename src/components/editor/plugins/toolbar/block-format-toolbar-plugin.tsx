@@ -73,13 +73,15 @@ export function BlockFormatDropDown({
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="gap-1 px-2" size="sm">
-          {icon}
-          <span className="text-sm">{label}</span>
-          <ChevronDownIcon className="size-3" />
-        </Button>
-      </DropdownMenuTrigger>
+      <DropdownMenuTrigger
+        render={
+          <Button variant="ghost" className="gap-1 px-2" size="sm">
+            {icon}
+            <span className="text-sm">{label}</span>
+            <ChevronDownIcon className="size-3" />
+          </Button>
+        }
+      />
       <DropdownMenuContent className="w-48" align="start">
         {children}
       </DropdownMenuContent>

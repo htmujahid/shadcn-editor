@@ -82,7 +82,8 @@ export function CodeLanguageToolbarPlugin() {
   useUpdateToolbarHandler($updateToolbar);
 
   const onCodeLanguageSelect = useCallback(
-    (value: string) => {
+    (value: string | null) => {
+      if (value == null) return;
       activeEditor.update(() => {
         if (selectedElementKey !== null) {
           const node = $getNodeByKey(selectedElementKey);
@@ -104,7 +105,7 @@ export function CodeLanguageToolbarPlugin() {
       >
         <SelectValue placeholder="Select Language" />
       </SelectTrigger>
-      <SelectContent onCloseAutoFocus={(e) => e.preventDefault()}>
+      <SelectContent finalFocus={false}>
         {CODE_LANGUAGE_OPTIONS.map(([value, label]) => (
           <SelectItem key={value} value={value}>
             {label}

@@ -64,18 +64,20 @@ export function FontFamilyToolbarPlugin() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          variant="ghost"
-          className="w-min gap-1 px-2"
-          size="sm"
-          aria-label={buttonAriaLabel}
-        >
-          <TypeIcon className="size-4" />
-          <span style={{ fontFamily }}>{fontFamily}</span>
-          <ChevronDownIcon className="size-3" />
-        </Button>
-      </DropdownMenuTrigger>
+      <DropdownMenuTrigger
+        render={
+          <Button
+            variant="ghost"
+            className="w-min gap-1 px-2"
+            size="sm"
+            aria-label={buttonAriaLabel}
+          >
+            <TypeIcon className="size-4" />
+            <span style={{ fontFamily }}>{fontFamily}</span>
+            <ChevronDownIcon className="size-3" />
+          </Button>
+        }
+      />
       <DropdownMenuContent className="w-48" align="start">
         {FONT_FAMILY_OPTIONS.map((option) => (
           <DropdownMenuItem

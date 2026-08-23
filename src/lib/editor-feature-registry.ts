@@ -13,25 +13,25 @@
 
 export type ImportSpec = {
   source: string;
-  specifiers?: string[];      // named imports
-  typeSpecifiers?: string[];  // type-only named imports: import { type Foo }
+  specifiers?: string[]; // named imports
+  typeSpecifiers?: string[]; // type-only named imports: import { type Foo }
 };
 
 /** Slot positions in the generated editor JSX */
 export type PluginSlot =
-  | "toolbar_start"   // undo/redo, block format — before code-language check
-  | "toolbar_font"    // font tools, link, etc. — inside !code branch
-  | "toolbar_insert"  // items inside BlockInsertPlugin
-  | "content"         // after ContentEditable
-  | "floating"        // floating overlays (require anchorElem)
-  | "footer_left"     // left side of ActionsPlugin footer
-  | "footer_center"   // center of footer
-  | "footer_right";   // right side of footer
+  | "toolbar_start" // undo/redo, block format — before code-language check
+  | "toolbar_font" // font tools, link, etc. — inside !code branch
+  | "toolbar_insert" // items inside BlockInsertPlugin
+  | "content" // after ContentEditable
+  | "floating" // floating overlays (require anchorElem)
+  | "footer_left" // left side of ActionsPlugin footer
+  | "footer_center" // center of footer
+  | "footer_right"; // right side of footer
 
 export type FeatureSpec = {
   imports?: ImportSpec[];
-  extensions?: string[];                           // names / configExtension(...) strings
-  nodes?: string[];                                // node class names
+  extensions?: string[]; // names / configExtension(...) strings
+  nodes?: string[]; // node class names
   plugins?: Partial<Record<PluginSlot, string[]>>; // JSX lines per slot
 };
 
@@ -50,14 +50,20 @@ export const BASE_SPEC: FeatureSpec = {
       source: "@lexical/react/LexicalExtensionComposer",
       specifiers: ["LexicalExtensionComposer"],
     },
-    { source: "@lexical/react/LexicalOnChangePlugin", specifiers: ["OnChangePlugin"] },
+    {
+      source: "@lexical/react/LexicalOnChangePlugin",
+      specifiers: ["OnChangePlugin"],
+    },
     { source: "@lexical/rich-text", specifiers: ["RichTextExtension"] },
     {
       source: "lexical",
       specifiers: ["configExtension", "defineExtension"],
       typeSpecifiers: ["EditorState", "SerializedEditorState"],
     },
-    { source: "@/components/block-viewer-provider", specifiers: ["useBlockViewer"] },
+    {
+      source: "@/components/block-viewer-provider",
+      specifiers: ["useBlockViewer"],
+    },
     {
       source: "@/components/editor/editor-ui/content-editable",
       specifiers: ["ContentEditable"],
@@ -70,10 +76,17 @@ export const BASE_SPEC: FeatureSpec = {
       source: "@/components/editor/plugins/toolbar/toolbar-plugin",
       specifiers: ["ToolbarPlugin"],
     },
-    { source: "@/components/editor/themes/editor-theme", specifiers: ["editorTheme"] },
+    {
+      source: "@/components/editor/themes/editor-theme",
+      specifiers: ["editorTheme"],
+    },
     { source: "@/components/ui/tooltip", specifiers: ["TooltipProvider"] },
   ],
-  extensions: ["RichTextExtension", "AutoFocusExtension", "SelectionAlwaysOnDisplayExtension"],
+  extensions: [
+    "RichTextExtension",
+    "AutoFocusExtension",
+    "SelectionAlwaysOnDisplayExtension",
+  ],
   nodes: [],
   plugins: {},
 };
@@ -106,31 +119,38 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
   "toolbarItems.blockFormat": {
     imports: [
       {
-        source: "@/components/editor/plugins/toolbar/block-format-toolbar-plugin",
+        source:
+          "@/components/editor/plugins/toolbar/block-format-toolbar-plugin",
         specifiers: ["BlockFormatDropDown"],
       },
       {
-        source: "@/components/editor/plugins/toolbar/block-format/format-bulleted-list",
+        source:
+          "@/components/editor/plugins/toolbar/block-format/format-bulleted-list",
         specifiers: ["FormatBulletedList"],
       },
       {
-        source: "@/components/editor/plugins/toolbar/block-format/format-check-list",
+        source:
+          "@/components/editor/plugins/toolbar/block-format/format-check-list",
         specifiers: ["FormatCheckList"],
       },
       {
-        source: "@/components/editor/plugins/toolbar/block-format/format-code-block",
+        source:
+          "@/components/editor/plugins/toolbar/block-format/format-code-block",
         specifiers: ["FormatCodeBlock"],
       },
       {
-        source: "@/components/editor/plugins/toolbar/block-format/format-heading",
+        source:
+          "@/components/editor/plugins/toolbar/block-format/format-heading",
         specifiers: ["FormatHeading"],
       },
       {
-        source: "@/components/editor/plugins/toolbar/block-format/format-numbered-list",
+        source:
+          "@/components/editor/plugins/toolbar/block-format/format-numbered-list",
         specifiers: ["FormatNumberedList"],
       },
       {
-        source: "@/components/editor/plugins/toolbar/block-format/format-paragraph",
+        source:
+          "@/components/editor/plugins/toolbar/block-format/format-paragraph",
         specifiers: ["FormatParagraph"],
       },
       {
@@ -148,7 +168,8 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
   "toolbarItems.fontFamily": {
     imports: [
       {
-        source: "@/components/editor/plugins/toolbar/font-family-toolbar-plugin",
+        source:
+          "@/components/editor/plugins/toolbar/font-family-toolbar-plugin",
         specifiers: ["FontFamilyToolbarPlugin"],
       },
       { source: "@/components/ui/separator", specifiers: ["Separator"] },
@@ -180,7 +201,8 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
   "toolbarItems.fontFormat": {
     imports: [
       {
-        source: "@/components/editor/plugins/toolbar/font-format-toolbar-plugin",
+        source:
+          "@/components/editor/plugins/toolbar/font-format-toolbar-plugin",
         specifiers: ["FontFormatToolbarPlugin"],
       },
       { source: "@/components/ui/separator", specifiers: ["Separator"] },
@@ -213,7 +235,11 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
     imports: [
       {
         source: "@lexical/link",
-        specifiers: ["AutoLinkExtension", "ClickableLinkExtension", "LinkExtension"],
+        specifiers: [
+          "AutoLinkExtension",
+          "ClickableLinkExtension",
+          "LinkExtension",
+        ],
       },
       {
         source: "@/components/editor/plugins/toolbar/link-toolbar-plugin",
@@ -238,7 +264,8 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
   "toolbarItems.clearFormatting": {
     imports: [
       {
-        source: "@/components/editor/plugins/toolbar/clear-formatting-toolbar-plugin",
+        source:
+          "@/components/editor/plugins/toolbar/clear-formatting-toolbar-plugin",
         specifiers: ["ClearFormattingToolbarPlugin"],
       },
       { source: "@/components/ui/separator", specifiers: ["Separator"] },
@@ -266,7 +293,8 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
   "toolbarItems.fontBackground": {
     imports: [
       {
-        source: "@/components/editor/plugins/toolbar/font-background-toolbar-plugin",
+        source:
+          "@/components/editor/plugins/toolbar/font-background-toolbar-plugin",
         specifiers: ["FontBackgroundToolbarPlugin"],
       },
       { source: "@/components/ui/separator", specifiers: ["Separator"] },
@@ -282,7 +310,8 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
   "toolbarItems.fontAlignment": {
     imports: [
       {
-        source: "@/components/editor/plugins/toolbar/element-format-toolbar-plugin",
+        source:
+          "@/components/editor/plugins/toolbar/element-format-toolbar-plugin",
         specifiers: ["ElementFormatToolbarPlugin"],
       },
       { source: "@/components/ui/separator", specifiers: ["Separator"] },
@@ -309,7 +338,10 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
 
   "blockFormatItems.codeBlock": {
     imports: [
-      { source: "@lexical/code", specifiers: ["CodeHighlightNode", "CodeNode"] },
+      {
+        source: "@lexical/code",
+        specifiers: ["CodeHighlightNode", "CodeNode"],
+      },
       {
         source: "@/components/editor/plugins/code-action-menu-plugin",
         specifiers: ["CodeActionMenuPlugin"],
@@ -319,7 +351,8 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
         specifiers: ["CodeHighlightPlugin"],
       },
       {
-        source: "@/components/editor/plugins/toolbar/code-language-toolbar-plugin",
+        source:
+          "@/components/editor/plugins/toolbar/code-language-toolbar-plugin",
         specifiers: ["CodeLanguageToolbarPlugin"],
       },
     ],
@@ -332,16 +365,25 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
 
   "blockFormatItems.numberList": {
     imports: [{ source: "@lexical/list", specifiers: ["ListExtension"] }],
-    extensions: [`configExtension(ListExtension, { shouldPreserveNumbering: false })`],
+    extensions: [
+      `configExtension(ListExtension, { shouldPreserveNumbering: false })`,
+    ],
   },
 
   "blockFormatItems.bulletList": {
     imports: [{ source: "@lexical/list", specifiers: ["ListExtension"] }],
-    extensions: [`configExtension(ListExtension, { shouldPreserveNumbering: false })`],
+    extensions: [
+      `configExtension(ListExtension, { shouldPreserveNumbering: false })`,
+    ],
   },
 
   "blockFormatItems.checkList": {
-    imports: [{ source: "@lexical/list", specifiers: ["CheckListExtension", "ListExtension"] }],
+    imports: [
+      {
+        source: "@lexical/list",
+        specifiers: ["CheckListExtension", "ListExtension"],
+      },
+    ],
     extensions: [
       `configExtension(ListExtension, { shouldPreserveNumbering: false })`,
       "CheckListExtension",
@@ -356,7 +398,8 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
     imports: [
       { source: "@lexical/extension", specifiers: ["HorizontalRuleExtension"] },
       {
-        source: "@/components/editor/plugins/toolbar/block-insert/insert-horizontal-rule",
+        source:
+          "@/components/editor/plugins/toolbar/block-insert/insert-horizontal-rule",
         specifiers: ["InsertHorizontalRule"],
       },
     ],
@@ -385,8 +428,14 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
 
   "blockInsertItems.table": {
     imports: [
-      { source: "@lexical/react/LexicalTablePlugin", specifiers: ["TablePlugin"] },
-      { source: "@lexical/table", specifiers: ["TableCellNode", "TableNode", "TableRowNode"] },
+      {
+        source: "@lexical/react/LexicalTablePlugin",
+        specifiers: ["TablePlugin"],
+      },
+      {
+        source: "@lexical/table",
+        specifiers: ["TableCellNode", "TableNode", "TableRowNode"],
+      },
       {
         source: "@/components/editor/plugins/toolbar/block-insert/insert-table",
         specifiers: ["InsertTable"],
@@ -405,10 +454,17 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
         source: "@/components/editor/nodes/layout-container-node",
         specifiers: ["LayoutContainerNode"],
       },
-      { source: "@/components/editor/nodes/layout-item-node", specifiers: ["LayoutItemNode"] },
-      { source: "@/components/editor/plugins/layout-plugin", specifiers: ["LayoutPlugin"] },
       {
-        source: "@/components/editor/plugins/toolbar/block-insert/insert-columns-layout",
+        source: "@/components/editor/nodes/layout-item-node",
+        specifiers: ["LayoutItemNode"],
+      },
+      {
+        source: "@/components/editor/plugins/layout-plugin",
+        specifiers: ["LayoutPlugin"],
+      },
+      {
+        source:
+          "@/components/editor/plugins/toolbar/block-insert/insert-columns-layout",
         specifiers: ["InsertColumnsLayout"],
       },
     ],
@@ -421,8 +477,14 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
 
   "blockInsertItems.embeds": {
     imports: [
-      { source: "@/components/editor/nodes/embeds/tweet-node", specifiers: ["TweetNode"] },
-      { source: "@/components/editor/nodes/embeds/youtube-node", specifiers: ["YouTubeNode"] },
+      {
+        source: "@/components/editor/nodes/embeds/tweet-node",
+        specifiers: ["TweetNode"],
+      },
+      {
+        source: "@/components/editor/nodes/embeds/youtube-node",
+        specifiers: ["YouTubeNode"],
+      },
       {
         source: "@/components/editor/plugins/embeds/twitter-plugin",
         specifiers: ["TwitterPlugin"],
@@ -432,7 +494,8 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
         specifiers: ["YouTubePlugin"],
       },
       {
-        source: "@/components/editor/plugins/toolbar/block-insert/insert-embeds",
+        source:
+          "@/components/editor/plugins/toolbar/block-insert/insert-embeds",
         specifiers: ["InsertEmbeds"],
       },
     ],
@@ -464,7 +527,10 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
         source: "@/components/editor/extensions/emojis-extension",
         specifiers: ["EmojisExtension"],
       },
-      { source: "@/components/editor/nodes/emoji-node", specifiers: ["EmojiNode"] },
+      {
+        source: "@/components/editor/nodes/emoji-node",
+        specifiers: ["EmojiNode"],
+      },
       {
         source: "@/components/editor/plugins/emoji-picker-plugin",
         specifiers: ["EmojiPickerPlugin"],
@@ -491,8 +557,14 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
 
   "pluginItems.mentions": {
     imports: [
-      { source: "@/components/editor/nodes/mention-node", specifiers: ["MentionNode"] },
-      { source: "@/components/editor/plugins/mentions-plugin", specifiers: ["MentionsPlugin"] },
+      {
+        source: "@/components/editor/nodes/mention-node",
+        specifiers: ["MentionNode"],
+      },
+      {
+        source: "@/components/editor/plugins/mentions-plugin",
+        specifiers: ["MentionsPlugin"],
+      },
     ],
     nodes: ["MentionNode"],
     plugins: {
@@ -595,7 +667,10 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
 
   "pluginItems.tabFocus": {
     imports: [
-      { source: "@/components/editor/plugins/tab-focus-plugin", specifiers: ["TabFocusPlugin"] },
+      {
+        source: "@/components/editor/plugins/tab-focus-plugin",
+        specifiers: ["TabFocusPlugin"],
+      },
     ],
     plugins: {
       content: ["<TabFocusPlugin />"],
@@ -632,10 +707,14 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
         specifiers: ["CounterCharacterPlugin"],
       },
     ],
-    extensions: [`configExtension(MaxLengthExtension, { disabled: false, maxLength })`],
+    extensions: [
+      `configExtension(MaxLengthExtension, { disabled: false, maxLength })`,
+    ],
     nodes: ["OverflowNode"],
     plugins: {
-      footer_left: [`<CharacterLimitPlugin maxLength={maxLength} charset="UTF-16" />`],
+      footer_left: [
+        `<CharacterLimitPlugin maxLength={maxLength} charset="UTF-16" />`,
+      ],
       footer_center: [`<CounterCharacterPlugin charset="UTF-16" />`],
     },
   },
@@ -773,7 +852,10 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
 
   "componentPickerItems.tweetEmbed": {
     imports: [
-      { source: "@/components/editor/nodes/embeds/tweet-node", specifiers: ["TweetNode"] },
+      {
+        source: "@/components/editor/nodes/embeds/tweet-node",
+        specifiers: ["TweetNode"],
+      },
       {
         source: "@/components/editor/plugins/embeds/twitter-plugin",
         specifiers: ["TwitterPlugin"],
@@ -791,7 +873,10 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
 
   "componentPickerItems.youtubeEmbed": {
     imports: [
-      { source: "@/components/editor/nodes/embeds/youtube-node", specifiers: ["YouTubeNode"] },
+      {
+        source: "@/components/editor/nodes/embeds/youtube-node",
+        specifiers: ["YouTubeNode"],
+      },
       {
         source: "@/components/editor/plugins/embeds/youtube-plugin",
         specifiers: ["YouTubePlugin"],

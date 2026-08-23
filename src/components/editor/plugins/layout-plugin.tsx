@@ -71,7 +71,12 @@ export function InsertLayoutDialog({
 
   return (
     <>
-      <Select onValueChange={setLayout} defaultValue={layout}>
+      <Select
+        onValueChange={(value: string | null) => {
+          if (value != null) setLayout(value);
+        }}
+        defaultValue={layout}
+      >
         <SelectTrigger className="w-full">
           <SelectValue placeholder={buttonLabel} />
         </SelectTrigger>

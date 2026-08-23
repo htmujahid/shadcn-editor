@@ -123,7 +123,10 @@ function sortedSources(sources: Iterable<string>): string[] {
 }
 
 function renderImportLines(merged: MergedArtifacts): string {
-  const allSources = new Set([...merged.imports.keys(), ...merged.typeImports.keys()]);
+  const allSources = new Set([
+    ...merged.imports.keys(),
+    ...merged.typeImports.keys(),
+  ]);
   const lines: string[] = [];
   let lastWasExternal = true;
 
@@ -139,10 +142,7 @@ function renderImportLines(merged: MergedArtifacts): string {
     const regular = [...(merged.imports.get(source) ?? [])].sort();
     const typed = [...(merged.typeImports.get(source) ?? [])].sort();
 
-    const parts = [
-      ...typed.map((s) => `type ${s}`),
-      ...regular,
-    ];
+    const parts = [...typed.map((s) => `type ${s}`), ...regular];
 
     if (parts.length === 0) continue;
 
@@ -163,7 +163,11 @@ function indent(code: string, spaces: number): string {
     .join("\n");
 }
 
-function renderSlot(merged: MergedArtifacts, slot: PluginSlot, spaces: number): string {
+function renderSlot(
+  merged: MergedArtifacts,
+  slot: PluginSlot,
+  spaces: number,
+): string {
   return merged.plugins[slot].map((line) => indent(line, spaces)).join("\n");
 }
 
@@ -185,9 +189,7 @@ function renderCode(merged: MergedArtifacts, flags: GeneratorFlags): string {
     .map((e) => indent(e + ",", 10))
     .join("\n");
 
-  const nodeLines = merged.nodes
-    .map((n) => `          ${n},`)
-    .join("\n");
+  const nodeLines = merged.nodes.map((n) => `          ${n},`).join("\n");
 
   // Toolbar slots
   const toolbarStart = renderSlot(merged, "toolbar_start", 18);
@@ -367,7 +369,8 @@ function computeFlags(
 ): GeneratorFlags {
   const has = (key: string) => activeKeys.includes(key);
   const hasAnyFloating = merged.plugins.floating.length > 0;
-  const hasLink = has("toolbarItems.link") || has("pluginItems.floatingLinkToolbar");
+  const hasLink =
+    has("toolbarItems.link") || has("pluginItems.floatingLinkToolbar");
 
   return {
     hasCharCount: has("footerItems.characterCount"),
@@ -375,7 +378,9 @@ function computeFlags(
     hasLink,
     needsAnchorElem: hasAnyFloating || hasLink,
     hasBlockInsert: has("toolbarItems.blockInsert"),
-    hasToolbarFontSection: merged.plugins.toolbar_font.length > 0 || merged.plugins.toolbar_insert.length > 0,
+    hasToolbarFontSection:
+      merged.plugins.toolbar_font.length > 0 ||
+      merged.plugins.toolbar_insert.length > 0,
   };
 }
 
@@ -390,7 +395,9 @@ type PickerItemSpec = {
 /** Order matches editor-x.tsx for consistent generated output. */
 const PICKER_KEY_ORDER: ComponentPickerItemKey[] = [
   "paragraph",
-  "h1", "h2", "h3",
+  "h1",
+  "h2",
+  "h3",
   "table",
   "checkList",
   "numberList",
@@ -403,7 +410,10 @@ const PICKER_KEY_ORDER: ComponentPickerItemKey[] = [
   "image",
   "columnsLayout",
   "dateTime",
-  "alignLeft", "alignCenter", "alignRight", "alignJustify",
+  "alignLeft",
+  "alignCenter",
+  "alignRight",
+  "alignJustify",
 ];
 
 const PICKER_ITEM_MAP: Record<ComponentPickerItemKey, PickerItemSpec> = {
@@ -524,9 +534,9 @@ function applyBaseOptions(
   const pickerItems = state.componentPickerItems;
 
   // Active specs in declared order
-  const activeSpecs = PICKER_KEY_ORDER
-    .filter((key) => pickerItems[key])
-    .map((key) => PICKER_ITEM_MAP[key]);
+  const activeSpecs = PICKER_KEY_ORDER.filter((key) => pickerItems[key]).map(
+    (key) => PICKER_ITEM_MAP[key],
+  );
 
   // Add picker-plugin imports for each active item (Sets dedup automatically)
   for (const spec of activeSpecs) {

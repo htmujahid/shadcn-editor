@@ -10,12 +10,12 @@
       "description": "A rich text editor built on Lexical with plugins, nodes, extensions, and toolbar support.",
       "dependencies": [
         "@lexical/code",
-        "@lexical/code-shiki",
         "@lexical/code-prism",
+        "@lexical/code-shiki",
         "@lexical/extension",
         "@lexical/file",
-        "@lexical/history",
         "@lexical/hashtag",
+        "@lexical/history",
         "@lexical/link",
         "@lexical/list",
         "@lexical/markdown",
@@ -26,7 +26,6 @@
         "@lexical/table",
         "@lexical/text",
         "@lexical/utils",
-        "@radix-ui/react-slot",
         "lexical",
         "lodash",
         "lucide-react"

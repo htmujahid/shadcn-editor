@@ -215,10 +215,11 @@ export default function ImageComponent({
   );
 
   const $onEnter = useCallback(
-    (event: KeyboardEvent) => {
+    (event: KeyboardEvent | null) => {
       const latestSelection = $getSelection();
       const buttonElem = buttonRef.current;
       if (
+        event !== null &&
         $isNodeSelection(latestSelection) &&
         latestSelection.has(nodeKey) &&
         latestSelection.getNodes().length === 1

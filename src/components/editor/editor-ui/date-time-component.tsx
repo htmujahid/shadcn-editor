@@ -123,27 +123,29 @@ export default function DateTimeComponent({
 
   return (
     <Popover>
-      <PopoverTrigger asChild>
-        <Button
-          variant="outline"
-          data-empty={!dateTime}
-          data-selected={isNodeSelected}
-          className={cn(
-            "inline-flex h-auto gap-1.5 px-2 py-0.5 text-sm font-normal",
-            "data-[empty=true]:text-muted-foreground",
-            "data-[selected=true]:ring-2 data-[selected=true]:ring-primary",
-            textFormat & IS_BOLD && "font-bold",
-            textFormat & IS_ITALIC && "italic",
-            textFormat & IS_UNDERLINE && "underline",
-            textFormat & IS_STRIKETHROUGH && "line-through",
-            textFormat & IS_HIGHLIGHT &&
-              "bg-accent text-accent-foreground hover:bg-accent/80",
-          )}
-        >
-          <CalendarIcon className="size-3.5" />
-          {displayLabel ?? <span>Pick a date</span>}
-        </Button>
-      </PopoverTrigger>
+      <PopoverTrigger
+        render={
+          <Button
+            variant="outline"
+            data-empty={!dateTime}
+            data-selected={isNodeSelected}
+            className={cn(
+              "inline-flex h-auto gap-1.5 px-2 py-0.5 text-sm font-normal",
+              "data-[empty=true]:text-muted-foreground",
+              "data-[selected=true]:ring-2 data-[selected=true]:ring-primary",
+              textFormat & IS_BOLD && "font-bold",
+              textFormat & IS_ITALIC && "italic",
+              textFormat & IS_UNDERLINE && "underline",
+              textFormat & IS_STRIKETHROUGH && "line-through",
+              textFormat & IS_HIGHLIGHT &&
+                "bg-accent text-accent-foreground hover:bg-accent/80",
+            )}
+          >
+            <CalendarIcon className="size-3.5" />
+            {displayLabel ?? <span>Pick a date</span>}
+          </Button>
+        }
+      />
       <PopoverContent className="w-auto p-0" align="start">
         <Calendar
           captionLayout="dropdown"
@@ -159,8 +161,8 @@ export default function DateTimeComponent({
             <Checkbox
               id={`include-time-${nodeKey}`}
               checked={includeTime}
-              onCheckedChange={(checked: boolean | "indeterminate") =>
-                handleCheckedChange(checked === true)
+              onCheckedChange={(checked: boolean) =>
+                handleCheckedChange(checked)
               }
             />
             <Label

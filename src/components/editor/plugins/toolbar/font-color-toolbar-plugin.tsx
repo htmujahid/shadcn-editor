@@ -2,9 +2,7 @@ import { useCallback, useState } from "react";
 
 const getThemeForegroundColor = () => {
   if (typeof window === "undefined") return "#000";
-  return (
-    getComputedStyle(document.documentElement).color || "#000"
-  );
+  return getComputedStyle(document.documentElement).color || "#000";
 };
 
 import {
@@ -82,11 +80,13 @@ export function FontColorToolbarPlugin() {
         }
       }}
     >
-      <ColorPickerTrigger asChild>
-        <Button variant="ghost" size="icon-sm">
-          <BaselineIcon className="size-4" />
-        </Button>
-      </ColorPickerTrigger>
+      <ColorPickerTrigger
+        render={
+          <Button variant="ghost" size="icon-sm">
+            <BaselineIcon className="size-4" />
+          </Button>
+        }
+      />
       <ColorPickerContent>
         <ColorPickerArea />
         <div className="flex items-center gap-2">

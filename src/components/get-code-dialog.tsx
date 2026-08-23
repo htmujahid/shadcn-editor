@@ -133,12 +133,14 @@ function GetCodeDialog() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button size="sm" className="w-full">
-          <Terminal />
-          Get Code
-        </Button>
-      </DialogTrigger>
+      <DialogTrigger
+        render={
+          <Button size="sm" className="w-full">
+            <Terminal />
+            Get Code
+          </Button>
+        }
+      />
       <DialogContent className="flex max-h-[85vh] flex-col gap-0 overflow-hidden p-0 sm:max-w-3xl">
         <DialogHeader className="shrink-0 border-b px-6 py-4">
           <DialogTitle>Get Code</DialogTitle>

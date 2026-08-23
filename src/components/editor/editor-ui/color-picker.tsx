@@ -2,7 +2,6 @@ import * as React from "react";
 
 import { type VariantProps, cva } from "class-variance-authority";
 import { PipetteIcon } from "lucide-react";
-import { Slot as SlotPrimitive } from "@radix-ui/react-slot";
 
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
@@ -777,17 +776,17 @@ interface ColorPickerRootProps
     Omit<React.ComponentProps<"div">, "onValueChange">,
     Pick<
       React.ComponentProps<typeof Popover>,
-      "defaultOpen" | "open" | "onOpenChange" | "modal"
+      "defaultOpen" | "open" | "modal"
     > {
   value?: string;
   defaultValue?: string;
   onValueChange?: (value: string) => void;
+  onOpenChange?: (open: boolean) => void;
   dir?: Direction;
   format?: ColorFormat;
   defaultFormat?: ColorFormat;
   onFormatChange?: (format: ColorFormat) => void;
   name?: string;
-  asChild?: boolean;
   disabled?: boolean;
   inline?: boolean;
   readOnly?: boolean;
@@ -885,7 +884,6 @@ function ColorPickerRootImpl(props: ColorPickerRootImplProps) {
     onOpenChange,
     name,
     ref,
-    asChild,
     disabled,
     inline,
     modal,
@@ -944,12 +942,10 @@ function ColorPickerRootImpl(props: ColorPickerRootImplProps) {
     [store.setOpen, onOpenChange],
   );
 
-  const RootPrimitive = asChild ? SlotPrimitive : "div";
-
   if (inline) {
     return (
       <ColorPickerContext.Provider value={contextValue}>
-        <RootPrimitive {...rootProps} ref={composedRef} />
+        <div {...rootProps} ref={composedRef} />
         {isFormControl && (
           <VisuallyHiddenInput
             type="hidden"
@@ -973,7 +969,7 @@ function ColorPickerRootImpl(props: ColorPickerRootImplProps) {
         onOpenChange={onPopoverOpenChange}
         modal={modal}
       >
-        <RootPrimitive {...rootProps} ref={composedRef} />
+        <div {...rootProps} ref={composedRef} />
         {isFormControl && (
           <VisuallyHiddenInput
             type="hidden"
@@ -995,15 +991,16 @@ interface ColorPickerTriggerProps extends React.ComponentProps<
 > {}
 
 function ColorPickerTrigger(props: ColorPickerTriggerProps) {
-  const { asChild, ...triggerProps } = props;
+  const { render, ...triggerProps } = props;
   const context = useColorPickerContext("ColorPickerTrigger");
 
-  const TriggerPrimitive = asChild ? SlotPrimitive : Button;
-
   return (
-    <PopoverTrigger asChild disabled={context.disabled}>
-      <TriggerPrimitive data-slot="color-picker-trigger" {...triggerProps} />
-    </PopoverTrigger>
+    <PopoverTrigger
+      data-slot="color-picker-trigger"
+      disabled={context.disabled}
+      render={render ?? <Button />}
+      {...triggerProps}
+    />
   );
 }
 
@@ -1012,27 +1009,23 @@ interface ColorPickerContentProps extends React.ComponentProps<
 > {}
 
 function ColorPickerContent(props: ColorPickerContentProps) {
-  const { asChild, className, children, ...popoverContentProps } = props;
+  const { className, children, ...popoverContentProps } = props;
   const context = useColorPickerContext("ColorPickerContent");
 
   if (context.inline) {
-    const ContentPrimitive = asChild ? SlotPrimitive : "div";
-
     return (
-      <ContentPrimitive
+      <div
         data-slot="color-picker-content"
-        {...popoverContentProps}
         className={cn("flex w-[340px] flex-col gap-4 p-4", className)}
       >
         {children}
-      </ContentPrimitive>
+      </div>
     );
   }
 
   return (
     <PopoverContent
       data-slot="color-picker-content"
-      asChild={asChild}
       {...popoverContentProps}
       className={cn("flex w-[340px] flex-col gap-4 p-4", className)}
     >
@@ -1041,12 +1034,10 @@ function ColorPickerContent(props: ColorPickerContentProps) {
   );
 }
 
-interface ColorPickerAreaProps extends React.ComponentProps<"div"> {
-  asChild?: boolean;
-}
+interface ColorPickerAreaProps extends React.ComponentProps<"div"> {}
 
 function ColorPickerArea(props: ColorPickerAreaProps) {
-  const { asChild, className, ref, ...areaProps } = props;
+  const { className, ref, ...areaProps } = props;
   const context = useColorPickerContext("ColorPickerArea");
   const store = useColorPickerStoreContext("ColorPickerArea");
 
@@ -1108,10 +1099,8 @@ function ColorPickerArea(props: ColorPickerAreaProps) {
   const hue = hsv?.h ?? 0;
   const backgroundHue = hsvToRgb({ h: hue, s: 100, v: 100, a: 1 });
 
-  const AreaPrimitive = asChild ? SlotPrimitive : "div";
-
   return (
-    <AreaPrimitive
+    <div
       data-slot="color-picker-area"
       {...areaProps}
       className={cn(
@@ -1151,11 +1140,13 @@ function ColorPickerArea(props: ColorPickerAreaProps) {
           top: `${100 - (hsv?.v ?? 0)}%`,
         }}
       />
-    </AreaPrimitive>
+    </div>
   );
 }
 
-interface ColorPickerHueSliderProps extends React.ComponentProps<typeof Slider> {}
+interface ColorPickerHueSliderProps extends React.ComponentProps<
+  typeof Slider
+> {}
 
 function ColorPickerHueSlider(props: ColorPickerHueSliderProps) {
   const { className, ...sliderProps } = props;
@@ -1165,9 +1156,10 @@ function ColorPickerHueSlider(props: ColorPickerHueSliderProps) {
   const hsv = useColorPickerStore((state) => state.hsv);
 
   const onValueChange = React.useCallback(
-    (values: number[]) => {
+    (value: number | readonly number[]) => {
+      const hue = Array.isArray(value) ? (value[0] ?? 0) : (value as number);
       const newHsv: HSVColorValue = {
-        h: values[0] ?? 0,
+        h: hue,
         s: hsv?.s ?? 0,
         v: hsv?.v ?? 0,
         a: hsv?.a ?? 1,
@@ -1198,7 +1190,9 @@ function ColorPickerHueSlider(props: ColorPickerHueSliderProps) {
   );
 }
 
-interface ColorPickerAlphaSliderProps extends React.ComponentProps<typeof Slider> {}
+interface ColorPickerAlphaSliderProps extends React.ComponentProps<
+  typeof Slider
+> {}
 
 function ColorPickerAlphaSlider(props: ColorPickerAlphaSliderProps) {
   const { className, ...sliderProps } = props;
@@ -1209,8 +1203,9 @@ function ColorPickerAlphaSlider(props: ColorPickerAlphaSliderProps) {
   const hsv = useColorPickerStore((state) => state.hsv);
 
   const onValueChange = React.useCallback(
-    (values: number[]) => {
-      const alpha = (values[0] ?? 0) / 100;
+    (value: number | readonly number[]) => {
+      const raw = Array.isArray(value) ? (value[0] ?? 0) : (value as number);
+      const alpha = raw / 100;
       const newColor = { ...color, a: alpha };
       const newHsv = { ...hsv, a: alpha };
       store.setColor(newColor);
@@ -1246,12 +1241,10 @@ function ColorPickerAlphaSlider(props: ColorPickerAlphaSliderProps) {
   );
 }
 
-interface ColorPickerSwatchProps extends React.ComponentProps<"div"> {
-  asChild?: boolean;
-}
+interface ColorPickerSwatchProps extends React.ComponentProps<"div"> {}
 
 function ColorPickerSwatch(props: ColorPickerSwatchProps) {
-  const { asChild, className, ...swatchProps } = props;
+  const { className, ...swatchProps } = props;
   const context = useColorPickerContext("ColorPickerSwatch");
 
   const color = useColorPickerStore((state) => state.color);
@@ -1282,10 +1275,8 @@ function ColorPickerSwatch(props: ColorPickerSwatchProps) {
     ? "No color selected"
     : `Current color: ${colorToString(color, format)}`;
 
-  const SwatchPrimitive = asChild ? SlotPrimitive : "div";
-
   return (
-    <SwatchPrimitive
+    <div
       role="img"
       aria-label={ariaLabel}
       data-slot="color-picker-swatch"
@@ -1366,8 +1357,13 @@ function ColorPickerFormatSelect(props: ColorPickerFormatSelectProps) {
   const format = useColorPickerStore((state) => state.format);
 
   const onFormatChange = React.useCallback(
-    (value: ColorFormat) => {
-      store.setFormat(value);
+    (value: unknown) => {
+      if (
+        typeof value === "string" &&
+        colorFormats.includes(value as ColorFormat)
+      ) {
+        store.setFormat(value as ColorFormat);
+      }
     },
     [store],
   );

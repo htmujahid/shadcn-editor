@@ -89,7 +89,8 @@ export function ElementFormatToolbarPlugin({
 
   useUpdateToolbarHandler($updateToolbar);
 
-  const handleValueChange = (value: string) => {
+  const handleValueChange = (values: string[]) => {
+    const value = values[0];
     if (!value) return; // Prevent unselecting current value
 
     setElementFormat(value as ElementFormatType);
@@ -108,12 +109,7 @@ export function ElementFormatToolbarPlugin({
 
   return (
     <>
-      <ToggleGroup
-        type="single"
-        value={elementFormat}
-        defaultValue={elementFormat}
-        onValueChange={handleValueChange}
-      >
+      <ToggleGroup value={[elementFormat]} onValueChange={handleValueChange}>
         {/* Alignment toggles */}
         {Object.entries(ELEMENT_FORMAT_OPTIONS).map(([value, option]) => (
           <ToggleGroupItem
@@ -127,14 +123,11 @@ export function ElementFormatToolbarPlugin({
           </ToggleGroupItem>
         ))}
       </ToggleGroup>
-      {separator && <Separator orientation="vertical" className="h-6 my-auto" />}
+      {separator && (
+        <Separator orientation="vertical" className="h-6 my-auto" />
+      )}
       {/* Indentation toggles */}
-      <ToggleGroup
-        type="single"
-        value={elementFormat}
-        defaultValue={elementFormat}
-        onValueChange={handleValueChange}
-      >
+      <ToggleGroup value={[elementFormat]} onValueChange={handleValueChange}>
         <ToggleGroupItem
           value="outdent"
           aria-label="Outdent"

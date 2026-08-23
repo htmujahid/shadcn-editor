@@ -55,7 +55,7 @@ export function FontFormatToolbarPlugin() {
 
   return (
     <ToggleGroup
-      type="multiple"
+      multiple
       value={activeFormats}
       onValueChange={setActiveFormats}
       variant="default"

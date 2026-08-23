@@ -42,27 +42,29 @@ export function ShareContentPlugin() {
 
   return (
     <Tooltip>
-      <TooltipTrigger asChild>
-        <Button
-          variant={"ghost"}
-          onClick={() =>
-            shareDoc(
-              serializedDocumentFromEditorState(editor.getEditorState(), {
-                source: "editor",
-              }),
-            ).then(
-              () => toast.success("URL copied to clipboard"),
-              () => toast.error("URL could not be copied to clipboard"),
-            )
-          }
-          title="Share"
-          aria-label="Share Playground link to current editor state"
-          size={"sm"}
-          className="p-2"
-        >
-          <SendIcon className="size-4" />
-        </Button>
-      </TooltipTrigger>
+      <TooltipTrigger
+        render={
+          <Button
+            variant={"ghost"}
+            onClick={() =>
+              shareDoc(
+                serializedDocumentFromEditorState(editor.getEditorState(), {
+                  source: "editor",
+                }),
+              ).then(
+                () => toast.success("URL copied to clipboard"),
+                () => toast.error("URL could not be copied to clipboard"),
+              )
+            }
+            title="Share"
+            aria-label="Share Playground link to current editor state"
+            size={"sm"}
+            className="p-2"
+          >
+            <SendIcon className="size-4" />
+          </Button>
+        }
+      />
       <TooltipContent>Share Content</TooltipContent>
     </Tooltip>
   );

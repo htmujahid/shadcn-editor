@@ -122,21 +122,23 @@ function SpeechToTextPluginImpl() {
 
   return (
     <Tooltip>
-      <TooltipTrigger asChild>
-        <Button
-          onClick={() => {
-            editor.dispatchCommand(SPEECH_TO_TEXT_COMMAND, !isSpeechToText);
-            setIsSpeechToText(!isSpeechToText);
-          }}
-          variant={isSpeechToText ? "secondary" : "ghost"}
-          title="Speech To Text"
-          aria-label={`${isSpeechToText ? "Enable" : "Disable"} speech to text`}
-          className="p-2"
-          size={"sm"}
-        >
-          <MicIcon className="size-4" />
-        </Button>
-      </TooltipTrigger>
+      <TooltipTrigger
+        render={
+          <Button
+            onClick={() => {
+              editor.dispatchCommand(SPEECH_TO_TEXT_COMMAND, !isSpeechToText);
+              setIsSpeechToText(!isSpeechToText);
+            }}
+            variant={isSpeechToText ? "secondary" : "ghost"}
+            title="Speech To Text"
+            aria-label={`${isSpeechToText ? "Enable" : "Disable"} speech to text`}
+            className="p-2"
+            size={"sm"}
+          >
+            <MicIcon className="size-4" />
+          </Button>
+        }
+      />
       <TooltipContent>Speech To Text</TooltipContent>
     </Tooltip>
   );
