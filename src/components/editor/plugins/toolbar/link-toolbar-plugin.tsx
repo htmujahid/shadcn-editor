@@ -80,6 +80,7 @@ export function LinkToolbarPlugin({
     <Toggle
       variant="default"
       size="sm"
+      className="size-7 min-w-7"
       aria-label="Toggle link"
       onClick={insertLink}
     >

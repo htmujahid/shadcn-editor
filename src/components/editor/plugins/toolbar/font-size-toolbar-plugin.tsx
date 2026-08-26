@@ -57,11 +57,12 @@ export function FontSizeToolbarPlugin() {
   );
 
   return (
-    <InputGroup className="h-8 w-fit border-none shadow-none dark:bg-transparent">
+    <InputGroup className="h-7 w-fit border-none shadow-none dark:bg-transparent">
       <InputGroupAddon align="inline-start" className="pl-1">
         <InputGroupButton
           variant="ghost"
           size="icon-xs"
+          className="size-7"
           aria-label="Decrease font size"
           onClick={() => updateFontSize(fontSize - 1)}
           disabled={fontSize <= MIN_FONT_SIZE}
@@ -82,6 +83,7 @@ export function FontSizeToolbarPlugin() {
         <InputGroupButton
           variant="ghost"
           size="icon-xs"
+          className="size-7"
           aria-label="Increase font size"
           onClick={() => updateFontSize(fontSize + 1)}
           disabled={fontSize >= MAX_FONT_SIZE}

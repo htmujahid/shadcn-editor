@@ -66,6 +66,7 @@ export function FontFormatToolbarPlugin() {
           key={format}
           value={format}
           aria-label={label}
+          className="size-7 min-w-7"
           onClick={() => {
             activeEditor.dispatchCommand(
               FORMAT_TEXT_COMMAND,

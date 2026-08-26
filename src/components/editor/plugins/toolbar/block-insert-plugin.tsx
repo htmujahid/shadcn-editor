@@ -17,7 +17,7 @@ export function BlockInsertPlugin({ children }: { children: React.ReactNode }) {
       <DropdownMenu>
         <DropdownMenuTrigger
           render={
-            <Button variant="ghost" size="sm" className="gap-1 px-2">
+            <Button variant="ghost" size="sm" className="h-7 gap-1 px-2">
               <PlusIcon className="size-4" />
               <span className="text-sm">Insert</span>
             </Button>

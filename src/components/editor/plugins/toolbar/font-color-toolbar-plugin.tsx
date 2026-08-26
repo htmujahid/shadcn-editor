@@ -82,7 +82,7 @@ export function FontColorToolbarPlugin() {
     >
       <ColorPickerTrigger
         render={
-          <Button variant="ghost" size="icon-sm">
+          <Button variant="ghost" size="icon-sm" className="size-7">
             <BaselineIcon className="size-4" />
           </Button>
         }

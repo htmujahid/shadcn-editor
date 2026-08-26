@@ -85,7 +85,7 @@ export function FontBackgroundToolbarPlugin() {
     >
       <ColorPickerTrigger
         render={
-          <Button variant="ghost" size="icon-sm">
+          <Button variant="ghost" size="icon-sm" className="size-7">
             <PaintBucketIcon className="size-4" />
           </Button>
         }

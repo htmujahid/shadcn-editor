@@ -68,7 +68,7 @@ export function FontFamilyToolbarPlugin() {
         render={
           <Button
             variant="ghost"
-            className="w-min gap-1 px-2"
+            className="h-7 w-min gap-1 px-2"
             size="sm"
             aria-label={buttonAriaLabel}
           >

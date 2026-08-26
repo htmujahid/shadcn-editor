@@ -75,7 +75,7 @@ export function BlockFormatDropDown({
     <DropdownMenu>
       <DropdownMenuTrigger
         render={
-          <Button variant="ghost" className="gap-1 px-2" size="sm">
+          <Button variant="ghost" className="h-7 gap-1 px-2" size="sm">
             {icon}
             <span className="text-sm">{label}</span>
             <ChevronDownIcon className="size-3" />

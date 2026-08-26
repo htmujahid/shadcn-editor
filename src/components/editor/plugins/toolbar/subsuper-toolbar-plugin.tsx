@@ -36,6 +36,7 @@ export function SubSuperToolbarPlugin() {
       <ToggleGroupItem
         value="subscript"
         size="sm"
+        className="size-7 min-w-7"
         aria-label="Toggle subscript"
         onClick={() => {
           activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, "subscript");
@@ -47,6 +48,7 @@ export function SubSuperToolbarPlugin() {
       <ToggleGroupItem
         value="superscript"
         size="sm"
+        className="size-7 min-w-7"
         aria-label="Toggle superscript"
         onClick={() => {
           activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, "superscript");
