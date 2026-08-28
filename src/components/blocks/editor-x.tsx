@@ -24,7 +24,6 @@ import {
   TEXT_MATCH_TRANSFORMERS,
 } from "@lexical/markdown";
 import { OverflowNode } from "@lexical/overflow";
-import { CharacterLimitPlugin } from "@lexical/react/LexicalCharacterLimitPlugin";
 import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import { TabIndentationPlugin } from "@lexical/react/LexicalTabIndentationPlugin";
@@ -542,15 +541,10 @@ export function Editor({
               <div className="clear-both flex items-center justify-between gap-2 overflow-auto border-t p-1">
                 <div className="flex flex-1 justify-start text-xs text-gray-500">
                   {footerItems.characterCount && (
-                    <CharacterLimitPlugin
-                      maxLength={maxLength}
+                    <CounterCharacterPlugin
                       charset="UTF-16"
+                      maxLength={maxLength}
                     />
-                  )}
-                </div>
-                <div>
-                  {footerItems.characterCount && (
-                    <CounterCharacterPlugin charset="UTF-16" />
                   )}
                 </div>
                 <div className="flex flex-1 justify-end">

@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 
+import { CharacterLimitPlugin } from "@lexical/react/LexicalCharacterLimitPlugin";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { $rootTextContent } from "@lexical/text";
+
+import { cn } from "@/lib/utils";
 
 let textEncoderInstance: null | TextEncoder = null;
 
@@ -31,6 +34,7 @@ function utf8Length(text: string) {
 
 interface CounterCharacterPluginProps {
   charset?: "UTF-8" | "UTF-16";
+  maxLength?: number;
 }
 
 const strlen = (text: string, charset: "UTF-8" | "UTF-16") => {
@@ -47,6 +51,7 @@ const countWords = (text: string) => {
 
 export function CounterCharacterPlugin({
   charset = "UTF-16",
+  maxLength,
 }: CounterCharacterPluginProps) {
   const [editor] = useLexicalComposerContext();
   const [stats, setStats] = useState(() => {
@@ -65,6 +70,28 @@ export function CounterCharacterPlugin({
       });
     });
   }, [editor, charset]);
+
+  if (maxLength !== undefined) {
+    return (
+      <CharacterLimitPlugin
+        charset={charset}
+        maxLength={maxLength}
+        renderer={({ remainingCharacters }) => (
+          <div className="flex gap-2 text-xs whitespace-nowrap text-gray-500">
+            <p>
+              <span
+                className={cn(remainingCharacters < 0 && "text-destructive")}
+              >
+                {stats.characters}
+              </span>
+              {` / ${maxLength} characters`}
+            </p>
+            |<p>{stats.words} words</p>
+          </div>
+        )}
+      />
+    );
+  }
 
   return (
     <div className="flex gap-2 text-xs whitespace-nowrap text-gray-500">

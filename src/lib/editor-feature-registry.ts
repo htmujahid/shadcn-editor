@@ -695,10 +695,6 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
     imports: [
       { source: "@lexical/overflow", specifiers: ["OverflowNode"] },
       {
-        source: "@lexical/react/LexicalCharacterLimitPlugin",
-        specifiers: ["CharacterLimitPlugin"],
-      },
-      {
         source: "@/components/editor/extensions/max-length-extension",
         specifiers: ["MaxLengthExtension"],
       },
@@ -713,9 +709,8 @@ export const FEATURE_REGISTRY: Record<string, FeatureSpec> = {
     nodes: ["OverflowNode"],
     plugins: {
       footer_left: [
-        `<CharacterLimitPlugin maxLength={maxLength} charset="UTF-16" />`,
+        `<CounterCharacterPlugin charset="UTF-16" maxLength={maxLength} />`,
       ],
-      footer_center: [`<CounterCharacterPlugin charset="UTF-16" />`],
     },
   },
 
