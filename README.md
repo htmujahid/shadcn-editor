@@ -9,301 +9,331 @@ npx shadcn@latest add @shadcn-editor/editor-x
 ## Usage
 
 ```ts
-import { CodeHighlightNode, CodeNode } from "@lexical/code";
-import { AutoFocusExtension, ClearEditorExtension, DecoratorTextExtension, HorizontalRuleExtension, SelectionAlwaysOnDisplayExtension } from "@lexical/extension";
-import { HistoryExtension } from "@lexical/history";
-import { AutoLinkExtension, ClickableLinkExtension, LinkExtension } from "@lexical/link";
-import { CheckListExtension, ListExtension } from "@lexical/list";
-import { CHECK_LIST, ELEMENT_TRANSFORMERS, MULTILINE_ELEMENT_TRANSFORMERS, TEXT_FORMAT_TRANSFORMERS, TEXT_MATCH_TRANSFORMERS } from "@lexical/markdown";
-import { OverflowNode } from "@lexical/overflow";
-import { CharacterLimitPlugin } from "@lexical/react/LexicalCharacterLimitPlugin";
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
-import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
-import { TabIndentationPlugin } from "@lexical/react/LexicalTabIndentationPlugin";
-import { TablePlugin } from "@lexical/react/LexicalTablePlugin";
-import { RichTextExtension } from "@lexical/rich-text";
-import { TableCellNode, TableNode, TableRowNode } from "@lexical/table";
-import { type EditorState, type SerializedEditorState, configExtension, defineExtension } from "lexical";
-import { useMemo, useState } from "react";
+import { useMemo } from "react"
 
-import { useBlockViewer } from "@/components/block-viewer-provider";
-import { ContentEditable } from "@/components/editor/editor-ui/content-editable";
-import { DateTimeExtension } from "@/components/editor/extensions/date-time-extension";
-import { EmojisExtension } from "@/components/editor/extensions/emojis-extension";
-import { ImagesExtension } from "@/components/editor/extensions/images-extension";
-import { MarkdownShortcutsExtension } from "@/components/editor/extensions/markdown-shortcuts-extension";
-import { MaxLengthExtension } from "@/components/editor/extensions/max-length-extension";
-import { AutocompleteNode } from "@/components/editor/nodes/autocomplete-node";
-import { TweetNode } from "@/components/editor/nodes/embeds/tweet-node";
-import { YouTubeNode } from "@/components/editor/nodes/embeds/youtube-node";
-import { EmojiNode } from "@/components/editor/nodes/emoji-node";
-import { LayoutContainerNode } from "@/components/editor/nodes/layout-container-node";
-import { LayoutItemNode } from "@/components/editor/nodes/layout-item-node";
-import { MentionNode } from "@/components/editor/nodes/mention-node";
-import { SpecialTextNode } from "@/components/editor/nodes/special-text-node";
-import { ActionsPlugin } from "@/components/editor/plugins/actions/actions-plugin";
-import { ClearEditorActionPlugin } from "@/components/editor/plugins/actions/clear-editor-plugin";
-import { CounterCharacterPlugin } from "@/components/editor/plugins/actions/counter-character-plugin";
-import { EditModeTogglePlugin } from "@/components/editor/plugins/actions/edit-mode-toggle-plugin";
-import { ImportExportPlugin } from "@/components/editor/plugins/actions/import-export-plugin";
-import { MarkdownTogglePlugin } from "@/components/editor/plugins/actions/markdown-toggle-plugin";
-import { ShareContentPlugin } from "@/components/editor/plugins/actions/share-content-plugin";
-import { SpeechToTextPlugin } from "@/components/editor/plugins/actions/speech-to-text-plugin";
-import { TreeViewPlugin } from "@/components/editor/plugins/actions/tree-view-plugin";
-import { AutoCompletePlugin } from "@/components/editor/plugins/auto-complete-plugin";
-import { CodeActionMenuPlugin } from "@/components/editor/plugins/code-action-menu-plugin";
-import { CodeHighlightPlugin } from "@/components/editor/plugins/code-highlight-plugin";
-import { ComponentPickerMenuPlugin } from "@/components/editor/plugins/component-picker-menu-plugin";
-import { ContextMenuPlugin } from "@/components/editor/plugins/context-menu-plugin";
-import { DraggableBlockPlugin } from "@/components/editor/plugins/draggable-block-plugin";
-import { AutoEmbedPlugin } from "@/components/editor/plugins/embeds/auto-embed-plugin";
-import { TwitterPlugin } from "@/components/editor/plugins/embeds/twitter-plugin";
-import { YouTubePlugin } from "@/components/editor/plugins/embeds/youtube-plugin";
-import { EmojiPickerPlugin } from "@/components/editor/plugins/emoji-picker-plugin";
-import { FloatingLinkEditorPlugin } from "@/components/editor/plugins/floating-link-editor-plugin";
-import { FloatingTextFormatToolbarPlugin } from "@/components/editor/plugins/floating-text-format-plugin";
-import { LayoutPlugin } from "@/components/editor/plugins/layout-plugin";
-import { MentionsPlugin } from "@/components/editor/plugins/mentions-plugin";
-import { DateTimePickerPlugin } from "@/components/editor/plugins/picker/date-time-picker-plugin";
-import { EmbedsPickerPlugin } from "@/components/editor/plugins/picker/embeds-picker-plugin";
-import { SpecialTextPlugin } from "@/components/editor/plugins/special-text-plugin";
-import { TabFocusPlugin } from "@/components/editor/plugins/tab-focus-plugin";
-import { BlockFormatDropDown } from "@/components/editor/plugins/toolbar/block-format-toolbar-plugin";
-import { FormatBulletedList } from "@/components/editor/plugins/toolbar/block-format/format-bulleted-list";
-import { FormatCheckList } from "@/components/editor/plugins/toolbar/block-format/format-check-list";
-import { FormatCodeBlock } from "@/components/editor/plugins/toolbar/block-format/format-code-block";
-import { FormatHeading } from "@/components/editor/plugins/toolbar/block-format/format-heading";
-import { FormatNumberedList } from "@/components/editor/plugins/toolbar/block-format/format-numbered-list";
-import { FormatParagraph } from "@/components/editor/plugins/toolbar/block-format/format-paragraph";
-import { FormatQuote } from "@/components/editor/plugins/toolbar/block-format/format-quote";
-import { BlockInsertPlugin } from "@/components/editor/plugins/toolbar/block-insert-plugin";
-import { InsertColumnsLayout } from "@/components/editor/plugins/toolbar/block-insert/insert-columns-layout";
-import { InsertEmbeds } from "@/components/editor/plugins/toolbar/block-insert/insert-embeds";
-import { InsertHorizontalRule } from "@/components/editor/plugins/toolbar/block-insert/insert-horizontal-rule";
-import { InsertImage } from "@/components/editor/plugins/toolbar/block-insert/insert-image";
-import { InsertTable } from "@/components/editor/plugins/toolbar/block-insert/insert-table";
-import { ClearFormattingToolbarPlugin } from "@/components/editor/plugins/toolbar/clear-formatting-toolbar-plugin";
-import { CodeLanguageToolbarPlugin } from "@/components/editor/plugins/toolbar/code-language-toolbar-plugin";
-import { ElementFormatToolbarPlugin } from "@/components/editor/plugins/toolbar/element-format-toolbar-plugin";
-import { FontBackgroundToolbarPlugin } from "@/components/editor/plugins/toolbar/font-background-toolbar-plugin";
-import { FontColorToolbarPlugin } from "@/components/editor/plugins/toolbar/font-color-toolbar-plugin";
-import { FontFamilyToolbarPlugin } from "@/components/editor/plugins/toolbar/font-family-toolbar-plugin";
-import { FontFormatToolbarPlugin } from "@/components/editor/plugins/toolbar/font-format-toolbar-plugin";
-import { FontSizeToolbarPlugin } from "@/components/editor/plugins/toolbar/font-size-toolbar-plugin";
-import { HistoryToolbarPlugin } from "@/components/editor/plugins/toolbar/history-toolbar-plugin";
-import { LinkToolbarPlugin } from "@/components/editor/plugins/toolbar/link-toolbar-plugin";
-import { SubSuperToolbarPlugin } from "@/components/editor/plugins/toolbar/subsuper-toolbar-plugin";
-import { ToolbarPlugin } from "@/components/editor/plugins/toolbar/toolbar-plugin";
-import { editorTheme } from "@/components/editor/themes/editor-theme";
-import { EMOJI } from "@/components/editor/transformers/markdown-emoji-transformer";
-import { HR } from "@/components/editor/transformers/markdown-hr-transformer";
-import { IMAGE } from "@/components/editor/transformers/markdown-image-transformer";
-import { TABLE } from "@/components/editor/transformers/markdown-table-transformer";
-import { TWEET } from "@/components/editor/transformers/markdown-tweet-transformer";
-import { validateUrl } from "@/components/editor/utils/url";
-import { Separator } from "@/components/ui/separator";
-import { TooltipProvider } from "@/components/ui/tooltip";
+import {
+  $createParagraphNode,
+  $createTextNode,
+  $getRoot,
+  defineExtension,
+} from "lexical"
 
-const placeholder = "Press / for commands...";
-const maxLength = 30;
+import { ClipboardDOMImportExtension } from "@lexical/clipboard"
+import { $createCodeNode } from "@lexical/code-core"
+import {
+  ClearEditorExtension,
+  HorizontalRuleExtension,
+  TabIndentationExtension,
+} from "@lexical/extension"
+import { HashtagExtension } from "@lexical/hashtag"
+import { HistoryExtension } from "@lexical/history"
+import {
+  $createListItemNode,
+  $createListNode,
+  CheckListExtension,
+  ListExtension,
+} from "@lexical/list"
+import {
+  CHECK_LIST,
+  ELEMENT_TRANSFORMERS,
+  MULTILINE_ELEMENT_TRANSFORMERS,
+  registerMarkdownShortcuts,
+  TEXT_FORMAT_TRANSFORMERS,
+  TEXT_MATCH_TRANSFORMERS,
+  type Transformer,
+} from "@lexical/markdown"
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
+import {
+  $createHeadingNode,
+  $createQuoteNode,
+  RichTextExtension,
+} from "@lexical/rich-text"
+import { TableExtension } from "@lexical/table"
 
-export function Editor({
-  editorState,
-  editorSerializedState,
-  onChange,
-  onSerializedChange,
-}: {
-  editorState?: EditorState;
-  editorSerializedState?: SerializedEditorState;
-  onChange?: (editorState: EditorState) => void;
-  onSerializedChange?: (editorSerializedState: SerializedEditorState) => void;
-}) {
-  const [floatingAnchorElem, setFloatingAnchorElem] =
-    useState<HTMLDivElement | null>(null);
-  const [isLinkEditMode, setIsLinkEditMode] = useState<boolean>(false);
+import { AutoLinkExtension } from "@/components/editor/extensions/auto-link"
+import { AutocompleteExtension } from "@/components/editor/extensions/autocomplete"
+import { CardExtension } from "@/components/editor/extensions/card"
+import { CodeExtension } from "@/components/editor/extensions/code"
+import { CollapsibleExtension } from "@/components/editor/extensions/collapsible"
+import { DateTimeExtension } from "@/components/editor/extensions/datetime"
+import { DragDropPasteExtension } from "@/components/editor/extensions/drag-drop-paste"
+import { EmojiExtension } from "@/components/editor/extensions/emoji"
+import { EquationExtension } from "@/components/editor/extensions/equation"
+import { FigmaExtension } from "@/components/editor/extensions/figma"
+import { FormatStateExtension } from "@/components/editor/extensions/format-state"
+import { ImageExtension } from "@/components/editor/extensions/image"
+import { LayoutExtension } from "@/components/editor/extensions/layout"
+import { LinkExtension } from "@/components/editor/extensions/link"
+import { MentionExtension } from "@/components/editor/extensions/mention"
+import { PollExtension } from "@/components/editor/extensions/poll"
+import { PullQuoteExtension } from "@/components/editor/extensions/pullquote"
+import { RubyExtension } from "@/components/editor/extensions/ruby"
+import { ShortcutsExtension } from "@/components/editor/extensions/shortcuts"
+import { SpecialTextExtension } from "@/components/editor/extensions/special-text"
+import { SpeechToTextExtension } from "@/components/editor/extensions/speech-to-text"
+import { TabFocusExtension } from "@/components/editor/extensions/tab-focus"
+import { TwitterExtension } from "@/components/editor/extensions/twitter"
+import { YouTubeExtension } from "@/components/editor/extensions/youtube"
+import { ActivityBar } from "@/components/editor/plugins/activitybar/activitybar-plugin"
+import { CountPlugin } from "@/components/editor/plugins/activitybar/count-plugin"
+import { ReadOnlyTogglePlugin } from "@/components/editor/plugins/activitybar/read-only-toggle-plugin"
+import { ShortcutPlugin } from "@/components/editor/plugins/activitybar/shortcut-plugin"
+import { SpeechToTextPlugin } from "@/components/editor/plugins/activitybar/speech-to-text-plugin"
+import { AutoEmbedPlugin } from "@/components/editor/plugins/auto-embed-plugin"
+import { BlockInsert } from "@/components/editor/plugins/block-insert/block-insert-plugin"
+import { InsertCodeBlockPlugin } from "@/components/editor/plugins/block-insert/insert-code-block-plugin"
+import { InsertColumnsPlugin } from "@/components/editor/plugins/block-insert/insert-columns-plugin"
+import { InsertEmojiPlugin } from "@/components/editor/plugins/block-insert/insert-emoji-plugin"
+import { InsertEquationPlugin } from "@/components/editor/plugins/block-insert/insert-equation-plugin"
+import { InsertHorizontalRulePlugin } from "@/components/editor/plugins/block-insert/insert-horizontal-rule-plugin"
+import { InsertImagePlugin } from "@/components/editor/plugins/block-insert/insert-image-plugin"
+import { InsertTablePlugin } from "@/components/editor/plugins/block-insert/insert-table-plugin"
+import { BulletedListPickerPlugin } from "@/components/editor/plugins/component-picker/bulleted-list-picker-plugin"
+import { CardPickerPlugin } from "@/components/editor/plugins/component-picker/card-picker-plugin"
+import { CheckListPickerPlugin } from "@/components/editor/plugins/component-picker/check-list-picker-plugin"
+import { CodePickerPlugin } from "@/components/editor/plugins/component-picker/code-picker-plugin"
+import { CollapsiblePickerPlugin } from "@/components/editor/plugins/component-picker/collapsible-picker-plugin"
+import { ColumnsPickerPlugin } from "@/components/editor/plugins/component-picker/columns-picker-plugin"
+import { ComponentPicker } from "@/components/editor/plugins/component-picker/component-picker-plugin"
+import { DateTimePickerPlugin } from "@/components/editor/plugins/component-picker/datetime-picker-plugin"
+import { DividerPickerPlugin } from "@/components/editor/plugins/component-picker/divider-picker-plugin"
+import { HeadingPickerPlugin } from "@/components/editor/plugins/component-picker/heading-picker-plugin"
+import { ImagePickerPlugin } from "@/components/editor/plugins/component-picker/image-picker-plugin"
+import { NumberedListPickerPlugin } from "@/components/editor/plugins/component-picker/numbered-list-picker-plugin"
+import { ParagraphPickerPlugin } from "@/components/editor/plugins/component-picker/paragraph-picker-plugin"
+import { PollPickerPlugin } from "@/components/editor/plugins/component-picker/poll-picker-plugin"
+import { PullQuotePickerPlugin } from "@/components/editor/plugins/component-picker/pullquote-picker-plugin"
+import { QuotePickerPlugin } from "@/components/editor/plugins/component-picker/quote-picker-plugin"
+import { ReviewPickerPlugin } from "@/components/editor/plugins/component-picker/review-picker-plugin"
+import { TablePickerPlugin } from "@/components/editor/plugins/component-picker/table-picker-plugin"
+import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { ContextMenuPlugin } from "@/components/editor/plugins/context-menu-plugin"
+import { DraggableBlockPlugin } from "@/components/editor/plugins/draggable-block-plugin"
+import { EmojiPickerPlugin } from "@/components/editor/plugins/emoji-picker-plugin"
+import { ReactFindReplaceExtension } from "@/components/editor/plugins/floating/find-replace-panel"
+import { FloatingToolbarPlugin } from "@/components/editor/plugins/floating/floating-toolbar-plugin"
+import { ReactReviewExtension } from "@/components/editor/plugins/floating/review-plugin"
+import { RubyEditorPlugin } from "@/components/editor/plugins/floating/ruby-editor-plugin"
+import { TableHoverActionsPlugin } from "@/components/editor/plugins/floating/table-hover-actions-plugin"
+import {
+  LanguageProvider,
+  LanguageSelectorPlugin,
+  useLanguage,
+} from "@/components/editor/plugins/i18n-plugin"
+import { MentionPlugin } from "@/components/editor/plugins/mention-plugin"
+import { BlockFormatToolbarPlugin } from "@/components/editor/plugins/toolbar/block-format-toolbar-plugin"
+import { ClearToolbarPlugin } from "@/components/editor/plugins/toolbar/clear-toolbar-plugin"
+import { ColorToolbarPlugin } from "@/components/editor/plugins/toolbar/color-toolbar-plugin"
+import { ElementFormatToolbarPlugin } from "@/components/editor/plugins/toolbar/element-format-toolbar-plugin"
+import { FontFamilyToolbarPlugin } from "@/components/editor/plugins/toolbar/font-family-toolbar-plugin"
+import { FontSizeToolbarPlugin } from "@/components/editor/plugins/toolbar/font-size-toolbar-plugin"
+import { HistoryToolbarPlugin } from "@/components/editor/plugins/toolbar/history-toolbar-plugin"
+import { ImportExportToolbarPlugin } from "@/components/editor/plugins/toolbar/import-export-toolbar-plugin"
+import { IndentToolbarPlugin } from "@/components/editor/plugins/toolbar/indent-toolbar-plugin"
+import { TextFormatToolbarPlugin } from "@/components/editor/plugins/toolbar/text-format-toolbar-plugin"
+import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin"
+import { editorTheme } from "@/components/editor/theme"
+import { EMOJI } from "@/components/editor/transformers/emoji-transformer"
+import { HR } from "@/components/editor/transformers/horizontal-rule-transformer"
+import { IMAGE } from "@/components/editor/transformers/image-transformer"
+import { TABLE } from "@/components/editor/transformers/table-transformer"
+import { DirectionProvider } from "@/components/ui/direction"
 
-  const onRef = (_floatingAnchorElem: HTMLDivElement) => {
-    if (_floatingAnchorElem !== null) {
-      setFloatingAnchorElem(_floatingAnchorElem);
-    }
-  };
+const EDITOR_TRANSFORMERS: Transformer[] = [
+  TABLE,
+  HR,
+  IMAGE,
+  EMOJI,
+  CHECK_LIST,
+  ...ELEMENT_TRANSFORMERS,
+  ...MULTILINE_ELEMENT_TRANSFORMERS,
+  ...TEXT_FORMAT_TRANSFORMERS,
+  ...TEXT_MATCH_TRANSFORMERS,
+]
 
-  const AppExtension = useMemo(
+export function EditorX() {
+  const app = useMemo(
     () =>
       defineExtension({
+        name: "@shadcn-editor/editor",
+        namespace: "shadcn-editor",
         dependencies: [
           RichTextExtension,
-          AutoFocusExtension,
-          SelectionAlwaysOnDisplayExtension,
           HistoryExtension,
-          configExtension(LinkExtension, {
-            validateUrl,
-            attributes: { rel: "noopener noreferrer", target: "_blank" },
-          }),
-          AutoLinkExtension,
-          ClickableLinkExtension,
-          configExtension(MaxLengthExtension, { disabled: false, maxLength }),
-          configExtension(MarkdownShortcutsExtension, {
-            transformers: [
-              TABLE, HR, IMAGE, EMOJI, TWEET, CHECK_LIST,
-              ...ELEMENT_TRANSFORMERS,
-              ...MULTILINE_ELEMENT_TRANSFORMERS,
-              ...TEXT_FORMAT_TRANSFORMERS,
-              ...TEXT_MATCH_TRANSFORMERS,
-            ],
-          }),
-          ClearEditorExtension,
-          EmojisExtension,
-          DecoratorTextExtension,
-          configExtension(ListExtension, { shouldPreserveNumbering: false }),
+          TabIndentationExtension,
+          ListExtension,
           CheckListExtension,
+          HashtagExtension,
+          LinkExtension,
+          AutoLinkExtension,
+          CodeExtension,
+          LayoutExtension,
+          EmojiExtension,
+          EquationExtension,
+          TableExtension,
           HorizontalRuleExtension,
-          ImagesExtension,
+          ImageExtension,
+          MentionExtension,
+          SpecialTextExtension,
+          AutocompleteExtension,
+          DragDropPasteExtension,
+          TabFocusExtension,
+          SpeechToTextExtension,
+          ShortcutsExtension,
+          CardExtension,
+          CollapsibleExtension,
           DateTimeExtension,
+          PullQuoteExtension,
+          ReactReviewExtension,
+          PollExtension,
+          RubyExtension,
+          YouTubeExtension,
+          TwitterExtension,
+          FigmaExtension,
+          FormatStateExtension,
+          ReactFindReplaceExtension,
+          ClearEditorExtension,
+          ClipboardDOMImportExtension,
         ],
-        name: "@shadcn-editor",
-        namespace: "Playground",
-        nodes: [
-          OverflowNode,
-          EmojiNode,
-          MentionNode,
-          AutocompleteNode,
-          SpecialTextNode,
-          CodeNode,
-          CodeHighlightNode,
-          TableNode,
-          TableCellNode,
-          TableRowNode,
-          LayoutContainerNode,
-          LayoutItemNode,
-          TweetNode,
-          YouTubeNode,
-        ],
-        $initialEditorState(editor) {
-          if (editorSerializedState) {
-            editor.parseEditorState(editorSerializedState);
-          } else if (editorState) {
-            editor.setEditorState(editorState);
-          }
+        $initialEditorState: () => {
+          $getRoot().append(
+            $createHeadingNode("h1").append($createTextNode("Editor X")),
+            $createParagraphNode().append(
+              $createTextNode("A "),
+              $createTextNode("complete").toggleFormat("bold"),
+              $createTextNode(" writing surface: "),
+              $createTextNode("rich text").toggleFormat("italic"),
+              $createTextNode(", "),
+              $createTextNode("markdown shortcuts").toggleFormat("underline"),
+              $createTextNode(", and "),
+              $createTextNode("blocks").toggleFormat("code"),
+              $createTextNode(", all in one place.")
+            ),
+            $createHeadingNode("h2").append(
+              $createTextNode("Everything included")
+            ),
+            $createListNode("bullet").append(
+              $createListItemNode().append(
+                $createTextNode(
+                  "Tables, images, equations, and embeds from the toolbar"
+                )
+              ),
+              $createListItemNode().append(
+                $createTextNode('A slash menu: type "/" to insert any block')
+              ),
+              $createListItemNode().append(
+                $createTextNode(
+                  "Drag handles, a floating toolbar, mentions, and emoji"
+                )
+              )
+            ),
+            $createQuoteNode().append(
+              $createTextNode(
+                "Select any text to format it in place, or grab a drag handle to rearrange the page."
+              )
+            ),
+            $createCodeNode("markdown").append(
+              $createTextNode("## Markdown works too, as you type")
+            ),
+            $createParagraphNode().append(
+              $createTextNode(
+                'Try it now: press "/" on the empty line below, or explore the toolbar above.'
+              )
+            ),
+            $createParagraphNode()
+          )
         },
+        register: (editor) =>
+          registerMarkdownShortcuts(editor, EDITOR_TRANSFORMERS),
         theme: editorTheme,
       }),
-    [editorState, editorSerializedState],
-  );
+    []
+  )
 
   return (
-    <div className="bg-background overflow-hidden rounded-lg border shadow w-full">
-      <LexicalExtensionComposer extension={AppExtension} contentEditable={null}>
-        <TooltipProvider>
-          <div className="relative">
-            <ToolbarPlugin>
-              {({ blockType }) => (
-                <div className="vertical-align-middle sticky top-0 z-10 flex items-center gap-2 overflow-auto border-b p-1">
-                  <HistoryToolbarPlugin />
-                  <Separator orientation="vertical" className="h-7!" />
-                  <BlockFormatDropDown>
-                    <FormatParagraph />
-                    <FormatHeading levels={["h1", "h2", "h3"]} />
-                    <FormatNumberedList />
-                    <FormatBulletedList />
-                    <FormatCheckList />
-                    <FormatCodeBlock />
-                    <FormatQuote />
-                  </BlockFormatDropDown>
-                  {blockType === "code" ? (
-                    <CodeLanguageToolbarPlugin />
-                  ) : (
-                    <>
-                    <FontFamilyToolbarPlugin />
-                    <Separator orientation="vertical" className="h-7!" />
-                    <FontSizeToolbarPlugin />
-                    <FontFormatToolbarPlugin />
-                    <SubSuperToolbarPlugin />
-                    <LinkToolbarPlugin setIsLinkEditMode={setIsLinkEditMode} />
-                    <ClearFormattingToolbarPlugin />
-                    <FontColorToolbarPlugin />
-                    <FontBackgroundToolbarPlugin />
-                    <ElementFormatToolbarPlugin />
-                    <BlockInsertPlugin>
-                      <InsertHorizontalRule />
-                      <InsertImage />
-                      <InsertTable />
-                      <InsertColumnsLayout />
-                      <InsertEmbeds />
-                    </BlockInsertPlugin>
-                    </>
-                  )}
-                </div>
-              )}
-            </ToolbarPlugin>
-            <div className="relative">
-              <div className="">
-                <div className="" ref={onRef}>
-                  <ContentEditable
-                    placeholder={placeholder}
-                    className="h-[calc(100vh-141px)] pl-4"
-                  />
-                </div>
-              </div>
-              <ComponentPickerMenuPlugin baseOptions={[]} />
-              <EmojiPickerPlugin />
-              <AutoEmbedPlugin />
-              <MentionsPlugin />
-              <AutoCompletePlugin />
-              <ContextMenuPlugin />
-              <SpecialTextPlugin />
-              <TabFocusPlugin />
-              <TabIndentationPlugin />
-              <CodeHighlightPlugin />
-              <TablePlugin />
-              <LayoutPlugin />
-              <TwitterPlugin />
-              <YouTubePlugin />
-              <DraggableBlockPlugin anchorElem={floatingAnchorElem} baseOptions={[]} />
-              <FloatingTextFormatToolbarPlugin anchorElem={floatingAnchorElem} setIsLinkEditMode={setIsLinkEditMode} />
-              <FloatingLinkEditorPlugin anchorElem={floatingAnchorElem} isLinkEditMode={isLinkEditMode} setIsLinkEditMode={setIsLinkEditMode} />
-              <CodeActionMenuPlugin anchorElem={floatingAnchorElem} />
-            </div>
-            <ActionsPlugin>
-              <div className="clear-both flex items-center justify-between gap-2 overflow-auto border-t p-1">
-                <div className="flex flex-1 justify-start text-xs text-gray-500">
-                  <CharacterLimitPlugin maxLength={maxLength} charset="UTF-16" />
-                </div>
-                <div>
-                <CounterCharacterPlugin charset="UTF-16" />
-                </div>
-                <div className="flex flex-1 justify-end">
-                  <SpeechToTextPlugin />
-                  <ShareContentPlugin />
-                  <ImportExportPlugin />
-                  <MarkdownTogglePlugin
-                    shouldPreserveNewLinesInMarkdown={true}
-                    transformers={[
-                      TABLE, HR, IMAGE, EMOJI, TWEET, CHECK_LIST,
-                      ...ELEMENT_TRANSFORMERS,
-                      ...MULTILINE_ELEMENT_TRANSFORMERS,
-                      ...TEXT_FORMAT_TRANSFORMERS,
-                      ...TEXT_MATCH_TRANSFORMERS,
-                    ]}
-                  />
-                  <EditModeTogglePlugin />
-                  <ClearEditorActionPlugin />
-                  <TreeViewPlugin />
-                </div>
-              </div>
-            </ActionsPlugin>
+    <LanguageProvider>
+      <LexicalExtensionComposer extension={app} contentEditable={null}>
+        <EditorWrapper>
+          <Toolbar>
+            <HistoryToolbarPlugin />
+            <BlockFormatToolbarPlugin />
+            <FontFamilyToolbarPlugin />
+            <FontSizeToolbarPlugin />
+            <ColorToolbarPlugin />
+            <TextFormatToolbarPlugin formats="basic" />
+            <ElementFormatToolbarPlugin formats="basic" />
+            <IndentToolbarPlugin />
+            <BlockInsert>
+              <InsertCodeBlockPlugin />
+              <InsertColumnsPlugin />
+              <InsertEmojiPlugin />
+              <InsertEquationPlugin />
+              <InsertHorizontalRulePlugin />
+              <InsertImagePlugin />
+              <InsertTablePlugin />
+            </BlockInsert>
+            <ClearToolbarPlugin />
+            <ImportExportToolbarPlugin transformers={EDITOR_TRANSFORMERS} />
+          </Toolbar>
+          <div className="relative min-w-0 flex-1 overflow-y-auto">
+            <ContentEditable variant="draggable" />
+            <DraggableBlockPlugin />
+            <FloatingToolbarPlugin />
+            <RubyEditorPlugin />
+            <TableHoverActionsPlugin />
+            <EmojiPickerPlugin />
+            <MentionPlugin />
+            <AutoEmbedPlugin />
+            <ContextMenuPlugin />
+            <ComponentPicker>
+              <ParagraphPickerPlugin />
+              <HeadingPickerPlugin />
+              <TablePickerPlugin />
+              <NumberedListPickerPlugin />
+              <BulletedListPickerPlugin />
+              <CheckListPickerPlugin />
+              <QuotePickerPlugin />
+              <CodePickerPlugin />
+              <DividerPickerPlugin />
+              <ColumnsPickerPlugin />
+              <ImagePickerPlugin />
+              <CardPickerPlugin />
+              <CollapsiblePickerPlugin />
+              <DateTimePickerPlugin />
+              <PullQuotePickerPlugin />
+              <ReviewPickerPlugin />
+              <PollPickerPlugin />
+            </ComponentPicker>
           </div>
-
-          <OnChangePlugin
-            ignoreSelectionChange={true}
-            onChange={(editorState) => {
-              onChange?.(editorState);
-              onSerializedChange?.(editorState.toJSON());
-            }}
-          />
-        </TooltipProvider>
+          <ActivityBar>
+            <div className="flex items-center gap-3">
+              <CountPlugin />
+            </div>
+            <div className="ms-auto flex items-center gap-3">
+              <SpeechToTextPlugin />
+              <ReadOnlyTogglePlugin />
+              <ShortcutPlugin />
+              <LanguageSelectorPlugin />
+            </div>
+          </ActivityBar>
+        </EditorWrapper>
       </LexicalExtensionComposer>
-    </div>
-  );
+    </LanguageProvider>
+  )
+}
+
+function EditorWrapper({ children }: { children: React.ReactNode }) {
+  const { language, dir } = useLanguage()
+  return (
+    <DirectionProvider direction={dir}>
+      <div
+        dir={dir}
+        lang={language}
+        className="relative flex min-h-0 w-full flex-1 flex-col overflow-hidden rounded-lg border border-input dark:bg-input/30"
+      >
+        {children}
+      </div>
+    </DirectionProvider>
+  )
 }
 ```

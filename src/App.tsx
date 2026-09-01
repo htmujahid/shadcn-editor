@@ -1,24 +1,19 @@
-import { BlockViewerProvider } from "./components/block-viewer-provider";
-import { BlockViewerSidebar } from "./components/block-viewer-sidebar";
-import { Editor } from "./components/blocks/editor-x";
-import { SidebarInset, SidebarProvider } from "./components/ui/sidebar";
+import { Route, Switch } from "wouter"
+
+import { CollaborationPage } from "@/pages/collaboration"
+import { CollaborationEditorPage } from "@/pages/collaboration-editor"
+import { ExamplesPage } from "@/pages/examples"
+import { HomePage } from "@/pages/home"
+import { NotFoundPage } from "@/pages/not-found"
 
 export function App() {
   return (
-    <BlockViewerProvider>
-      <SidebarProvider
-        defaultOpen={true}
-        className="bg-background text-foreground"
-      >
-        <BlockViewerSidebar />
-        <SidebarInset>
-          <div className="flex h-svh flex-col py-2 pr-1 md:w-[calc(100vw-260px)]">
-            <Editor />
-          </div>
-        </SidebarInset>
-      </SidebarProvider>
-    </BlockViewerProvider>
-  );
+    <Switch>
+      <Route path="/" component={HomePage} />
+      <Route path="/examples" component={ExamplesPage} />
+      <Route path="/collaboration" component={CollaborationPage} />
+      <Route path="/collaboration/editor" component={CollaborationEditorPage} />
+      <Route component={NotFoundPage} />
+    </Switch>
+  )
 }
-
-export default App;

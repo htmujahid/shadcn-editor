@@ -1,90 +1,51 @@
-import { useCallback, useState } from "react";
+import { TOGGLE_LINK_COMMAND } from "@lexical/link"
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
+import { useLexicalEditable } from "@lexical/react/useLexicalEditable"
 
-import { $isLinkNode, TOGGLE_LINK_COMMAND } from "@lexical/link";
+import { Link as LinkIcon } from "lucide-react"
+
+import { useFormatStateValue } from "@/components/editor/extensions/format-state"
+import { OPEN_LINK_EDITOR_COMMAND } from "@/components/editor/extensions/link"
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import {
-  $isRangeSelection,
-  // COMMAND_PRIORITY_NORMAL,
-  // KEY_MODIFIER_COMMAND,
-  type BaseSelection,
-} from "lexical";
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
-import { LinkIcon } from "lucide-react";
-
-import { useToolbarContext } from "@/components/editor/context/toolbar-context";
-import { useUpdateToolbarHandler } from "@/components/editor/editor-hooks/use-update-toolbar";
-import { getSelectedNode } from "@/components/editor/utils/get-selected-node";
-import { sanitizeUrl } from "@/components/editor/utils/url";
-import { Toggle } from "@/components/ui/toggle";
-
-export function LinkToolbarPlugin({
-  setIsLinkEditMode,
-}: {
-  setIsLinkEditMode: (isEditMode: boolean) => void;
-}) {
-  const { activeEditor } = useToolbarContext();
-  const [isLink, setIsLink] = useState(false);
-
-  const $updateToolbar = (selection: BaseSelection) => {
-    if ($isRangeSelection(selection)) {
-      const node = getSelectedNode(selection);
-      const parent = node.getParent();
-      if ($isLinkNode(parent) || $isLinkNode(node)) {
-        setIsLink(true);
-      } else {
-        setIsLink(false);
-      }
-    }
-  };
-
-  useUpdateToolbarHandler($updateToolbar);
-
-  // useEffect(() => {
-  //   return activeEditor.registerCommand(
-  //     KEY_MODIFIER_COMMAND,
-  //     (payload) => {
-  //       const event: KeyboardEvent = payload
-  //       const { code, ctrlKey, metaKey } = event
-
-  //       if (code === "KeyK" && (ctrlKey || metaKey)) {
-  //         event.preventDefault()
-  //         let url: string | null
-  //         if (!isLink) {
-  //           setIsLinkEditMode(true)
-  //           url = sanitizeUrl("https://")
-  //         } else {
-  //           setIsLinkEditMode(false)
-  //           url = null
-  //         }
-  //         return activeEditor.dispatchCommand(TOGGLE_LINK_COMMAND, url)
-  //       }
-  //       return false
-  //     },
-  //     COMMAND_PRIORITY_NORMAL
-  //   )
-  // }, [activeEditor, isLink, setIsLinkEditMode])
-
-  const insertLink = useCallback(() => {
-    if (!isLink) {
-      setIsLinkEditMode(true);
-      activeEditor.dispatchCommand(
-        TOGGLE_LINK_COMMAND,
-        sanitizeUrl("https://"),
-      );
-    } else {
-      setIsLinkEditMode(false);
-      activeEditor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
-    }
-  }, [activeEditor, isLink, setIsLinkEditMode]);
+export function LinkToolbarPlugin() {
+  const [editor] = useLexicalComposerContext()
+  const isEditable = useLexicalEditable()
+  const { t } = useTranslation()
+  const isLink = useFormatStateValue("isLink")
 
   return (
-    <Toggle
-      variant="default"
+    <ToggleGroup
+      multiple
+      variant="outline"
       size="sm"
-      className="size-7 min-w-7"
-      aria-label="Toggle link"
-      onClick={insertLink}
+      spacing={0}
+      disabled={!isEditable}
+      value={isLink ? ["link"] : []}
+      onValueChange={() => {
+        if (isLink) {
+          editor.dispatchCommand(TOGGLE_LINK_COMMAND, null)
+        } else {
+          editor.dispatchCommand(OPEN_LINK_EDITOR_COMMAND, undefined)
+        }
+      }}
     >
-      <LinkIcon className="size-4" />
-    </Toggle>
-  );
+      <Tooltip>
+        <TooltipTrigger
+          render={
+            <ToggleGroupItem value="link" aria-label={t.insertLink}>
+              <LinkIcon />
+            </ToggleGroupItem>
+          }
+        />
+        <TooltipContent>{t.insertLink}</TooltipContent>
+      </Tooltip>
+    </ToggleGroup>
+  )
 }

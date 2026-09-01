@@ -1,47 +1,24 @@
-import { useEffect, useState } from "react";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
+import { cn } from "@/lib/utils"
 
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-import { COMMAND_PRIORITY_CRITICAL, SELECTION_CHANGE_COMMAND } from "lexical";
-
-import { ToolbarContext } from "@/components/editor/context/toolbar-context";
-import { useEditorModal } from "@/components/editor/editor-hooks/use-modal";
-
-export function ToolbarPlugin({
+export function Toolbar({
+  className,
   children,
-}: {
-  children: (props: { blockType: string }) => React.ReactNode;
-}) {
-  const [editor] = useLexicalComposerContext();
-
-  const [activeEditor, setActiveEditor] = useState(editor);
-  const [blockType, setBlockType] = useState<string>("paragraph");
-
-  const [modal, showModal] = useEditorModal();
-
-  const $updateToolbar = () => {};
-
-  useEffect(() => {
-    return activeEditor.registerCommand(
-      SELECTION_CHANGE_COMMAND,
-      (_payload, newEditor) => {
-        setActiveEditor(newEditor);
-        return false;
-      },
-      COMMAND_PRIORITY_CRITICAL,
-    );
-  }, [activeEditor]);
-
+  ...props
+}: React.ComponentProps<"div">) {
   return (
-    <ToolbarContext
-      activeEditor={activeEditor}
-      $updateToolbar={$updateToolbar}
-      blockType={blockType}
-      setBlockType={setBlockType}
-      showModal={showModal}
+    <ScrollArea
+      data-slot="toolbar"
+      className={cn("w-full border-b bg-muted/30", className)}
+      {...props}
     >
-      {modal}
-
-      {children({ blockType })}
-    </ToolbarContext>
-  );
+      <div
+        role="toolbar"
+        className="flex w-max min-w-full items-center gap-1 px-2 py-2"
+      >
+        {children}
+      </div>
+      <ScrollBar orientation="horizontal" />
+    </ScrollArea>
+  )
 }

@@ -1,96 +1,114 @@
-import { useCallback, useState } from "react";
+import { useEffect, useState } from "react"
 
+import { $getRoot, $getSelection } from "lexical"
+
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
+import { useLexicalEditable } from "@lexical/react/useLexicalEditable"
+import { $patchStyleText } from "@lexical/selection"
+
+import { Minus, Plus } from "lucide-react"
+
+import { useFormatStateValue } from "@/components/editor/extensions/format-state"
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
+import { Button } from "@/components/ui/button"
+import { ButtonGroup } from "@/components/ui/button-group"
+import { Input } from "@/components/ui/input"
 import {
-  $getSelectionStyleValueForProperty,
-  $patchStyleText,
-} from "@lexical/selection";
-import { $getSelection, $isRangeSelection, type BaseSelection } from "lexical";
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
-import { Minus, Plus } from "lucide-react";
-
-import { useToolbarContext } from "@/components/editor/context/toolbar-context";
-import { useUpdateToolbarHandler } from "@/components/editor/editor-hooks/use-update-toolbar";
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupInput,
-} from "@/components/ui/input-group";
-
-const DEFAULT_FONT_SIZE = 16;
-const MIN_FONT_SIZE = 1;
-const MAX_FONT_SIZE = 72;
+const MIN_FONT_SIZE = 8
+const MAX_FONT_SIZE = 72
+const DEFAULT_FONT_SIZE = 16
 
 export function FontSizeToolbarPlugin() {
-  const style = "font-size";
-  const [fontSize, setFontSize] = useState(DEFAULT_FONT_SIZE);
+  const [editor] = useLexicalComposerContext()
+  const { t } = useTranslation()
+  const fontSize = useFormatStateValue("fontSize")
+  const isEditable = useLexicalEditable()
+  const currentSize = Number.parseInt(fontSize, 10) || DEFAULT_FONT_SIZE
+  const [inputValue, setInputValue] = useState(String(currentSize))
 
-  const { activeEditor } = useToolbarContext();
+  useEffect(() => {
+    setInputValue(String(currentSize))
+  }, [currentSize])
 
-  const $updateToolbar = (selection: BaseSelection) => {
-    if ($isRangeSelection(selection)) {
-      const value = $getSelectionStyleValueForProperty(
-        selection,
-        "font-size",
-        `${DEFAULT_FONT_SIZE}px`,
-      );
-      setFontSize(parseInt(value) || DEFAULT_FONT_SIZE);
+  const updateFontSize = (size: number) => {
+    const next = Math.min(MAX_FONT_SIZE, Math.max(MIN_FONT_SIZE, size))
+    editor.update(() => {
+      const selection = $getSelection() ?? $getRoot().selectEnd()
+      $patchStyleText(selection, { "font-size": `${next}px` })
+    })
+  }
+
+  const commitInput = () => {
+    const parsed = Number.parseInt(inputValue, 10)
+    if (Number.isNaN(parsed)) {
+      setInputValue(String(currentSize))
+    } else {
+      updateFontSize(parsed)
     }
-  };
-
-  useUpdateToolbarHandler($updateToolbar);
-
-  const updateFontSize = useCallback(
-    (newSize: number) => {
-      const size = Math.min(Math.max(newSize, MIN_FONT_SIZE), MAX_FONT_SIZE);
-      activeEditor.update(() => {
-        const selection = $getSelection();
-        if (selection !== null) {
-          $patchStyleText(selection, {
-            [style]: `${size}px`,
-          });
-        }
-      });
-      setFontSize(size);
-    },
-    [activeEditor, style],
-  );
+  }
 
   return (
-    <InputGroup className="h-7 w-fit border-none shadow-none dark:bg-transparent">
-      <InputGroupAddon align="inline-start" className="pl-1">
-        <InputGroupButton
-          variant="ghost"
-          size="icon-xs"
-          className="size-7"
-          aria-label="Decrease font size"
-          onClick={() => updateFontSize(fontSize - 1)}
-          disabled={fontSize <= MIN_FONT_SIZE}
-        >
-          <Minus className="size-3" />
-        </InputGroupButton>
-      </InputGroupAddon>
-      <InputGroupInput
-        value={fontSize}
-        onChange={(e) =>
-          updateFontSize(parseInt(e.target.value) || DEFAULT_FONT_SIZE)
-        }
-        className="w-10 px-0 text-center"
-        min={MIN_FONT_SIZE}
-        max={MAX_FONT_SIZE}
+    <ButtonGroup>
+      <Tooltip>
+        <TooltipTrigger
+          render={
+            <Button
+              variant="outline"
+              size="icon-sm"
+              aria-label={t.decreaseFontSize}
+              disabled={!isEditable || currentSize <= MIN_FONT_SIZE}
+              onClick={() => {
+                updateFontSize(currentSize - 2)
+              }}
+            >
+              <Minus />
+            </Button>
+          }
+        />
+        <TooltipContent>{t.decreaseFontSize}</TooltipContent>
+      </Tooltip>
+      <Input
+        inputMode="numeric"
+        aria-label={t.fontSizeTitle}
+        disabled={!isEditable}
+        value={inputValue}
+        className="h-7 w-11 px-1 text-center md:text-[0.8rem]"
+        onChange={(event) => {
+          setInputValue(event.target.value)
+        }}
+        onBlur={commitInput}
+        onKeyDown={(event) => {
+          if (event.key === "Enter") {
+            event.preventDefault()
+            commitInput()
+          } else if (event.key === "Escape") {
+            setInputValue(String(currentSize))
+          }
+        }}
       />
-      <InputGroupAddon align="inline-end" className="pr-1">
-        <InputGroupButton
-          variant="ghost"
-          size="icon-xs"
-          className="size-7"
-          aria-label="Increase font size"
-          onClick={() => updateFontSize(fontSize + 1)}
-          disabled={fontSize >= MAX_FONT_SIZE}
-        >
-          <Plus className="size-3" />
-        </InputGroupButton>
-      </InputGroupAddon>
-    </InputGroup>
-  );
+      <Tooltip>
+        <TooltipTrigger
+          render={
+            <Button
+              variant="outline"
+              size="icon-sm"
+              aria-label={t.increaseFontSize}
+              disabled={!isEditable || currentSize >= MAX_FONT_SIZE}
+              onClick={() => {
+                updateFontSize(currentSize + 2)
+              }}
+            >
+              <Plus />
+            </Button>
+          }
+        />
+        <TooltipContent>{t.increaseFontSize}</TooltipContent>
+      </Tooltip>
+    </ButtonGroup>
+  )
 }

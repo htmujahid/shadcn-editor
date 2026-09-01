@@ -1,94 +1,65 @@
-import { useCallback, useState } from "react";
+import { $getRoot, $getSelection } from "lexical"
 
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
+import { useLexicalEditable } from "@lexical/react/useLexicalEditable"
+import { $patchStyleText } from "@lexical/selection"
+
+import { useFormatStateValue } from "@/components/editor/extensions/format-state"
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
 import {
-  $getSelectionStyleValueForProperty,
-  $patchStyleText,
-} from "@lexical/selection";
-import { $getSelection, $isRangeSelection, type BaseSelection } from "lexical";
+  Combobox,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
+} from "@/components/ui/combobox"
 
-import { ChevronDownIcon, TypeIcon } from "lucide-react";
-
-import { useToolbarContext } from "@/components/editor/context/toolbar-context";
-import { useUpdateToolbarHandler } from "@/components/editor/editor-hooks/use-update-toolbar";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-
-const FONT_FAMILY_OPTIONS = [
+const FONT_FAMILIES = [
   "Arial",
-  "Verdana",
-  "Times New Roman",
-  "Georgia",
   "Courier New",
+  "Georgia",
+  "Times New Roman",
   "Trebuchet MS",
-];
+  "Verdana",
+]
 
 export function FontFamilyToolbarPlugin() {
-  const style = "font-family";
-  const [fontFamily, setFontFamily] = useState("Arial");
-
-  const { activeEditor } = useToolbarContext();
-
-  const $updateToolbar = useCallback((selection: BaseSelection) => {
-    if ($isRangeSelection(selection)) {
-      setFontFamily(
-        $getSelectionStyleValueForProperty(selection, "font-family", "Arial"),
-      );
-    }
-  }, []);
-
-  useUpdateToolbarHandler($updateToolbar);
-
-  const handleClick = useCallback(
-    (option: string) => {
-      activeEditor.update(() => {
-        const selection = $getSelection();
-        if (selection !== null) {
-          $patchStyleText(selection, {
-            [style]: option,
-          });
-        }
-      });
-      // Selection doesn't move when only inline styles change, so
-      // SELECTION_CHANGE_COMMAND won't run — sync label here.
-      setFontFamily(option);
-    },
-    [activeEditor, style],
-  );
-
-  const buttonAriaLabel = "Formatting options for font family";
+  const [editor] = useLexicalComposerContext()
+  const { t, dir } = useTranslation()
+  const fontFamily = useFormatStateValue("fontFamily")
+  const isEditable = useLexicalEditable()
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger
-        render={
-          <Button
-            variant="ghost"
-            className="h-7 w-min gap-1 px-2"
-            size="sm"
-            aria-label={buttonAriaLabel}
-          >
-            <TypeIcon className="size-4" />
-            <span style={{ fontFamily }}>{fontFamily}</span>
-            <ChevronDownIcon className="size-3" />
-          </Button>
+    <Combobox
+      items={FONT_FAMILIES}
+      value={fontFamily || FONT_FAMILIES[0]}
+      disabled={!isEditable}
+      onValueChange={(value) => {
+        if (!value) {
+          return
         }
+        editor.update(() => {
+          const selection = $getSelection() ?? $getRoot().selectEnd()
+          $patchStyleText(selection, { "font-family": value })
+        })
+      }}
+    >
+      <ComboboxInput
+        aria-label={t.fontFamilyPlaceholder}
+        disabled={!isEditable}
+        className="h-7 w-44"
       />
-      <DropdownMenuContent className="w-48" align="start">
-        {FONT_FAMILY_OPTIONS.map((option) => (
-          <DropdownMenuItem
-            key={option}
-            style={{ fontFamily: option }}
-            onClick={() => handleClick(option)}
-          >
-            {option}
-          </DropdownMenuItem>
-        ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
+      <ComboboxContent dir={dir}>
+        <ComboboxEmpty>{t.noMatches}</ComboboxEmpty>
+        <ComboboxList>
+          {(family: string) => (
+            <ComboboxItem key={family} value={family}>
+              <span style={{ fontFamily: family }}>{family}</span>
+            </ComboboxItem>
+          )}
+        </ComboboxList>
+      </ComboboxContent>
+    </Combobox>
+  )
 }

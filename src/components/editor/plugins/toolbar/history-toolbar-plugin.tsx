@@ -1,86 +1,68 @@
-import { useEffect, useState } from "react";
+import { REDO_COMMAND, UNDO_COMMAND } from "lexical"
 
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-import { IS_APPLE, mergeRegister } from "@lexical/utils";
+import { HistoryExtension } from "@lexical/history"
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
+import { useExtensionDependency } from "@lexical/react/useExtensionComponent"
+import { useSignalValue } from "@lexical/react/useExtensionSignalValue"
+import { useLexicalEditable } from "@lexical/react/useLexicalEditable"
+
+import { Redo2, Undo2 } from "lucide-react"
+
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
+import { Button } from "@/components/ui/button"
+import { ButtonGroup } from "@/components/ui/button-group"
 import {
-  CAN_REDO_COMMAND,
-  CAN_UNDO_COMMAND,
-  COMMAND_PRIORITY_CRITICAL,
-  REDO_COMMAND,
-  UNDO_COMMAND,
-} from "lexical";
-
-import { RedoIcon, UndoIcon } from "lucide-react";
-
-import { useToolbarContext } from "@/components/editor/context/toolbar-context";
-import { Button } from "@/components/ui/button";
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 export function HistoryToolbarPlugin() {
-  const [editor] = useLexicalComposerContext();
-  const { activeEditor, $updateToolbar } = useToolbarContext();
-  const [isEditable, setIsEditable] = useState(editor.isEditable());
-  const [canUndo, setCanUndo] = useState(false);
-  const [canRedo, setCanRedo] = useState(false);
-
-  useEffect(() => {
-    return mergeRegister(
-      editor.registerEditableListener((editable) => {
-        setIsEditable(editable);
-      }),
-      activeEditor.registerUpdateListener(({ editorState }) => {
-        editorState.read(() => {
-          $updateToolbar();
-        });
-      }),
-      activeEditor.registerCommand<boolean>(
-        CAN_UNDO_COMMAND,
-        (payload) => {
-          setCanUndo(payload);
-          return false;
-        },
-        COMMAND_PRIORITY_CRITICAL,
-      ),
-      activeEditor.registerCommand<boolean>(
-        CAN_REDO_COMMAND,
-        (payload) => {
-          setCanRedo(payload);
-          return false;
-        },
-        COMMAND_PRIORITY_CRITICAL,
-      ),
-    );
-  }, [$updateToolbar, activeEditor, editor]);
+  const [editor] = useLexicalComposerContext()
+  const { t } = useTranslation()
+  const { canUndo, canRedo } = useExtensionDependency(HistoryExtension).output
+  const canUndoValue = useSignalValue(canUndo)
+  const canRedoValue = useSignalValue(canRedo)
+  const isEditable = useLexicalEditable()
 
   return (
-    <div className="flex items-center gap-0.5">
-      <Button
-        disabled={!canUndo || !isEditable}
-        onClick={() => {
-          activeEditor.dispatchCommand(UNDO_COMMAND, undefined);
-        }}
-        title={IS_APPLE ? "Undo (⌘Z)" : "Undo (Ctrl+Z)"}
-        type="button"
-        aria-label="Undo"
-        size="icon-sm"
-        variant="ghost"
-        className="size-7"
-      >
-        <UndoIcon className="size-4" />
-      </Button>
-      <Button
-        disabled={!canRedo || !isEditable}
-        onClick={() => {
-          activeEditor.dispatchCommand(REDO_COMMAND, undefined);
-        }}
-        title={IS_APPLE ? "Redo (⇧⌘Z)" : "Redo (Ctrl+Y)"}
-        type="button"
-        aria-label="Redo"
-        variant="ghost"
-        size="icon-sm"
-        className="size-7"
-      >
-        <RedoIcon className="size-4" />
-      </Button>
-    </div>
-  );
+    <ButtonGroup>
+      <Tooltip>
+        <TooltipTrigger
+          render={
+            <Button
+              variant="outline"
+              size="icon-sm"
+              aria-label={t.undo}
+              disabled={!isEditable || !canUndoValue}
+              onClick={() => {
+                editor.dispatchCommand(UNDO_COMMAND, undefined)
+              }}
+            >
+              <Undo2 className="rtl:-scale-x-100" />
+            </Button>
+          }
+        />
+        <TooltipContent>{t.undo}</TooltipContent>
+      </Tooltip>
+      <Tooltip>
+        <TooltipTrigger
+          render={
+            <Button
+              variant="outline"
+              size="icon-sm"
+              aria-label={t.redo}
+              disabled={!isEditable || !canRedoValue}
+              onClick={() => {
+                editor.dispatchCommand(REDO_COMMAND, undefined)
+              }}
+            >
+              <Redo2 className="rtl:-scale-x-100" />
+            </Button>
+          }
+        />
+        <TooltipContent>{t.redo}</TooltipContent>
+      </Tooltip>
+    </ButtonGroup>
+  )
 }

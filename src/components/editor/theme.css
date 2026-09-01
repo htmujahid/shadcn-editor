@@ -1,0 +1,343 @@
+/* Structural styles for the Lexical editor theme that Tailwind utilities
+   can't express (pseudo-elements, CSS variables, animations).
+   Everything else lives in theme.ts. */
+
+.editor-indent {
+  --lexical-indent-base-value: 32px;
+}
+
+::highlight(editor-find-match) {
+  background-color: rgb(250 204 21 / 0.4);
+  color: inherit;
+}
+
+::highlight(editor-find-match-current) {
+  background-color: rgb(249 115 22 / 0.6);
+  color: inherit;
+}
+
+@media (forced-colors: active) {
+  ::highlight(editor-find-match) {
+    background-color: Highlight;
+    color: HighlightText;
+    forced-color-adjust: none;
+  }
+
+  ::highlight(editor-find-match-current) {
+    background-color: Mark;
+    color: MarkText;
+    forced-color-adjust: none;
+  }
+}
+
+.editor-find-match-overlay {
+  position: absolute;
+  pointer-events: none;
+  background-color: rgb(250 204 21 / 0.4);
+}
+
+.editor-find-match-overlay-current {
+  background-color: rgb(249 115 22 / 0.6);
+}
+
+.editor-mark {
+  background-color: rgb(251 191 36 / 0.2);
+  border-bottom: 2px solid rgb(251 191 36 / 0.45);
+  padding-bottom: 1px;
+  cursor: pointer;
+}
+
+.editor-mark.selected {
+  background-color: rgb(251 191 36 / 0.45);
+  border-bottom-color: rgb(245 158 11);
+}
+
+.editor-mark-overlap {
+  background-color: rgb(251 191 36 / 0.35);
+}
+
+.editor-mark-overlap.selected {
+  background-color: rgb(251 191 36 / 0.6);
+}
+
+.editor-comment-highlight {
+  position: absolute;
+  pointer-events: none;
+  z-index: 5;
+  background-color: rgb(251 191 36 / 0.35);
+}
+
+.editor-code {
+  direction: ltr;
+  unicode-bidi: isolate;
+  background-color: var(--card) !important;
+}
+
+.editor-code::before {
+  content: attr(data-gutter);
+  position: sticky;
+  inset-inline-start: 0;
+  top: 0;
+  float: left;
+  z-index: 1;
+  min-width: 1.75rem;
+  margin-inline-end: 1rem;
+  padding-inline: 0.5rem;
+  color: var(--muted-foreground);
+  text-align: right;
+  white-space: pre-wrap;
+  user-select: none;
+  background-color: var(--card);
+}
+
+.editor-card [data-lexical-slot="title"] {
+  outline: none;
+  font-weight: 500;
+}
+
+.editor-card > *:not([data-lexical-slot]) {
+  color: var(--muted-foreground);
+}
+
+.editor-card [data-lexical-slot="title"] > p:has(br:only-child),
+.editor-card > p:only-of-type:has(br:only-child) {
+  position: relative;
+}
+
+.editor-card [data-lexical-slot="title"] > p:has(br:only-child)::before {
+  content: "Title";
+}
+
+.editor-card > p:only-of-type:has(br:only-child)::before {
+  content: "Body";
+}
+
+:lang(ar)
+  .editor-card
+  [data-lexical-slot="title"]
+  > p:has(br:only-child)::before {
+  content: "العنوان";
+}
+
+:lang(ar) .editor-card > p:only-of-type:has(br:only-child)::before {
+  content: "المحتوى";
+}
+
+:lang(he)
+  .editor-card
+  [data-lexical-slot="title"]
+  > p:has(br:only-child)::before {
+  content: "כותרת";
+}
+
+:lang(he) .editor-card > p:only-of-type:has(br:only-child)::before {
+  content: "תוכן";
+}
+
+.editor-card [data-lexical-slot="title"] > p:has(br:only-child)::before,
+.editor-card > p:only-of-type:has(br:only-child)::before {
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0;
+  color: var(--muted-foreground);
+  opacity: 0.7;
+  pointer-events: none;
+  user-select: none;
+}
+
+.editor-ruby::after {
+  content: attr(data-ruby-annotation);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -0.75em;
+  font-size: 0.5em;
+  line-height: 1;
+  color: var(--muted-foreground);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.editor-ruby-composing::after {
+  display: none;
+}
+
+.editor-review-children > p:only-of-type:has(br:only-child),
+.editor-review-author [data-lexical-slot="author"] > p:has(br:only-child) {
+  position: relative;
+}
+
+.editor-review-children > p:only-of-type:has(br:only-child)::before {
+  content: "Write a review…";
+}
+
+.editor-review-author
+  [data-lexical-slot="author"]
+  > p:has(br:only-child)::before {
+  content: "Author";
+}
+
+:lang(ar) .editor-review-children > p:only-of-type:has(br:only-child)::before {
+  content: "اكتب مراجعة…";
+}
+
+:lang(ar)
+  .editor-review-author
+  [data-lexical-slot="author"]
+  > p:has(br:only-child)::before {
+  content: "الكاتب";
+}
+
+:lang(he) .editor-review-children > p:only-of-type:has(br:only-child)::before {
+  content: "כתבו ביקורת…";
+}
+
+:lang(he)
+  .editor-review-author
+  [data-lexical-slot="author"]
+  > p:has(br:only-child)::before {
+  content: "מחבר";
+}
+
+.editor-review-children > p:only-of-type:has(br:only-child)::before,
+.editor-review-author
+  [data-lexical-slot="author"]
+  > p:has(br:only-child)::before {
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0;
+  color: var(--muted-foreground);
+  opacity: 0.7;
+  pointer-events: none;
+  user-select: none;
+}
+
+.editor-collapsible > summary::marker,
+.editor-collapsible > summary::-webkit-details-marker {
+  display: none;
+}
+
+.editor-collapsible > summary::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0.5rem;
+  top: 50%;
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--muted-foreground);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 18 6-6-6-6'/%3E%3C/svg%3E");
+  mask-size: 100% 100%;
+  transform: translateY(-50%);
+  transition: transform 0.2s ease;
+}
+
+[dir="rtl"] .editor-collapsible > summary::before {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.editor-collapsible[open] > summary::before,
+[dir="rtl"] .editor-collapsible[open] > summary::before {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.editor-collapsible-content {
+  interpolate-size: allow-keywords;
+  overflow: hidden;
+  transition:
+    height 0.2s ease-out,
+    padding 0.2s ease-out,
+    opacity 0.2s ease-out,
+    visibility 0.2s ease-out allow-discrete;
+}
+
+.editor-collapsible-content[hidden] {
+  content-visibility: visible;
+  display: block;
+  height: 0;
+  padding-block: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    height 0.2s ease-in,
+    padding 0.2s ease-in,
+    opacity 0.2s ease-in,
+    visibility 0.2s ease-in allow-discrete;
+}
+
+details.editor-collapsible::details-content {
+  interpolate-size: allow-keywords;
+  overflow: hidden;
+  transition:
+    height 0.2s ease-out,
+    opacity 0.2s ease-out,
+    content-visibility 0.2s ease-out allow-discrete;
+}
+
+details.editor-collapsible:not([open])::details-content {
+  height: 0;
+  opacity: 0;
+  content-visibility: hidden;
+  transition:
+    height 0.2s ease-in,
+    opacity 0.2s ease-in,
+    content-visibility 0.2s ease-in allow-discrete;
+}
+
+.editor-table-scrollable-wrapper {
+  scrollbar-width: none;
+}
+
+.editor-table-scrollable-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.editor-table-selection *::selection {
+  background-color: transparent;
+}
+
+[contenteditable]:focus-within .editor-table-selected {
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
+}
+
+.editor-table-cell-selected {
+  caret-color: transparent;
+}
+
+[contenteditable]:focus-within .editor-table-cell-selected::after {
+  position: absolute;
+  inset: 0;
+  background-color: var(--primary);
+  opacity: 0.2;
+  content: "";
+  pointer-events: none;
+}
+
+.editor-equation {
+  direction: ltr;
+  unicode-bidi: isolate;
+  cursor: default;
+  user-select: none;
+}
+
+span.editor-equation {
+  display: inline-block;
+}
+
+div.editor-equation {
+  display: block;
+  text-align: center;
+}
+
+.editor-equation.focused {
+  border-radius: var(--radius-sm);
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.katex {
+  direction: ltr;
+  unicode-bidi: isolate;
+}

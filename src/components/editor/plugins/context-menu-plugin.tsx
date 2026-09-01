@@ -1,23 +1,20 @@
-import type { JSX } from "react";
-import { useMemo } from "react";
+import { useCallback, useEffect, useRef, useState } from "react"
 
-import { $isLinkNode, TOGGLE_LINK_COMMAND } from "@lexical/link";
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import {
-  NodeContextMenuOption,
-  NodeContextMenuPlugin,
-  NodeContextMenuSeparator,
-} from "@lexical/react/LexicalNodeContextMenuPlugin";
-import {
+  $getNearestNodeFromDOMNode,
+  $getNodeByKey,
+  $getRoot,
   $getSelection,
   $isDecoratorNode,
   $isNodeSelection,
-  $isRangeSelection,
   COPY_COMMAND,
   CUT_COMMAND,
-  type LexicalNode,
   PASTE_COMMAND,
-} from "lexical";
+  registerEventListener,
+} from "lexical"
+
+import { $isAutoLinkNode, $isLinkNode } from "@lexical/link"
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
 
 import {
   Clipboard,
@@ -26,128 +23,168 @@ import {
   Link2Off,
   Scissors,
   Trash2,
-} from "lucide-react";
+} from "lucide-react"
 
-export function ContextMenuPlugin(): JSX.Element {
-  const [editor] = useLexicalComposerContext();
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuSeparator,
+  ContextMenuTrigger,
+} from "@/components/ui/context-menu"
 
-  const items = useMemo(() => {
-    return [
-      new NodeContextMenuOption(`Remove Link`, {
-        $onSelect: () => {
-          editor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
-        },
-        $showOn: (node: LexicalNode) => $isLinkNode(node.getParent()),
-        disabled: false,
-        icon: <Link2Off className="size-4" />,
-      }),
-      new NodeContextMenuSeparator({
-        $showOn: (node: LexicalNode) => $isLinkNode(node.getParent()),
-      }),
-      new NodeContextMenuOption(`Cut`, {
-        $onSelect: () => {
-          editor.dispatchCommand(CUT_COMMAND, null);
-        },
-        disabled: false,
-        icon: <Scissors className="size-4" />,
-      }),
-      new NodeContextMenuOption(`Copy`, {
-        $onSelect: () => {
-          editor.dispatchCommand(COPY_COMMAND, null);
-        },
-        disabled: false,
-        icon: <Copy className="size-4" />,
-      }),
-      new NodeContextMenuOption(`Paste`, {
-        $onSelect: () => {
-          navigator.clipboard.read().then(async function (..._args) {
-            const data = new DataTransfer();
+export function ContextMenuPlugin() {
+  const [editor] = useLexicalComposerContext()
+  const { t, dir } = useTranslation()
+  const triggerRef = useRef<HTMLDivElement>(null)
+  const [target, setTarget] = useState<{ key: string; isLink: boolean } | null>(
+    null
+  )
 
-            const readClipboardItems = await navigator.clipboard.read();
-            const item = readClipboardItems[0];
+  useEffect(() => {
+    function onContextMenu(event: MouseEvent) {
+      const trigger = triggerRef.current
+      if (trigger === null || !(event.target instanceof Node)) {
+        return
+      }
+      event.preventDefault()
+      editor.read(() => {
+        const node =
+          $getNearestNodeFromDOMNode(event.target as Node) ?? $getRoot()
+        setTarget({
+          key: node.getKey(),
+          isLink: $isLinkNode(node) || $isLinkNode(node.getParent()),
+        })
+      })
+      trigger.dispatchEvent(
+        new MouseEvent("contextmenu", {
+          bubbles: true,
+          cancelable: true,
+          clientX: event.clientX,
+          clientY: event.clientY,
+        })
+      )
+    }
 
-            const permission = await navigator.permissions.query({
-              // @ts-expect-error These types are incorrect.
-              name: "clipboard-read",
-            });
-            if (permission.state === "denied") {
-              alert("Not allowed to paste from clipboard.");
-              return;
-            }
+    return editor.registerRootListener((rootElement) => {
+      if (rootElement !== null) {
+        return registerEventListener(rootElement, "contextmenu", onContextMenu)
+      }
+    })
+  }, [editor])
 
-            for (const type of item.types) {
-              const dataString = await (await item.getType(type)).text();
-              data.setData(type, dataString);
-            }
+  const removeLink = useCallback(() => {
+    if (target === null) {
+      return
+    }
+    editor.update(() => {
+      const node = $getNodeByKey(target.key)
+      const parent = node?.getParent()
+      const link = $isLinkNode(node)
+        ? node
+        : $isLinkNode(parent)
+          ? parent
+          : null
+      if (link === null) {
+        return
+      }
+      if ($isAutoLinkNode(link)) {
+        link.setIsUnlinked(true)
+        return
+      }
+      for (const child of link.getChildren()) {
+        link.insertBefore(child)
+      }
+      link.remove()
+    })
+  }, [editor, target])
 
-            const event = new ClipboardEvent("paste", {
-              clipboardData: data,
-            });
-
-            editor.dispatchCommand(PASTE_COMMAND, event);
-          });
-        },
-        disabled: false,
-        icon: <Clipboard className="size-4" />,
-      }),
-      new NodeContextMenuOption(`Paste as Plain Text`, {
-        $onSelect: () => {
-          navigator.clipboard.read().then(async function (..._args) {
-            const permission = await navigator.permissions.query({
-              // @ts-expect-error These types are incorrect.
-              name: "clipboard-read",
-            });
-
-            if (permission.state === "denied") {
-              alert("Not allowed to paste from clipboard.");
-              return;
-            }
-
-            const data = new DataTransfer();
-            const clipboardText = await navigator.clipboard.readText();
-            data.setData("text/plain", clipboardText);
-
-            const event = new ClipboardEvent("paste", {
-              clipboardData: data,
-            });
-            editor.dispatchCommand(PASTE_COMMAND, event);
-          });
-        },
-        disabled: false,
-        icon: <ClipboardType className="size-4" />,
-      }),
-      new NodeContextMenuSeparator(),
-      new NodeContextMenuOption(`Delete Node`, {
-        $onSelect: () => {
-          const selection = $getSelection();
-          if ($isRangeSelection(selection)) {
-            const currentNode = selection.anchor.getNode();
-            const ancestorNodeWithRootAsParent = currentNode
-              .getParents()
-              .at(-2);
-
-            ancestorNodeWithRootAsParent?.remove();
-          } else if ($isNodeSelection(selection)) {
-            const selectedNodes = selection.getNodes();
-            selectedNodes.forEach((node) => {
-              if ($isDecoratorNode(node)) {
-                node.remove();
-              }
-            });
+  const pasteFromClipboard = useCallback(
+    async (plainText: boolean) => {
+      try {
+        const data = new DataTransfer()
+        if (plainText) {
+          data.setData("text/plain", await navigator.clipboard.readText())
+        } else {
+          const [item] = await navigator.clipboard.read()
+          for (const type of item.types) {
+            data.setData(type, await (await item.getType(type)).text())
           }
-        },
-        disabled: false,
-        icon: <Trash2 className="size-4" />,
-      }),
-    ];
-  }, [editor]);
+        }
+        editor.dispatchCommand(
+          PASTE_COMMAND,
+          new ClipboardEvent("paste", { clipboardData: data })
+        )
+      } catch {
+        window.alert(t.clipboardNotAllowed)
+      }
+    },
+    [editor, t]
+  )
+
+  const deleteNode = useCallback(() => {
+    editor.update(() => {
+      const selection = $getSelection()
+      if ($isNodeSelection(selection)) {
+        for (const node of selection.getNodes()) {
+          if ($isDecoratorNode(node)) {
+            node.remove()
+          }
+        }
+        return
+      }
+      const node = target === null ? null : $getNodeByKey(target.key)
+      if (node === null) {
+        return
+      }
+      if ($isDecoratorNode(node)) {
+        node.remove()
+      } else {
+        node.getTopLevelElement()?.remove()
+      }
+    })
+  }, [editor, target])
 
   return (
-    <NodeContextMenuPlugin
-      className="bg-popover text-popover-foreground min-w-36 overflow-hidden rounded-md border p-1 shadow-md outline-none"
-      itemClassName="relative w-full flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50"
-      separatorClassName="bg-border -mx-1 my-1 h-px"
-      items={items}
-    />
-  );
+    <ContextMenu>
+      <ContextMenuTrigger ref={triggerRef} className="hidden" />
+      <ContextMenuContent dir={dir} className="w-52">
+        {target?.isLink && (
+          <>
+            <ContextMenuItem onClick={removeLink}>
+              <Link2Off />
+              {t.removeLink}
+            </ContextMenuItem>
+            <ContextMenuSeparator />
+          </>
+        )}
+        <ContextMenuItem
+          onClick={() => editor.dispatchCommand(CUT_COMMAND, null)}
+        >
+          <Scissors />
+          {t.cut}
+        </ContextMenuItem>
+        <ContextMenuItem
+          onClick={() => editor.dispatchCommand(COPY_COMMAND, null)}
+        >
+          <Copy />
+          {t.copy}
+        </ContextMenuItem>
+        <ContextMenuItem onClick={() => pasteFromClipboard(false)}>
+          <Clipboard />
+          {t.paste}
+        </ContextMenuItem>
+        <ContextMenuItem onClick={() => pasteFromClipboard(true)}>
+          <ClipboardType />
+          {t.pasteAsPlainText}
+        </ContextMenuItem>
+        <ContextMenuSeparator />
+        <ContextMenuItem variant="destructive" onClick={deleteNode}>
+          <Trash2 />
+          {t.deleteNode}
+        </ContextMenuItem>
+      </ContextMenuContent>
+    </ContextMenu>
+  )
 }
