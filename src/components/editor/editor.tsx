@@ -1,25 +1,25 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
-import { defineExtension } from "lexical"
+import { defineExtension } from "lexical";
 
-import { HistoryExtension } from "@lexical/history"
-import { CheckListExtension, ListExtension } from "@lexical/list"
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { HistoryExtension } from "@lexical/history";
+import { CheckListExtension, ListExtension } from "@lexical/list";
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { CodeExtension } from "@/components/editor/extensions/code"
-import { ShortcutsExtension } from "@/components/editor/extensions/shortcuts"
-import { TabFocusExtension } from "@/components/editor/extensions/tab-focus"
-import { ActivityBar } from "@/components/editor/plugins/activitybar/activitybar-plugin"
-import { ShortcutPlugin } from "@/components/editor/plugins/activitybar/shortcut-plugin"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { CodeExtension } from "@/components/editor/extensions/code";
+import { ShortcutsExtension } from "@/components/editor/extensions/shortcuts";
+import { TabFocusExtension } from "@/components/editor/extensions/tab-focus";
+import { ActivityBar } from "@/components/editor/plugins/activitybar/activitybar-plugin";
+import { ShortcutPlugin } from "@/components/editor/plugins/activitybar/shortcut-plugin";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   LanguageSelectorPlugin,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function Editor() {
   const app = useMemo(
@@ -38,8 +38,8 @@ export function Editor() {
         ],
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -57,11 +57,11 @@ export function Editor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -72,5 +72,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

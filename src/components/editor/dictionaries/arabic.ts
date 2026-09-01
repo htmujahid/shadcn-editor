@@ -296,4 +296,4 @@ export const ARABIC_WORDS: readonly string[] = [
   "الزهور",
   "الفواكه",
   "الخضروات",
-]
+];

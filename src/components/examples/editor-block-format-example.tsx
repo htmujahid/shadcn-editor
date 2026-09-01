@@ -1,28 +1,28 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
 import {
   $createHeadingNode,
   $createQuoteNode,
   RichTextExtension,
-} from "@lexical/rich-text"
+} from "@lexical/rich-text";
 
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { BlockFormatToolbarPlugin } from "@/components/editor/plugins/toolbar/block-format-toolbar-plugin"
-import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { BlockFormatToolbarPlugin } from "@/components/editor/plugins/toolbar/block-format-toolbar-plugin";
+import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function BlockFormatEditor() {
   const app = useMemo(
@@ -33,25 +33,25 @@ export function BlockFormatEditor() {
         $initialEditorState: () => {
           $getRoot().append(
             $createHeadingNode("h1").append(
-              $createTextNode("A heading sets the stage")
+              $createTextNode("A heading sets the stage"),
             ),
             $createHeadingNode("h2").append(
-              $createTextNode("Subheadings carry the structure")
+              $createTextNode("Subheadings carry the structure"),
             ),
             $createParagraphNode().append(
               $createTextNode(
-                "Paragraphs do the everyday work. Put the cursor on any line and switch its block type with the menu above."
-              )
+                "Paragraphs do the everyday work. Put the cursor on any line and switch its block type with the menu above.",
+              ),
             ),
             $createQuoteNode().append(
-              $createTextNode("And quotes give someone else the last word.")
-            )
-          )
+              $createTextNode("And quotes give someone else the last word."),
+            ),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -66,11 +66,11 @@ export function BlockFormatEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -81,5 +81,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

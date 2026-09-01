@@ -1,29 +1,29 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
 import {
   $createListItemNode,
   $createListNode,
   ListExtension,
-} from "@lexical/list"
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+} from "@lexical/list";
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { BlockFormatToolbarPlugin } from "@/components/editor/plugins/toolbar/block-format-toolbar-plugin"
-import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { BlockFormatToolbarPlugin } from "@/components/editor/plugins/toolbar/block-format-toolbar-plugin";
+import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function ListEditor() {
   const app = useMemo(
@@ -34,30 +34,30 @@ export function ListEditor() {
         $initialEditorState: () => {
           $getRoot().append(
             $createParagraphNode().append(
-              $createTextNode("A few things worth packing for a day hike:")
+              $createTextNode("A few things worth packing for a day hike:"),
             ),
             $createListNode("bullet").append(
               $createListItemNode().append(
-                $createTextNode("Water and something to snack on")
+                $createTextNode("Water and something to snack on"),
               ),
               $createListItemNode().append(
-                $createTextNode("A paper map of the trail")
+                $createTextNode("A paper map of the trail"),
               ),
               $createListItemNode().append(
-                $createTextNode("A light rain jacket")
-              )
+                $createTextNode("A light rain jacket"),
+              ),
             ),
             $createParagraphNode().append(
               $createTextNode(
-                "Use the block format menu to turn any paragraph into a bulleted or numbered list."
-              )
-            )
-          )
+                "Use the block format menu to turn any paragraph into a bulleted or numbered list.",
+              ),
+            ),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -72,11 +72,11 @@ export function ListEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -87,5 +87,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

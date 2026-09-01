@@ -1,31 +1,31 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { EmojiExtension } from "@/components/editor/extensions/emoji"
+import { EmojiExtension } from "@/components/editor/extensions/emoji";
 import {
   $createEmojiNode,
   EMOJI_CLASS_NAME,
-} from "@/components/editor/nodes/emoji-node"
-import { BlockInsert } from "@/components/editor/plugins/block-insert/block-insert-plugin"
-import { InsertEmojiPlugin } from "@/components/editor/plugins/block-insert/insert-emoji-plugin"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
-import { EmojiPickerPlugin } from "@/components/editor/plugins/emoji-picker-plugin"
+} from "@/components/editor/nodes/emoji-node";
+import { BlockInsert } from "@/components/editor/plugins/block-insert/block-insert-plugin";
+import { InsertEmojiPlugin } from "@/components/editor/plugins/block-insert/insert-emoji-plugin";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
+import { EmojiPickerPlugin } from "@/components/editor/plugins/emoji-picker-plugin";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function EmojiEditor() {
   const app = useMemo(
@@ -39,22 +39,22 @@ export function EmojiEditor() {
               $createTextNode("The release went out on time "),
               $createEmojiNode(EMOJI_CLASS_NAME, "🎉"),
               $createTextNode(
-                " and the team is already planning the next one "
+                " and the team is already planning the next one ",
               ),
               $createEmojiNode(EMOJI_CLASS_NAME, "🚀"),
-              $createTextNode(".")
+              $createTextNode("."),
             ),
             $createParagraphNode().append(
               $createTextNode(
-                "Type a colon like :smile: to search emoji inline, or use the insert menu in the toolbar."
-              )
-            )
-          )
+                "Type a colon like :smile: to search emoji inline, or use the insert menu in the toolbar.",
+              ),
+            ),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -72,11 +72,11 @@ export function EmojiEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -87,5 +87,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

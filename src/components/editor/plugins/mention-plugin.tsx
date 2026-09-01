@@ -1,39 +1,39 @@
-import { useCallback, useEffect, useMemo, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react";
 
-import type { TextNode } from "lexical"
+import type { TextNode } from "lexical";
 
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import {
   LexicalTypeaheadMenuPlugin,
   MenuOption,
   type MenuTextMatch,
   useBasicTypeaheadTriggerMatch,
-} from "@lexical/react/LexicalTypeaheadMenuPlugin"
+} from "@lexical/react/LexicalTypeaheadMenuPlugin";
 
-import { Popover as PopoverPrimitive } from "@base-ui/react/popover"
-import { User } from "lucide-react"
+import { Popover as PopoverPrimitive } from "@base-ui/react/popover";
+import { User } from "lucide-react";
 
-import { $createMentionNode } from "@/components/editor/nodes/mention-node"
-import { useLanguage } from "@/components/editor/plugins/i18n-plugin"
-import { Command, CommandItem, CommandList } from "@/components/ui/command"
+import { $createMentionNode } from "@/components/editor/nodes/mention-node";
+import { useLanguage } from "@/components/editor/plugins/i18n-plugin";
+import { Command, CommandItem, CommandList } from "@/components/ui/command";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/components/ui/popover";
 
-const MAX_SUGGESTIONS = 5
+const MAX_SUGGESTIONS = 5;
 
 const PUNCTUATION =
-  "\\.,\\+\\*\\?\\$\\@\\|#{}\\(\\)\\^\\-\\[\\]\\\\/!%'\"~=<>_:;"
+  "\\.,\\+\\*\\?\\$\\@\\|#{}\\(\\)\\^\\-\\[\\]\\\\/!%'\"~=<>_:;";
 
-const TRIGGERS = ["@"].join("")
+const TRIGGERS = ["@"].join("");
 
-const VALID_CHARS = "[^" + TRIGGERS + PUNCTUATION + "\\s]"
+const VALID_CHARS = "[^" + TRIGGERS + PUNCTUATION + "\\s]";
 
-const VALID_JOINS = "(?:" + "\\.[ |$]|" + " |" + "[" + PUNCTUATION + "]|" + ")"
+const VALID_JOINS = "(?:" + "\\.[ |$]|" + " |" + "[" + PUNCTUATION + "]|" + ")";
 
-const LENGTH_LIMIT = 75
+const LENGTH_LIMIT = 75;
 
 const AtSignMentionsRegex = new RegExp(
   "(^|\\s|\\()(" +
@@ -46,10 +46,10 @@ const AtSignMentionsRegex = new RegExp(
     "){0," +
     LENGTH_LIMIT +
     "})" +
-    ")$"
-)
+    ")$",
+);
 
-const ALIAS_LENGTH_LIMIT = 50
+const ALIAS_LENGTH_LIMIT = 50;
 
 const AtSignMentionsRegexAliasRegex = new RegExp(
   "(^|\\s|\\()(" +
@@ -61,8 +61,8 @@ const AtSignMentionsRegexAliasRegex = new RegExp(
     "){0," +
     ALIAS_LENGTH_LIMIT +
     "})" +
-    ")$"
-)
+    ")$",
+);
 
 const MENTIONS = [
   "Aayla Secura",
@@ -122,127 +122,127 @@ const MENTIONS = [
   "Shmi Skywalker",
   "Wedge Antilles",
   "Yoda",
-]
+];
 
-const mentionsCache = new Map<string, string[] | null>()
+const mentionsCache = new Map<string, string[] | null>();
 
 const lookupService = {
   search(query: string, callback: (results: string[]) => void): void {
     setTimeout(() => {
       const results = MENTIONS.filter((mention) =>
-        mention.toLowerCase().includes(query.toLowerCase())
-      )
-      callback(results)
-    }, 250)
+        mention.toLowerCase().includes(query.toLowerCase()),
+      );
+      callback(results);
+    }, 250);
   },
-}
+};
 
 function useMentionLookupService(mentionString: string | null) {
-  const [results, setResults] = useState<string[]>([])
+  const [results, setResults] = useState<string[]>([]);
 
   useEffect(() => {
     if (mentionString === null) {
-      setResults([])
-      return
+      setResults([]);
+      return;
     }
 
-    const cachedResults = mentionsCache.get(mentionString)
+    const cachedResults = mentionsCache.get(mentionString);
     if (cachedResults === null) {
-      return
+      return;
     }
     if (cachedResults !== undefined) {
-      setResults(cachedResults)
-      return
+      setResults(cachedResults);
+      return;
     }
 
-    mentionsCache.set(mentionString, null)
+    mentionsCache.set(mentionString, null);
     lookupService.search(mentionString, (newResults) => {
-      mentionsCache.set(mentionString, newResults)
-      setResults(newResults)
-    })
-  }, [mentionString])
+      mentionsCache.set(mentionString, newResults);
+      setResults(newResults);
+    });
+  }, [mentionString]);
 
-  return results
+  return results;
 }
 
 function checkForAtSignMentions(
   text: string,
-  minMatchLength: number
+  minMatchLength: number,
 ): MenuTextMatch | null {
-  let match = AtSignMentionsRegex.exec(text)
+  let match = AtSignMentionsRegex.exec(text);
 
   if (match === null) {
-    match = AtSignMentionsRegexAliasRegex.exec(text)
+    match = AtSignMentionsRegexAliasRegex.exec(text);
   }
   if (match !== null) {
-    const maybeLeadingWhitespace = match[1]
-    const matchingString = match[3]
+    const maybeLeadingWhitespace = match[1];
+    const matchingString = match[3];
     if (matchingString.length >= minMatchLength) {
       return {
         leadOffset: match.index + maybeLeadingWhitespace.length,
         matchingString,
         replaceableString: match[2],
-      }
+      };
     }
   }
-  return null
+  return null;
 }
 
 class MentionTypeaheadOption extends MenuOption {
-  name: string
+  name: string;
 
   constructor(name: string) {
-    super(name)
-    this.name = name
+    super(name);
+    this.name = name;
   }
 }
 
 export function MentionPlugin() {
-  const [editor] = useLexicalComposerContext()
-  const { dir } = useLanguage()
-  const [queryString, setQueryString] = useState<string | null>(null)
+  const [editor] = useLexicalComposerContext();
+  const { dir } = useLanguage();
+  const [queryString, setQueryString] = useState<string | null>(null);
 
-  const results = useMentionLookupService(queryString)
+  const results = useMentionLookupService(queryString);
 
   const options = useMemo(
     () =>
       results
         .slice(0, MAX_SUGGESTIONS)
         .map((result) => new MentionTypeaheadOption(result)),
-    [results]
-  )
+    [results],
+  );
 
   const onSelectOption = useCallback(
     (
       option: MentionTypeaheadOption,
       nodeToReplace: TextNode | null,
-      closeMenu: () => void
+      closeMenu: () => void,
     ) => {
       editor.update(() => {
-        const mentionNode = $createMentionNode(option.name)
+        const mentionNode = $createMentionNode(option.name);
         if (nodeToReplace) {
-          nodeToReplace.replace(mentionNode)
+          nodeToReplace.replace(mentionNode);
         }
-        mentionNode.select()
-        closeMenu()
-      })
+        mentionNode.select();
+        closeMenu();
+      });
     },
-    [editor]
-  )
+    [editor],
+  );
 
   const checkForSlashTriggerMatch = useBasicTypeaheadTriggerMatch("/", {
     minLength: 0,
-  })
+  });
 
   const checkForMentionMatch = useCallback(
     (text: string) => {
       if (checkForSlashTriggerMatch(text, editor) !== null) {
-        return null
+        return null;
       }
-      return checkForAtSignMentions(text, 1)
+      return checkForAtSignMentions(text, 1);
     },
-    [checkForSlashTriggerMatch, editor]
-  )
+    [checkForSlashTriggerMatch, editor],
+  );
 
   return (
     <LexicalTypeaheadMenuPlugin<MentionTypeaheadOption>
@@ -252,7 +252,7 @@ export function MentionPlugin() {
       options={options}
       menuRenderFn={(
         anchorElementRef,
-        { selectedIndex, selectOptionAndCleanUp, setHighlightedIndex }
+        { selectedIndex, selectOptionAndCleanUp, setHighlightedIndex },
       ) =>
         anchorElementRef.current && options.length > 0 ? (
           <Popover open>
@@ -285,10 +285,10 @@ export function MentionPlugin() {
                   }
                   onValueChange={(nextValue) => {
                     const index = options.findIndex(
-                      (option) => option.name === nextValue
-                    )
+                      (option) => option.name === nextValue,
+                    );
                     if (index >= 0) {
-                      setHighlightedIndex(index)
+                      setHighlightedIndex(index);
                     }
                   }}
                   shouldFilter={false}
@@ -313,5 +313,5 @@ export function MentionPlugin() {
         ) : null
       }
     />
-  )
+  );
 }

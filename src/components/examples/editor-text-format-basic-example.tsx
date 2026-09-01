@@ -1,25 +1,25 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { FormatStateExtension } from "@/components/editor/extensions/format-state"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { FormatStateExtension } from "@/components/editor/extensions/format-state";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { TextFormatToolbarPlugin } from "@/components/editor/plugins/toolbar/text-format-toolbar-plugin"
-import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { TextFormatToolbarPlugin } from "@/components/editor/plugins/toolbar/text-format-toolbar-plugin";
+import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function TextFormatBasicEditor() {
   const app = useMemo(
@@ -38,19 +38,19 @@ export function TextFormatBasicEditor() {
               $createTextNode("underline").toggleFormat("underline"),
               $createTextNode(" and "),
               $createTextNode("strikethrough").toggleFormat("strikethrough"),
-              $createTextNode(" text.")
+              $createTextNode(" text."),
             ),
             $createParagraphNode().append(
               $createTextNode(
-                "Select some words and toggle the buttons above, or combine several formats at once."
-              )
-            )
-          )
+                "Select some words and toggle the buttons above, or combine several formats at once.",
+              ),
+            ),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -65,11 +65,11 @@ export function TextFormatBasicEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -80,5 +80,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

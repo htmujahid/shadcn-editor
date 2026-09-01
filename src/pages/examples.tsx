@@ -1,73 +1,73 @@
-import { useEffect } from "react"
+import { useEffect } from "react";
 
-import { CodeDialog } from "@/components/code-dialog"
-import { AlignmentBasicEditor } from "@/components/examples/editor-alignment-basic-example"
-import { AlignmentEditor } from "@/components/examples/editor-alignment-example"
-import { AutoEmbedEditor } from "@/components/examples/editor-auto-embed-example"
-import { AutoLinkEditor } from "@/components/examples/editor-auto-link-example"
-import { AutocompleteEditor } from "@/components/examples/editor-autocomplete-example"
-import { BlockFormatEditor } from "@/components/examples/editor-block-format-example"
-import { BlockInsertEditor } from "@/components/examples/editor-block-insert-example"
-import { CardEditor } from "@/components/examples/editor-card-example"
-import { CheckListEditor } from "@/components/examples/editor-check-list-example"
-import { ClearEditor } from "@/components/examples/editor-clear-example"
-import { CodeEditor } from "@/components/examples/editor-code-example"
-import { CollapsibleEditor } from "@/components/examples/editor-collapsible-example"
-import { ColorEditor } from "@/components/examples/editor-color-example"
-import { ColumnsEditor } from "@/components/examples/editor-columns-example"
-import { CommentsEditor } from "@/components/examples/editor-comments-example"
-import { ComponentPickerEditor } from "@/components/examples/editor-component-picker-example"
-import { ContextMenuEditor } from "@/components/examples/editor-context-menu-example"
-import { DateTimeEditor } from "@/components/examples/editor-datetime-example"
-import { DragDropPasteEditor } from "@/components/examples/editor-drag-drop-paste-example"
-import { DraggableBlockEditor } from "@/components/examples/editor-draggable-block-example"
-import { EmojiEditor } from "@/components/examples/editor-emoji-example"
-import { EquationEditor } from "@/components/examples/editor-equation-example"
-import { FigmaEditor } from "@/components/examples/editor-figma-example"
-import { FindReplaceEditor } from "@/components/examples/editor-find-replace-example"
-import { FloatingToolbarEditor } from "@/components/examples/editor-floating-toolbar-example"
-import { FontEditor } from "@/components/examples/editor-font-example"
-import { HashtagEditor } from "@/components/examples/editor-hashtag-example"
-import { HistoryEditor } from "@/components/examples/editor-history-example"
-import { HorizontalRuleEditor } from "@/components/examples/editor-horizontal-rule-example"
-import { I18nEditor } from "@/components/examples/editor-i18n-example"
-import { ImageEditor } from "@/components/examples/editor-image-example"
-import { ImportExportEditor } from "@/components/examples/editor-import-export-example"
-import { IndentEditor } from "@/components/examples/editor-indent-example"
-import { LinkEditor } from "@/components/examples/editor-link-example"
-import { ListEditor } from "@/components/examples/editor-list-example"
-import { MarkdownEditor } from "@/components/examples/editor-markdown-example"
-import { MaxLengthEditor } from "@/components/examples/editor-max-length-example"
-import { MentionEditor } from "@/components/examples/editor-mention-example"
-import { NestedListEditor } from "@/components/examples/editor-nested-list-example"
-import { PollEditor } from "@/components/examples/editor-poll-example"
-import { PullQuoteEditor } from "@/components/examples/editor-pullquote-example"
-import { ReadOnlyEditor } from "@/components/examples/editor-read-only-example"
-import { ReviewEditor } from "@/components/examples/editor-review-example"
-import { RichTextEditor } from "@/components/examples/editor-rich-text-example"
-import { RubyEditor } from "@/components/examples/editor-ruby-example"
-import { ShortcutsEditor } from "@/components/examples/editor-shortcuts-example"
-import { SpecialTextEditor } from "@/components/examples/editor-special-text-example"
-import { SpeechToTextEditor } from "@/components/examples/editor-speech-to-text-example"
-import { TabFocusEditor } from "@/components/examples/editor-tab-focus-example"
-import { TableEditor } from "@/components/examples/editor-table-example"
-import { TableOfContentsEditor } from "@/components/examples/editor-table-of-contents-example"
-import { TextFormatBasicEditor } from "@/components/examples/editor-text-format-basic-example"
-import { TextFormatEditor } from "@/components/examples/editor-text-format-example"
-import { TwitterEditor } from "@/components/examples/editor-twitter-example"
-import { WordCountEditor } from "@/components/examples/editor-word-count-example"
-import { YouTubeEditor } from "@/components/examples/editor-youtube-example"
-import { GitHubIcon } from "@/components/github-icon"
-import { SiteFooter } from "@/components/site-footer"
-import { SiteHeader } from "@/components/site-header"
-import { buttonVariants } from "@/components/ui/button"
-import { TooltipProvider } from "@/components/ui/tooltip"
-import { cn } from "@/lib/utils"
+import { CodeDialog } from "@/components/code-dialog";
+import { AlignmentBasicEditor } from "@/components/examples/editor-alignment-basic-example";
+import { AlignmentEditor } from "@/components/examples/editor-alignment-example";
+import { AutoEmbedEditor } from "@/components/examples/editor-auto-embed-example";
+import { AutoLinkEditor } from "@/components/examples/editor-auto-link-example";
+import { AutocompleteEditor } from "@/components/examples/editor-autocomplete-example";
+import { BlockFormatEditor } from "@/components/examples/editor-block-format-example";
+import { BlockInsertEditor } from "@/components/examples/editor-block-insert-example";
+import { CardEditor } from "@/components/examples/editor-card-example";
+import { CheckListEditor } from "@/components/examples/editor-check-list-example";
+import { ClearEditor } from "@/components/examples/editor-clear-example";
+import { CodeEditor } from "@/components/examples/editor-code-example";
+import { CollapsibleEditor } from "@/components/examples/editor-collapsible-example";
+import { ColorEditor } from "@/components/examples/editor-color-example";
+import { ColumnsEditor } from "@/components/examples/editor-columns-example";
+import { CommentsEditor } from "@/components/examples/editor-comments-example";
+import { ComponentPickerEditor } from "@/components/examples/editor-component-picker-example";
+import { ContextMenuEditor } from "@/components/examples/editor-context-menu-example";
+import { DateTimeEditor } from "@/components/examples/editor-datetime-example";
+import { DragDropPasteEditor } from "@/components/examples/editor-drag-drop-paste-example";
+import { DraggableBlockEditor } from "@/components/examples/editor-draggable-block-example";
+import { EmojiEditor } from "@/components/examples/editor-emoji-example";
+import { EquationEditor } from "@/components/examples/editor-equation-example";
+import { FigmaEditor } from "@/components/examples/editor-figma-example";
+import { FindReplaceEditor } from "@/components/examples/editor-find-replace-example";
+import { FloatingToolbarEditor } from "@/components/examples/editor-floating-toolbar-example";
+import { FontEditor } from "@/components/examples/editor-font-example";
+import { HashtagEditor } from "@/components/examples/editor-hashtag-example";
+import { HistoryEditor } from "@/components/examples/editor-history-example";
+import { HorizontalRuleEditor } from "@/components/examples/editor-horizontal-rule-example";
+import { I18nEditor } from "@/components/examples/editor-i18n-example";
+import { ImageEditor } from "@/components/examples/editor-image-example";
+import { ImportExportEditor } from "@/components/examples/editor-import-export-example";
+import { IndentEditor } from "@/components/examples/editor-indent-example";
+import { LinkEditor } from "@/components/examples/editor-link-example";
+import { ListEditor } from "@/components/examples/editor-list-example";
+import { MarkdownEditor } from "@/components/examples/editor-markdown-example";
+import { MaxLengthEditor } from "@/components/examples/editor-max-length-example";
+import { MentionEditor } from "@/components/examples/editor-mention-example";
+import { NestedListEditor } from "@/components/examples/editor-nested-list-example";
+import { PollEditor } from "@/components/examples/editor-poll-example";
+import { PullQuoteEditor } from "@/components/examples/editor-pullquote-example";
+import { ReadOnlyEditor } from "@/components/examples/editor-read-only-example";
+import { ReviewEditor } from "@/components/examples/editor-review-example";
+import { RichTextEditor } from "@/components/examples/editor-rich-text-example";
+import { RubyEditor } from "@/components/examples/editor-ruby-example";
+import { ShortcutsEditor } from "@/components/examples/editor-shortcuts-example";
+import { SpecialTextEditor } from "@/components/examples/editor-special-text-example";
+import { SpeechToTextEditor } from "@/components/examples/editor-speech-to-text-example";
+import { TabFocusEditor } from "@/components/examples/editor-tab-focus-example";
+import { TableEditor } from "@/components/examples/editor-table-example";
+import { TableOfContentsEditor } from "@/components/examples/editor-table-of-contents-example";
+import { TextFormatBasicEditor } from "@/components/examples/editor-text-format-basic-example";
+import { TextFormatEditor } from "@/components/examples/editor-text-format-example";
+import { TwitterEditor } from "@/components/examples/editor-twitter-example";
+import { WordCountEditor } from "@/components/examples/editor-word-count-example";
+import { YouTubeEditor } from "@/components/examples/editor-youtube-example";
+import { GitHubIcon } from "@/components/github-icon";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
+import { buttonVariants } from "@/components/ui/button";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 
 const examples: {
-  title: string
-  file: string
-  Example: React.ComponentType
+  title: string;
+  file: string;
+  Example: React.ComponentType;
 }[] = [
   {
     title: "Rich Text",
@@ -251,12 +251,12 @@ const examples: {
   { title: "Review", file: "editor-review-example", Example: ReviewEditor },
   { title: "Poll", file: "editor-poll-example", Example: PollEditor },
   { title: "Ruby", file: "editor-ruby-example", Example: RubyEditor },
-]
+];
 
 export function ExamplesPage() {
   useEffect(() => {
-    document.title = "Examples - Shadcn Editor"
-  }, [])
+    document.title = "Examples - Shadcn Editor";
+  }, []);
 
   return (
     <TooltipProvider>
@@ -337,5 +337,5 @@ export function ExamplesPage() {
         <SiteFooter />
       </div>
     </TooltipProvider>
-  )
+  );
 }

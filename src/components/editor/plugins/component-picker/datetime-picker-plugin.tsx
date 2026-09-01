@@ -1,32 +1,32 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
-import { $getRoot, $getSelection, type LexicalEditor } from "lexical"
+import { $getRoot, $getSelection, type LexicalEditor } from "lexical";
 
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 
-import { addDays } from "date-fns"
+import { addDays } from "date-fns";
 import {
   CalendarCheck,
   CalendarDays,
   CalendarMinus,
   CalendarPlus,
   type LucideIcon,
-} from "lucide-react"
+} from "lucide-react";
 
-import { INSERT_DATETIME_COMMAND } from "@/components/editor/extensions/datetime"
-import type { Locale } from "@/components/editor/locales"
+import { INSERT_DATETIME_COMMAND } from "@/components/editor/extensions/datetime";
+import type { Locale } from "@/components/editor/locales";
 import {
   type ComponentPickerItem,
   useComponentPickerItems,
-} from "@/components/editor/plugins/component-picker/component-picker-plugin"
-import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
+} from "@/components/editor/plugins/component-picker/component-picker-plugin";
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
 
 const DATETIME_ITEMS: {
-  value: string
-  labelKey: keyof Locale
-  icon: LucideIcon
-  offsetDays: number
-  keywords: string[]
+  value: string;
+  labelKey: keyof Locale;
+  icon: LucideIcon;
+  offsetDays: number;
+  keywords: string[];
 }[] = [
   {
     value: "datetime",
@@ -56,22 +56,22 @@ const DATETIME_ITEMS: {
     offsetDays: -1,
     keywords: ["yesterday", "date"],
   },
-]
+];
 
 function insertDateTime(editor: LexicalEditor, offsetDays: number) {
   editor.update(() => {
     if (!$getSelection()) {
-      $getRoot().selectEnd()
+      $getRoot().selectEnd();
     }
-  })
-  const date = addDays(new Date(), offsetDays)
-  date.setHours(0, 0, 0, 0)
-  editor.dispatchCommand(INSERT_DATETIME_COMMAND, { dateTime: date })
+  });
+  const date = addDays(new Date(), offsetDays);
+  date.setHours(0, 0, 0, 0);
+  editor.dispatchCommand(INSERT_DATETIME_COMMAND, { dateTime: date });
 }
 
 export function DateTimePickerPlugin() {
-  const [editor] = useLexicalComposerContext()
-  const { t } = useTranslation()
+  const [editor] = useLexicalComposerContext();
+  const { t } = useTranslation();
 
   const items = useMemo<ComponentPickerItem[]>(
     () =>
@@ -82,12 +82,12 @@ export function DateTimePickerPlugin() {
           icon: <Icon className="text-muted-foreground" />,
           keywords,
           onSelect: () => insertDateTime(editor, offsetDays),
-        })
+        }),
       ),
-    [editor, t]
-  )
+    [editor, t],
+  );
 
-  useComponentPickerItems(items)
+  useComponentPickerItems(items);
 
-  return null
+  return null;
 }

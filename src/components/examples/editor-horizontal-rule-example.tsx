@@ -1,29 +1,29 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
 import {
   $createHorizontalRuleNode,
   HorizontalRuleExtension,
-} from "@lexical/extension"
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+} from "@lexical/extension";
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { BlockInsert } from "@/components/editor/plugins/block-insert/block-insert-plugin"
-import { InsertHorizontalRulePlugin } from "@/components/editor/plugins/block-insert/insert-horizontal-rule-plugin"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { BlockInsert } from "@/components/editor/plugins/block-insert/block-insert-plugin";
+import { InsertHorizontalRulePlugin } from "@/components/editor/plugins/block-insert/insert-horizontal-rule-plugin";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function HorizontalRuleEditor() {
   const app = useMemo(
@@ -35,21 +35,21 @@ export function HorizontalRuleEditor() {
           $getRoot().append(
             $createParagraphNode().append(
               $createTextNode(
-                "Long documents read better when sections get a visual break."
-              )
+                "Long documents read better when sections get a visual break.",
+              ),
             ),
             $createHorizontalRuleNode(),
             $createParagraphNode().append(
               $createTextNode(
-                "The divider above is a horizontal rule node. Insert one from the toolbar, then click it to select or delete it."
-              )
-            )
-          )
+                "The divider above is a horizontal rule node. Insert one from the toolbar, then click it to select or delete it.",
+              ),
+            ),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -66,11 +66,11 @@ export function HorizontalRuleEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -81,5 +81,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

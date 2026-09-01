@@ -1,11 +1,11 @@
-import { useEffect } from "react"
+import { useEffect } from "react";
 
-import { Compass } from "lucide-react"
-import { Link } from "wouter"
+import { Compass } from "lucide-react";
+import { Link } from "wouter";
 
-import { SiteFooter } from "@/components/site-footer"
-import { SiteHeader } from "@/components/site-header"
-import { buttonVariants } from "@/components/ui/button"
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Empty,
   EmptyContent,
@@ -13,13 +13,13 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/components/ui/empty"
-import { cn } from "@/lib/utils"
+} from "@/components/ui/empty";
+import { cn } from "@/lib/utils";
 
 export function NotFoundPage() {
   useEffect(() => {
-    document.title = "Page Not Found - Shadcn Editor"
-  }, [])
+    document.title = "Page Not Found - Shadcn Editor";
+  }, []);
 
   return (
     <div className="flex min-h-svh flex-col bg-background">
@@ -47,5 +47,5 @@ export function NotFoundPage() {
       </main>
       <SiteFooter />
     </div>
-  )
+  );
 }

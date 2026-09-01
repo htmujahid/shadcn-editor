@@ -1,4 +1,4 @@
-import type { JSX } from "react"
+import type { JSX } from "react";
 
 import {
   $create,
@@ -16,22 +16,22 @@ import {
   type LexicalNode,
   type NodeKey,
   type SlotChildNode,
-} from "lexical"
+} from "lexical";
 
-import { $appendNodeToHTML } from "@lexical/html"
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
-import { useLexicalSlotRef } from "@lexical/react/useLexicalSlotRef"
+import { $appendNodeToHTML } from "@lexical/html";
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import { useLexicalSlotRef } from "@lexical/react/useLexicalSlotRef";
 
-import { $createSlotContainerNode } from "@/components/editor/nodes/slot-container-node"
+import { $createSlotContainerNode } from "@/components/editor/nodes/slot-container-node";
 
 function PullQuoteComponent({ nodeKey }: { nodeKey: NodeKey }): JSX.Element {
-  const [editor] = useLexicalComposerContext()
-  const quoteRef = useLexicalSlotRef<HTMLDivElement>(editor, nodeKey, "quote")
+  const [editor] = useLexicalComposerContext();
+  const quoteRef = useLexicalSlotRef<HTMLDivElement>(editor, nodeKey, "quote");
   const attributionRef = useLexicalSlotRef<HTMLDivElement>(
     editor,
     nodeKey,
-    "attribution"
-  )
+    "attribution",
+  );
   return (
     <div className="flex flex-col gap-2">
       <div
@@ -46,7 +46,7 @@ function PullQuoteComponent({ nodeKey }: { nodeKey: NodeKey }): JSX.Element {
         />
       </div>
     </div>
-  )
+  );
 }
 
 export class PullQuoteNode extends DecoratorNode<JSX.Element> {
@@ -54,51 +54,51 @@ export class PullQuoteNode extends DecoratorNode<JSX.Element> {
     return this.config("pullquote", {
       extends: DecoratorNode,
       slots: ["quote", "attribution"],
-    })
+    });
   }
 
   createDOM(config: EditorConfig): HTMLElement {
-    const dom = $getDocument().createElement("div")
-    const className = config.theme.pullQuote
+    const dom = $getDocument().createElement("div");
+    const className = config.theme.pullQuote;
     if (className) {
-      addClassNamesToElement(dom, className)
+      addClassNamesToElement(dom, className);
     }
-    return dom
+    return dom;
   }
 
   updateDOM(): false {
-    return false
+    return false;
   }
 
   isInline(): false {
-    return false
+    return false;
   }
 
   decorate(): JSX.Element {
-    return <PullQuoteComponent nodeKey={this.__key} />
+    return <PullQuoteComponent nodeKey={this.__key} />;
   }
 
   exportDOM(editor: LexicalEditor): DOMExportOutput {
-    const host = $getDocument().createElement("div")
-    host.setAttribute("data-lexical-pullquote", "true")
+    const host = $getDocument().createElement("div");
+    host.setAttribute("data-lexical-pullquote", "true");
     for (const name of $getSlotNames(this)) {
-      const slot = $getSlot(this, name)
+      const slot = $getSlot(this, name);
       if (slot) {
-        const wrapper = $getDocument().createElement("div")
-        wrapper.setAttribute("data-lexical-slot", name)
-        $appendNodeToHTML(editor, slot, wrapper)
-        host.append(wrapper)
+        const wrapper = $getDocument().createElement("div");
+        wrapper.setAttribute("data-lexical-slot", name);
+        $appendNodeToHTML(editor, slot, wrapper);
+        host.append(wrapper);
       }
     }
-    return { element: host }
+    return { element: host };
   }
 }
 
 export function $createPullQuoteNode(
   quote?: LexicalNode & SlotChildNode,
-  attribution?: LexicalNode & SlotChildNode
+  attribution?: LexicalNode & SlotChildNode,
 ): PullQuoteNode {
-  const node = $create(PullQuoteNode)
+  const node = $create(PullQuoteNode);
   $setSlot(
     node,
     "quote",
@@ -106,22 +106,22 @@ export function $createPullQuoteNode(
       $createSlotContainerNode().append(
         $createParagraphNode().append(
           $createTextNode(
-            "The only way to discover the limits of the possible is to go beyond them into the impossible."
-          )
-        )
-      )
-  )
+            "The only way to discover the limits of the possible is to go beyond them into the impossible.",
+          ),
+        ),
+      ),
+  );
   $setSlot(
     node,
     "attribution",
     attribution ||
-      $createParagraphNode().append($createTextNode("Arthur C. Clarke"))
-  )
-  return node
+      $createParagraphNode().append($createTextNode("Arthur C. Clarke")),
+  );
+  return node;
 }
 
 export function $isPullQuoteNode(
-  node: LexicalNode | null | undefined
+  node: LexicalNode | null | undefined,
 ): node is PullQuoteNode {
-  return node instanceof PullQuoteNode
+  return node instanceof PullQuoteNode;
 }

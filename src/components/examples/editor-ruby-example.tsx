@@ -1,31 +1,31 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { ClipboardDOMImportExtension } from "@lexical/clipboard"
-import { HistoryExtension } from "@lexical/history"
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { ClipboardDOMImportExtension } from "@lexical/clipboard";
+import { HistoryExtension } from "@lexical/history";
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { FormatStateExtension } from "@/components/editor/extensions/format-state"
-import { RubyExtension } from "@/components/editor/extensions/ruby"
-import { $createRubyNode } from "@/components/editor/nodes/ruby-node"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
-import { FloatingToolbarPlugin } from "@/components/editor/plugins/floating/floating-toolbar-plugin"
-import { RubyEditorPlugin } from "@/components/editor/plugins/floating/ruby-editor-plugin"
+import { FormatStateExtension } from "@/components/editor/extensions/format-state";
+import { RubyExtension } from "@/components/editor/extensions/ruby";
+import { $createRubyNode } from "@/components/editor/nodes/ruby-node";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
+import { FloatingToolbarPlugin } from "@/components/editor/plugins/floating/floating-toolbar-plugin";
+import { RubyEditorPlugin } from "@/components/editor/plugins/floating/ruby-editor-plugin";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { RubyToolbarPlugin } from "@/components/editor/plugins/toolbar/ruby-toolbar-plugin"
-import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { RubyToolbarPlugin } from "@/components/editor/plugins/toolbar/ruby-toolbar-plugin";
+import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function RubyEditor() {
   const app = useMemo(
@@ -44,24 +44,24 @@ export function RubyEditor() {
           $getRoot().append(
             $createParagraphNode().append(
               $createTextNode(
-                "Ruby annotations place a small reading above the text, like "
+                "Ruby annotations place a small reading above the text, like ",
               ),
               $createRubyNode("漢字", "かんじ"),
               $createTextNode(" in Japanese or "),
               $createRubyNode("北京", "Běijīng"),
-              $createTextNode(" in Chinese.")
+              $createTextNode(" in Chinese."),
             ),
             $createParagraphNode().append(
               $createTextNode(
-                "Select any text and use the toolbar button to add your own annotation."
-              )
-            )
-          )
+                "Select any text and use the toolbar button to add your own annotation.",
+              ),
+            ),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -78,11 +78,11 @@ export function RubyEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -93,5 +93,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

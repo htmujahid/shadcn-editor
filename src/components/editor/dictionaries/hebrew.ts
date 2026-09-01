@@ -277,4 +277,4 @@ export const HEBREW_WORDS: readonly string[] = [
   "פרחים",
   "פירות",
   "ירקות",
-]
+];

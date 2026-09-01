@@ -1,21 +1,21 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
-import { $getRoot, $getSelection } from "lexical"
+import { $getRoot, $getSelection } from "lexical";
 
-import { INSERT_HORIZONTAL_RULE_COMMAND } from "@lexical/extension"
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
+import { INSERT_HORIZONTAL_RULE_COMMAND } from "@lexical/extension";
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 
-import { Minus } from "lucide-react"
+import { Minus } from "lucide-react";
 
 import {
   type ComponentPickerItem,
   useComponentPickerItems,
-} from "@/components/editor/plugins/component-picker/component-picker-plugin"
-import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
+} from "@/components/editor/plugins/component-picker/component-picker-plugin";
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
 
 export function DividerPickerPlugin() {
-  const [editor] = useLexicalComposerContext()
-  const { t } = useTranslation()
+  const [editor] = useLexicalComposerContext();
+  const { t } = useTranslation();
 
   const items = useMemo<ComponentPickerItem[]>(
     () => [
@@ -27,17 +27,17 @@ export function DividerPickerPlugin() {
         onSelect: () => {
           editor.update(() => {
             if (!$getSelection()) {
-              $getRoot().selectEnd()
+              $getRoot().selectEnd();
             }
-          })
-          editor.dispatchCommand(INSERT_HORIZONTAL_RULE_COMMAND, undefined)
+          });
+          editor.dispatchCommand(INSERT_HORIZONTAL_RULE_COMMAND, undefined);
         },
       },
     ],
-    [editor, t]
-  )
+    [editor, t],
+  );
 
-  useComponentPickerItems(items)
+  useComponentPickerItems(items);
 
-  return null
+  return null;
 }

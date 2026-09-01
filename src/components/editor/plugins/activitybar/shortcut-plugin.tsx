@@ -1,26 +1,26 @@
-import { Keyboard } from "lucide-react"
+import { Keyboard } from "lucide-react";
 
 import {
   type BuiltinShortcutName,
   formatShortcut,
   type ShortcutName,
-} from "@/components/editor/extensions/shortcuts"
-import type { Locale } from "@/components/editor/locales"
-import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
-import { Button } from "@/components/ui/button"
+} from "@/components/editor/extensions/shortcuts";
+import type { Locale } from "@/components/editor/locales";
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-import { Kbd, KbdGroup } from "@/components/ui/kbd"
+} from "@/components/ui/dialog";
+import { Kbd, KbdGroup } from "@/components/ui/kbd";
 
 type ShortcutRow = {
-  name: ShortcutName | BuiltinShortcutName
-  labelKey: keyof Locale
-}
+  name: ShortcutName | BuiltinShortcutName;
+  labelKey: keyof Locale;
+};
 
 const SHORTCUT_GROUPS: { groupKey: keyof Locale; rows: ShortcutRow[] }[] = [
   {
@@ -71,10 +71,10 @@ const SHORTCUT_GROUPS: { groupKey: keyof Locale; rows: ShortcutRow[] }[] = [
       { name: "CHECK_LIST", labelKey: "checkListBlock" },
     ],
   },
-]
+];
 
 export function ShortcutPlugin() {
-  const { t, dir } = useTranslation()
+  const { t, dir } = useTranslation();
 
   return (
     <Dialog>
@@ -121,5 +121,5 @@ export function ShortcutPlugin() {
         </div>
       </DialogContent>
     </Dialog>
-  )
+  );
 }

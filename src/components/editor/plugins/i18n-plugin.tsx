@@ -5,9 +5,9 @@ import {
   type SetStateAction,
   useContext,
   useState,
-} from "react"
+} from "react";
 
-import { locales } from "@/components/editor/locales"
+import { locales } from "@/components/editor/locales";
 import {
   Select,
   SelectContent,
@@ -15,70 +15,70 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { cn } from "@/lib/utils"
+} from "@/components/ui/select";
+import { cn } from "@/lib/utils";
 
-export type Language = "en" | "ar" | "he"
+export type Language = "en" | "ar" | "he";
 
-export type Direction = "ltr" | "rtl"
+export type Direction = "ltr" | "rtl";
 
-export type LocalizedText = Partial<Record<Language, string>>
+export type LocalizedText = Partial<Record<Language, string>>;
 
 export const languageOptions = [
   { value: "en", label: "English" },
   { value: "ar", label: "Arabic (العربية)" },
   { value: "he", label: "Hebrew (עברית)" },
-] as const
+] as const;
 
 const LANGUAGE_DIRECTION: Record<Language, Direction> = {
   en: "ltr",
   ar: "rtl",
   he: "rtl",
-}
+};
 
 type LanguageContextType = {
-  language: Language
-  setLanguage: Dispatch<SetStateAction<Language>>
-}
+  language: Language;
+  setLanguage: Dispatch<SetStateAction<Language>>;
+};
 
 export const LanguageContext = createContext<LanguageContextType | undefined>(
-  undefined
-)
+  undefined,
+);
 
 export function LanguageProvider({
   children,
   defaultLanguage = "en",
 }: {
-  children: ReactNode
-  defaultLanguage?: Language
+  children: ReactNode;
+  defaultLanguage?: Language;
 }) {
-  const [language, setLanguage] = useState<Language>(defaultLanguage)
+  const [language, setLanguage] = useState<Language>(defaultLanguage);
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage }}>
       {children}
     </LanguageContext.Provider>
-  )
+  );
 }
 
 export function useLanguage() {
-  const context = useContext(LanguageContext)
-  const [localLanguage, setLocalLanguage] = useState<Language>("en")
+  const context = useContext(LanguageContext);
+  const [localLanguage, setLocalLanguage] = useState<Language>("en");
 
-  const language = context?.language ?? localLanguage
-  const setLanguage = context?.setLanguage ?? setLocalLanguage
+  const language = context?.language ?? localLanguage;
+  const setLanguage = context?.setLanguage ?? setLocalLanguage;
 
-  return { language, setLanguage, dir: LANGUAGE_DIRECTION[language] }
+  return { language, setLanguage, dir: LANGUAGE_DIRECTION[language] };
 }
 
 export function useTranslation() {
-  const { language, setLanguage, dir } = useLanguage()
-  return { language, setLanguage, dir, t: locales[language] }
+  const { language, setLanguage, dir } = useLanguage();
+  return { language, setLanguage, dir, t: locales[language] };
 }
 
 export interface LanguageSelectorProps {
-  value: Language
-  onValueChange: (value: Language) => void
+  value: Language;
+  onValueChange: (value: Language) => void;
 }
 
 export function LanguageSelector({
@@ -87,8 +87,8 @@ export function LanguageSelector({
   className,
   languages = ["en", "ar", "he"],
 }: LanguageSelectorProps & {
-  className?: string
-  languages?: Language[]
+  className?: string;
+  languages?: Language[];
 }) {
   return (
     <Select
@@ -100,7 +100,7 @@ export function LanguageSelector({
         size="sm"
         className={cn(
           "w-36 border-transparent bg-transparent hover:bg-muted hover:text-foreground dark:bg-transparent dark:hover:bg-muted/50",
-          className
+          className,
         )}
         dir="ltr"
       >
@@ -121,11 +121,11 @@ export function LanguageSelector({
         </SelectGroup>
       </SelectContent>
     </Select>
-  )
+  );
 }
 
 export function LanguageSelectorPlugin({ className }: { className?: string }) {
-  const { language, setLanguage } = useLanguage()
+  const { language, setLanguage } = useLanguage();
 
   return (
     <LanguageSelector
@@ -133,5 +133,5 @@ export function LanguageSelectorPlugin({ className }: { className?: string }) {
       onValueChange={setLanguage}
       className={cn("h-6 w-auto gap-1 px-1.5 text-xs", className)}
     />
-  )
+  );
 }

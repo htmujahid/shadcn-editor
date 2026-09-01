@@ -1,25 +1,25 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { SpeechToTextExtension } from "@/components/editor/extensions/speech-to-text"
-import { ActivityBar } from "@/components/editor/plugins/activitybar/activitybar-plugin"
-import { SpeechToTextPlugin } from "@/components/editor/plugins/activitybar/speech-to-text-plugin"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { SpeechToTextExtension } from "@/components/editor/extensions/speech-to-text";
+import { ActivityBar } from "@/components/editor/plugins/activitybar/activitybar-plugin";
+import { SpeechToTextPlugin } from "@/components/editor/plugins/activitybar/speech-to-text-plugin";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function SpeechToTextEditor() {
   const app = useMemo(
@@ -32,20 +32,20 @@ export function SpeechToTextEditor() {
           $getRoot().append(
             $createParagraphNode().append(
               $createTextNode(
-                "Click the microphone in the bar below and start talking; your words are typed here for you."
-              )
+                "Click the microphone in the bar below and start talking; your words are typed here for you.",
+              ),
             ),
             $createParagraphNode().append(
               $createTextNode(
-                "Speech recognition depends on the browser, so the button stays disabled where it is not supported."
-              )
-            )
-          )
+                "Speech recognition depends on the browser, so the button stays disabled where it is not supported.",
+              ),
+            ),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -62,11 +62,11 @@ export function SpeechToTextEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -77,5 +77,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

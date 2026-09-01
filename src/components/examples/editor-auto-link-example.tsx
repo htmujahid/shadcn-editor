@@ -1,24 +1,24 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { AutoLinkExtension } from "@/components/editor/extensions/auto-link"
-import { LinkExtension } from "@/components/editor/extensions/link"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { AutoLinkExtension } from "@/components/editor/extensions/auto-link";
+import { LinkExtension } from "@/components/editor/extensions/link";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function AutoLinkEditor() {
   const app = useMemo(
@@ -30,20 +30,20 @@ export function AutoLinkEditor() {
           $getRoot().append(
             $createParagraphNode().append(
               $createTextNode(
-                "Addresses turn into links on their own. The docs live at https://lexical.dev and the components at https://ui.shadcn.com for whenever you need them."
-              )
+                "Addresses turn into links on their own. The docs live at https://lexical.dev and the components at https://ui.shadcn.com for whenever you need them.",
+              ),
             ),
             $createParagraphNode().append(
               $createTextNode(
-                "Type a new URL anywhere in this document and watch it become a link as you finish it."
-              )
-            )
-          )
+                "Type a new URL anywhere in this document and watch it become a link as you finish it.",
+              ),
+            ),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -55,11 +55,11 @@ export function AutoLinkEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -70,5 +70,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

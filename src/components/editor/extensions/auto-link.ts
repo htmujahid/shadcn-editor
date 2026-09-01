@@ -1,11 +1,11 @@
-import { configExtension, defineExtension } from "lexical"
+import { configExtension, defineExtension } from "lexical";
 
-import { $isCodeNode } from "@lexical/code-core"
+import { $isCodeNode } from "@lexical/code-core";
 import {
   autoLinkEmailMatcher,
   autoLinkUrlMatcher,
   AutoLinkExtension as LexicalAutoLinkExtension,
-} from "@lexical/link"
+} from "@lexical/link";
 
 export const AutoLinkExtension = defineExtension({
   name: "@shadcn-editor/editor/AutoLink",
@@ -15,4 +15,4 @@ export const AutoLinkExtension = defineExtension({
       matchers: [autoLinkUrlMatcher, autoLinkEmailMatcher],
     }),
   ],
-})
+});

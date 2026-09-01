@@ -17,15 +17,15 @@ import {
   KEY_ESCAPE_COMMAND,
   type LexicalCommand,
   mergeRegister,
-} from "lexical"
+} from "lexical";
 
-import { NodeSelectionDataSelectedExtension } from "@lexical/extension"
+import { NodeSelectionDataSelectedExtension } from "@lexical/extension";
 import {
   CoreImportExtension,
   defineImportRule,
   DOMImportExtension,
   sel,
-} from "@lexical/html"
+} from "@lexical/html";
 
 import {
   $appendInline,
@@ -35,74 +35,74 @@ import {
   registerHostChromeSelection,
   registerSlotHostArrowEscape,
   registerSlotHostBackspace,
-} from "@/components/editor/extensions/slot-host"
+} from "@/components/editor/extensions/slot-host";
 import {
   $createPullQuoteNode,
   $isPullQuoteNode,
   PullQuoteNode,
-} from "@/components/editor/nodes/pullquote-node"
+} from "@/components/editor/nodes/pullquote-node";
 import {
   $createSlotContainerNode,
   SlotContainerNode,
-} from "@/components/editor/nodes/slot-container-node"
+} from "@/components/editor/nodes/slot-container-node";
 
 export const INSERT_PULLQUOTE_COMMAND: LexicalCommand<void> = createCommand(
-  "INSERT_PULLQUOTE_COMMAND"
-)
+  "INSERT_PULLQUOTE_COMMAND",
+);
 
 function $handlePullQuoteEnter(event: KeyboardEvent | null): boolean {
-  const selection = $getSelection()
+  const selection = $getSelection();
   if (!$isNodeSelection(selection)) {
-    return false
+    return false;
   }
-  const nodes = selection.getNodes()
+  const nodes = selection.getNodes();
   if (nodes.length !== 1 || !$isPullQuoteNode(nodes[0])) {
-    return false
+    return false;
   }
-  const quote = $getSlot(nodes[0], "quote")
+  const quote = $getSlot(nodes[0], "quote");
   if (!$isElementNode(quote)) {
-    return false
+    return false;
   }
-  event?.preventDefault()
-  quote.selectStart()
-  return true
+  event?.preventDefault();
+  quote.selectStart();
+  return true;
 }
 
 function $handlePullQuoteEscape(): boolean {
-  const selection = $getSelection()
+  const selection = $getSelection();
   if (!$isRangeSelection(selection)) {
-    return false
+    return false;
   }
-  const host = $findSlotHost(selection.anchor.getNode(), $isPullQuoteNode)
+  const host = $findSlotHost(selection.anchor.getNode(), $isPullQuoteNode);
   if (host === null) {
-    return false
+    return false;
   }
-  const nodeSelection = $createNodeSelection()
-  nodeSelection.add(host.getKey())
-  $setSelection(nodeSelection)
-  return true
+  const nodeSelection = $createNodeSelection();
+  nodeSelection.add(host.getKey());
+  $setSelection(nodeSelection);
+  return true;
 }
 
 const PullQuoteImportRule = defineImportRule({
   $import: (ctx, el) => {
-    const quote = $createSlotContainerNode()
-    const attribution = $createParagraphNode()
-    const pullquote = $createPullQuoteNode(quote, attribution)
+    const quote = $createSlotContainerNode();
+    const attribution = $createParagraphNode();
+    const pullquote = $createPullQuoteNode(quote, attribution);
     for (const domChild of Array.from(el.children)) {
-      const slotName = domChild.getAttribute("data-lexical-slot")
+      const slotName = domChild.getAttribute("data-lexical-slot");
       if (slotName === "quote") {
-        quote.splice(quote.getChildrenSize(), 0, ctx.$importChildren(domChild))
+        quote.splice(quote.getChildrenSize(), 0, ctx.$importChildren(domChild));
       } else if (slotName === "attribution") {
-        $appendInline(attribution, ctx.$importChildren(domChild))
+        $appendInline(attribution, ctx.$importChildren(domChild));
       } else {
-        quote.splice(quote.getChildrenSize(), 0, ctx.$importOne(domChild))
+        quote.splice(quote.getChildrenSize(), 0, ctx.$importOne(domChild));
       }
     }
-    return [pullquote]
+    return [pullquote];
   },
   match: sel.tag("div").attr("data-lexical-pullquote", true),
   name: "@shadcn-editor/editor/pullquote",
-})
+});
 
 export const PullQuoteExtension = defineExtension({
   name: "@shadcn-editor/editor/PullQuote",
@@ -121,10 +121,10 @@ export const PullQuoteExtension = defineExtension({
       editor.registerCommand(
         INSERT_PULLQUOTE_COMMAND,
         () => {
-          $insertSlotHostAtRoot($createPullQuoteNode())
-          return true
+          $insertSlotHostAtRoot($createPullQuoteNode());
+          return true;
         },
-        COMMAND_PRIORITY_EDITOR
+        COMMAND_PRIORITY_EDITOR,
       ),
       registerHostChromeSelection(editor, $isPullQuoteNode),
       registerSlotHostArrowEscape(editor, $isPullQuoteNode),
@@ -132,13 +132,13 @@ export const PullQuoteExtension = defineExtension({
       editor.registerCommand(
         KEY_ENTER_COMMAND,
         $handlePullQuoteEnter,
-        COMMAND_PRIORITY_BEFORE_EDITOR
+        COMMAND_PRIORITY_BEFORE_EDITOR,
       ),
       editor.registerCommand(
         KEY_ESCAPE_COMMAND,
         $handlePullQuoteEscape,
-        COMMAND_PRIORITY_LOW
-      )
-    )
+        COMMAND_PRIORITY_LOW,
+      ),
+    );
   },
-})
+});

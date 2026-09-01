@@ -1,4 +1,4 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
@@ -6,28 +6,28 @@ import {
   $getRoot,
   $isParagraphNode,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 import {
   $createTableNodeWithDimensions,
   $isTableCellNode,
   $isTableRowNode,
   TableExtension,
-} from "@lexical/table"
+} from "@lexical/table";
 
-import { BlockInsert } from "@/components/editor/plugins/block-insert/block-insert-plugin"
-import { InsertTablePlugin } from "@/components/editor/plugins/block-insert/insert-table-plugin"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
-import { TableHoverActionsPlugin } from "@/components/editor/plugins/floating/table-hover-actions-plugin"
+import { BlockInsert } from "@/components/editor/plugins/block-insert/block-insert-plugin";
+import { InsertTablePlugin } from "@/components/editor/plugins/block-insert/insert-table-plugin";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
+import { TableHoverActionsPlugin } from "@/components/editor/plugins/floating/table-hover-actions-plugin";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function TableEditor() {
   const app = useMemo(
@@ -41,34 +41,34 @@ export function TableEditor() {
             ["Free", "$0", "$0"],
             ["Pro", "$12", "$120"],
             ["Team", "$29", "$290"],
-          ]
-          const table = $createTableNodeWithDimensions(4, 3, true)
+          ];
+          const table = $createTableNodeWithDimensions(4, 3, true);
           table.getChildren().forEach((row, rowIndex) => {
             if (!$isTableRowNode(row)) {
-              return
+              return;
             }
             row.getChildren().forEach((cell, cellIndex) => {
               const paragraph = $isTableCellNode(cell)
                 ? cell.getFirstChild()
-                : null
+                : null;
               if ($isParagraphNode(paragraph)) {
-                paragraph.append($createTextNode(data[rowIndex][cellIndex]))
+                paragraph.append($createTextNode(data[rowIndex][cellIndex]));
               }
-            })
-          })
+            });
+          });
           $getRoot().append(
             $createParagraphNode().append(
               $createTextNode(
-                "Hover the table to reveal row and column actions, or insert a new one from the toolbar."
-              )
+                "Hover the table to reveal row and column actions, or insert a new one from the toolbar.",
+              ),
             ),
-            table
-          )
+            table,
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -86,11 +86,11 @@ export function TableEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -101,5 +101,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

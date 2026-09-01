@@ -3,35 +3,35 @@ import {
   $getSelection,
   $isRangeSelection,
   type LexicalEditor,
-} from "lexical"
+} from "lexical";
 
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
-import { useLexicalEditable } from "@lexical/react/useLexicalEditable"
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
-import { Smile } from "lucide-react"
+import { Smile } from "lucide-react";
 
-import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
-import { Button } from "@/components/ui/button"
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { Button } from "@/components/ui/button";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@/components/ui/tooltip";
 
 function insertEmojiTrigger(editor: LexicalEditor) {
   editor.update(() => {
-    const selection = $getSelection() ?? $getRoot().selectEnd()
+    const selection = $getSelection() ?? $getRoot().selectEnd();
     if ($isRangeSelection(selection)) {
-      selection.insertText(":")
+      selection.insertText(":");
     }
-  })
-  editor.focus()
+  });
+  editor.focus();
 }
 
 export function InsertEmojiPlugin() {
-  const [editor] = useLexicalComposerContext()
-  const isEditable = useLexicalEditable()
-  const { t } = useTranslation()
+  const [editor] = useLexicalComposerContext();
+  const isEditable = useLexicalEditable();
+  const { t } = useTranslation();
 
   return (
     <Tooltip>
@@ -50,5 +50,5 @@ export function InsertEmojiPlugin() {
       />
       <TooltipContent>{t.insertEmoji}</TooltipContent>
     </Tooltip>
-  )
+  );
 }

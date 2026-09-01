@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import {
   $getNearestNodeFromDOMNode,
@@ -11,10 +11,10 @@ import {
   CUT_COMMAND,
   PASTE_COMMAND,
   registerEventListener,
-} from "lexical"
+} from "lexical";
 
-import { $isAutoLinkNode, $isLinkNode } from "@lexical/link"
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
+import { $isAutoLinkNode, $isLinkNode } from "@lexical/link";
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 
 import {
   Clipboard,
@@ -23,128 +23,128 @@ import {
   Link2Off,
   Scissors,
   Trash2,
-} from "lucide-react"
+} from "lucide-react";
 
-import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
 import {
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuSeparator,
   ContextMenuTrigger,
-} from "@/components/ui/context-menu"
+} from "@/components/ui/context-menu";
 
 export function ContextMenuPlugin() {
-  const [editor] = useLexicalComposerContext()
-  const { t, dir } = useTranslation()
-  const triggerRef = useRef<HTMLDivElement>(null)
+  const [editor] = useLexicalComposerContext();
+  const { t, dir } = useTranslation();
+  const triggerRef = useRef<HTMLDivElement>(null);
   const [target, setTarget] = useState<{ key: string; isLink: boolean } | null>(
-    null
-  )
+    null,
+  );
 
   useEffect(() => {
     function onContextMenu(event: MouseEvent) {
-      const trigger = triggerRef.current
+      const trigger = triggerRef.current;
       if (trigger === null || !(event.target instanceof Node)) {
-        return
+        return;
       }
-      event.preventDefault()
+      event.preventDefault();
       editor.read(() => {
         const node =
-          $getNearestNodeFromDOMNode(event.target as Node) ?? $getRoot()
+          $getNearestNodeFromDOMNode(event.target as Node) ?? $getRoot();
         setTarget({
           key: node.getKey(),
           isLink: $isLinkNode(node) || $isLinkNode(node.getParent()),
-        })
-      })
+        });
+      });
       trigger.dispatchEvent(
         new MouseEvent("contextmenu", {
           bubbles: true,
           cancelable: true,
           clientX: event.clientX,
           clientY: event.clientY,
-        })
-      )
+        }),
+      );
     }
 
     return editor.registerRootListener((rootElement) => {
       if (rootElement !== null) {
-        return registerEventListener(rootElement, "contextmenu", onContextMenu)
+        return registerEventListener(rootElement, "contextmenu", onContextMenu);
       }
-    })
-  }, [editor])
+    });
+  }, [editor]);
 
   const removeLink = useCallback(() => {
     if (target === null) {
-      return
+      return;
     }
     editor.update(() => {
-      const node = $getNodeByKey(target.key)
-      const parent = node?.getParent()
+      const node = $getNodeByKey(target.key);
+      const parent = node?.getParent();
       const link = $isLinkNode(node)
         ? node
         : $isLinkNode(parent)
           ? parent
-          : null
+          : null;
       if (link === null) {
-        return
+        return;
       }
       if ($isAutoLinkNode(link)) {
-        link.setIsUnlinked(true)
-        return
+        link.setIsUnlinked(true);
+        return;
       }
       for (const child of link.getChildren()) {
-        link.insertBefore(child)
+        link.insertBefore(child);
       }
-      link.remove()
-    })
-  }, [editor, target])
+      link.remove();
+    });
+  }, [editor, target]);
 
   const pasteFromClipboard = useCallback(
     async (plainText: boolean) => {
       try {
-        const data = new DataTransfer()
+        const data = new DataTransfer();
         if (plainText) {
-          data.setData("text/plain", await navigator.clipboard.readText())
+          data.setData("text/plain", await navigator.clipboard.readText());
         } else {
-          const [item] = await navigator.clipboard.read()
+          const [item] = await navigator.clipboard.read();
           for (const type of item.types) {
-            data.setData(type, await (await item.getType(type)).text())
+            data.setData(type, await (await item.getType(type)).text());
           }
         }
         editor.dispatchCommand(
           PASTE_COMMAND,
-          new ClipboardEvent("paste", { clipboardData: data })
-        )
+          new ClipboardEvent("paste", { clipboardData: data }),
+        );
       } catch {
-        window.alert(t.clipboardNotAllowed)
+        window.alert(t.clipboardNotAllowed);
       }
     },
-    [editor, t]
-  )
+    [editor, t],
+  );
 
   const deleteNode = useCallback(() => {
     editor.update(() => {
-      const selection = $getSelection()
+      const selection = $getSelection();
       if ($isNodeSelection(selection)) {
         for (const node of selection.getNodes()) {
           if ($isDecoratorNode(node)) {
-            node.remove()
+            node.remove();
           }
         }
-        return
+        return;
       }
-      const node = target === null ? null : $getNodeByKey(target.key)
+      const node = target === null ? null : $getNodeByKey(target.key);
       if (node === null) {
-        return
+        return;
       }
       if ($isDecoratorNode(node)) {
-        node.remove()
+        node.remove();
       } else {
-        node.getTopLevelElement()?.remove()
+        node.getTopLevelElement()?.remove();
       }
-    })
-  }, [editor, target])
+    });
+  }, [editor, target]);
 
   return (
     <ContextMenu>
@@ -186,5 +186,5 @@ export function ContextMenuPlugin() {
         </ContextMenuItem>
       </ContextMenuContent>
     </ContextMenu>
-  )
+  );
 }

@@ -1,17 +1,17 @@
-import { useEffect } from "react"
+import { useEffect } from "react";
 
-import { $getRoot, HISTORY_MERGE_TAG } from "lexical"
+import { $getRoot, HISTORY_MERGE_TAG } from "lexical";
 
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
-import { ContentEditable as LexicalContentEditable } from "@lexical/react/LexicalContentEditable"
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import { ContentEditable as LexicalContentEditable } from "@lexical/react/LexicalContentEditable";
 
-import { cva, type VariantProps } from "class-variance-authority"
+import { cva, type VariantProps } from "class-variance-authority";
 
 import {
   type LocalizedText,
   useTranslation,
-} from "@/components/editor/plugins/i18n-plugin"
-import { cn } from "@/lib/utils"
+} from "@/components/editor/plugins/i18n-plugin";
+import { cn } from "@/lib/utils";
 
 const contentEditableVariants = cva(
   "min-h-full w-full bg-transparent text-sm outline-none",
@@ -26,8 +26,8 @@ const contentEditableVariants = cva(
     defaultVariants: {
       variant: "default",
     },
-  }
-)
+  },
+);
 
 const placeholderVariants = cva(
   "pointer-events-none absolute text-sm text-muted-foreground select-none",
@@ -42,8 +42,8 @@ const placeholderVariants = cva(
     defaultVariants: {
       variant: "default",
     },
-  }
-)
+  },
+);
 
 export function ContentEditable({
   variant,
@@ -51,22 +51,22 @@ export function ContentEditable({
   placeholder,
   placeholderClassName,
 }: VariantProps<typeof contentEditableVariants> & {
-  className?: string
-  placeholder?: LocalizedText
-  placeholderClassName?: string
+  className?: string;
+  placeholder?: LocalizedText;
+  placeholderClassName?: string;
 }) {
-  const [editor] = useLexicalComposerContext()
-  const { language, dir, t } = useTranslation()
-  const placeholderText = placeholder?.[language] ?? t.typeSomething
+  const [editor] = useLexicalComposerContext();
+  const { language, dir, t } = useTranslation();
+  const placeholderText = placeholder?.[language] ?? t.typeSomething;
 
   useEffect(() => {
     editor.update(
       () => {
-        $getRoot().setDirection(dir)
+        $getRoot().setDirection(dir);
       },
-      { tag: HISTORY_MERGE_TAG }
-    )
-  }, [editor, dir])
+      { tag: HISTORY_MERGE_TAG },
+    );
+  }, [editor, dir]);
 
   return (
     <LexicalContentEditable
@@ -80,5 +80,5 @@ export function ContentEditable({
         </div>
       }
     />
-  )
+  );
 }

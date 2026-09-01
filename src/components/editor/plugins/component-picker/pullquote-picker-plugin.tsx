@@ -1,21 +1,21 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
-import { $getRoot, $getSelection } from "lexical"
+import { $getRoot, $getSelection } from "lexical";
 
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 
-import { Quote } from "lucide-react"
+import { Quote } from "lucide-react";
 
-import { INSERT_PULLQUOTE_COMMAND } from "@/components/editor/extensions/pullquote"
+import { INSERT_PULLQUOTE_COMMAND } from "@/components/editor/extensions/pullquote";
 import {
   type ComponentPickerItem,
   useComponentPickerItems,
-} from "@/components/editor/plugins/component-picker/component-picker-plugin"
-import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
+} from "@/components/editor/plugins/component-picker/component-picker-plugin";
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
 
 export function PullQuotePickerPlugin() {
-  const [editor] = useLexicalComposerContext()
-  const { t } = useTranslation()
+  const [editor] = useLexicalComposerContext();
+  const { t } = useTranslation();
 
   const items = useMemo<ComponentPickerItem[]>(
     () => [
@@ -27,17 +27,17 @@ export function PullQuotePickerPlugin() {
         onSelect: () => {
           editor.update(() => {
             if (!$getSelection()) {
-              $getRoot().selectEnd()
+              $getRoot().selectEnd();
             }
-          })
-          editor.dispatchCommand(INSERT_PULLQUOTE_COMMAND, undefined)
+          });
+          editor.dispatchCommand(INSERT_PULLQUOTE_COMMAND, undefined);
         },
       },
     ],
-    [editor, t]
-  )
+    [editor, t],
+  );
 
-  useComponentPickerItems(items)
+  useComponentPickerItems(items);
 
-  return null
+  return null;
 }

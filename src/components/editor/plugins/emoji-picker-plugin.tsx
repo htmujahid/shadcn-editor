@@ -1,43 +1,43 @@
-import { useCallback, useMemo, useState } from "react"
+import { useCallback, useMemo, useState } from "react";
 
-import type { TextNode } from "lexical"
+import type { TextNode } from "lexical";
 
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import {
   LexicalTypeaheadMenuPlugin,
   MenuOption,
   useBasicTypeaheadTriggerMatch,
-} from "@lexical/react/LexicalTypeaheadMenuPlugin"
+} from "@lexical/react/LexicalTypeaheadMenuPlugin";
 
-import { Popover as PopoverPrimitive } from "@base-ui/react/popover"
-import compactEmojis from "emojibase-data/en/compact.json"
+import { Popover as PopoverPrimitive } from "@base-ui/react/popover";
+import compactEmojis from "emojibase-data/en/compact.json";
 
 import {
   $createEmojiNode,
   EMOJI_CLASS_NAME,
-} from "@/components/editor/nodes/emoji-node"
-import { useLanguage } from "@/components/editor/plugins/i18n-plugin"
-import { Command, CommandItem, CommandList } from "@/components/ui/command"
+} from "@/components/editor/nodes/emoji-node";
+import { useLanguage } from "@/components/editor/plugins/i18n-plugin";
+import { Command, CommandItem, CommandList } from "@/components/ui/command";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/components/ui/popover";
 
-const MAX_SUGGESTIONS = 8
+const MAX_SUGGESTIONS = 8;
 
-const EXCLUDED_GROUPS = new Set([2])
+const EXCLUDED_GROUPS = new Set([2]);
 
 type EmojiEntry = {
-  emoji: string
-  name: string
-  keywords: string[]
-  hexcode: string
-}
+  emoji: string;
+  name: string;
+  keywords: string[];
+  hexcode: string;
+};
 
 const EMOJI_ENTRIES: EmojiEntry[] = compactEmojis
   .filter(
-    (entry) => entry.group !== undefined && !EXCLUDED_GROUPS.has(entry.group)
+    (entry) => entry.group !== undefined && !EXCLUDED_GROUPS.has(entry.group),
   )
   .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
   .map((entry) => ({
@@ -48,94 +48,97 @@ const EMOJI_ENTRIES: EmojiEntry[] = compactEmojis
       .replace(/^_+|_+$/g, ""),
     keywords: entry.tags ?? [],
     hexcode: entry.hexcode,
-  }))
+  }));
 
 function normalize(value: string): string {
   return value
     .trim()
     .toLowerCase()
-    .replace(/[_\s]+/g, "")
+    .replace(/[_\s]+/g, "");
 }
 
 function searchEmojis(query: string): EmojiEntry[] {
-  const q = normalize(query)
+  const q = normalize(query);
   if (!q) {
-    return []
+    return [];
   }
 
-  const startsWith: EmojiEntry[] = []
-  const includes: EmojiEntry[] = []
+  const startsWith: EmojiEntry[] = [];
+  const includes: EmojiEntry[] = [];
 
   for (const entry of EMOJI_ENTRIES) {
-    const name = normalize(entry.name)
+    const name = normalize(entry.name);
     if (name.startsWith(q)) {
-      startsWith.push(entry)
-      continue
+      startsWith.push(entry);
+      continue;
     }
     const keywordMatch = entry.keywords.some((keyword) =>
-      normalize(keyword).startsWith(q)
-    )
+      normalize(keyword).startsWith(q),
+    );
     if (keywordMatch) {
-      startsWith.push(entry)
-      continue
+      startsWith.push(entry);
+      continue;
     }
     if (
       name.includes(q) ||
       entry.keywords.some((keyword) => normalize(keyword).includes(q))
     ) {
-      includes.push(entry)
+      includes.push(entry);
     }
   }
 
-  return [...startsWith, ...includes]
+  return [...startsWith, ...includes];
 }
 
 class EmojiTypeaheadOption extends MenuOption {
-  entry: EmojiEntry
+  entry: EmojiEntry;
 
   constructor(entry: EmojiEntry) {
-    super(entry.hexcode)
-    this.entry = entry
+    super(entry.hexcode);
+    this.entry = entry;
   }
 }
 
 export function EmojiPickerPlugin() {
-  const [editor] = useLexicalComposerContext()
-  const { dir } = useLanguage()
-  const [queryString, setQueryString] = useState<string | null>(null)
+  const [editor] = useLexicalComposerContext();
+  const { dir } = useLanguage();
+  const [queryString, setQueryString] = useState<string | null>(null);
 
   const checkForTriggerMatch = useBasicTypeaheadTriggerMatch(":", {
     minLength: 0,
-  })
+  });
 
   const options = useMemo(() => {
     if (queryString === null) {
-      return []
+      return [];
     }
     const matches =
-      queryString === "" ? EMOJI_ENTRIES : searchEmojis(queryString)
+      queryString === "" ? EMOJI_ENTRIES : searchEmojis(queryString);
     return matches
       .slice(0, MAX_SUGGESTIONS)
-      .map((entry) => new EmojiTypeaheadOption(entry))
-  }, [queryString])
+      .map((entry) => new EmojiTypeaheadOption(entry));
+  }, [queryString]);
 
   const onSelectOption = useCallback(
     (
       option: EmojiTypeaheadOption,
       nodeToReplace: TextNode | null,
-      closeMenu: () => void
+      closeMenu: () => void,
     ) => {
       editor.update(() => {
-        const emojiNode = $createEmojiNode(EMOJI_CLASS_NAME, option.entry.emoji)
+        const emojiNode = $createEmojiNode(
+          EMOJI_CLASS_NAME,
+          option.entry.emoji,
+        );
         if (nodeToReplace) {
-          nodeToReplace.replace(emojiNode)
+          nodeToReplace.replace(emojiNode);
         }
-        emojiNode.selectNext()
-        closeMenu()
-      })
+        emojiNode.selectNext();
+        closeMenu();
+      });
     },
-    [editor]
-  )
+    [editor],
+  );
 
   return (
     <LexicalTypeaheadMenuPlugin<EmojiTypeaheadOption>
@@ -145,7 +148,7 @@ export function EmojiPickerPlugin() {
       options={options}
       menuRenderFn={(
         anchorElementRef,
-        { selectedIndex, selectOptionAndCleanUp, setHighlightedIndex }
+        { selectedIndex, selectOptionAndCleanUp, setHighlightedIndex },
       ) =>
         anchorElementRef.current && options.length > 0 ? (
           <Popover open>
@@ -178,10 +181,10 @@ export function EmojiPickerPlugin() {
                   }
                   onValueChange={(nextValue) => {
                     const index = options.findIndex(
-                      (option) => option.entry.hexcode === nextValue
-                    )
+                      (option) => option.entry.hexcode === nextValue,
+                    );
                     if (index >= 0) {
-                      setHighlightedIndex(index)
+                      setHighlightedIndex(index);
                     }
                   }}
                   shouldFilter={false}
@@ -210,5 +213,5 @@ export function EmojiPickerPlugin() {
         ) : null
       }
     />
-  )
+  );
 }

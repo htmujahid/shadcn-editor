@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react"
+import { useMemo, useState } from "react";
 
 import {
   $createParagraphNode,
@@ -6,44 +6,44 @@ import {
   $getRoot,
   defineExtension,
   HISTORY_MERGE_TAG,
-} from "lexical"
+} from "lexical";
 
-import { getExtensionDependencyFromEditor } from "@lexical/extension"
-import { HistoryExtension } from "@lexical/history"
-import { $createMarkNode } from "@lexical/mark"
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { getExtensionDependencyFromEditor } from "@lexical/extension";
+import { HistoryExtension } from "@lexical/history";
+import { $createMarkNode } from "@lexical/mark";
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
 import {
   addComment,
   CommentExtension,
   createComment,
   createThread,
-} from "@/components/editor/extensions/comment"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+} from "@/components/editor/extensions/comment";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   CommentPlugin,
   CommentsPanel,
-} from "@/components/editor/plugins/floating/comment-plugin"
+} from "@/components/editor/plugins/floating/comment-plugin";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 import {
   Sidebar,
   SidebarContent,
   SidebarProvider,
   SidebarTrigger,
-} from "@/components/ui/sidebar"
-import { cn } from "@/lib/utils"
+} from "@/components/ui/sidebar";
+import { cn } from "@/lib/utils";
 
-const SEED_QUOTE = "anchored to the exact words it refers to"
+const SEED_QUOTE = "anchored to the exact words it refers to";
 
 export function CommentsEditor() {
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const app = useMemo(
     () =>
       defineExtension({
@@ -52,48 +52,48 @@ export function CommentsEditor() {
         register: (editor) => {
           const state = getExtensionDependencyFromEditor(
             editor,
-            CommentExtension
-          ).output
+            CommentExtension,
+          ).output;
           editor.update(
             () => {
-              const root = $getRoot()
+              const root = $getRoot();
               if (!root.isEmpty()) {
-                return
+                return;
               }
               const thread = createThread(SEED_QUOTE, [
                 createComment(
                   "This is what makes review workflows click.",
                   "Sam",
                   undefined,
-                  performance.timeOrigin + performance.now() - 300000
+                  performance.timeOrigin + performance.now() - 300000,
                 ),
-              ])
-              addComment(state, thread)
+              ]);
+              addComment(state, thread);
               root.append(
                 $createParagraphNode().append(
                   $createTextNode(
-                    "Select any text in this document and press the button that appears beside the line to start a comment thread."
-                  )
+                    "Select any text in this document and press the button that appears beside the line to start a comment thread.",
+                  ),
                 ),
                 $createParagraphNode().append(
                   $createTextNode("Feedback lives in the panel on the side, "),
                   $createMarkNode([thread.id]).append(
-                    $createTextNode(SEED_QUOTE)
+                    $createTextNode(SEED_QUOTE),
                   ),
                   $createTextNode(
-                    ", so the context of a discussion never gets lost. Click a thread to jump to its highlight, or place the caret inside a highlight to light the thread up."
-                  )
-                )
-              )
+                    ", so the context of a discussion never gets lost. Click a thread to jump to its highlight, or place the caret inside a highlight to light the thread up.",
+                  ),
+                ),
+              );
             },
-            { tag: HISTORY_MERGE_TAG }
-          )
-          return () => {}
+            { tag: HISTORY_MERGE_TAG },
+          );
+          return () => {};
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -118,7 +118,7 @@ export function CommentsEditor() {
                 "shrink-0 overflow-hidden transition-[width,margin] duration-200 ease-linear",
                 sidebarOpen
                   ? "w-64 rounded-lg shadow-sm ring-1 ring-sidebar-border"
-                  : "-ms-3 w-0"
+                  : "-ms-3 w-0",
               )}
             >
               <SidebarContent className="w-64">
@@ -130,11 +130,11 @@ export function CommentsEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -145,5 +145,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

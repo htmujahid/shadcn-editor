@@ -4,19 +4,19 @@ import {
   createCommand,
   defineExtension,
   type LexicalCommand,
-} from "lexical"
+} from "lexical";
 
-import { defineImportRule, DOMImportExtension, sel } from "@lexical/html"
-import { $insertNodeToNearestRoot } from "@lexical/utils"
+import { defineImportRule, DOMImportExtension, sel } from "@lexical/html";
+import { $insertNodeToNearestRoot } from "@lexical/utils";
 
 import {
   $createYouTubeNode,
   YouTubeNode,
-} from "@/components/editor/nodes/youtube-node"
+} from "@/components/editor/nodes/youtube-node";
 
 export const INSERT_YOUTUBE_COMMAND: LexicalCommand<string> = createCommand(
-  "INSERT_YOUTUBE_COMMAND"
-)
+  "INSERT_YOUTUBE_COMMAND",
+);
 
 const YouTubeImportRule = defineImportRule({
   $import: (ctx) => [$createYouTubeNode(ctx.captures.id[0])],
@@ -24,7 +24,7 @@ const YouTubeImportRule = defineImportRule({
     .tag("iframe")
     .attr("data-lexical-youtube", /^.+$/, { capture: "id" }),
   name: "@shadcn-editor/editor/youtube",
-})
+});
 
 export const YouTubeExtension = defineExtension({
   name: "@shadcn-editor/editor/YouTube",
@@ -38,10 +38,10 @@ export const YouTubeExtension = defineExtension({
     editor.registerCommand(
       INSERT_YOUTUBE_COMMAND,
       (videoID) => {
-        const youTubeNode = $createYouTubeNode(videoID)
-        $insertNodeToNearestRoot(youTubeNode)
-        return true
+        const youTubeNode = $createYouTubeNode(videoID);
+        $insertNodeToNearestRoot(youTubeNode);
+        return true;
       },
-      COMMAND_PRIORITY_EDITOR
+      COMMAND_PRIORITY_EDITOR,
     ),
-})
+});

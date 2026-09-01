@@ -1,19 +1,19 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 
-import { CodeXml } from "lucide-react"
+import { CodeXml } from "lucide-react";
 
-import { insertCodeBlock } from "@/components/editor/extensions/code"
+import { insertCodeBlock } from "@/components/editor/extensions/code";
 import {
   type ComponentPickerItem,
   useComponentPickerItems,
-} from "@/components/editor/plugins/component-picker/component-picker-plugin"
-import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
+} from "@/components/editor/plugins/component-picker/component-picker-plugin";
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
 
 export function CodePickerPlugin() {
-  const [editor] = useLexicalComposerContext()
-  const { t } = useTranslation()
+  const [editor] = useLexicalComposerContext();
+  const { t } = useTranslation();
 
   const items = useMemo<ComponentPickerItem[]>(
     () => [
@@ -25,10 +25,10 @@ export function CodePickerPlugin() {
         onSelect: () => insertCodeBlock(editor),
       },
     ],
-    [editor, t]
-  )
+    [editor, t],
+  );
 
-  useComponentPickerItems(items)
+  useComponentPickerItems(items);
 
-  return null
+  return null;
 }

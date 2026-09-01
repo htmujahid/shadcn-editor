@@ -1,66 +1,66 @@
-import { useState } from "react"
+import { useState } from "react";
 
-import { $getRoot, $getSelection } from "lexical"
+import { $getRoot, $getSelection } from "lexical";
 
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
-import { useLexicalEditable } from "@lexical/react/useLexicalEditable"
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
-import { Frame } from "lucide-react"
+import { Frame } from "lucide-react";
 
-import { INSERT_FIGMA_COMMAND } from "@/components/editor/extensions/figma"
-import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { INSERT_FIGMA_COMMAND } from "@/components/editor/extensions/figma";
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/components/ui/popover";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@/components/ui/tooltip";
 
 export function parseFigmaDocumentID(url: string): string | null {
-  const trimmed = url.trim()
+  const trimmed = url.trim();
   if (/^[0-9a-zA-Z]{22,128}$/.test(trimmed)) {
-    return trimmed
+    return trimmed;
   }
   const match =
     /^https:\/\/([\w.-]+\.)?figma\.com\/(file|proto|design|board)\/([0-9a-zA-Z]{22,128})(?:\/.*)?$/.exec(
-      trimmed
-    )
-  return match?.[3] ?? null
+      trimmed,
+    );
+  return match?.[3] ?? null;
 }
 
 export function InsertFigmaPlugin() {
-  const [editor] = useLexicalComposerContext()
-  const isEditable = useLexicalEditable()
-  const { t, dir } = useTranslation()
-  const [open, setOpen] = useState(false)
-  const [url, setUrl] = useState("")
-  const documentID = parseFigmaDocumentID(url)
+  const [editor] = useLexicalComposerContext();
+  const isEditable = useLexicalEditable();
+  const { t, dir } = useTranslation();
+  const [open, setOpen] = useState(false);
+  const [url, setUrl] = useState("");
+  const documentID = parseFigmaDocumentID(url);
 
   const onOpenChange = (nextOpen: boolean) => {
-    setOpen(nextOpen)
+    setOpen(nextOpen);
     if (!nextOpen) {
-      setUrl("")
+      setUrl("");
     }
-  }
+  };
 
   const onSubmit = () => {
     if (!documentID) {
-      return
+      return;
     }
     editor.update(() => {
       if (!$getSelection()) {
-        $getRoot().selectEnd()
+        $getRoot().selectEnd();
       }
-    })
-    editor.dispatchCommand(INSERT_FIGMA_COMMAND, documentID)
-    onOpenChange(false)
-  }
+    });
+    editor.dispatchCommand(INSERT_FIGMA_COMMAND, documentID);
+    onOpenChange(false);
+  };
 
   return (
     <Popover open={open} onOpenChange={onOpenChange}>
@@ -92,8 +92,8 @@ export function InsertFigmaPlugin() {
             onChange={(event) => setUrl(event.target.value)}
             onKeyDown={(event) => {
               if (event.key === "Enter") {
-                event.preventDefault()
-                onSubmit()
+                event.preventDefault();
+                onSubmit();
               }
             }}
           />
@@ -103,5 +103,5 @@ export function InsertFigmaPlugin() {
         </div>
       </PopoverContent>
     </Popover>
-  )
+  );
 }

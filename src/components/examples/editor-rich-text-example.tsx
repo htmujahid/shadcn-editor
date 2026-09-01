@@ -1,26 +1,26 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
 import {
   $createHeadingNode,
   $createQuoteNode,
   RichTextExtension,
-} from "@lexical/rich-text"
+} from "@lexical/rich-text";
 
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function RichTextEditor() {
   const app = useMemo(
@@ -31,7 +31,7 @@ export function RichTextEditor() {
         $initialEditorState: () => {
           $getRoot().append(
             $createHeadingNode("h2").append(
-              $createTextNode("Rich text, out of the box")
+              $createTextNode("Rich text, out of the box"),
             ),
             $createParagraphNode().append(
               $createTextNode("Write "),
@@ -39,20 +39,20 @@ export function RichTextEditor() {
               $createTextNode(" and "),
               $createTextNode("expressive").toggleFormat("italic"),
               $createTextNode(
-                " documents with headings, quotes, and formatted text."
-              )
+                " documents with headings, quotes, and formatted text.",
+              ),
             ),
             $createQuoteNode().append(
               $createTextNode(
-                "Everything you type here is a Lexical node, styled with shadcn/ui."
-              )
-            )
-          )
+                "Everything you type here is a Lexical node, styled with shadcn/ui.",
+              ),
+            ),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -64,11 +64,11 @@ export function RichTextEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -79,5 +79,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

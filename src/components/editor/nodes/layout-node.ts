@@ -12,30 +12,30 @@ import {
   type NodeKey,
   type SerializedElementNode,
   type Spread,
-} from "lexical"
+} from "lexical";
 
 export type SerializedLayoutContainerNode = Spread<
   { templateColumns: string },
   SerializedElementNode
->
+>;
 
-export type SerializedLayoutItemNode = SerializedElementNode
+export type SerializedLayoutItemNode = SerializedElementNode;
 
 function $convertLayoutContainerElement(
-  domNode: HTMLElement
+  domNode: HTMLElement,
 ): DOMConversionOutput | null {
-  const templateColumns = domNode.style.gridTemplateColumns
+  const templateColumns = domNode.style.gridTemplateColumns;
   return templateColumns
     ? { node: $createLayoutContainerNode(templateColumns) }
-    : null
+    : null;
 }
 
 export class LayoutContainerNode extends ElementNode {
-  __templateColumns: string
+  __templateColumns: string;
 
   constructor(templateColumns: string, key?: NodeKey) {
-    super(key)
-    this.__templateColumns = templateColumns
+    super(key);
+    this.__templateColumns = templateColumns;
   }
 
   $config() {
@@ -47,93 +47,93 @@ export class LayoutContainerNode extends ElementNode {
             ? { conversion: $convertLayoutContainerElement, priority: 1 }
             : null,
       },
-    })
+    });
   }
 
   static clone(node: LayoutContainerNode): LayoutContainerNode {
-    return new LayoutContainerNode(node.__templateColumns, node.__key)
+    return new LayoutContainerNode(node.__templateColumns, node.__key);
   }
 
   static importJSON(
-    serializedNode: SerializedLayoutContainerNode
+    serializedNode: SerializedLayoutContainerNode,
   ): LayoutContainerNode {
-    return $createLayoutContainerNode(serializedNode.templateColumns)
+    return $createLayoutContainerNode(serializedNode.templateColumns);
   }
 
   updateFromJSON(
-    serializedNode: LexicalUpdateJSON<SerializedLayoutContainerNode>
+    serializedNode: LexicalUpdateJSON<SerializedLayoutContainerNode>,
   ): this {
     return super
       .updateFromJSON(serializedNode)
-      .setTemplateColumns(serializedNode.templateColumns)
+      .setTemplateColumns(serializedNode.templateColumns);
   }
 
   exportJSON(): SerializedLayoutContainerNode {
     return {
       ...super.exportJSON(),
       templateColumns: this.getTemplateColumns(),
-    }
+    };
   }
 
   createDOM(config: EditorConfig): HTMLElement {
-    const dom = $getDocument().createElement("div")
-    dom.style.gridTemplateColumns = this.__templateColumns
-    const className = config.theme.layoutContainer
+    const dom = $getDocument().createElement("div");
+    dom.style.gridTemplateColumns = this.__templateColumns;
+    const className = config.theme.layoutContainer;
     if (className) {
-      addClassNamesToElement(dom, className)
+      addClassNamesToElement(dom, className);
     }
-    return dom
+    return dom;
   }
 
   updateDOM(prevNode: this, dom: HTMLElement): boolean {
     if (prevNode.__templateColumns !== this.__templateColumns) {
-      dom.style.gridTemplateColumns = this.__templateColumns
+      dom.style.gridTemplateColumns = this.__templateColumns;
     }
-    return false
+    return false;
   }
 
   exportDOM(editor: LexicalEditor): DOMExportOutput {
-    const output = super.exportDOM(editor)
-    const element = output.element
+    const output = super.exportDOM(editor);
+    const element = output.element;
     if (element instanceof HTMLElement) {
-      element.style.gridTemplateColumns = this.__templateColumns
+      element.style.gridTemplateColumns = this.__templateColumns;
     }
-    return output
+    return output;
   }
 
   getTemplateColumns(): string {
-    return this.getLatest().__templateColumns
+    return this.getLatest().__templateColumns;
   }
 
   setTemplateColumns(templateColumns: string): this {
-    const writable = this.getWritable()
-    writable.__templateColumns = templateColumns
-    return writable
+    const writable = this.getWritable();
+    writable.__templateColumns = templateColumns;
+    return writable;
   }
 
   canBeEmpty(): boolean {
-    return false
+    return false;
   }
 
   isShadowRoot(): boolean {
-    return true
+    return true;
   }
 }
 
 export function $createLayoutContainerNode(
-  templateColumns: string
+  templateColumns: string,
 ): LayoutContainerNode {
-  return $applyNodeReplacement(new LayoutContainerNode(templateColumns))
+  return $applyNodeReplacement(new LayoutContainerNode(templateColumns));
 }
 
 export function $isLayoutContainerNode(
-  node: LexicalNode | null | undefined
+  node: LexicalNode | null | undefined,
 ): node is LayoutContainerNode {
-  return node instanceof LayoutContainerNode
+  return node instanceof LayoutContainerNode;
 }
 
 function $convertLayoutItemElement(): DOMConversionOutput {
-  return { node: $createLayoutItemNode() }
+  return { node: $createLayoutItemNode() };
 }
 
 export class LayoutItemNode extends ElementNode {
@@ -146,55 +146,55 @@ export class LayoutItemNode extends ElementNode {
             ? { conversion: $convertLayoutItemElement, priority: 1 }
             : null,
       },
-    })
+    });
   }
 
   static clone(node: LayoutItemNode): LayoutItemNode {
-    return new LayoutItemNode(node.__key)
+    return new LayoutItemNode(node.__key);
   }
 
   static importJSON(): LayoutItemNode {
-    return $createLayoutItemNode()
+    return $createLayoutItemNode();
   }
 
   exportJSON(): SerializedLayoutItemNode {
-    return { ...super.exportJSON() }
+    return { ...super.exportJSON() };
   }
 
   createDOM(config: EditorConfig): HTMLElement {
-    const dom = $getDocument().createElement("div")
-    dom.setAttribute("data-lexical-layout-item", "true")
-    const className = config.theme.layoutItem
+    const dom = $getDocument().createElement("div");
+    dom.setAttribute("data-lexical-layout-item", "true");
+    const className = config.theme.layoutItem;
     if (className) {
-      addClassNamesToElement(dom, className)
+      addClassNamesToElement(dom, className);
     }
-    return dom
+    return dom;
   }
 
   updateDOM(): boolean {
-    return false
+    return false;
   }
 
   exportDOM(editor: LexicalEditor): DOMExportOutput {
-    const output = super.exportDOM(editor)
-    const element = output.element
+    const output = super.exportDOM(editor);
+    const element = output.element;
     if (element instanceof HTMLElement) {
-      element.setAttribute("data-lexical-layout-item", "true")
+      element.setAttribute("data-lexical-layout-item", "true");
     }
-    return output
+    return output;
   }
 
   isShadowRoot(): boolean {
-    return true
+    return true;
   }
 }
 
 export function $createLayoutItemNode(): LayoutItemNode {
-  return $applyNodeReplacement(new LayoutItemNode())
+  return $applyNodeReplacement(new LayoutItemNode());
 }
 
 export function $isLayoutItemNode(
-  node: LexicalNode | null | undefined
+  node: LexicalNode | null | undefined,
 ): node is LayoutItemNode {
-  return node instanceof LayoutItemNode
+  return node instanceof LayoutItemNode;
 }

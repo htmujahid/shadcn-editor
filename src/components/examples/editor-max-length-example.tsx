@@ -1,25 +1,25 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { OverflowExtension } from "@lexical/overflow"
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { OverflowExtension } from "@lexical/overflow";
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { ActivityBar } from "@/components/editor/plugins/activitybar/activitybar-plugin"
-import { CountPlugin } from "@/components/editor/plugins/activitybar/count-plugin"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { ActivityBar } from "@/components/editor/plugins/activitybar/activitybar-plugin";
+import { CountPlugin } from "@/components/editor/plugins/activitybar/count-plugin";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function MaxLengthEditor() {
   const app = useMemo(
@@ -32,15 +32,15 @@ export function MaxLengthEditor() {
           $getRoot().append(
             $createParagraphNode().append(
               $createTextNode(
-                "This editor allows at most 200 characters. Keep typing and anything past the limit is marked as overflow."
-              )
-            )
-          )
+                "This editor allows at most 200 characters. Keep typing and anything past the limit is marked as overflow.",
+              ),
+            ),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -57,11 +57,11 @@ export function MaxLengthEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -72,5 +72,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

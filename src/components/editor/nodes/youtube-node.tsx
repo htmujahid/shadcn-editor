@@ -1,4 +1,4 @@
-import type { JSX } from "react"
+import type { JSX } from "react";
 
 import {
   $getDocument,
@@ -9,23 +9,23 @@ import {
   type LexicalNode,
   type NodeKey,
   type Spread,
-} from "lexical"
+} from "lexical";
 
-import { BlockWithAlignableContents } from "@lexical/react/LexicalBlockWithAlignableContents"
+import { BlockWithAlignableContents } from "@lexical/react/LexicalBlockWithAlignableContents";
 import {
   DecoratorBlockNode,
   type SerializedDecoratorBlockNode,
-} from "@lexical/react/LexicalDecoratorBlockNode"
+} from "@lexical/react/LexicalDecoratorBlockNode";
 
 type YouTubeComponentProps = Readonly<{
   className: Readonly<{
-    base: string
-    focus: string
-  }>
-  format: ElementFormatType | null
-  nodeKey: NodeKey
-  videoID: string
-}>
+    base: string;
+    focus: string;
+  }>;
+  format: ElementFormatType | null;
+  nodeKey: NodeKey;
+  videoID: string;
+}>;
 
 function YouTubeComponent({
   className,
@@ -47,82 +47,82 @@ function YouTubeComponent({
         className="inline-block aspect-video w-full max-w-xl rounded-md border bg-muted align-top"
       />
     </BlockWithAlignableContents>
-  )
+  );
 }
 
 export type SerializedYouTubeNode = Spread<
   {
-    videoID: string
+    videoID: string;
   },
   SerializedDecoratorBlockNode
->
+>;
 
 export class YouTubeNode extends DecoratorBlockNode {
-  __id: string
+  __id: string;
 
   $config() {
-    return this.config("youtube", { extends: DecoratorBlockNode })
+    return this.config("youtube", { extends: DecoratorBlockNode });
   }
 
   static clone(node: YouTubeNode): YouTubeNode {
-    return new YouTubeNode(node.__id, node.__format, node.__key)
+    return new YouTubeNode(node.__id, node.__format, node.__key);
   }
 
   static importJSON(serializedNode: SerializedYouTubeNode): YouTubeNode {
     return $createYouTubeNode(serializedNode.videoID).updateFromJSON(
-      serializedNode
-    )
+      serializedNode,
+    );
   }
 
   exportJSON(): SerializedYouTubeNode {
     return {
       ...super.exportJSON(),
       videoID: this.__id,
-    }
+    };
   }
 
   constructor(id: string, format?: ElementFormatType, key?: NodeKey) {
-    super(format, key)
-    this.__id = id
+    super(format, key);
+    this.__id = id;
   }
 
   exportDOM(): DOMExportOutput {
-    const element = $getDocument().createElement("iframe")
-    element.setAttribute("data-lexical-youtube", this.__id)
-    element.setAttribute("width", "560")
-    element.setAttribute("height", "315")
+    const element = $getDocument().createElement("iframe");
+    element.setAttribute("data-lexical-youtube", this.__id);
+    element.setAttribute("width", "560");
+    element.setAttribute("height", "315");
     element.setAttribute(
       "src",
-      `https://www.youtube-nocookie.com/embed/${this.__id}`
-    )
-    element.setAttribute("frameborder", "0")
+      `https://www.youtube-nocookie.com/embed/${this.__id}`,
+    );
+    element.setAttribute("frameborder", "0");
     element.setAttribute(
       "allow",
-      "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    )
-    element.setAttribute("allowfullscreen", "true")
-    element.setAttribute("title", "YouTube video")
-    return { element }
+      "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
+    );
+    element.setAttribute("allowfullscreen", "true");
+    element.setAttribute("title", "YouTube video");
+    return { element };
   }
 
   updateDOM(): false {
-    return false
+    return false;
   }
 
   getId(): string {
-    return this.getLatest().__id
+    return this.getLatest().__id;
   }
 
   getTextContent(): string {
-    return `https://www.youtube.com/watch?v=${this.__id}`
+    return `https://www.youtube.com/watch?v=${this.__id}`;
   }
 
   decorate(_editor: LexicalEditor, config: EditorConfig): JSX.Element {
-    const embedBlockTheme = config.theme.embedBlock || {}
+    const embedBlockTheme = config.theme.embedBlock || {};
     const className = {
       base: embedBlockTheme.base || "",
       focus: embedBlockTheme.focus || "",
-    }
+    };
     return (
       <YouTubeComponent
         className={className}
@@ -130,16 +130,16 @@ export class YouTubeNode extends DecoratorBlockNode {
         nodeKey={this.getKey()}
         videoID={this.__id}
       />
-    )
+    );
   }
 }
 
 export function $createYouTubeNode(videoID: string): YouTubeNode {
-  return new YouTubeNode(videoID)
+  return new YouTubeNode(videoID);
 }
 
 export function $isYouTubeNode(
-  node: YouTubeNode | LexicalNode | null | undefined
+  node: YouTubeNode | LexicalNode | null | undefined,
 ): node is YouTubeNode {
-  return node instanceof YouTubeNode
+  return node instanceof YouTubeNode;
 }

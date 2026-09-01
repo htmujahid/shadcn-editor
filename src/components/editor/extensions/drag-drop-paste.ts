@@ -1,10 +1,10 @@
-import { COMMAND_PRIORITY_LOW, defineExtension } from "lexical"
+import { COMMAND_PRIORITY_LOW, defineExtension } from "lexical";
 
-import { DRAG_DROP_PASTE } from "@lexical/rich-text"
-import { isMimeType, mediaFileReader } from "@lexical/utils"
+import { DRAG_DROP_PASTE } from "@lexical/rich-text";
+import { isMimeType, mediaFileReader } from "@lexical/utils";
 
-import { ImageExtension } from "@/components/editor/extensions/image"
-import { INSERT_IMAGE_COMMAND } from "@/components/editor/nodes/image-node"
+import { ImageExtension } from "@/components/editor/extensions/image";
+import { INSERT_IMAGE_COMMAND } from "@/components/editor/nodes/image-node";
 
 const ACCEPTABLE_IMAGE_TYPES = [
   "image/",
@@ -12,7 +12,7 @@ const ACCEPTABLE_IMAGE_TYPES = [
   "image/heif",
   "image/gif",
   "image/webp",
-]
+];
 
 export const DragDropPasteExtension = defineExtension({
   name: "@shadcn-editor/drag-drop-paste",
@@ -21,22 +21,22 @@ export const DragDropPasteExtension = defineExtension({
     editor.registerCommand(
       DRAG_DROP_PASTE,
       (files) => {
-        ;(async () => {
+        (async () => {
           const filesResult = await mediaFileReader(
             files,
-            ACCEPTABLE_IMAGE_TYPES
-          )
+            ACCEPTABLE_IMAGE_TYPES,
+          );
           for (const { file, result } of filesResult) {
             if (isMimeType(file, ACCEPTABLE_IMAGE_TYPES)) {
               editor.dispatchCommand(INSERT_IMAGE_COMMAND, {
                 altText: file.name,
                 src: result,
-              })
+              });
             }
           }
-        })()
-        return true
+        })();
+        return true;
       },
-      COMMAND_PRIORITY_LOW
+      COMMAND_PRIORITY_LOW,
     ),
-})
+});

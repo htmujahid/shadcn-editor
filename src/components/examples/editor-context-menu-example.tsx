@@ -1,26 +1,26 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { $createLinkNode } from "@lexical/link"
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { $createLinkNode } from "@lexical/link";
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { AutoLinkExtension } from "@/components/editor/extensions/auto-link"
-import { LinkExtension } from "@/components/editor/extensions/link"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
-import { ContextMenuPlugin } from "@/components/editor/plugins/context-menu-plugin"
+import { AutoLinkExtension } from "@/components/editor/extensions/auto-link";
+import { LinkExtension } from "@/components/editor/extensions/link";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
+import { ContextMenuPlugin } from "@/components/editor/plugins/context-menu-plugin";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function ContextMenuEditor() {
   const app = useMemo(
@@ -32,22 +32,22 @@ export function ContextMenuEditor() {
           $getRoot().append(
             $createParagraphNode().append(
               $createTextNode(
-                "Right click anywhere in this text to open the editor's context menu with cut, copy, and paste."
-              )
+                "Right click anywhere in this text to open the editor's context menu with cut, copy, and paste.",
+              ),
             ),
             $createParagraphNode().append(
               $createTextNode("Links get extra actions. Try right clicking "),
               $createLinkNode("https://lexical.dev").append(
-                $createTextNode("lexical.dev")
+                $createTextNode("lexical.dev"),
               ),
-              $createTextNode(" to open or remove it.")
-            )
-          )
+              $createTextNode(" to open or remove it."),
+            ),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -60,11 +60,11 @@ export function ContextMenuEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -75,5 +75,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

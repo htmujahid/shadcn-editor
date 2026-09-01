@@ -4,40 +4,40 @@ import {
   type DOMExportOutput,
   ElementNode,
   type LexicalNode,
-} from "lexical"
+} from "lexical";
 
 export class SlotContainerNode extends ElementNode {
   $config() {
-    return this.config("slot-container", { extends: ElementNode })
+    return this.config("slot-container", { extends: ElementNode });
   }
 
   createDOM(): HTMLElement {
-    return $getDocument().createElement("div")
+    return $getDocument().createElement("div");
   }
 
   exportDOM(): DOMExportOutput {
-    return { element: $getDocument().createDocumentFragment() }
+    return { element: $getDocument().createDocumentFragment() };
   }
 
   updateDOM(): false {
-    return false
+    return false;
   }
 
   isShadowRoot(): boolean {
-    return true
+    return true;
   }
 
   collapseAtStart(): true {
-    return true
+    return true;
   }
 }
 
 export function $createSlotContainerNode(): SlotContainerNode {
-  return $create(SlotContainerNode)
+  return $create(SlotContainerNode);
 }
 
 export function $isSlotContainerNode(
-  node: LexicalNode | null | undefined
+  node: LexicalNode | null | undefined,
 ): node is SlotContainerNode {
-  return node instanceof SlotContainerNode
+  return node instanceof SlotContainerNode;
 }

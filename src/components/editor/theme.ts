@@ -1,6 +1,6 @@
-import type { EditorThemeClasses } from "lexical"
+import type { EditorThemeClasses } from "lexical";
 
-import "./theme.css"
+import "./theme.css";
 
 export const editorTheme: EditorThemeClasses = {
   root: "relative outline-none",
@@ -97,4 +97,4 @@ export const editorTheme: EditorThemeClasses = {
     center: "mx-auto",
     right: "ms-auto",
   },
-}
+};

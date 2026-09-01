@@ -1,29 +1,29 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
-import { $getRoot, $getSelection } from "lexical"
+import { $getRoot, $getSelection } from "lexical";
 
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 
 import {
   Columns2,
   Columns3,
   type LucideIcon,
   RectangleVertical,
-} from "lucide-react"
+} from "lucide-react";
 
-import { INSERT_LAYOUT_COMMAND } from "@/components/editor/extensions/layout"
-import type { Locale } from "@/components/editor/locales"
+import { INSERT_LAYOUT_COMMAND } from "@/components/editor/extensions/layout";
+import type { Locale } from "@/components/editor/locales";
 import {
   type ComponentPickerItem,
   useComponentPickerItems,
-} from "@/components/editor/plugins/component-picker/component-picker-plugin"
-import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
+} from "@/components/editor/plugins/component-picker/component-picker-plugin";
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
 
 const COLUMN_ITEMS: {
-  value: string
-  labelKey: keyof Locale
-  icon: LucideIcon
-  templateColumns: string
+  value: string;
+  labelKey: keyof Locale;
+  icon: LucideIcon;
+  templateColumns: string;
 }[] = [
   {
     value: "columns-one",
@@ -43,11 +43,11 @@ const COLUMN_ITEMS: {
     icon: Columns3,
     templateColumns: "1fr 1fr 1fr",
   },
-]
+];
 
 export function ColumnsPickerPlugin() {
-  const [editor] = useLexicalComposerContext()
-  const { t } = useTranslation()
+  const [editor] = useLexicalComposerContext();
+  const { t } = useTranslation();
 
   const items = useMemo<ComponentPickerItem[]>(
     () =>
@@ -59,16 +59,16 @@ export function ColumnsPickerPlugin() {
         onSelect: () => {
           editor.update(() => {
             if (!$getSelection()) {
-              $getRoot().selectEnd()
+              $getRoot().selectEnd();
             }
-          })
-          editor.dispatchCommand(INSERT_LAYOUT_COMMAND, templateColumns)
+          });
+          editor.dispatchCommand(INSERT_LAYOUT_COMMAND, templateColumns);
         },
       })),
-    [editor, t]
-  )
+    [editor, t],
+  );
 
-  useComponentPickerItems(items)
+  useComponentPickerItems(items);
 
-  return null
+  return null;
 }

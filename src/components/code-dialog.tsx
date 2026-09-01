@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
-import { Check, Code, Copy, Terminal } from "lucide-react"
-import { codeToHtml } from "shiki"
+import { Check, Code, Copy, Terminal } from "lucide-react";
+import { codeToHtml } from "shiki";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -11,35 +11,35 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-import { Spinner } from "@/components/ui/spinner"
+} from "@/components/ui/dialog";
+import { Spinner } from "@/components/ui/spinner";
 
-const REGISTRY_ITEM = "@shadcn-editor/editor-x"
+const REGISTRY_ITEM = "@shadcn-editor/editor-x";
 
-const PACKAGE_MANAGERS = ["pnpm", "npm", "yarn", "bun"] as const
+const PACKAGE_MANAGERS = ["pnpm", "npm", "yarn", "bun"] as const;
 
-type PackageManager = (typeof PACKAGE_MANAGERS)[number]
+type PackageManager = (typeof PACKAGE_MANAGERS)[number];
 
 const INSTALL_COMMANDS: Record<PackageManager, string> = {
   pnpm: `pnpm dlx shadcn@latest add ${REGISTRY_ITEM}`,
   npm: `npx shadcn@latest add ${REGISTRY_ITEM}`,
   yarn: `yarn shadcn@latest add ${REGISTRY_ITEM}`,
   bun: `bunx --bun shadcn@latest add ${REGISTRY_ITEM}`,
-}
+};
 
 const sources = import.meta.glob<string>("/src/components/examples/*.tsx", {
   query: "?raw",
   import: "default",
-})
+});
 
 function CopyButton({
   value,
   className,
 }: {
-  value: string
-  className?: string
+  value: string;
+  className?: string;
 }) {
-  const [copied, setCopied] = useState(false)
+  const [copied, setCopied] = useState(false);
 
   return (
     <Button
@@ -49,19 +49,19 @@ function CopyButton({
       className={className}
       onClick={() => {
         void navigator.clipboard.writeText(value).then(() => {
-          setCopied(true)
-          setTimeout(() => setCopied(false), 1500)
-        })
+          setCopied(true);
+          setTimeout(() => setCopied(false), 1500);
+        });
       }}
     >
       {copied ? <Check /> : <Copy />}
     </Button>
-  )
+  );
 }
 
 function InstallCommand() {
-  const [packageManager, setPackageManager] = useState<PackageManager>("pnpm")
-  const command = INSTALL_COMMANDS[packageManager]
+  const [packageManager, setPackageManager] = useState<PackageManager>("pnpm");
+  const command = INSTALL_COMMANDS[packageManager];
 
   return (
     <div className="flex shrink-0 flex-col gap-2">
@@ -87,32 +87,32 @@ function InstallCommand() {
         </pre>
       </div>
     </div>
-  )
+  );
 }
 
 function GeneratedCode({ path }: { path: string }) {
-  const [code, setCode] = useState<string | null>(null)
-  const [html, setHtml] = useState<string | null>(null)
-  const fileName = path.split("/").pop()
+  const [code, setCode] = useState<string | null>(null);
+  const [html, setHtml] = useState<string | null>(null);
+  const fileName = path.split("/").pop();
 
   useEffect(() => {
-    let cancelled = false
+    let cancelled = false;
     async function load() {
-      const raw = await sources[path]()
+      const raw = await sources[path]();
       const highlighted = await codeToHtml(raw, {
         lang: "tsx",
         themes: { light: "github-light", dark: "github-dark" },
-      })
+      });
       if (!cancelled) {
-        setCode(raw)
-        setHtml(highlighted)
+        setCode(raw);
+        setHtml(highlighted);
       }
     }
-    void load()
+    void load();
     return () => {
-      cancelled = true
-    }
-  }, [path])
+      cancelled = true;
+    };
+  }, [path]);
 
   return (
     <div className="flex min-h-0 flex-1 flex-col gap-2">
@@ -134,7 +134,7 @@ function GeneratedCode({ path }: { path: string }) {
         )}
       </figure>
     </div>
-  )
+  );
 }
 
 export function CodeDialog({ title, path }: { title: string; path: string }) {
@@ -166,5 +166,5 @@ export function CodeDialog({ title, path }: { title: string; path: string }) {
         </div>
       </DialogContent>
     </Dialog>
-  )
+  );
 }

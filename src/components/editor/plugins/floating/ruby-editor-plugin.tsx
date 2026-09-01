@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import {
   $getNearestNodeFromDOMNode,
@@ -14,161 +14,161 @@ import {
   type NodeKey,
   registerEventListener,
   SELECTION_CHANGE_COMMAND,
-} from "lexical"
+} from "lexical";
 
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
-import { mergeRegister } from "@lexical/utils"
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import { mergeRegister } from "@lexical/utils";
 
-import { Popover as PopoverPrimitive } from "@base-ui/react/popover"
-import { Check, Trash2 } from "lucide-react"
+import { Popover as PopoverPrimitive } from "@base-ui/react/popover";
+import { Check, Trash2 } from "lucide-react";
 
-import { OPEN_RUBY_EDITOR_COMMAND } from "@/components/editor/extensions/ruby"
+import { OPEN_RUBY_EDITOR_COMMAND } from "@/components/editor/extensions/ruby";
 import {
   $isRubyNode,
   $toggleRuby,
   $unwrapRubyNode,
   type RubyNode,
-} from "@/components/editor/nodes/ruby-node"
+} from "@/components/editor/nodes/ruby-node";
 import {
   getDOMRangeRect,
   hideFloatingAnchor,
   setFloatingAnchorRect,
-} from "@/components/editor/plugins/floating/floating-utils"
-import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+} from "@/components/editor/plugins/floating/floating-utils";
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/components/ui/popover";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@/components/ui/tooltip";
 
 function preventDefault(
-  event: React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement>
+  event: React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement>,
 ): void {
-  event.preventDefault()
+  event.preventDefault();
 }
 
 export function RubyEditorPlugin() {
-  const [editor] = useLexicalComposerContext()
-  const { t, dir } = useTranslation()
-  const triggerRef = useRef<HTMLButtonElement | null>(null)
-  const contentRef = useRef<HTMLDivElement | null>(null)
-  const [isOpen, setIsOpen] = useState(false)
-  const [baseText, setBaseText] = useState("")
-  const [annotation, setAnnotation] = useState("")
-  const [rubyNodeKey, setRubyNodeKey] = useState<NodeKey | null>(null)
+  const [editor] = useLexicalComposerContext();
+  const { t, dir } = useTranslation();
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
+  const contentRef = useRef<HTMLDivElement | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [baseText, setBaseText] = useState("");
+  const [annotation, setAnnotation] = useState("");
+  const [rubyNodeKey, setRubyNodeKey] = useState<NodeKey | null>(null);
 
   const positionToRect = useCallback((rect: DOMRect | null) => {
-    const triggerElem = triggerRef.current
+    const triggerElem = triggerRef.current;
     if (triggerElem === null) {
-      return
+      return;
     }
     if (rect === null) {
-      hideFloatingAnchor(triggerElem)
+      hideFloatingAnchor(triggerElem);
     } else {
-      setFloatingAnchorRect(triggerElem, rect)
+      setFloatingAnchorRect(triggerElem, rect);
     }
-  }, [])
+  }, []);
 
   const positionToRubyNode = useCallback(
     (node: RubyNode) => {
-      setBaseText(node.getTextContent())
-      setAnnotation(node.getAnnotation())
-      setRubyNodeKey(node.getKey())
-      const element = editor.getElementByKey(node.getKey())
-      positionToRect(element ? element.getBoundingClientRect() : null)
+      setBaseText(node.getTextContent());
+      setAnnotation(node.getAnnotation());
+      setRubyNodeKey(node.getKey());
+      const element = editor.getElementByKey(node.getKey());
+      positionToRect(element ? element.getBoundingClientRect() : null);
     },
-    [editor, positionToRect]
-  )
+    [editor, positionToRect],
+  );
 
   const $positionToSelection = useCallback(() => {
-    const selection = $getSelection()
+    const selection = $getSelection();
     if (!$isRangeSelection(selection) || selection.isCollapsed()) {
-      return false
+      return false;
     }
-    const nativeSelection = getDOMSelection(editor._window)
-    const rootElement = editor.getRootElement()
+    const nativeSelection = getDOMSelection(editor._window);
+    const rootElement = editor.getRootElement();
     if (nativeSelection === null || rootElement === null) {
-      return false
+      return false;
     }
-    setBaseText(selection.getTextContent())
-    setAnnotation("")
-    setRubyNodeKey(null)
-    positionToRect(getDOMRangeRect(nativeSelection, rootElement))
-    return true
-  }, [editor, positionToRect])
+    setBaseText(selection.getTextContent());
+    setAnnotation("");
+    setRubyNodeKey(null);
+    positionToRect(getDOMRangeRect(nativeSelection, rootElement));
+    return true;
+  }, [editor, positionToRect]);
 
   const close = useCallback(() => {
-    setIsOpen(false)
-    positionToRect(null)
-  }, [positionToRect])
+    setIsOpen(false);
+    positionToRect(null);
+  }, [positionToRect]);
 
   useEffect(() => {
     return mergeRegister(
       editor.registerCommand(
         OPEN_RUBY_EDITOR_COMMAND,
         () => {
-          const opened = $positionToSelection()
+          const opened = $positionToSelection();
           if (opened) {
-            setIsOpen(true)
+            setIsOpen(true);
           }
-          return opened
+          return opened;
         },
-        COMMAND_PRIORITY_HIGH
+        COMMAND_PRIORITY_HIGH,
       ),
       editor.registerCommand(
         CLICK_COMMAND,
         (event) => {
           if (contentRef.current?.contains(event.target as Node)) {
-            return false
+            return false;
           }
-          const selection = $getSelection()
+          const selection = $getSelection();
           if ($isRangeSelection(selection) && !selection.isCollapsed()) {
-            close()
-            return false
+            close();
+            return false;
           }
-          const target = event.target
+          const target = event.target;
           const node = isHTMLElement(target)
             ? $getNearestNodeFromDOMNode(target)
-            : null
+            : null;
           if ($isRubyNode(node)) {
-            positionToRubyNode(node)
-            setIsOpen(true)
+            positionToRubyNode(node);
+            setIsOpen(true);
           } else {
-            close()
+            close();
           }
-          return false
+          return false;
         },
-        COMMAND_PRIORITY_HIGH
+        COMMAND_PRIORITY_HIGH,
       ),
       editor.registerCommand(
         KEY_ESCAPE_COMMAND,
         () => {
           if (isOpen) {
-            close()
-            return true
+            close();
+            return true;
           }
-          return false
+          return false;
         },
-        COMMAND_PRIORITY_HIGH
+        COMMAND_PRIORITY_HIGH,
       ),
       editor.registerCommand(
         SELECTION_CHANGE_COMMAND,
         () => {
           if (isOpen && rubyNodeKey === null) {
-            $positionToSelection()
+            $positionToSelection();
           }
-          return false
+          return false;
         },
-        COMMAND_PRIORITY_LOW
-      )
-    )
+        COMMAND_PRIORITY_LOW,
+      ),
+    );
   }, [
     editor,
     isOpen,
@@ -176,72 +176,72 @@ export function RubyEditorPlugin() {
     $positionToSelection,
     positionToRubyNode,
     close,
-  ])
+  ]);
 
   useEffect(() => {
     if (!isOpen) {
-      return
+      return;
     }
     const update = () => {
       if (rubyNodeKey !== null) {
-        const element = editor.getElementByKey(rubyNodeKey)
-        positionToRect(element ? element.getBoundingClientRect() : null)
+        const element = editor.getElementByKey(rubyNodeKey);
+        positionToRect(element ? element.getBoundingClientRect() : null);
       }
-    }
+    };
     return mergeRegister(
       registerEventListener(window, "resize", update),
-      registerEventListener(document, "scroll", update, true)
-    )
-  }, [editor, isOpen, rubyNodeKey, positionToRect])
+      registerEventListener(document, "scroll", update, true),
+    );
+  }, [editor, isOpen, rubyNodeKey, positionToRect]);
 
   const handleSubmit = (
-    event: React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement>
+    event: React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement>,
   ) => {
-    event.preventDefault()
-    const value = annotation.trim()
+    event.preventDefault();
+    const value = annotation.trim();
     if (!value) {
-      return
+      return;
     }
     editor.update(() => {
       if (rubyNodeKey) {
-        const node = $getNodeByKey(rubyNodeKey)
+        const node = $getNodeByKey(rubyNodeKey);
         if ($isRubyNode(node)) {
-          node.setAnnotation(value)
+          node.setAnnotation(value);
         }
       } else {
-        $toggleRuby(value)
+        $toggleRuby(value);
       }
-    })
-    close()
-    requestAnimationFrame(() => editor.focus())
-  }
+    });
+    close();
+    requestAnimationFrame(() => editor.focus());
+  };
 
   const handleDelete = () => {
     editor.update(() => {
       if (rubyNodeKey) {
-        const node = $getNodeByKey(rubyNodeKey)
+        const node = $getNodeByKey(rubyNodeKey);
         if ($isRubyNode(node)) {
-          $unwrapRubyNode(node)
+          $unwrapRubyNode(node);
         }
       } else {
-        $toggleRuby(null)
+        $toggleRuby(null);
       }
-    })
-    close()
-    requestAnimationFrame(() => editor.focus())
-  }
+    });
+    close();
+    requestAnimationFrame(() => editor.focus());
+  };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.nativeEvent.isComposing) {
-      return
+      return;
     }
     if (event.key === "Enter") {
-      handleSubmit(event)
+      handleSubmit(event);
     } else if (event.key === "Escape") {
-      event.preventDefault()
-      close()
+      event.preventDefault();
+      close();
     }
-  }
+  };
 
   return (
     <Popover open={isOpen}>
@@ -265,7 +265,7 @@ export function RubyEditorPlugin() {
           className="w-auto min-w-0 flex-row items-center gap-1.5 p-1.5"
           onBlur={(event) => {
             if (!event.currentTarget.contains(event.relatedTarget as Node)) {
-              close()
+              close();
             }
           }}
         >
@@ -278,7 +278,7 @@ export function RubyEditorPlugin() {
           <Input
             ref={(elem) => {
               if (elem && isOpen) {
-                elem.focus()
+                elem.focus();
               }
             }}
             value={annotation}
@@ -286,7 +286,7 @@ export function RubyEditorPlugin() {
             aria-label={t.rubyAnnotationPlaceholder}
             className="h-7 min-w-24 flex-1 md:text-[0.8rem]"
             onChange={(event) => {
-              setAnnotation(event.target.value)
+              setAnnotation(event.target.value);
             }}
             onKeyDown={handleKeyDown}
           />
@@ -327,5 +327,5 @@ export function RubyEditorPlugin() {
         </PopoverContent>
       </PopoverPrimitive.Portal>
     </Popover>
-  )
+  );
 }

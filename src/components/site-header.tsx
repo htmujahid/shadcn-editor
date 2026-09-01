@@ -1,19 +1,19 @@
-import { Moon, Sun } from "lucide-react"
-import { Link, useLocation } from "wouter"
+import { Moon, Sun } from "lucide-react";
+import { Link, useLocation } from "wouter";
 
-import { GitHubIcon } from "@/components/github-icon"
-import { useTheme } from "@/components/theme-provider"
-import { Button, buttonVariants } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import { GitHubIcon } from "@/components/github-icon";
+import { useTheme } from "@/components/theme-provider";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Examples", href: "/examples" },
   { label: "Collaboration", href: "/collaboration" },
-]
+];
 
 function ThemeToggle() {
-  const { setTheme } = useTheme()
+  const { setTheme } = useTheme();
   return (
     <Button
       variant="ghost"
@@ -21,18 +21,20 @@ function ThemeToggle() {
       aria-label="Toggle theme"
       onClick={() =>
         setTheme(
-          document.documentElement.classList.contains("dark") ? "light" : "dark"
+          document.documentElement.classList.contains("dark")
+            ? "light"
+            : "dark",
         )
       }
     >
       <Sun className="dark:hidden" />
       <Moon className="hidden dark:block" />
     </Button>
-  )
+  );
 }
 
 export function SiteHeader() {
-  const [location] = useLocation()
+  const [location] = useLocation();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -46,7 +48,7 @@ export function SiteHeader() {
                 "transition-colors hover:text-foreground",
                 location === href
                   ? "font-medium text-foreground"
-                  : "text-muted-foreground"
+                  : "text-muted-foreground",
               )}
             >
               {label}
@@ -67,5 +69,5 @@ export function SiteHeader() {
         </div>
       </div>
     </header>
-  )
+  );
 }

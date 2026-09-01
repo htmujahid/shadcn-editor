@@ -1,27 +1,27 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { YouTubeExtension } from "@/components/editor/extensions/youtube"
-import { $createYouTubeNode } from "@/components/editor/nodes/youtube-node"
-import { BlockInsert } from "@/components/editor/plugins/block-insert/block-insert-plugin"
-import { InsertYouTubePlugin } from "@/components/editor/plugins/block-insert/insert-youtube-plugin"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { YouTubeExtension } from "@/components/editor/extensions/youtube";
+import { $createYouTubeNode } from "@/components/editor/nodes/youtube-node";
+import { BlockInsert } from "@/components/editor/plugins/block-insert/block-insert-plugin";
+import { InsertYouTubePlugin } from "@/components/editor/plugins/block-insert/insert-youtube-plugin";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function YouTubeEditor() {
   const app = useMemo(
@@ -33,17 +33,17 @@ export function YouTubeEditor() {
           $getRoot().append(
             $createParagraphNode().append(
               $createTextNode(
-                "Use the toolbar button above to embed any YouTube video by its link. Here is the first video ever uploaded:"
-              )
+                "Use the toolbar button above to embed any YouTube video by its link. Here is the first video ever uploaded:",
+              ),
             ),
             $createYouTubeNode("jNQXAC9IVRw"),
-            $createParagraphNode()
-          )
+            $createParagraphNode(),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -60,11 +60,11 @@ export function YouTubeEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -75,5 +75,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

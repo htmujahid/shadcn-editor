@@ -1,55 +1,55 @@
-import { $getRoot, $getSelection, type LexicalEditor } from "lexical"
+import { $getRoot, $getSelection, type LexicalEditor } from "lexical";
 
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
-import { useLexicalEditable } from "@lexical/react/useLexicalEditable"
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
-import { Columns2 } from "lucide-react"
+import { Columns2 } from "lucide-react";
 
-import { INSERT_LAYOUT_COMMAND } from "@/components/editor/extensions/layout"
-import type { Locale } from "@/components/editor/locales"
-import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
-import { Button } from "@/components/ui/button"
+import { INSERT_LAYOUT_COMMAND } from "@/components/editor/extensions/layout";
+import type { Locale } from "@/components/editor/locales";
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@/components/ui/tooltip";
 
 type ColumnOption = {
-  value: string
-  labelKey: keyof Locale
-  templateColumns: string
-}
+  value: string;
+  labelKey: keyof Locale;
+  templateColumns: string;
+};
 
 const COLUMN_OPTIONS: ColumnOption[] = [
   { value: "one", labelKey: "columnsOne", templateColumns: "1fr" },
   { value: "two", labelKey: "columnsTwo", templateColumns: "1fr 1fr" },
   { value: "three", labelKey: "columnsThree", templateColumns: "1fr 1fr 1fr" },
-]
+];
 
 function insertColumns(editor: LexicalEditor, value: string) {
-  const option = COLUMN_OPTIONS.find((candidate) => candidate.value === value)
+  const option = COLUMN_OPTIONS.find((candidate) => candidate.value === value);
   if (!option) {
-    return
+    return;
   }
   editor.update(() => {
     if (!$getSelection()) {
-      $getRoot().selectEnd()
+      $getRoot().selectEnd();
     }
-  })
-  editor.dispatchCommand(INSERT_LAYOUT_COMMAND, option.templateColumns)
+  });
+  editor.dispatchCommand(INSERT_LAYOUT_COMMAND, option.templateColumns);
 }
 
 export function InsertColumnsPlugin() {
-  const [editor] = useLexicalComposerContext()
-  const isEditable = useLexicalEditable()
-  const { t, dir } = useTranslation()
+  const [editor] = useLexicalComposerContext();
+  const isEditable = useLexicalEditable();
+  const { t, dir } = useTranslation();
 
   return (
     <DropdownMenu>
@@ -83,5 +83,5 @@ export function InsertColumnsPlugin() {
         ))}
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 }

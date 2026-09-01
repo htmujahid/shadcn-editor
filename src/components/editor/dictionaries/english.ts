@@ -2242,4 +2242,4 @@ export const ENGLISH_WORDS: readonly string[] = [
   "varieties",
   "mediawiki",
   "configurations",
-]
+];

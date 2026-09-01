@@ -1,7 +1,7 @@
-import { FORMAT_TEXT_COMMAND, type TextFormatType } from "lexical"
+import { FORMAT_TEXT_COMMAND, type TextFormatType } from "lexical";
 
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
-import { useLexicalEditable } from "@lexical/react/useLexicalEditable"
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
 import {
   Bold,
@@ -16,22 +16,22 @@ import {
   Subscript,
   Superscript,
   Underline,
-} from "lucide-react"
+} from "lucide-react";
 
-import { useFormatStateValue } from "@/components/editor/extensions/format-state"
-import type { Locale } from "@/components/editor/locales"
-import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import { useFormatStateValue } from "@/components/editor/extensions/format-state";
+import type { Locale } from "@/components/editor/locales";
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@/components/ui/tooltip";
 
 const FORMAT_GROUPS: {
-  format: TextFormatType
-  labelKey: keyof Locale
-  icon: LucideIcon
+  format: TextFormatType;
+  labelKey: keyof Locale;
+  icon: LucideIcon;
 }[][] = [
   [
     { format: "bold", labelKey: "bold", icon: Bold },
@@ -52,17 +52,17 @@ const FORMAT_GROUPS: {
     { format: "lowercase", labelKey: "lowercase", icon: CaseLower },
     { format: "capitalize", labelKey: "titleCase", icon: CaseSensitive },
   ],
-]
+];
 
 function FormatToggleGroup({
   items,
 }: {
-  items: (typeof FORMAT_GROUPS)[number]
+  items: (typeof FORMAT_GROUPS)[number];
 }) {
-  const [editor] = useLexicalComposerContext()
-  const { t } = useTranslation()
-  const formats = useFormatStateValue("formats")
-  const isEditable = useLexicalEditable()
+  const [editor] = useLexicalComposerContext();
+  const { t } = useTranslation();
+  const formats = useFormatStateValue("formats");
+  const isEditable = useLexicalEditable();
   return (
     <ToggleGroup
       multiple
@@ -72,10 +72,10 @@ function FormatToggleGroup({
       disabled={!isEditable}
       value={formats}
       onValueChange={(value) => {
-        const next = new Set(value as TextFormatType[])
+        const next = new Set(value as TextFormatType[]);
         for (const { format } of items) {
           if (next.has(format) !== formats.includes(format)) {
-            editor.dispatchCommand(FORMAT_TEXT_COMMAND, format)
+            editor.dispatchCommand(FORMAT_TEXT_COMMAND, format);
           }
         }
       }}
@@ -93,20 +93,21 @@ function FormatToggleGroup({
         </Tooltip>
       ))}
     </ToggleGroup>
-  )
+  );
 }
 
 export function TextFormatToolbarPlugin({
   formats = "all",
 }: {
-  formats?: "basic" | "all"
+  formats?: "basic" | "all";
 }) {
-  const groups = formats === "basic" ? FORMAT_GROUPS.slice(0, 1) : FORMAT_GROUPS
+  const groups =
+    formats === "basic" ? FORMAT_GROUPS.slice(0, 1) : FORMAT_GROUPS;
   return (
     <>
       {groups.map((items, groupIndex) => (
         <FormatToggleGroup key={groupIndex} items={items} />
       ))}
     </>
-  )
+  );
 }

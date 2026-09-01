@@ -1,23 +1,23 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { TabFocusExtension } from "@/components/editor/extensions/tab-focus"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { TabFocusExtension } from "@/components/editor/extensions/tab-focus";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function TabFocusEditor() {
   const app = useMemo(
@@ -29,20 +29,20 @@ export function TabFocusEditor() {
           $getRoot().append(
             $createParagraphNode().append(
               $createTextNode(
-                "Press Tab while writing here and focus moves on to the next control on the page instead of inserting a tab character."
-              )
+                "Press Tab while writing here and focus moves on to the next control on the page instead of inserting a tab character.",
+              ),
             ),
             $createParagraphNode().append(
               $createTextNode(
-                "That keeps the editor from trapping keyboard users. Click back in whenever you want to continue."
-              )
-            )
-          )
+                "That keeps the editor from trapping keyboard users. Click back in whenever you want to continue.",
+              ),
+            ),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -54,11 +54,11 @@ export function TabFocusEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -69,5 +69,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

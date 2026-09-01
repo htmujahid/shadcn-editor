@@ -1,10 +1,10 @@
-import { Route, Switch } from "wouter"
+import { Route, Switch } from "wouter";
 
-import { CollaborationPage } from "@/pages/collaboration"
-import { CollaborationEditorPage } from "@/pages/collaboration-editor"
-import { ExamplesPage } from "@/pages/examples"
-import { HomePage } from "@/pages/home"
-import { NotFoundPage } from "@/pages/not-found"
+import { CollaborationPage } from "@/pages/collaboration";
+import { CollaborationEditorPage } from "@/pages/collaboration-editor";
+import { ExamplesPage } from "@/pages/examples";
+import { HomePage } from "@/pages/home";
+import { NotFoundPage } from "@/pages/not-found";
 
 export function App() {
   return (
@@ -15,5 +15,5 @@ export function App() {
       <Route path="/collaboration/editor" component={CollaborationEditorPage} />
       <Route component={NotFoundPage} />
     </Switch>
-  )
+  );
 }

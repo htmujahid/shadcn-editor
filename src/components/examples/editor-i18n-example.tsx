@@ -1,24 +1,24 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { ActivityBar } from "@/components/editor/plugins/activitybar/activitybar-plugin"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { ActivityBar } from "@/components/editor/plugins/activitybar/activitybar-plugin";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   LanguageSelectorPlugin,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function I18nEditor() {
   const app = useMemo(
@@ -31,20 +31,20 @@ export function I18nEditor() {
           $getRoot().append(
             $createParagraphNode().append(
               $createTextNode(
-                "Your content stays exactly as you wrote it, while every label, tooltip, and placeholder around it follows the editor language."
-              )
+                "Your content stays exactly as you wrote it, while every label, tooltip, and placeholder around it follows the editor language.",
+              ),
             ),
             $createParagraphNode().append(
               $createTextNode(
-                "Switch between English, Arabic, and Hebrew from the selector below and watch the interface flip, right to left included."
-              )
-            )
-          )
+                "Switch between English, Arabic, and Hebrew from the selector below and watch the interface flip, right to left included.",
+              ),
+            ),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -61,11 +61,11 @@ export function I18nEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -76,5 +76,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

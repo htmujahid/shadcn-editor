@@ -1,23 +1,23 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { SpecialTextExtension } from "@/components/editor/extensions/special-text"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { SpecialTextExtension } from "@/components/editor/extensions/special-text";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function SpecialTextEditor() {
   const app = useMemo(
@@ -29,20 +29,20 @@ export function SpecialTextEditor() {
           $getRoot().append(
             $createParagraphNode().append(
               $createTextNode(
-                "Wrap words in square brackets to call them out, like the [action items] from a meeting or the [decisions] that came out of it."
-              )
+                "Wrap words in square brackets to call them out, like the [action items] from a meeting or the [decisions] that came out of it.",
+              ),
             ),
             $createParagraphNode().append(
               $createTextNode(
-                "Type your own [bracketed phrase] and it gets the same treatment as you close the bracket."
-              )
-            )
-          )
+                "Type your own [bracketed phrase] and it gets the same treatment as you close the bracket.",
+              ),
+            ),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -54,11 +54,11 @@ export function SpecialTextEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -69,5 +69,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

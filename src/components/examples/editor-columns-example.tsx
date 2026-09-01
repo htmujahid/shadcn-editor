@@ -1,30 +1,30 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { LayoutExtension } from "@/components/editor/extensions/layout"
+import { LayoutExtension } from "@/components/editor/extensions/layout";
 import {
   $createLayoutContainerNode,
   $createLayoutItemNode,
-} from "@/components/editor/nodes/layout-node"
-import { BlockInsert } from "@/components/editor/plugins/block-insert/block-insert-plugin"
-import { InsertColumnsPlugin } from "@/components/editor/plugins/block-insert/insert-columns-plugin"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+} from "@/components/editor/nodes/layout-node";
+import { BlockInsert } from "@/components/editor/plugins/block-insert/block-insert-plugin";
+import { InsertColumnsPlugin } from "@/components/editor/plugins/block-insert/insert-columns-plugin";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function ColumnsEditor() {
   const app = useMemo(
@@ -38,29 +38,29 @@ export function ColumnsEditor() {
               $createLayoutItemNode().append(
                 $createParagraphNode().append(
                   $createTextNode(
-                    "The left column holds its own blocks. Click inside and write as usual."
-                  )
-                )
+                    "The left column holds its own blocks. Click inside and write as usual.",
+                  ),
+                ),
               ),
               $createLayoutItemNode().append(
                 $createParagraphNode().append(
                   $createTextNode(
-                    "The right column flows independently, so the two sides never interleave."
-                  )
-                )
-              )
+                    "The right column flows independently, so the two sides never interleave.",
+                  ),
+                ),
+              ),
             ),
             $createParagraphNode().append(
               $createTextNode(
-                "Use the insert menu in the toolbar to add another layout with two, three, or mixed width columns."
-              )
-            )
-          )
+                "Use the insert menu in the toolbar to add another layout with two, three, or mixed width columns.",
+              ),
+            ),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -77,11 +77,11 @@ export function ColumnsEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -92,5 +92,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

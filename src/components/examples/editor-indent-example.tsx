@@ -1,26 +1,26 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { TabIndentationExtension } from "@lexical/extension"
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { TabIndentationExtension } from "@lexical/extension";
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { FormatStateExtension } from "@/components/editor/extensions/format-state"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { FormatStateExtension } from "@/components/editor/extensions/format-state";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { IndentToolbarPlugin } from "@/components/editor/plugins/toolbar/indent-toolbar-plugin"
-import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { IndentToolbarPlugin } from "@/components/editor/plugins/toolbar/indent-toolbar-plugin";
+import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function IndentEditor() {
   const app = useMemo(
@@ -34,31 +34,31 @@ export function IndentEditor() {
         ],
         $initialEditorState: () => {
           const first = $createParagraphNode().append(
-            $createTextNode("A top level thought.")
-          )
+            $createTextNode("A top level thought."),
+          );
           const second = $createParagraphNode().append(
-            $createTextNode("A supporting detail, one level in.")
-          )
-          second.setIndent(1)
+            $createTextNode("A supporting detail, one level in."),
+          );
+          second.setIndent(1);
           const third = $createParagraphNode().append(
-            $createTextNode("A finer point, nested one level deeper.")
-          )
-          third.setIndent(2)
+            $createTextNode("A finer point, nested one level deeper."),
+          );
+          third.setIndent(2);
           $getRoot().append(
             first,
             second,
             third,
             $createParagraphNode().append(
               $createTextNode(
-                "Use the toolbar buttons or the Tab key to change the indent of any line."
-              )
-            )
-          )
+                "Use the toolbar buttons or the Tab key to change the indent of any line.",
+              ),
+            ),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -73,11 +73,11 @@ export function IndentEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -88,5 +88,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

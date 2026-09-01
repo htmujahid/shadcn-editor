@@ -1,25 +1,25 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { MentionExtension } from "@/components/editor/extensions/mention"
-import { $createMentionNode } from "@/components/editor/nodes/mention-node"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { MentionExtension } from "@/components/editor/extensions/mention";
+import { $createMentionNode } from "@/components/editor/nodes/mention-node";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { MentionPlugin } from "@/components/editor/plugins/mention-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { MentionPlugin } from "@/components/editor/plugins/mention-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function MentionEditor() {
   const app = useMemo(
@@ -34,19 +34,19 @@ export function MentionEditor() {
               $createMentionNode("Ahsoka Tano"),
               $createTextNode(" with a review pass from "),
               $createMentionNode("Obi-Wan Kenobi"),
-              $createTextNode(" before it went out.")
+              $createTextNode(" before it went out."),
             ),
             $createParagraphNode().append(
               $createTextNode(
-                "Type @ followed by a name to mention someone else."
-              )
-            )
-          )
+                "Type @ followed by a name to mention someone else.",
+              ),
+            ),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -59,11 +59,11 @@ export function MentionEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -74,5 +74,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

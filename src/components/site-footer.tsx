@@ -34,5 +34,5 @@ export function SiteFooter() {
         </p>
       </div>
     </footer>
-  )
+  );
 }

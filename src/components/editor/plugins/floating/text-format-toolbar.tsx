@@ -1,12 +1,12 @@
-import { type Dispatch, useMemo } from "react"
+import { type Dispatch, useMemo } from "react";
 
 import {
   FORMAT_TEXT_COMMAND,
   type LexicalEditor,
   type TextFormatType,
-} from "lexical"
+} from "lexical";
 
-import { TOGGLE_LINK_COMMAND } from "@lexical/link"
+import { TOGGLE_LINK_COMMAND } from "@lexical/link";
 
 import {
   Bold,
@@ -23,24 +23,24 @@ import {
   Subscript,
   Superscript,
   Underline,
-} from "lucide-react"
+} from "lucide-react";
 
-import { useFormatStateValue } from "@/components/editor/extensions/format-state"
-import { toggleRubyEditor } from "@/components/editor/extensions/ruby"
-import type { Locale } from "@/components/editor/locales"
-import { RubyNode } from "@/components/editor/nodes/ruby-node"
-import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import { useFormatStateValue } from "@/components/editor/extensions/format-state";
+import { toggleRubyEditor } from "@/components/editor/extensions/ruby";
+import type { Locale } from "@/components/editor/locales";
+import { RubyNode } from "@/components/editor/nodes/ruby-node";
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@/components/ui/tooltip";
 
 const FORMAT_GROUPS: {
-  format: TextFormatType
-  labelKey: keyof Locale
-  icon: LucideIcon
+  format: TextFormatType;
+  labelKey: keyof Locale;
+  icon: LucideIcon;
 }[][] = [
   [
     { format: "bold", labelKey: "bold", icon: Bold },
@@ -61,17 +61,17 @@ const FORMAT_GROUPS: {
     { format: "lowercase", labelKey: "lowercase", icon: CaseLower },
     { format: "capitalize", labelKey: "titleCase", icon: CaseSensitive },
   ],
-]
+];
 
 function FormatToggleGroup({
   editor,
   items,
 }: {
-  editor: LexicalEditor
-  items: (typeof FORMAT_GROUPS)[number]
+  editor: LexicalEditor;
+  items: (typeof FORMAT_GROUPS)[number];
 }) {
-  const { t } = useTranslation()
-  const formats = useFormatStateValue("formats")
+  const { t } = useTranslation();
+  const formats = useFormatStateValue("formats");
   return (
     <ToggleGroup
       multiple
@@ -80,10 +80,10 @@ function FormatToggleGroup({
       spacing={0}
       value={formats}
       onValueChange={(value) => {
-        const next = new Set(value as TextFormatType[])
+        const next = new Set(value as TextFormatType[]);
         for (const { format } of items) {
           if (next.has(format) !== formats.includes(format)) {
-            editor.dispatchCommand(FORMAT_TEXT_COMMAND, format)
+            editor.dispatchCommand(FORMAT_TEXT_COMMAND, format);
           }
         }
       }}
@@ -101,7 +101,7 @@ function FormatToggleGroup({
         </Tooltip>
       ))}
     </ToggleGroup>
-  )
+  );
 }
 
 export function TextFormatToolbar({
@@ -109,23 +109,23 @@ export function TextFormatToolbar({
   linksEnabled,
   setIsLinkEditMode,
 }: {
-  editor: LexicalEditor
-  linksEnabled: boolean
-  setIsLinkEditMode: Dispatch<boolean>
+  editor: LexicalEditor;
+  linksEnabled: boolean;
+  setIsLinkEditMode: Dispatch<boolean>;
 }) {
-  const { t } = useTranslation()
-  const isLink = useFormatStateValue("isLink")
-  const rubyEnabled = useMemo(() => editor.hasNodes([RubyNode]), [editor])
+  const { t } = useTranslation();
+  const isLink = useFormatStateValue("isLink");
+  const rubyEnabled = useMemo(() => editor.hasNodes([RubyNode]), [editor]);
 
   const insertLink = () => {
     if (!isLink) {
-      setIsLinkEditMode(true)
-      editor.dispatchCommand(TOGGLE_LINK_COMMAND, "https://")
+      setIsLinkEditMode(true);
+      editor.dispatchCommand(TOGGLE_LINK_COMMAND, "https://");
     } else {
-      setIsLinkEditMode(false)
-      editor.dispatchCommand(TOGGLE_LINK_COMMAND, null)
+      setIsLinkEditMode(false);
+      editor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
     }
-  }
+  };
 
   return (
     <>
@@ -140,12 +140,12 @@ export function TextFormatToolbar({
           spacing={0}
           value={isLink ? ["link"] : []}
           onValueChange={(value) => {
-            const next = new Set(value as string[])
+            const next = new Set(value as string[]);
             if (linksEnabled && next.has("link") !== isLink) {
-              insertLink()
+              insertLink();
             }
             if (rubyEnabled && next.has("ruby")) {
-              toggleRubyEditor(editor)
+              toggleRubyEditor(editor);
             }
           }}
         >
@@ -176,5 +176,5 @@ export function TextFormatToolbar({
         </ToggleGroup>
       )}
     </>
-  )
+  );
 }

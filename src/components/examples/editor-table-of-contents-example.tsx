@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react"
+import { useMemo, useState } from "react";
 
 import {
   $createParagraphNode,
@@ -6,31 +6,31 @@ import {
   $getRoot,
   defineExtension,
   HISTORY_MERGE_TAG,
-} from "lexical"
+} from "lexical";
 
-import { HistoryExtension } from "@lexical/history"
-import { HEADING, registerMarkdownShortcuts } from "@lexical/markdown"
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { $createHeadingNode, RichTextExtension } from "@lexical/rich-text"
-import { mergeRegister } from "@lexical/utils"
+import { HistoryExtension } from "@lexical/history";
+import { HEADING, registerMarkdownShortcuts } from "@lexical/markdown";
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { $createHeadingNode, RichTextExtension } from "@lexical/rich-text";
+import { mergeRegister } from "@lexical/utils";
 
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { TableOfContentsPlugin } from "@/components/editor/plugins/table-of-contents-plugin"
-import { BlockFormatToolbarPlugin } from "@/components/editor/plugins/toolbar/block-format-toolbar-plugin"
-import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { TableOfContentsPlugin } from "@/components/editor/plugins/table-of-contents-plugin";
+import { BlockFormatToolbarPlugin } from "@/components/editor/plugins/toolbar/block-format-toolbar-plugin";
+import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 import {
   Sidebar,
   SidebarContent,
   SidebarProvider,
   SidebarTrigger,
-} from "@/components/ui/sidebar"
-import { cn } from "@/lib/utils"
+} from "@/components/ui/sidebar";
+import { cn } from "@/lib/utils";
 
 const SECTIONS: { tag: "h1" | "h2" | "h3"; title: string; body: string }[] = [
   {
@@ -63,10 +63,10 @@ const SECTIONS: { tag: "h1" | "h2" | "h3"; title: string; body: string }[] = [
     title: "Dark mode",
     body: "The editor follows the theme of the page it lives in, with no extra configuration required.",
   },
-]
+];
 
 export function TableOfContentsEditor() {
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const app = useMemo(
     () =>
       defineExtension({
@@ -78,26 +78,26 @@ export function TableOfContentsEditor() {
             (() => {
               editor.update(
                 () => {
-                  const root = $getRoot()
+                  const root = $getRoot();
                   if (!root.isEmpty()) {
-                    return
+                    return;
                   }
                   for (const { tag, title, body } of SECTIONS) {
                     root.append(
                       $createHeadingNode(tag).append($createTextNode(title)),
-                      $createParagraphNode().append($createTextNode(body))
-                    )
+                      $createParagraphNode().append($createTextNode(body)),
+                    );
                   }
                 },
-                { tag: HISTORY_MERGE_TAG }
-              )
-              return () => {}
-            })()
+                { tag: HISTORY_MERGE_TAG },
+              );
+              return () => {};
+            })(),
           ),
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -110,7 +110,7 @@ export function TableOfContentsEditor() {
                 "shrink-0 overflow-hidden transition-[width,margin] duration-200 ease-linear",
                 sidebarOpen
                   ? "w-56 rounded-lg shadow-sm ring-1 ring-sidebar-border"
-                  : "-me-3 w-0"
+                  : "-me-3 w-0",
               )}
             >
               <SidebarContent className="w-56">
@@ -133,11 +133,11 @@ export function TableOfContentsEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -148,5 +148,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

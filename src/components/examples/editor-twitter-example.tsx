@@ -1,27 +1,27 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { TwitterExtension } from "@/components/editor/extensions/twitter"
-import { $createTweetNode } from "@/components/editor/nodes/tweet-node"
-import { BlockInsert } from "@/components/editor/plugins/block-insert/block-insert-plugin"
-import { InsertTwitterPlugin } from "@/components/editor/plugins/block-insert/insert-twitter-plugin"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { TwitterExtension } from "@/components/editor/extensions/twitter";
+import { $createTweetNode } from "@/components/editor/nodes/tweet-node";
+import { BlockInsert } from "@/components/editor/plugins/block-insert/block-insert-plugin";
+import { InsertTwitterPlugin } from "@/components/editor/plugins/block-insert/insert-twitter-plugin";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function TwitterEditor() {
   const app = useMemo(
@@ -33,17 +33,17 @@ export function TwitterEditor() {
           $getRoot().append(
             $createParagraphNode().append(
               $createTextNode(
-                "Use the toolbar button above to embed a post from X by its link. Here is the very first one:"
-              )
+                "Use the toolbar button above to embed a post from X by its link. Here is the very first one:",
+              ),
             ),
             $createTweetNode("20"),
-            $createParagraphNode()
-          )
+            $createParagraphNode(),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -60,11 +60,11 @@ export function TwitterEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -75,5 +75,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

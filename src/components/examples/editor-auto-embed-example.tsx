@@ -1,28 +1,28 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { AutoLinkExtension } from "@/components/editor/extensions/auto-link"
-import { FigmaExtension } from "@/components/editor/extensions/figma"
-import { LinkExtension } from "@/components/editor/extensions/link"
-import { TwitterExtension } from "@/components/editor/extensions/twitter"
-import { YouTubeExtension } from "@/components/editor/extensions/youtube"
-import { AutoEmbedPlugin } from "@/components/editor/plugins/auto-embed-plugin"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { AutoLinkExtension } from "@/components/editor/extensions/auto-link";
+import { FigmaExtension } from "@/components/editor/extensions/figma";
+import { LinkExtension } from "@/components/editor/extensions/link";
+import { TwitterExtension } from "@/components/editor/extensions/twitter";
+import { YouTubeExtension } from "@/components/editor/extensions/youtube";
+import { AutoEmbedPlugin } from "@/components/editor/plugins/auto-embed-plugin";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function AutoEmbedEditor() {
   const app = useMemo(
@@ -41,19 +41,19 @@ export function AutoEmbedEditor() {
           $getRoot().append(
             $createParagraphNode().append(
               $createTextNode(
-                "Paste a YouTube, X, or Figma link and a menu appears offering to embed it in place. Copy this one to try it out:"
-              )
+                "Paste a YouTube, X, or Figma link and a menu appears offering to embed it in place. Copy this one to try it out:",
+              ),
             ),
             $createParagraphNode().append(
-              $createTextNode("https://www.youtube.com/watch?v=jNQXAC9IVRw")
+              $createTextNode("https://www.youtube.com/watch?v=jNQXAC9IVRw"),
             ),
-            $createParagraphNode()
-          )
+            $createParagraphNode(),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -66,11 +66,11 @@ export function AutoEmbedEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -81,5 +81,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

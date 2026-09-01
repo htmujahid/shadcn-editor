@@ -4,13 +4,13 @@ import {
   $isRootOrShadowRoot,
   COMMAND_PRIORITY_EDITOR,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
 import {
   $createImageNode,
   ImageNode,
   INSERT_IMAGE_COMMAND,
-} from "@/components/editor/nodes/image-node"
+} from "@/components/editor/nodes/image-node";
 
 export const ImageExtension = defineExtension({
   name: "@shadcn-editor/editor/Image",
@@ -19,16 +19,16 @@ export const ImageExtension = defineExtension({
     editor.registerCommand(
       INSERT_IMAGE_COMMAND,
       (payload) => {
-        const imageNode = $createImageNode(payload)
-        $insertNodes([imageNode])
+        const imageNode = $createImageNode(payload);
+        $insertNodes([imageNode]);
         if ($isRootOrShadowRoot(imageNode.getParentOrThrow())) {
-          const paragraph = $createParagraphNode()
-          imageNode.replace(paragraph)
-          paragraph.append(imageNode)
-          paragraph.selectEnd()
+          const paragraph = $createParagraphNode();
+          imageNode.replace(paragraph);
+          paragraph.append(imageNode);
+          paragraph.selectEnd();
         }
-        return true
+        return true;
       },
-      COMMAND_PRIORITY_EDITOR
+      COMMAND_PRIORITY_EDITOR,
     ),
-})
+});

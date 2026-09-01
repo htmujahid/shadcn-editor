@@ -1,22 +1,22 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 
-import { Lock, LockOpen } from "lucide-react"
+import { Lock, LockOpen } from "lucide-react";
 
-import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
-import { Button } from "@/components/ui/button"
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { Button } from "@/components/ui/button";
 
 export function ReadOnlyTogglePlugin() {
-  const [editor] = useLexicalComposerContext()
-  const { t } = useTranslation()
-  const [isEditable, setIsEditable] = useState(() => editor.isEditable())
+  const [editor] = useLexicalComposerContext();
+  const { t } = useTranslation();
+  const [isEditable, setIsEditable] = useState(() => editor.isEditable());
 
   useEffect(() => {
-    return editor.registerEditableListener(setIsEditable)
-  }, [editor])
+    return editor.registerEditableListener(setIsEditable);
+  }, [editor]);
 
-  const label = isEditable ? t.switchToReadOnly : t.switchToEditMode
+  const label = isEditable ? t.switchToReadOnly : t.switchToEditMode;
 
   return (
     <Button
@@ -30,5 +30,5 @@ export function ReadOnlyTogglePlugin() {
     >
       {isEditable ? <LockOpen /> : <Lock />}
     </Button>
-  )
+  );
 }

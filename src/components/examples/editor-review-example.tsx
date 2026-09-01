@@ -1,4 +1,4 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
@@ -7,26 +7,26 @@ import {
   $getSlot,
   $isParagraphNode,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { ClipboardDOMImportExtension } from "@lexical/clipboard"
-import { HistoryExtension } from "@lexical/history"
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { ClipboardDOMImportExtension } from "@lexical/clipboard";
+import { HistoryExtension } from "@lexical/history";
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { $createReviewNode } from "@/components/editor/nodes/review-node"
-import { ComponentPicker } from "@/components/editor/plugins/component-picker/component-picker-plugin"
-import { HeadingPickerPlugin } from "@/components/editor/plugins/component-picker/heading-picker-plugin"
-import { ParagraphPickerPlugin } from "@/components/editor/plugins/component-picker/paragraph-picker-plugin"
-import { ReviewPickerPlugin } from "@/components/editor/plugins/component-picker/review-picker-plugin"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
-import { ReactReviewExtension } from "@/components/editor/plugins/floating/review-plugin"
+import { $createReviewNode } from "@/components/editor/nodes/review-node";
+import { ComponentPicker } from "@/components/editor/plugins/component-picker/component-picker-plugin";
+import { HeadingPickerPlugin } from "@/components/editor/plugins/component-picker/heading-picker-plugin";
+import { ParagraphPickerPlugin } from "@/components/editor/plugins/component-picker/paragraph-picker-plugin";
+import { ReviewPickerPlugin } from "@/components/editor/plugins/component-picker/review-picker-plugin";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
+import { ReactReviewExtension } from "@/components/editor/plugins/floating/review-plugin";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function ReviewEditor() {
   const app = useMemo(
@@ -41,32 +41,32 @@ export function ReviewEditor() {
           ClipboardDOMImportExtension,
         ],
         $initialEditorState: () => {
-          const review = $createReviewNode().setRating(4)
-          const author = $getSlot(review, "author")
+          const review = $createReviewNode().setRating(4);
+          const author = $getSlot(review, "author");
           if ($isParagraphNode(author)) {
-            author.append($createTextNode("Jordan P."))
+            author.append($createTextNode("Jordan P."));
           }
-          const body = review.getFirstChild()
+          const body = review.getFirstChild();
           if ($isParagraphNode(body)) {
             body.append(
               $createTextNode(
-                "A thoughtful writing surface. The slash menu makes inserting blocks quick, and the rating is set with the stars above."
-              )
-            )
+                "A thoughtful writing surface. The slash menu makes inserting blocks quick, and the rating is set with the stars above.",
+              ),
+            );
           }
           $getRoot().append(
             $createParagraphNode().append(
               $createTextNode(
-                'A review pairs a star rating with a body and an author line. Type "/review" on an empty line to add your own:'
-              )
+                'A review pairs a star rating with a body and an author line. Type "/review" on an empty line to add your own:',
+              ),
             ),
-            review
-          )
+            review,
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -83,11 +83,11 @@ export function ReviewEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -98,5 +98,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

@@ -1,40 +1,40 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { HorizontalRuleExtension } from "@lexical/extension"
-import { CheckListExtension, ListExtension } from "@lexical/list"
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
-import { TableExtension } from "@lexical/table"
+import { HorizontalRuleExtension } from "@lexical/extension";
+import { CheckListExtension, ListExtension } from "@lexical/list";
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
+import { TableExtension } from "@lexical/table";
 
-import { CodeExtension } from "@/components/editor/extensions/code"
-import { ImageExtension } from "@/components/editor/extensions/image"
-import { LayoutExtension } from "@/components/editor/extensions/layout"
-import { BulletedListPickerPlugin } from "@/components/editor/plugins/component-picker/bulleted-list-picker-plugin"
-import { CheckListPickerPlugin } from "@/components/editor/plugins/component-picker/check-list-picker-plugin"
-import { CodePickerPlugin } from "@/components/editor/plugins/component-picker/code-picker-plugin"
-import { ColumnsPickerPlugin } from "@/components/editor/plugins/component-picker/columns-picker-plugin"
-import { ComponentPicker } from "@/components/editor/plugins/component-picker/component-picker-plugin"
-import { DividerPickerPlugin } from "@/components/editor/plugins/component-picker/divider-picker-plugin"
-import { HeadingPickerPlugin } from "@/components/editor/plugins/component-picker/heading-picker-plugin"
-import { ImagePickerPlugin } from "@/components/editor/plugins/component-picker/image-picker-plugin"
-import { NumberedListPickerPlugin } from "@/components/editor/plugins/component-picker/numbered-list-picker-plugin"
-import { ParagraphPickerPlugin } from "@/components/editor/plugins/component-picker/paragraph-picker-plugin"
-import { QuotePickerPlugin } from "@/components/editor/plugins/component-picker/quote-picker-plugin"
-import { TablePickerPlugin } from "@/components/editor/plugins/component-picker/table-picker-plugin"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { CodeExtension } from "@/components/editor/extensions/code";
+import { ImageExtension } from "@/components/editor/extensions/image";
+import { LayoutExtension } from "@/components/editor/extensions/layout";
+import { BulletedListPickerPlugin } from "@/components/editor/plugins/component-picker/bulleted-list-picker-plugin";
+import { CheckListPickerPlugin } from "@/components/editor/plugins/component-picker/check-list-picker-plugin";
+import { CodePickerPlugin } from "@/components/editor/plugins/component-picker/code-picker-plugin";
+import { ColumnsPickerPlugin } from "@/components/editor/plugins/component-picker/columns-picker-plugin";
+import { ComponentPicker } from "@/components/editor/plugins/component-picker/component-picker-plugin";
+import { DividerPickerPlugin } from "@/components/editor/plugins/component-picker/divider-picker-plugin";
+import { HeadingPickerPlugin } from "@/components/editor/plugins/component-picker/heading-picker-plugin";
+import { ImagePickerPlugin } from "@/components/editor/plugins/component-picker/image-picker-plugin";
+import { NumberedListPickerPlugin } from "@/components/editor/plugins/component-picker/numbered-list-picker-plugin";
+import { ParagraphPickerPlugin } from "@/components/editor/plugins/component-picker/paragraph-picker-plugin";
+import { QuotePickerPlugin } from "@/components/editor/plugins/component-picker/quote-picker-plugin";
+import { TablePickerPlugin } from "@/components/editor/plugins/component-picker/table-picker-plugin";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function ComponentPickerEditor() {
   const app = useMemo(
@@ -56,16 +56,16 @@ export function ComponentPickerEditor() {
           $getRoot().append(
             $createParagraphNode().append(
               $createTextNode(
-                'Type "/" on an empty line to open the component picker, then choose a heading, list, table, quote, or any other block. Keep typing after the slash to filter the menu.'
-              )
+                'Type "/" on an empty line to open the component picker, then choose a heading, list, table, quote, or any other block. Keep typing after the slash to filter the menu.',
+              ),
             ),
-            $createParagraphNode()
-          )
+            $createParagraphNode(),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -90,11 +90,11 @@ export function ComponentPickerEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -105,5 +105,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

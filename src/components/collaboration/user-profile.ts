@@ -7,11 +7,11 @@ const entries: [string, string][] = [
   ["Donald", "#ea580c"],
   ["Margaret", "#16a34a"],
   ["Linus", "#db2777"],
-]
+];
 
 export interface UserProfile {
-  name: string
-  color: string
+  name: string;
+  color: string;
 }
 
 /**
@@ -20,16 +20,16 @@ export interface UserProfile {
  * same name.
  */
 export function getRandomUserProfile(group?: number): UserProfile {
-  const half = Math.floor(entries.length / 2)
+  const half = Math.floor(entries.length / 2);
   const pool =
     group === undefined
       ? entries
       : group % 2 === 0
         ? entries.slice(0, half)
-        : entries.slice(half)
-  const entry = pool[Math.floor(Math.random() * pool.length)]
+        : entries.slice(half);
+  const entry = pool[Math.floor(Math.random() * pool.length)];
   return {
     color: entry[1],
     name: entry[0],
-  }
+  };
 }

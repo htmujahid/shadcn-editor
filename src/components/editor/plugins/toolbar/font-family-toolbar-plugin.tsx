@@ -1,11 +1,11 @@
-import { $getRoot, $getSelection } from "lexical"
+import { $getRoot, $getSelection } from "lexical";
 
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
-import { useLexicalEditable } from "@lexical/react/useLexicalEditable"
-import { $patchStyleText } from "@lexical/selection"
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
+import { $patchStyleText } from "@lexical/selection";
 
-import { useFormatStateValue } from "@/components/editor/extensions/format-state"
-import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
+import { useFormatStateValue } from "@/components/editor/extensions/format-state";
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
 import {
   Combobox,
   ComboboxContent,
@@ -13,7 +13,7 @@ import {
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
-} from "@/components/ui/combobox"
+} from "@/components/ui/combobox";
 
 const FONT_FAMILIES = [
   "Arial",
@@ -22,13 +22,13 @@ const FONT_FAMILIES = [
   "Times New Roman",
   "Trebuchet MS",
   "Verdana",
-]
+];
 
 export function FontFamilyToolbarPlugin() {
-  const [editor] = useLexicalComposerContext()
-  const { t, dir } = useTranslation()
-  const fontFamily = useFormatStateValue("fontFamily")
-  const isEditable = useLexicalEditable()
+  const [editor] = useLexicalComposerContext();
+  const { t, dir } = useTranslation();
+  const fontFamily = useFormatStateValue("fontFamily");
+  const isEditable = useLexicalEditable();
 
   return (
     <Combobox
@@ -37,12 +37,12 @@ export function FontFamilyToolbarPlugin() {
       disabled={!isEditable}
       onValueChange={(value) => {
         if (!value) {
-          return
+          return;
         }
         editor.update(() => {
-          const selection = $getSelection() ?? $getRoot().selectEnd()
-          $patchStyleText(selection, { "font-family": value })
-        })
+          const selection = $getSelection() ?? $getRoot().selectEnd();
+          $patchStyleText(selection, { "font-family": value });
+        });
       }}
     >
       <ComboboxInput
@@ -61,5 +61,5 @@ export function FontFamilyToolbarPlugin() {
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
-  )
+  );
 }

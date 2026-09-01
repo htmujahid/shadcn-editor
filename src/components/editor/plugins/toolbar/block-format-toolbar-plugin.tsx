@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react";
 
 import {
   $createParagraphNode,
@@ -9,9 +9,9 @@ import {
   COMMAND_PRIORITY_CRITICAL,
   type ElementNode,
   SELECTION_CHANGE_COMMAND,
-} from "lexical"
+} from "lexical";
 
-import { getPeerDependencyFromEditor } from "@lexical/extension"
+import { getPeerDependencyFromEditor } from "@lexical/extension";
 import {
   $isListNode,
   type CheckListExtension,
@@ -19,17 +19,17 @@ import {
   INSERT_ORDERED_LIST_COMMAND,
   INSERT_UNORDERED_LIST_COMMAND,
   type ListExtension,
-} from "@lexical/list"
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
-import { useLexicalEditable } from "@lexical/react/useLexicalEditable"
+} from "@lexical/list";
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 import {
   $createHeadingNode,
   $createQuoteNode,
   $isHeadingNode,
   $isQuoteNode,
-} from "@lexical/rich-text"
-import { $setBlocksType } from "@lexical/selection"
-import { $findMatchingParent, mergeRegister } from "@lexical/utils"
+} from "@lexical/rich-text";
+import { $setBlocksType } from "@lexical/selection";
+import { $findMatchingParent, mergeRegister } from "@lexical/utils";
 
 import {
   Heading1,
@@ -41,11 +41,11 @@ import {
   type LucideIcon,
   Pilcrow,
   TextQuote,
-} from "lucide-react"
+} from "lucide-react";
 
-import { $getSelectedNode } from "@/components/editor/extensions/format-state"
-import type { Locale } from "@/components/editor/locales"
-import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
+import { $getSelectedNode } from "@/components/editor/extensions/format-state";
+import type { Locale } from "@/components/editor/locales";
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
 import {
   Combobox,
   ComboboxContent,
@@ -53,7 +53,7 @@ import {
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
-} from "@/components/ui/combobox"
+} from "@/components/ui/combobox";
 
 const BLOCK_TYPES = [
   "paragraph",
@@ -64,9 +64,9 @@ const BLOCK_TYPES = [
   "bullet",
   "check",
   "quote",
-] as const
+] as const;
 
-type BlockType = (typeof BLOCK_TYPES)[number]
+type BlockType = (typeof BLOCK_TYPES)[number];
 
 const BLOCK_ITEMS: Record<
   BlockType,
@@ -80,30 +80,30 @@ const BLOCK_ITEMS: Record<
   bullet: { labelKey: "bulletedListBlock", icon: List },
   check: { labelKey: "checkListBlock", icon: ListTodo },
   quote: { labelKey: "quote", icon: TextQuote },
-}
+};
 
 function $getBlockType(): BlockType | null {
-  const selection = $getSelection()
+  const selection = $getSelection();
   if (!$isRangeSelection(selection)) {
-    return null
+    return null;
   }
-  const node = $getSelectedNode(selection)
-  const list = $findMatchingParent(node, $isListNode)
+  const node = $getSelectedNode(selection);
+  const list = $findMatchingParent(node, $isListNode);
   if (list) {
-    return list.getListType()
+    return list.getListType();
   }
   const element = $findMatchingParent(
     node,
     (parent): parent is ElementNode =>
-      $isElementNode(parent) && !parent.isInline()
-  )
+      $isElementNode(parent) && !parent.isInline(),
+  );
   if ($isHeadingNode(element)) {
-    const tag = element.getTag()
+    const tag = element.getTag();
     return (BLOCK_TYPES as readonly string[]).includes(tag)
       ? (tag as BlockType)
-      : "paragraph"
+      : "paragraph";
   }
-  return $isQuoteNode(element) ? "quote" : "paragraph"
+  return $isQuoteNode(element) ? "quote" : "paragraph";
 }
 
 function $createBlockNode(blockType: BlockType) {
@@ -111,72 +111,72 @@ function $createBlockNode(blockType: BlockType) {
     case "h1":
     case "h2":
     case "h3":
-      return $createHeadingNode(blockType)
+      return $createHeadingNode(blockType);
     case "quote":
-      return $createQuoteNode()
+      return $createQuoteNode();
     default:
-      return $createParagraphNode()
+      return $createParagraphNode();
   }
 }
 
 function useBlockType(): BlockType {
-  const [editor] = useLexicalComposerContext()
+  const [editor] = useLexicalComposerContext();
   const [blockType, setBlockType] = useState<BlockType>(
-    () => editor.getEditorState().read($getBlockType) ?? "paragraph"
-  )
+    () => editor.getEditorState().read($getBlockType) ?? "paragraph",
+  );
 
   useEffect(() => {
     return mergeRegister(
       editor.registerUpdateListener(({ editorState }) => {
-        const next = editorState.read($getBlockType)
+        const next = editorState.read($getBlockType);
         if (next) {
-          setBlockType(next)
+          setBlockType(next);
         }
       }),
       editor.registerCommand(
         SELECTION_CHANGE_COMMAND,
         () => {
-          const next = $getBlockType()
+          const next = $getBlockType();
           if (next) {
-            setBlockType(next)
+            setBlockType(next);
           }
-          return false
+          return false;
         },
-        COMMAND_PRIORITY_CRITICAL
-      )
-    )
-  }, [editor])
+        COMMAND_PRIORITY_CRITICAL,
+      ),
+    );
+  }, [editor]);
 
-  return blockType
+  return blockType;
 }
 
 export function BlockFormatToolbarPlugin() {
-  const [editor] = useLexicalComposerContext()
-  const { t, dir, language } = useTranslation()
-  const blockType = useBlockType()
-  const isEditable = useLexicalEditable()
+  const [editor] = useLexicalComposerContext();
+  const { t, dir, language } = useTranslation();
+  const blockType = useBlockType();
+  const isEditable = useLexicalEditable();
 
   const items = useMemo(() => {
     const hasList =
       getPeerDependencyFromEditor<typeof ListExtension>(
         editor,
-        "@lexical/list/List"
-      ) !== undefined
+        "@lexical/list/List",
+      ) !== undefined;
     const hasCheckList =
       getPeerDependencyFromEditor<typeof CheckListExtension>(
         editor,
-        "@lexical/list/CheckList"
-      ) !== undefined
+        "@lexical/list/CheckList",
+      ) !== undefined;
     return BLOCK_TYPES.filter((item) => {
       if (item === "number" || item === "bullet") {
-        return hasList
+        return hasList;
       }
       if (item === "check") {
-        return hasCheckList
+        return hasCheckList;
       }
-      return true
-    })
-  }, [editor])
+      return true;
+    });
+  }, [editor]);
 
   return (
     <Combobox
@@ -187,28 +187,28 @@ export function BlockFormatToolbarPlugin() {
       itemToStringLabel={(item) => t[BLOCK_ITEMS[item].labelKey]}
       onValueChange={(value) => {
         if (!value) {
-          return
+          return;
         }
         editor.update(() => {
           if (!$getSelection()) {
-            $getRoot().selectEnd()
+            $getRoot().selectEnd();
           }
-        })
+        });
         switch (value) {
           case "number":
-            editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND, undefined)
-            return
+            editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND, undefined);
+            return;
           case "bullet":
-            editor.dispatchCommand(INSERT_UNORDERED_LIST_COMMAND, undefined)
-            return
+            editor.dispatchCommand(INSERT_UNORDERED_LIST_COMMAND, undefined);
+            return;
           case "check":
-            editor.dispatchCommand(INSERT_CHECK_LIST_COMMAND, undefined)
-            return
+            editor.dispatchCommand(INSERT_CHECK_LIST_COMMAND, undefined);
+            return;
         }
         editor.update(() => {
-          const selection = $getSelection() ?? $getRoot().selectEnd()
-          $setBlocksType(selection, () => $createBlockNode(value))
-        })
+          const selection = $getSelection() ?? $getRoot().selectEnd();
+          $setBlocksType(selection, () => $createBlockNode(value));
+        });
       }}
     >
       <ComboboxInput
@@ -220,16 +220,16 @@ export function BlockFormatToolbarPlugin() {
         <ComboboxEmpty>{t.noMatches}</ComboboxEmpty>
         <ComboboxList>
           {(item: BlockType) => {
-            const { labelKey, icon: Icon } = BLOCK_ITEMS[item]
+            const { labelKey, icon: Icon } = BLOCK_ITEMS[item];
             return (
               <ComboboxItem key={item} value={item}>
                 <Icon className="text-muted-foreground" />
                 {t[labelKey]}
               </ComboboxItem>
-            )
+            );
           }}
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
-  )
+  );
 }

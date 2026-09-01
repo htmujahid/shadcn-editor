@@ -18,95 +18,98 @@ import {
   type StateConfigValue,
   type StateValueOrUpdater,
   TextNode,
-} from "lexical"
+} from "lexical";
 
-import { addClassNamesToElement } from "@lexical/utils"
+import { addClassNamesToElement } from "@lexical/utils";
 
 const annotationState = createState("annotation", {
   parse: (v) => (typeof v === "string" ? v : ""),
-})
+});
 
 export class RubyNode extends TextNode {
   $config() {
     return this.config("ruby", {
       extends: TextNode,
       stateConfigs: [{ flat: true, stateConfig: annotationState }],
-    })
+    });
   }
 
   createDOM(config: EditorConfig): HTMLElement {
-    const inner = super.createDOM(config)
-    inner.dataset.rubyAnnotation = this.getAnnotation()
-    addClassNamesToElement(inner, config.theme.ruby || "editor-ruby")
-    const wrapper = $getDocument().createElement("span")
-    wrapper.setAttribute("role", "group")
+    const inner = super.createDOM(config);
+    inner.dataset.rubyAnnotation = this.getAnnotation();
+    addClassNamesToElement(inner, config.theme.ruby || "editor-ruby");
+    const wrapper = $getDocument().createElement("span");
+    wrapper.setAttribute("role", "group");
     wrapper.setAttribute(
       "aria-label",
-      `${this.getTextContent()} (${this.getAnnotation()})`
-    )
-    wrapper.appendChild(inner)
-    return wrapper
+      `${this.getTextContent()} (${this.getAnnotation()})`,
+    );
+    wrapper.appendChild(inner);
+    return wrapper;
   }
 
   getDOMSlot(dom: HTMLElement): DOMSlot<HTMLElement> {
-    const inner = dom.firstElementChild
+    const inner = dom.firstElementChild;
     if (isHTMLElement(inner)) {
-      return super.getDOMSlot(dom).withElement(inner)
+      return super.getDOMSlot(dom).withElement(inner);
     }
-    return super.getDOMSlot(dom)
+    return super.getDOMSlot(dom);
   }
 
   updateDOM(prevNode: this, dom: HTMLElement, config: EditorConfig): boolean {
-    const inner = dom.firstElementChild
+    const inner = dom.firstElementChild;
     if (!isHTMLElement(inner)) {
-      return true
+      return true;
     }
-    const updated = super.updateDOM(prevNode, inner, config)
-    const annotationChange = $getStateChange(this, prevNode, annotationState)
+    const updated = super.updateDOM(prevNode, inner, config);
+    const annotationChange = $getStateChange(this, prevNode, annotationState);
     if (annotationChange || prevNode.__text !== this.__text) {
-      inner.dataset.rubyAnnotation = this.getAnnotation()
-      dom.setAttribute("aria-label", `${this.__text} (${this.getAnnotation()})`)
+      inner.dataset.rubyAnnotation = this.getAnnotation();
+      dom.setAttribute(
+        "aria-label",
+        `${this.__text} (${this.getAnnotation()})`,
+      );
     }
-    return updated
+    return updated;
   }
 
   exportDOM(): DOMExportOutput {
-    const ruby = $getDocument().createElement("ruby")
-    ruby.textContent = this.getTextContent()
-    const rpOpen = $getDocument().createElement("rp")
-    rpOpen.textContent = "("
-    ruby.appendChild(rpOpen)
-    const rt = $getDocument().createElement("rt")
-    rt.textContent = this.getAnnotation()
-    ruby.appendChild(rt)
-    const rpClose = $getDocument().createElement("rp")
-    rpClose.textContent = ")"
-    ruby.appendChild(rpClose)
-    return { element: ruby }
+    const ruby = $getDocument().createElement("ruby");
+    ruby.textContent = this.getTextContent();
+    const rpOpen = $getDocument().createElement("rp");
+    rpOpen.textContent = "(";
+    ruby.appendChild(rpOpen);
+    const rt = $getDocument().createElement("rt");
+    rt.textContent = this.getAnnotation();
+    ruby.appendChild(rt);
+    const rpClose = $getDocument().createElement("rp");
+    rpClose.textContent = ")";
+    ruby.appendChild(rpClose);
+    return { element: ruby };
   }
 
   getAnnotation(
-    version?: NodeStateVersion
+    version?: NodeStateVersion,
   ): StateConfigValue<typeof annotationState> {
-    return $getState(this, annotationState, version)
+    return $getState(this, annotationState, version);
   }
 
   setAnnotation(
-    valueOrUpdater: StateValueOrUpdater<typeof annotationState>
+    valueOrUpdater: StateValueOrUpdater<typeof annotationState>,
   ): this {
-    return $setState(this, annotationState, valueOrUpdater)
+    return $setState(this, annotationState, valueOrUpdater);
   }
 
   isInline(): true {
-    return true
+    return true;
   }
 
   canInsertTextBefore(): false {
-    return false
+    return false;
   }
 
   canInsertTextAfter(): false {
-    return false
+    return false;
   }
 }
 
@@ -114,46 +117,46 @@ export function $createRubyNode(text: string, annotation: string): RubyNode {
   return $create(RubyNode)
     .setTextContent(text)
     .setMode("token")
-    .setAnnotation(annotation)
+    .setAnnotation(annotation);
 }
 
 export function $isRubyNode(
-  node: LexicalNode | null | undefined
+  node: LexicalNode | null | undefined,
 ): node is RubyNode {
-  return node instanceof RubyNode
+  return node instanceof RubyNode;
 }
 
 export function $unwrapRubyNode(node: RubyNode): TextNode {
-  const text = $createTextNode(node.getTextContent())
-  text.setFormat(node.getFormat())
-  text.setStyle(node.getStyle())
-  node.replace(text)
-  return text
+  const text = $createTextNode(node.getTextContent());
+  text.setFormat(node.getFormat());
+  text.setStyle(node.getStyle());
+  node.replace(text);
+  return text;
 }
 
 export function $toggleRuby(annotation: string | null): void {
-  const selection = $getSelection()
+  const selection = $getSelection();
   if (!$isRangeSelection(selection)) {
-    return
+    return;
   }
   if (annotation === null) {
     for (const node of selection.getNodes()) {
       if ($isRubyNode(node)) {
-        $unwrapRubyNode(node)
+        $unwrapRubyNode(node);
       }
     }
-    return
+    return;
   }
   if (selection.isCollapsed()) {
-    return
+    return;
   }
-  const nodes = selection.getNodes()
-  const firstTextNode = nodes.find($isTextNode)
-  const text = selection.getTextContent()
-  const rubyNode = $createRubyNode(text, annotation)
+  const nodes = selection.getNodes();
+  const firstTextNode = nodes.find($isTextNode);
+  const text = selection.getTextContent();
+  const rubyNode = $createRubyNode(text, annotation);
   if (firstTextNode) {
-    rubyNode.setFormat(firstTextNode.getFormat())
-    rubyNode.setStyle(firstTextNode.getStyle())
+    rubyNode.setFormat(firstTextNode.getFormat());
+    rubyNode.setStyle(firstTextNode.getStyle());
   }
-  selection.insertNodes([rubyNode])
+  selection.insertNodes([rubyNode]);
 }

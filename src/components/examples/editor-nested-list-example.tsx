@@ -1,33 +1,33 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { TabIndentationExtension } from "@lexical/extension"
+import { TabIndentationExtension } from "@lexical/extension";
 import {
   $createListItemNode,
   $createListNode,
   CheckListExtension,
   ListExtension,
-} from "@lexical/list"
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+} from "@lexical/list";
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { FormatStateExtension } from "@/components/editor/extensions/format-state"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { FormatStateExtension } from "@/components/editor/extensions/format-state";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { BlockFormatToolbarPlugin } from "@/components/editor/plugins/toolbar/block-format-toolbar-plugin"
-import { IndentToolbarPlugin } from "@/components/editor/plugins/toolbar/indent-toolbar-plugin"
-import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { BlockFormatToolbarPlugin } from "@/components/editor/plugins/toolbar/block-format-toolbar-plugin";
+import { IndentToolbarPlugin } from "@/components/editor/plugins/toolbar/indent-toolbar-plugin";
+import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function NestedListEditor() {
   const app = useMemo(
@@ -48,36 +48,36 @@ export function NestedListEditor() {
               $createListItemNode().append(
                 $createListNode("bullet").append(
                   $createListItemNode().append(
-                    $createTextNode("Components and styling")
+                    $createTextNode("Components and styling"),
                   ),
                   $createListItemNode().append(
-                    $createTextNode("Routing and data fetching")
-                  )
-                )
+                    $createTextNode("Routing and data fetching"),
+                  ),
+                ),
               ),
               $createListItemNode().append($createTextNode("Backend")),
               $createListItemNode().append(
                 $createListNode("bullet").append(
                   $createListItemNode().append(
-                    $createTextNode("API endpoints")
+                    $createTextNode("API endpoints"),
                   ),
                   $createListItemNode().append(
-                    $createTextNode("Database migrations")
-                  )
-                )
-              )
+                    $createTextNode("Database migrations"),
+                  ),
+                ),
+              ),
             ),
             $createParagraphNode().append(
               $createTextNode(
-                "Press Tab inside an item to nest it one level deeper, and Shift+Tab to lift it back out."
-              )
-            )
-          )
+                "Press Tab inside an item to nest it one level deeper, and Shift+Tab to lift it back out.",
+              ),
+            ),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -93,11 +93,11 @@ export function NestedListEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -108,5 +108,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

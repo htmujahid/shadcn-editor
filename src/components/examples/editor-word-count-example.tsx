@@ -1,24 +1,24 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { ActivityBar } from "@/components/editor/plugins/activitybar/activitybar-plugin"
-import { CountPlugin } from "@/components/editor/plugins/activitybar/count-plugin"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { ActivityBar } from "@/components/editor/plugins/activitybar/activitybar-plugin";
+import { CountPlugin } from "@/components/editor/plugins/activitybar/count-plugin";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function WordCountEditor() {
   const app = useMemo(
@@ -31,20 +31,20 @@ export function WordCountEditor() {
           $getRoot().append(
             $createParagraphNode().append(
               $createTextNode(
-                "The bar below keeps a live count of your characters and words."
-              )
+                "The bar below keeps a live count of your characters and words.",
+              ),
             ),
             $createParagraphNode().append(
               $createTextNode(
-                "Add a sentence or delete one and watch the numbers follow along as you type."
-              )
-            )
-          )
+                "Add a sentence or delete one and watch the numbers follow along as you type.",
+              ),
+            ),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -61,11 +61,11 @@ export function WordCountEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -76,5 +76,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

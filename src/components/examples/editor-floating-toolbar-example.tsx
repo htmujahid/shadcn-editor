@@ -1,24 +1,24 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { FormatStateExtension } from "@/components/editor/extensions/format-state"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
-import { FloatingToolbarPlugin } from "@/components/editor/plugins/floating/floating-toolbar-plugin"
+import { FormatStateExtension } from "@/components/editor/extensions/format-state";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
+import { FloatingToolbarPlugin } from "@/components/editor/plugins/floating/floating-toolbar-plugin";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function FloatingToolbarEditor() {
   const app = useMemo(
@@ -30,20 +30,20 @@ export function FloatingToolbarEditor() {
           $getRoot().append(
             $createParagraphNode().append(
               $createTextNode(
-                "Select any sentence in this paragraph and a floating toolbar will appear right above your selection."
-              )
+                "Select any sentence in this paragraph and a floating toolbar will appear right above your selection.",
+              ),
             ),
             $createParagraphNode().append(
               $createTextNode(
-                "Highlight a few words and try bold, italic, or any of the other formats without ever leaving the text."
-              )
-            )
-          )
+                "Highlight a few words and try bold, italic, or any of the other formats without ever leaving the text.",
+              ),
+            ),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -56,11 +56,11 @@ export function FloatingToolbarEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -71,5 +71,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

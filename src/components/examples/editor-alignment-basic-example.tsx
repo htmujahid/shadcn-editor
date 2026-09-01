@@ -1,25 +1,25 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { FormatStateExtension } from "@/components/editor/extensions/format-state"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { FormatStateExtension } from "@/components/editor/extensions/format-state";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { ElementFormatToolbarPlugin } from "@/components/editor/plugins/toolbar/element-format-toolbar-plugin"
-import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { ElementFormatToolbarPlugin } from "@/components/editor/plugins/toolbar/element-format-toolbar-plugin";
+import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function AlignmentBasicEditor() {
   const app = useMemo(
@@ -29,27 +29,27 @@ export function AlignmentBasicEditor() {
         dependencies: [RichTextExtension, FormatStateExtension],
         $initialEditorState: () => {
           const center = $createParagraphNode().append(
-            $createTextNode("This one sits in the center.")
-          )
-          center.setFormat("center")
+            $createTextNode("This one sits in the center."),
+          );
+          center.setFormat("center");
           const right = $createParagraphNode().append(
-            $createTextNode("And this one is pushed to the other side.")
-          )
-          right.setFormat("right")
+            $createTextNode("And this one is pushed to the other side."),
+          );
+          right.setFormat("right");
           $getRoot().append(
             $createParagraphNode().append(
               $createTextNode(
-                "This paragraph uses the default alignment. Place the cursor in any line and change it with the toolbar."
-              )
+                "This paragraph uses the default alignment. Place the cursor in any line and change it with the toolbar.",
+              ),
             ),
             center,
-            right
-          )
+            right,
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -64,11 +64,11 @@ export function AlignmentBasicEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -79,5 +79,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

@@ -1,61 +1,61 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-import { defineExtension } from "lexical"
+import { defineExtension } from "lexical";
 
-import { CheckListExtension, ListExtension } from "@lexical/list"
-import { LexicalCollaboration } from "@lexical/react/LexicalCollaborationContext"
-import { CollaborationPlugin } from "@lexical/react/LexicalCollaborationPlugin"
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
-import type { Provider } from "@lexical/yjs"
-import type * as Y from "yjs"
+import { CheckListExtension, ListExtension } from "@lexical/list";
+import { LexicalCollaboration } from "@lexical/react/LexicalCollaborationContext";
+import { CollaborationPlugin } from "@lexical/react/LexicalCollaborationPlugin";
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
+import type { Provider } from "@lexical/yjs";
+import type * as Y from "yjs";
 
 import {
   createWebRTCProvider,
   createWebsocketProvider,
-} from "@/components/collaboration/providers"
+} from "@/components/collaboration/providers";
 import {
   getRandomUserProfile,
   type UserProfile,
-} from "@/components/collaboration/user-profile"
-import { FormatStateExtension } from "@/components/editor/extensions/format-state"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+} from "@/components/collaboration/user-profile";
+import { FormatStateExtension } from "@/components/editor/extensions/format-state";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { BlockFormatToolbarPlugin } from "@/components/editor/plugins/toolbar/block-format-toolbar-plugin"
-import { TextFormatToolbarPlugin } from "@/components/editor/plugins/toolbar/text-format-toolbar-plugin"
-import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { Button } from "@/components/ui/button"
-import { DirectionProvider } from "@/components/ui/direction"
-import { Input } from "@/components/ui/input"
+} from "@/components/editor/plugins/i18n-plugin";
+import { BlockFormatToolbarPlugin } from "@/components/editor/plugins/toolbar/block-format-toolbar-plugin";
+import { TextFormatToolbarPlugin } from "@/components/editor/plugins/toolbar/text-format-toolbar-plugin";
+import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { Button } from "@/components/ui/button";
+import { DirectionProvider } from "@/components/ui/direction";
+import { Input } from "@/components/ui/input";
 
 interface ActiveUserProfile extends UserProfile {
-  userId: number
+  userId: number;
 }
 
 export function CollabEditor() {
   const { providerName, userGroup } = useMemo(() => {
-    const params = new URLSearchParams(window.location.search)
-    const group = params.get("u")
+    const params = new URLSearchParams(window.location.search);
+    const group = params.get("u");
     return {
       providerName: params.get("provider") ?? "webrtc",
       userGroup: group == null ? undefined : Number(group),
-    }
-  }, [])
+    };
+  }, []);
   const [userProfile, setUserProfile] = useState<UserProfile>(() =>
-    getRandomUserProfile(userGroup)
-  )
-  const cursorsContainerRef = useRef<HTMLDivElement | null>(null)
-  const [yjsProvider, setYjsProvider] = useState<Provider | null>(null)
-  const [connected, setConnected] = useState(false)
-  const [activeUsers, setActiveUsers] = useState<ActiveUserProfile[]>([])
+    getRandomUserProfile(userGroup),
+  );
+  const cursorsContainerRef = useRef<HTMLDivElement | null>(null);
+  const [yjsProvider, setYjsProvider] = useState<Provider | null>(null);
+  const [connected, setConnected] = useState(false);
+  const [activeUsers, setActiveUsers] = useState<ActiveUserProfile[]>([]);
 
   const handleAwarenessUpdate = useCallback(() => {
     if (yjsProvider == null) {
-      return
+      return;
     }
     setActiveUsers(
       Array.from(yjsProvider.awareness.getStates().entries()).map(
@@ -63,56 +63,56 @@ export function CollabEditor() {
           color,
           name,
           userId,
-        })
-      )
-    )
-  }, [yjsProvider])
+        }),
+      ),
+    );
+  }, [yjsProvider]);
 
   useEffect(() => {
     if (yjsProvider == null) {
-      return
+      return;
     }
 
-    yjsProvider.awareness.on("update", handleAwarenessUpdate)
+    yjsProvider.awareness.on("update", handleAwarenessUpdate);
 
-    return () => yjsProvider.awareness.off("update", handleAwarenessUpdate)
-  }, [yjsProvider, handleAwarenessUpdate])
+    return () => yjsProvider.awareness.off("update", handleAwarenessUpdate);
+  }, [yjsProvider, handleAwarenessUpdate]);
 
   const handleConnectionToggle = () => {
     if (yjsProvider == null) {
-      return
+      return;
     }
     if (connected) {
-      yjsProvider.disconnect()
+      yjsProvider.disconnect();
     } else {
-      yjsProvider.connect()
+      yjsProvider.connect();
     }
-  }
+  };
 
   const providerFactory = useCallback(
     (id: string, yjsDocMap: Map<string, Y.Doc>) => {
       const provider =
         providerName === "ws"
           ? createWebsocketProvider(id, yjsDocMap)
-          : createWebRTCProvider(id, yjsDocMap)
+          : createWebRTCProvider(id, yjsDocMap);
 
       provider.on("status", (event) => {
         setConnected(
           // Websocket provider reports a status string, the WebRTC provider
           // a connected boolean.
           event.status === "connected" ||
-            ("connected" in event && event.connected === true)
-        )
-      })
+            ("connected" in event && event.connected === true),
+        );
+      });
 
       // Defer to escape the render phase; the standard CollaborationPlugin
       // offers no other way to get a reference to the provider.
-      setTimeout(() => setYjsProvider(provider), 0)
+      setTimeout(() => setYjsProvider(provider), 0);
 
-      return provider
+      return provider;
     },
-    [providerName]
-  )
+    [providerName],
+  );
 
   const app = useMemo(
     () =>
@@ -130,8 +130,8 @@ export function CollabEditor() {
         $initialEditorState: null,
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -220,11 +220,11 @@ export function CollabEditor() {
         </LexicalCollaboration>
       </div>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -235,5 +235,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

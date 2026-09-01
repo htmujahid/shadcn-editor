@@ -1,27 +1,27 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { FigmaExtension } from "@/components/editor/extensions/figma"
-import { $createFigmaNode } from "@/components/editor/nodes/figma-node"
-import { BlockInsert } from "@/components/editor/plugins/block-insert/block-insert-plugin"
-import { InsertFigmaPlugin } from "@/components/editor/plugins/block-insert/insert-figma-plugin"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { FigmaExtension } from "@/components/editor/extensions/figma";
+import { $createFigmaNode } from "@/components/editor/nodes/figma-node";
+import { BlockInsert } from "@/components/editor/plugins/block-insert/block-insert-plugin";
+import { InsertFigmaPlugin } from "@/components/editor/plugins/block-insert/insert-figma-plugin";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function FigmaEditor() {
   const app = useMemo(
@@ -33,17 +33,17 @@ export function FigmaEditor() {
           $getRoot().append(
             $createParagraphNode().append(
               $createTextNode(
-                "Use the toolbar button above to embed a Figma file by its link. A sample file is embedded below:"
-              )
+                "Use the toolbar button above to embed a Figma file by its link. A sample file is embedded below:",
+              ),
             ),
             $createFigmaNode("LKQ4FJ4bTnCSjedbRpk931"),
-            $createParagraphNode()
-          )
+            $createParagraphNode(),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -60,11 +60,11 @@ export function FigmaEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -75,5 +75,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

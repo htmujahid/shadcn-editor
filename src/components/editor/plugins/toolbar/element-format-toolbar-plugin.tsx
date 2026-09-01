@@ -1,7 +1,7 @@
-import { type ElementFormatType, FORMAT_ELEMENT_COMMAND } from "lexical"
+import { type ElementFormatType, FORMAT_ELEMENT_COMMAND } from "lexical";
 
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
-import { useLexicalEditable } from "@lexical/react/useLexicalEditable"
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
 import {
   AlignCenter,
@@ -11,29 +11,29 @@ import {
   type LucideIcon,
   PilcrowLeft,
   PilcrowRight,
-} from "lucide-react"
+} from "lucide-react";
 
-import { useFormatStateValue } from "@/components/editor/extensions/format-state"
-import type { Locale } from "@/components/editor/locales"
-import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import { useFormatStateValue } from "@/components/editor/extensions/format-state";
+import type { Locale } from "@/components/editor/locales";
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@/components/ui/tooltip";
 
 type AlignItem = {
-  value: Exclude<ElementFormatType, "">
-  labelKey: keyof Locale
-  icon: LucideIcon
-}
+  value: Exclude<ElementFormatType, "">;
+  labelKey: keyof Locale;
+  icon: LucideIcon;
+};
 
 function AlignToggleGroup({ items }: { items: AlignItem[] }) {
-  const [editor] = useLexicalComposerContext()
-  const { t } = useTranslation()
-  const elementFormat = useFormatStateValue("elementFormat")
-  const isEditable = useLexicalEditable()
+  const [editor] = useLexicalComposerContext();
+  const { t } = useTranslation();
+  const elementFormat = useFormatStateValue("elementFormat");
+  const isEditable = useLexicalEditable();
   return (
     <ToggleGroup
       variant="outline"
@@ -42,9 +42,9 @@ function AlignToggleGroup({ items }: { items: AlignItem[] }) {
       disabled={!isEditable}
       value={[elementFormat]}
       onValueChange={(value) => {
-        const next = value[0] as Exclude<ElementFormatType, ""> | undefined
+        const next = value[0] as Exclude<ElementFormatType, ""> | undefined;
         if (next) {
-          editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, next)
+          editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, next);
         }
       }}
     >
@@ -61,16 +61,16 @@ function AlignToggleGroup({ items }: { items: AlignItem[] }) {
         </Tooltip>
       ))}
     </ToggleGroup>
-  )
+  );
 }
 
 export function ElementFormatToolbarPlugin({
   formats = "all",
 }: {
-  formats?: "basic" | "all"
+  formats?: "basic" | "all";
 }) {
-  const { dir } = useTranslation()
-  const isRtl = dir === "rtl"
+  const { dir } = useTranslation();
+  const isRtl = dir === "rtl";
 
   const alignGroups: AlignItem[][] = [
     [
@@ -91,9 +91,9 @@ export function ElementFormatToolbarPlugin({
         labelKey: "alignEnd",
       },
     ],
-  ]
+  ];
 
-  const groups = formats === "basic" ? alignGroups.slice(0, 1) : alignGroups
+  const groups = formats === "basic" ? alignGroups.slice(0, 1) : alignGroups;
 
   return (
     <>
@@ -101,5 +101,5 @@ export function ElementFormatToolbarPlugin({
         <AlignToggleGroup key={groupIndex} items={items} />
       ))}
     </>
-  )
+  );
 }

@@ -1,28 +1,28 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { HistoryExtension } from "@lexical/history"
-import { CheckListExtension, ListExtension } from "@lexical/list"
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { HistoryExtension } from "@lexical/history";
+import { CheckListExtension, ListExtension } from "@lexical/list";
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { CodeExtension } from "@/components/editor/extensions/code"
-import { ShortcutsExtension } from "@/components/editor/extensions/shortcuts"
-import { ActivityBar } from "@/components/editor/plugins/activitybar/activitybar-plugin"
-import { ShortcutPlugin } from "@/components/editor/plugins/activitybar/shortcut-plugin"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { CodeExtension } from "@/components/editor/extensions/code";
+import { ShortcutsExtension } from "@/components/editor/extensions/shortcuts";
+import { ActivityBar } from "@/components/editor/plugins/activitybar/activitybar-plugin";
+import { ShortcutPlugin } from "@/components/editor/plugins/activitybar/shortcut-plugin";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function ShortcutsEditor() {
   const app = useMemo(
@@ -42,20 +42,20 @@ export function ShortcutsEditor() {
           $getRoot().append(
             $createParagraphNode().append(
               $createTextNode(
-                "This editor understands the keyboard shortcuts you already know."
-              )
+                "This editor understands the keyboard shortcuts you already know.",
+              ),
             ),
             $createParagraphNode().append(
               $createTextNode(
-                "Select this sentence and try Ctrl+B for bold, Ctrl+I for italic, or Ctrl+U for underline, then open the keyboard icon below for the full list."
-              )
-            )
-          )
+                "Select this sentence and try Ctrl+B for bold, Ctrl+I for italic, or Ctrl+U for underline, then open the keyboard icon below for the full list.",
+              ),
+            ),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -72,11 +72,11 @@ export function ShortcutsEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -87,5 +87,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

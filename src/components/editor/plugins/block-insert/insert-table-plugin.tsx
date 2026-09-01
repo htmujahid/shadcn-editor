@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react"
+import { useCallback, useState } from "react";
 
 import {
   $getRoot,
@@ -6,74 +6,74 @@ import {
   $isParagraphNode,
   $isRangeSelection,
   type LexicalEditor,
-} from "lexical"
+} from "lexical";
 
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
-import { useLexicalEditable } from "@lexical/react/useLexicalEditable"
-import { $findTableNode, INSERT_TABLE_COMMAND } from "@lexical/table"
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
+import { $findTableNode, INSERT_TABLE_COMMAND } from "@lexical/table";
 
-import { Table } from "lucide-react"
+import { Table } from "lucide-react";
 
-import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
-import { Button } from "@/components/ui/button"
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { Button } from "@/components/ui/button";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/components/ui/popover";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
-import { cn } from "@/lib/utils"
+} from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 
-const MAX_ROWS = 8
-const MAX_COLUMNS = 10
+const MAX_ROWS = 8;
+const MAX_COLUMNS = 10;
 
 export function insertTable(
   editor: LexicalEditor,
   rows: number,
-  columns: number
+  columns: number,
 ) {
   editor.update(() => {
     if (!$getSelection()) {
-      $getRoot().selectEnd()
+      $getRoot().selectEnd();
     }
-  })
+  });
   editor.dispatchCommand(INSERT_TABLE_COMMAND, {
     columns: String(columns),
     rows: String(rows),
     includeHeaders: { columns: true, rows: true },
-  })
+  });
 
   editor.update(() => {
-    const selection = $getSelection()
+    const selection = $getSelection();
     const tableNode = $isRangeSelection(selection)
       ? $findTableNode(selection.anchor.getNode())
-      : null
+      : null;
     if (!tableNode) {
-      return
+      return;
     }
 
-    const previousSibling = tableNode.getPreviousSibling()
+    const previousSibling = tableNode.getPreviousSibling();
     if ($isParagraphNode(previousSibling) && previousSibling.isEmpty()) {
-      previousSibling.remove()
+      previousSibling.remove();
     }
 
-    const nextSibling = tableNode.getNextSibling()
+    const nextSibling = tableNode.getNextSibling();
     if ($isParagraphNode(nextSibling) && nextSibling.isEmpty()) {
-      nextSibling.remove()
+      nextSibling.remove();
     }
-  })
+  });
 }
 
 function TableGridPicker({
   onSelect,
 }: {
-  onSelect: (rows: number, columns: number) => void
+  onSelect: (rows: number, columns: number) => void;
 }) {
-  const [hovered, setHovered] = useState({ rows: 1, columns: 1 })
+  const [hovered, setHovered] = useState({ rows: 1, columns: 1 });
 
   return (
     <div className="flex flex-col items-center gap-2">
@@ -83,9 +83,9 @@ function TableGridPicker({
         onPointerLeave={() => setHovered({ rows: 1, columns: 1 })}
       >
         {Array.from({ length: MAX_ROWS * MAX_COLUMNS }, (_, index) => {
-          const row = Math.floor(index / MAX_COLUMNS) + 1
-          const column = (index % MAX_COLUMNS) + 1
-          const active = row <= hovered.rows && column <= hovered.columns
+          const row = Math.floor(index / MAX_COLUMNS) + 1;
+          const column = (index % MAX_COLUMNS) + 1;
+          const active = row <= hovered.rows && column <= hovered.columns;
 
           return (
             <div
@@ -96,32 +96,32 @@ function TableGridPicker({
               onClick={() => onSelect(row, column)}
               className={cn(
                 "size-[1.125rem] rounded-xs border",
-                active ? "border-primary bg-primary/20" : "border-border"
+                active ? "border-primary bg-primary/20" : "border-border",
               )}
             />
-          )
+          );
         })}
       </div>
       <p className="text-xs text-muted-foreground">
         {hovered.columns} x {hovered.rows}
       </p>
     </div>
-  )
+  );
 }
 
 export function InsertTablePlugin() {
-  const [editor] = useLexicalComposerContext()
-  const isEditable = useLexicalEditable()
-  const { t, dir } = useTranslation()
-  const [open, setOpen] = useState(false)
+  const [editor] = useLexicalComposerContext();
+  const isEditable = useLexicalEditable();
+  const { t, dir } = useTranslation();
+  const [open, setOpen] = useState(false);
 
   const onSelect = useCallback(
     (rows: number, columns: number) => {
-      insertTable(editor, rows, columns)
-      setOpen(false)
+      insertTable(editor, rows, columns);
+      setOpen(false);
     },
-    [editor]
-  )
+    [editor],
+  );
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -148,5 +148,5 @@ export function InsertTablePlugin() {
         <TableGridPicker onSelect={onSelect} />
       </PopoverContent>
     </Popover>
-  )
+  );
 }

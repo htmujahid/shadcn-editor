@@ -1,4 +1,4 @@
-import { type Dispatch, useCallback, useEffect, useRef, useState } from "react"
+import { type Dispatch, useCallback, useEffect, useRef, useState } from "react";
 
 import {
   $getSelection,
@@ -7,35 +7,35 @@ import {
   COMMAND_PRIORITY_LOW,
   type LexicalEditor,
   SELECTION_CHANGE_COMMAND,
-} from "lexical"
+} from "lexical";
 
 import {
   $createLinkNode,
   $isAutoLinkNode,
   TOGGLE_LINK_COMMAND,
-} from "@lexical/link"
-import { mergeRegister } from "@lexical/utils"
+} from "@lexical/link";
+import { mergeRegister } from "@lexical/utils";
 
-import { Check, Pencil, Trash2, X } from "lucide-react"
+import { Check, Pencil, Trash2, X } from "lucide-react";
 
 import {
   $getSelectedLinkNode,
   $getSelectedNode,
-} from "@/components/editor/extensions/format-state"
-import { sanitizeUrl } from "@/components/editor/extensions/link"
-import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+} from "@/components/editor/extensions/format-state";
+import { sanitizeUrl } from "@/components/editor/extensions/link";
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@/components/ui/tooltip";
 
 function preventDefault(
-  event: React.KeyboardEvent<HTMLInputElement> | React.MouseEvent<HTMLElement>
+  event: React.KeyboardEvent<HTMLInputElement> | React.MouseEvent<HTMLElement>,
 ): void {
-  event.preventDefault()
+  event.preventDefault();
 }
 
 export function LinkEditor({
@@ -44,104 +44,107 @@ export function LinkEditor({
   setIsLinkEditMode,
   onDismiss,
 }: {
-  editor: LexicalEditor
-  isLinkEditMode: boolean
-  setIsLinkEditMode: Dispatch<boolean>
-  onDismiss: () => void
+  editor: LexicalEditor;
+  isLinkEditMode: boolean;
+  setIsLinkEditMode: Dispatch<boolean>;
+  onDismiss: () => void;
 }) {
-  const inputRef = useRef<HTMLInputElement | null>(null)
-  const { t } = useTranslation()
-  const [linkUrl, setLinkUrl] = useState("")
-  const [editedLinkUrl, setEditedLinkUrl] = useState("https://")
-  const [lastSelection, setLastSelection] = useState<BaseSelection | null>(null)
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const { t } = useTranslation();
+  const [linkUrl, setLinkUrl] = useState("");
+  const [editedLinkUrl, setEditedLinkUrl] = useState("https://");
+  const [lastSelection, setLastSelection] = useState<BaseSelection | null>(
+    null,
+  );
 
   const $updateLinkState = useCallback(() => {
-    const selection = $getSelection()
+    const selection = $getSelection();
     if ($isRangeSelection(selection)) {
-      const linkNode = $getSelectedLinkNode(selection)
-      setLinkUrl(linkNode ? linkNode.getURL() : "")
-      setLastSelection(selection)
+      const linkNode = $getSelectedLinkNode(selection);
+      setLinkUrl(linkNode ? linkNode.getURL() : "");
+      setLastSelection(selection);
     } else {
-      setLastSelection(null)
+      setLastSelection(null);
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
     editor.read("latest", () => {
-      $updateLinkState()
-    })
+      $updateLinkState();
+    });
     return mergeRegister(
       editor.registerUpdateListener(({ editorState }) => {
         editorState.read(() => {
-          $updateLinkState()
-        })
+          $updateLinkState();
+        });
       }),
       editor.registerCommand(
         SELECTION_CHANGE_COMMAND,
         () => {
-          $updateLinkState()
-          return false
+          $updateLinkState();
+          return false;
         },
-        COMMAND_PRIORITY_LOW
-      )
-    )
-  }, [editor, $updateLinkState])
+        COMMAND_PRIORITY_LOW,
+      ),
+    );
+  }, [editor, $updateLinkState]);
 
   const focusInput = useCallback((elem: HTMLInputElement | null) => {
-    inputRef.current = elem
+    inputRef.current = elem;
     if (elem) {
-      elem.focus()
+      elem.focus();
     }
-  }, [])
+  }, []);
 
   const handleLinkSubmission = (
-    event: React.KeyboardEvent<HTMLInputElement> | React.MouseEvent<HTMLElement>
+    event:
+      React.KeyboardEvent<HTMLInputElement> | React.MouseEvent<HTMLElement>,
   ) => {
-    event.preventDefault()
+    event.preventDefault();
     if (lastSelection !== null) {
       if (linkUrl !== "") {
         editor.update(() => {
           editor.dispatchCommand(
             TOGGLE_LINK_COMMAND,
-            sanitizeUrl(editedLinkUrl)
-          )
-          const selection = $getSelection()
+            sanitizeUrl(editedLinkUrl),
+          );
+          const selection = $getSelection();
           if ($isRangeSelection(selection)) {
-            const parent = $getSelectedNode(selection).getParent()
+            const parent = $getSelectedNode(selection).getParent();
             if ($isAutoLinkNode(parent)) {
               const linkNode = $createLinkNode(parent.getURL(), {
                 rel: parent.__rel,
                 target: parent.__target,
                 title: parent.__title,
-              })
-              parent.replace(linkNode, true)
+              });
+              parent.replace(linkNode, true);
             }
           }
-        })
+        });
       }
-      setEditedLinkUrl("https://")
-      setIsLinkEditMode(false)
+      setEditedLinkUrl("https://");
+      setIsLinkEditMode(false);
     }
-  }
+  };
 
   const monitorInputInteraction = (
-    event: React.KeyboardEvent<HTMLInputElement>
+    event: React.KeyboardEvent<HTMLInputElement>,
   ) => {
     if (event.key === "Enter") {
-      handleLinkSubmission(event)
+      handleLinkSubmission(event);
     } else if (event.key === "Escape") {
-      event.preventDefault()
-      setIsLinkEditMode(false)
+      event.preventDefault();
+      setIsLinkEditMode(false);
     }
-  }
+  };
 
   return (
     <div
       className="flex items-center gap-1"
       onBlur={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget as Node)) {
-          setIsLinkEditMode(false)
-          onDismiss()
+          setIsLinkEditMode(false);
+          onDismiss();
         }
       }}
     >
@@ -153,7 +156,7 @@ export function LinkEditor({
             placeholder={t.linkUrlPlaceholder}
             className="h-7 w-56 md:text-[0.8rem]"
             onChange={(event) => {
-              setEditedLinkUrl(event.target.value)
+              setEditedLinkUrl(event.target.value);
             }}
             onKeyDown={monitorInputInteraction}
           />
@@ -166,7 +169,7 @@ export function LinkEditor({
                   aria-label={t.cancel}
                   onMouseDown={preventDefault}
                   onClick={() => {
-                    setIsLinkEditMode(false)
+                    setIsLinkEditMode(false);
                   }}
                 >
                   <X />
@@ -212,9 +215,9 @@ export function LinkEditor({
                   aria-label={t.editLink}
                   onMouseDown={preventDefault}
                   onClick={(event) => {
-                    event.preventDefault()
-                    setEditedLinkUrl(linkUrl)
-                    setIsLinkEditMode(true)
+                    event.preventDefault();
+                    setEditedLinkUrl(linkUrl);
+                    setIsLinkEditMode(true);
                   }}
                 >
                   <Pencil />
@@ -232,7 +235,7 @@ export function LinkEditor({
                   aria-label={t.removeLink}
                   onMouseDown={preventDefault}
                   onClick={() => {
-                    editor.dispatchCommand(TOGGLE_LINK_COMMAND, null)
+                    editor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
                   }}
                 >
                   <Trash2 />
@@ -244,5 +247,5 @@ export function LinkEditor({
         </>
       )}
     </div>
-  )
+  );
 }

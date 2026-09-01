@@ -1,72 +1,72 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getNearestNodeFromDOMNode,
   $isElementNode,
-} from "lexical"
+} from "lexical";
 
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
-import { DraggableBlockPlugin_EXPERIMENTAL } from "@lexical/react/LexicalDraggableBlockPlugin"
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import { DraggableBlockPlugin_EXPERIMENTAL } from "@lexical/react/LexicalDraggableBlockPlugin";
 
-import { GripVertical, Plus } from "lucide-react"
+import { GripVertical, Plus } from "lucide-react";
 
-import { useLanguage } from "@/components/editor/plugins/i18n-plugin"
-import { cn } from "@/lib/utils"
+import { useLanguage } from "@/components/editor/plugins/i18n-plugin";
+import { cn } from "@/lib/utils";
 
-const DRAGGABLE_BLOCK_MENU_CLASSNAME = "draggable-block-menu"
+const DRAGGABLE_BLOCK_MENU_CLASSNAME = "draggable-block-menu";
 
 function isOnMenu(element: HTMLElement): boolean {
-  return !!element.closest(`.${DRAGGABLE_BLOCK_MENU_CLASSNAME}`)
+  return !!element.closest(`.${DRAGGABLE_BLOCK_MENU_CLASSNAME}`);
 }
 
 export function DraggableBlockPlugin() {
-  const [editor] = useLexicalComposerContext()
-  const { dir } = useLanguage()
-  const menuRef = useRef<HTMLDivElement>(null)
-  const targetLineRef = useRef<HTMLDivElement>(null)
+  const [editor] = useLexicalComposerContext();
+  const { dir } = useLanguage();
+  const menuRef = useRef<HTMLDivElement>(null);
+  const targetLineRef = useRef<HTMLDivElement>(null);
   const [draggableElement, setDraggableElement] = useState<HTMLElement | null>(
-    null
-  )
-  const [anchorElem, setAnchorElem] = useState<HTMLElement | null>(null)
+    null,
+  );
+  const [anchorElem, setAnchorElem] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
     return editor.registerRootListener((rootElement) => {
-      setAnchorElem(rootElement?.parentElement ?? null)
-    })
-  }, [editor])
+      setAnchorElem(rootElement?.parentElement ?? null);
+    });
+  }, [editor]);
 
   if (!anchorElem) {
-    return null
+    return null;
   }
 
   function insertSlashBlock(event: React.MouseEvent) {
     if (!draggableElement) {
-      return
+      return;
     }
     editor.update(() => {
-      const node = $getNearestNodeFromDOMNode(draggableElement)
+      const node = $getNearestNodeFromDOMNode(draggableElement);
       if (!node) {
-        return
+        return;
       }
       if ($isElementNode(node)) {
-        const textContent = node.getTextContent()
-        const needsSpace = textContent !== "" && !/\s$/.test(textContent)
-        node.selectEnd().insertText(needsSpace ? " /" : "/")
-        return
+        const textContent = node.getTextContent();
+        const needsSpace = textContent !== "" && !/\s$/.test(textContent);
+        node.selectEnd().insertText(needsSpace ? " /" : "/");
+        return;
       }
-      const paragraph = $createParagraphNode()
-      const textNode = $createTextNode("/")
-      paragraph.append(textNode)
+      const paragraph = $createParagraphNode();
+      const textNode = $createTextNode("/");
+      paragraph.append(textNode);
       if (event.altKey || event.ctrlKey) {
-        node.insertBefore(paragraph)
+        node.insertBefore(paragraph);
       } else {
-        node.insertAfter(paragraph)
+        node.insertAfter(paragraph);
       }
-      textNode.selectEnd()
-    })
-    editor.focus()
+      textNode.selectEnd();
+    });
+    editor.focus();
   }
 
   return (
@@ -80,7 +80,7 @@ export function DraggableBlockPlugin() {
           className={cn(
             DRAGGABLE_BLOCK_MENU_CLASSNAME,
             "absolute top-0 flex cursor-grab items-center rounded-md p-px opacity-0 will-change-transform active:cursor-grabbing",
-            dir === "rtl" ? "right-2" : "left-0"
+            dir === "rtl" ? "right-2" : "left-0",
           )}
         >
           <button
@@ -106,5 +106,5 @@ export function DraggableBlockPlugin() {
       isOnMenu={isOnMenu}
       onElementChanged={setDraggableElement}
     />
-  )
+  );
 }

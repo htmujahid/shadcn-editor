@@ -1,19 +1,19 @@
 /* eslint-disable react-refresh/only-export-components */
-import { useRef } from "react"
+import { useRef } from "react";
 
-import { createPortal } from "react-dom"
+import { createPortal } from "react-dom";
 
 import {
   configExtension,
   CONTROL_OR_META,
   defineExtension,
   isExactShortcutMatch,
-} from "lexical"
+} from "lexical";
 
-import { ReactExtension } from "@lexical/react/ReactExtension"
-import type { DecoratorComponentProps } from "@lexical/react/ReactPluginHostExtension"
-import { useExtensionSignalValue } from "@lexical/react/useExtensionSignalValue"
-import { useLexicalEditable } from "@lexical/react/useLexicalEditable"
+import { ReactExtension } from "@lexical/react/ReactExtension";
+import type { DecoratorComponentProps } from "@lexical/react/ReactPluginHostExtension";
+import { useExtensionSignalValue } from "@lexical/react/useExtensionSignalValue";
+import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
 import {
   CaseSensitive,
@@ -23,7 +23,7 @@ import {
   Replace,
   ReplaceAll,
   X,
-} from "lucide-react"
+} from "lucide-react";
 
 import {
   CLOSE_FIND_REPLACE_COMMAND,
@@ -36,87 +36,93 @@ import {
   SET_SEARCH_TERM_COMMAND,
   TOGGLE_CASE_SENSITIVE_COMMAND,
   TOGGLE_REGEX_COMMAND,
-} from "@/components/editor/extensions/find-replace"
-import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
-import { Button } from "@/components/ui/button"
-import { ButtonGroup } from "@/components/ui/button-group"
+} from "@/components/editor/extensions/find-replace";
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { Button } from "@/components/ui/button";
+import { ButtonGroup } from "@/components/ui/button-group";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/components/ui/input-group"
+} from "@/components/ui/input-group";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
-import { cn } from "@/lib/utils"
+} from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 
 function FindReplacePanel({ context }: DecoratorComponentProps) {
-  const [editor] = context
-  const { t, dir } = useTranslation()
-  const isEditable = useLexicalEditable()
-  const isOpen = useExtensionSignalValue(FindReplaceExtension, "isOpen")
-  const searchTerm = useExtensionSignalValue(FindReplaceExtension, "searchTerm")
+  const [editor] = context;
+  const { t, dir } = useTranslation();
+  const isEditable = useLexicalEditable();
+  const isOpen = useExtensionSignalValue(FindReplaceExtension, "isOpen");
+  const searchTerm = useExtensionSignalValue(
+    FindReplaceExtension,
+    "searchTerm",
+  );
   const replaceTerm = useExtensionSignalValue(
     FindReplaceExtension,
-    "replaceTerm"
-  )
+    "replaceTerm",
+  );
   const caseSensitive = useExtensionSignalValue(
     FindReplaceExtension,
-    "caseSensitive"
-  )
-  const isRegex = useExtensionSignalValue(FindReplaceExtension, "isRegex")
-  const matches = useExtensionSignalValue(FindReplaceExtension, "matches")
+    "caseSensitive",
+  );
+  const isRegex = useExtensionSignalValue(FindReplaceExtension, "isRegex");
+  const matches = useExtensionSignalValue(FindReplaceExtension, "matches");
   const effectiveIndex = useExtensionSignalValue(
     FindReplaceExtension,
-    "effectiveIndex"
-  )
-  const regexError = useExtensionSignalValue(FindReplaceExtension, "regexError")
-  const findInputRef = useRef<HTMLInputElement>(null)
+    "effectiveIndex",
+  );
+  const regexError = useExtensionSignalValue(
+    FindReplaceExtension,
+    "regexError",
+  );
+  const findInputRef = useRef<HTMLInputElement>(null);
 
   if (!isOpen) {
-    return null
+    return null;
   }
 
-  const goToNext = () => editor.dispatchCommand(FIND_NEXT_COMMAND, undefined)
+  const goToNext = () => editor.dispatchCommand(FIND_NEXT_COMMAND, undefined);
   const goToPrevious = () =>
-    editor.dispatchCommand(FIND_PREV_COMMAND, undefined)
+    editor.dispatchCommand(FIND_PREV_COMMAND, undefined);
   const close = () => {
-    editor.dispatchCommand(CLOSE_FIND_REPLACE_COMMAND, undefined)
-    editor.focus()
-  }
+    editor.dispatchCommand(CLOSE_FIND_REPLACE_COMMAND, undefined);
+    editor.focus();
+  };
 
   const handlePanelKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === "Escape") {
-      event.preventDefault()
-      close()
-      return
+      event.preventDefault();
+      close();
+      return;
     }
     if (
       isExactShortcutMatch(event, "g", CONTROL_OR_META) ||
       isExactShortcutMatch(event, "g", { ...CONTROL_OR_META, shiftKey: true })
     ) {
-      event.preventDefault()
+      event.preventDefault();
       if (event.shiftKey) {
-        goToPrevious()
+        goToPrevious();
       } else {
-        goToNext()
+        goToNext();
       }
-      return
+      return;
     }
     if (
       isExactShortcutMatch(event, "f", CONTROL_OR_META) ||
       isExactShortcutMatch(event, "f", { altKey: true, metaKey: true })
     ) {
-      event.preventDefault()
-      findInputRef.current?.focus()
+      event.preventDefault();
+      findInputRef.current?.focus();
     }
-  }
+  };
 
-  const canNavigate = matches.length > 0
-  const canReplace = isEditable && matches.length > 0
+  const canNavigate = matches.length > 0;
+  const canReplace = isEditable && matches.length > 0;
   const statusLabel = regexError
     ? t.invalidRegex
     : searchTerm === ""
@@ -125,13 +131,13 @@ function FindReplacePanel({ context }: DecoratorComponentProps) {
         ? t.noResults
         : t.matchCount
             .replace("{current}", String(effectiveIndex + 1))
-            .replace("{total}", String(matches.length))
+            .replace("{total}", String(matches.length));
 
-  const rootElement = editor.getRootElement()
+  const rootElement = editor.getRootElement();
   const portalTarget =
-    rootElement?.parentElement ?? rootElement?.ownerDocument.body ?? null
+    rootElement?.parentElement ?? rootElement?.ownerDocument.body ?? null;
   if (!portalTarget) {
-    return null
+    return null;
   }
 
   return createPortal(
@@ -169,15 +175,15 @@ function FindReplacePanel({ context }: DecoratorComponentProps) {
           aria-invalid={regexError || undefined}
           value={searchTerm}
           onChange={(event) => {
-            editor.dispatchCommand(SET_SEARCH_TERM_COMMAND, event.target.value)
+            editor.dispatchCommand(SET_SEARCH_TERM_COMMAND, event.target.value);
           }}
           onKeyDown={(event) => {
             if (event.key === "Enter") {
-              event.preventDefault()
+              event.preventDefault();
               if (event.shiftKey) {
-                goToPrevious()
+                goToPrevious();
               } else {
-                goToNext()
+                goToNext();
               }
             }
           }}
@@ -191,13 +197,13 @@ function FindReplacePanel({ context }: DecoratorComponentProps) {
                   aria-label={t.matchCase}
                   aria-pressed={caseSensitive}
                   className={cn(
-                    caseSensitive && "bg-accent text-accent-foreground"
+                    caseSensitive && "bg-accent text-accent-foreground",
                   )}
                   onClick={() => {
                     editor.dispatchCommand(
                       TOGGLE_CASE_SENSITIVE_COMMAND,
-                      undefined
-                    )
+                      undefined,
+                    );
                   }}
                 >
                   <CaseSensitive />
@@ -215,7 +221,7 @@ function FindReplacePanel({ context }: DecoratorComponentProps) {
                   aria-pressed={isRegex}
                   className={cn(isRegex && "bg-accent text-accent-foreground")}
                   onClick={() => {
-                    editor.dispatchCommand(TOGGLE_REGEX_COMMAND, undefined)
+                    editor.dispatchCommand(TOGGLE_REGEX_COMMAND, undefined);
                   }}
                 >
                   <Regex />
@@ -233,12 +239,15 @@ function FindReplacePanel({ context }: DecoratorComponentProps) {
           disabled={!isEditable}
           value={replaceTerm}
           onChange={(event) => {
-            editor.dispatchCommand(SET_REPLACE_TERM_COMMAND, event.target.value)
+            editor.dispatchCommand(
+              SET_REPLACE_TERM_COMMAND,
+              event.target.value,
+            );
           }}
           onKeyDown={(event) => {
             if (event.key === "Enter") {
-              event.preventDefault()
-              editor.dispatchCommand(REPLACE_CURRENT_COMMAND, undefined)
+              event.preventDefault();
+              editor.dispatchCommand(REPLACE_CURRENT_COMMAND, undefined);
             }
           }}
         />
@@ -251,7 +260,7 @@ function FindReplacePanel({ context }: DecoratorComponentProps) {
                   aria-label={t.replace}
                   disabled={!canReplace}
                   onClick={() => {
-                    editor.dispatchCommand(REPLACE_CURRENT_COMMAND, undefined)
+                    editor.dispatchCommand(REPLACE_CURRENT_COMMAND, undefined);
                   }}
                 >
                   <Replace className="rtl:-scale-x-100" />
@@ -268,7 +277,7 @@ function FindReplacePanel({ context }: DecoratorComponentProps) {
                   aria-label={t.replaceAll}
                   disabled={!canReplace}
                   onClick={() => {
-                    editor.dispatchCommand(REPLACE_ALL_COMMAND, undefined)
+                    editor.dispatchCommand(REPLACE_ALL_COMMAND, undefined);
                   }}
                 >
                   <ReplaceAll className="rtl:-scale-x-100" />
@@ -284,7 +293,7 @@ function FindReplacePanel({ context }: DecoratorComponentProps) {
           aria-live="polite"
           className={cn(
             "ps-1 text-xs whitespace-nowrap tabular-nums",
-            regexError ? "text-destructive" : "text-muted-foreground"
+            regexError ? "text-destructive" : "text-muted-foreground",
           )}
         >
           {statusLabel}
@@ -325,8 +334,8 @@ function FindReplacePanel({ context }: DecoratorComponentProps) {
         </ButtonGroup>
       </div>
     </div>,
-    portalTarget
-  )
+    portalTarget,
+  );
 }
 
 export const ReactFindReplaceExtension = defineExtension({
@@ -337,4 +346,4 @@ export const ReactFindReplaceExtension = defineExtension({
       decorators: [FindReplacePanel],
     }),
   ],
-})
+});

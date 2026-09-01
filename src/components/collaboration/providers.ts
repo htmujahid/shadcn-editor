@@ -1,13 +1,13 @@
-import type { Provider } from "@lexical/yjs"
+import type { Provider } from "@lexical/yjs";
 
-import { WebrtcProvider } from "y-webrtc"
-import { WebsocketProvider } from "y-websocket"
-import * as Y from "yjs"
+import { WebrtcProvider } from "y-webrtc";
+import { WebsocketProvider } from "y-websocket";
+import * as Y from "yjs";
 
 // In React strict mode a provider may be created twice for the same room,
 // which y-webrtc treats as an error. A per-window suffix keeps rooms unique
 // while staying deterministic across the embedded iframes.
-let idSuffix = 0
+let idSuffix = 0;
 
 /**
  * Syncs same-origin windows (tabs and the two demo iframes) through the
@@ -15,15 +15,15 @@ let idSuffix = 0
  */
 export function createWebRTCProvider(
   id: string,
-  yjsDocMap: Map<string, Y.Doc>
+  yjsDocMap: Map<string, Y.Doc>,
 ): Provider {
-  const doc = getDocFromMap(id, yjsDocMap)
+  const doc = getDocFromMap(id, yjsDocMap);
 
   const provider = new WebrtcProvider(`${id}/${idSuffix++}`, doc, {
     signaling: [],
-  })
+  });
 
-  return provider as unknown as Provider
+  return provider as unknown as Provider;
 }
 
 /**
@@ -33,26 +33,26 @@ export function createWebRTCProvider(
  */
 export function createWebsocketProvider(
   id: string,
-  yjsDocMap: Map<string, Y.Doc>
+  yjsDocMap: Map<string, Y.Doc>,
 ): Provider {
-  const doc = getDocFromMap(id, yjsDocMap)
+  const doc = getDocFromMap(id, yjsDocMap);
 
   const provider = new WebsocketProvider("ws://localhost:1234", id, doc, {
     connect: false,
-  })
+  });
 
-  return provider as unknown as Provider
+  return provider as unknown as Provider;
 }
 
 function getDocFromMap(id: string, yjsDocMap: Map<string, Y.Doc>): Y.Doc {
-  let doc = yjsDocMap.get(id)
+  let doc = yjsDocMap.get(id);
 
   if (doc === undefined) {
-    doc = new Y.Doc()
-    yjsDocMap.set(id, doc)
+    doc = new Y.Doc();
+    yjsDocMap.set(id, doc);
   } else {
-    doc.load()
+    doc.load();
   }
 
-  return doc
+  return doc;
 }

@@ -1,5 +1,5 @@
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
-import { cn } from "@/lib/utils"
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { cn } from "@/lib/utils";
 
 export function Toolbar({
   className,
@@ -20,5 +20,5 @@ export function Toolbar({
       </div>
       <ScrollBar orientation="horizontal" />
     </ScrollArea>
-  )
+  );
 }

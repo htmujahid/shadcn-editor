@@ -1,67 +1,67 @@
-import { useState } from "react"
+import { useState } from "react";
 
-import { $getRoot, $getSelection } from "lexical"
+import { $getRoot, $getSelection } from "lexical";
 
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
-import { useLexicalEditable } from "@lexical/react/useLexicalEditable"
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
-import { SquarePlay } from "lucide-react"
+import { SquarePlay } from "lucide-react";
 
-import { INSERT_YOUTUBE_COMMAND } from "@/components/editor/extensions/youtube"
-import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { INSERT_YOUTUBE_COMMAND } from "@/components/editor/extensions/youtube";
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/components/ui/popover";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@/components/ui/tooltip";
 
 export function parseYouTubeVideoID(url: string): string | null {
-  const trimmed = url.trim()
+  const trimmed = url.trim();
   if (/^[A-Za-z0-9_-]{11}$/.test(trimmed)) {
-    return trimmed
+    return trimmed;
   }
   const match =
     /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|shorts\/|live\/|watch\?v=|&v=)([^#&?]*).*/.exec(
-      trimmed
-    )
-  const id = match?.[2]
-  return id && id.length === 11 ? id : null
+      trimmed,
+    );
+  const id = match?.[2];
+  return id && id.length === 11 ? id : null;
 }
 
 export function InsertYouTubePlugin() {
-  const [editor] = useLexicalComposerContext()
-  const isEditable = useLexicalEditable()
-  const { t, dir } = useTranslation()
-  const [open, setOpen] = useState(false)
-  const [url, setUrl] = useState("")
-  const videoID = parseYouTubeVideoID(url)
+  const [editor] = useLexicalComposerContext();
+  const isEditable = useLexicalEditable();
+  const { t, dir } = useTranslation();
+  const [open, setOpen] = useState(false);
+  const [url, setUrl] = useState("");
+  const videoID = parseYouTubeVideoID(url);
 
   const onOpenChange = (nextOpen: boolean) => {
-    setOpen(nextOpen)
+    setOpen(nextOpen);
     if (!nextOpen) {
-      setUrl("")
+      setUrl("");
     }
-  }
+  };
 
   const onSubmit = () => {
     if (!videoID) {
-      return
+      return;
     }
     editor.update(() => {
       if (!$getSelection()) {
-        $getRoot().selectEnd()
+        $getRoot().selectEnd();
       }
-    })
-    editor.dispatchCommand(INSERT_YOUTUBE_COMMAND, videoID)
-    onOpenChange(false)
-  }
+    });
+    editor.dispatchCommand(INSERT_YOUTUBE_COMMAND, videoID);
+    onOpenChange(false);
+  };
 
   return (
     <Popover open={open} onOpenChange={onOpenChange}>
@@ -93,8 +93,8 @@ export function InsertYouTubePlugin() {
             onChange={(event) => setUrl(event.target.value)}
             onKeyDown={(event) => {
               if (event.key === "Enter") {
-                event.preventDefault()
-                onSubmit()
+                event.preventDefault();
+                onSubmit();
               }
             }}
           />
@@ -104,5 +104,5 @@ export function InsertYouTubePlugin() {
         </div>
       </PopoverContent>
     </Popover>
-  )
+  );
 }

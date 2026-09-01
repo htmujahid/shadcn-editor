@@ -1,23 +1,23 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { AutocompleteExtension } from "@/components/editor/extensions/autocomplete"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { AutocompleteExtension } from "@/components/editor/extensions/autocomplete";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function AutocompleteEditor() {
   const app = useMemo(
@@ -29,18 +29,18 @@ export function AutocompleteEditor() {
           $getRoot().append(
             $createParagraphNode().append(
               $createTextNode(
-                "Start typing a word and a ghost suggestion appears ahead of the caret. Accept it with Tab or the right arrow key, or just keep typing to ignore it."
-              )
+                "Start typing a word and a ghost suggestion appears ahead of the caret. Accept it with Tab or the right arrow key, or just keep typing to ignore it.",
+              ),
             ),
             $createParagraphNode().append(
-              $createTextNode("Try finishing this sentence: the weather is ")
-            )
-          )
+              $createTextNode("Try finishing this sentence: the weather is "),
+            ),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -52,11 +52,11 @@ export function AutocompleteEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -67,5 +67,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

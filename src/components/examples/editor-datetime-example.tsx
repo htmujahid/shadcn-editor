@@ -1,30 +1,30 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { ClipboardDOMImportExtension } from "@lexical/clipboard"
-import { HistoryExtension } from "@lexical/history"
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { ClipboardDOMImportExtension } from "@lexical/clipboard";
+import { HistoryExtension } from "@lexical/history";
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { DateTimeExtension } from "@/components/editor/extensions/datetime"
-import { $createDateTimeNode } from "@/components/editor/nodes/datetime-node"
-import { ComponentPicker } from "@/components/editor/plugins/component-picker/component-picker-plugin"
-import { DateTimePickerPlugin } from "@/components/editor/plugins/component-picker/datetime-picker-plugin"
-import { HeadingPickerPlugin } from "@/components/editor/plugins/component-picker/heading-picker-plugin"
-import { ParagraphPickerPlugin } from "@/components/editor/plugins/component-picker/paragraph-picker-plugin"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { DateTimeExtension } from "@/components/editor/extensions/datetime";
+import { $createDateTimeNode } from "@/components/editor/nodes/datetime-node";
+import { ComponentPicker } from "@/components/editor/plugins/component-picker/component-picker-plugin";
+import { DateTimePickerPlugin } from "@/components/editor/plugins/component-picker/datetime-picker-plugin";
+import { HeadingPickerPlugin } from "@/components/editor/plugins/component-picker/heading-picker-plugin";
+import { ParagraphPickerPlugin } from "@/components/editor/plugins/component-picker/paragraph-picker-plugin";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function DateTimeEditor() {
   const app = useMemo(
@@ -45,19 +45,19 @@ export function DateTimeEditor() {
               $createDateTimeNode(new Date(2026, 0, 15)),
               $createTextNode(" and the follow-up lands on "),
               $createDateTimeNode(new Date(2026, 1, 2)),
-              $createTextNode(".")
+              $createTextNode("."),
             ),
             $createParagraphNode().append(
               $createTextNode(
-                "Click a date pill to change it with the calendar, or type / to insert another one."
-              )
-            )
-          )
+                "Click a date pill to change it with the calendar, or type / to insert another one.",
+              ),
+            ),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -74,11 +74,11 @@ export function DateTimeEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -89,5 +89,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

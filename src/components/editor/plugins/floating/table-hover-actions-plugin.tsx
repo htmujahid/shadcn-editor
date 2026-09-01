@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react";
 
-import { createPortal } from "react-dom"
+import { createPortal } from "react-dom";
 
 import {
   $getNearestNodeFromDOMNode,
@@ -10,142 +10,142 @@ import {
   isHTMLTableRowElement,
   mergeRegister,
   registerEventListener,
-} from "lexical"
+} from "lexical";
 
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
-import { useLexicalEditable } from "@lexical/react/useLexicalEditable"
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 import {
   $deleteTableColumnAtSelection,
   $deleteTableRowAtSelection,
   $insertTableColumnAtSelection,
   $insertTableRowAtSelection,
   $isTableCellNode,
-} from "@lexical/table"
+} from "@lexical/table";
 
-import { Plus, Trash2 } from "lucide-react"
+import { Plus, Trash2 } from "lucide-react";
 
-import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
-import { cn } from "@/lib/utils"
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { cn } from "@/lib/utils";
 
-type ActionsPosition = { x: number; y: number; canDelete: boolean }
+type ActionsPosition = { x: number; y: number; canDelete: boolean };
 
 const BUTTON_CLASSNAME =
-  "flex size-5 cursor-pointer items-center justify-center rounded-sm border bg-background text-muted-foreground shadow-sm hover:bg-accent hover:text-accent-foreground"
+  "flex size-5 cursor-pointer items-center justify-center rounded-sm border bg-background text-muted-foreground shadow-sm hover:bg-accent hover:text-accent-foreground";
 
 function getCellSelector(theme: EditorThemeClasses | null | undefined): string {
-  const cellClassName = theme?.tableCell?.split(/\s+/)[0]
-  return cellClassName ? `td.${cellClassName}, th.${cellClassName}` : "td, th"
+  const cellClassName = theme?.tableCell?.split(/\s+/)[0];
+  return cellClassName ? `td.${cellClassName}, th.${cellClassName}` : "td, th";
 }
 
 function getColumnCount(tableElement: HTMLTableElement): number {
-  const firstRow = tableElement.rows[0]
+  const firstRow = tableElement.rows[0];
   if (!firstRow) {
-    return 0
+    return 0;
   }
   return Array.from(firstRow.cells).reduce(
     (count, cell) => count + cell.colSpan,
-    0
-  )
+    0,
+  );
 }
 
 function getClosestTopCell(
   tableElement: HTMLTableElement,
-  clientX: number
+  clientX: number,
 ): HTMLTableCellElement | null {
-  const firstRow = tableElement.rows[0]
+  const firstRow = tableElement.rows[0];
   if (!firstRow) {
-    return null
+    return null;
   }
 
-  let closest: HTMLTableCellElement | null = null
-  let smallestDelta = Number.POSITIVE_INFINITY
+  let closest: HTMLTableCellElement | null = null;
+  let smallestDelta = Number.POSITIVE_INFINITY;
 
   for (const cell of Array.from(firstRow.cells)) {
-    const rect = cell.getBoundingClientRect()
-    const delta = Math.abs(rect.left + rect.width / 2 - clientX)
+    const rect = cell.getBoundingClientRect();
+    const delta = Math.abs(rect.left + rect.width / 2 - clientX);
     if (delta < smallestDelta) {
-      smallestDelta = delta
-      closest = cell
+      smallestDelta = delta;
+      closest = cell;
     }
   }
 
-  return closest
+  return closest;
 }
 
 export function TableHoverActionsPlugin() {
-  const [editor, { getTheme }] = useLexicalComposerContext()
-  const isEditable = useLexicalEditable()
-  const { t } = useTranslation()
+  const [editor, { getTheme }] = useLexicalComposerContext();
+  const isEditable = useLexicalEditable();
+  const { t } = useTranslation();
   const [columnPosition, setColumnPosition] = useState<ActionsPosition | null>(
-    null
-  )
-  const [rowPosition, setRowPosition] = useState<ActionsPosition | null>(null)
-  const columnActionsRef = useRef<HTMLDivElement | null>(null)
-  const rowActionsRef = useRef<HTMLDivElement | null>(null)
-  const columnCellRef = useRef<HTMLTableCellElement | null>(null)
-  const rowCellRef = useRef<HTMLTableCellElement | null>(null)
+    null,
+  );
+  const [rowPosition, setRowPosition] = useState<ActionsPosition | null>(null);
+  const columnActionsRef = useRef<HTMLDivElement | null>(null);
+  const rowActionsRef = useRef<HTMLDivElement | null>(null);
+  const columnCellRef = useRef<HTMLTableCellElement | null>(null);
+  const rowCellRef = useRef<HTMLTableCellElement | null>(null);
 
   const hideActions = useCallback(() => {
-    columnCellRef.current = null
-    rowCellRef.current = null
-    setColumnPosition(null)
-    setRowPosition(null)
-  }, [])
+    columnCellRef.current = null;
+    rowCellRef.current = null;
+    setColumnPosition(null);
+    setRowPosition(null);
+  }, []);
 
   const updatePositions = useCallback(() => {
-    const columnCell = columnCellRef.current
-    const columnTable = columnCell?.closest("table") ?? null
+    const columnCell = columnCellRef.current;
+    const columnTable = columnCell?.closest("table") ?? null;
     if (columnCell?.isConnected && columnTable) {
-      const rect = columnCell.getBoundingClientRect()
+      const rect = columnCell.getBoundingClientRect();
       setColumnPosition({
         x: rect.left + rect.width / 2,
         y: columnTable.getBoundingClientRect().top,
         canDelete: getColumnCount(columnTable) > 1,
-      })
+      });
     } else {
-      columnCellRef.current = null
-      setColumnPosition(null)
+      columnCellRef.current = null;
+      setColumnPosition(null);
     }
 
-    const rowCell = rowCellRef.current
-    const rowTable = rowCell?.closest("table") ?? null
+    const rowCell = rowCellRef.current;
+    const rowTable = rowCell?.closest("table") ?? null;
     if (rowCell?.isConnected && rowTable) {
-      const rect = rowCell.getBoundingClientRect()
-      const tableRect = rowTable.getBoundingClientRect()
-      const isRTL = getComputedStyle(rowTable).direction === "rtl"
+      const rect = rowCell.getBoundingClientRect();
+      const tableRect = rowTable.getBoundingClientRect();
+      const isRTL = getComputedStyle(rowTable).direction === "rtl";
       setRowPosition({
         x: isRTL ? tableRect.right : tableRect.left,
         y: rect.top + rect.height / 2,
         canDelete: rowTable.rows.length > 1,
-      })
+      });
     } else {
-      rowCellRef.current = null
-      setRowPosition(null)
+      rowCellRef.current = null;
+      setRowPosition(null);
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
     if (!isEditable) {
-      return
+      return;
     }
 
     const handleMouseMove = (event: MouseEvent) => {
-      const target = getComposedEventTarget(event)
+      const target = getComposedEventTarget(event);
       if (!isHTMLElement(target)) {
-        return
+        return;
       }
       if (
         columnActionsRef.current?.contains(target) ||
         rowActionsRef.current?.contains(target)
       ) {
-        return
+        return;
       }
 
       const cell = target.closest<HTMLTableCellElement>(
-        getCellSelector(getTheme())
-      )
-      const tableElement = cell?.closest("table") ?? null
-      const rootElement = editor.getRootElement()
+        getCellSelector(getTheme()),
+      );
+      const tableElement = cell?.closest("table") ?? null;
+      const rootElement = editor.getRootElement();
 
       if (
         !cell ||
@@ -153,80 +153,80 @@ export function TableHoverActionsPlugin() {
         rootElement === null ||
         !rootElement.contains(tableElement)
       ) {
-        hideActions()
-        return
+        hideActions();
+        return;
       }
 
       const rowIndex = isHTMLTableRowElement(cell.parentElement)
         ? cell.parentElement.rowIndex
-        : -1
+        : -1;
       columnCellRef.current =
-        rowIndex === 0 ? getClosestTopCell(tableElement, event.clientX) : null
-      rowCellRef.current = cell.cellIndex === 0 ? cell : null
-      updatePositions()
-    }
+        rowIndex === 0 ? getClosestTopCell(tableElement, event.clientX) : null;
+      rowCellRef.current = cell.cellIndex === 0 ? cell : null;
+      updatePositions();
+    };
 
     return mergeRegister(
       registerEventListener(document, "mousemove", handleMouseMove),
-      hideActions
-    )
-  }, [editor, getTheme, hideActions, isEditable, updatePositions])
+      hideActions,
+    );
+  }, [editor, getTheme, hideActions, isEditable, updatePositions]);
 
   useEffect(() => {
     if (!isEditable) {
-      return
+      return;
     }
 
     const handleMouseLeave = (event: MouseEvent) => {
-      const nextTarget = event.relatedTarget
+      const nextTarget = event.relatedTarget;
       if (
         nextTarget instanceof Node &&
         (columnActionsRef.current?.contains(nextTarget) ||
           rowActionsRef.current?.contains(nextTarget))
       ) {
-        return
+        return;
       }
-      hideActions()
-    }
+      hideActions();
+    };
 
     return editor.registerRootListener((rootElement) => {
       if (rootElement) {
         return registerEventListener(
           rootElement,
           "mouseleave",
-          handleMouseLeave
-        )
+          handleMouseLeave,
+        );
       }
-    })
-  }, [editor, hideActions, isEditable])
+    });
+  }, [editor, hideActions, isEditable]);
 
   useEffect(() => {
     return mergeRegister(
       registerEventListener(window, "resize", updatePositions),
       registerEventListener(document, "scroll", updatePositions, true),
-      editor.registerUpdateListener(updatePositions)
-    )
-  }, [editor, updatePositions])
+      editor.registerUpdateListener(updatePositions),
+    );
+  }, [editor, updatePositions]);
 
   const withCell = (
     cellRef: React.RefObject<HTMLTableCellElement | null>,
-    $action: () => void
+    $action: () => void,
   ) => {
-    const cell = cellRef.current
+    const cell = cellRef.current;
     if (!cell) {
-      return
+      return;
     }
     editor.update(() => {
-      const node = $getNearestNodeFromDOMNode(cell)
+      const node = $getNearestNodeFromDOMNode(cell);
       if ($isTableCellNode(node)) {
-        node.selectEnd()
-        $action()
+        node.selectEnd();
+        $action();
       }
-    })
-  }
+    });
+  };
 
   if (!isEditable) {
-    return null
+    return null;
   }
 
   return createPortal(
@@ -296,6 +296,6 @@ export function TableHoverActionsPlugin() {
         </div>
       ) : null}
     </>,
-    document.body
-  )
+    document.body,
+  );
 }

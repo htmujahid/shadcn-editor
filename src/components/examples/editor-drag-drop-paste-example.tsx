@@ -1,23 +1,23 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { DragDropPasteExtension } from "@/components/editor/extensions/drag-drop-paste"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { DragDropPasteExtension } from "@/components/editor/extensions/drag-drop-paste";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function DragDropPasteEditor() {
   const app = useMemo(
@@ -29,15 +29,15 @@ export function DragDropPasteEditor() {
           $getRoot().append(
             $createParagraphNode().append(
               $createTextNode(
-                "Drag an image file from your desktop and drop it anywhere in this editor, or paste one straight from the clipboard. It becomes an image block at the drop point."
-              )
-            )
-          )
+                "Drag an image file from your desktop and drop it anywhere in this editor, or paste one straight from the clipboard. It becomes an image block at the drop point.",
+              ),
+            ),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -49,11 +49,11 @@ export function DragDropPasteEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -64,5 +64,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

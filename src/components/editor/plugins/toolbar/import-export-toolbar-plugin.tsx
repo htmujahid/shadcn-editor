@@ -1,78 +1,78 @@
-import { exportFile, importFile } from "@lexical/file"
-import { $generateHtmlFromNodes } from "@lexical/html"
+import { exportFile, importFile } from "@lexical/file";
+import { $generateHtmlFromNodes } from "@lexical/html";
 import {
   $convertToMarkdownString,
   type Transformer,
   TRANSFORMERS,
-} from "@lexical/markdown"
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
-import { useLexicalEditable } from "@lexical/react/useLexicalEditable"
+} from "@lexical/markdown";
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
-import { FileDown, FileUp } from "lucide-react"
+import { FileDown, FileUp } from "lucide-react";
 
-import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
-import { Button } from "@/components/ui/button"
-import { ButtonGroup } from "@/components/ui/button-group"
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { Button } from "@/components/ui/button";
+import { ButtonGroup } from "@/components/ui/button-group";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@/components/ui/tooltip";
 
 function toSafeFileName(value: string) {
   return value
     .replace(/[^a-zA-Z0-9-_. ]+/g, "-")
     .replace(/-{2,}/g, "-")
-    .replace(/^[-. ]+|[-. ]+$/g, "")
+    .replace(/^[-. ]+|[-. ]+$/g, "");
 }
 
 function downloadFile(content: string, fileName: string, mimeType: string) {
-  const blob = new Blob([content], { type: mimeType })
-  const url = URL.createObjectURL(blob)
-  const anchor = document.createElement("a")
-  anchor.href = url
-  anchor.download = fileName
-  anchor.click()
-  URL.revokeObjectURL(url)
+  const blob = new Blob([content], { type: mimeType });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = fileName;
+  anchor.click();
+  URL.revokeObjectURL(url);
 }
 
 export function ImportExportToolbarPlugin({
   transformers = TRANSFORMERS,
 }: {
-  transformers?: Transformer[]
+  transformers?: Transformer[];
 }) {
-  const [editor] = useLexicalComposerContext()
-  const { t, dir, language } = useTranslation()
-  const isEditable = useLexicalEditable()
+  const [editor] = useLexicalComposerContext();
+  const { t, dir, language } = useTranslation();
+  const isEditable = useLexicalEditable();
 
-  const namespace = editor._config.namespace
+  const namespace = editor._config.namespace;
 
   const getFileName = () =>
-    toSafeFileName(`${namespace} ${new Date().toISOString()}`)
+    toSafeFileName(`${namespace} ${new Date().toISOString()}`);
 
   const exportLexical = () => {
     exportFile(editor, {
       fileName: getFileName(),
       source: namespace,
-    })
-  }
+    });
+  };
 
   const exportMarkdown = () => {
-    const markdown = editor.read(() => $convertToMarkdownString(transformers))
-    downloadFile(markdown, `${getFileName()}.md`, "text/markdown")
-  }
+    const markdown = editor.read(() => $convertToMarkdownString(transformers));
+    downloadFile(markdown, `${getFileName()}.md`, "text/markdown");
+  };
 
   const exportHtml = () => {
-    const body = editor.read(() => $generateHtmlFromNodes(editor))
-    const html = `<!doctype html>\n<html lang="${language}" dir="${dir}">\n<body>\n${body}\n</body>\n</html>`
-    downloadFile(html, `${getFileName()}.html`, "text/html")
-  }
+    const body = editor.read(() => $generateHtmlFromNodes(editor));
+    const html = `<!doctype html>\n<html lang="${language}" dir="${dir}">\n<body>\n${body}\n</body>\n</html>`;
+    downloadFile(html, `${getFileName()}.html`, "text/html");
+  };
 
   return (
     <ButtonGroup>
@@ -85,7 +85,7 @@ export function ImportExportToolbarPlugin({
               aria-label={t.importFile}
               disabled={!isEditable}
               onClick={() => {
-                importFile(editor)
+                importFile(editor);
               }}
             >
               <FileUp />
@@ -126,5 +126,5 @@ export function ImportExportToolbarPlugin({
         </DropdownMenuContent>
       </DropdownMenu>
     </ButtonGroup>
-  )
+  );
 }

@@ -1,12 +1,12 @@
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
-import { cn } from "@/lib/utils"
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { cn } from "@/lib/utils";
 
 export function ActivityBar({
   children,
   className,
 }: {
-  children: React.ReactNode
-  className?: string
+  children: React.ReactNode;
+  className?: string;
 }) {
   return (
     <ScrollArea
@@ -18,5 +18,5 @@ export function ActivityBar({
       </div>
       <ScrollBar orientation="horizontal" />
     </ScrollArea>
-  )
+  );
 }

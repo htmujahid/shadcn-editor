@@ -1,9 +1,9 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
-import { defineExtension } from "lexical"
+import { defineExtension } from "lexical";
 
-import { HorizontalRuleExtension } from "@lexical/extension"
-import { CheckListExtension, ListExtension } from "@lexical/list"
+import { HorizontalRuleExtension } from "@lexical/extension";
+import { CheckListExtension, ListExtension } from "@lexical/list";
 import {
   $convertFromMarkdownString,
   CHECK_LIST,
@@ -13,27 +13,27 @@ import {
   TEXT_FORMAT_TRANSFORMERS,
   TEXT_MATCH_TRANSFORMERS,
   type Transformer,
-} from "@lexical/markdown"
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
-import { TableExtension } from "@lexical/table"
+} from "@lexical/markdown";
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
+import { TableExtension } from "@lexical/table";
 
-import { CodeExtension } from "@/components/editor/extensions/code"
-import { EmojiExtension } from "@/components/editor/extensions/emoji"
-import { ImageExtension } from "@/components/editor/extensions/image"
-import { LayoutExtension } from "@/components/editor/extensions/layout"
-import { LinkExtension } from "@/components/editor/extensions/link"
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { CodeExtension } from "@/components/editor/extensions/code";
+import { EmojiExtension } from "@/components/editor/extensions/emoji";
+import { ImageExtension } from "@/components/editor/extensions/image";
+import { LayoutExtension } from "@/components/editor/extensions/layout";
+import { LinkExtension } from "@/components/editor/extensions/link";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { EMOJI } from "@/components/editor/transformers/emoji-transformer"
-import { HR } from "@/components/editor/transformers/horizontal-rule-transformer"
-import { IMAGE } from "@/components/editor/transformers/image-transformer"
-import { TABLE } from "@/components/editor/transformers/table-transformer"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { EMOJI } from "@/components/editor/transformers/emoji-transformer";
+import { HR } from "@/components/editor/transformers/horizontal-rule-transformer";
+import { IMAGE } from "@/components/editor/transformers/image-transformer";
+import { TABLE } from "@/components/editor/transformers/table-transformer";
+import { DirectionProvider } from "@/components/ui/direction";
 
 const EDITOR_TRANSFORMERS: Transformer[] = [
   TABLE,
@@ -45,7 +45,7 @@ const EDITOR_TRANSFORMERS: Transformer[] = [
   ...MULTILINE_ELEMENT_TRANSFORMERS,
   ...TEXT_FORMAT_TRANSFORMERS,
   ...TEXT_MATCH_TRANSFORMERS,
-]
+];
 
 export function MarkdownEditor() {
   const app = useMemo(
@@ -79,13 +79,13 @@ export function MarkdownEditor() {
               "",
               "> Try any shortcut on the empty line below.",
             ].join("\n"),
-            EDITOR_TRANSFORMERS
-          )
+            EDITOR_TRANSFORMERS,
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -97,11 +97,11 @@ export function MarkdownEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -112,5 +112,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

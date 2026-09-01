@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import {
   $getNodeByKey,
@@ -7,17 +7,17 @@ import {
   type LexicalEditor,
   type RangeSelection,
   registerEventListener,
-} from "lexical"
+} from "lexical";
 
-import { $isMarkNode, $wrapSelectionInMarkNode } from "@lexical/mark"
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
-import { useExtensionDependency } from "@lexical/react/useExtensionComponent"
-import { useExtensionSignalValue } from "@lexical/react/useExtensionSignalValue"
-import { createDOMRange, createRectsFromDOMRange } from "@lexical/selection"
-import { mergeRegister } from "@lexical/utils"
+import { $isMarkNode, $wrapSelectionInMarkNode } from "@lexical/mark";
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import { useExtensionDependency } from "@lexical/react/useExtensionComponent";
+import { useExtensionSignalValue } from "@lexical/react/useExtensionSignalValue";
+import { createDOMRange, createRectsFromDOMRange } from "@lexical/selection";
+import { mergeRegister } from "@lexical/utils";
 
-import { Popover as PopoverPrimitive } from "@base-ui/react/popover"
-import { MessageSquarePlus, SendHorizontal, Trash2 } from "lucide-react"
+import { Popover as PopoverPrimitive } from "@base-ui/react/popover";
+import { MessageSquarePlus, SendHorizontal, Trash2 } from "lucide-react";
 
 import {
   addComment,
@@ -31,12 +31,12 @@ import {
   INSERT_INLINE_COMMAND,
   removeThreadMarks,
   type Thread,
-} from "@/components/editor/extensions/comment"
+} from "@/components/editor/extensions/comment";
 import {
   hideFloatingAnchor,
   setFloatingAnchorRect,
-} from "@/components/editor/plugins/floating/floating-utils"
-import { useTranslation } from "@/components/editor/plugins/i18n-plugin"
+} from "@/components/editor/plugins/floating/floating-utils";
+import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -46,79 +46,79 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
-import { Button } from "@/components/ui/button"
+} from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/components/ui/input-group"
+} from "@/components/ui/input-group";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/components/ui/popover";
 import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
-} from "@/components/ui/sidebar"
-import { Textarea } from "@/components/ui/textarea"
-import { cn } from "@/lib/utils"
+} from "@/components/ui/sidebar";
+import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
 
 function getScrollParent(element: HTMLElement | null): HTMLElement | null {
-  let current = element?.parentElement ?? null
+  let current = element?.parentElement ?? null;
   while (current) {
-    const { overflowY } = getComputedStyle(current)
+    const { overflowY } = getComputedStyle(current);
     if (overflowY === "auto" || overflowY === "scroll") {
-      return current
+      return current;
     }
-    current = current.parentElement
+    current = current.parentElement;
   }
-  return null
+  return null;
 }
 
 function AddCommentButton({
   editor,
   anchorKey,
 }: {
-  editor: LexicalEditor
-  anchorKey: string
+  editor: LexicalEditor;
+  anchorKey: string;
 }) {
-  const { t, dir } = useTranslation()
-  const triggerRef = useRef<HTMLButtonElement | null>(null)
+  const { t, dir } = useTranslation();
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
 
   const updatePosition = useCallback(() => {
-    const triggerElem = triggerRef.current
-    const rootElement = editor.getRootElement()
-    const anchorElem = editor.getElementByKey(anchorKey)
+    const triggerElem = triggerRef.current;
+    const rootElement = editor.getRootElement();
+    const anchorElem = editor.getElementByKey(anchorKey);
     if (triggerElem === null) {
-      return
+      return;
     }
     if (rootElement === null || anchorElem === null) {
-      hideFloatingAnchor(triggerElem)
-      return
+      hideFloatingAnchor(triggerElem);
+      return;
     }
-    const rootRect = rootElement.getBoundingClientRect()
-    const anchorRect = anchorElem.getBoundingClientRect()
-    const x = dir === "rtl" ? rootRect.left + 12 : rootRect.right - 12
+    const rootRect = rootElement.getBoundingClientRect();
+    const anchorRect = anchorElem.getBoundingClientRect();
+    const x = dir === "rtl" ? rootRect.left + 12 : rootRect.right - 12;
     setFloatingAnchorRect(
       triggerElem,
-      new DOMRect(x, anchorRect.top, 0, anchorRect.height)
-    )
-  }, [editor, anchorKey, dir])
+      new DOMRect(x, anchorRect.top, 0, anchorRect.height),
+    );
+  }, [editor, anchorKey, dir]);
 
   useEffect(() => {
-    updatePosition()
+    updatePosition();
     return mergeRegister(
       registerEventListener(window, "resize", updatePosition),
       registerEventListener(document, "scroll", updatePosition, true),
       editor.registerUpdateListener(() => {
-        updatePosition()
-      })
-    )
-  }, [editor, updatePosition])
+        updatePosition();
+      }),
+    );
+  }, [editor, updatePosition]);
 
   return (
     <Popover open>
@@ -146,7 +146,7 @@ function AddCommentButton({
             className="rounded-full"
             onMouseDown={(event) => event.preventDefault()}
             onClick={() => {
-              editor.dispatchCommand(INSERT_INLINE_COMMAND, undefined)
+              editor.dispatchCommand(INSERT_INLINE_COMMAND, undefined);
             }}
           >
             <MessageSquarePlus />
@@ -154,112 +154,112 @@ function AddCommentButton({
         </PopoverContent>
       </PopoverPrimitive.Portal>
     </Popover>
-  )
+  );
 }
 
 function CommentInputBox({
   editor,
   state,
 }: {
-  editor: LexicalEditor
-  state: CommentState
+  editor: LexicalEditor;
+  state: CommentState;
 }) {
-  const { t, dir } = useTranslation()
-  const [content, setContent] = useState("")
-  const triggerRef = useRef<HTMLButtonElement | null>(null)
-  const selectionRef = useRef<RangeSelection | null>(null)
-  const highlightsRef = useRef<HTMLDivElement | null>(null)
+  const { t, dir } = useTranslation();
+  const [content, setContent] = useState("");
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
+  const selectionRef = useRef<RangeSelection | null>(null);
+  const highlightsRef = useRef<HTMLDivElement | null>(null);
 
   const updateLocation = useCallback(() => {
     editor.read("latest", () => {
-      const selection = $getSelection()
+      const selection = $getSelection();
       if (!$isRangeSelection(selection)) {
-        return
+        return;
       }
-      selectionRef.current = selection.clone()
+      selectionRef.current = selection.clone();
       const range = createDOMRange(
         editor,
         selection.anchor.getNode(),
         selection.anchor.offset,
         selection.focus.getNode(),
-        selection.focus.offset
-      )
-      const triggerElem = triggerRef.current
-      const rootElement = editor.getRootElement()
-      const parent = rootElement?.parentElement
+        selection.focus.offset,
+      );
+      const triggerElem = triggerRef.current;
+      const rootElement = editor.getRootElement();
+      const parent = rootElement?.parentElement;
       if (range === null || triggerElem === null || !rootElement || !parent) {
-        return
+        return;
       }
-      setFloatingAnchorRect(triggerElem, range.getBoundingClientRect())
+      setFloatingAnchorRect(triggerElem, range.getBoundingClientRect());
 
-      let container = highlightsRef.current
+      let container = highlightsRef.current;
       if (container === null) {
-        container = rootElement.ownerDocument.createElement("div")
-        container.style.position = "absolute"
-        container.style.top = "0"
-        container.style.left = "0"
-        container.style.pointerEvents = "none"
-        parent.appendChild(container)
-        highlightsRef.current = container
+        container = rootElement.ownerDocument.createElement("div");
+        container.style.position = "absolute";
+        container.style.top = "0";
+        container.style.left = "0";
+        container.style.pointerEvents = "none";
+        parent.appendChild(container);
+        highlightsRef.current = container;
       }
-      container.innerHTML = ""
-      const containerRect = container.getBoundingClientRect()
+      container.innerHTML = "";
+      const containerRect = container.getBoundingClientRect();
       for (const rect of createRectsFromDOMRange(editor, range)) {
-        const span = rootElement.ownerDocument.createElement("span")
-        span.className = "editor-comment-highlight"
-        span.style.top = `${rect.top - containerRect.top}px`
-        span.style.left = `${rect.left - containerRect.left}px`
-        span.style.width = `${rect.width}px`
-        span.style.height = `${rect.height}px`
-        container.appendChild(span)
+        const span = rootElement.ownerDocument.createElement("span");
+        span.className = "editor-comment-highlight";
+        span.style.top = `${rect.top - containerRect.top}px`;
+        span.style.left = `${rect.left - containerRect.left}px`;
+        span.style.width = `${rect.width}px`;
+        span.style.height = `${rect.height}px`;
+        container.appendChild(span);
       }
-    })
-  }, [editor])
+    });
+  }, [editor]);
 
   useEffect(() => {
-    updateLocation()
+    updateLocation();
     return mergeRegister(
       registerEventListener(window, "resize", updateLocation),
       () => {
-        highlightsRef.current?.remove()
-        highlightsRef.current = null
-      }
-    )
-  }, [updateLocation])
+        highlightsRef.current?.remove();
+        highlightsRef.current = null;
+      },
+    );
+  }, [updateLocation]);
 
   const cancel = useCallback(() => {
     editor.update(() => {
-      const selection = $getSelection()
+      const selection = $getSelection();
       if (selection !== null) {
-        selection.dirty = true
+        selection.dirty = true;
       }
-    })
-    editor.dispatchCommand(CLOSE_COMMENT_INPUT_COMMAND, undefined)
-  }, [editor])
+    });
+    editor.dispatchCommand(CLOSE_COMMENT_INPUT_COMMAND, undefined);
+  }, [editor]);
 
   const submit = useCallback(() => {
-    const text = content.trim()
+    const text = content.trim();
     if (text === "") {
-      return
+      return;
     }
     let quote = editor.read(
       "latest",
-      () => selectionRef.current?.getTextContent() ?? ""
-    )
+      () => selectionRef.current?.getTextContent() ?? "",
+    );
     if (quote.length > 100) {
-      quote = quote.slice(0, 99) + "…"
+      quote = quote.slice(0, 99) + "…";
     }
-    const thread = createThread(quote, [createComment(text, t.you)])
-    addComment(state, thread)
+    const thread = createThread(quote, [createComment(text, t.you)]);
+    addComment(state, thread);
     editor.update(() => {
-      const selection = selectionRef.current
+      const selection = selectionRef.current;
       if ($isRangeSelection(selection)) {
-        $wrapSelectionInMarkNode(selection, selection.isBackward(), thread.id)
+        $wrapSelectionInMarkNode(selection, selection.isBackward(), thread.id);
       }
-    })
-    selectionRef.current = null
-    editor.dispatchCommand(CLOSE_COMMENT_INPUT_COMMAND, undefined)
-  }, [content, editor, state, t])
+    });
+    selectionRef.current = null;
+    editor.dispatchCommand(CLOSE_COMMENT_INPUT_COMMAND, undefined);
+  }, [content, editor, state, t]);
 
   return (
     <Popover open>
@@ -288,11 +288,11 @@ function CommentInputBox({
             onChange={(event) => setContent(event.target.value)}
             onKeyDown={(event) => {
               if (event.key === "Escape") {
-                event.preventDefault()
-                cancel()
+                event.preventDefault();
+                cancel();
               } else if (event.key === "Enter" && !event.shiftKey) {
-                event.preventDefault()
-                submit()
+                event.preventDefault();
+                submit();
               }
             }}
           />
@@ -307,28 +307,28 @@ function CommentInputBox({
         </PopoverContent>
       </PopoverPrimitive.Portal>
     </Popover>
-  )
+  );
 }
 
 export function CommentPlugin() {
-  const [editor] = useLexicalComposerContext()
-  const state = useExtensionDependency(CommentExtension).output
+  const [editor] = useLexicalComposerContext();
+  const state = useExtensionDependency(CommentExtension).output;
   const showCommentInput = useExtensionSignalValue(
     CommentExtension,
-    "showCommentInput"
-  )
+    "showCommentInput",
+  );
   const activeAnchorKey = useExtensionSignalValue(
     CommentExtension,
-    "activeAnchorKey"
-  )
+    "activeAnchorKey",
+  );
 
   if (showCommentInput) {
-    return <CommentInputBox editor={editor} state={state} />
+    return <CommentInputBox editor={editor} state={state} />;
   }
   if (activeAnchorKey != null) {
-    return <AddCommentButton editor={editor} anchorKey={activeAnchorKey} />
+    return <AddCommentButton editor={editor} anchorKey={activeAnchorKey} />;
   }
-  return null
+  return null;
 }
 
 function DeleteButton({
@@ -336,11 +336,11 @@ function DeleteButton({
   onDelete,
   className,
 }: {
-  title: string
-  onDelete: () => void
-  className?: string
+  title: string;
+  onDelete: () => void;
+  className?: string;
 }) {
-  const { t, dir } = useTranslation()
+  const { t, dir } = useTranslation();
   return (
     <AlertDialog>
       <AlertDialogTrigger
@@ -369,7 +369,7 @@ function DeleteButton({
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-  )
+  );
 }
 
 function CommentRow({
@@ -379,14 +379,14 @@ function CommentRow({
   rtf,
   now,
 }: {
-  comment: Comment
-  thread: Thread
-  state: CommentState
-  rtf: Intl.RelativeTimeFormat
-  now: number
+  comment: Comment;
+  thread: Thread;
+  state: CommentState;
+  rtf: Intl.RelativeTimeFormat;
+  now: number;
 }) {
-  const { t } = useTranslation()
-  const minutes = Math.round((comment.timeStamp - now) / 60000)
+  const { t } = useTranslation();
+  const minutes = Math.round((comment.timeStamp - now) / 60000);
 
   return (
     <div className="group/comment">
@@ -400,9 +400,9 @@ function CommentRow({
             title={t.deleteCommentConfirm}
             className="ms-auto opacity-0 group-hover/comment:opacity-100"
             onDelete={() => {
-              const info = deleteCommentOrThread(state, comment, thread)
+              const info = deleteCommentOrThread(state, comment, thread);
               if (info !== null) {
-                addComment(state, info.markedComment, thread, info.index)
+                addComment(state, info.markedComment, thread, info.index);
               }
             }}
           />
@@ -416,27 +416,27 @@ function CommentRow({
         <p className="text-sm break-words">{comment.content}</p>
       )}
     </div>
-  )
+  );
 }
 
 function ReplyComposer({
   thread,
   state,
 }: {
-  thread: Thread
-  state: CommentState
+  thread: Thread;
+  state: CommentState;
 }) {
-  const { t } = useTranslation()
-  const [content, setContent] = useState("")
+  const { t } = useTranslation();
+  const [content, setContent] = useState("");
 
   const submit = () => {
-    const text = content.trim()
+    const text = content.trim();
     if (text === "") {
-      return
+      return;
     }
-    addComment(state, createComment(text, t.you), thread)
-    setContent("")
-  }
+    addComment(state, createComment(text, t.you), thread);
+    setContent("");
+  };
 
   return (
     <InputGroup
@@ -450,8 +450,8 @@ function ReplyComposer({
         onChange={(event) => setContent(event.target.value)}
         onKeyDown={(event) => {
           if (event.key === "Enter") {
-            event.preventDefault()
-            submit()
+            event.preventDefault();
+            submit();
           }
         }}
       />
@@ -466,7 +466,7 @@ function ReplyComposer({
         </InputGroupButton>
       </InputGroupAddon>
     </InputGroup>
-  )
+  );
 }
 
 function ThreadCard({
@@ -477,36 +477,36 @@ function ThreadCard({
   rtf,
   now,
 }: {
-  editor: LexicalEditor
-  thread: Thread
-  state: CommentState
-  active: boolean
-  rtf: Intl.RelativeTimeFormat
-  now: number
+  editor: LexicalEditor;
+  thread: Thread;
+  state: CommentState;
+  active: boolean;
+  rtf: Intl.RelativeTimeFormat;
+  now: number;
 }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   const handleClickThread = () => {
-    const markNodeKeys = state.markNodeMap.get(thread.id)
+    const markNodeKeys = state.markNodeMap.get(thread.id);
     if (markNodeKeys === undefined || active) {
-      return
+      return;
     }
-    const activeElement = document.activeElement
-    const markNodeKey = Array.from(markNodeKeys)[0]
+    const activeElement = document.activeElement;
+    const markNodeKey = Array.from(markNodeKeys)[0];
     editor.update(
       () => {
-        const markNode = $getNodeByKey(markNodeKey)
+        const markNode = $getNodeByKey(markNodeKey);
         if ($isMarkNode(markNode)) {
-          markNode.selectStart()
+          markNode.selectStart();
         }
       },
       {
         onUpdate() {
-          const markElem = editor.getElementByKey(markNodeKey)
-          const scroller = getScrollParent(editor.getRootElement())
+          const markElem = editor.getElementByKey(markNodeKey);
+          const scroller = getScrollParent(editor.getRootElement());
           if (markElem !== null && scroller !== null) {
-            const markRect = markElem.getBoundingClientRect()
-            const scrollerRect = scroller.getBoundingClientRect()
+            const markRect = markElem.getBoundingClientRect();
+            const scrollerRect = scroller.getBoundingClientRect();
             if (
               markRect.top < scrollerRect.top ||
               markRect.bottom > scrollerRect.bottom
@@ -518,16 +518,16 @@ function ThreadCard({
                   scrollerRect.top +
                   scroller.scrollTop -
                   scroller.clientHeight / 2,
-              })
+              });
             }
           }
           if (activeElement !== null) {
-            ;(activeElement as HTMLElement).focus()
+            (activeElement as HTMLElement).focus();
           }
         },
-      }
-    )
-  }
+      },
+    );
+  };
 
   return (
     <div
@@ -535,7 +535,7 @@ function ThreadCard({
       className={cn(
         "rounded-md border bg-background p-2 text-start",
         state.markNodeMap.has(thread.id) && "cursor-pointer",
-        active && "border-ring ring-1 ring-ring"
+        active && "border-ring ring-1 ring-ring",
       )}
     >
       <div className="flex items-start justify-between gap-1">
@@ -546,8 +546,8 @@ function ThreadCard({
           title={t.deleteThreadConfirm}
           className="-mt-0.5 shrink-0"
           onDelete={() => {
-            deleteCommentOrThread(state, thread)
-            removeThreadMarks(editor, state, thread.id)
+            deleteCommentOrThread(state, thread);
+            removeThreadMarks(editor, state, thread.id);
           }}
         />
       </div>
@@ -565,16 +565,16 @@ function ThreadCard({
       </div>
       <ReplyComposer thread={thread} state={state} />
     </div>
-  )
+  );
 }
 
 export function CommentsPanel() {
-  const [editor] = useLexicalComposerContext()
-  const { t, language } = useTranslation()
-  const state = useExtensionDependency(CommentExtension).output
-  const comments = useExtensionSignalValue(CommentExtension, "comments")
-  const activeIDs = useExtensionSignalValue(CommentExtension, "activeIDs")
-  const [now, setNow] = useState(() => Date.now())
+  const [editor] = useLexicalComposerContext();
+  const { t, language } = useTranslation();
+  const state = useExtensionDependency(CommentExtension).output;
+  const comments = useExtensionSignalValue(CommentExtension, "comments");
+  const activeIDs = useExtensionSignalValue(CommentExtension, "activeIDs");
+  const [now, setNow] = useState(() => Date.now());
 
   const rtf = useMemo(
     () =>
@@ -582,15 +582,15 @@ export function CommentsPanel() {
         numeric: "auto",
         style: "short",
       }),
-    [language]
-  )
+    [language],
+  );
 
   useEffect(() => {
     const id = setInterval(() => {
-      setNow(Date.now())
-    }, 10000)
-    return () => clearInterval(id)
-  }, [])
+      setNow(Date.now());
+    }, 10000);
+    return () => clearInterval(id);
+  }, []);
 
   return (
     <SidebarGroup>
@@ -613,11 +613,11 @@ export function CommentsPanel() {
                   rtf={rtf}
                   now={now}
                 />
-              ) : null
+              ) : null,
             )}
           </div>
         )}
       </SidebarGroupContent>
     </SidebarGroup>
-  )
+  );
 }

@@ -1,30 +1,30 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 
 import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
   defineExtension,
-} from "lexical"
+} from "lexical";
 
 import {
   $createListItemNode,
   $createListNode,
   CheckListExtension,
   ListExtension,
-} from "@lexical/list"
-import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer"
-import { RichTextExtension } from "@lexical/rich-text"
+} from "@lexical/list";
+import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
+import { RichTextExtension } from "@lexical/rich-text";
 
-import { ContentEditable } from "@/components/editor/plugins/content-editable"
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
   LanguageProvider,
   useLanguage,
-} from "@/components/editor/plugins/i18n-plugin"
-import { BlockFormatToolbarPlugin } from "@/components/editor/plugins/toolbar/block-format-toolbar-plugin"
-import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin"
-import { editorTheme } from "@/components/editor/theme"
-import { DirectionProvider } from "@/components/ui/direction"
+} from "@/components/editor/plugins/i18n-plugin";
+import { BlockFormatToolbarPlugin } from "@/components/editor/plugins/toolbar/block-format-toolbar-plugin";
+import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin";
+import { editorTheme } from "@/components/editor/theme";
+import { DirectionProvider } from "@/components/ui/direction";
 
 export function CheckListEditor() {
   const app = useMemo(
@@ -35,28 +35,28 @@ export function CheckListEditor() {
         $initialEditorState: () => {
           $getRoot().append(
             $createParagraphNode().append(
-              $createTextNode("Launch day checklist:")
+              $createTextNode("Launch day checklist:"),
             ),
             $createListNode("check").append(
               $createListItemNode(true).append(
-                $createTextNode("Write the release notes")
+                $createTextNode("Write the release notes"),
               ),
               $createListItemNode(true).append(
-                $createTextNode("Tag the final build")
+                $createTextNode("Tag the final build"),
               ),
               $createListItemNode(false).append(
-                $createTextNode("Publish the announcement post")
+                $createTextNode("Publish the announcement post"),
               ),
               $createListItemNode(false).append(
-                $createTextNode("Celebrate with the team")
-              )
-            )
-          )
+                $createTextNode("Celebrate with the team"),
+              ),
+            ),
+          );
         },
         theme: editorTheme,
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <LanguageProvider>
@@ -71,11 +71,11 @@ export function CheckListEditor() {
         </EditorWrapper>
       </LexicalExtensionComposer>
     </LanguageProvider>
-  )
+  );
 }
 
 function EditorWrapper({ children }: { children: React.ReactNode }) {
-  const { language, dir } = useLanguage()
+  const { language, dir } = useLanguage();
   return (
     <DirectionProvider direction={dir}>
       <div
@@ -86,5 +86,5 @@ function EditorWrapper({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </DirectionProvider>
-  )
+  );
 }

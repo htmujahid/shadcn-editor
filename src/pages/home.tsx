@@ -1,20 +1,20 @@
-import { useEffect } from "react"
+import { useEffect } from "react";
 
-import { Link } from "wouter"
+import { Link } from "wouter";
 
-import { CodeDialog } from "@/components/code-dialog"
-import { EditorX } from "@/components/examples/editor-x"
-import { GitHubIcon } from "@/components/github-icon"
-import { SiteFooter } from "@/components/site-footer"
-import { SiteHeader } from "@/components/site-header"
-import { buttonVariants } from "@/components/ui/button"
-import { TooltipProvider } from "@/components/ui/tooltip"
-import { cn } from "@/lib/utils"
+import { CodeDialog } from "@/components/code-dialog";
+import { EditorX } from "@/components/examples/editor-x";
+import { GitHubIcon } from "@/components/github-icon";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
+import { buttonVariants } from "@/components/ui/button";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 
 export function HomePage() {
   useEffect(() => {
-    document.title = "Shadcn Editor"
-  }, [])
+    document.title = "Shadcn Editor";
+  }, []);
 
   return (
     <TooltipProvider>
@@ -60,5 +60,5 @@ export function HomePage() {
         <SiteFooter />
       </div>
     </TooltipProvider>
-  )
+  );
 }

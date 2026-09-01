@@ -7,116 +7,116 @@ import {
   useMemo,
   useRef,
   useState,
-} from "react"
+} from "react";
 
-import type { TextNode } from "lexical"
+import type { TextNode } from "lexical";
 
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import {
   LexicalTypeaheadMenuPlugin,
   MenuOption,
   useBasicTypeaheadTriggerMatch,
-} from "@lexical/react/LexicalTypeaheadMenuPlugin"
+} from "@lexical/react/LexicalTypeaheadMenuPlugin";
 
-import { Popover as PopoverPrimitive } from "@base-ui/react/popover"
+import { Popover as PopoverPrimitive } from "@base-ui/react/popover";
 
-import { useLanguage } from "@/components/editor/plugins/i18n-plugin"
-import { Command, CommandItem, CommandList } from "@/components/ui/command"
+import { useLanguage } from "@/components/editor/plugins/i18n-plugin";
+import { Command, CommandItem, CommandList } from "@/components/ui/command";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/components/ui/popover";
 
 export type ComponentPickerItem = {
-  value: string
-  label: string
-  icon?: React.ReactNode
-  keywords?: string[]
-  onSelect: (queryString: string) => void
-}
+  value: string;
+  label: string;
+  icon?: React.ReactNode;
+  keywords?: string[];
+  onSelect: (queryString: string) => void;
+};
 
 type ComponentPickerContextValue = {
-  registerItems: (id: string, items: ComponentPickerItem[]) => () => void
-  queryString: string | null
-}
+  registerItems: (id: string, items: ComponentPickerItem[]) => () => void;
+  queryString: string | null;
+};
 
 const ComponentPickerContext =
-  createContext<ComponentPickerContextValue | null>(null)
+  createContext<ComponentPickerContextValue | null>(null);
 
 function useComponentPickerContext(): ComponentPickerContextValue {
-  const context = useContext(ComponentPickerContext)
+  const context = useContext(ComponentPickerContext);
   if (context === null) {
     throw new Error(
-      "ComponentPicker plugins must be rendered inside <ComponentPicker>"
-    )
+      "ComponentPicker plugins must be rendered inside <ComponentPicker>",
+    );
   }
-  return context
+  return context;
 }
 
 export function useComponentPickerQuery(): string | null {
-  return useComponentPickerContext().queryString
+  return useComponentPickerContext().queryString;
 }
 
 export function useComponentPickerItems(items: ComponentPickerItem[]) {
-  const { registerItems } = useComponentPickerContext()
-  const id = useId()
+  const { registerItems } = useComponentPickerContext();
+  const id = useId();
 
-  useEffect(() => registerItems(id, items), [registerItems, id, items])
+  useEffect(() => registerItems(id, items), [registerItems, id, items]);
 }
 
 class ComponentPickerOption extends MenuOption {
-  item: ComponentPickerItem
+  item: ComponentPickerItem;
 
   constructor(item: ComponentPickerItem) {
-    super(item.value)
-    this.item = item
+    super(item.value);
+    this.item = item;
   }
 }
 
 export function ComponentPicker({ children }: { children: React.ReactNode }) {
-  const [editor] = useLexicalComposerContext()
-  const { dir } = useLanguage()
-  const [queryString, setQueryString] = useState<string | null>(null)
+  const [editor] = useLexicalComposerContext();
+  const { dir } = useLanguage();
+  const [queryString, setQueryString] = useState<string | null>(null);
   const [itemsById, setItemsById] = useState(
-    () => new Map<string, ComponentPickerItem[]>()
-  )
-  const registrationOrderRef = useRef(new Map<string, number>())
+    () => new Map<string, ComponentPickerItem[]>(),
+  );
+  const registrationOrderRef = useRef(new Map<string, number>());
 
   const registerItems = useCallback(
     (id: string, items: ComponentPickerItem[]) => {
-      const order = registrationOrderRef.current
+      const order = registrationOrderRef.current;
       if (!order.has(id)) {
-        order.set(id, order.size)
+        order.set(id, order.size);
       }
-      setItemsById((prev) => new Map(prev).set(id, items))
+      setItemsById((prev) => new Map(prev).set(id, items));
       return () => {
         setItemsById((prev) => {
-          const next = new Map(prev)
-          next.delete(id)
-          return next
-        })
-      }
+          const next = new Map(prev);
+          next.delete(id);
+          return next;
+        });
+      };
     },
-    []
-  )
+    [],
+  );
 
   const contextValue = useMemo(
     () => ({ registerItems, queryString }),
-    [registerItems, queryString]
-  )
+    [registerItems, queryString],
+  );
 
   const checkForTriggerMatch = useBasicTypeaheadTriggerMatch("/", {
     allowWhitespace: true,
     minLength: 0,
-  })
+  });
 
   const options = useMemo(() => {
-    const order = registrationOrderRef.current
+    const order = registrationOrderRef.current;
     const allItems = Array.from(itemsById.entries())
       .sort(([a], [b]) => (order.get(a) ?? 0) - (order.get(b) ?? 0))
-      .flatMap(([, items]) => items)
-    const query = (queryString ?? "").trim().toLowerCase()
+      .flatMap(([, items]) => items);
+    const query = (queryString ?? "").trim().toLowerCase();
     const matches =
       query === ""
         ? allItems
@@ -124,29 +124,29 @@ export function ComponentPicker({ children }: { children: React.ReactNode }) {
             (item) =>
               item.label.toLowerCase().includes(query) ||
               (item.keywords ?? []).some((keyword) =>
-                keyword.toLowerCase().includes(query)
-              )
-          )
-    return matches.map((item) => new ComponentPickerOption(item))
-  }, [itemsById, queryString])
+                keyword.toLowerCase().includes(query),
+              ),
+          );
+    return matches.map((item) => new ComponentPickerOption(item));
+  }, [itemsById, queryString]);
 
   const onSelectOption = useCallback(
     (
       option: ComponentPickerOption,
       nodeToReplace: TextNode | null,
       closeMenu: () => void,
-      matchingString: string
+      matchingString: string,
     ) => {
       editor.update(() => {
         if (nodeToReplace) {
-          nodeToReplace.remove()
+          nodeToReplace.remove();
         }
-      })
-      closeMenu()
-      option.item.onSelect(matchingString)
+      });
+      closeMenu();
+      option.item.onSelect(matchingString);
     },
-    [editor]
-  )
+    [editor],
+  );
 
   return (
     <ComponentPickerContext.Provider value={contextValue}>
@@ -158,7 +158,7 @@ export function ComponentPicker({ children }: { children: React.ReactNode }) {
         options={options}
         menuRenderFn={(
           anchorElementRef,
-          { selectedIndex, selectOptionAndCleanUp, setHighlightedIndex }
+          { selectedIndex, selectOptionAndCleanUp, setHighlightedIndex },
         ) =>
           anchorElementRef.current && options.length > 0 ? (
             <Popover open>
@@ -191,10 +191,10 @@ export function ComponentPicker({ children }: { children: React.ReactNode }) {
                     }
                     onValueChange={(nextValue) => {
                       const index = options.findIndex(
-                        (option) => option.item.value === nextValue
-                      )
+                        (option) => option.item.value === nextValue,
+                      );
                       if (index >= 0) {
-                        setHighlightedIndex(index)
+                        setHighlightedIndex(index);
                       }
                     }}
                     shouldFilter={false}
@@ -220,5 +220,5 @@ export function ComponentPicker({ children }: { children: React.ReactNode }) {
         }
       />
     </ComponentPickerContext.Provider>
-  )
+  );
 }
