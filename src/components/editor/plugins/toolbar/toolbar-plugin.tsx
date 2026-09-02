@@ -18,7 +18,10 @@ export function Toolbar({
       >
         {children}
       </div>
-      <ScrollBar orientation="horizontal" />
+      <ScrollBar
+        orientation="horizontal"
+        className="opacity-0 transition-opacity data-hovering:opacity-100 data-scrolling:opacity-100"
+      />
     </ScrollArea>
   );
 }

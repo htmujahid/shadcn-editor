@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import { useSearchParams } from "wouter";
+import { Link, useSearchParams } from "wouter";
 
 import { CodeDialog } from "@/components/code-dialog";
 import { AiEditor } from "@/components/examples/editor-ai-example";
@@ -534,9 +534,9 @@ export function ExamplesPage() {
               single feature: accessible, localized, and RTL-ready.
             </p>
             <div className="mt-6 flex items-center gap-2">
-              <a href="#examples" className={cn(buttonVariants())}>
-                Browse Examples
-              </a>
+              <Link href="/demo" className={cn(buttonVariants())}>
+                Try the Full Demo
+              </Link>
               <a
                 href="https://github.com/htmujahid/shadcn-editor"
                 target="_blank"
