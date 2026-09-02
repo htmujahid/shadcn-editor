@@ -101,6 +101,7 @@ import { DraggableBlockPlugin } from "@/components/editor/plugins/draggable-bloc
 import { EmojiPickerPlugin } from "@/components/editor/plugins/emoji-picker-plugin";
 import { ReactFindReplaceExtension } from "@/components/editor/plugins/decorator/find-replace-panel";
 import { FloatingToolbarPlugin } from "@/components/editor/plugins/floating/floating-toolbar-plugin";
+import { LinkEditorPlugin } from "@/components/editor/plugins/floating/link-editor-plugin";
 import { ReactReviewExtension } from "@/components/editor/plugins/decorator/review-plugin";
 import { RubyEditorPlugin } from "@/components/editor/plugins/floating/ruby-editor-plugin";
 import { TableHoverActionsPlugin } from "@/components/editor/plugins/floating/table-hover-actions-plugin";
@@ -119,6 +120,8 @@ import { FontSizeToolbarPlugin } from "@/components/editor/plugins/toolbar/font-
 import { HistoryToolbarPlugin } from "@/components/editor/plugins/toolbar/history-toolbar-plugin";
 import { ImportExportToolbarPlugin } from "@/components/editor/plugins/toolbar/import-export-toolbar-plugin";
 import { IndentToolbarPlugin } from "@/components/editor/plugins/toolbar/indent-toolbar-plugin";
+import { LinkToolbarPlugin } from "@/components/editor/plugins/toolbar/link-toolbar-plugin";
+import { RubyToolbarPlugin } from "@/components/editor/plugins/toolbar/ruby-toolbar-plugin";
 import { TextFormatToolbarPlugin } from "@/components/editor/plugins/toolbar/text-format-toolbar-plugin";
 import { Toolbar } from "@/components/editor/plugins/toolbar/toolbar-plugin";
 import { editorTheme } from "@/components/editor/theme";
@@ -267,7 +270,11 @@ export function EditorX() {
           <div className="relative min-w-0 flex-1 overflow-y-auto">
             <ContentEditable variant="draggable" />
             <DraggableBlockPlugin />
-            <FloatingToolbarPlugin />
+            <FloatingToolbarPlugin>
+              <LinkToolbarPlugin />
+              <RubyToolbarPlugin />
+            </FloatingToolbarPlugin>
+            <LinkEditorPlugin />
             <RubyEditorPlugin />
             <TableHoverActionsPlugin />
             <EmojiPickerPlugin />

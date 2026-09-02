@@ -15,6 +15,7 @@ import { FormatStateExtension } from "@/components/editor/extensions/format-stat
 import { LinkExtension } from "@/components/editor/extensions/link";
 import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import { FloatingToolbarPlugin } from "@/components/editor/plugins/floating/floating-toolbar-plugin";
+import { LinkEditorPlugin } from "@/components/editor/plugins/floating/link-editor-plugin";
 import {
   LanguageProvider,
   useLanguage,
@@ -66,7 +67,10 @@ export function LinkEditor() {
           </Toolbar>
           <div className="relative min-w-0 flex-1 overflow-y-auto">
             <ContentEditable variant="toolbar" />
-            <FloatingToolbarPlugin />
+            <FloatingToolbarPlugin>
+              <LinkToolbarPlugin />
+            </FloatingToolbarPlugin>
+            <LinkEditorPlugin />
           </div>
         </EditorWrapper>
       </LexicalExtensionComposer>

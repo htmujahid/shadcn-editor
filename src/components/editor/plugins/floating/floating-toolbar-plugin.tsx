@@ -1,52 +1,35 @@
-import {
-  type Dispatch,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import {
   $getSelection,
   $isParagraphNode,
   $isRangeSelection,
   $isTextNode,
-  CLICK_COMMAND,
-  COMMAND_PRIORITY_HIGH,
   COMMAND_PRIORITY_LOW,
   getDOMSelection,
   getDOMSelectionPoints,
   isDOMDocumentNode,
   isDOMShadowRoot,
-  KEY_ESCAPE_COMMAND,
   type LexicalEditor,
   registerEventListener,
   registerEventListeners,
   SELECTION_CHANGE_COMMAND,
 } from "lexical";
 
-import { $isLinkNode, LinkNode, TOGGLE_LINK_COMMAND } from "@lexical/link";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
-import { $findMatchingParent, mergeRegister } from "@lexical/utils";
+import { mergeRegister } from "@lexical/utils";
 
 import { Popover as PopoverPrimitive } from "@base-ui/react/popover";
 
-import {
-  $getSelectedLinkNode,
-  $getSelectedNode,
-  useFormatStateValue,
-} from "@/components/editor/extensions/format-state";
-import { OPEN_LINK_EDITOR_COMMAND } from "@/components/editor/extensions/link";
+import { $getSelectedNode } from "@/components/editor/extensions/format-state";
 import {
   getDOMRangeRect,
   hideFloatingAnchor,
   setFloatingAnchorRect,
 } from "@/components/editor/plugins/floating/floating-utils";
-import { LinkEditor } from "@/components/editor/plugins/floating/link-editor";
-import { TextFormatToolbar } from "@/components/editor/plugins/floating/text-format-toolbar";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { TextFormatToolbarPlugin } from "@/components/editor/plugins/toolbar/text-format-toolbar-plugin";
 import {
   Popover,
   PopoverContent,
@@ -55,19 +38,11 @@ import {
 
 function FloatingToolbar({
   editor,
-  mode,
-  linksEnabled,
-  isLinkEditMode,
-  setIsLinkEditMode,
-  onDismissLink,
+  children,
   ref,
 }: {
   editor: LexicalEditor;
-  mode: "text" | "link";
-  linksEnabled: boolean;
-  isLinkEditMode: boolean;
-  setIsLinkEditMode: Dispatch<boolean>;
-  onDismissLink: () => void;
+  children: React.ReactNode;
   ref?: React.Ref<HTMLDivElement | null>;
 }) {
   const triggerRef = useRef<HTMLButtonElement | null>(null);
@@ -130,23 +105,12 @@ function FloatingToolbar({
       nativeSelection !== null &&
       rootElement !== null
     ) {
-      if (mode === "link") {
-        const linkNode = $getSelectedLinkNode(selection);
-        if (linkNode) {
-          targetRect =
-            editor
-              .getElementByKey(linkNode.getKey())
-              ?.getBoundingClientRect() ?? null;
-        }
-      }
-      if (targetRect === null) {
-        const points = getDOMSelectionPoints(nativeSelection, rootElement);
-        const pointsCollapsed =
-          points.anchorNode === points.focusNode &&
-          points.anchorOffset === points.focusOffset;
-        if (!pointsCollapsed && rootElement.contains(points.anchorNode)) {
-          targetRect = getDOMRangeRect(nativeSelection, rootElement);
-        }
+      const points = getDOMSelectionPoints(nativeSelection, rootElement);
+      const pointsCollapsed =
+        points.anchorNode === points.focusNode &&
+        points.anchorOffset === points.focusOffset;
+      if (!pointsCollapsed && rootElement.contains(points.anchorNode)) {
+        targetRect = getDOMRangeRect(nativeSelection, rootElement);
       }
     }
 
@@ -155,7 +119,7 @@ function FloatingToolbar({
     } else {
       hideFloatingAnchor(triggerElem);
     }
-  }, [editor, mode]);
+  }, [editor]);
 
   useEffect(() => {
     const update = () => {
@@ -203,44 +167,26 @@ function FloatingToolbar({
       />
       <PopoverPrimitive.Portal dir={dir}>
         <PopoverContent
-          dir={mode === "link" ? "ltr" : dir}
+          dir={dir}
           ref={setPopupRefs}
           side="top"
           align="start"
           sideOffset={8}
           initialFocus={false}
           finalFocus={false}
-          role={mode === "text" ? "toolbar" : undefined}
-          aria-label={mode === "text" ? t.textFormatToolbar : t.link}
+          role="toolbar"
+          aria-label={t.textFormatToolbar}
           className="w-auto min-w-0 flex-row items-center gap-1 p-1"
         >
-          {mode === "link" ? (
-            <LinkEditor
-              editor={editor}
-              isLinkEditMode={isLinkEditMode}
-              setIsLinkEditMode={setIsLinkEditMode}
-              onDismiss={onDismissLink}
-            />
-          ) : (
-            <TextFormatToolbar
-              editor={editor}
-              linksEnabled={linksEnabled}
-              setIsLinkEditMode={setIsLinkEditMode}
-            />
-          )}
+          {children}
         </PopoverContent>
       </PopoverPrimitive.Portal>
     </Popover>
   );
 }
 
-function useFloatingToolbar(editor: LexicalEditor) {
+function useIsTextSelected(editor: LexicalEditor): boolean {
   const [isText, setIsText] = useState(false);
-  const [isLinkEditMode, setIsLinkEditMode] = useState(false);
-  const [linkDismissed, setLinkDismissed] = useState(false);
-  const isEditable = useLexicalEditable();
-  const isLink = useFormatStateValue("isLink");
-  const linksEnabled = useMemo(() => editor.hasNodes([LinkNode]), [editor]);
 
   const updatePopup = useCallback(() => {
     editor.read("latest", () => {
@@ -282,6 +228,46 @@ function useFloatingToolbar(editor: LexicalEditor) {
     return registerEventListener(document, "selectionchange", updatePopup);
   }, [updatePopup]);
 
+  useEffect(() => {
+    return mergeRegister(
+      editor.registerUpdateListener(() => {
+        updatePopup();
+      }),
+      editor.registerRootListener(() => {
+        if (editor.getRootElement() === null) {
+          setIsText(false);
+        }
+      }),
+    );
+  }, [editor, updatePopup]);
+
+  return isText;
+}
+
+/**
+ * Floating toolbar shown above a non-collapsed text selection.
+ *
+ * Text formatting toggles are rendered by default. Compose additional
+ * controls by passing them as children, for example:
+ *
+ * ```tsx
+ * <FloatingToolbarPlugin>
+ *   <LinkToolbarPlugin />
+ *   <RubyToolbarPlugin />
+ * </FloatingToolbarPlugin>
+ * ```
+ */
+export function FloatingToolbarPlugin({
+  formats = "all",
+  children,
+}: {
+  formats?: "basic" | "all";
+  children?: React.ReactNode;
+}) {
+  const [editor] = useLexicalComposerContext();
+  const isEditable = useLexicalEditable();
+  const isText = useIsTextSelected(editor);
+
   const toolbarRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     const onDragStart = () => {
@@ -301,120 +287,14 @@ function useFloatingToolbar(editor: LexicalEditor) {
     );
   }, []);
 
-  useEffect(() => {
-    return mergeRegister(
-      editor.registerUpdateListener(() => {
-        updatePopup();
-      }),
-      editor.registerRootListener(() => {
-        if (editor.getRootElement() === null) {
-          setIsText(false);
-        }
-      }),
-    );
-  }, [editor, updatePopup]);
-
-  useEffect(() => {
-    if (!linksEnabled) {
-      return;
-    }
-    return mergeRegister(
-      editor.registerCommand(
-        SELECTION_CHANGE_COMMAND,
-        () => {
-          setLinkDismissed(false);
-          const selection = $getSelection();
-          if (!(
-            $isRangeSelection(selection) && $getSelectedLinkNode(selection)
-          )) {
-            setIsLinkEditMode(false);
-          }
-          return false;
-        },
-        COMMAND_PRIORITY_LOW,
-      ),
-      editor.registerCommand(
-        CLICK_COMMAND,
-        (payload) => {
-          const selection = $getSelection();
-          if ($isRangeSelection(selection)) {
-            const node = $getSelectedNode(selection);
-            const linkNode = $findMatchingParent(node, $isLinkNode);
-            if ($isLinkNode(linkNode) && (payload.metaKey || payload.ctrlKey)) {
-              window.open(linkNode.getURL(), "_blank");
-              return true;
-            }
-          }
-          return false;
-        },
-        COMMAND_PRIORITY_LOW,
-      ),
-      editor.registerCommand(
-        OPEN_LINK_EDITOR_COMMAND,
-        () => {
-          const selection = $getSelection();
-          if (!$isRangeSelection(selection)) {
-            return false;
-          }
-          const linkNode = $getSelectedLinkNode(selection);
-          if (!linkNode && selection.isCollapsed()) {
-            return false;
-          }
-          setLinkDismissed(false);
-          setIsLinkEditMode(true);
-          if (!linkNode) {
-            editor.dispatchCommand(TOGGLE_LINK_COMMAND, "https://");
-          }
-          return true;
-        },
-        COMMAND_PRIORITY_LOW,
-      ),
-    );
-  }, [editor, linksEnabled]);
-
-  const showLink = linksEnabled && isLink && !linkDismissed;
-
-  useEffect(() => {
-    if (!linksEnabled) {
-      return;
-    }
-    return editor.registerCommand(
-      KEY_ESCAPE_COMMAND,
-      () => {
-        if (showLink) {
-          setLinkDismissed(true);
-          setIsLinkEditMode(false);
-          return true;
-        }
-        return false;
-      },
-      COMMAND_PRIORITY_HIGH,
-    );
-  }, [editor, linksEnabled, showLink]);
-
-  const onDismissLink = useCallback(() => {
-    setLinkDismissed(true);
-    setIsLinkEditMode(false);
-  }, []);
-
-  if (!isEditable || (!showLink && !isText)) {
+  if (!isEditable || !isText) {
     return null;
   }
 
   return (
-    <FloatingToolbar
-      editor={editor}
-      mode={showLink ? "link" : "text"}
-      linksEnabled={linksEnabled}
-      isLinkEditMode={isLinkEditMode}
-      setIsLinkEditMode={setIsLinkEditMode}
-      onDismissLink={onDismissLink}
-      ref={toolbarRef}
-    />
+    <FloatingToolbar editor={editor} ref={toolbarRef}>
+      <TextFormatToolbarPlugin formats={formats} />
+      {children}
+    </FloatingToolbar>
   );
-}
-
-export function FloatingToolbarPlugin() {
-  const [editor] = useLexicalComposerContext();
-  return useFloatingToolbar(editor);
 }

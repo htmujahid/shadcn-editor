@@ -426,7 +426,7 @@
           "type": "registry:component"
         },
         {
-          "path": "src/components/editor/plugins/floating/link-editor.tsx",
+          "path": "src/components/editor/plugins/floating/link-editor-plugin.tsx",
           "type": "registry:component"
         },
         {
@@ -439,10 +439,6 @@
         },
         {
           "path": "src/components/editor/plugins/floating/table-hover-actions-plugin.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "src/components/editor/plugins/floating/text-format-toolbar.tsx",
           "type": "registry:component"
         },
         {

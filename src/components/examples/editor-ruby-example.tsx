@@ -72,7 +72,9 @@ export function RubyEditor() {
           </Toolbar>
           <div className="relative min-w-0 flex-1 overflow-y-auto">
             <ContentEditable variant="toolbar" />
-            <FloatingToolbarPlugin />
+            <FloatingToolbarPlugin>
+              <RubyToolbarPlugin />
+            </FloatingToolbarPlugin>
             <RubyEditorPlugin />
           </div>
         </EditorWrapper>
