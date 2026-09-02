@@ -1,15 +1,13 @@
 import { useMemo, useRef, useState } from "react";
 
 import {
-  $createParagraphNode,
-  $createTextNode,
   $getRoot,
+  configExtension,
   defineExtension,
   HISTORY_MERGE_TAG,
 } from "lexical";
 
 import { ClipboardDOMImportExtension } from "@lexical/clipboard";
-import { $createCodeNode } from "@lexical/code-core";
 import {
   AutoFocusExtension,
   ClearEditorExtension,
@@ -19,13 +17,7 @@ import {
 } from "@lexical/extension";
 import { HashtagExtension } from "@lexical/hashtag";
 import { HistoryExtension } from "@lexical/history";
-import {
-  $createListItemNode,
-  $createListNode,
-  CheckListExtension,
-  ListExtension,
-} from "@lexical/list";
-import { $createMarkNode } from "@lexical/mark";
+import { CheckListExtension, ListExtension } from "@lexical/list";
 import {
   CHECK_LIST,
   ELEMENT_TRANSFORMERS,
@@ -36,15 +28,15 @@ import {
   type Transformer,
 } from "@lexical/markdown";
 import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
-import {
-  $createHeadingNode,
-  $createQuoteNode,
-  RichTextExtension,
-} from "@lexical/rich-text";
+import { RichTextExtension } from "@lexical/rich-text";
 import { TableExtension } from "@lexical/table";
 
 import { MessageSquareText, TableOfContents } from "lucide-react";
 
+import {
+  $seedDocument,
+  createSeedThreads,
+} from "@/components/demo/demo-content";
 import { mockAiResponse } from "@/components/demo/mock-ai";
 import type { AiRequest } from "@/components/editor/extensions/ai";
 import { AutoLinkExtension } from "@/components/editor/extensions/auto-link";
@@ -55,8 +47,6 @@ import { CollapsibleExtension } from "@/components/editor/extensions/collapsible
 import {
   addComment,
   CommentExtension,
-  createComment,
-  createThread,
 } from "@/components/editor/extensions/comment";
 import { DateTimeExtension } from "@/components/editor/extensions/datetime";
 import { DragDropPasteExtension } from "@/components/editor/extensions/drag-drop-paste";
@@ -181,84 +171,6 @@ const EDITOR_TRANSFORMERS: Transformer[] = [
   ...TEXT_MATCH_TRANSFORMERS,
 ];
 
-const SEED_QUOTE = "anchored to the exact words it refers to";
-
-function $seedDocument(threadId: string) {
-  $getRoot().append(
-    $createHeadingNode("h1").append($createTextNode("Editor X")),
-    $createParagraphNode().append(
-      $createTextNode("A "),
-      $createTextNode("complete").toggleFormat("bold"),
-      $createTextNode(" writing surface: "),
-      $createTextNode("rich text").toggleFormat("italic"),
-      $createTextNode(", "),
-      $createTextNode("markdown shortcuts").toggleFormat("underline"),
-      $createTextNode(", and "),
-      $createTextNode("blocks").toggleFormat("code"),
-      $createTextNode(", all in one place."),
-    ),
-    $createHeadingNode("h2").append($createTextNode("Everything included")),
-    $createListNode("bullet").append(
-      $createListItemNode().append(
-        $createTextNode(
-          "Every toolbar control, from fonts and colors to find & replace",
-        ),
-      ),
-      $createListItemNode().append(
-        $createTextNode('A slash menu: type "/" to insert any block'),
-      ),
-      $createListItemNode().append(
-        $createTextNode(
-          "Drag handles, a floating toolbar, mentions, emoji, and embeds",
-        ),
-      ),
-    ),
-    $createHeadingNode("h2").append($createTextNode("Ask AI")),
-    $createParagraphNode().append(
-      $createTextNode(
-        "the editor is fast and it is very very easy to extend. every feature is an extension, and i can compose them however i like.",
-      ),
-    ),
-    $createParagraphNode().append(
-      $createTextNode(
-        "Select the sentence above and press the sparkles button in either toolbar, then pick a command or type your own prompt. On an empty line, type / and choose Ask AI to write something new. The demo streams a mock reply, so any endpoint or SDK can take its place.",
-      ),
-    ),
-    $createHeadingNode("h2").append($createTextNode("Comments")),
-    $createParagraphNode().append(
-      $createTextNode(
-        "Select any text and press the button that appears beside the line to start a thread. Feedback lives in the panel on the side, ",
-      ),
-      $createMarkNode([threadId]).append($createTextNode(SEED_QUOTE)),
-      $createTextNode(
-        ", so the context of a discussion never gets lost. Click a thread to jump to its highlight.",
-      ),
-    ),
-    $createHeadingNode("h2").append($createTextNode("Navigation")),
-    $createHeadingNode("h3").append($createTextNode("Table of contents")),
-    $createParagraphNode().append(
-      $createTextNode(
-        "Headings in this document show up in the outline on the left. Click one to scroll to it, or add a heading and watch the outline update.",
-      ),
-    ),
-    $createHeadingNode("h3").append($createTextNode("Shortcuts")),
-    $createQuoteNode().append(
-      $createTextNode(
-        "Select any text to format it in place, or grab a drag handle to rearrange the page.",
-      ),
-    ),
-    $createCodeNode("markdown").append(
-      $createTextNode("## Markdown works too, as you type"),
-    ),
-    $createParagraphNode().append(
-      $createTextNode(
-        'Try it now: press "/" on the empty line below, or explore the toolbar above.',
-      ),
-    ),
-    $createParagraphNode(),
-  );
-}
-
 function useMockAi() {
   const [output, setOutput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -356,7 +268,9 @@ export function DemoEditor() {
           CommentExtension,
           ClearEditorExtension,
           ClipboardDOMImportExtension,
-          AutoFocusExtension,
+          configExtension(AutoFocusExtension, {
+            defaultSelection: "rootStart",
+          }),
         ],
         register: (editor) => {
           const comments = getExtensionDependencyFromEditor(
@@ -369,16 +283,11 @@ export function DemoEditor() {
               if (!root.isEmpty()) {
                 return;
               }
-              const thread = createThread(SEED_QUOTE, [
-                createComment(
-                  "This is what makes review workflows click.",
-                  "Sam",
-                  undefined,
-                  performance.timeOrigin + performance.now() - 300000,
-                ),
-              ]);
-              addComment(comments, thread);
-              $seedDocument(thread.id);
+              const threads = createSeedThreads();
+              for (const thread of Object.values(threads)) {
+                addComment(comments, thread);
+              }
+              $seedDocument(threads);
             },
             { tag: HISTORY_MERGE_TAG },
           );
