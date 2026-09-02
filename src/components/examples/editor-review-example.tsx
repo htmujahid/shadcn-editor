@@ -20,7 +20,7 @@ import { HeadingPickerPlugin } from "@/components/editor/plugins/component-picke
 import { ParagraphPickerPlugin } from "@/components/editor/plugins/component-picker/paragraph-picker-plugin";
 import { ReviewPickerPlugin } from "@/components/editor/plugins/component-picker/review-picker-plugin";
 import { ContentEditable } from "@/components/editor/plugins/content-editable";
-import { ReactReviewExtension } from "@/components/editor/plugins/floating/review-plugin";
+import { ReactReviewExtension } from "@/components/editor/plugins/decorator/review-plugin";
 import {
   LanguageProvider,
   useLanguage,

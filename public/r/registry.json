@@ -414,7 +414,7 @@
           "type": "registry:component"
         },
         {
-          "path": "src/components/editor/plugins/floating/find-replace-panel.tsx",
+          "path": "src/components/editor/plugins/decorator/find-replace-panel.tsx",
           "type": "registry:component"
         },
         {
@@ -430,7 +430,7 @@
           "type": "registry:component"
         },
         {
-          "path": "src/components/editor/plugins/floating/review-plugin.tsx",
+          "path": "src/components/editor/plugins/decorator/review-plugin.tsx",
           "type": "registry:component"
         },
         {

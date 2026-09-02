@@ -99,9 +99,9 @@ import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import { ContextMenuPlugin } from "@/components/editor/plugins/context-menu-plugin";
 import { DraggableBlockPlugin } from "@/components/editor/plugins/draggable-block-plugin";
 import { EmojiPickerPlugin } from "@/components/editor/plugins/emoji-picker-plugin";
-import { ReactFindReplaceExtension } from "@/components/editor/plugins/floating/find-replace-panel";
+import { ReactFindReplaceExtension } from "@/components/editor/plugins/decorator/find-replace-panel";
 import { FloatingToolbarPlugin } from "@/components/editor/plugins/floating/floating-toolbar-plugin";
-import { ReactReviewExtension } from "@/components/editor/plugins/floating/review-plugin";
+import { ReactReviewExtension } from "@/components/editor/plugins/decorator/review-plugin";
 import { RubyEditorPlugin } from "@/components/editor/plugins/floating/ruby-editor-plugin";
 import { TableHoverActionsPlugin } from "@/components/editor/plugins/floating/table-hover-actions-plugin";
 import {

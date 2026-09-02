@@ -11,7 +11,7 @@ import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionCompose
 import { RichTextExtension } from "@lexical/rich-text";
 
 import { ContentEditable } from "@/components/editor/plugins/content-editable";
-import { ReactFindReplaceExtension } from "@/components/editor/plugins/floating/find-replace-panel";
+import { ReactFindReplaceExtension } from "@/components/editor/plugins/decorator/find-replace-panel";
 import {
   LanguageProvider,
   useLanguage,
