@@ -154,6 +154,22 @@ export type Locale = {
   insertRuby: string;
   rubyAnnotationPlaceholder: string;
   removeRuby: string;
+  askAi: string;
+  askAiPlaceholder: string;
+  aiImproveWriting: string;
+  aiMakeLonger: string;
+  aiMakeShorter: string;
+  aiFixSpelling: string;
+  aiContinueWriting: string;
+  aiSummarize: string;
+  aiBrainstorm: string;
+  aiReplace: string;
+  aiInsertBelow: string;
+  aiTryAgain: string;
+  aiDiscard: string;
+  aiInsert: string;
+  askAiWritePlaceholder: string;
+  aiGenerating: string;
   insertPageBreak: string;
   textAlignment: string;
   lineSpacing: string;
@@ -351,6 +367,22 @@ export const locales: Record<Language, Locale> = {
     insertRuby: "Ruby annotation",
     rubyAnnotationPlaceholder: "Annotation",
     removeRuby: "Remove annotation",
+    askAi: "Ask AI",
+    askAiPlaceholder: "Ask AI anything...",
+    aiImproveWriting: "Improve writing",
+    aiMakeLonger: "Make longer",
+    aiMakeShorter: "Make shorter",
+    aiFixSpelling: "Fix spelling & grammar",
+    aiContinueWriting: "Continue writing",
+    aiSummarize: "Summarize",
+    aiBrainstorm: "Brainstorm ideas",
+    aiReplace: "Replace",
+    aiInsertBelow: "Insert below",
+    aiTryAgain: "Try again",
+    aiDiscard: "Discard",
+    aiInsert: "Insert",
+    askAiWritePlaceholder: "Ask AI to write something...",
+    aiGenerating: "Generating…",
     insertPageBreak: "Page break",
     textAlignment: "Alignment",
     lineSpacing: "Line spacing",
@@ -546,6 +578,22 @@ export const locales: Record<Language, Locale> = {
     insertRuby: "شرح روبي",
     rubyAnnotationPlaceholder: "الشرح",
     removeRuby: "إزالة الشرح",
+    askAi: "اسأل الذكاء الاصطناعي",
+    askAiPlaceholder: "اسأل الذكاء الاصطناعي أي شيء...",
+    aiImproveWriting: "تحسين الكتابة",
+    aiMakeLonger: "إطالة النص",
+    aiMakeShorter: "اختصار النص",
+    aiFixSpelling: "تصحيح الإملاء والنحو",
+    aiContinueWriting: "متابعة الكتابة",
+    aiSummarize: "تلخيص",
+    aiBrainstorm: "عصف ذهني للأفكار",
+    aiReplace: "استبدال",
+    aiInsertBelow: "إدراج بالأسفل",
+    aiTryAgain: "حاول مرة أخرى",
+    aiDiscard: "تجاهل",
+    aiInsert: "إدراج",
+    askAiWritePlaceholder: "اطلب من الذكاء الاصطناعي كتابة شيء...",
+    aiGenerating: "جارٍ الإنشاء…",
     insertPageBreak: "فاصل صفحة",
     textAlignment: "المحاذاة",
     lineSpacing: "تباعد الأسطر",
@@ -741,6 +789,22 @@ export const locales: Record<Language, Locale> = {
     insertRuby: "הערת רובי",
     rubyAnnotationPlaceholder: "הערה",
     removeRuby: "הסרת ההערה",
+    askAi: "שאל את ה-AI",
+    askAiPlaceholder: "שאל את ה-AI כל דבר...",
+    aiImproveWriting: "שיפור הכתיבה",
+    aiMakeLonger: "הארכת הטקסט",
+    aiMakeShorter: "קיצור הטקסט",
+    aiFixSpelling: "תיקון איות ודקדוק",
+    aiContinueWriting: "המשך כתיבה",
+    aiSummarize: "סיכום",
+    aiBrainstorm: "סיעור מוחות",
+    aiReplace: "החלפה",
+    aiInsertBelow: "הוספה מתחת",
+    aiTryAgain: "נסה שוב",
+    aiDiscard: "ביטול",
+    aiInsert: "הוספה",
+    askAiWritePlaceholder: "בקש מה-AI לכתוב משהו...",
+    aiGenerating: "יוצר…",
     insertPageBreak: "מעבר עמוד",
     textAlignment: "יישור",
     lineSpacing: "מרווח שורות",

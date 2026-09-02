@@ -74,6 +74,10 @@
           "type": "registry:component"
         },
         {
+          "path": "src/components/editor/extensions/ai.ts",
+          "type": "registry:component"
+        },
+        {
           "path": "src/components/editor/extensions/auto-link.ts",
           "type": "registry:component"
         },
@@ -322,6 +326,10 @@
           "type": "registry:component"
         },
         {
+          "path": "src/components/editor/plugins/component-picker/ai-picker-plugin.tsx",
+          "type": "registry:component"
+        },
+        {
           "path": "src/components/editor/plugins/component-picker/bulleted-list-picker-plugin.tsx",
           "type": "registry:component"
         },
@@ -410,6 +418,10 @@
           "type": "registry:component"
         },
         {
+          "path": "src/components/editor/plugins/floating/ai-editor-plugin.tsx",
+          "type": "registry:component"
+        },
+        {
           "path": "src/components/editor/plugins/floating/comment-plugin.tsx",
           "type": "registry:component"
         },
@@ -451,6 +463,10 @@
         },
         {
           "path": "src/components/editor/plugins/table-of-contents-plugin.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/editor/plugins/toolbar/ai-toolbar-plugin.tsx",
           "type": "registry:component"
         },
         {

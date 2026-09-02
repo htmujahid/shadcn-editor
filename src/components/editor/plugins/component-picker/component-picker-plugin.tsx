@@ -181,6 +181,7 @@ export function ComponentPicker({ children }: { children: React.ReactNode }) {
                   align="start"
                   sideOffset={6}
                   initialFocus={false}
+                  finalFocus={false}
                   className="w-auto overflow-hidden p-0"
                 >
                   <Command

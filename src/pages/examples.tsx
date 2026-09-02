@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 
 import { CodeDialog } from "@/components/code-dialog";
+import { AiEditor } from "@/components/examples/editor-ai-example";
+import { AiSdkEditor } from "@/components/examples/editor-ai-sdk-example";
+import { AiTanstackEditor } from "@/components/examples/editor-ai-tanstack-example";
 import { AlignmentBasicEditor } from "@/components/examples/editor-alignment-basic-example";
 import { AlignmentEditor } from "@/components/examples/editor-alignment-example";
 import { AutoEmbedEditor } from "@/components/examples/editor-auto-embed-example";
@@ -251,6 +254,17 @@ const examples: {
   { title: "Review", file: "editor-review-example", Example: ReviewEditor },
   { title: "Poll", file: "editor-poll-example", Example: PollEditor },
   { title: "Ruby", file: "editor-ruby-example", Example: RubyEditor },
+  { title: "AI (Core)", file: "editor-ai-example", Example: AiEditor },
+  {
+    title: "AI (Vercel AI SDK)",
+    file: "editor-ai-sdk-example",
+    Example: AiSdkEditor,
+  },
+  {
+    title: "AI (TanStack AI)",
+    file: "editor-ai-tanstack-example",
+    Example: AiTanstackEditor,
+  },
 ];
 
 export function ExamplesPage() {
