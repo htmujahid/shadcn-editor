@@ -12,6 +12,7 @@ import { AutocompleteEditor } from "@/components/examples/editor-autocomplete-ex
 import { BlockFormatEditor } from "@/components/examples/editor-block-format-example";
 import { BlockInsertEditor } from "@/components/examples/editor-block-insert-example";
 import { CardEditor } from "@/components/examples/editor-card-example";
+import { ChatEditor } from "@/components/examples/editor-chat-example";
 import { CheckListEditor } from "@/components/examples/editor-check-list-example";
 import { ClearEditor } from "@/components/examples/editor-clear-example";
 import { CodeEditor } from "@/components/examples/editor-code-example";
@@ -265,6 +266,7 @@ const examples: {
     file: "editor-ai-tanstack-example",
     Example: AiTanstackEditor,
   },
+  { title: "Chat", file: "editor-chat-example", Example: ChatEditor },
 ];
 
 export function ExamplesPage() {

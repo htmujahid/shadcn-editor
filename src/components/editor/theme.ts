@@ -98,3 +98,34 @@ export const editorTheme: EditorThemeClasses = {
     right: "ms-auto",
   },
 };
+
+/**
+ * Theme for read-only chat messages. Headings are scaled down and inline
+ * styles use the current text color so the same nodes look right inside any
+ * bubble variant, including the primary colored one.
+ */
+export const chatMessageTheme: EditorThemeClasses = {
+  ...editorTheme,
+  heading: {
+    h1: "relative mt-4 mb-2 text-xl font-semibold tracking-tight first:mt-0 last:mb-0",
+    h2: "relative mt-4 mb-2 text-lg font-semibold tracking-tight first:mt-0 last:mb-0",
+    h3: "relative mt-3 mb-1.5 text-base font-semibold tracking-tight first:mt-0 last:mb-0",
+    h4: "relative mt-3 mb-1.5 text-sm font-semibold first:mt-0 last:mb-0",
+    h5: "relative mt-3 mb-1.5 text-sm font-semibold first:mt-0 last:mb-0",
+    h6: "relative mt-3 mb-1.5 text-sm font-semibold first:mt-0 last:mb-0",
+  },
+  quote:
+    "relative my-2 border-s-2 border-current/30 ps-3 opacity-80 first:mt-0 last:mb-0",
+  link: "cursor-pointer underline underline-offset-2 hover:opacity-80",
+  text: {
+    ...editorTheme.text,
+    code: "rounded bg-current/10 px-1 py-0.5 font-mono text-[0.875em]",
+  },
+  code: "editor-code relative my-2 block overflow-x-auto rounded-lg border bg-card py-3 pe-4 ps-0 font-mono text-xs leading-relaxed text-card-foreground [tab-size:2] [white-space:pre] first:mt-0 last:mb-0",
+  tableScrollableWrapper:
+    "editor-table-scrollable-wrapper relative my-2 w-full overflow-x-auto first:mt-0 last:mb-0",
+  tableCell:
+    "editor-table-cell relative border border-current/20 px-2 py-1.5 text-start align-middle outline-none",
+  tableCellHeader: "bg-current/5 text-start font-medium",
+  tableRow: "border-b border-current/20",
+};

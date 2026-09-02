@@ -3,7 +3,10 @@ import { useEffect } from "react";
 import { $getRoot, HISTORY_MERGE_TAG } from "lexical";
 
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-import { ContentEditable as LexicalContentEditable } from "@lexical/react/LexicalContentEditable";
+import {
+  type ContentEditableElementProps,
+  ContentEditable as LexicalContentEditable,
+} from "@lexical/react/LexicalContentEditable";
 
 import { cva, type VariantProps } from "class-variance-authority";
 
@@ -50,11 +53,13 @@ export function ContentEditable({
   className,
   placeholder,
   placeholderClassName,
-}: VariantProps<typeof contentEditableVariants> & {
-  className?: string;
-  placeholder?: LocalizedText;
-  placeholderClassName?: string;
-}) {
+  ...props
+}: VariantProps<typeof contentEditableVariants> &
+  Omit<ContentEditableElementProps, "editor" | "className"> & {
+    className?: string;
+    placeholder?: LocalizedText;
+    placeholderClassName?: string;
+  }) {
   const [editor] = useLexicalComposerContext();
   const { language, dir, t } = useTranslation();
   const placeholderText = placeholder?.[language] ?? t.typeSomething;
@@ -70,6 +75,7 @@ export function ContentEditable({
 
   return (
     <LexicalContentEditable
+      {...props}
       className={cn(contentEditableVariants({ variant }), className)}
       aria-placeholder={placeholderText}
       placeholder={

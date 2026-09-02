@@ -82,6 +82,10 @@
           "type": "registry:component"
         },
         {
+          "path": "src/components/editor/extensions/chat.ts",
+          "type": "registry:component"
+        },
+        {
           "path": "src/components/editor/extensions/card.ts",
           "type": "registry:component"
         },
@@ -399,6 +403,14 @@
         },
         {
           "path": "src/components/editor/plugins/component-picker/table-picker-plugin.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/editor/plugins/chat/chat-input-plugin.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/editor/plugins/chat/chat-message-plugin.tsx",
           "type": "registry:component"
         },
         {

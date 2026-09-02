@@ -170,6 +170,11 @@ export type Locale = {
   aiInsert: string;
   askAiWritePlaceholder: string;
   aiGenerating: string;
+  chatMessage: string;
+  chatPlaceholder: string;
+  chatSend: string;
+  chatStop: string;
+  chatThinking: string;
   insertPageBreak: string;
   textAlignment: string;
   lineSpacing: string;
@@ -383,6 +388,11 @@ export const locales: Record<Language, Locale> = {
     aiInsert: "Insert",
     askAiWritePlaceholder: "Ask AI to write something...",
     aiGenerating: "Generating…",
+    chatMessage: "Message",
+    chatPlaceholder: "Write a message…",
+    chatSend: "Send message",
+    chatStop: "Stop generating",
+    chatThinking: "Thinking…",
     insertPageBreak: "Page break",
     textAlignment: "Alignment",
     lineSpacing: "Line spacing",
@@ -594,6 +604,11 @@ export const locales: Record<Language, Locale> = {
     aiInsert: "إدراج",
     askAiWritePlaceholder: "اطلب من الذكاء الاصطناعي كتابة شيء...",
     aiGenerating: "جارٍ الإنشاء…",
+    chatMessage: "رسالة",
+    chatPlaceholder: "اكتب رسالة…",
+    chatSend: "إرسال الرسالة",
+    chatStop: "إيقاف التوليد",
+    chatThinking: "جارٍ التفكير…",
     insertPageBreak: "فاصل صفحة",
     textAlignment: "المحاذاة",
     lineSpacing: "تباعد الأسطر",
@@ -805,6 +820,11 @@ export const locales: Record<Language, Locale> = {
     aiInsert: "הוספה",
     askAiWritePlaceholder: "בקש מה-AI לכתוב משהו...",
     aiGenerating: "יוצר…",
+    chatMessage: "הודעה",
+    chatPlaceholder: "כתוב הודעה…",
+    chatSend: "שלח הודעה",
+    chatStop: "עצור יצירה",
+    chatThinking: "חושב…",
     insertPageBreak: "מעבר עמוד",
     textAlignment: "יישור",
     lineSpacing: "מרווח שורות",
