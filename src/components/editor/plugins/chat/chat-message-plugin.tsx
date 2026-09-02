@@ -21,48 +21,13 @@ import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
 import { cn } from "@/lib/utils";
 
 export interface ChatMessageProps {
-  /**
-   * The editor extension used to render the message: nodes and theme. Keep
-   * it stable (module scope or `useMemo`); every message renders with its own
-   * read-only editor built from it.
-   */
   extension: AnyLexicalExtensionArgument;
-  /** The message as markdown. Re-rendered whenever it changes, so it can be streamed. */
   content: string;
-  /** Marks the message as still being generated. Shows a thinking state while empty. */
   isStreaming?: boolean;
-  /** Markdown transformers used to render the content. Must be stable. */
   transformers?: Transformer[];
   className?: string;
 }
 
-/**
- * Renders a chat message as rich text with a read-only Lexical editor. It
- * accepts markdown, so both what the user typed in {@link ChatInput} and the
- * streamed reply from a model render with the same nodes and theme.
- *
- * ```tsx
- * const extension = useMemo(
- *   () =>
- *     defineExtension({
- *       name: "@shadcn-editor/chat-message",
- *       dependencies: [RichTextExtension, ListExtension, CodeExtension],
- *       theme: chatMessageTheme,
- *     }),
- *   [],
- * );
- *
- * <Bubble variant="ghost">
- *   <BubbleContent>
- *     <ChatMessage
- *       extension={extension}
- *       content={message.markdown}
- *       isStreaming={isLast && isLoading}
- *     />
- *   </BubbleContent>
- * </Bubble>
- * ```
- */
 export function ChatMessage({
   extension,
   content,
@@ -70,7 +35,6 @@ export function ChatMessage({
   transformers = CHAT_MESSAGE_TRANSFORMERS,
   className,
 }: ChatMessageProps) {
-  // The document is seeded once; later changes are applied by ChatMessageContent.
   const [initialContent] = useState(content);
 
   const app = useMemo(

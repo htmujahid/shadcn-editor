@@ -99,11 +99,6 @@ export const editorTheme: EditorThemeClasses = {
   },
 };
 
-/**
- * Theme for read-only chat messages. Headings are scaled down and inline
- * styles use the current text color so the same nodes look right inside any
- * bubble variant, including the primary colored one.
- */
 export const chatMessageTheme: EditorThemeClasses = {
   ...editorTheme,
   heading: {

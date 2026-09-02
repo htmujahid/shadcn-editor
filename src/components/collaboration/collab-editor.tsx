@@ -98,15 +98,11 @@ export function CollabEditor() {
 
       provider.on("status", (event) => {
         setConnected(
-          // Websocket provider reports a status string, the WebRTC provider
-          // a connected boolean.
           event.status === "connected" ||
             ("connected" in event && event.connected === true),
         );
       });
 
-      // Defer to escape the render phase; the standard CollaborationPlugin
-      // offers no other way to get a reference to the provider.
       setTimeout(() => setYjsProvider(provider), 0);
 
       return provider;
@@ -124,9 +120,6 @@ export function CollabEditor() {
           CheckListExtension,
           FormatStateExtension,
         ],
-        // A null initial state is required for collaboration: the editor must
-        // stay empty until the CollaborationPlugin hydrates it from the
-        // shared Yjs document.
         $initialEditorState: null,
         theme: editorTheme,
       }),
@@ -202,13 +195,9 @@ export function CollabEditor() {
                     en: "Type here and watch the other editor follow…",
                   }}
                 />
-                {/* HistoryExtension/HistoryPlugin must not be combined with
-                    CollaborationPlugin - undo/redo is handled by Yjs. */}
                 <CollaborationPlugin
                   id="shadcn-editor/collab"
                   providerFactory={providerFactory}
-                  // Bootstrapping on the client races when several users join
-                  // an empty room at once; a Yjs server should seed content.
                   shouldBootstrap={false}
                   username={userProfile.name}
                   cursorColor={userProfile.color}

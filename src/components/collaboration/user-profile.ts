@@ -14,11 +14,6 @@ export interface UserProfile {
   color: string;
 }
 
-/**
- * Picks a random profile. When a `group` is given, each group draws from a
- * disjoint half of the pool so the two embedded iframes never collide on the
- * same name.
- */
 export function getRandomUserProfile(group?: number): UserProfile {
   const half = Math.floor(entries.length / 2);
   const pool =

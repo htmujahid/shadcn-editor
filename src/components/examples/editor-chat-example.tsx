@@ -202,7 +202,6 @@ export function ChatEditor() {
       { id: assistantId, role: "assistant", content: "" },
     ]);
     setIsStreaming(true);
-    // Let the empty message show its thinking state before tokens land.
     await new Promise((resolve) => setTimeout(resolve, 500));
     await streamReply(
       mockReply(value, turnRef.current++),

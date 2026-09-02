@@ -28,8 +28,6 @@ import {
 import { EMOJI } from "@/components/editor/transformers/emoji-transformer";
 import { IMAGE } from "@/components/editor/transformers/image-transformer";
 
-// Everything except TABLE and HR; neither is representable inside a
-// markdown table cell
 const CELL_TRANSFORMERS: Transformer[] = [
   IMAGE,
   EMOJI,
@@ -103,7 +101,6 @@ export const TABLE: ElementTransformer = {
   },
   regExp: TABLE_ROW_REG_EXP,
   replace: (parentNode, _children, match) => {
-    // Header row
     if (isTableRowDivider(match[0])) {
       const table = parentNode.getPreviousSibling();
       if (!table || !$isTableNode(table)) {
@@ -138,8 +135,6 @@ export const TABLE: ElementTransformer = {
     let sibling = parentNode.getPreviousSibling();
     let maxCells = matchCells.length;
 
-    // Merge immediately preceding markdown table rows that were left as
-    // paragraphs (happens while typing a table line by line)
     while (sibling) {
       if (!$isParagraphNode(sibling) || sibling.getChildrenSize() !== 1) {
         break;

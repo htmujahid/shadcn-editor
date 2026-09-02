@@ -1,7 +1,3 @@
-/* Structural styles for the Lexical editor theme that Tailwind utilities
-   can't express (pseudo-elements, CSS variables, animations).
-   Everything else lives in theme.ts. */
-
 .editor-indent {
   --lexical-indent-base-value: 32px;
 }

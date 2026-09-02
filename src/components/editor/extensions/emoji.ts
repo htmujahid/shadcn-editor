@@ -21,7 +21,6 @@ export type InsertEmojiPayload = { emoji: string };
 export const INSERT_EMOJI_COMMAND: LexicalCommand<InsertEmojiPayload> =
   createCommand("INSERT_EMOJI_COMMAND");
 
-// Two-char emoticons like ":D" or ":/" also appear in ordinary text and URLs
 const AMBIGUOUS_EMOTICON = /^:[A-Za-z0-9/\\]$/;
 
 const EMOTICON_TO_EMOJI: Record<string, string> = {};

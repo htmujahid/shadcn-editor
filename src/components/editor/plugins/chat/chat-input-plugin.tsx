@@ -43,56 +43,18 @@ function preventDefault(event: React.MouseEvent<HTMLElement>): void {
 }
 
 export interface ChatInputProps {
-  /**
-   * The composer's editor extension: nodes, theme, and any extras such as
-   * mentions or emoji. Keep it stable (module scope or `useMemo`) so the
-   * editor is not re-created on every render. {@link ChatInputExtension} is
-   * added automatically; use `configExtension` on it to change the Enter or
-   * markdown shortcut behavior.
-   */
   extension: AnyLexicalExtensionArgument;
-  /** Called with the message when the user presses Enter or the submit button. */
   onSubmit: (value: ChatInputValue) => void;
-  /** Markdown transformers used to export the message. Must be stable. */
   transformers?: Transformer[];
-  /** Reset the composer after a successful submit. Defaults to `true`. */
   clearOnSubmit?: boolean;
   disabled?: boolean;
   autoFocus?: boolean;
   placeholder?: LocalizedText;
   className?: string;
   editorClassName?: string;
-  /** Plugins and addons rendered inside the input group, e.g. the submit button. */
   children?: React.ReactNode;
 }
 
-/**
- * A rich text chat composer built on Lexical. It keeps to what belongs in a
- * chat message: paragraphs, quotes, and lists, plus inline formats applied
- * with keyboard shortcuts or markdown syntax. The message is handed back as
- * markdown so it drops straight into any chat or AI SDK.
- *
- * ```tsx
- * const extension = useMemo(
- *   () =>
- *     defineExtension({
- *       name: "@shadcn-editor/chat-input",
- *       dependencies: [RichTextExtension, HistoryExtension, ListExtension],
- *       theme: editorTheme,
- *     }),
- *   [],
- * );
- *
- * <ChatInput extension={extension} onSubmit={(value) => sendMessage(value.markdown)}>
- *   <InputGroupAddon align="block-end">
- *     <InputGroupText>
- *       <CountPlugin />
- *     </InputGroupText>
- *     <ChatInputSubmit isLoading={isLoading} onStop={stop} className="ms-auto" />
- *   </InputGroupAddon>
- * </ChatInput>
- * ```
- */
 export function ChatInput({
   extension,
   onSubmit,
@@ -235,8 +197,6 @@ function ChatInputSubmitHandler({
           };
           if (clearOnSubmit) {
             $clearChatInput();
-            // The clear above commits as part of this update, so the history
-            // stack is reset once it has landed.
             queueMicrotask(() => {
               editor.dispatchCommand(CLEAR_HISTORY_COMMAND, undefined);
             });
@@ -252,10 +212,6 @@ function ChatInputSubmitHandler({
   return null;
 }
 
-/**
- * Submit button for {@link ChatInput}. Disabled while the composer is empty,
- * and turns into a stop button while `isLoading` is true and `onStop` is set.
- */
 export function ChatInputSubmit({
   isLoading = false,
   onStop,

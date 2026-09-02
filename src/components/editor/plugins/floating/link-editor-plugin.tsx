@@ -59,12 +59,6 @@ function preventDefault(
   event.preventDefault();
 }
 
-/**
- * Floating editor for the link under the selection.
- *
- * Opens automatically when the caret is inside a link, and in edit mode when
- * `OPEN_LINK_EDITOR_COMMAND` is dispatched (for example by `LinkToolbarPlugin`).
- */
 export function LinkEditorPlugin() {
   const [editor] = useLexicalComposerContext();
   const isEditable = useLexicalEditable();

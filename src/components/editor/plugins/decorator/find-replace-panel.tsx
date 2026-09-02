@@ -1,4 +1,3 @@
-/* eslint-disable react-refresh/only-export-components */
 import { useRef } from "react";
 
 import { createPortal } from "react-dom";

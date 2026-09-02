@@ -1,5 +1,3 @@
-// Top common English words from https://github.com/first20hours/google-10000-english (google-10000-english-usa-no-swears-long.txt)
-
 export const ENGLISH_WORDS: readonly string[] = [
   "information",
   "available",

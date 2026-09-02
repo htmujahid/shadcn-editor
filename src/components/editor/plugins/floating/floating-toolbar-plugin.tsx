@@ -244,19 +244,6 @@ function useIsTextSelected(editor: LexicalEditor): boolean {
   return isText;
 }
 
-/**
- * Floating toolbar shown above a non-collapsed text selection.
- *
- * Text formatting toggles are rendered by default. Compose additional
- * controls by passing them as children, for example:
- *
- * ```tsx
- * <FloatingToolbarPlugin>
- *   <LinkToolbarPlugin />
- *   <RubyToolbarPlugin />
- * </FloatingToolbarPlugin>
- * ```
- */
 export function FloatingToolbarPlugin({
   formats = "all",
   children,
