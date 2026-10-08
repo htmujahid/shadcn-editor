@@ -4,9 +4,6 @@ import {
   $getSelection,
   $isRangeSelection,
   COMMAND_PRIORITY_LOW,
-  configExtension,
-  createCommand,
-  defineExtension,
   INSERT_PARAGRAPH_COMMAND,
   KEY_ARROW_DOWN_COMMAND,
   KEY_ARROW_LEFT_COMMAND,
@@ -14,13 +11,16 @@ import {
   KEY_ARROW_UP_COMMAND,
   type LexicalCommand,
   type LexicalNode,
+  configExtension,
+  createCommand,
+  defineExtension,
   mergeRegister,
 } from "lexical";
 
 import {
   BlockSchema,
-  defineImportRule,
   DOMImportExtension,
+  defineImportRule,
   sel,
 } from "@lexical/html";
 import { $insertNodeToNearestRoot } from "@lexical/utils";

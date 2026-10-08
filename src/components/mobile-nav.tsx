@@ -1,14 +1,11 @@
 import * as React from "react";
 
+import { Popover as PopoverPrimitive } from "@base-ui/react/popover";
+import { cn } from "cn";
 import { Link } from "wouter";
 
 import { Button } from "@/components/ui/button";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { cn } from "@/lib/utils";
+import { Popover, PopoverTrigger } from "@/components/ui/popover";
 
 export function MobileNav({
   items,
@@ -53,33 +50,40 @@ export function MobileNav({
           Menu
         </span>
       </PopoverTrigger>
-      <PopoverContent
-        className="no-scrollbar h-(--available-height) w-(--available-width) overflow-y-auto rounded-none border-none bg-background/90 p-0 shadow-none ring-0 backdrop-blur duration-100 data-open:animate-none!"
-        align="start"
-        side="bottom"
-        alignOffset={-16}
-        sideOffset={12}
-        collisionPadding={0}
-      >
-        <div className="flex flex-col gap-12 overflow-auto px-6 py-6">
-          <div className="flex flex-col gap-4">
-            <div className="text-sm font-medium text-muted-foreground">
-              Menu
+      <PopoverPrimitive.Portal>
+        <PopoverPrimitive.Positioner
+          align="start"
+          side="bottom"
+          alignOffset={-16}
+          sideOffset={12}
+          collisionPadding={0}
+          className="isolate z-50"
+        >
+          <PopoverPrimitive.Popup
+            data-slot="popover-content"
+            className="z-50 no-scrollbar h-(--available-height) w-(--available-width) origin-(--transform-origin) overflow-y-auto bg-background/90 p-0 text-sm text-popover-foreground outline-hidden backdrop-blur"
+          >
+            <div className="flex flex-col gap-12 overflow-auto px-6 py-6">
+              <div className="flex flex-col gap-4">
+                <div className="text-sm font-medium text-muted-foreground">
+                  Menu
+                </div>
+                <div className="flex flex-col gap-3">
+                  {items.map((item) => (
+                    <MobileLink
+                      key={item.href}
+                      href={item.href}
+                      onOpenChange={setOpen}
+                    >
+                      {item.label}
+                    </MobileLink>
+                  ))}
+                </div>
+              </div>
             </div>
-            <div className="flex flex-col gap-3">
-              {items.map((item) => (
-                <MobileLink
-                  key={item.href}
-                  href={item.href}
-                  onOpenChange={setOpen}
-                >
-                  {item.label}
-                </MobileLink>
-              ))}
-            </div>
-          </div>
-        </div>
-      </PopoverContent>
+          </PopoverPrimitive.Popup>
+        </PopoverPrimitive.Positioner>
+      </PopoverPrimitive.Portal>
     </Popover>
   );
 }

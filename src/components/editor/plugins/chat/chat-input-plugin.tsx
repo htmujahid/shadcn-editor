@@ -12,6 +12,7 @@ import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext
 import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
+import { cn } from "cn";
 import { ArrowUp, Square } from "lucide-react";
 
 import {
@@ -34,7 +35,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
 
 const INTERACTIVE_SELECTOR = "button, a, [contenteditable], [role=menu]";
 

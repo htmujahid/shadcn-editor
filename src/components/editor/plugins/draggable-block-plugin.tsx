@@ -10,10 +10,10 @@ import {
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { DraggableBlockPlugin_EXPERIMENTAL } from "@lexical/react/LexicalDraggableBlockPlugin";
 
+import { cn } from "cn";
 import { GripVertical, Plus } from "lucide-react";
 
 import { useLanguage } from "@/components/editor/plugins/i18n-plugin";
-import { cn } from "@/lib/utils";
 
 const DRAGGABLE_BLOCK_MENU_CLASSNAME = "draggable-block-menu";
 

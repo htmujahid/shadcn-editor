@@ -15,8 +15,8 @@ import {
 
 import {
   $generateNodesFromMarkdownString,
-  type Transformer,
   TRANSFORMERS,
+  type Transformer,
 } from "@lexical/markdown";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { createDOMRange } from "@lexical/selection";

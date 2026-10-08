@@ -16,9 +16,9 @@ import {
 } from "lexical";
 
 import {
+  type ReadonlySignal,
   computed,
   defineExtension,
-  type ReadonlySignal,
   watchedSignal,
 } from "@lexical/extension";
 import { $isAutoLinkNode, $isLinkNode, type LinkNode } from "@lexical/link";

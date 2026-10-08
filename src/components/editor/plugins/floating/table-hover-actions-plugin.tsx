@@ -1,7 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { createPortal } from "react-dom";
-
 import {
   $getNearestNodeFromDOMNode,
   type EditorThemeClasses,
@@ -22,10 +20,11 @@ import {
   $isTableCellNode,
 } from "@lexical/table";
 
+import { cn } from "cn";
 import { Plus, Trash2 } from "lucide-react";
+import { createPortal } from "react-dom";
 
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
-import { cn } from "@/lib/utils";
 
 type ActionsPosition = { x: number; y: number; canDelete: boolean };
 

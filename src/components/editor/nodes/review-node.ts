@@ -9,8 +9,6 @@ import {
   $markSlotEditable,
   $setSlot,
   $setState,
-  addClassNamesToElement,
-  createState,
   type DOMExportOutput,
   type EditorConfig,
   type ElementDOMSlot,
@@ -18,9 +16,11 @@ import {
   type LexicalEditor,
   type LexicalNode,
   type NodeStateVersion,
-  setDOMUnmanaged,
   type StateConfigValue,
   type StateValueOrUpdater,
+  addClassNamesToElement,
+  createState,
+  setDOMUnmanaged,
 } from "lexical";
 
 import { $appendNodeToHTML } from "@lexical/html";

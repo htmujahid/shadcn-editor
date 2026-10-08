@@ -8,14 +8,14 @@ import {
   $getSlot,
   $getSlotNames,
   $setSlot,
-  addClassNamesToElement,
-  DecoratorNode,
   type DOMExportOutput,
+  DecoratorNode,
   type EditorConfig,
   type LexicalEditor,
   type LexicalNode,
   type NodeKey,
   type SlotChildNode,
+  addClassNamesToElement,
 } from "lexical";
 
 import { $appendNodeToHTML } from "@lexical/html";

@@ -1,14 +1,14 @@
 import {
   $applyNodeReplacement,
-  addClassNamesToElement,
   type EditorConfig,
   type LexicalNode,
   type LexicalUpdateJSON,
   type NodeKey,
-  removeClassNamesFromElement,
   type SerializedTextNode,
   type Spread,
   TextNode,
+  addClassNamesToElement,
+  removeClassNamesFromElement,
 } from "lexical";
 
 export const EMOJI_CLASS_NAME = "editor-emoji";

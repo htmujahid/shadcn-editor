@@ -1,10 +1,10 @@
 import {
   $applyNodeReplacement,
   $getDocument,
-  addClassNamesToElement,
   type EditorConfig,
   type LexicalNode,
   TextNode,
+  addClassNamesToElement,
 } from "lexical";
 
 export class SpecialTextNode extends TextNode {

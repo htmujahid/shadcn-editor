@@ -3,24 +3,24 @@ import {
   $insertNodes,
   $isRootOrShadowRoot,
   COMMAND_PRIORITY_EDITOR,
+  type LexicalCommand,
   configExtension,
   createCommand,
   defineExtension,
-  type LexicalCommand,
 } from "lexical";
 
 import {
   CoreImportExtension,
-  defineImportRule,
   DOMImportExtension,
+  defineImportRule,
   sel,
 } from "@lexical/html";
 import { $wrapNodeInElement } from "@lexical/utils";
 
 import {
   $createPollNode,
-  createPollOption,
   PollNode,
+  createPollOption,
 } from "@/components/editor/nodes/poll-node";
 
 export const INSERT_POLL_COMMAND: LexicalCommand<string> = createCommand(

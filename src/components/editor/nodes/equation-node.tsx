@@ -14,17 +14,17 @@ import {
   CLICK_COMMAND,
   COMMAND_PRIORITY_HIGH,
   COMMAND_PRIORITY_LOW,
-  DecoratorNode,
   type DOMExportOutput,
-  getActiveElement,
+  DecoratorNode,
   KEY_ENTER_COMMAND,
   KEY_ESCAPE_COMMAND,
   type LexicalNode,
-  mergeRegister,
   type NodeKey,
   SELECTION_CHANGE_COMMAND,
   type SerializedLexicalNode,
   type Spread,
+  getActiveElement,
+  mergeRegister,
 } from "lexical";
 
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";

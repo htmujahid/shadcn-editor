@@ -6,14 +6,14 @@ import {
   $isRangeSelection,
   $isTextNode,
   COMMAND_PRIORITY_LOW,
+  type LexicalEditor,
+  SELECTION_CHANGE_COMMAND,
   getDOMSelection,
   getDOMSelectionPoints,
   isDOMDocumentNode,
   isDOMShadowRoot,
-  type LexicalEditor,
   registerEventListener,
   registerEventListeners,
-  SELECTION_CHANGE_COMMAND,
 } from "lexical";
 
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";

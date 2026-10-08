@@ -4,10 +4,7 @@ import {
   $isElementNode,
   $isRangeSelection,
   COMMAND_PRIORITY_EDITOR,
-  configExtension,
   CONTROL_OR_META,
-  createCommand,
-  defineExtension,
   type ElementNode,
   FORMAT_ELEMENT_COMMAND,
   FORMAT_TEXT_COMMAND,
@@ -17,12 +14,15 @@ import {
   type LexicalCommand,
   type LexicalEditor,
   OUTDENT_CONTENT_COMMAND,
+  configExtension,
+  createCommand,
+  defineExtension,
 } from "lexical";
 
 import {
-  formatKeyboardShortcut,
   KeyboardShortcutsExtension,
   type NamedKeyboardShortcuts,
+  formatKeyboardShortcut,
 } from "@lexical/extension";
 import {
   $isListNode,

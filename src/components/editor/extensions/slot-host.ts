@@ -15,18 +15,18 @@ import {
   COMMAND_PRIORITY_BEFORE_EDITOR,
   COMMAND_PRIORITY_LOW,
   type ElementNode,
-  getActiveElement,
-  getDOMSelection,
-  isHTMLElement,
-  isModifierMatch,
   KEY_ARROW_DOWN_COMMAND,
   KEY_ARROW_UP_COMMAND,
   KEY_BACKSPACE_COMMAND,
   KEY_DELETE_COMMAND,
   type LexicalEditor,
   type LexicalNode,
-  mergeRegister,
   type RangeSelection,
+  getActiveElement,
+  getDOMSelection,
+  isHTMLElement,
+  isModifierMatch,
+  mergeRegister,
 } from "lexical";
 
 import {

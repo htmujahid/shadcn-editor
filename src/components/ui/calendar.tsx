@@ -1,20 +1,21 @@
 "use client";
 
 import * as React from "react";
-import {
-  DayPicker,
-  getDefaultClassNames,
-  type DayButton,
-  type Locale,
-} from "react-day-picker";
 
-import { cn } from "@/lib/utils";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { cn } from "cn";
 import {
+  ChevronDownIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
-  ChevronDownIcon,
 } from "lucide-react";
+import {
+  type DayButton,
+  DayPicker,
+  type Locale,
+  getDefaultClassNames,
+} from "react-day-picker";
+
+import { Button, buttonVariants } from "@/components/ui/button";
 
 function Calendar({
   className,
@@ -152,7 +153,7 @@ function Calendar({
           if (orientation === "left") {
             return (
               <ChevronLeftIcon
-                className={cn("rtl:rotate-180 size-4", className)}
+                className={cn("size-4 rtl:rotate-180", className)}
                 {...props}
               />
             );
@@ -161,7 +162,7 @@ function Calendar({
           if (orientation === "right") {
             return (
               <ChevronRightIcon
-                className={cn("rtl:rotate-180 size-4", className)}
+                className={cn("size-4 rtl:rotate-180", className)}
                 {...props}
               />
             );

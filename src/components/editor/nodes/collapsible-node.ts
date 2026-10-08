@@ -4,13 +4,11 @@ import {
   $getSiblingCaret,
   $isElementNode,
   $rewindSiblingCaret,
-  addClassNamesToElement,
   type DOMExportOutput,
   type EditorConfig,
   ElementNode,
   IS_CHROME,
   IS_FIREFOX,
-  isHTMLElement,
   type LexicalEditor,
   type LexicalNode,
   type LexicalUpdateJSON,
@@ -18,6 +16,8 @@ import {
   type RangeSelection,
   type SerializedElementNode,
   type Spread,
+  addClassNamesToElement,
+  isHTMLElement,
 } from "lexical";
 
 export type SerializedCollapsibleContainerNode = Spread<

@@ -1,7 +1,7 @@
+import { cn } from "cn";
 import { Link, useLocation } from "wouter";
 
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 export function MainNav({
   items,
@@ -20,7 +20,7 @@ export function MainNav({
           variant="ghost"
           size="sm"
           nativeButton={false}
-          className="px-2.5 data-[active=true]:text-foreground data-[active=false]:text-muted-foreground"
+          className="px-2.5 data-[active=false]:text-muted-foreground data-[active=true]:text-foreground"
           render={
             <Link
               href={item.href}

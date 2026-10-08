@@ -1,8 +1,8 @@
+import { cn } from "cn";
 import { Moon, Sun } from "lucide-react";
 
 import { useTheme } from "@/components/theme-provider";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 export function ModeSwitcher({
   variant = "ghost",

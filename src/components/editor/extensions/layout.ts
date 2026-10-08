@@ -5,13 +5,13 @@ import {
   $isRangeSelection,
   COMMAND_PRIORITY_EDITOR,
   COMMAND_PRIORITY_LOW,
-  createCommand,
-  defineExtension,
   KEY_ARROW_DOWN_COMMAND,
   KEY_ARROW_LEFT_COMMAND,
   KEY_ARROW_RIGHT_COMMAND,
   KEY_ARROW_UP_COMMAND,
   type LexicalCommand,
+  createCommand,
+  defineExtension,
   mergeRegister,
 } from "lexical";
 

@@ -5,12 +5,12 @@ import {
   $getSlot,
   $getSlotNames,
   $setSlot,
-  addClassNamesToElement,
   type DOMExportOutput,
   type EditorConfig,
   ElementNode,
   type LexicalEditor,
   type LexicalNode,
+  addClassNamesToElement,
 } from "lexical";
 
 import { $appendNodeToHTML } from "@lexical/html";

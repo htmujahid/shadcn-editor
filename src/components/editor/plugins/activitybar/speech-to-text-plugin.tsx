@@ -4,6 +4,7 @@ import { COMMAND_PRIORITY_LOW } from "lexical";
 
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 
+import { cn } from "cn";
 import { Mic, MicOff } from "lucide-react";
 
 import {
@@ -12,7 +13,6 @@ import {
 } from "@/components/editor/extensions/speech-to-text";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 function SpeechToTextButton() {
   const [editor] = useLexicalComposerContext();

@@ -6,11 +6,11 @@ import {
   CLICK_COMMAND,
   COMMAND_PRIORITY_HIGH,
   COMMAND_PRIORITY_LOW,
-  getDOMSelection,
   KEY_ESCAPE_COMMAND,
   type NodeKey,
-  registerEventListener,
   SELECTION_CHANGE_COMMAND,
+  getDOMSelection,
+  registerEventListener,
 } from "lexical";
 
 import {

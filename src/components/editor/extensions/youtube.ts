@@ -1,12 +1,12 @@
 import {
   COMMAND_PRIORITY_EDITOR,
+  type LexicalCommand,
   configExtension,
   createCommand,
   defineExtension,
-  type LexicalCommand,
 } from "lexical";
 
-import { defineImportRule, DOMImportExtension, sel } from "@lexical/html";
+import { DOMImportExtension, defineImportRule, sel } from "@lexical/html";
 import { $insertNodeToNearestRoot } from "@lexical/utils";
 
 import {

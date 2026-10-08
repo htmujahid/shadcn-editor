@@ -7,27 +7,26 @@ import {
   $getNodeByKey,
   CLICK_COMMAND,
   COMMAND_PRIORITY_LOW,
-  createCommand,
-  DecoratorNode,
   type DOMConversionOutput,
   type DOMExportOutput,
+  DecoratorNode,
   type EditorConfig,
   type LexicalCommand,
   type LexicalNode,
-  mergeRegister,
   type NodeKey,
-  registerEventListeners,
   type SerializedLexicalNode,
   type Spread,
+  createCommand,
+  mergeRegister,
+  registerEventListeners,
 } from "lexical";
 
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 import { useLexicalNodeSelection } from "@lexical/react/useLexicalNodeSelection";
 
+import { cn } from "cn";
 import { ImageOffIcon } from "lucide-react";
-
-import { cn } from "@/lib/utils";
 
 export interface ImagePayload {
   altText: string;

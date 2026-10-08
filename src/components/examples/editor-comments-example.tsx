@@ -4,8 +4,8 @@ import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
-  defineExtension,
   HISTORY_MERGE_TAG,
+  defineExtension,
 } from "lexical";
 
 import { getExtensionDependencyFromEditor } from "@lexical/extension";
@@ -14,9 +14,11 @@ import { $createMarkNode } from "@lexical/mark";
 import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
 import { RichTextExtension } from "@lexical/rich-text";
 
+import { cn } from "cn";
+
 import {
-  addComment,
   CommentExtension,
+  addComment,
   createComment,
   createThread,
 } from "@/components/editor/extensions/comment";
@@ -38,7 +40,6 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { cn } from "@/lib/utils";
 
 const SEED_QUOTE = "anchored to the exact words it refers to";
 

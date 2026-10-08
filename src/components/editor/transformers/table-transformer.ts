@@ -6,11 +6,11 @@ import {
   CHECK_LIST,
   ELEMENT_TRANSFORMERS,
   type ElementTransformer,
-  isTableRowDivider,
   MULTILINE_ELEMENT_TRANSFORMERS,
   TEXT_FORMAT_TRANSFORMERS,
   TEXT_MATCH_TRANSFORMERS,
   type Transformer,
+  isTableRowDivider,
 } from "@lexical/markdown";
 import {
   $createTableCellNode,

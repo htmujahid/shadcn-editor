@@ -10,20 +10,20 @@ import {
   COMMAND_PRIORITY_BEFORE_EDITOR,
   COMMAND_PRIORITY_EDITOR,
   COMMAND_PRIORITY_LOW,
-  configExtension,
-  createCommand,
-  defineExtension,
   KEY_ENTER_COMMAND,
   KEY_ESCAPE_COMMAND,
   type LexicalCommand,
+  configExtension,
+  createCommand,
+  defineExtension,
   mergeRegister,
 } from "lexical";
 
 import { NodeSelectionDataSelectedExtension } from "@lexical/extension";
 import {
   CoreImportExtension,
-  defineImportRule,
   DOMImportExtension,
+  defineImportRule,
   sel,
 } from "@lexical/html";
 

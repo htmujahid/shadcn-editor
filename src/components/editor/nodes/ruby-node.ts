@@ -8,16 +8,16 @@ import {
   $isRangeSelection,
   $isTextNode,
   $setState,
-  createState,
   type DOMExportOutput,
   type DOMSlot,
   type EditorConfig,
-  isHTMLElement,
   type LexicalNode,
   type NodeStateVersion,
   type StateConfigValue,
   type StateValueOrUpdater,
   TextNode,
+  createState,
+  isHTMLElement,
 } from "lexical";
 
 import { addClassNamesToElement } from "@lexical/utils";

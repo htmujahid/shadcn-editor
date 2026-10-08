@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 
+import { cn } from "cn";
 import { Compass } from "lucide-react";
 import { Link } from "wouter";
 
@@ -14,7 +15,6 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty";
-import { cn } from "@/lib/utils";
 
 export function NotFoundPage() {
   useEffect(() => {

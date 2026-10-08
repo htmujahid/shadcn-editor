@@ -8,13 +8,13 @@ import {
   ContentEditable as LexicalContentEditable,
 } from "@lexical/react/LexicalContentEditable";
 
-import { cva, type VariantProps } from "class-variance-authority";
+import { type VariantProps, cva } from "class-variance-authority";
+import { cn } from "cn";
 
 import {
   type LocalizedText,
   useTranslation,
 } from "@/components/editor/plugins/i18n-plugin";
-import { cn } from "@/lib/utils";
 
 const contentEditableVariants = cva(
   "min-h-full w-full bg-transparent text-sm outline-none",

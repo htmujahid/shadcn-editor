@@ -1,14 +1,12 @@
 import { type JSX, type RefCallback, useCallback, useState } from "react";
 
-import { createPortal } from "react-dom";
-
 import {
   $getNodeByKey,
-  configExtension,
-  defineExtension,
   type LexicalEditor,
   NODE_STATE_DIRECT,
   type NodeKey,
+  configExtension,
+  defineExtension,
 } from "lexical";
 
 import { namedSignals } from "@lexical/extension";
@@ -18,14 +16,15 @@ import { useExtensionSignalValue } from "@lexical/react/useExtensionSignalValue"
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 import { useLexicalSlotRef } from "@lexical/react/useLexicalSlotRef";
 
+import { cn } from "cn";
 import { Star } from "lucide-react";
+import { createPortal } from "react-dom";
 
 import { ReviewExtension } from "@/components/editor/extensions/review";
 import {
   $isReviewNode,
   ReviewNode,
 } from "@/components/editor/nodes/review-node";
-import { cn } from "@/lib/utils";
 
 const STARS = [1, 2, 3, 4, 5];
 

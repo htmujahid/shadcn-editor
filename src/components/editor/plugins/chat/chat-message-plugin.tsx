@@ -3,8 +3,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import {
   $getEditor,
   type AnyLexicalExtensionArgument,
-  defineExtension,
   SKIP_DOM_SELECTION_TAG,
+  defineExtension,
 } from "lexical";
 
 import type { Transformer } from "@lexical/markdown";
@@ -12,13 +12,14 @@ import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
 
+import { cn } from "cn";
+
 import {
   $setChatMessageContent,
   CHAT_MESSAGE_TRANSFORMERS,
   filterTransformers,
 } from "@/components/editor/extensions/chat";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
-import { cn } from "@/lib/utils";
 
 export interface ChatMessageProps {
   extension: AnyLexicalExtensionArgument;

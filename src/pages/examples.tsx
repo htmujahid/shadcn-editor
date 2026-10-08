@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
+import { cn } from "cn";
 import { Link, useSearchParams } from "wouter";
 
 import { CodeDialog } from "@/components/code-dialog";
@@ -64,12 +65,11 @@ import { TwitterEditor } from "@/components/examples/editor-twitter-example";
 import { WordCountEditor } from "@/components/examples/editor-word-count-example";
 import { YouTubeEditor } from "@/components/examples/editor-youtube-example";
 import { GitHubIcon } from "@/components/github-icon";
-import { Skeleton } from "@/components/ui/skeleton";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { Button, buttonVariants } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
 
 const categories = [
   { id: "formatting", label: "Formatting" },

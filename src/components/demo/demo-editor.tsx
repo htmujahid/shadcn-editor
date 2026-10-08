@@ -2,18 +2,18 @@ import { useMemo, useRef, useState } from "react";
 
 import {
   $getRoot,
+  HISTORY_MERGE_TAG,
   configExtension,
   defineExtension,
-  HISTORY_MERGE_TAG,
 } from "lexical";
 
 import { ClipboardDOMImportExtension } from "@lexical/clipboard";
 import {
   AutoFocusExtension,
   ClearEditorExtension,
-  getExtensionDependencyFromEditor,
   HorizontalRuleExtension,
   TabIndentationExtension,
+  getExtensionDependencyFromEditor,
 } from "@lexical/extension";
 import { HashtagExtension } from "@lexical/hashtag";
 import { HistoryExtension } from "@lexical/history";
@@ -22,15 +22,16 @@ import {
   CHECK_LIST,
   ELEMENT_TRANSFORMERS,
   MULTILINE_ELEMENT_TRANSFORMERS,
-  registerMarkdownShortcuts,
   TEXT_FORMAT_TRANSFORMERS,
   TEXT_MATCH_TRANSFORMERS,
   type Transformer,
+  registerMarkdownShortcuts,
 } from "@lexical/markdown";
 import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
 import { RichTextExtension } from "@lexical/rich-text";
 import { TableExtension } from "@lexical/table";
 
+import { cn } from "cn";
 import { MessageSquareText, TableOfContents } from "lucide-react";
 
 import {
@@ -45,8 +46,8 @@ import { CardExtension } from "@/components/editor/extensions/card";
 import { CodeExtension } from "@/components/editor/extensions/code";
 import { CollapsibleExtension } from "@/components/editor/extensions/collapsible";
 import {
-  addComment,
   CommentExtension,
+  addComment,
 } from "@/components/editor/extensions/comment";
 import { DateTimeExtension } from "@/components/editor/extensions/datetime";
 import { DragDropPasteExtension } from "@/components/editor/extensions/drag-drop-paste";
@@ -157,7 +158,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
 
 const EDITOR_TRANSFORMERS: Transformer[] = [
   TABLE,

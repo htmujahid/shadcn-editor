@@ -4,8 +4,8 @@ import {
   $createParagraphNode,
   $createTextNode,
   $getRoot,
-  defineExtension,
   HISTORY_MERGE_TAG,
+  defineExtension,
 } from "lexical";
 
 import { HistoryExtension } from "@lexical/history";
@@ -13,6 +13,8 @@ import { HEADING, registerMarkdownShortcuts } from "@lexical/markdown";
 import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
 import { $createHeadingNode, RichTextExtension } from "@lexical/rich-text";
 import { mergeRegister } from "@lexical/utils";
+
+import { cn } from "cn";
 
 import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import {
@@ -30,7 +32,6 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { cn } from "@/lib/utils";
 
 const SECTIONS: { tag: "h1" | "h2" | "h3"; title: string; body: string }[] = [
   {

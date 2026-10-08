@@ -12,6 +12,7 @@ import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 import { $findTableNode, INSERT_TABLE_COMMAND } from "@lexical/table";
 
+import { cn } from "cn";
 import { Table } from "lucide-react";
 
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
@@ -26,7 +27,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
 
 const MAX_ROWS = 8;
 const MAX_COLUMNS = 10;

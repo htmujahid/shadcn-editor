@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 
+import { cn } from "cn";
 import { Link } from "wouter";
 
 import { CodeDialog } from "@/components/code-dialog";
@@ -9,7 +10,6 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { buttonVariants } from "@/components/ui/button";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
 
 export function HomePage() {
   useEffect(() => {

@@ -8,6 +8,7 @@ import { CollaborationPlugin } from "@lexical/react/LexicalCollaborationPlugin";
 import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
 import { RichTextExtension } from "@lexical/rich-text";
 import type { Provider } from "@lexical/yjs";
+
 import type * as Y from "yjs";
 
 import {
@@ -15,8 +16,8 @@ import {
   createWebsocketProvider,
 } from "@/components/collaboration/providers";
 import {
-  getRandomUserProfile,
   type UserProfile,
+  getRandomUserProfile,
 } from "@/components/collaboration/user-profile";
 import { FormatStateExtension } from "@/components/editor/extensions/format-state";
 import { ContentEditable } from "@/components/editor/plugins/content-editable";

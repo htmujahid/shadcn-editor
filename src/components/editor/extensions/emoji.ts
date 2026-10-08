@@ -2,10 +2,10 @@ import {
   $getSelection,
   $isRangeSelection,
   COMMAND_PRIORITY_EDITOR,
-  createCommand,
-  defineExtension,
   type LexicalCommand,
   TextNode,
+  createCommand,
+  defineExtension,
 } from "lexical";
 
 import compactEmojis from "emojibase-data/en/compact.json";

@@ -18,9 +18,9 @@ import {
 
 import {
   type Comment,
+  type Thread,
   createComment,
   createThread,
-  type Thread,
 } from "@/components/editor/extensions/comment";
 import {
   $createCollapsibleContainerNode,

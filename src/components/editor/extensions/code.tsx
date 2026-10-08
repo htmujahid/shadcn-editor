@@ -3,9 +3,9 @@ import {
   $getSelection,
   $isRangeSelection,
   $nodesOfType,
+  type LexicalEditor,
   configExtension,
   defineExtension,
-  type LexicalEditor,
 } from "lexical";
 
 import {

@@ -2,16 +2,16 @@ import {
   $createParagraphNode,
   $isRootOrShadowRoot,
   COMMAND_PRIORITY_EDITOR,
+  type LexicalCommand,
   configExtension,
   createCommand,
   defineExtension,
-  type LexicalCommand,
 } from "lexical";
 
 import {
   CoreImportExtension,
-  defineImportRule,
   DOMImportExtension,
+  defineImportRule,
   sel,
 } from "@lexical/html";
 import {
@@ -22,8 +22,8 @@ import {
 
 import {
   $createEquationNode,
-  decodeEquation,
   EquationNode,
+  decodeEquation,
 } from "@/components/editor/nodes/equation-node";
 
 export type InsertEquationPayload = {

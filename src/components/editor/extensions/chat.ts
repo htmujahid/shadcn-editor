@@ -5,15 +5,15 @@ import {
   $isDecoratorNode,
   $setSelection,
   COMMAND_PRIORITY_BEFORE_EDITOR,
-  createCommand,
-  defineExtension,
   KEY_ENTER_COMMAND,
   type Klass,
   type LexicalCommand,
   type LexicalEditor,
   type LexicalNode,
-  safeCast,
   type SerializedEditorState,
+  createCommand,
+  defineExtension,
+  safeCast,
 } from "lexical";
 
 import { CodeNode } from "@lexical/code-core";
@@ -24,11 +24,11 @@ import {
   CHECK_LIST,
   ORDERED_LIST,
   QUOTE,
-  registerMarkdownShortcuts,
   TEXT_FORMAT_TRANSFORMERS,
-  type Transformer,
   TRANSFORMERS,
+  type Transformer,
   UNORDERED_LIST,
+  registerMarkdownShortcuts,
 } from "@lexical/markdown";
 import { HeadingNode } from "@lexical/rich-text";
 import { TableNode } from "@lexical/table";

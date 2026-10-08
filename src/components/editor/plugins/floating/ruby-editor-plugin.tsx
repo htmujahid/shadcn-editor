@@ -8,12 +8,12 @@ import {
   CLICK_COMMAND,
   COMMAND_PRIORITY_HIGH,
   COMMAND_PRIORITY_LOW,
-  getDOMSelection,
-  isHTMLElement,
   KEY_ESCAPE_COMMAND,
   type NodeKey,
-  registerEventListener,
   SELECTION_CHANGE_COMMAND,
+  getDOMSelection,
+  isHTMLElement,
+  registerEventListener,
 } from "lexical";
 
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";

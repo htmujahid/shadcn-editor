@@ -6,13 +6,13 @@ import {
   $isTextNode,
   COMMAND_PRIORITY_LOW,
   CONTROL_OR_META,
-  createCommand,
-  defineExtension,
-  isExactShortcutMatch,
   KEY_DOWN_COMMAND,
   type LexicalCommand,
   type LexicalEditor,
   type NodeKey,
+  createCommand,
+  defineExtension,
+  isExactShortcutMatch,
 } from "lexical";
 
 import {

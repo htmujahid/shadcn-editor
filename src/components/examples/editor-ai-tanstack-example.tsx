@@ -11,15 +11,15 @@ import { ListExtension } from "@lexical/list";
 import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
 import { RichTextExtension } from "@lexical/rich-text";
 
-import { EventType } from "@tanstack/ai/client";
 import { GENERATION_EVENTS } from "@tanstack/ai-client";
 import { stream, useGeneration } from "@tanstack/ai-react";
+import { EventType } from "@tanstack/ai/client";
 
 import { type AiRequest, toAiPrompt } from "@/components/editor/extensions/ai";
 import { FormatStateExtension } from "@/components/editor/extensions/format-state";
-import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import { AiPickerPlugin } from "@/components/editor/plugins/component-picker/ai-picker-plugin";
 import { ComponentPicker } from "@/components/editor/plugins/component-picker/component-picker-plugin";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import { AiEditorPlugin } from "@/components/editor/plugins/floating/ai-editor-plugin";
 import { FloatingToolbarPlugin } from "@/components/editor/plugins/floating/floating-toolbar-plugin";
 import {

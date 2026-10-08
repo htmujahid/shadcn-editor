@@ -9,6 +9,8 @@ import {
 } from "@lexical/react/LexicalTableOfContentsPlugin";
 import type { HeadingTagType } from "@lexical/rich-text";
 
+import { cn } from "cn";
+
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
 import {
   SidebarGroup,
@@ -18,7 +20,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { cn } from "@/lib/utils";
 
 const INDENTS: Partial<Record<HeadingTagType, string>> = {
   h2: "ps-5",

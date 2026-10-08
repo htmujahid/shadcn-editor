@@ -4,17 +4,17 @@ import {
   $isParagraphNode,
   $setSlot,
   COMMAND_PRIORITY_EDITOR,
+  type LexicalCommand,
   configExtension,
   createCommand,
   defineExtension,
-  type LexicalCommand,
   mergeRegister,
 } from "lexical";
 
 import {
   CoreImportExtension,
-  defineImportRule,
   DOMImportExtension,
+  defineImportRule,
   sel,
 } from "@lexical/html";
 

@@ -4,6 +4,7 @@ import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 import { $patchStyleText } from "@lexical/selection";
 
+import { cn } from "cn";
 import { Baseline, type LucideIcon, PaintBucket } from "lucide-react";
 
 import { useFormatStateValue } from "@/components/editor/extensions/format-state";
@@ -15,7 +16,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
 
 const HEX_COLOR = /^#[0-9a-fA-F]{6}$/;
 

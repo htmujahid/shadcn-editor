@@ -5,8 +5,9 @@ import { $getRoot } from "lexical";
 import { CharacterLimitPlugin } from "@lexical/react/LexicalCharacterLimitPlugin";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 
+import { cn } from "cn";
+
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
-import { cn } from "@/lib/utils";
 
 const graphemeSegmenter =
   typeof Intl.Segmenter === "undefined"

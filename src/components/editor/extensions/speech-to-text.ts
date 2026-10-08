@@ -2,13 +2,13 @@ import {
   $getSelection,
   $isRangeSelection,
   COMMAND_PRIORITY_EDITOR,
-  createCommand,
-  defineExtension,
   type LexicalCommand,
   type LexicalEditor,
-  type RangeSelection,
   REDO_COMMAND,
+  type RangeSelection,
   UNDO_COMMAND,
+  createCommand,
+  defineExtension,
 } from "lexical";
 
 type SpeechRecognitionResultEventLike = {

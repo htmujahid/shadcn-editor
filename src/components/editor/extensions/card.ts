@@ -14,27 +14,27 @@ import {
   $setSlot,
   COMMAND_PRIORITY_BEFORE_EDITOR,
   COMMAND_PRIORITY_EDITOR,
-  configExtension,
-  createCommand,
-  defineExtension,
-  isModifierMatch,
   KEY_ARROW_LEFT_COMMAND,
   KEY_ARROW_RIGHT_COMMAND,
   KEY_TAB_COMMAND,
   type LexicalCommand,
   type LexicalNode,
-  mergeRegister,
   type NodeKey,
   type PointType,
+  configExtension,
+  createCommand,
+  defineExtension,
+  isModifierMatch,
+  mergeRegister,
 } from "lexical";
 
 import { NodeSelectionDataSelectedExtension } from "@lexical/extension";
 import {
   CoreImportExtension,
-  defineImportRule,
   DOMImportExtension,
-  domOverride,
   DOMRenderExtension,
+  defineImportRule,
+  domOverride,
   sel,
 } from "@lexical/html";
 

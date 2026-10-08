@@ -1,10 +1,8 @@
 import { useRef } from "react";
 
-import { createPortal } from "react-dom";
-
 import {
-  configExtension,
   CONTROL_OR_META,
+  configExtension,
   defineExtension,
   isExactShortcutMatch,
 } from "lexical";
@@ -14,6 +12,7 @@ import type { DecoratorComponentProps } from "@lexical/react/ReactPluginHostExte
 import { useExtensionSignalValue } from "@lexical/react/useExtensionSignalValue";
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
+import { cn } from "cn";
 import {
   CaseSensitive,
   ChevronDown,
@@ -23,6 +22,7 @@ import {
   ReplaceAll,
   X,
 } from "lucide-react";
+import { createPortal } from "react-dom";
 
 import {
   CLOSE_FIND_REPLACE_COMMAND,
@@ -50,7 +50,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
 
 function FindReplacePanel({ context }: DecoratorComponentProps) {
   const [editor] = context;

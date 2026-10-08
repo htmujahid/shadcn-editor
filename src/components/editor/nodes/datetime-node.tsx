@@ -6,7 +6,6 @@ import {
   $getNodeByKey,
   $getState,
   $setState,
-  createState,
   type DOMExportOutput,
   IS_BOLD,
   IS_HIGHLIGHT,
@@ -18,16 +17,18 @@ import {
   type Spread,
   type StateConfigValue,
   type StateValueOrUpdater,
+  createState,
 } from "lexical";
 
 import {
-  applyFormatToDom,
   DecoratorTextNode,
   type SerializedDecoratorTextNode,
+  applyFormatToDom,
 } from "@lexical/extension";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useLexicalNodeSelection } from "@lexical/react/useLexicalNodeSelection";
 
+import { cn } from "cn";
 import { setHours, setMinutes } from "date-fns";
 
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
@@ -40,7 +41,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { cn } from "@/lib/utils";
 
 const tagToFormat = {
   b: "bold",

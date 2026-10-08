@@ -8,29 +8,29 @@ import {
   $setState,
   CLICK_COMMAND,
   COMMAND_PRIORITY_LOW,
-  createState,
-  DecoratorNode,
   type DOMExportOutput,
+  DecoratorNode,
   type LexicalNode,
-  mergeRegister,
   type NodeKey,
   type SerializedLexicalNode,
   type Spread,
   type StateConfigValue,
   type StateValueOrUpdater,
+  createState,
+  mergeRegister,
 } from "lexical";
 
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 import { useLexicalNodeSelection } from "@lexical/react/useLexicalNodeSelection";
 
+import { cn } from "cn";
 import { Plus, X } from "lucide-react";
 
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
 
 export type Option = Readonly<{
   text: string;

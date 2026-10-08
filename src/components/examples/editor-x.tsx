@@ -26,10 +26,10 @@ import {
   CHECK_LIST,
   ELEMENT_TRANSFORMERS,
   MULTILINE_ELEMENT_TRANSFORMERS,
-  registerMarkdownShortcuts,
   TEXT_FORMAT_TRANSFORMERS,
   TEXT_MATCH_TRANSFORMERS,
   type Transformer,
+  registerMarkdownShortcuts,
 } from "@lexical/markdown";
 import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionComposer";
 import {
@@ -97,12 +97,12 @@ import { ReviewPickerPlugin } from "@/components/editor/plugins/component-picker
 import { TablePickerPlugin } from "@/components/editor/plugins/component-picker/table-picker-plugin";
 import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import { ContextMenuPlugin } from "@/components/editor/plugins/context-menu-plugin";
+import { ReactFindReplaceExtension } from "@/components/editor/plugins/decorator/find-replace-panel";
+import { ReactReviewExtension } from "@/components/editor/plugins/decorator/review-plugin";
 import { DraggableBlockPlugin } from "@/components/editor/plugins/draggable-block-plugin";
 import { EmojiPickerPlugin } from "@/components/editor/plugins/emoji-picker-plugin";
-import { ReactFindReplaceExtension } from "@/components/editor/plugins/decorator/find-replace-panel";
 import { FloatingToolbarPlugin } from "@/components/editor/plugins/floating/floating-toolbar-plugin";
 import { LinkEditorPlugin } from "@/components/editor/plugins/floating/link-editor-plugin";
-import { ReactReviewExtension } from "@/components/editor/plugins/decorator/review-plugin";
 import { RubyEditorPlugin } from "@/components/editor/plugins/floating/ruby-editor-plugin";
 import { TableHoverActionsPlugin } from "@/components/editor/plugins/floating/table-hover-actions-plugin";
 import {

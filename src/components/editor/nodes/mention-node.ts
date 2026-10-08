@@ -1,7 +1,6 @@
 import {
   $applyNodeReplacement,
   $getDocument,
-  addClassNamesToElement,
   type DOMConversionMap,
   type DOMConversionOutput,
   type DOMExportOutput,
@@ -12,6 +11,7 @@ import {
   type SerializedTextNode,
   type Spread,
   TextNode,
+  addClassNamesToElement,
 } from "lexical";
 
 export const MENTION_CLASS_NAME =

@@ -1,4 +1,4 @@
-import { defineExtension, TextNode } from "lexical";
+import { TextNode, defineExtension } from "lexical";
 
 import {
   $createSpecialTextNode,

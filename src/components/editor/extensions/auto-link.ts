@@ -2,9 +2,9 @@ import { configExtension, defineExtension } from "lexical";
 
 import { $isCodeNode } from "@lexical/code-core";
 import {
+  AutoLinkExtension as LexicalAutoLinkExtension,
   autoLinkEmailMatcher,
   autoLinkUrlMatcher,
-  AutoLinkExtension as LexicalAutoLinkExtension,
 } from "@lexical/link";
 
 export const AutoLinkExtension = defineExtension({

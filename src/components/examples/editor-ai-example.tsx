@@ -13,9 +13,9 @@ import { RichTextExtension } from "@lexical/rich-text";
 
 import type { AiRequest } from "@/components/editor/extensions/ai";
 import { FormatStateExtension } from "@/components/editor/extensions/format-state";
-import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import { AiPickerPlugin } from "@/components/editor/plugins/component-picker/ai-picker-plugin";
 import { ComponentPicker } from "@/components/editor/plugins/component-picker/component-picker-plugin";
+import { ContentEditable } from "@/components/editor/plugins/content-editable";
 import { AiEditorPlugin } from "@/components/editor/plugins/floating/ai-editor-plugin";
 import { FloatingToolbarPlugin } from "@/components/editor/plugins/floating/floating-toolbar-plugin";
 import {

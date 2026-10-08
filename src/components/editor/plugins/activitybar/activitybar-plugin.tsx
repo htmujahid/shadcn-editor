@@ -1,5 +1,6 @@
+import { cn } from "cn";
+
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { cn } from "@/lib/utils";
 
 export function ActivityBar({
   children,

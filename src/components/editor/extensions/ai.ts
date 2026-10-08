@@ -1,15 +1,15 @@
 import {
   $createRangeSelection,
   $getRoot,
-  createCommand,
   type LexicalCommand,
   type RangeSelection,
+  createCommand,
 } from "lexical";
 
 import {
   $convertSelectionToMarkdownString,
-  type Transformer,
   TRANSFORMERS,
+  type Transformer,
 } from "@lexical/markdown";
 
 import type { Locale } from "@/components/editor/locales";

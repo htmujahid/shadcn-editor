@@ -5,17 +5,17 @@ import {
   $isRootOrShadowRoot,
   $isTextNode,
   COMMAND_PRIORITY_EDITOR,
+  type LexicalCommand,
   configExtension,
   createCommand,
   defineExtension,
-  type LexicalCommand,
 } from "lexical";
 
 import { applyFormatFromStyle } from "@lexical/extension";
 import {
   CoreImportExtension,
-  defineImportRule,
   DOMImportExtension,
+  defineImportRule,
   sel,
 } from "@lexical/html";
 import { $insertNodeIntoLeaf, $wrapNodeInElement } from "@lexical/utils";

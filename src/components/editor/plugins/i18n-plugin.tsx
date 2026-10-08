@@ -1,11 +1,13 @@
 import {
-  createContext,
   type Dispatch,
   type ReactNode,
   type SetStateAction,
+  createContext,
   useContext,
   useState,
 } from "react";
+
+import { cn } from "cn";
 
 import { locales } from "@/components/editor/locales";
 import {
@@ -16,7 +18,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { cn } from "@/lib/utils";
 
 export type Language = "en" | "ar" | "he";
 

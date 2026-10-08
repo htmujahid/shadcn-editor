@@ -3,8 +3,8 @@ import {
   $isRangeSelection,
   $setSelection,
   COMMAND_PRIORITY_LOW,
-  defineExtension,
   FOCUS_COMMAND,
+  defineExtension,
 } from "lexical";
 
 const TAB_TO_FOCUS_INTERVAL = 100;

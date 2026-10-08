@@ -2,8 +2,8 @@ import { Keyboard } from "lucide-react";
 
 import {
   type BuiltinShortcutName,
-  formatShortcut,
   type ShortcutName,
+  formatShortcut,
 } from "@/components/editor/extensions/shortcuts";
 import type { Locale } from "@/components/editor/locales";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";

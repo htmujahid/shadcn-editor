@@ -1,7 +1,6 @@
 import {
   $applyNodeReplacement,
   $getDocument,
-  addClassNamesToElement,
   type DOMConversionOutput,
   type DOMExportOutput,
   type EditorConfig,
@@ -12,6 +11,7 @@ import {
   type NodeKey,
   type SerializedElementNode,
   type Spread,
+  addClassNamesToElement,
 } from "lexical";
 
 export type SerializedLayoutContainerNode = Spread<

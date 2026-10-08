@@ -17,20 +17,21 @@ import { createDOMRange, createRectsFromDOMRange } from "@lexical/selection";
 import { mergeRegister } from "@lexical/utils";
 
 import { Popover as PopoverPrimitive } from "@base-ui/react/popover";
+import { cn } from "cn";
 import { MessageSquarePlus, SendHorizontal, Trash2 } from "lucide-react";
 
 import {
-  addComment,
   CLOSE_COMMENT_INPUT_COMMAND,
   type Comment,
   CommentExtension,
   type CommentState,
+  INSERT_INLINE_COMMAND,
+  type Thread,
+  addComment,
   createComment,
   createThread,
   deleteCommentOrThread,
-  INSERT_INLINE_COMMAND,
   removeThreadMarks,
-  type Thread,
 } from "@/components/editor/extensions/comment";
 import {
   hideFloatingAnchor,
@@ -65,7 +66,6 @@ import {
   SidebarGroupLabel,
 } from "@/components/ui/sidebar";
 import { Textarea } from "@/components/ui/textarea";
-import { cn } from "@/lib/utils";
 
 function getScrollParent(element: HTMLElement | null): HTMLElement | null {
   let current = element?.parentElement ?? null;

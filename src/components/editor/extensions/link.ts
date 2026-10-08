@@ -1,8 +1,8 @@
 import {
+  type LexicalCommand,
   configExtension,
   createCommand,
   defineExtension,
-  type LexicalCommand,
 } from "lexical";
 
 import { LinkExtension as LexicalLinkExtension } from "@lexical/link";

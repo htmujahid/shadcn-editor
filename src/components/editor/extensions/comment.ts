@@ -4,12 +4,12 @@ import {
   $isRangeSelection,
   $isTextNode,
   COMMAND_PRIORITY_EDITOR,
-  createCommand,
-  defineExtension,
-  getDOMSelection,
   type LexicalCommand,
   type LexicalEditor,
   type NodeKey,
+  createCommand,
+  defineExtension,
+  getDOMSelection,
 } from "lexical";
 
 import { effect, namedSignals } from "@lexical/extension";
