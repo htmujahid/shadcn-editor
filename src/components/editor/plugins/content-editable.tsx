@@ -23,7 +23,7 @@ const contentEditableVariants = cva(
       variant: {
         default: "px-2.5 py-2",
         toolbar: "px-4 py-4",
-        draggable: "px-12 py-4",
+        draggable: "px-4 py-4 md:px-12",
       },
     },
     defaultVariants: {
@@ -39,7 +39,7 @@ const placeholderVariants = cva(
       variant: {
         default: "start-2.5 top-2",
         toolbar: "start-4 top-4",
-        draggable: "start-12 top-4",
+        draggable: "start-4 top-4 md:start-12",
       },
     },
     defaultVariants: {

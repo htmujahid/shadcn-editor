@@ -79,7 +79,7 @@ export function DraggableBlockPlugin() {
           ref={menuRef}
           className={cn(
             DRAGGABLE_BLOCK_MENU_CLASSNAME,
-            "absolute top-0 flex cursor-grab items-center rounded-md p-px opacity-0 will-change-transform active:cursor-grabbing",
+            "absolute top-0 hidden cursor-grab items-center rounded-md p-px opacity-0 will-change-transform active:cursor-grabbing md:flex",
             dir === "rtl" ? "right-2" : "left-0",
           )}
         >
