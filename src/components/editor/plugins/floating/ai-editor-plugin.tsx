@@ -1,4 +1,11 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  type ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 import {
   $createParagraphNode,
@@ -24,21 +31,6 @@ import { mergeRegister } from "@lexical/utils";
 
 import { Popover as PopoverPrimitive } from "@base-ui/react/popover";
 import { Command as CommandPrimitive } from "cmdk";
-import {
-  CornerDownRight,
-  FoldVertical,
-  Lightbulb,
-  ListCollapse,
-  type LucideIcon,
-  PenLine,
-  RefreshCw,
-  Replace,
-  Sparkles,
-  SpellCheck,
-  UnfoldVertical,
-  WandSparkles,
-  X,
-} from "lucide-react";
 
 import {
   $getAiContext,
@@ -54,6 +46,7 @@ import {
   setFloatingAnchorRect,
 } from "@/components/editor/plugins/floating/floating-utils";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Button } from "@/components/ui/button";
 import { Command, CommandItem, CommandList } from "@/components/ui/command";
 import {
@@ -68,14 +61,70 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-const COMMAND_ICONS: Record<Exclude<AiCommandId, "custom">, LucideIcon> = {
-  improve: WandSparkles,
-  longer: UnfoldVertical,
-  shorter: FoldVertical,
-  fix: SpellCheck,
-  continue: PenLine,
-  summarize: ListCollapse,
-  brainstorm: Lightbulb,
+const COMMAND_ICONS: Record<Exclude<AiCommandId, "custom">, ReactNode> = {
+  improve: (
+    <IconPlaceholder
+      lucide="WandSparkles"
+      tabler="IconWand"
+      hugeicons="MagicWand01Icon"
+      phosphor="MagicWandIcon"
+      remixicon="RiMagicLine"
+    />
+  ),
+  longer: (
+    <IconPlaceholder
+      lucide="UnfoldVertical"
+      tabler="IconArrowsVertical"
+      hugeicons="ArrowVerticalIcon"
+      phosphor="ArrowsOutLineVerticalIcon"
+      remixicon="RiExpandUpDownLine"
+    />
+  ),
+  shorter: (
+    <IconPlaceholder
+      lucide="FoldVertical"
+      tabler="IconArrowsMinimize"
+      hugeicons="ArrowShrink02Icon"
+      phosphor="ArrowsInLineVerticalIcon"
+      remixicon="RiContractUpDownLine"
+    />
+  ),
+  fix: (
+    <IconPlaceholder
+      lucide="SpellCheck"
+      tabler="IconTextSpellcheck"
+      hugeicons="SpellCheckIcon"
+      phosphor="TextAaIcon"
+      remixicon="RiCheckDoubleLine"
+    />
+  ),
+  continue: (
+    <IconPlaceholder
+      lucide="PenLine"
+      tabler="IconPencil"
+      hugeicons="PenToolIcon"
+      phosphor="PencilLineIcon"
+      remixicon="RiPencilLine"
+    />
+  ),
+  summarize: (
+    <IconPlaceholder
+      lucide="ListCollapse"
+      tabler="IconListDetails"
+      hugeicons="LeftToRightListBulletIcon"
+      phosphor="ListDashesIcon"
+      remixicon="RiListIndefinite"
+    />
+  ),
+  brainstorm: (
+    <IconPlaceholder
+      lucide="Lightbulb"
+      tabler="IconBulb"
+      hugeicons="Idea01Icon"
+      phosphor="LightbulbIcon"
+      remixicon="RiLightbulbLine"
+    />
+  ),
 };
 
 type Phase = "closed" | "prompt" | "generating";
@@ -354,7 +403,14 @@ export function AiEditorPlugin({
           {status === "prompt" && (
             <Command className="rounded-lg">
               <div className="flex items-center gap-2 border-b px-3">
-                <Sparkles className="size-4 shrink-0 text-muted-foreground" />
+                <IconPlaceholder
+                  lucide="Sparkles"
+                  tabler="IconSparkles"
+                  hugeicons="SparklesIcon"
+                  phosphor="SparkleIcon"
+                  remixicon="RiSparklingLine"
+                  className="size-4 shrink-0 text-muted-foreground"
+                />
                 <CommandPrimitive.Input
                   ref={(elem) => {
                     if (elem) {
@@ -386,7 +442,13 @@ export function AiEditorPlugin({
                       });
                     }}
                   >
-                    <Sparkles />
+                    <IconPlaceholder
+                      lucide="Sparkles"
+                      tabler="IconSparkles"
+                      hugeicons="SparklesIcon"
+                      phosphor="SparkleIcon"
+                      remixicon="RiSparklingLine"
+                    />
                     <span className="truncate">
                       {t.askAi}: {query}
                     </span>
@@ -394,7 +456,6 @@ export function AiEditorPlugin({
                 )}
                 {AI_COMMANDS.filter((command) => command.mode === mode).map(
                   ({ id, labelKey, prompt }) => {
-                    const Icon = COMMAND_ICONS[id];
                     return (
                       <CommandItem
                         key={id}
@@ -408,7 +469,7 @@ export function AiEditorPlugin({
                           });
                         }}
                       >
-                        <Icon />
+                        {COMMAND_ICONS[id]}
                         <span className="truncate">{t[labelKey]}</span>
                       </CommandItem>
                     );
@@ -446,7 +507,13 @@ export function AiEditorPlugin({
                           onMouseDown={preventDefault}
                           onClick={insertAtSelection}
                         >
-                          <CornerDownRight />
+                          <IconPlaceholder
+                            lucide="CornerDownRight"
+                            tabler="IconCornerDownRight"
+                            hugeicons="CornerDownRightIcon"
+                            phosphor="ArrowElbowDownRightIcon"
+                            remixicon="RiCornerDownRightLine"
+                          />
                           {t.aiInsert}
                         </Button>
                       }
@@ -465,7 +532,13 @@ export function AiEditorPlugin({
                             onMouseDown={preventDefault}
                             onClick={insertAtSelection}
                           >
-                            <Replace />
+                            <IconPlaceholder
+                              lucide="Replace"
+                              tabler="IconReplace"
+                              hugeicons="ReplaceIcon"
+                              phosphor="SwapIcon"
+                              remixicon="RiFindReplaceLine"
+                            />
                             {t.aiReplace}
                           </Button>
                         }
@@ -482,7 +555,13 @@ export function AiEditorPlugin({
                             onMouseDown={preventDefault}
                             onClick={insertBelow}
                           >
-                            <CornerDownRight />
+                            <IconPlaceholder
+                              lucide="CornerDownRight"
+                              tabler="IconCornerDownRight"
+                              hugeicons="CornerDownRightIcon"
+                              phosphor="ArrowElbowDownRightIcon"
+                              remixicon="RiCornerDownRightLine"
+                            />
                             {t.aiInsertBelow}
                           </Button>
                         }
@@ -503,7 +582,13 @@ export function AiEditorPlugin({
                           onMouseDown={preventDefault}
                           onClick={retry}
                         >
-                          <RefreshCw />
+                          <IconPlaceholder
+                            lucide="RefreshCw"
+                            tabler="IconRefresh"
+                            hugeicons="RefreshIcon"
+                            phosphor="ArrowsClockwiseIcon"
+                            remixicon="RiRefreshLine"
+                          />
                         </Button>
                       }
                     />
@@ -519,7 +604,13 @@ export function AiEditorPlugin({
                           onMouseDown={preventDefault}
                           onClick={close}
                         >
-                          <X />
+                          <IconPlaceholder
+                            lucide="X"
+                            tabler="IconX"
+                            hugeicons="Cancel01Icon"
+                            phosphor="XIcon"
+                            remixicon="RiCloseLine"
+                          />
                         </Button>
                       }
                     />

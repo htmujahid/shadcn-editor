@@ -1,4 +1,5 @@
 import { GitHubLink } from "@/components/github-link";
+import { IconLibrarySwitcher } from "@/components/icon-library-switcher";
 import { MainNav } from "@/components/main-nav";
 import { MobileNav } from "@/components/mobile-nav";
 import { ModeSwitcher } from "@/components/mode-switcher";
@@ -13,6 +14,7 @@ export function SiteHeader() {
           <MobileNav items={siteConfig.navItems} className="flex lg:hidden" />
           <MainNav items={siteConfig.navItems} className="hidden lg:flex" />
           <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
+            <IconLibrarySwitcher />
             <GitHubLink />
             <Separator orientation="vertical" className="data-vertical:h-4 data-vertical:self-center" />
             <ModeSwitcher />

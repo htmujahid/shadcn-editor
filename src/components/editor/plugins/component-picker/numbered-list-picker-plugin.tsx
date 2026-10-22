@@ -5,13 +5,12 @@ import { $getRoot, $getSelection } from "lexical";
 import { INSERT_ORDERED_LIST_COMMAND } from "@lexical/list";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 
-import { ListOrdered } from "lucide-react";
-
 import {
   type ComponentPickerItem,
   useComponentPickerItems,
 } from "@/components/editor/plugins/component-picker/component-picker-plugin";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 
 export function NumberedListPickerPlugin() {
   const [editor] = useLexicalComposerContext();
@@ -22,7 +21,16 @@ export function NumberedListPickerPlugin() {
       {
         value: "numbered-list",
         label: t.numberedListBlock,
-        icon: <ListOrdered className="text-muted-foreground" />,
+        icon: (
+          <IconPlaceholder
+            lucide="ListOrdered"
+            tabler="IconListNumbers"
+            hugeicons="LeftToRightListNumberIcon"
+            phosphor="ListNumbersIcon"
+            remixicon="RiListOrdered"
+            className="text-muted-foreground"
+          />
+        ),
         keywords: ["numbered list", "ordered list", "ol"],
         onSelect: () => {
           editor.update(() => {

@@ -1,5 +1,3 @@
-import { Keyboard } from "lucide-react";
-
 import {
   type BuiltinShortcutName,
   type ShortcutName,
@@ -7,6 +5,7 @@ import {
 } from "@/components/editor/extensions/shortcuts";
 import type { Locale } from "@/components/editor/locales";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -87,7 +86,13 @@ export function ShortcutPlugin() {
             title={t.keyboardShortcuts}
             aria-label={t.keyboardShortcuts}
           >
-            <Keyboard />
+            <IconPlaceholder
+              lucide="Keyboard"
+              tabler="IconKeyboard"
+              hugeicons="KeyboardIcon"
+              phosphor="KeyboardIcon"
+              remixicon="RiKeyboardLine"
+            />
           </Button>
         }
       />

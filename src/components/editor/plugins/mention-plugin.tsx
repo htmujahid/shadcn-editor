@@ -11,10 +11,10 @@ import {
 } from "@lexical/react/LexicalTypeaheadMenuPlugin";
 
 import { Popover as PopoverPrimitive } from "@base-ui/react/popover";
-import { User } from "lucide-react";
 
 import { $createMentionNode } from "@/components/editor/nodes/mention-node";
 import { useLanguage } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Command, CommandItem, CommandList } from "@/components/ui/command";
 import {
   Popover,
@@ -301,7 +301,14 @@ export function MentionPlugin() {
                         value={option.name}
                         onSelect={() => selectOptionAndCleanUp(option)}
                       >
-                        <User className="size-4 text-muted-foreground" />
+                        <IconPlaceholder
+                          lucide="User"
+                          tabler="IconUser"
+                          hugeicons="UserIcon"
+                          phosphor="UserIcon"
+                          remixicon="RiUserLine"
+                          className="size-4 text-muted-foreground"
+                        />
                         <span className="truncate">{option.name}</span>
                       </CommandItem>
                     ))}

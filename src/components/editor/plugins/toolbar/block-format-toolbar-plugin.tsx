@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { type ReactNode, useEffect, useMemo, useState } from "react";
 
 import {
   $createParagraphNode,
@@ -31,21 +31,10 @@ import {
 import { $setBlocksType } from "@lexical/selection";
 import { $findMatchingParent, mergeRegister } from "@lexical/utils";
 
-import {
-  Heading1,
-  Heading2,
-  Heading3,
-  List,
-  ListOrdered,
-  ListTodo,
-  type LucideIcon,
-  Pilcrow,
-  TextQuote,
-} from "lucide-react";
-
 import { $getSelectedNode } from "@/components/editor/extensions/format-state";
 import type { Locale } from "@/components/editor/locales";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import {
   Combobox,
   ComboboxContent,
@@ -70,16 +59,112 @@ type BlockType = (typeof BLOCK_TYPES)[number];
 
 const BLOCK_ITEMS: Record<
   BlockType,
-  { labelKey: keyof Locale; icon: LucideIcon }
+  { labelKey: keyof Locale; icon: ReactNode }
 > = {
-  paragraph: { labelKey: "paragraph", icon: Pilcrow },
-  h1: { labelKey: "heading1", icon: Heading1 },
-  h2: { labelKey: "heading2", icon: Heading2 },
-  h3: { labelKey: "heading3", icon: Heading3 },
-  number: { labelKey: "numberedListBlock", icon: ListOrdered },
-  bullet: { labelKey: "bulletedListBlock", icon: List },
-  check: { labelKey: "checkListBlock", icon: ListTodo },
-  quote: { labelKey: "quote", icon: TextQuote },
+  paragraph: {
+    labelKey: "paragraph",
+    icon: (
+      <IconPlaceholder
+        lucide="Pilcrow"
+        tabler="IconPilcrow"
+        hugeicons="ParagraphIcon"
+        phosphor="ParagraphIcon"
+        remixicon="RiParagraph"
+        className="text-muted-foreground"
+      />
+    ),
+  },
+  h1: {
+    labelKey: "heading1",
+    icon: (
+      <IconPlaceholder
+        lucide="Heading1"
+        tabler="IconH1"
+        hugeicons="Heading01Icon"
+        phosphor="TextHOneIcon"
+        remixicon="RiH1"
+        className="text-muted-foreground"
+      />
+    ),
+  },
+  h2: {
+    labelKey: "heading2",
+    icon: (
+      <IconPlaceholder
+        lucide="Heading2"
+        tabler="IconH2"
+        hugeicons="Heading02Icon"
+        phosphor="TextHTwoIcon"
+        remixicon="RiH2"
+        className="text-muted-foreground"
+      />
+    ),
+  },
+  h3: {
+    labelKey: "heading3",
+    icon: (
+      <IconPlaceholder
+        lucide="Heading3"
+        tabler="IconH3"
+        hugeicons="Heading03Icon"
+        phosphor="TextHThreeIcon"
+        remixicon="RiH3"
+        className="text-muted-foreground"
+      />
+    ),
+  },
+  number: {
+    labelKey: "numberedListBlock",
+    icon: (
+      <IconPlaceholder
+        lucide="ListOrdered"
+        tabler="IconListNumbers"
+        hugeicons="LeftToRightListNumberIcon"
+        phosphor="ListNumbersIcon"
+        remixicon="RiListOrdered"
+        className="text-muted-foreground"
+      />
+    ),
+  },
+  bullet: {
+    labelKey: "bulletedListBlock",
+    icon: (
+      <IconPlaceholder
+        lucide="List"
+        tabler="IconList"
+        hugeicons="ListViewIcon"
+        phosphor="ListIcon"
+        remixicon="RiListUnordered"
+        className="text-muted-foreground"
+      />
+    ),
+  },
+  check: {
+    labelKey: "checkListBlock",
+    icon: (
+      <IconPlaceholder
+        lucide="ListTodo"
+        tabler="IconListCheck"
+        hugeicons="CheckListIcon"
+        phosphor="ListChecksIcon"
+        remixicon="RiListCheck2"
+        className="text-muted-foreground"
+      />
+    ),
+  },
+  quote: {
+    labelKey: "quote",
+    icon: (
+      <IconPlaceholder
+        lucide="TextQuote"
+        tabler="IconBlockquote"
+        hugeicons="QuoteUpIcon"
+        phosphor="QuotesIcon"
+        remixicon="RiDoubleQuotesR"
+        className="text-muted-foreground"
+      />
+    ),
+  },
 };
 
 function $getBlockType(): BlockType | null {
@@ -220,10 +305,10 @@ export function BlockFormatToolbarPlugin() {
         <ComboboxEmpty>{t.noMatches}</ComboboxEmpty>
         <ComboboxList>
           {(item: BlockType) => {
-            const { labelKey, icon: Icon } = BLOCK_ITEMS[item];
+            const { labelKey, icon } = BLOCK_ITEMS[item];
             return (
               <ComboboxItem key={item} value={item}>
-                <Icon className="text-muted-foreground" />
+                {icon}
                 {t[labelKey]}
               </ComboboxItem>
             );

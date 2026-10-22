@@ -1,10 +1,9 @@
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
-import { Sparkles } from "lucide-react";
-
 import { OPEN_AI_EDITOR_COMMAND } from "@/components/editor/extensions/ai";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
 import {
@@ -32,7 +31,13 @@ export function AiToolbarPlugin() {
                 editor.dispatchCommand(OPEN_AI_EDITOR_COMMAND, undefined);
               }}
             >
-              <Sparkles />
+              <IconPlaceholder
+                lucide="Sparkles"
+                tabler="IconSparkles"
+                hugeicons="SparklesIcon"
+                phosphor="SparkleIcon"
+                remixicon="RiSparklingLine"
+              />
             </Button>
           }
         />

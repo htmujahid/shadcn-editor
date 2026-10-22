@@ -8,9 +8,8 @@ import {
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
-import { Smile } from "lucide-react";
-
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Button } from "@/components/ui/button";
 import {
   Tooltip,
@@ -44,7 +43,13 @@ export function InsertEmojiPlugin() {
             disabled={!isEditable}
             onClick={() => insertEmojiTrigger(editor)}
           >
-            <Smile />
+            <IconPlaceholder
+              lucide="Smile"
+              tabler="IconMoodSmile"
+              hugeicons="SmileIcon"
+              phosphor="SmileyIcon"
+              remixicon="RiEmotionLine"
+            />
           </Button>
         }
       />

@@ -5,10 +5,9 @@ import { $getRoot, $getSelection } from "lexical";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
-import { Image } from "lucide-react";
-
 import { INSERT_IMAGE_COMMAND } from "@/components/editor/nodes/image-node";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Button } from "@/components/ui/button";
 import {
   Tooltip,
@@ -85,7 +84,13 @@ export function InsertImagePlugin() {
               disabled={!isEditable}
               onClick={pick}
             >
-              <Image />
+              <IconPlaceholder
+                lucide="Image"
+                tabler="IconPhoto"
+                hugeicons="Image01Icon"
+                phosphor="ImageIcon"
+                remixicon="RiImageLine"
+              />
             </Button>
           }
         />

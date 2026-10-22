@@ -4,14 +4,13 @@ import { $getRoot, $getSelection } from "lexical";
 
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 
-import { ListCollapse } from "lucide-react";
-
 import { INSERT_COLLAPSIBLE_COMMAND } from "@/components/editor/extensions/collapsible";
 import {
   type ComponentPickerItem,
   useComponentPickerItems,
 } from "@/components/editor/plugins/component-picker/component-picker-plugin";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 
 export function CollapsiblePickerPlugin() {
   const [editor] = useLexicalComposerContext();
@@ -22,7 +21,16 @@ export function CollapsiblePickerPlugin() {
       {
         value: "collapsible",
         label: t.insertCollapsible,
-        icon: <ListCollapse className="text-muted-foreground" />,
+        icon: (
+          <IconPlaceholder
+            lucide="ListCollapse"
+            tabler="IconListDetails"
+            hugeicons="LeftToRightListBulletIcon"
+            phosphor="ListDashesIcon"
+            remixicon="RiListIndefinite"
+            className="text-muted-foreground"
+          />
+        ),
         keywords: ["collapse", "collapsible", "toggle", "details", "accordion"],
         onSelect: () => {
           editor.update(() => {

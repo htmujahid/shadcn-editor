@@ -11,9 +11,9 @@ import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext
 import { DraggableBlockPlugin_EXPERIMENTAL } from "@lexical/react/LexicalDraggableBlockPlugin";
 
 import { cn } from "cn";
-import { GripVertical, Plus } from "lucide-react";
 
 import { useLanguage } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 
 const DRAGGABLE_BLOCK_MENU_CLASSNAME = "draggable-block-menu";
 
@@ -90,10 +90,24 @@ export function DraggableBlockPlugin() {
             onMouseDown={(event) => event.preventDefault()}
             onClick={insertSlashBlock}
           >
-            <Plus className="size-4" />
+            <IconPlaceholder
+              lucide="Plus"
+              tabler="IconPlus"
+              hugeicons="PlusSignIcon"
+              phosphor="PlusIcon"
+              remixicon="RiAddLine"
+              className="size-4"
+            />
           </button>
           <div className="flex size-5 items-center justify-center rounded-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground">
-            <GripVertical className="size-4" />
+            <IconPlaceholder
+              lucide="GripVertical"
+              tabler="IconGripVertical"
+              hugeicons="DragDropVerticalIcon"
+              phosphor="DotsSixVerticalIcon"
+              remixicon="RiDraggable"
+              className="size-4"
+            />
           </div>
         </div>
       }

@@ -1,26 +1,14 @@
+import type { ReactNode } from "react";
+
 import { FORMAT_TEXT_COMMAND, type TextFormatType } from "lexical";
 
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
-import {
-  Bold,
-  CaseLower,
-  CaseSensitive,
-  CaseUpper,
-  Code,
-  Highlighter,
-  Italic,
-  type LucideIcon,
-  Strikethrough,
-  Subscript,
-  Superscript,
-  Underline,
-} from "lucide-react";
-
 import { useFormatStateValue } from "@/components/editor/extensions/format-state";
 import type { Locale } from "@/components/editor/locales";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import {
   Tooltip,
@@ -31,26 +19,158 @@ import {
 const FORMAT_GROUPS: {
   format: TextFormatType;
   labelKey: keyof Locale;
-  icon: LucideIcon;
+  icon: ReactNode;
 }[][] = [
   [
-    { format: "bold", labelKey: "bold", icon: Bold },
-    { format: "italic", labelKey: "italic", icon: Italic },
-    { format: "underline", labelKey: "underline", icon: Underline },
-    { format: "strikethrough", labelKey: "strikethrough", icon: Strikethrough },
+    {
+      format: "bold",
+      labelKey: "bold",
+      icon: (
+        <IconPlaceholder
+          lucide="Bold"
+          tabler="IconBold"
+          hugeicons="TextBoldIcon"
+          phosphor="TextBIcon"
+          remixicon="RiBold"
+        />
+      ),
+    },
+    {
+      format: "italic",
+      labelKey: "italic",
+      icon: (
+        <IconPlaceholder
+          lucide="Italic"
+          tabler="IconItalic"
+          hugeicons="TextItalicIcon"
+          phosphor="TextItalicIcon"
+          remixicon="RiItalic"
+        />
+      ),
+    },
+    {
+      format: "underline",
+      labelKey: "underline",
+      icon: (
+        <IconPlaceholder
+          lucide="Underline"
+          tabler="IconUnderline"
+          hugeicons="TextUnderlineIcon"
+          phosphor="TextUnderlineIcon"
+          remixicon="RiUnderline"
+        />
+      ),
+    },
+    {
+      format: "strikethrough",
+      labelKey: "strikethrough",
+      icon: (
+        <IconPlaceholder
+          lucide="Strikethrough"
+          tabler="IconStrikethrough"
+          hugeicons="TextStrikethroughIcon"
+          phosphor="TextStrikethroughIcon"
+          remixicon="RiStrikethrough"
+        />
+      ),
+    },
   ],
   [
-    { format: "highlight", labelKey: "highlight", icon: Highlighter },
-    { format: "code", labelKey: "inlineCode", icon: Code },
+    {
+      format: "highlight",
+      labelKey: "highlight",
+      icon: (
+        <IconPlaceholder
+          lucide="Highlighter"
+          tabler="IconHighlight"
+          hugeicons="HighlighterIcon"
+          phosphor="HighlighterIcon"
+          remixicon="RiMarkPenLine"
+        />
+      ),
+    },
+    {
+      format: "code",
+      labelKey: "inlineCode",
+      icon: (
+        <IconPlaceholder
+          lucide="Code"
+          tabler="IconCode"
+          hugeicons="CodeIcon"
+          phosphor="CodeIcon"
+          remixicon="RiCodeLine"
+        />
+      ),
+    },
   ],
   [
-    { format: "subscript", labelKey: "subscript", icon: Subscript },
-    { format: "superscript", labelKey: "superscript", icon: Superscript },
+    {
+      format: "subscript",
+      labelKey: "subscript",
+      icon: (
+        <IconPlaceholder
+          lucide="Subscript"
+          tabler="IconSubscript"
+          hugeicons="SubscriptIcon"
+          phosphor="TextSubscriptIcon"
+          remixicon="RiSubscript"
+        />
+      ),
+    },
+    {
+      format: "superscript",
+      labelKey: "superscript",
+      icon: (
+        <IconPlaceholder
+          lucide="Superscript"
+          tabler="IconSuperscript"
+          hugeicons="SuperscriptIcon"
+          phosphor="TextSuperscriptIcon"
+          remixicon="RiSuperscript"
+        />
+      ),
+    },
   ],
   [
-    { format: "uppercase", labelKey: "uppercase", icon: CaseUpper },
-    { format: "lowercase", labelKey: "lowercase", icon: CaseLower },
-    { format: "capitalize", labelKey: "titleCase", icon: CaseSensitive },
+    {
+      format: "uppercase",
+      labelKey: "uppercase",
+      icon: (
+        <IconPlaceholder
+          lucide="CaseUpper"
+          tabler="IconLetterCaseUpper"
+          hugeicons="TextCreationIcon"
+          phosphor="TextAUnderlineIcon"
+          remixicon="RiFontSize"
+        />
+      ),
+    },
+    {
+      format: "lowercase",
+      labelKey: "lowercase",
+      icon: (
+        <IconPlaceholder
+          lucide="CaseLower"
+          tabler="IconLetterCaseLower"
+          hugeicons="TextSmallcapsIcon"
+          phosphor="TextAaIcon"
+          remixicon="RiFontSize"
+        />
+      ),
+    },
+    {
+      format: "capitalize",
+      labelKey: "titleCase",
+      icon: (
+        <IconPlaceholder
+          lucide="CaseSensitive"
+          tabler="IconLetterCase"
+          hugeicons="TextFontIcon"
+          phosphor="TextAaIcon"
+          remixicon="RiFontSize2"
+        />
+      ),
+    },
   ],
 ];
 
@@ -80,12 +200,12 @@ function FormatToggleGroup({
         }
       }}
     >
-      {items.map(({ format, labelKey, icon: Icon }) => (
+      {items.map(({ format, labelKey, icon }) => (
         <Tooltip key={format}>
           <TooltipTrigger
             render={
               <ToggleGroupItem value={format} aria-label={t[labelKey]}>
-                <Icon />
+                {icon}
               </ToggleGroupItem>
             }
           />

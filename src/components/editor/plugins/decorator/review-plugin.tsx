@@ -17,7 +17,6 @@ import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 import { useLexicalSlotRef } from "@lexical/react/useLexicalSlotRef";
 
 import { cn } from "cn";
-import { Star } from "lucide-react";
 import { createPortal } from "react-dom";
 
 import { ReviewExtension } from "@/components/editor/extensions/review";
@@ -25,6 +24,7 @@ import {
   $isReviewNode,
   ReviewNode,
 } from "@/components/editor/nodes/review-node";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 
 const STARS = [1, 2, 3, 4, 5];
 
@@ -95,7 +95,12 @@ function ReviewStars({
             }
           }}
         >
-          <Star
+          <IconPlaceholder
+            lucide="Star"
+            tabler="IconStar"
+            hugeicons="StarIcon"
+            phosphor="StarIcon"
+            remixicon="RiStarLine"
             className={cn(
               "size-4 transition-colors",
               value <= shown

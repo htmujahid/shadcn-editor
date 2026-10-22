@@ -5,10 +5,9 @@ import { $getRoot, $getSelection } from "lexical";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
-import { SquarePlay } from "lucide-react";
-
 import { INSERT_YOUTUBE_COMMAND } from "@/components/editor/extensions/youtube";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -76,7 +75,13 @@ export function InsertYouTubePlugin() {
                   aria-label={t.insertYoutube}
                   disabled={!isEditable}
                 >
-                  <SquarePlay />
+                  <IconPlaceholder
+                    lucide="SquarePlay"
+                    tabler="IconPlayerPlay"
+                    hugeicons="PlayIcon"
+                    phosphor="PlayIcon"
+                    remixicon="RiPlayCircleLine"
+                  />
                 </Button>
               }
             />

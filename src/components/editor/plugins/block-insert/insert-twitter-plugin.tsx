@@ -5,10 +5,9 @@ import { $getRoot, $getSelection } from "lexical";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
-import { MessageSquareQuote } from "lucide-react";
-
 import { INSERT_TWEET_COMMAND } from "@/components/editor/extensions/twitter";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -75,7 +74,13 @@ export function InsertTwitterPlugin() {
                   aria-label={t.insertTweet}
                   disabled={!isEditable}
                 >
-                  <MessageSquareQuote />
+                  <IconPlaceholder
+                    lucide="MessageSquareQuote"
+                    tabler="IconMessageCircleStar"
+                    hugeicons="BubbleChatQuestionIcon"
+                    phosphor="ChatCenteredTextIcon"
+                    remixicon="RiChatQuoteLine"
+                  />
                 </Button>
               }
             />

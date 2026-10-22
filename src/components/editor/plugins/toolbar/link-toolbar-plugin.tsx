@@ -2,11 +2,10 @@ import { TOGGLE_LINK_COMMAND } from "@lexical/link";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
-import { Link as LinkIcon } from "lucide-react";
-
 import { useFormatStateValue } from "@/components/editor/extensions/format-state";
 import { OPEN_LINK_EDITOR_COMMAND } from "@/components/editor/extensions/link";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import {
   Tooltip,
@@ -40,7 +39,13 @@ export function LinkToolbarPlugin() {
         <TooltipTrigger
           render={
             <ToggleGroupItem value="link" aria-label={t.insertLink}>
-              <LinkIcon />
+              <IconPlaceholder
+                lucide="Link"
+                tabler="IconLink"
+                hugeicons="Link01Icon"
+                phosphor="LinkIcon"
+                remixicon="RiLinkM"
+              />
             </ToggleGroupItem>
           }
         />

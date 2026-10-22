@@ -5,10 +5,9 @@ import { $getRoot, $getSelection } from "lexical";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
-import { Frame } from "lucide-react";
-
 import { INSERT_FIGMA_COMMAND } from "@/components/editor/extensions/figma";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -75,7 +74,13 @@ export function InsertFigmaPlugin() {
                   aria-label={t.insertFigma}
                   disabled={!isEditable}
                 >
-                  <Frame />
+                  <IconPlaceholder
+                    lucide="Frame"
+                    tabler="IconFrame"
+                    hugeicons="FrameIcon"
+                    phosphor="FrameCornersIcon"
+                    remixicon="RiCropLine"
+                  />
                 </Button>
               }
             />

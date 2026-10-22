@@ -2,8 +2,6 @@ import { useMemo } from "react";
 
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 
-import { Table } from "lucide-react";
-
 import { insertTable } from "@/components/editor/plugins/block-insert/insert-table-plugin";
 import {
   type ComponentPickerItem,
@@ -11,6 +9,7 @@ import {
   useComponentPickerQuery,
 } from "@/components/editor/plugins/component-picker/component-picker-plugin";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 
 const FULL_TABLE_REGEX = /^([1-9]|10)x([1-9]|10)$/;
 const PARTIAL_TABLE_REGEX = /^([1-9]|10)x?$/;
@@ -25,7 +24,16 @@ export function TablePickerPlugin() {
       {
         value: "table",
         label: t.insertTable,
-        icon: <Table className="text-muted-foreground" />,
+        icon: (
+          <IconPlaceholder
+            lucide="Table"
+            tabler="IconTable"
+            hugeicons="Table01Icon"
+            phosphor="TableIcon"
+            remixicon="RiTable2"
+            className="text-muted-foreground"
+          />
+        ),
         keywords: ["table", "grid", "spreadsheet", "rows", "columns"],
         onSelect: () => insertTable(editor, 3, 3),
       },
@@ -48,7 +56,16 @@ export function TablePickerPlugin() {
       items.push({
         value: `table-${rows}x${columns}`,
         label: `${rows}x${columns} ${t.insertTable}`,
-        icon: <Table className="text-muted-foreground" />,
+        icon: (
+          <IconPlaceholder
+            lucide="Table"
+            tabler="IconTable"
+            hugeicons="Table01Icon"
+            phosphor="TableIcon"
+            remixicon="RiTable2"
+            className="text-muted-foreground"
+          />
+        ),
         keywords: ["table", `${rows}x${columns}`],
         onSelect: () => insertTable(editor, rows, columns),
       });

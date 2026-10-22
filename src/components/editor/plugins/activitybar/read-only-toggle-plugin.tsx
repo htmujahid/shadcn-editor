@@ -2,9 +2,8 @@ import { useEffect, useState } from "react";
 
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 
-import { Lock, LockOpen } from "lucide-react";
-
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Button } from "@/components/ui/button";
 
 export function ReadOnlyTogglePlugin() {
@@ -28,7 +27,23 @@ export function ReadOnlyTogglePlugin() {
       aria-pressed={!isEditable}
       onClick={() => editor.setEditable(!editor.isEditable())}
     >
-      {isEditable ? <LockOpen /> : <Lock />}
+      {isEditable ? (
+        <IconPlaceholder
+          lucide="LockOpen"
+          tabler="IconLockOpen"
+          hugeicons="SquareUnlock01Icon"
+          phosphor="LockOpenIcon"
+          remixicon="RiLockUnlockLine"
+        />
+      ) : (
+        <IconPlaceholder
+          lucide="Lock"
+          tabler="IconLock"
+          hugeicons="LockIcon"
+          phosphor="LockIcon"
+          remixicon="RiLockLine"
+        />
+      )}
     </Button>
   );
 }

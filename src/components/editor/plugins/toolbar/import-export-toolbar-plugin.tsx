@@ -8,9 +8,8 @@ import {
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
-import { FileDown, FileUp } from "lucide-react";
-
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
 import {
@@ -88,7 +87,13 @@ export function ImportExportToolbarPlugin({
                 importFile(editor);
               }}
             >
-              <FileUp />
+              <IconPlaceholder
+                lucide="FileUp"
+                tabler="IconFileUpload"
+                hugeicons="FileUploadIcon"
+                phosphor="FileArrowUpIcon"
+                remixicon="RiFileUploadLine"
+              />
             </Button>
           }
         />
@@ -105,7 +110,13 @@ export function ImportExportToolbarPlugin({
                     size="icon-sm"
                     aria-label={t.exportAs}
                   >
-                    <FileDown />
+                    <IconPlaceholder
+                      lucide="FileDown"
+                      tabler="IconFileDownload"
+                      hugeicons="FileDownloadIcon"
+                      phosphor="FileArrowDownIcon"
+                      remixicon="RiFileDownloadLine"
+                    />
                   </Button>
                 }
               />

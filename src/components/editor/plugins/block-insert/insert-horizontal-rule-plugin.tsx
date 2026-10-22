@@ -4,9 +4,8 @@ import { INSERT_HORIZONTAL_RULE_COMMAND } from "@lexical/extension";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
-import { Minus } from "lucide-react";
-
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Button } from "@/components/ui/button";
 import {
   Tooltip,
@@ -37,7 +36,13 @@ export function InsertHorizontalRulePlugin() {
               editor.dispatchCommand(INSERT_HORIZONTAL_RULE_COMMAND, undefined);
             }}
           >
-            <Minus />
+            <IconPlaceholder
+              lucide="Minus"
+              tabler="IconMinus"
+              hugeicons="MinusSignIcon"
+              phosphor="MinusIcon"
+              remixicon="RiSubtractLine"
+            />
           </Button>
         }
       />

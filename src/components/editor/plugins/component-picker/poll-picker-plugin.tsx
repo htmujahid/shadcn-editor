@@ -4,14 +4,13 @@ import { $getRoot, $getSelection } from "lexical";
 
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 
-import { ListTodo } from "lucide-react";
-
 import { INSERT_POLL_COMMAND } from "@/components/editor/extensions/poll";
 import {
   type ComponentPickerItem,
   useComponentPickerItems,
 } from "@/components/editor/plugins/component-picker/component-picker-plugin";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 
 export function PollPickerPlugin() {
   const [editor] = useLexicalComposerContext();
@@ -22,7 +21,16 @@ export function PollPickerPlugin() {
       {
         value: "poll",
         label: t.insertPoll,
-        icon: <ListTodo className="text-muted-foreground" />,
+        icon: (
+          <IconPlaceholder
+            lucide="ListTodo"
+            tabler="IconListCheck"
+            hugeicons="CheckListIcon"
+            phosphor="ListChecksIcon"
+            remixicon="RiListCheck2"
+            className="text-muted-foreground"
+          />
+        ),
         keywords: ["poll", "vote", "survey", "question"],
         onSelect: () => {
           editor.update(() => {

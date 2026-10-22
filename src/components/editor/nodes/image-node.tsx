@@ -26,7 +26,8 @@ import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 import { useLexicalNodeSelection } from "@lexical/react/useLexicalNodeSelection";
 
 import { cn } from "cn";
-import { ImageOffIcon } from "lucide-react";
+
+import { IconPlaceholder } from "@/components/icon-placeholder";
 
 export interface ImagePayload {
   altText: string;
@@ -321,7 +322,14 @@ function ImageComponent({
     >
       {isLoadError ? (
         <span className="flex aspect-video w-full max-w-sm flex-col items-center justify-center gap-2 rounded-md border border-dashed bg-muted text-muted-foreground">
-          <ImageOffIcon className="size-6" />
+          <IconPlaceholder
+            lucide="ImageOffIcon"
+            tabler="IconPhotoOff"
+            hugeicons="ImageNotFound01Icon"
+            phosphor="ImageBrokenIcon"
+            remixicon="RiImage2Line"
+            className="size-6"
+          />
           <span className="text-xs">{altText || "Image failed to load"}</span>
         </span>
       ) : (

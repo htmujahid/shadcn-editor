@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { type ReactElement, useCallback } from "react";
 
 import type { LexicalEditor, LexicalNode } from "lexical";
 
@@ -10,8 +10,6 @@ import {
 } from "@lexical/react/LexicalAutoEmbedPlugin";
 
 import { Popover as PopoverPrimitive } from "@base-ui/react/popover";
-import type { LucideIcon } from "lucide-react";
-import { Frame, MessageSquareQuote, SquarePlay, X } from "lucide-react";
 
 import { INSERT_FIGMA_COMMAND } from "@/components/editor/extensions/figma";
 import { INSERT_TWEET_COMMAND } from "@/components/editor/extensions/twitter";
@@ -24,6 +22,7 @@ import {
   useLanguage,
   useTranslation,
 } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Command, CommandItem, CommandList } from "@/components/ui/command";
 import {
   Popover,
@@ -33,13 +32,22 @@ import {
 
 type EditorEmbedConfig = EmbedConfig & {
   labelKey: keyof Locale;
-  icon: LucideIcon;
+  icon: ReactElement;
 };
 
 const YouTubeEmbedConfig: EditorEmbedConfig = {
   type: "youtube-video",
   labelKey: "embedYoutube",
-  icon: SquarePlay,
+  icon: (
+    <IconPlaceholder
+      lucide="SquarePlay"
+      tabler="IconPlayerPlay"
+      hugeicons="PlayIcon"
+      phosphor="PlayIcon"
+      remixicon="RiPlayCircleLine"
+      className="size-4 text-muted-foreground"
+    />
+  ),
   parseUrl: (text: string) => {
     const id = parseYouTubeVideoID(text);
     return id ? { id, url: text } : null;
@@ -52,7 +60,16 @@ const YouTubeEmbedConfig: EditorEmbedConfig = {
 const TwitterEmbedConfig: EditorEmbedConfig = {
   type: "tweet",
   labelKey: "embedTweet",
-  icon: MessageSquareQuote,
+  icon: (
+    <IconPlaceholder
+      lucide="MessageSquareQuote"
+      tabler="IconMessageCircleStar"
+      hugeicons="BubbleChatQuestionIcon"
+      phosphor="ChatCenteredTextIcon"
+      remixicon="RiChatQuoteLine"
+      className="size-4 text-muted-foreground"
+    />
+  ),
   parseUrl: (text: string) => {
     const id = parseTweetID(text);
     return id ? { id, url: text } : null;
@@ -65,7 +82,16 @@ const TwitterEmbedConfig: EditorEmbedConfig = {
 const FigmaEmbedConfig: EditorEmbedConfig = {
   type: "figma",
   labelKey: "embedFigma",
-  icon: Frame,
+  icon: (
+    <IconPlaceholder
+      lucide="Frame"
+      tabler="IconFrame"
+      hugeicons="FrameIcon"
+      phosphor="FrameCornersIcon"
+      remixicon="RiCropLine"
+      className="size-4 text-muted-foreground"
+    />
+  ),
   parseUrl: (text: string) => {
     const id = parseFigmaDocumentID(text);
     return id ? { id, url: text } : null;
@@ -82,15 +108,15 @@ const EMBED_CONFIGS: EditorEmbedConfig[] = [
 ];
 
 class EditorAutoEmbedOption extends AutoEmbedOption {
-  Icon: LucideIcon;
+  icon: ReactElement;
 
   constructor(
     title: string,
-    Icon: LucideIcon,
+    icon: ReactElement,
     options: { onSelect: (targetNode: LexicalNode | null) => void },
   ) {
     super(title, options);
-    this.Icon = Icon;
+    this.icon = icon;
   }
 }
 
@@ -104,9 +130,20 @@ export function AutoEmbedPlugin() {
       embedFn: () => void,
       dismissFn: () => void,
     ) => [
-      new EditorAutoEmbedOption(t.autoEmbedDismiss, X, {
-        onSelect: dismissFn,
-      }),
+      new EditorAutoEmbedOption(
+        t.autoEmbedDismiss,
+        <IconPlaceholder
+          lucide="X"
+          tabler="IconX"
+          hugeicons="Cancel01Icon"
+          phosphor="XIcon"
+          remixicon="RiCloseLine"
+          className="size-4 text-muted-foreground"
+        />,
+        {
+          onSelect: dismissFn,
+        },
+      ),
       new EditorAutoEmbedOption(
         t[activeEmbedConfig.labelKey],
         activeEmbedConfig.icon,
@@ -162,9 +199,9 @@ export function AutoEmbedPlugin() {
                 >
                   <CommandList className="max-h-64 w-56">
                     {options.map((option) => {
-                      const Icon =
+                      const icon =
                         option instanceof EditorAutoEmbedOption
-                          ? option.Icon
+                          ? option.icon
                           : null;
                       return (
                         <CommandItem
@@ -173,9 +210,7 @@ export function AutoEmbedPlugin() {
                           value={option.key}
                           onSelect={() => selectOptionAndCleanUp(option)}
                         >
-                          {Icon ? (
-                            <Icon className="size-4 text-muted-foreground" />
-                          ) : null}
+                          {icon}
                           <span className="truncate">{option.title}</span>
                         </CommandItem>
                       );

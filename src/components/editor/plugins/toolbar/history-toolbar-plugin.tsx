@@ -6,9 +6,8 @@ import { useExtensionDependency } from "@lexical/react/useExtensionComponent";
 import { useSignalValue } from "@lexical/react/useExtensionSignalValue";
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
-import { Redo2, Undo2 } from "lucide-react";
-
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
 import {
@@ -39,7 +38,14 @@ export function HistoryToolbarPlugin() {
                 editor.dispatchCommand(UNDO_COMMAND, undefined);
               }}
             >
-              <Undo2 className="rtl:-scale-x-100" />
+              <IconPlaceholder
+                lucide="Undo2"
+                tabler="IconArrowBackUp"
+                hugeicons="Undo02Icon"
+                phosphor="ArrowArcLeftIcon"
+                remixicon="RiArrowGoBackLine"
+                className="rtl:-scale-x-100"
+              />
             </Button>
           }
         />
@@ -57,7 +63,14 @@ export function HistoryToolbarPlugin() {
                 editor.dispatchCommand(REDO_COMMAND, undefined);
               }}
             >
-              <Redo2 className="rtl:-scale-x-100" />
+              <IconPlaceholder
+                lucide="Redo2"
+                tabler="IconArrowForwardUp"
+                hugeicons="Redo02Icon"
+                phosphor="ArrowArcRightIcon"
+                remixicon="RiArrowGoForwardLine"
+                className="rtl:-scale-x-100"
+              />
             </Button>
           }
         />

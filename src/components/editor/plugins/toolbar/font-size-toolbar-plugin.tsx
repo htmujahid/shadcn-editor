@@ -6,10 +6,9 @@ import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 import { $patchStyleText } from "@lexical/selection";
 
-import { Minus, Plus } from "lucide-react";
-
 import { useFormatStateValue } from "@/components/editor/extensions/format-state";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
 import { Input } from "@/components/ui/input";
@@ -66,7 +65,13 @@ export function FontSizeToolbarPlugin() {
                 updateFontSize(currentSize - 2);
               }}
             >
-              <Minus />
+              <IconPlaceholder
+                lucide="Minus"
+                tabler="IconMinus"
+                hugeicons="MinusSignIcon"
+                phosphor="MinusIcon"
+                remixicon="RiSubtractLine"
+              />
             </Button>
           }
         />
@@ -103,7 +108,13 @@ export function FontSizeToolbarPlugin() {
                 updateFontSize(currentSize + 2);
               }}
             >
-              <Plus />
+              <IconPlaceholder
+                lucide="Plus"
+                tabler="IconPlus"
+                hugeicons="PlusSignIcon"
+                phosphor="PlusIcon"
+                remixicon="RiAddLine"
+              />
             </Button>
           }
         />

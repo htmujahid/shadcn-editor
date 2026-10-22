@@ -1,15 +1,8 @@
-import { useMemo } from "react";
+import { type ReactNode, useMemo } from "react";
 
 import { $getRoot, $getSelection } from "lexical";
 
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-
-import {
-  Columns2,
-  Columns3,
-  type LucideIcon,
-  RectangleVertical,
-} from "lucide-react";
 
 import { INSERT_LAYOUT_COMMAND } from "@/components/editor/extensions/layout";
 import type { Locale } from "@/components/editor/locales";
@@ -18,29 +11,57 @@ import {
   useComponentPickerItems,
 } from "@/components/editor/plugins/component-picker/component-picker-plugin";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 
 const COLUMN_ITEMS: {
   value: string;
   labelKey: keyof Locale;
-  icon: LucideIcon;
+  icon: ReactNode;
   templateColumns: string;
 }[] = [
   {
     value: "columns-one",
     labelKey: "columnsOne",
-    icon: RectangleVertical,
+    icon: (
+      <IconPlaceholder
+        lucide="RectangleVertical"
+        tabler="IconRectangleVertical"
+        hugeicons="RectangularIcon"
+        phosphor="RectangleIcon"
+        remixicon="RiRectangleLine"
+        className="text-muted-foreground"
+      />
+    ),
     templateColumns: "1fr",
   },
   {
     value: "columns-two",
     labelKey: "columnsTwo",
-    icon: Columns2,
+    icon: (
+      <IconPlaceholder
+        lucide="Columns2"
+        tabler="IconColumns2"
+        hugeicons="LayoutTwoColumnIcon"
+        phosphor="ColumnsIcon"
+        remixicon="RiLayoutColumnLine"
+        className="text-muted-foreground"
+      />
+    ),
     templateColumns: "1fr 1fr",
   },
   {
     value: "columns-three",
     labelKey: "columnsThree",
-    icon: Columns3,
+    icon: (
+      <IconPlaceholder
+        lucide="Columns3"
+        tabler="IconColumns3"
+        hugeicons="LayoutThreeColumnIcon"
+        phosphor="ColumnsPlusRightIcon"
+        remixicon="RiLayoutGridLine"
+        className="text-muted-foreground"
+      />
+    ),
     templateColumns: "1fr 1fr 1fr",
   },
 ];
@@ -51,10 +72,10 @@ export function ColumnsPickerPlugin() {
 
   const items = useMemo<ComponentPickerItem[]>(
     () =>
-      COLUMN_ITEMS.map(({ value, labelKey, icon: Icon, templateColumns }) => ({
+      COLUMN_ITEMS.map(({ value, labelKey, icon, templateColumns }) => ({
         value,
         label: t[labelKey],
-        icon: <Icon className="text-muted-foreground" />,
+        icon,
         keywords: ["columns", "layout", "grid"],
         onSelect: () => {
           editor.update(() => {

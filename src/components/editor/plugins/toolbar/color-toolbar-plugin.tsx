@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 import { $getRoot, $getSelection } from "lexical";
 
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
@@ -5,10 +7,10 @@ import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 import { $patchStyleText } from "@lexical/selection";
 
 import { cn } from "cn";
-import { Baseline, type LucideIcon, PaintBucket } from "lucide-react";
 
 import { useFormatStateValue } from "@/components/editor/extensions/format-state";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { buttonVariants } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
 import {
@@ -22,11 +24,11 @@ const HEX_COLOR = /^#[0-9a-fA-F]{6}$/;
 function ColorPicker({
   property,
   label,
-  icon: Icon,
+  icon,
 }: {
   property: "color" | "background-color";
   label: string;
-  icon: LucideIcon;
+  icon: ReactNode;
 }) {
   const [editor] = useLexicalComposerContext();
   const isEditable = useLexicalEditable();
@@ -47,7 +49,7 @@ function ColorPicker({
               !isEditable && "pointer-events-none opacity-50",
             )}
           >
-            <Icon />
+            {icon}
             <input
               type="color"
               aria-label={label}
@@ -74,11 +76,31 @@ export function ColorToolbarPlugin() {
   const { t } = useTranslation();
   return (
     <ButtonGroup>
-      <ColorPicker property="color" label={t.textColor} icon={Baseline} />
+      <ColorPicker
+        property="color"
+        label={t.textColor}
+        icon={
+          <IconPlaceholder
+            lucide="Baseline"
+            tabler="IconTextColor"
+            hugeicons="TextColorIcon"
+            phosphor="TextAaIcon"
+            remixicon="RiFontColor"
+          />
+        }
+      />
       <ColorPicker
         property="background-color"
         label={t.backgroundColor}
-        icon={PaintBucket}
+        icon={
+          <IconPlaceholder
+            lucide="PaintBucket"
+            tabler="IconBucketDroplet"
+            hugeicons="PaintBucketIcon"
+            phosphor="PaintBucketIcon"
+            remixicon="RiPaintFill"
+          />
+        }
       />
     </ButtonGroup>
   );

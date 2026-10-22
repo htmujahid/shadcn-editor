@@ -13,7 +13,6 @@ import { LexicalExtensionComposer } from "@lexical/react/LexicalExtensionCompose
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
 import { cn } from "cn";
-import { ArrowUp, Square } from "lucide-react";
 
 import {
   $clearChatInput,
@@ -29,6 +28,7 @@ import {
   type LocalizedText,
   useTranslation,
 } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { InputGroup, InputGroupButton } from "@/components/ui/input-group";
 import {
   Tooltip,
@@ -263,7 +263,24 @@ export function ChatInputSubmit({
             }}
             {...props}
           >
-            {showStop ? <Square className="fill-current" /> : <ArrowUp />}
+            {showStop ? (
+              <IconPlaceholder
+                lucide="Square"
+                tabler="IconSquare"
+                hugeicons="SquareIcon"
+                phosphor="SquareIcon"
+                remixicon="RiCheckboxBlankLine"
+                className="fill-current"
+              />
+            ) : (
+              <IconPlaceholder
+                lucide="ArrowUp"
+                tabler="IconArrowUp"
+                hugeicons="ArrowUp02Icon"
+                phosphor="ArrowUpIcon"
+                remixicon="RiArrowUpLine"
+              />
+            )}
           </InputGroupButton>
         }
       />

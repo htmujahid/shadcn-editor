@@ -1,13 +1,12 @@
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useExtensionSignalValue } from "@lexical/react/useExtensionSignalValue";
 
-import { TextSearch } from "lucide-react";
-
 import {
   FindReplaceExtension,
   TOGGLE_FIND_REPLACE_COMMAND,
 } from "@/components/editor/extensions/find-replace";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
 import {
@@ -36,7 +35,13 @@ export function FindReplaceToolbarPlugin() {
                 editor.dispatchCommand(TOGGLE_FIND_REPLACE_COMMAND, undefined);
               }}
             >
-              <TextSearch />
+              <IconPlaceholder
+                lucide="TextSearch"
+                tabler="IconFileSearch"
+                hugeicons="FileSearchIcon"
+                phosphor="FileMagnifyingGlassIcon"
+                remixicon="RiFileSearchLine"
+              />
             </Button>
           }
         />

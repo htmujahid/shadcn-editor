@@ -4,14 +4,13 @@ import { $getRoot, $getSelection } from "lexical";
 
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 
-import { LayoutPanelTop } from "lucide-react";
-
 import { INSERT_CARD_COMMAND } from "@/components/editor/extensions/card";
 import {
   type ComponentPickerItem,
   useComponentPickerItems,
 } from "@/components/editor/plugins/component-picker/component-picker-plugin";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 
 export function CardPickerPlugin() {
   const [editor] = useLexicalComposerContext();
@@ -22,7 +21,16 @@ export function CardPickerPlugin() {
       {
         value: "card",
         label: t.insertCard,
-        icon: <LayoutPanelTop className="text-muted-foreground" />,
+        icon: (
+          <IconPlaceholder
+            lucide="LayoutPanelTop"
+            tabler="IconLayoutNavbar"
+            hugeicons="LayoutTopIcon"
+            phosphor="LayoutIcon"
+            remixicon="RiLayoutTopLine"
+            className="text-muted-foreground"
+          />
+        ),
         keywords: ["card", "panel", "container", "box"],
         onSelect: () => {
           editor.update(() => {

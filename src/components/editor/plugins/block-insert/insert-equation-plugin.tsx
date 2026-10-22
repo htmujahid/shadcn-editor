@@ -5,11 +5,10 @@ import { $getRoot, $getSelection } from "lexical";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
-import { Radical } from "lucide-react";
-
 import { INSERT_EQUATION_COMMAND } from "@/components/editor/extensions/equation";
 import { KatexRenderer } from "@/components/editor/nodes/equation-node";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -66,7 +65,13 @@ export function InsertEquationPlugin() {
                   aria-label={t.insertEquation}
                   disabled={!isEditable}
                 >
-                  <Radical />
+                  <IconPlaceholder
+                    lucide="Radical"
+                    tabler="IconMathFunction"
+                    hugeicons="SquareRootSquareIcon"
+                    phosphor="RadicalIcon"
+                    remixicon="RiFunctions"
+                  />
                 </Button>
               }
             />

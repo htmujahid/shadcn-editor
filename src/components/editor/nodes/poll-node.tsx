@@ -25,9 +25,9 @@ import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 import { useLexicalNodeSelection } from "@lexical/react/useLexicalNodeSelection";
 
 import { cn } from "cn";
-import { Plus, X } from "lucide-react";
 
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -298,7 +298,13 @@ function PollOptionComponent({
           });
         }}
       >
-        <X />
+        <IconPlaceholder
+          lucide="X"
+          tabler="IconX"
+          hugeicons="Cancel01Icon"
+          phosphor="XIcon"
+          remixicon="RiCloseLine"
+        />
       </Button>
     </div>
   );
@@ -406,7 +412,13 @@ function PollComponent({
           disabled={!isEditable}
           onClick={addOption}
         >
-          <Plus />
+          <IconPlaceholder
+            lucide="Plus"
+            tabler="IconPlus"
+            hugeicons="PlusSignIcon"
+            phosphor="PlusIcon"
+            remixicon="RiAddLine"
+          />
           {t.pollAddOption}
         </Button>
       </div>

@@ -13,9 +13,9 @@ import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 import { $findTableNode, INSERT_TABLE_COMMAND } from "@lexical/table";
 
 import { cn } from "cn";
-import { Table } from "lucide-react";
 
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Button } from "@/components/ui/button";
 import {
   Popover,
@@ -136,7 +136,13 @@ export function InsertTablePlugin() {
                   aria-label={t.insertTable}
                   disabled={!isEditable}
                 >
-                  <Table />
+                  <IconPlaceholder
+                    lucide="Table"
+                    tabler="IconTable"
+                    hugeicons="Table01Icon"
+                    phosphor="TableIcon"
+                    remixicon="RiTable2"
+                  />
                 </Button>
               }
             />

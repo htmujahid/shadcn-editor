@@ -5,13 +5,12 @@ import { $createParagraphNode, $getRoot, $getSelection } from "lexical";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { $setBlocksType } from "@lexical/selection";
 
-import { Pilcrow } from "lucide-react";
-
 import {
   type ComponentPickerItem,
   useComponentPickerItems,
 } from "@/components/editor/plugins/component-picker/component-picker-plugin";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 
 export function ParagraphPickerPlugin() {
   const [editor] = useLexicalComposerContext();
@@ -22,7 +21,16 @@ export function ParagraphPickerPlugin() {
       {
         value: "paragraph",
         label: t.paragraph,
-        icon: <Pilcrow className="text-muted-foreground" />,
+        icon: (
+          <IconPlaceholder
+            lucide="Pilcrow"
+            tabler="IconPilcrow"
+            hugeicons="ParagraphIcon"
+            phosphor="ParagraphIcon"
+            remixicon="RiParagraph"
+            className="text-muted-foreground"
+          />
+        ),
         keywords: ["normal", "paragraph", "p", "text"],
         onSelect: () =>
           editor.update(() => {

@@ -16,16 +16,8 @@ import {
 import { $isAutoLinkNode, $isLinkNode } from "@lexical/link";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 
-import {
-  Clipboard,
-  ClipboardType,
-  Copy,
-  Link2Off,
-  Scissors,
-  Trash2,
-} from "lucide-react";
-
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import {
   ContextMenu,
   ContextMenuContent,
@@ -153,7 +145,13 @@ export function ContextMenuPlugin() {
         {target?.isLink && (
           <>
             <ContextMenuItem onClick={removeLink}>
-              <Link2Off />
+              <IconPlaceholder
+                lucide="Link2Off"
+                tabler="IconLinkOff"
+                hugeicons="Unlink01Icon"
+                phosphor="LinkBreakIcon"
+                remixicon="RiLinkUnlink"
+              />
               {t.removeLink}
             </ContextMenuItem>
             <ContextMenuSeparator />
@@ -162,26 +160,56 @@ export function ContextMenuPlugin() {
         <ContextMenuItem
           onClick={() => editor.dispatchCommand(CUT_COMMAND, null)}
         >
-          <Scissors />
+          <IconPlaceholder
+            lucide="Scissors"
+            tabler="IconScissors"
+            hugeicons="Scissor01Icon"
+            phosphor="ScissorsIcon"
+            remixicon="RiScissorsLine"
+          />
           {t.cut}
         </ContextMenuItem>
         <ContextMenuItem
           onClick={() => editor.dispatchCommand(COPY_COMMAND, null)}
         >
-          <Copy />
+          <IconPlaceholder
+            lucide="Copy"
+            tabler="IconCopy"
+            hugeicons="Copy01Icon"
+            phosphor="CopyIcon"
+            remixicon="RiFileCopyLine"
+          />
           {t.copy}
         </ContextMenuItem>
         <ContextMenuItem onClick={() => pasteFromClipboard(false)}>
-          <Clipboard />
+          <IconPlaceholder
+            lucide="Clipboard"
+            tabler="IconClipboard"
+            hugeicons="ClipboardIcon"
+            phosphor="ClipboardIcon"
+            remixicon="RiClipboardLine"
+          />
           {t.paste}
         </ContextMenuItem>
         <ContextMenuItem onClick={() => pasteFromClipboard(true)}>
-          <ClipboardType />
+          <IconPlaceholder
+            lucide="ClipboardType"
+            tabler="IconClipboardText"
+            hugeicons="ClipboardIcon"
+            phosphor="ClipboardTextIcon"
+            remixicon="RiFileTextLine"
+          />
           {t.pasteAsPlainText}
         </ContextMenuItem>
         <ContextMenuSeparator />
         <ContextMenuItem variant="destructive" onClick={deleteNode}>
-          <Trash2 />
+          <IconPlaceholder
+            lucide="Trash2"
+            tabler="IconTrash"
+            hugeicons="Delete02Icon"
+            phosphor="TrashIcon"
+            remixicon="RiDeleteBinLine"
+          />
           {t.deleteNode}
         </ContextMenuItem>
       </ContextMenuContent>

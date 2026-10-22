@@ -13,15 +13,6 @@ import { useExtensionSignalValue } from "@lexical/react/useExtensionSignalValue"
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
 import { cn } from "cn";
-import {
-  CaseSensitive,
-  ChevronDown,
-  ChevronUp,
-  Regex,
-  Replace,
-  ReplaceAll,
-  X,
-} from "lucide-react";
 import { createPortal } from "react-dom";
 
 import {
@@ -37,6 +28,7 @@ import {
   TOGGLE_REGEX_COMMAND,
 } from "@/components/editor/extensions/find-replace";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
 import {
@@ -157,7 +149,13 @@ function FindReplacePanel({ context }: DecoratorComponentProps) {
                 aria-label={t.closeFindReplace}
                 onClick={close}
               >
-                <X />
+                <IconPlaceholder
+                  lucide="X"
+                  tabler="IconX"
+                  hugeicons="Cancel01Icon"
+                  phosphor="XIcon"
+                  remixicon="RiCloseLine"
+                />
               </Button>
             }
           />
@@ -204,7 +202,13 @@ function FindReplacePanel({ context }: DecoratorComponentProps) {
                     );
                   }}
                 >
-                  <CaseSensitive />
+                  <IconPlaceholder
+                    lucide="CaseSensitive"
+                    tabler="IconLetterCase"
+                    hugeicons="TextFontIcon"
+                    phosphor="TextAaIcon"
+                    remixicon="RiFontSize2"
+                  />
                 </InputGroupButton>
               }
             />
@@ -222,7 +226,13 @@ function FindReplacePanel({ context }: DecoratorComponentProps) {
                     editor.dispatchCommand(TOGGLE_REGEX_COMMAND, undefined);
                   }}
                 >
-                  <Regex />
+                  <IconPlaceholder
+                    lucide="Regex"
+                    tabler="IconRegex"
+                    hugeicons="RegexIcon"
+                    phosphor="AsteriskIcon"
+                    remixicon="RiAsterisk"
+                  />
                 </InputGroupButton>
               }
             />
@@ -261,7 +271,14 @@ function FindReplacePanel({ context }: DecoratorComponentProps) {
                     editor.dispatchCommand(REPLACE_CURRENT_COMMAND, undefined);
                   }}
                 >
-                  <Replace className="rtl:-scale-x-100" />
+                  <IconPlaceholder
+                    lucide="Replace"
+                    tabler="IconReplace"
+                    hugeicons="ReplaceIcon"
+                    phosphor="SwapIcon"
+                    remixicon="RiFindReplaceLine"
+                    className="rtl:-scale-x-100"
+                  />
                 </InputGroupButton>
               }
             />
@@ -278,7 +295,14 @@ function FindReplacePanel({ context }: DecoratorComponentProps) {
                     editor.dispatchCommand(REPLACE_ALL_COMMAND, undefined);
                   }}
                 >
-                  <ReplaceAll className="rtl:-scale-x-100" />
+                  <IconPlaceholder
+                    lucide="ReplaceAll"
+                    tabler="IconReplaceFilled"
+                    hugeicons="ReplaceIcon"
+                    phosphor="ArrowsLeftRightIcon"
+                    remixicon="RiFindReplaceLine"
+                    className="rtl:-scale-x-100"
+                  />
                 </InputGroupButton>
               }
             />
@@ -307,7 +331,13 @@ function FindReplacePanel({ context }: DecoratorComponentProps) {
                   disabled={!canNavigate}
                   onClick={goToPrevious}
                 >
-                  <ChevronUp />
+                  <IconPlaceholder
+                    lucide="ChevronUp"
+                    tabler="IconChevronUp"
+                    hugeicons="ArrowUp01Icon"
+                    phosphor="CaretUpIcon"
+                    remixicon="RiArrowUpSLine"
+                  />
                 </Button>
               }
             />
@@ -323,7 +353,13 @@ function FindReplacePanel({ context }: DecoratorComponentProps) {
                   disabled={!canNavigate}
                   onClick={goToNext}
                 >
-                  <ChevronDown />
+                  <IconPlaceholder
+                    lucide="ChevronDown"
+                    tabler="IconChevronDown"
+                    hugeicons="ArrowDown01Icon"
+                    phosphor="CaretDownIcon"
+                    remixicon="RiArrowDownSLine"
+                  />
                 </Button>
               }
             />

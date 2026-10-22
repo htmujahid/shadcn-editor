@@ -20,7 +20,6 @@ import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext
 import { mergeRegister } from "@lexical/utils";
 
 import { Popover as PopoverPrimitive } from "@base-ui/react/popover";
-import { Check, Trash2 } from "lucide-react";
 
 import { OPEN_RUBY_EDITOR_COMMAND } from "@/components/editor/extensions/ruby";
 import {
@@ -35,6 +34,7 @@ import {
   setFloatingAnchorRect,
 } from "@/components/editor/plugins/floating/floating-utils";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -300,7 +300,13 @@ export function RubyEditorPlugin() {
                   onMouseDown={preventDefault}
                   onClick={handleSubmit}
                 >
-                  <Check />
+                  <IconPlaceholder
+                    lucide="Check"
+                    tabler="IconCheck"
+                    hugeicons="Tick02Icon"
+                    phosphor="CheckIcon"
+                    remixicon="RiCheckLine"
+                  />
                 </Button>
               }
             />
@@ -317,7 +323,13 @@ export function RubyEditorPlugin() {
                     onMouseDown={preventDefault}
                     onClick={handleDelete}
                   >
-                    <Trash2 />
+                    <IconPlaceholder
+                      lucide="Trash2"
+                      tabler="IconTrash"
+                      hugeicons="Delete02Icon"
+                      phosphor="TrashIcon"
+                      remixicon="RiDeleteBinLine"
+                    />
                   </Button>
                 }
               />

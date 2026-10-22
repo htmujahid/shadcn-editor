@@ -24,7 +24,6 @@ import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 import { $findMatchingParent, mergeRegister } from "@lexical/utils";
 
 import { Popover as PopoverPrimitive } from "@base-ui/react/popover";
-import { Check, Pencil, Trash2, X } from "lucide-react";
 
 import {
   $getSelectedLinkNode,
@@ -40,6 +39,7 @@ import {
   setFloatingAnchorRect,
 } from "@/components/editor/plugins/floating/floating-utils";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -301,7 +301,13 @@ export function LinkEditorPlugin() {
                         setIsEditMode(false);
                       }}
                     >
-                      <X />
+                      <IconPlaceholder
+                        lucide="X"
+                        tabler="IconX"
+                        hugeicons="Cancel01Icon"
+                        phosphor="XIcon"
+                        remixicon="RiCloseLine"
+                      />
                     </Button>
                   }
                 />
@@ -317,7 +323,13 @@ export function LinkEditorPlugin() {
                       onMouseDown={preventDefault}
                       onClick={handleLinkSubmission}
                     >
-                      <Check />
+                      <IconPlaceholder
+                        lucide="Check"
+                        tabler="IconCheck"
+                        hugeicons="Tick02Icon"
+                        phosphor="CheckIcon"
+                        remixicon="RiCheckLine"
+                      />
                     </Button>
                   }
                 />
@@ -349,7 +361,13 @@ export function LinkEditorPlugin() {
                         setIsEditMode(true);
                       }}
                     >
-                      <Pencil />
+                      <IconPlaceholder
+                        lucide="Pencil"
+                        tabler="IconPencil"
+                        hugeicons="PencilEdit01Icon"
+                        phosphor="PencilSimpleIcon"
+                        remixicon="RiPencilLine"
+                      />
                     </Button>
                   }
                 />
@@ -367,7 +385,13 @@ export function LinkEditorPlugin() {
                         editor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
                       }}
                     >
-                      <Trash2 />
+                      <IconPlaceholder
+                        lucide="Trash2"
+                        tabler="IconTrash"
+                        hugeicons="Delete02Icon"
+                        phosphor="TrashIcon"
+                        remixicon="RiDeleteBinLine"
+                      />
                     </Button>
                   }
                 />

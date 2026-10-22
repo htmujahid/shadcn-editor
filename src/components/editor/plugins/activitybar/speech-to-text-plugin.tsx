@@ -5,13 +5,13 @@ import { COMMAND_PRIORITY_LOW } from "lexical";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 
 import { cn } from "cn";
-import { Mic, MicOff } from "lucide-react";
 
 import {
   SPEECH_TO_TEXT_COMMAND,
   SUPPORT_SPEECH_RECOGNITION,
 } from "@/components/editor/extensions/speech-to-text";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Button } from "@/components/ui/button";
 
 function SpeechToTextButton() {
@@ -45,7 +45,13 @@ function SpeechToTextButton() {
         editor.dispatchCommand(SPEECH_TO_TEXT_COMMAND, !isListening)
       }
     >
-      <Mic />
+      <IconPlaceholder
+        lucide="Mic"
+        tabler="IconMicrophone"
+        hugeicons="Mic01Icon"
+        phosphor="MicrophoneIcon"
+        remixicon="RiMicLine"
+      />
     </Button>
   );
 }
@@ -66,7 +72,13 @@ export function SpeechToTextPlugin() {
       aria-label={t.speechToText}
       disabled
     >
-      <MicOff />
+      <IconPlaceholder
+        lucide="MicOff"
+        tabler="IconMicrophoneOff"
+        hugeicons="MicOff01Icon"
+        phosphor="MicrophoneSlashIcon"
+        remixicon="RiMicOffLine"
+      />
     </Button>
   );
 }

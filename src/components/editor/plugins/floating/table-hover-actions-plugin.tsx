@@ -21,10 +21,10 @@ import {
 } from "@lexical/table";
 
 import { cn } from "cn";
-import { Plus, Trash2 } from "lucide-react";
 import { createPortal } from "react-dom";
 
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 
 type ActionsPosition = { x: number; y: number; canDelete: boolean };
 
@@ -246,7 +246,14 @@ export function TableHoverActionsPlugin() {
               withCell(columnCellRef, $insertTableColumnAtSelection)
             }
           >
-            <Plus className="size-3.5" />
+            <IconPlaceholder
+              lucide="Plus"
+              tabler="IconPlus"
+              hugeicons="PlusSignIcon"
+              phosphor="PlusIcon"
+              remixicon="RiAddLine"
+              className="size-3.5"
+            />
           </button>
           {columnPosition.canDelete ? (
             <button
@@ -259,7 +266,14 @@ export function TableHoverActionsPlugin() {
                 withCell(columnCellRef, $deleteTableColumnAtSelection)
               }
             >
-              <Trash2 className="size-3.5" />
+              <IconPlaceholder
+                lucide="Trash2"
+                tabler="IconTrash"
+                hugeicons="Delete02Icon"
+                phosphor="TrashIcon"
+                remixicon="RiDeleteBinLine"
+                className="size-3.5"
+              />
             </button>
           ) : null}
         </div>
@@ -278,7 +292,14 @@ export function TableHoverActionsPlugin() {
             onMouseDown={(event) => event.preventDefault()}
             onClick={() => withCell(rowCellRef, $insertTableRowAtSelection)}
           >
-            <Plus className="size-3.5" />
+            <IconPlaceholder
+              lucide="Plus"
+              tabler="IconPlus"
+              hugeicons="PlusSignIcon"
+              phosphor="PlusIcon"
+              remixicon="RiAddLine"
+              className="size-3.5"
+            />
           </button>
           {rowPosition.canDelete ? (
             <button
@@ -289,7 +310,14 @@ export function TableHoverActionsPlugin() {
               onMouseDown={(event) => event.preventDefault()}
               onClick={() => withCell(rowCellRef, $deleteTableRowAtSelection)}
             >
-              <Trash2 className="size-3.5" />
+              <IconPlaceholder
+                lucide="Trash2"
+                tabler="IconTrash"
+                hugeicons="Delete02Icon"
+                phosphor="TrashIcon"
+                remixicon="RiDeleteBinLine"
+                className="size-3.5"
+              />
             </button>
           ) : null}
         </div>

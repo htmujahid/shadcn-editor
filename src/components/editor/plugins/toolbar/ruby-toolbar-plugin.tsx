@@ -1,10 +1,9 @@
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
-import { Languages } from "lucide-react";
-
 import { toggleRubyEditor } from "@/components/editor/extensions/ruby";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
 import {
@@ -32,7 +31,13 @@ export function RubyToolbarPlugin() {
                 toggleRubyEditor(editor);
               }}
             >
-              <Languages />
+              <IconPlaceholder
+                lucide="Languages"
+                tabler="IconLanguage"
+                hugeicons="LanguageSquareIcon"
+                phosphor="TranslateIcon"
+                remixicon="RiTranslate2"
+              />
             </Button>
           }
         />

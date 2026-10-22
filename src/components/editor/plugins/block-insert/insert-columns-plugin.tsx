@@ -3,11 +3,10 @@ import { $getRoot, $getSelection, type LexicalEditor } from "lexical";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
-import { Columns2 } from "lucide-react";
-
 import { INSERT_LAYOUT_COMMAND } from "@/components/editor/extensions/layout";
 import type { Locale } from "@/components/editor/locales";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -64,7 +63,13 @@ export function InsertColumnsPlugin() {
                   aria-label={t.columns}
                   disabled={!isEditable}
                 >
-                  <Columns2 />
+                  <IconPlaceholder
+                    lucide="Columns2"
+                    tabler="IconColumns2"
+                    hugeicons="LayoutTwoColumnIcon"
+                    phosphor="ColumnsIcon"
+                    remixicon="RiLayoutColumnLine"
+                  />
                 </Button>
               }
             />

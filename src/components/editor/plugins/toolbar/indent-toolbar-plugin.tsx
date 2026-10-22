@@ -3,10 +3,9 @@ import { INDENT_CONTENT_COMMAND, OUTDENT_CONTENT_COMMAND } from "lexical";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
-import { IndentDecrease, IndentIncrease } from "lucide-react";
-
 import { useFormatStateValue } from "@/components/editor/extensions/format-state";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
 import {
@@ -35,7 +34,14 @@ export function IndentToolbarPlugin() {
                 editor.dispatchCommand(OUTDENT_CONTENT_COMMAND, undefined);
               }}
             >
-              <IndentDecrease className="rtl:-scale-x-100" />
+              <IconPlaceholder
+                lucide="IndentDecrease"
+                tabler="IconIndentDecrease"
+                hugeicons="TextIndentLessIcon"
+                phosphor="TextOutdentIcon"
+                remixicon="RiIndentDecrease"
+                className="rtl:-scale-x-100"
+              />
             </Button>
           }
         />
@@ -53,7 +59,14 @@ export function IndentToolbarPlugin() {
                 editor.dispatchCommand(INDENT_CONTENT_COMMAND, undefined);
               }}
             >
-              <IndentIncrease className="rtl:-scale-x-100" />
+              <IconPlaceholder
+                lucide="IndentIncrease"
+                tabler="IconIndentIncrease"
+                hugeicons="TextIndentMoreIcon"
+                phosphor="TextIndentIcon"
+                remixicon="RiIndentIncrease"
+                className="rtl:-scale-x-100"
+              />
             </Button>
           }
         />

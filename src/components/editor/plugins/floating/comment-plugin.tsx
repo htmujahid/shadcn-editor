@@ -18,7 +18,6 @@ import { mergeRegister } from "@lexical/utils";
 
 import { Popover as PopoverPrimitive } from "@base-ui/react/popover";
 import { cn } from "cn";
-import { MessageSquarePlus, SendHorizontal, Trash2 } from "lucide-react";
 
 import {
   CLOSE_COMMENT_INPUT_COMMAND,
@@ -38,6 +37,7 @@ import {
   setFloatingAnchorRect,
 } from "@/components/editor/plugins/floating/floating-utils";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -149,7 +149,13 @@ function AddCommentButton({
               editor.dispatchCommand(INSERT_INLINE_COMMAND, undefined);
             }}
           >
-            <MessageSquarePlus />
+            <IconPlaceholder
+              lucide="MessageSquarePlus"
+              tabler="IconMessagePlus"
+              hugeicons="BubbleChatAddIcon"
+              phosphor="ChatTeardropTextIcon"
+              remixicon="RiChatNewLine"
+            />
           </Button>
         </PopoverContent>
       </PopoverPrimitive.Portal>
@@ -352,7 +358,13 @@ function DeleteButton({
             className={cn("text-muted-foreground", className)}
             onClick={(event) => event.stopPropagation()}
           >
-            <Trash2 />
+            <IconPlaceholder
+              lucide="Trash2"
+              tabler="IconTrash"
+              hugeicons="Delete02Icon"
+              phosphor="TrashIcon"
+              remixicon="RiDeleteBinLine"
+            />
           </Button>
         }
       />
@@ -462,7 +474,14 @@ function ReplyComposer({
           disabled={content.trim() === ""}
           onClick={submit}
         >
-          <SendHorizontal className="rtl:rotate-180" />
+          <IconPlaceholder
+            lucide="SendHorizontal"
+            tabler="IconSend"
+            hugeicons="SentIcon"
+            phosphor="PaperPlaneRightIcon"
+            remixicon="RiSendPlaneLine"
+            className="rtl:rotate-180"
+          />
         </InputGroupButton>
       </InputGroupAddon>
     </InputGroup>

@@ -5,10 +5,9 @@ import { $getRoot, $isParagraphNode, CLEAR_EDITOR_COMMAND } from "lexical";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
-import { RemoveFormatting, Trash2 } from "lucide-react";
-
 import { clearFormatting } from "@/components/editor/extensions/format-state";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
 import {
@@ -56,7 +55,13 @@ export function ClearToolbarPlugin() {
                 clearFormatting(editor);
               }}
             >
-              <RemoveFormatting />
+              <IconPlaceholder
+                lucide="RemoveFormatting"
+                tabler="IconClearFormatting"
+                hugeicons="TextClearIcon"
+                phosphor="TextTIcon"
+                remixicon="RiFormatClear"
+              />
             </Button>
           }
         />
@@ -75,7 +80,13 @@ export function ClearToolbarPlugin() {
                 editor.focus();
               }}
             >
-              <Trash2 />
+              <IconPlaceholder
+                lucide="Trash2"
+                tabler="IconTrash"
+                hugeicons="Delete02Icon"
+                phosphor="TrashIcon"
+                remixicon="RiDeleteBinLine"
+              />
             </Button>
           }
         />

@@ -18,7 +18,7 @@ import {
   type SerializedDecoratorBlockNode,
 } from "@lexical/react/LexicalDecoratorBlockNode";
 
-import { Loader2 } from "lucide-react";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 
 const WIDGET_SCRIPT_URL = "https://platform.twitter.com/widgets.js";
 
@@ -107,7 +107,14 @@ function TweetComponent({
     >
       {isTweetLoading ? (
         <div className="flex h-32 w-full max-w-xl items-center justify-center rounded-md border bg-muted">
-          <Loader2 className="size-5 animate-spin text-muted-foreground" />
+          <IconPlaceholder
+            lucide="Loader2"
+            tabler="IconLoader"
+            hugeicons="Loading03Icon"
+            phosphor="SpinnerIcon"
+            remixicon="RiLoaderLine"
+            className="size-5 animate-spin text-muted-foreground"
+          />
         </div>
       ) : null}
       <div

@@ -1,10 +1,9 @@
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useLexicalEditable } from "@lexical/react/useLexicalEditable";
 
-import { CodeXml } from "lucide-react";
-
 import { insertCodeBlock } from "@/components/editor/extensions/code";
 import { useTranslation } from "@/components/editor/plugins/i18n-plugin";
+import { IconPlaceholder } from "@/components/icon-placeholder";
 import { Button } from "@/components/ui/button";
 import {
   Tooltip,
@@ -28,7 +27,13 @@ export function InsertCodeBlockPlugin() {
             disabled={!isEditable}
             onClick={() => insertCodeBlock(editor)}
           >
-            <CodeXml />
+            <IconPlaceholder
+              lucide="CodeXml"
+              tabler="IconCodeDots"
+              hugeicons="CodeSquareIcon"
+              phosphor="CodeBlockIcon"
+              remixicon="RiCodeSSlashLine"
+            />
           </Button>
         }
       />
