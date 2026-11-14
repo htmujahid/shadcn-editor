@@ -7,6 +7,7 @@ import {
   $isElementNode,
 } from "lexical";
 
+import { $isCodeNode } from "@lexical/code-core";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { DraggableBlockPlugin_EXPERIMENTAL } from "@lexical/react/LexicalDraggableBlockPlugin";
 
@@ -50,7 +51,7 @@ export function DraggableBlockPlugin() {
       if (!node) {
         return;
       }
-      if ($isElementNode(node)) {
+      if ($isElementNode(node) && !$isCodeNode(node)) {
         const textContent = node.getTextContent();
         const needsSpace = textContent !== "" && !/\s$/.test(textContent);
         node.selectEnd().insertText(needsSpace ? " /" : "/");

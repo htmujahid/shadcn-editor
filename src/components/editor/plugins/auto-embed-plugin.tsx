@@ -169,7 +169,7 @@ export function AutoEmbedPlugin() {
                 render={
                   <span
                     aria-hidden
-                    className="pointer-events-none absolute inset-x-0 top-0 h-0"
+                    className="pointer-events-none absolute inset-x-0 -top-full h-full"
                   />
                 }
               />
